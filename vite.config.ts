@@ -4,9 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Use repo name as base when deployed to GitHub Pages (iamabotama.github.io/vanvlaenderen.org/)
-  // Switch back to '/' when custom domain (vanvlaenderen.org) is active
-  base: '/vanvlaenderen.org/',
+  // Base is '/' because we use a custom domain (vanvlaenderen.org)
+  base: '/',
   server: {
     allowedHosts: true,
   },
