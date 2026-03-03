@@ -1,1 +1,57 @@
-/* Global styles handled in App.css */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap');
+
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --gold:        #d4a017;
+  --gold-light:  #f0c84a;
+  --gold-dim:    #8a6a10;
+  --navy:        #0d1b2a;
+  --dark:        #0a0a0a;
+  --dark-mid:    #111111;
+  --dark-card:   #161616;
+  --dark-border: #2a2010;
+  --text-primary: #f0e6c8;
+  --text-muted:   #a89060;
+  --text-dim:     #6a5a40;
+  --font-display: 'Cinzel', serif;
+  --font-body:    'EB Garamond', serif;
+  --font-ui:      'Inter', sans-serif;
+}
+
+/* ─── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--dark);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root { min-height: 100vh; display: flex; flex-direction: column; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+p { color: var(--text-primary); }
+
+a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--gold-light); }
+
+.gold-rule {
+  width: 80px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 1.5rem auto;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }

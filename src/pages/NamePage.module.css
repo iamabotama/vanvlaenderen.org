@@ -1,0 +1,54 @@
+.villageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.villageCard {
+  background: var(--dark-card);
+  border: 1px solid rgba(212, 160, 23, 0.15);
+  border-left: 3px solid var(--gold);
+  padding: 1rem 1.25rem;
+  border-radius: 2px;
+}
+
+.villageName {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.villageNote {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+.spellingList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.25rem 0;
+}
+
+.spellingTag {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  background: rgba(212, 160, 23, 0.07);
+  border: 1px solid rgba(212, 160, 23, 0.2);
+  padding: 0.3rem 0.85rem;
+  border-radius: 2px;
+}
+
+@media (max-width: 700px) {
+  .villageGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 450px) {
+  .villageGrid { grid-template-columns: 1fr; }
+}

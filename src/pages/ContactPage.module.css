@@ -1,0 +1,141 @@
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ─── Reasons ────────────────────────────────────────────────── */
+.reasonsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.reasonItem {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.reasonIcon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.reasonTitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.03em;
+}
+
+.reasonText {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── Form ───────────────────────────────────────────────────── */
+.formWrap {
+  background: var(--dark-card);
+  border: 1px solid rgba(212, 160, 23, 0.18);
+  border-radius: 4px;
+  padding: 2rem;
+}
+
+.formWrap h2 {
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+}
+
+.field input,
+.field select,
+.field textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212, 160, 23, 0.2);
+  border-radius: 2px;
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--gold);
+}
+
+.field select option {
+  background: #1a1a1a;
+  color: var(--text-primary);
+}
+
+.submitBtn {
+  background: var(--gold);
+  color: #0a0a0a;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+  align-self: flex-start;
+}
+
+.submitBtn:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+.sentMsg {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: rgba(212, 160, 23, 0.08);
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  border-radius: 3px;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.sentIcon {
+  font-size: 1.5rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+@media (max-width: 800px) {
+  .twoCol { grid-template-columns: 1fr; }
+}
