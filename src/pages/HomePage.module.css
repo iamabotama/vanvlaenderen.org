@@ -7,7 +7,7 @@
 /* ─── Hero ───────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 70vh;
   background-size: cover;
   background-position: center top;
   display: flex;
@@ -20,9 +20,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(5, 3, 1, 0.55) 0%,
-    rgba(5, 3, 1, 0.70) 50%,
-    rgba(5, 3, 1, 0.92) 100%
+    rgba(5, 3, 1, 0.45) 0%,
+    rgba(5, 3, 1, 0.65) 50%,
+    rgba(5, 3, 1, 0.95) 100%
   );
 }
 
@@ -35,9 +35,9 @@
 }
 
 .shield {
-  width: 130px;
+  width: 120px;
   height: auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   filter: drop-shadow(0 0 24px rgba(212, 160, 23, 0.6));
   animation: floatShield 4s ease-in-out infinite;
 }
@@ -59,34 +59,177 @@
 
 .subtitle {
   font-family: var(--font-ui);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 0.5rem;
 }
 
-.intro {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  color: var(--text-primary);
-  line-height: 1.8;
-  max-width: 560px;
+/* ─── Mystery Section ────────────────────────────────────────── */
+.mysterySection {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 3, 1, 0.98) 0%,
+    #0d0900 40%,
+    #0a0700 100%
+  );
+  padding: 5rem 2rem 5rem;
+  border-top: 1px solid rgba(212, 160, 23, 0.15);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.15);
+}
+
+.mysteryInner {
+  max-width: 760px;
   margin: 0 auto;
+  text-align: center;
+}
+
+.mysteryQuestion {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--gold);
+  line-height: 1.35;
+  margin-bottom: 3rem;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 20px rgba(212, 160, 23, 0.3);
+}
+
+.mysteryQuestion em {
+  font-style: italic;
+  color: #e8c96a;
+}
+
+.mysteryBody {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.mysteryBody p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  line-height: 1.85;
+}
+
+.mysteryBody strong {
+  color: var(--gold-dim);
+  font-weight: 600;
+}
+
+.dividerLine {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 0.5rem auto;
+}
+
+.emergingTheory {
+  font-family: var(--font-display) !important;
+  font-size: 1.25rem !important;
+  color: var(--gold) !important;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.pullQuote {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  color: var(--gold);
+  text-align: center;
+  line-height: 1.4;
+  padding: 2rem 1.5rem;
+  border-top: 1px solid rgba(212, 160, 23, 0.2);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  margin: 0.5rem 0;
+  letter-spacing: 0.02em;
+}
+
+.pullQuoteMark {
+  color: rgba(212, 160, 23, 0.4);
+  font-size: 2em;
+  line-height: 0;
+  vertical-align: -0.3em;
+  margin: 0 0.15em;
+}
+
+.callToAction {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  line-height: 1.85;
+  padding: 1.5rem;
+  background: rgba(212, 160, 23, 0.04);
+  border-left: 3px solid rgba(212, 160, 23, 0.35);
+  border-radius: 0 4px 4px 0;
+}
+
+.callToAction strong {
+  color: var(--gold) !important;
+}
+
+.mysteryActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  background: var(--gold);
+  color: #0a0700;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.primaryBtn:hover {
+  background: #e8c96a;
+  transform: translateY(-2px);
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border: 1px solid rgba(212, 160, 23, 0.45);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.secondaryBtn:hover {
+  border-color: var(--gold);
+  background: rgba(212, 160, 23, 0.06);
+  transform: translateY(-2px);
 }
 
 /* ─── Cards Section ──────────────────────────────────────────── */
 .cardsSection {
-  background: linear-gradient(180deg, rgba(5,3,1,0.95) 0%, #0a0a0a 100%);
+  background: #080600;
   padding: 4rem 2rem 5rem;
 }
 
 .cardsHeading {
   text-align: center;
-  font-size: 1rem;
-  letter-spacing: 0.25em;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-dim);
   font-family: var(--font-ui);
   font-weight: 400;
   margin-bottom: 2.5rem;
@@ -211,9 +354,12 @@
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .cards { grid-template-columns: repeat(2, 1fr); }
+  .mysteryActions { flex-direction: column; align-items: center; }
 }
 
 @media (max-width: 500px) {
   .cards { grid-template-columns: 1fr; }
   .title { font-size: 2.5rem; }
+  .mysteryQuestion { font-size: 1.4rem; }
+  .primaryBtn, .secondaryBtn { width: 100%; text-align: center; }
 }
