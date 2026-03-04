@@ -23,7 +23,7 @@ export default function App() {
       <main>
         {activeTab === 'home'    && <HomePage onNav={handleNav} />}
         {activeTab === 'mill'    && <MillPage />}
-        {activeTab === 'name'    && <NamePage />}
+        {activeTab === 'name'    && <NamePage onNavigate={(tab) => handleNav(tab as Tab)} />}
         {activeTab === 'dna'     && <DnaPage />}
         {activeTab === 'contact' && <ContactPage />}
       </main>

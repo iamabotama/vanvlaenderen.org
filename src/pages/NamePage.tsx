@@ -1,7 +1,11 @@
 import styles from './InnerPage.module.css';
 import nameStyles from './NamePage.module.css';
 
-export default function NamePage() {
+interface NamePageProps {
+  onNavigate?: (tab: string) => void;
+}
+
+export default function NamePage({ onNavigate }: NamePageProps) {
   return (
     <div className={styles.page}>
       <div className={styles.textHero}>
@@ -9,29 +13,34 @@ export default function NamePage() {
         <h1>The Name</h1>
         <div className="gold-rule" />
         <p className={styles.heroLead}>
-          Van Vlaenderen means, simply, "from Flanders." It is a surname that carries
-          a region within it — a declaration of origin worn as an identity.
+          The surname Van Vlaenderen is traditionally understood as a locative name
+          meaning "from Flanders." Such surnames were common in the medieval Low Countries
+          and were often assigned to individuals identified by their regional origin.
         </p>
       </div>
 
       <div className={styles.content}>
 
         <section className={styles.section}>
-          <h2>A Name That Means a Place</h2>
+          <h2>History of a Surname</h2>
           <p>
-            The surname Van Vlaenderen — also spelled Van Vlaanderen, Van Vlaendereen,
-            or in anglicised forms such as Vanvlaenderen or Vanflanderen — is a locative
-            surname. It identifies a person or family as being <em>from Flanders</em>,
-            the historic region that today encompasses the northern, Dutch-speaking
-            provinces of Belgium, as well as parts of the Netherlands and northern France.
+            Early parish and civic records show the name concentrated within a relatively
+            small area of the Meetjesland in East Flanders, particularly in Bassevelde,
+            Boekhoute, Evergem, Lovendegem, Sleidinge, Ursel, and Wessegem. The continuity
+            of the surname in this region across multiple generations invites closer
+            historical examination.
           </p>
           <p>
-            Locative surnames of this type were common in medieval and early modern Flanders.
-            They were often given to people who had migrated from one place to another and
-            were known in their new community by their place of origin. A family called
-            Van Vlaenderen may have been so named because they moved from Flanders proper
-            into a neighbouring region, or because they were among the first settlers of
-            Flemish origin in a particular village.
+            While the conventional toponymic explanation remains entirely plausible, the
+            geographic density and early persistence of the name — together with its relative
+            rarity, particularly outside East Flanders — invite an additional question:
+            whether the surname may at some point have developed from a more specific
+            territorial or local designation during the late medieval period.
+          </p>
+          <p>
+            This site gathers available documentation and invites Van Vlaenderens around
+            the world to explore the records, contribute family narratives, connect family
+            trees, and participate in the Van Vlaenderen Family Genealogy Project.
           </p>
         </section>
 
@@ -51,12 +60,14 @@ export default function NamePage() {
           </p>
           <div className={nameStyles.villageGrid}>
             {[
-              { name: 'Bassevelde', note: 'Parish records from the 17th century' },
-              { name: 'Ursel',      note: 'Land and mill ownership records' },
-              { name: 'Evergem',    note: 'Civil registration from 1796' },
-              { name: 'Merendree', note: 'Marriage and baptism records' },
-              { name: 'Vinderhoute', note: 'Home of the Van Vlaenderensmolen' },
-              { name: 'Lovendegem', note: 'Municipal records, 19th century' },
+              { name: 'Bassevelde',   note: 'Parish records from the 17th century' },
+              { name: 'Boekhoute',    note: 'Early civic and land records' },
+              { name: 'Ursel',        note: 'Land and mill ownership records' },
+              { name: 'Evergem',      note: 'Civil registration from 1796' },
+              { name: 'Lovendegem',   note: 'Municipal records, 19th century' },
+              { name: 'Sleidinge',    note: 'Parish and notarial records' },
+              { name: 'Wessegem',     note: 'Baptism and marriage registers' },
+              { name: 'Vinderhoute',  note: 'Home of the Van Vlaenderensmolen' },
             ].map(v => (
               <div key={v.name} className={nameStyles.villageCard}>
                 <div className={nameStyles.villageName}>{v.name}</div>
@@ -117,6 +128,12 @@ export default function NamePage() {
           <div className={styles.ctaNote}>
             Every spelling variant and every location helps build a more complete picture.
           </div>
+          <button
+            className={nameStyles.shareStoryBtn}
+            onClick={() => onNavigate?.('contact')}
+          >
+            Share your story →
+          </button>
         </div>
 
       </div>

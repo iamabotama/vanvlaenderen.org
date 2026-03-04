@@ -45,6 +45,29 @@
   border-radius: 2px;
 }
 
+.shareStoryBtn {
+  display: inline-block;
+  margin-top: 1.25rem;
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  border: 1px solid rgba(212, 160, 23, 0.45);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.shareStoryBtn:hover {
+  border-color: var(--gold);
+  background: rgba(212, 160, 23, 0.08);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 700px) {
   .villageGrid { grid-template-columns: repeat(2, 1fr); }
 }

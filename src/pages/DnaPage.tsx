@@ -20,19 +20,37 @@ export default function DnaPage() {
         <section className={styles.section}>
           <h2>The Question of Common Origin</h2>
           <p>
-            Genealogical research into the Van Vlaenderen name has identified several distinct
-            family lines, each with its own documented history in the Meetjesland and surrounding
-            regions of East Flanders. The records suggest that these may be separate families
-            who independently acquired the locative surname Van Vlaenderen — meaning "from
-            Flanders" — at different times and in different places.
+            Genealogical research into the Van Vlaenderen name has identified several
+            documented family lines rooted in the Meetjesland and surrounding regions of
+            East Flanders. At first glance, these lines appear in different parishes and
+            at different moments in the historical record.
           </p>
           <p>
-            However, the possibility remains that all Van Vlaenderen families share a single
-            common ancestor, perhaps a miller, a landowner, or a notable figure from the
-            medieval period whose descendants spread across the region over the centuries.
-            Traditional genealogical research, relying on parish records, civil registration,
-            and land documents, can only take us so far. DNA testing offers a complementary
-            path of inquiry.
+            The traditional assumption has been that families bearing the surname Van
+            Vlaenderen — meaning "from Flanders" — may have adopted it independently as
+            a locative designation. Yet closer examination of parish registers, land records,
+            and patterns of proximity reveals a striking geographic concentration and
+            recurring associations between families carrying the name.
+          </p>
+          <p>
+            Rather than suggesting fragmentation, the documentation increasingly raises a
+            compelling possibility: that many, perhaps even all, Van Vlaenderen families of
+            the region may descend from a shared ancestor whose identity predates surviving
+            parish records.
+          </p>
+          <p>
+            Traditional genealogical research — relying on parish registers, civil records,
+            and land documents — allows us to reconstruct much of this story, but gaps remain
+            in the medieval period. DNA testing offers a complementary avenue of inquiry,
+            helping to determine whether present-day Van Vlaenderens share a common paternal
+            lineage.
+          </p>
+          <p>
+            This question remains open — and it is one that can only be answered collectively.
+          </p>
+          <p>
+            <strong>If you bear the name Van Vlaenderen, your family history may hold an
+            essential piece of the puzzle.</strong>
           </p>
         </section>
 
@@ -80,19 +98,32 @@ export default function DnaPage() {
         </section>
 
         <section className={styles.section}>
-          <h2>The Van Vlaenderen DNA Project</h2>
+          <h2>The Van Vlaenderen Genetic Genealogy Project</h2>
           <p>
-            This site is in the early stages of establishing a Van Vlaenderen DNA project.
-            The goal is to bring together Van Vlaenderen descendants from all known family
-            lines and compare their DNA results to determine whether a common ancestor can
-            be identified.
+            The Van Vlaenderen DNA Project brings together descendants of the various
+            documented Van Vlaenderen family lines to explore a central question: do we
+            share a common ancestor?
           </p>
           <p>
-            If you carry the Van Vlaenderen name — in any spelling — or if you are a
-            descendant of a Van Vlaenderen woman who married into another family, your
-            participation would be invaluable. No prior genealogical research is required.
-            If you have already tested with AncestryDNA, 23andMe, or FamilyTreeDNA, you
-            may be able to contribute your existing results.
+            Historical records allow us to trace the surname across multiple parishes in
+            the Meetjesland and surrounding regions of East Flanders. DNA analysis offers
+            a complementary tool, enabling us to examine whether present-day bearers of
+            the name share a common paternal lineage that predates surviving parish records.
+          </p>
+          <p>
+            Participation is open to anyone who carries the Van Vlaenderen surname — in
+            any historical spelling — as well as to descendants of Van Vlaenderen women
+            whose family lines continued under different names.
+          </p>
+          <p>
+            No prior genealogical research is required. If you have already tested with
+            services such as AncestryDNA, 23andMe, or FamilyTreeDNA, your existing results
+            may be usable. Those interested in deeper paternal-line analysis may choose to
+            pursue additional Y-DNA testing.
+          </p>
+          <p>
+            This project is collaborative, voluntary, and research-based. Each participant
+            helps clarify the historical origins of our shared name.
           </p>
         </section>
 
@@ -100,10 +131,10 @@ export default function DnaPage() {
           <div className={dnaStyles.servicesHeading}>Recommended Testing Services</div>
           <div className={dnaStyles.servicesGrid}>
             {[
-              { name: 'FamilyTreeDNA', note: 'Best for Y-DNA and surname projects', url: 'https://www.familytreedna.com' },
-              { name: 'AncestryDNA',   note: 'Largest autosomal database', url: 'https://www.ancestry.com/dna' },
-              { name: '23andMe',       note: 'Health + ancestry combined', url: 'https://www.23andme.com' },
-              { name: 'MyHeritage DNA', note: 'Strong European database', url: 'https://www.myheritage.com/dna' },
+              { name: 'FamilyTreeDNA',  note: 'Best for Y-DNA and surname projects',  url: 'https://www.familytreedna.com' },
+              { name: 'AncestryDNA',    note: 'Largest autosomal database',            url: 'https://www.ancestry.com/dna' },
+              { name: '23andMe',        note: 'Health + ancestry combined',            url: 'https://www.23andme.com' },
+              { name: 'MyHeritage DNA', note: 'Strong European database',              url: 'https://www.myheritage.com/dna' },
             ].map(s => (
               <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className={dnaStyles.serviceCard}>
                 <div className={dnaStyles.serviceName}>{s.name}</div>
