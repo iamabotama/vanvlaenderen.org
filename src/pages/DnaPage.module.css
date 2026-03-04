@@ -7,7 +7,7 @@
 
 .dnaCard {
   background: var(--dark-card);
-  border: 1px solid rgba(212, 160, 23, 0.15);
+  border: 1px solid rgba(232, 184, 48, 0.18);
   border-top: 3px solid var(--gold);
   padding: 1.5rem;
   border-radius: 2px;
@@ -23,14 +23,14 @@
 
 .dnaDesc {
   font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.65;
+  font-size: 1rem;
+  color: var(--text-primary);  /* bumped from text-muted */
+  line-height: 1.75;
 }
 
 .testingServices {
-  background: rgba(212, 160, 23, 0.04);
-  border: 1px solid rgba(212, 160, 23, 0.12);
+  background: rgba(232, 184, 48, 0.05);
+  border: 1px solid rgba(232, 184, 48, 0.15);
   border-radius: 4px;
   padding: 2rem;
   margin: 2.5rem 0;
@@ -41,7 +41,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--text-dim);
+  color: var(--text-muted);   /* bumped from text-dim */
   margin-bottom: 1.25rem;
   text-align: center;
 }
@@ -54,7 +54,7 @@
 
 .serviceCard {
   background: var(--dark-card);
-  border: 1px solid rgba(212, 160, 23, 0.15);
+  border: 1px solid rgba(232, 184, 48, 0.18);
   padding: 1.1rem;
   border-radius: 3px;
   display: flex;
@@ -65,7 +65,7 @@
 }
 
 .serviceCard:hover {
-  border-color: rgba(212, 160, 23, 0.5);
+  border-color: rgba(232, 184, 48, 0.55);
   transform: translateY(-2px);
 }
 
@@ -77,8 +77,8 @@
 
 .serviceNote {
   font-family: var(--font-ui);
-  font-size: 0.72rem;
-  color: var(--text-dim);
+  font-size: 0.78rem;
+  color: var(--text-muted);   /* bumped from text-dim */
   flex: 1;
 }
 
@@ -99,13 +99,11 @@
 
 /* Vintage family photo */
 .familyPhotoContainer {
-  margin: 2rem 0;
+  margin: 2rem auto;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  border: 1px solid rgba(232, 184, 48, 0.28);
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .familyPhoto {
@@ -115,15 +113,15 @@
   object-fit: cover;
   object-position: center top;
   filter: sepia(20%) contrast(1.05);
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
 .familyPhotoCaption {
   padding: 0.75rem 1.25rem;
-  font-size: 0.8rem;
-  color: rgba(212, 175, 55, 0.7);
+  font-size: 0.85rem;
+  color: var(--text-muted);   /* bumped from rgba 0.7 */
   font-style: italic;
-  line-height: 1.5;
-  background: rgba(0, 0, 0, 0.3);
-  border-top: 1px solid rgba(212, 175, 55, 0.15);
+  line-height: 1.55;
+  background: rgba(0, 0, 0, 0.45);
+  border-top: 1px solid rgba(232, 184, 48, 0.18);
 }

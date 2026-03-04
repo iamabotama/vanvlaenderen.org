@@ -7,6 +7,8 @@
   background-size: 400px auto;
   background-repeat: repeat;
   background-attachment: fixed;
+  /* Darker overlay on the background texture for better text contrast */
+  background-blend-mode: overlay;
   padding-top: 70px; /* nav height */
 }
 
@@ -27,8 +29,9 @@
 .heroImgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 60%, var(--dark) 100%),
-              linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
+  /* Darker tint: was transparent/0.3/0.5, now 0.15/0.50/0.70 */
+  background: linear-gradient(90deg, transparent 50%, var(--dark) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.65) 100%);
 }
 
 .heroText {
@@ -36,7 +39,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(90deg, var(--dark) 0%, rgba(10,10,10,0.95) 100%);
+  background: linear-gradient(90deg, var(--dark) 0%, rgba(6,6,6,0.97) 100%);
 }
 
 /* ─── Text-only hero (no image) ──────────────────────────────── */
@@ -49,10 +52,10 @@
 
 .eyebrow {
   font-family: var(--font-ui);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.22em;
-  color: var(--text-dim);
+  color: var(--text-muted);   /* bumped from text-dim */
   margin-bottom: 1rem;
 }
 
@@ -60,8 +63,8 @@
   font-family: var(--font-body);
   font-size: 1.2rem;
   font-style: italic;
-  color: var(--text-muted);
-  line-height: 1.75;
+  color: var(--text-primary);  /* bumped from text-muted — hero lead should be easy to read */
+  line-height: 1.8;
   margin-top: 0.5rem;
 }
 
@@ -81,13 +84,14 @@
   font-size: 1.5rem;
   margin-bottom: 1.25rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(212, 160, 23, 0.15);
+  border-bottom: 1px solid rgba(232, 184, 48, 0.18);
 }
 
 .section p {
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
   font-size: 1.05rem;
   color: var(--text-primary);
+  line-height: 1.85;
 }
 
 /* ─── Pull Quote ─────────────────────────────────────────────── */
@@ -100,8 +104,8 @@
   font-family: var(--font-body);
   font-style: italic;
   font-size: 1.25rem;
-  color: var(--text-muted);
-  line-height: 1.7;
+  color: var(--text-primary);  /* bumped from text-muted */
+  line-height: 1.75;
   border-left: 3px solid var(--gold);
   padding-left: 1.5rem;
 }
@@ -109,7 +113,7 @@
 .pullQuote cite {
   display: block;
   font-size: 0.85rem;
-  color: var(--text-dim);
+  color: var(--text-muted);
   margin-top: 0.75rem;
   font-style: normal;
   letter-spacing: 0.05em;
@@ -117,8 +121,8 @@
 
 /* ─── Map Note ───────────────────────────────────────────────── */
 .mapNote {
-  background: rgba(212, 160, 23, 0.05);
-  border: 1px solid rgba(212, 160, 23, 0.15);
+  background: rgba(232, 184, 48, 0.06);
+  border: 1px solid rgba(232, 184, 48, 0.20);
   border-radius: 3px;
   padding: 1.25rem 1.5rem;
   margin: 2rem 0;
@@ -140,22 +144,22 @@
 
 .mapNote span {
   font-family: var(--font-ui);
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  font-size: 0.88rem;
+  color: var(--text-muted);   /* bumped from text-muted (same) */
   display: block;
   margin-top: 0.2rem;
 }
 
 .mapNoteCoords {
   color: var(--text-dim) !important;
-  font-size: 0.75rem !important;
+  font-size: 0.78rem !important;
   letter-spacing: 0.08em;
 }
 
 /* ─── CTA Box ────────────────────────────────────────────────── */
 .ctaBox {
-  background: linear-gradient(135deg, rgba(212,160,23,0.08) 0%, rgba(212,160,23,0.03) 100%);
-  border: 1px solid rgba(212, 160, 23, 0.25);
+  background: linear-gradient(135deg, rgba(232,184,48,0.10) 0%, rgba(232,184,48,0.04) 100%);
+  border: 1px solid rgba(232, 184, 48, 0.30);
   border-radius: 4px;
   padding: 2rem 2.5rem;
   margin-top: 3rem;
@@ -164,7 +168,7 @@
 
 .ctaText {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--gold);
   margin-bottom: 0.75rem;
   letter-spacing: 0.03em;
@@ -173,8 +177,8 @@
 .ctaNote {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 1rem;
-  color: var(--text-muted);
+  font-size: 1.05rem;
+  color: var(--text-primary);  /* bumped from text-muted */
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */

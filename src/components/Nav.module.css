@@ -7,9 +7,10 @@
   justify-content: space-between;
   padding: 0 2.5rem;
   height: 70px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 100%);
+  /* Slightly darker nav background */
+  background: linear-gradient(180deg, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.88) 100%);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  border-bottom: 1px solid rgba(232, 184, 48, 0.22);
 }
 
 .logo {
@@ -26,7 +27,7 @@
 .logoImg {
   height: 40px;
   width: auto;
-  filter: drop-shadow(0 0 6px rgba(212, 160, 23, 0.4));
+  filter: drop-shadow(0 0 8px rgba(232, 184, 48, 0.5));
 }
 
 .logoText {
@@ -49,11 +50,11 @@
   border: none;
   cursor: pointer;
   font-family: var(--font-ui);
-  font-size: 0.78rem;
+  font-size: 0.80rem;
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-primary);  /* bumped from text-muted for nav readability */
   padding: 0.5rem 1rem;
   border-bottom: 2px solid transparent;
   transition: color 0.2s, border-color 0.2s;
@@ -71,6 +72,6 @@
 @media (max-width: 768px) {
   .nav { padding: 0 1rem; flex-direction: column; height: auto; padding-top: 0.75rem; }
   .tabs { flex-wrap: wrap; justify-content: center; gap: 0; padding-bottom: 0.5rem; }
-  .tab { font-size: 0.7rem; padding: 0.4rem 0.6rem; }
+  .tab { font-size: 0.72rem; padding: 0.4rem 0.6rem; }
   .logoText { font-size: 0.95rem; }
 }

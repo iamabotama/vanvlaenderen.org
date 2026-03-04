@@ -35,15 +35,15 @@
 
 .reasonText {
   font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.6;
+  font-size: 1rem;
+  color: var(--text-primary);  /* bumped from text-muted */
+  line-height: 1.7;
 }
 
 /* ─── Form ───────────────────────────────────────────────────── */
 .formWrap {
   background: var(--dark-card);
-  border: 1px solid rgba(212, 160, 23, 0.18);
+  border: 1px solid rgba(232, 184, 48, 0.22);
   border-radius: 4px;
   padding: 2rem;
 }
@@ -66,22 +66,22 @@
 
 .field label {
   font-family: var(--font-ui);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--text-dim);
+  color: var(--text-muted);   /* bumped from text-dim */
 }
 
 .field input,
 .field select,
 .field textarea {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(212, 160, 23, 0.2);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(232, 184, 48, 0.25);
   border-radius: 2px;
   padding: 0.75rem 1rem;
   color: var(--text-primary);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1.05rem;
   outline: none;
   transition: border-color 0.2s;
   resize: vertical;
@@ -100,7 +100,7 @@
 
 .submitBtn {
   background: var(--gold);
-  color: #0a0a0a;
+  color: #060400;
   border: none;
   padding: 0.9rem 2rem;
   font-family: var(--font-display);
@@ -122,12 +122,12 @@
   gap: 1rem;
   align-items: flex-start;
   padding: 1.5rem;
-  background: rgba(212, 160, 23, 0.08);
-  border: 1px solid rgba(212, 160, 23, 0.3);
+  background: rgba(232, 184, 48, 0.08);
+  border: 1px solid rgba(232, 184, 48, 0.32);
   border-radius: 3px;
   font-family: var(--font-body);
   color: var(--text-primary);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .sentIcon {
@@ -142,13 +142,11 @@
 
 /* Polaroid collage */
 .collageContainer {
-  margin: 2rem 0 0;
+  margin: 2rem auto 0;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(232, 184, 48, 0.22);
   max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .collageImage {
@@ -157,16 +155,16 @@
   max-height: 280px;
   object-fit: cover;
   object-position: center;
-  opacity: 0.85;
+  opacity: 0.88;
 }
 
 .collageCaption {
   padding: 0.7rem 1.1rem;
-  font-size: 0.8rem;
-  color: rgba(212, 175, 55, 0.65);
+  font-size: 0.85rem;
+  color: var(--text-muted);   /* bumped from rgba 0.65 */
   font-style: italic;
   line-height: 1.5;
-  background: rgba(0, 0, 0, 0.3);
-  border-top: 1px solid rgba(212, 175, 55, 0.12);
+  background: rgba(0, 0, 0, 0.45);
+  border-top: 1px solid rgba(232, 184, 48, 0.14);
   text-align: center;
 }

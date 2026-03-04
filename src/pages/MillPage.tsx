@@ -23,6 +23,16 @@ export default function MillPage() {
 
       <div className={styles.content}>
 
+        {/* ── Proverb ─────────────────────────────────────────────── */}
+        <div className={millStyles.proverbBox}>
+          <div className={millStyles.proverbText}>
+            "Heaven gives; whoever catches has it."
+          </div>
+          <div className={millStyles.proverbSource}>
+            Flemish miller's proverb
+          </div>
+        </div>
+
         <section className={styles.section}>
           <h2>The Van Vlaenderensmolen</h2>
           <p>
@@ -47,11 +57,37 @@ export default function MillPage() {
           </p>
         </section>
 
+        {/* ── Family Lineage Graphic ───────────────────────────────── */}
+        <div className={millStyles.lineageContainer}>
+          <div className={millStyles.lineageNode}>
+            <div className={millStyles.lineageName}>Gerardus</div>
+            <div className={millStyles.lineageDates}>Van Vlaenderen</div>
+            <div className={millStyles.lineageRole}>Farmer · Meetjesland</div>
+          </div>
+          <div className={millStyles.lineageArrow}>→</div>
+          <div className={millStyles.lineageNode}>
+            <div className={millStyles.lineageName}>Eduardus</div>
+            <div className={millStyles.lineageDates}>1832 – 1886</div>
+            <div className={millStyles.lineageRole}>Farmer &amp; Miller</div>
+          </div>
+          <div className={millStyles.lineageArrow}>→</div>
+          <div className={millStyles.lineageNode}>
+            <div className={millStyles.lineageName}>Frans Eduard</div>
+            <div className={millStyles.lineageDates}>1879 – 1954</div>
+            <div className={millStyles.lineageRole}>Miller's household</div>
+          </div>
+        </div>
+
         <div className={millStyles.millPhotoRow}>
           <div className={millStyles.millPhotoCard}>
             <img src={millVinderhoute} alt="The Van Vlaenderensmolen in Vinderhoute, East Flanders" />
             <div className={millStyles.millPhotoCaption}>
-              The Van Vlaenderensmolen, Vinderhoute — the mill that bears the family name
+              The Van Vlaenderensmolen, Vinderhoute — the mill that bears the family name.{' '}
+              <em>
+                "Van vlaenderensmolen vinderhoute" by{' '}
+                <a href="https://commons.wikimedia.org/wiki/User:Pvhuf" target="_blank" rel="noopener noreferrer">Pvhuf</a>,{' '}
+                <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>
+              </em>
             </div>
           </div>
           <div className={millStyles.millPhotoCard}>
@@ -60,13 +96,6 @@ export default function MillPage() {
               A traditional Flemish windmill in the Meetjesland — the landscape the Van Vlaenderen family called home
             </div>
           </div>
-        </div>
-
-        <div className={styles.pullQuote}>
-          <blockquote>
-            "The mill took its name from the family that owned and operated it — and the family's name
-            endures in the landscape of Vinderhoute to this day."
-          </blockquote>
         </div>
 
         <section className={styles.section}>
@@ -79,10 +108,21 @@ export default function MillPage() {
             and millers were often among the more established families of their communities.
           </p>
           <p>
+            Wind power was the renewable energy of its age — patient, unpredictable, and essential.
+            The miller's skill lay in reading the weather, adjusting the sails, and coaxing work
+            from the wind. It was a craft passed from father to son, bound up in the rhythms of
+            the seasons and the needs of the surrounding farms.
+          </p>
+          <p>
             The history of the Van Vlaenderensmolen also reflects the vulnerability of these wooden
             structures to the forces of nature. In <strong>1905</strong>, a powerful storm severely damaged the mill.
             The family rebuilt and restored the structure, ensuring that the mill continued to serve
             the surrounding farms and remained a visible landmark in the landscape of Vinderhoute.
+          </p>
+          <p>
+            Today, the Van Vlaenderensmolen stands as a rare physical reminder of the family's
+            historical presence in the Meetjesland — a point where landscape, livelihood, and
+            surname intersect.
           </p>
         </section>
 
@@ -95,20 +135,24 @@ export default function MillPage() {
             seasons. The Van Vlaenderen family appears in the records of several Meetjesland villages,
             including Bassevelde, Ursel, Evergem, Boekhoute, and Merendree.
           </p>
-          <p>
-            Today, the Van Vlaenderensmolen stands as a rare physical reminder of the family's
-            historical presence in the Meetjesland — a point where landscape, livelihood, and
-            surname intersect.
-          </p>
         </section>
 
+        {/* ── Map Pin with Google Maps link ───────────────────────── */}
         <div className={styles.mapNote}>
           <div className={styles.mapNoteInner}>
             <div className={styles.mapNoteIcon}>📍</div>
             <div>
               <strong>Van Vlaenderensmolen</strong><br />
               <span>Vinderhoute, Lovendegem, East Flanders, Belgium</span><br />
-              <span className={styles.mapNoteCoords}>51°06′N 3°36′E</span>
+              <span className={styles.mapNoteCoords}>51°06′N 3°36′E</span><br />
+              <a
+                href="https://www.google.com/maps/place/Van+Vlaenderensmolen/@51.1009,3.5985,17z"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: '0.82rem', letterSpacing: '0.06em', marginTop: '0.4rem', display: 'inline-block' }}
+              >
+                View on Google Maps →
+              </a>
             </div>
           </div>
         </div>
