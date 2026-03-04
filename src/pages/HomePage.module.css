@@ -7,7 +7,7 @@
 /* ─── Hero ───────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 70vh;
+  min-height: 78vh;
   background-size: cover;
   background-position: center top;
   display: flex;
@@ -18,12 +18,11 @@
 .heroOverlay {
   position: absolute;
   inset: 0;
-  /* Darker tint: was 0.45/0.65/0.95, now 0.60/0.78/0.97 */
   background: linear-gradient(
     180deg,
-    rgba(3, 2, 0, 0.60) 0%,
-    rgba(3, 2, 0, 0.78) 50%,
-    rgba(3, 2, 0, 0.97) 100%
+    rgba(3, 2, 0, 0.55) 0%,
+    rgba(3, 2, 0, 0.72) 50%,
+    rgba(3, 2, 0, 0.98) 100%
   );
 }
 
@@ -64,6 +63,61 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.heroScrollHint {
+  color: rgba(232, 184, 48, 0.4);
+  font-size: 1.4rem;
+  animation: bounceDown 2.5s ease-in-out infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50%       { transform: translateY(6px); opacity: 0.8; }
+}
+
+/* ─── Village Scroll Strip ───────────────────────────────────── */
+.villageStrip {
+  background: rgba(6, 4, 0, 0.98);
+  border-top: 1px solid rgba(232, 184, 48, 0.22);
+  border-bottom: 1px solid rgba(232, 184, 48, 0.22);
+  overflow: hidden;
+  padding: 0.75rem 0;
+}
+
+.villageScroll {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  animation: scrollVillages 28s linear infinite;
+  width: max-content;
+}
+
+.villageScroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollVillages {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.villageItem {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.villageDot {
+  color: rgba(232, 184, 48, 0.35);
+  font-size: 0.55rem;
 }
 
 /* ─── Mystery Section ────────────────────────────────────────── */
@@ -75,8 +129,7 @@
     #090600 100%
   );
   padding: 5rem 2rem 5rem;
-  border-top: 1px solid rgba(232, 184, 48, 0.18);
-  border-bottom: 1px solid rgba(232, 184, 48, 0.18);
+  border-bottom: 1px solid rgba(232, 184, 48, 0.12);
 }
 
 .mysteryInner {
@@ -190,12 +243,13 @@
   border: none;
   border-radius: 2px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .primaryBtn:hover {
   background: var(--gold-light);
   transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(232, 184, 48, 0.35);
 }
 
 .secondaryBtn {
@@ -219,10 +273,33 @@
   transform: translateY(-2px);
 }
 
+/* ─── Heraldic Divider ───────────────────────────────────────── */
+.heraldicDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  background: #070500;
+}
+
+.heraldicLine {
+  flex: 1;
+  max-width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232, 184, 48, 0.3), transparent);
+}
+
+.heraldicSymbol {
+  color: rgba(232, 184, 48, 0.4);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+}
+
 /* ─── Cards Section ──────────────────────────────────────────── */
 .cardsSection {
   background: #070500;
-  padding: 4rem 2rem 5rem;
+  padding: 1rem 2rem 5rem;
 }
 
 .cardsHeading {
@@ -230,7 +307,7 @@
   font-size: 0.75rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--text-muted);   /* bumped from text-dim for readability */
+  color: var(--text-muted);
   font-family: var(--font-ui);
   font-weight: 400;
   margin-bottom: 2.5rem;
@@ -246,25 +323,25 @@
 
 .card {
   background: var(--dark-card);
-  border: 1px solid rgba(232, 184, 48, 0.22);
+  border: 1px solid rgba(232, 184, 48, 0.18);
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
   text-align: left;
-  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(232, 184, 48, 0.65);
-  box-shadow: 0 8px 32px rgba(232, 184, 48, 0.15);
+  transform: translateY(-6px);
+  border-color: rgba(232, 184, 48, 0.7);
+  box-shadow: 0 12px 40px rgba(232, 184, 48, 0.18);
 }
 
 .cardImg {
   position: relative;
-  height: 140px;
+  height: 155px;
   overflow: hidden;
 }
 
@@ -272,24 +349,19 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Slightly darker tint on card images */
-  filter: sepia(55%) brightness(0.62);
-  transition: filter 0.3s;
+  filter: sepia(60%) brightness(0.58);
+  transition: filter 0.4s, transform 0.4s;
 }
 
 .card:hover .cardImg img {
-  filter: sepia(25%) brightness(0.80);
+  filter: sepia(20%) brightness(0.82);
+  transform: scale(1.04);
 }
 
 .cardImgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, var(--dark-card) 100%);
-}
-
-.cardImgPlaceholder {
-  height: 60px;
-  background: linear-gradient(135deg, #1c1400 0%, #0a0a0a 100%);
+  background: linear-gradient(180deg, transparent 30%, var(--dark-card) 100%);
 }
 
 .cardBody {
@@ -312,7 +384,7 @@
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--text-muted);   /* bumped from text-dim */
+  color: var(--text-muted);
 }
 
 .cardQuote {
@@ -332,7 +404,7 @@
   transition: transform 0.2s;
 }
 
-.card:hover .cardArrow { transform: translateX(4px); }
+.card:hover .cardArrow { transform: translateX(6px); }
 
 /* ─── Footer Strip ───────────────────────────────────────────── */
 .footerStrip {
@@ -343,7 +415,7 @@
   font-family: var(--font-ui);
   font-size: 0.75rem;
   letter-spacing: 0.1em;
-  color: var(--text-muted);   /* bumped from text-dim */
+  color: var(--text-muted);
   display: flex;
   gap: 1rem;
   justify-content: center;

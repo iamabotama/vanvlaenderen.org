@@ -1,7 +1,9 @@
 import lionShield from '../assets/images/lion-shield.png';
 import heroBg from '../assets/images/hero-background.jpg';
 import windmill from '../assets/images/places/van-vlaenderensmolen-vinderhoute-cc-by-sa-3.0.jpg';
-import brugesAlley from '../assets/images/bruges-alley.jpg';
+import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
+import manuscriptNoblewoman from '../assets/images/manuscript-noblewoman.jpg';
+import cronike from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 import styles from './HomePage.module.css';
 
 type Tab = 'home' | 'mill' | 'name' | 'dna' | 'contact';
@@ -9,6 +11,11 @@ type Tab = 'home' | 'mill' | 'name' | 'dna' | 'contact';
 interface HomePageProps {
   onNav: (tab: Tab) => void;
 }
+
+const villages = [
+  'Ursel', 'Bassevelde', 'Boekhoute', 'Evergem', 'Merendree',
+  'Lovendegem', 'Vinderhoute', 'Wessegem', 'Kaprijke', 'Adegem',
+];
 
 const cards = [
   {
@@ -22,21 +29,21 @@ const cards = [
     id: 'name' as Tab,
     title: 'The Name',
     subtitle: 'Origins & variants',
-    img: brugesAlley,
+    img: manuscriptNoblewoman,
     quote: 'Bassevelde · Ursel · Evergem · Boekhoute · Merendree',
   },
   {
     id: 'dna' as Tab,
     title: 'Are We Connected?',
     subtitle: 'The DNA project',
-    img: null,
+    img: cronike,
     quote: 'Multiple branches. One possible origin. Science may hold the answer.',
   },
   {
     id: 'contact' as Tab,
     title: 'Join the Research',
     subtitle: 'Your story matters',
-    img: null,
+    img: meetjeslandMap,
     quote: 'If you carry the name, you may hold part of the answer.',
   },
 ];
@@ -54,6 +61,19 @@ export default function HomePage({ onNav }: HomePageProps) {
           <div className={styles.subtitle}>
             East Flanders · Meetjesland · Est. 14th Century
           </div>
+          <div className={styles.heroScrollHint}>↓</div>
+        </div>
+      </div>
+
+      {/* ── Village Scroll Strip ──────────────────────────────────── */}
+      <div className={styles.villageStrip}>
+        <div className={styles.villageScroll}>
+          {[...villages, ...villages].map((v, i) => (
+            <span key={i} className={styles.villageItem}>
+              {v}
+              <span className={styles.villageDot}>✦</span>
+            </span>
+          ))}
         </div>
       </div>
 
@@ -115,6 +135,13 @@ export default function HomePage({ onNav }: HomePageProps) {
         </div>
       </div>
 
+      {/* ── Heraldic Divider ─────────────────────────────────────── */}
+      <div className={styles.heraldicDivider}>
+        <span className={styles.heraldicLine} />
+        <span className={styles.heraldicSymbol}>✦</span>
+        <span className={styles.heraldicLine} />
+      </div>
+
       {/* ── Navigation Cards ─────────────────────────────────────── */}
       <div className={styles.cardsSection}>
         <div className={styles.cardsHeading}>Explore the Archive</div>
@@ -125,13 +152,10 @@ export default function HomePage({ onNav }: HomePageProps) {
               className={styles.card}
               onClick={() => onNav(card.id)}
             >
-              {card.img && (
-                <div className={styles.cardImg}>
-                  <img src={card.img} alt={card.title} />
-                  <div className={styles.cardImgOverlay} />
-                </div>
-              )}
-              {!card.img && <div className={styles.cardImgPlaceholder} />}
+              <div className={styles.cardImg}>
+                <img src={card.img} alt={card.title} />
+                <div className={styles.cardImgOverlay} />
+              </div>
               <div className={styles.cardBody}>
                 <div className={styles.cardTitle}>{card.title}</div>
                 <div className={styles.cardSub}>{card.subtitle}</div>

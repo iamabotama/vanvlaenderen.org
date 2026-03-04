@@ -17,6 +17,13 @@
   display: flex;
   gap: 1rem;
   align-items: flex-start;
+  padding: 1rem;
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+
+.reasonItem:hover {
+  background: rgba(232, 184, 48, 0.04);
 }
 
 .reasonIcon {
@@ -36,8 +43,30 @@
 .reasonText {
   font-family: var(--font-body);
   font-size: 1rem;
-  color: var(--text-primary);  /* bumped from text-muted */
+  color: var(--text-primary);
   line-height: 1.7;
+}
+
+/* ─── Privacy note ───────────────────────────────────────────── */
+.privacyNote {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  background: rgba(232, 184, 48, 0.04);
+  border: 1px solid rgba(232, 184, 48, 0.15);
+  border-radius: 3px;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.privacyIcon {
+  flex-shrink: 0;
+  font-size: 1rem;
+  margin-top: 0.05rem;
 }
 
 /* ─── Form ───────────────────────────────────────────────────── */
@@ -69,7 +98,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--text-muted);   /* bumped from text-dim */
+  color: var(--text-muted);
 }
 
 .field input,
@@ -83,7 +112,7 @@
   font-family: var(--font-body);
   font-size: 1.05rem;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
   resize: vertical;
 }
 
@@ -91,6 +120,12 @@
 .field select:focus,
 .field textarea:focus {
   border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(232, 184, 48, 0.12);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(238, 234, 224, 0.3);
 }
 
 .field select option {
@@ -108,13 +143,14 @@
   letter-spacing: 0.1em;
   cursor: pointer;
   border-radius: 2px;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
   align-self: flex-start;
 }
 
 .submitBtn:hover {
   background: var(--gold-light);
   transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(232, 184, 48, 0.3);
 }
 
 .sentMsg {
@@ -140,13 +176,19 @@
   .twoCol { grid-template-columns: 1fr; }
 }
 
-/* Polaroid collage */
+/* ─── Polaroid collage ───────────────────────────────────────── */
 .collageContainer {
   margin: 2rem auto 0;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(232, 184, 48, 0.22);
   max-width: 480px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.collageContainer:hover {
+  border-color: rgba(232, 184, 48, 0.5);
+  box-shadow: 0 8px 28px rgba(232, 184, 48, 0.12);
 }
 
 .collageImage {
@@ -156,12 +198,17 @@
   object-fit: cover;
   object-position: center;
   opacity: 0.88;
+  transition: opacity 0.4s;
+}
+
+.collageContainer:hover .collageImage {
+  opacity: 1;
 }
 
 .collageCaption {
   padding: 0.7rem 1.1rem;
   font-size: 0.85rem;
-  color: var(--text-muted);   /* bumped from rgba 0.65 */
+  color: var(--text-muted);
   font-style: italic;
   line-height: 1.5;
   background: rgba(0, 0, 0, 0.45);

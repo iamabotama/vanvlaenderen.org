@@ -75,6 +75,15 @@ export default function ContactPage() {
                 </div>
               ))}
             </div>
+
+            {/* Privacy note */}
+            <div className={contactStyles.privacyNote}>
+              <span className={contactStyles.privacyIcon}>🔒</span>
+              <span>
+                Your personal information is never shared, sold, or published without your
+                explicit consent. This is a private family research project.
+              </span>
+            </div>
           </div>
 
           {/* Right: Contact form */}

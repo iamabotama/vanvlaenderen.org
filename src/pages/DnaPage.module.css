@@ -11,6 +11,13 @@
   border-top: 3px solid var(--gold);
   padding: 1.5rem;
   border-radius: 2px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.dnaCard:hover {
+  border-color: rgba(232, 184, 48, 0.5);
+  box-shadow: 0 6px 24px rgba(232, 184, 48, 0.12);
+  transform: translateY(-2px);
 }
 
 .dnaType {
@@ -24,10 +31,11 @@
 .dnaDesc {
   font-family: var(--font-body);
   font-size: 1rem;
-  color: var(--text-primary);  /* bumped from text-muted */
+  color: var(--text-primary);
   line-height: 1.75;
 }
 
+/* ─── Testing services ───────────────────────────────────────── */
 .testingServices {
   background: rgba(232, 184, 48, 0.05);
   border: 1px solid rgba(232, 184, 48, 0.15);
@@ -41,7 +49,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--text-muted);   /* bumped from text-dim */
+  color: var(--text-muted);
   margin-bottom: 1.25rem;
   text-align: center;
 }
@@ -55,18 +63,19 @@
 .serviceCard {
   background: var(--dark-card);
   border: 1px solid rgba(232, 184, 48, 0.18);
-  padding: 1.1rem;
+  padding: 1.25rem;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
   text-decoration: none;
 }
 
 .serviceCard:hover {
-  border-color: rgba(232, 184, 48, 0.55);
-  transform: translateY(-2px);
+  border-color: rgba(232, 184, 48, 0.6);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(232, 184, 48, 0.14);
 }
 
 .serviceName {
@@ -78,14 +87,20 @@
 .serviceNote {
   font-family: var(--font-ui);
   font-size: 0.78rem;
-  color: var(--text-muted);   /* bumped from text-dim */
+  color: var(--text-muted);
   flex: 1;
+  line-height: 1.5;
 }
 
 .serviceArrow {
   color: var(--gold-dim);
   font-size: 0.9rem;
   margin-top: 0.5rem;
+  transition: color 0.2s;
+}
+
+.serviceCard:hover .serviceArrow {
+  color: var(--gold);
 }
 
 @media (max-width: 900px) {
@@ -97,13 +112,19 @@
   .servicesGrid { grid-template-columns: 1fr; }
 }
 
-/* Vintage family photo */
+/* ─── Vintage family photo ───────────────────────────────────── */
 .familyPhotoContainer {
   margin: 2rem auto;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(232, 184, 48, 0.28);
   max-width: 600px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.familyPhotoContainer:hover {
+  border-color: rgba(232, 184, 48, 0.55);
+  box-shadow: 0 8px 28px rgba(232, 184, 48, 0.12);
 }
 
 .familyPhoto {
@@ -114,12 +135,18 @@
   object-position: center top;
   filter: sepia(20%) contrast(1.05);
   opacity: 0.92;
+  transition: filter 0.4s, opacity 0.4s;
+}
+
+.familyPhotoContainer:hover .familyPhoto {
+  filter: sepia(5%) contrast(1.05);
+  opacity: 1;
 }
 
 .familyPhotoCaption {
   padding: 0.75rem 1.25rem;
   font-size: 0.85rem;
-  color: var(--text-muted);   /* bumped from rgba 0.7 */
+  color: var(--text-muted);
   font-style: italic;
   line-height: 1.55;
   background: rgba(0, 0, 0, 0.45);

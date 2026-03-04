@@ -1,10 +1,10 @@
 import styles from './InnerPage.module.css';
 import nameStyles from './NamePage.module.css';
 
-import cronikeShields from '../assets/images/cronike-shields.jpg';
+import cronikeShields from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
-import manuscriptNoblewoman from '../assets/images/manuscript-noblewoman.jpg';
-import manuscriptPhilip from '../assets/images/manuscript-philip-alsace.jpg';
+import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
+import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
 import lionWoodcut from '../assets/images/lion-woodcut.jpg';
 
 interface NamePageProps {
@@ -14,15 +14,25 @@ interface NamePageProps {
 export default function NamePage({ onNavigate }: NamePageProps) {
   return (
     <div className={styles.page}>
-      <div className={styles.textHero}>
-        <div className={styles.eyebrow}>Van Vlaenderen · Origins &amp; Distribution</div>
-        <h1>The Name</h1>
-        <div className="gold-rule" />
-        <p className={styles.heroLead}>
-          The surname Van Vlaenderen is traditionally understood as a locative name
-          meaning "from Flanders." Such surnames were common in the medieval Low Countries
-          and were often assigned to individuals identified by their regional origin.
-        </p>
+
+      {/* ── Hero: split image + text ──────────────────────────────── */}
+      <div className={styles.heroStrip}>
+        <div
+          className={styles.heroImg}
+          style={{ backgroundImage: `url(${knightPhilip})`, backgroundPosition: 'top center' }}
+        >
+          <div className={styles.heroImgOverlay} />
+        </div>
+        <div className={styles.heroText}>
+          <div className={styles.eyebrow}>Van Vlaenderen · Origins &amp; Distribution</div>
+          <h1>The Name</h1>
+          <div className="gold-rule" />
+          <p className={styles.heroLead}>
+            The surname Van Vlaenderen is traditionally understood as a locative name
+            meaning "from Flanders." But the story behind the name may be considerably
+            older — and more specific — than that.
+          </p>
+        </div>
       </div>
 
       <div className={styles.content}>
@@ -39,9 +49,10 @@ export default function NamePage({ onNavigate }: NamePageProps) {
           <p>
             While the conventional toponymic explanation remains entirely plausible, the
             geographic density and early persistence of the name — together with its relative
-            rarity, particularly outside East Flanders — invite an additional question:
-            whether the surname may at some point have developed from a more specific
-            territorial or local designation during the late medieval period.
+            rarity outside East Flanders — invite an additional question: whether the surname
+            may at some point have developed from a more specific territorial or local
+            designation during the late medieval period, perhaps connected to the close
+            of the era of the Counts of Flanders.
           </p>
           <p>
             This site gathers available documentation and invites Van Vlaenderens around
@@ -54,12 +65,13 @@ export default function NamePage({ onNavigate }: NamePageProps) {
         <div className={nameStyles.mapContainer}>
           <img
             src={meetjeslandMap}
-            alt="Map of the Meetjesland region in East Flanders showing Bassevelde and Ursel circled"
+            alt="Map of the Meetjesland region in East Flanders showing Bassevelde and Ursel"
             className={nameStyles.mapImage}
           />
           <div className={nameStyles.mapCaption}>
-            The Meetjesland region of East Flanders — the villages of Bassevelde and Ursel (circled)
-            represent the documented heartland of the Van Vlaenderen surname, situated between Bruges and Ghent.
+            The Meetjesland region of East Flanders — the villages of Bassevelde and Ursel
+            represent the documented heartland of the Van Vlaenderen surname, situated
+            between Bruges and Ghent.
           </div>
         </div>
 
@@ -160,20 +172,22 @@ export default function NamePage({ onNavigate }: NamePageProps) {
         <div className={nameStyles.manuscriptRow}>
           <div className={nameStyles.manuscriptCard}>
             <img
-              src={manuscriptPhilip}
-              alt="Philip of Alsace, Count of Flanders — illuminated manuscript illustration"
+              src={manuscriptNoblewoman}
+              alt="Countess of Flanders on horseback surrounded by heraldic shields — illuminated manuscript"
             />
             <div className={nameStyles.manuscriptCaption}>
-              Philip of Alsace, Count of Flanders — from a medieval illuminated manuscript
+              Countess of Flanders — from the <em>Cronike Van Vlaenderen</em>, surrounded by the
+              heraldic shields of the great Flemish houses
             </div>
           </div>
           <div className={nameStyles.manuscriptCard}>
             <img
-              src={manuscriptNoblewoman}
-              alt="Crowned noblewoman on horseback surrounded by Flemish heraldic shields — illuminated manuscript"
+              src={knightPhilip}
+              alt="Philip of Alsace, Count of Flanders — illuminated manuscript illustration"
             />
             <div className={nameStyles.manuscriptCaption}>
-              Flemish nobility depicted in the heraldic tradition of the Counts of Flanders
+              Philip of Alsace, Count of Flanders — bearing the black lion banner, from a
+              15th-century illuminated manuscript
             </div>
           </div>
           <div className={nameStyles.manuscriptCard}>
@@ -182,7 +196,8 @@ export default function NamePage({ onNavigate }: NamePageProps) {
               alt="The Lion of Flanders — woodcut engraving"
             />
             <div className={nameStyles.manuscriptCaption}>
-              The Lion of Flanders — the enduring symbol of the region the Van Vlaenderen family called home
+              The Lion of Flanders — the enduring symbol of the region the Van Vlaenderen
+              family called home for centuries
             </div>
           </div>
         </div>

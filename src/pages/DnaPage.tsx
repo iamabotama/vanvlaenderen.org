@@ -1,19 +1,30 @@
 import styles from './InnerPage.module.css';
 import dnaStyles from './DnaPage.module.css';
 import vintageFamilyPhoto from '../assets/images/vintage-family-photo.jpg';
+import cronikeShields from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 
 export default function DnaPage() {
   return (
     <div className={styles.page}>
-      <div className={styles.textHero}>
-        <div className={styles.eyebrow}>Van Vlaenderen · Genetic Genealogy</div>
-        <h1>Are We Connected?</h1>
-        <div className="gold-rule" />
-        <p className={styles.heroLead}>
-          The Van Vlaenderen name appears in multiple, geographically distinct family lines.
-          DNA testing offers a way to look beyond the paper trail and ask: do these branches
-          share a common ancestor?
-        </p>
+
+      {/* ── Hero: shields image + text ────────────────────────────── */}
+      <div className={styles.heroStrip}>
+        <div
+          className={styles.heroImg}
+          style={{ backgroundImage: `url(${cronikeShields})`, backgroundPosition: 'center top' }}
+        >
+          <div className={styles.heroImgOverlay} />
+        </div>
+        <div className={styles.heroText}>
+          <div className={styles.eyebrow}>Van Vlaenderen · Genetic Genealogy</div>
+          <h1>Are We Connected?</h1>
+          <div className="gold-rule" />
+          <p className={styles.heroLead}>
+            The Van Vlaenderen name appears in multiple, geographically distinct family lines.
+            DNA testing offers a way to look beyond the paper trail and ask: do these branches
+            share a common ancestor?
+          </p>
+        </div>
       </div>
 
       <div className={styles.content}>

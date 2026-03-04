@@ -11,6 +11,12 @@
   border-left: 3px solid var(--gold);
   padding: 1rem 1.25rem;
   border-radius: 2px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.villageCard:hover {
+  border-color: rgba(232, 184, 48, 0.5);
+  box-shadow: 0 4px 16px rgba(232, 184, 48, 0.1);
 }
 
 .villageName {
@@ -23,7 +29,7 @@
 .villageNote {
   font-family: var(--font-ui);
   font-size: 0.78rem;
-  color: var(--text-muted);   /* bumped from text-dim */
+  color: var(--text-muted);
   letter-spacing: 0.04em;
 }
 
@@ -38,11 +44,17 @@
   font-family: var(--font-body);
   font-style: italic;
   font-size: 1rem;
-  color: var(--text-primary);  /* bumped from text-muted */
+  color: var(--text-primary);
   background: rgba(232, 184, 48, 0.08);
   border: 1px solid rgba(232, 184, 48, 0.25);
   padding: 0.3rem 0.85rem;
   border-radius: 2px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.spellingTag:hover {
+  background: rgba(232, 184, 48, 0.14);
+  border-color: rgba(232, 184, 48, 0.5);
 }
 
 .shareStoryBtn {
@@ -59,13 +71,14 @@
   border: 1px solid rgba(232, 184, 48, 0.55);
   border-radius: 2px;
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .shareStoryBtn:hover {
   border-color: var(--gold);
   background: rgba(232, 184, 48, 0.10);
   transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(232, 184, 48, 0.2);
 }
 
 @media (max-width: 700px) {
@@ -76,7 +89,7 @@
   .villageGrid { grid-template-columns: 1fr; }
 }
 
-/* Map */
+/* ─── Map ────────────────────────────────────────────────────── */
 .mapContainer {
   margin: 2rem 0;
   border-radius: 8px;
@@ -95,14 +108,14 @@
 .mapCaption {
   padding: 0.75rem 1.25rem;
   font-size: 0.85rem;
-  color: var(--text-muted);   /* bumped from rgba 0.7 */
+  color: var(--text-muted);
   font-style: italic;
   line-height: 1.55;
   background: rgba(0, 0, 0, 0.45);
   border-top: 1px solid rgba(232, 184, 48, 0.18);
 }
 
-/* Cronike document */
+/* ─── Cronike document ───────────────────────────────────────── */
 .documentContainer {
   margin: 1.75rem 0;
   border-radius: 8px;
@@ -114,23 +127,23 @@
 .documentImage {
   width: 100%;
   display: block;
-  max-height: 500px;
+  max-height: 520px;
   object-fit: contain;
   object-position: center;
   background: #1a1208;
-  padding: 0.5rem;
+  padding: 0.75rem;
 }
 
 .documentCaption {
   padding: 0.75rem 1.25rem;
   font-size: 0.85rem;
-  color: var(--text-muted);   /* bumped from rgba 0.7 */
+  color: var(--text-muted);
   font-style: italic;
   line-height: 1.55;
   border-top: 1px solid rgba(232, 184, 48, 0.18);
 }
 
-/* Manuscript illustrations row */
+/* ─── Manuscript illustrations row ──────────────────────────── */
 .manuscriptRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -139,9 +152,7 @@
 }
 
 @media (max-width: 750px) {
-  .manuscriptRow {
-    grid-template-columns: 1fr;
-  }
+  .manuscriptRow { grid-template-columns: 1fr; }
 }
 
 .manuscriptCard {
@@ -149,27 +160,35 @@
   overflow: hidden;
   border: 1px solid rgba(232, 184, 48, 0.22);
   background: rgba(0, 0, 0, 0.35);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.manuscriptCard:hover {
+  border-color: rgba(232, 184, 48, 0.55);
+  box-shadow: 0 8px 28px rgba(232, 184, 48, 0.14);
+  transform: translateY(-3px);
 }
 
 .manuscriptCard img {
   width: 100%;
-  height: 220px;
+  height: 260px;
   object-fit: cover;
   object-position: top;
   display: block;
-  opacity: 0.92;
-  transition: opacity 0.3s ease;
+  filter: sepia(15%) brightness(0.92);
+  transition: filter 0.4s, transform 0.4s;
 }
 
-.manuscriptCard img:hover {
-  opacity: 1;
+.manuscriptCard:hover img {
+  filter: sepia(5%) brightness(1.0);
+  transform: scale(1.03);
 }
 
 .manuscriptCaption {
-  padding: 0.65rem 0.9rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);   /* bumped from rgba 0.65 */
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
   font-style: italic;
-  line-height: 1.45;
+  line-height: 1.5;
   border-top: 1px solid rgba(232, 184, 48, 0.14);
 }
