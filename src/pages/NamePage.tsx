@@ -1,6 +1,12 @@
 import styles from './InnerPage.module.css';
 import nameStyles from './NamePage.module.css';
 
+import cronikeShields from '../assets/images/cronike-shields.jpg';
+import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
+import manuscriptNoblewoman from '../assets/images/manuscript-noblewoman.jpg';
+import manuscriptPhilip from '../assets/images/manuscript-philip-alsace.jpg';
+import lionWoodcut from '../assets/images/lion-woodcut.jpg';
+
 interface NamePageProps {
   onNavigate?: (tab: string) => void;
 }
@@ -43,6 +49,19 @@ export default function NamePage({ onNavigate }: NamePageProps) {
             trees, and participate in the Van Vlaenderen Family Genealogy Project.
           </p>
         </section>
+
+        {/* Meetjesland Map */}
+        <div className={nameStyles.mapContainer}>
+          <img
+            src={meetjeslandMap}
+            alt="Map of the Meetjesland region in East Flanders showing Bassevelde and Ursel circled"
+            className={nameStyles.mapImage}
+          />
+          <div className={nameStyles.mapCaption}>
+            The Meetjesland region of East Flanders — the villages of Bassevelde and Ursel (circled)
+            represent the documented heartland of the Van Vlaenderen surname, situated between Bruges and Ghent.
+          </div>
+        </div>
 
         <div className={styles.pullQuote}>
           <blockquote>
@@ -111,6 +130,22 @@ export default function NamePage({ onNavigate }: NamePageProps) {
             work of medieval historiography, richly illustrated with heraldic shields
             and portraits of the Flemish nobility.
           </p>
+
+          {/* Cronike document image */}
+          <div className={nameStyles.documentContainer}>
+            <img
+              src={cronikeShields}
+              alt="Pages from the Cronike Van Vlaenderen showing heraldic shields labeled with Van Vlaenderen family members"
+              className={nameStyles.documentImage}
+            />
+            <div className={nameStyles.documentCaption}>
+              Pages from the <em>Cronike Van Vlaenderen</em> — heraldic shields bearing the names
+              "Gillam Ban Claendren," "Philips Ban Claendren," "Boulben Ban Claendren," and
+              "die connestauell Ban Claendren." Direct documentary evidence of the Van Vlaenderen
+              name in medieval Flemish heraldic records.
+            </div>
+          </div>
+
           <p>
             The chronicle is not a genealogical record of the Van Vlaenderen family,
             but it provides essential context for understanding the world in which the
@@ -120,6 +155,37 @@ export default function NamePage({ onNavigate }: NamePageProps) {
             for generations.
           </p>
         </section>
+
+        {/* Manuscript illustrations row */}
+        <div className={nameStyles.manuscriptRow}>
+          <div className={nameStyles.manuscriptCard}>
+            <img
+              src={manuscriptPhilip}
+              alt="Philip of Alsace, Count of Flanders — illuminated manuscript illustration"
+            />
+            <div className={nameStyles.manuscriptCaption}>
+              Philip of Alsace, Count of Flanders — from a medieval illuminated manuscript
+            </div>
+          </div>
+          <div className={nameStyles.manuscriptCard}>
+            <img
+              src={manuscriptNoblewoman}
+              alt="Crowned noblewoman on horseback surrounded by Flemish heraldic shields — illuminated manuscript"
+            />
+            <div className={nameStyles.manuscriptCaption}>
+              Flemish nobility depicted in the heraldic tradition of the Counts of Flanders
+            </div>
+          </div>
+          <div className={nameStyles.manuscriptCard}>
+            <img
+              src={lionWoodcut}
+              alt="The Lion of Flanders — woodcut engraving"
+            />
+            <div className={nameStyles.manuscriptCaption}>
+              The Lion of Flanders — the enduring symbol of the region the Van Vlaenderen family called home
+            </div>
+          </div>
+        </div>
 
         <div className={styles.ctaBox}>
           <div className={styles.ctaText}>

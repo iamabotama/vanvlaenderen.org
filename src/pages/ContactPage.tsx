@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './InnerPage.module.css';
 import contactStyles from './ContactPage.module.css';
+import polaroidCollage from '../assets/images/polaroid-collage.jpg';
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
@@ -135,6 +136,18 @@ export default function ContactPage() {
             "Family history is not just about the past. It is about understanding who we are
             and where we come from — and perhaps finding others who share that journey."
           </blockquote>
+        </div>
+
+        <div className={contactStyles.collageContainer}>
+          <img
+            src={polaroidCollage}
+            alt="Family photographs pinned to a corkboard with clothespins"
+            className={contactStyles.collageImage}
+          />
+          <div className={contactStyles.collageCaption}>
+            Every family has photographs. Every photograph tells part of the story.
+            Share yours with the Van Vlaenderen archive.
+          </div>
         </div>
 
       </div>

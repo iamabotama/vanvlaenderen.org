@@ -1,5 +1,6 @@
 import styles from './InnerPage.module.css';
 import dnaStyles from './DnaPage.module.css';
+import vintageFamilyPhoto from '../assets/images/vintage-family-photo.jpg';
 
 export default function DnaPage() {
   return (
@@ -59,6 +60,18 @@ export default function DnaPage() {
             "Genealogy without genetics is like a map without a compass. Both are useful;
             together, they are powerful."
           </blockquote>
+        </div>
+
+        <div className={dnaStyles.familyPhotoContainer}>
+          <img
+            src={vintageFamilyPhoto}
+            alt="Vintage family photograph — early 20th century"
+            className={dnaStyles.familyPhoto}
+          />
+          <div className={dnaStyles.familyPhotoCaption}>
+            Every Van Vlaenderen family carries a story. Photographs like this one — passed down
+            through generations — are part of the evidence that connects us across time.
+          </div>
         </div>
 
         <section className={styles.section}>

@@ -139,3 +139,34 @@
 @media (max-width: 800px) {
   .twoCol { grid-template-columns: 1fr; }
 }
+
+/* Polaroid collage */
+.collageContainer {
+  margin: 2rem 0 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.collageImage {
+  width: 100%;
+  display: block;
+  max-height: 280px;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.85;
+}
+
+.collageCaption {
+  padding: 0.7rem 1.1rem;
+  font-size: 0.8rem;
+  color: rgba(212, 175, 55, 0.65);
+  font-style: italic;
+  line-height: 1.5;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(212, 175, 55, 0.12);
+  text-align: center;
+}

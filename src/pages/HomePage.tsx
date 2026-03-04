@@ -1,6 +1,7 @@
 import lionShield from '../assets/images/lion-shield.png';
 import heroBg from '../assets/images/hero-background.jpg';
 import windmill from '../assets/images/places/van-vlaenderensmolen-vinderhoute-cc-by-sa-3.0.jpg';
+import brugesAlley from '../assets/images/bruges-alley.jpg';
 import styles from './HomePage.module.css';
 
 type Tab = 'home' | 'mill' | 'name' | 'dna' | 'contact';
@@ -21,7 +22,7 @@ const cards = [
     id: 'name' as Tab,
     title: 'The Name',
     subtitle: 'Origins & variants',
-    img: null,
+    img: brugesAlley,
     quote: 'Bassevelde · Ursel · Evergem · Boekhoute · Merendree',
   },
   {
