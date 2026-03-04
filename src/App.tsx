@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Nav from './components/Nav';
+import FamilyTreeCanvas from './components/FamilyTreeCanvas';
 import HomePage from './pages/HomePage';
 import MillPage from './pages/MillPage';
 import NamePage from './pages/NamePage';
@@ -19,8 +20,11 @@ export default function App() {
 
   return (
     <>
+      {/* Fixed background: procedural scrolling family tree — always present, never repeats */}
+      <FamilyTreeCanvas />
+
       <Nav active={activeTab} onNav={handleNav} />
-      <main>
+      <main style={{ position: 'relative', zIndex: 1 }}>
         {activeTab === 'home'    && <HomePage onNav={handleNav} />}
         {activeTab === 'mill'    && <MillPage />}
         {activeTab === 'name'    && <NamePage onNavigate={(tab) => handleNav(tab as Tab)} />}
