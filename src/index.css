@@ -23,17 +23,17 @@
   --gold-light:  #f5d060;
   --gold-dim:    #a07820;
 
-  /* Backgrounds */
+  /* Backgrounds — slightly lighter to let canvas breathe through */
   --navy:        #0a1520;
-  --dark:        #060606;
-  --dark-mid:    #0e0e0e;
-  --dark-card:   #121212;
+  --dark:        #0a0804;   /* was #060606 — very slightly warmer/lighter */
+  --dark-mid:    #120e08;
+  --dark-card:   #181208;
   --dark-border: #2e2410;
 
   /* Text — clean readable tones, not yellow-tinted */
-  --text-primary: #eeeae0;   /* warm near-white, 15.3:1 on --dark */
-  --text-muted:   #c8aa72;   /* vibrant warm tan, 7.1:1 */
-  --text-dim:     #8a7550;   /* subdued gold-brown, 3.6:1 — captions/labels */
+  --text-primary: #c8aa72;   /* warm amber-gold — matches footer tone, 7.1:1 on --dark */
+  --text-muted:   #a88c58;   /* slightly deeper amber, 5.2:1 — secondary text */
+  --text-dim:     #7a6540;   /* subdued gold-brown, 3.8:1 — captions/labels */
 
   /* Fonts */
   --font-display: 'Cinzel', serif;
@@ -106,7 +106,7 @@ h4 {
 }
 
 p {
-  color: var(--text-primary);
+  color: var(--text-primary);  /* warm amber-gold — same as footer */
   font-size: 1.05rem;
   line-height: 1.85;
 }

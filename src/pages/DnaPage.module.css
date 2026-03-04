@@ -6,7 +6,7 @@
 }
 
 .dnaCard {
-  background: var(--dark-card);
+  background: rgba(18, 12, 8, 0.82);
   border: 1px solid rgba(232, 184, 48, 0.18);
   border-top: 3px solid var(--gold);
   padding: 1.5rem;
@@ -61,7 +61,7 @@
 }
 
 .serviceCard {
-  background: var(--dark-card);
+  background: rgba(18, 12, 8, 0.82);
   border: 1px solid rgba(232, 184, 48, 0.18);
   padding: 1.25rem;
   border-radius: 3px;

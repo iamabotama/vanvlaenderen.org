@@ -6,7 +6,7 @@
 }
 
 .villageCard {
-  background: var(--dark-card);
+  background: rgba(18, 12, 8, 0.82);
   border: 1px solid rgba(232, 184, 48, 0.18);
   border-left: 3px solid var(--gold);
   padding: 1rem 1.25rem;

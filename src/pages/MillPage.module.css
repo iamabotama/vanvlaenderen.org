@@ -103,7 +103,7 @@
 .lineageNode {
   text-align: center;
   padding: 1.25rem 1.75rem;
-  background: var(--dark-card);
+  background: rgba(18, 12, 8, 0.82);
   border: 1px solid rgba(232, 184, 48, 0.28);
   border-radius: 3px;
   min-width: 170px;

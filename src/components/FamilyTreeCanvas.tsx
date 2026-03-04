@@ -26,8 +26,8 @@ import { useEffect, useRef } from 'react';
 /** Pixels per second the world scrolls left (75-second full-width drift) */
 const SCROLL_SPEED = 3200 / 75;
 
-/** Base opacity of generation-0 lines (very subtle) */
-const BASE_OPACITY = 0.13;
+/** Base opacity of generation-0 lines — bumped so it shows through semi-transparent page backgrounds */
+const BASE_OPACITY = 0.22;
 
 /** Each generation multiplies opacity by this factor */
 const DEPTH_FADE = 0.76;

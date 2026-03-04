@@ -20,9 +20,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(3, 2, 0, 0.55) 0%,
-    rgba(3, 2, 0, 0.72) 50%,
-    rgba(3, 2, 0, 0.98) 100%
+    rgba(3, 2, 0, 0.45) 0%,
+    rgba(3, 2, 0, 0.62) 50%,
+    rgba(3, 2, 0, 0.88) 100%
   );
 }
 
@@ -79,7 +79,7 @@
 
 /* ─── Village Scroll Strip ───────────────────────────────────── */
 .villageStrip {
-  background: rgba(6, 4, 0, 0.98);
+  background: rgba(6, 4, 0, 0.82);
   border-top: 1px solid rgba(232, 184, 48, 0.22);
   border-bottom: 1px solid rgba(232, 184, 48, 0.22);
   overflow: hidden;
@@ -124,9 +124,9 @@
 .mysterySection {
   background: linear-gradient(
     180deg,
-    rgba(3, 2, 0, 0.99) 0%,
-    #0c0800 40%,
-    #090600 100%
+    rgba(3, 2, 0, 0.84) 0%,
+    rgba(12, 8, 0, 0.80) 40%,
+    rgba(9, 6, 0, 0.80) 100%
   );
   padding: 5rem 2rem 5rem;
   border-bottom: 1px solid rgba(232, 184, 48, 0.12);
@@ -280,7 +280,7 @@
   justify-content: center;
   gap: 1.5rem;
   padding: 1.5rem 2rem;
-  background: #070500;
+  background: rgba(7, 5, 0, 0.78);
 }
 
 .heraldicLine {
@@ -298,7 +298,7 @@
 
 /* ─── Cards Section ──────────────────────────────────────────── */
 .cardsSection {
-  background: #070500;
+  background: rgba(7, 5, 0, 0.78);
   padding: 1rem 2rem 5rem;
 }
 
@@ -322,7 +322,7 @@
 }
 
 .card {
-  background: var(--dark-card);
+  background: rgba(18, 12, 8, 0.88);
   border: 1px solid rgba(232, 184, 48, 0.18);
   border-radius: 4px;
   overflow: hidden;
@@ -408,7 +408,7 @@
 
 /* ─── Footer Strip ───────────────────────────────────────────── */
 .footerStrip {
-  background: #040300;
+  background: rgba(4, 3, 0, 0.90);
   border-top: 1px solid rgba(232, 184, 48, 0.14);
   padding: 1.25rem 2rem;
   text-align: center;
