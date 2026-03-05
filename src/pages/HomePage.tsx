@@ -15,6 +15,7 @@ interface HomePageProps {
 const villages = [
   'Ursel', 'Bassevelde', 'Boekhoute', 'Evergem', 'Merendree',
   'Lovendegem', 'Vinderhoute', 'Wessegem', 'Kaprijke', 'Adegem',
+  'Eeklo', 'Ghent',
 ];
 
 const cards = [
@@ -59,7 +60,7 @@ export default function HomePage({ onNav }: HomePageProps) {
           <img src={lionShield} alt="Lion of Flanders" className={styles.shield} />
           <h1 className={styles.title}>Van Vlaenderen</h1>
           <div className={styles.subtitle}>
-            A genealogical research project · East Flanders · Meetjesland
+            A genealogical research project · Meetjesland · Ghent · East Flanders
           </div>
           <div className={styles.heroScrollHint}>↓</div>
         </div>

@@ -1,5 +1,4 @@
 import millVinderhoute from '../assets/images/places/van-vlaenderensmolen-vinderhoute-cc-by-sa-3.0.jpg';
-import millMeetjesland from '../assets/images/mill-meetjesland.png';
 import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
 import styles from './InnerPage.module.css';
 import millStyles from './MillPage.module.css';
@@ -108,12 +107,7 @@ export default function MillPage() {
               </em>
             </div>
           </div>
-          <div className={millStyles.millPhotoCard}>
-            <img src={millMeetjesland} alt="A traditional Flemish windmill in the Meetjesland region" />
-            <div className={millStyles.millPhotoCaption}>
-              A traditional Flemish windmill in the Meetjesland — the landscape the Van Vlaenderen family called home
-            </div>
-          </div>
+
         </div>
 
         <section className={styles.section}>

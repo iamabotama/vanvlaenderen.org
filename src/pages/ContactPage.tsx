@@ -41,27 +41,27 @@ export default function ContactPage() {
             <div className={contactStyles.reasonsList}>
               {[
                 {
-                  icon: '🌳',
+                  icon: '⚜',
                   title: 'You carry the name',
                   text: 'If your surname is Van Vlaenderen — in any spelling — we want to know your story. Every branch of the family matters.',
                 },
                 {
-                  icon: '📜',
+                  icon: '⚜',
                   title: 'You have documents or photographs',
                   text: 'Old letters, birth certificates, photographs, land records — any document connected to the Van Vlaenderen family is valuable.',
                 },
                 {
-                  icon: '🧬',
+                  icon: '⚜',
                   title: 'You have taken a DNA test',
                   text: 'If you have tested with AncestryDNA, 23andMe, or FamilyTreeDNA and have Van Vlaenderen ancestry, your results could connect the branches.',
                 },
                 {
-                  icon: '🗺️',
+                  icon: '⚜',
                   title: 'You have local knowledge',
                   text: 'If you live in or near the Meetjesland and know stories about the Van Vlaenderen family or the mill at Vinderhoute, please share them.',
                 },
                 {
-                  icon: '❓',
+                  icon: '⚜',
                   title: 'You have a question',
                   text: 'Genealogical research can be confusing. If you have a question about the Van Vlaenderen family or how to research your own roots, ask away.',
                 },
@@ -78,7 +78,7 @@ export default function ContactPage() {
 
             {/* Privacy note */}
             <div className={contactStyles.privacyNote}>
-              <span className={contactStyles.privacyIcon}>🔒</span>
+              <span className={contactStyles.privacyIcon}>⚜</span>
               <span>
                 Your personal information is never shared, sold, or published without your
                 explicit consent. This is a private family research project.
