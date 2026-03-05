@@ -30,14 +30,14 @@ const cards = [
     title: 'The Name',
     subtitle: 'Origins & variants',
     img: manuscriptNoblewoman,
-    quote: 'Bassevelde · Ursel · Evergem · Boekhoute · Merendree',
+    quote: 'Where did the name begin — and how many families share a single root?',
   },
   {
     id: 'dna' as Tab,
     title: 'Are We Connected?',
     subtitle: 'The DNA project',
     img: cronike,
-    quote: 'Multiple branches. One possible origin. Science may hold the answer.',
+    quote: 'Y-DNA and autosomal testing are being used to test whether all Van Vlaenderen lines share a common ancestor.',
   },
   {
     id: 'contact' as Tab,
@@ -59,7 +59,7 @@ export default function HomePage({ onNav }: HomePageProps) {
           <img src={lionShield} alt="Lion of Flanders" className={styles.shield} />
           <h1 className={styles.title}>Van Vlaenderen</h1>
           <div className={styles.subtitle}>
-            East Flanders · Meetjesland · Est. 14th Century
+            A genealogical research project · East Flanders · Meetjesland
           </div>
           <div className={styles.heroScrollHint}>↓</div>
         </div>
@@ -81,46 +81,101 @@ export default function HomePage({ onNav }: HomePageProps) {
       <div className={styles.mysterySection}>
         <div className={styles.mysteryInner}>
           <div className={styles.mysteryQuestion}>
-            What if <em>Van Vlaenderen</em> was never just "from Flanders"?
+            A surname. A region. An open question.
           </div>
 
           <div className={styles.mysteryBody}>
             <p>
-              For centuries, families bearing this name lived in the villages of
-              Ursel, Wessegem, Bassevelde, and Boekhoute — in the heart of the
-              Meetjesland of East Flanders. Traditional scholarship interprets the
-              surname as <strong>toponymic</strong>: meaning simply "from Flanders."
+              This site is a genealogical research project dedicated to the surname{' '}
+              <strong>Van Vlaenderen</strong> — a name borne by families who lived for
+              centuries in the villages of the Meetjesland in East Flanders: Ursel,
+              Bassevelde, Boekhoute, Kaprijke, Evergem, and their neighbours.
+            </p>
+
+            <p className={styles.visitorNote}>
+              <em>
+                If you arrived here looking for information about the Flanders region
+                itself, you are warmly welcome — and we hope the history woven through
+                this research is of interest to you. This project is about one family
+                name, not the region as a whole.
+              </em>
             </p>
 
             <div className={styles.dividerLine} />
 
-            <p className={styles.emergingTheory}>
-              But emerging research suggests another possibility.
+            <p>
+              The conventional reading of the surname is <strong>toponymic</strong>:{' '}
+              <em>Van Vlaenderen</em> simply means "from Flanders," a label that could
+              have attached to any family that migrated from the broader region into a
+              more local community. Many Flemish surnames share this pattern, and for
+              most bearers of the name, this explanation may well be the complete story.
             </p>
 
-            <p>
-              The name may have originated as a <strong>converted title</strong> at
-              the close of the reign of Louis II, Count of Flanders — possibly granted
-              to an illegitimate son, and carried forward as hereditary identity when
-              the era of counts ended.
+            <p className={styles.emergingTheory}>
+              But the documentary record raises two questions that a purely toponymic
+              explanation does not easily answer — and this project exists to investigate them.
             </p>
+
+            <div className={styles.hypothesisBlock}>
+              <div className={styles.hypothesisLabel}>Working hypothesis one</div>
+              <div className={styles.hypothesisTitle}>A small number of founding families</div>
+              <p>
+                When the earliest traceable Van Vlaenderen lines across the Meetjesland
+                parishes are mapped together, the name does not appear to scatter randomly
+                across the region. Early research suggests the possibility that all
+                documented Van Vlaenderen lines descend from no more than two or three
+                founding families — perhaps even a single common ancestor — rather than
+                from independent families who happened to share a descriptive label. This
+                hypothesis is being tested through parish record analysis and genetic
+                genealogy. It remains unproven, and the evidence gathered so far is
+                suggestive rather than conclusive.
+              </p>
+            </div>
+
+            <div className={styles.hypothesisBlock}>
+              <div className={styles.hypothesisLabel}>Working hypothesis two</div>
+              <div className={styles.hypothesisTitle}>A title that became a surname</div>
+              <p>
+                Historical records document a figure named <strong>Victor van Vlaanderen</strong>,
+                an acknowledged natural son of Louis II, Count of Flanders, who held the
+                lordship of Wessegem in the parish of Ursel — the very heart of the region
+                where the Van Vlaenderen surname later appears in parish registers. Victor
+                died before 1442, leaving three acknowledged sons: Lodewyc, Janne, and
+                Adam van Vlaendren. Local records place Adam in the Maldegem and Ursel
+                area in the mid-fifteenth century.
+              </p>
+              <p>
+                The working hypothesis — and it is no more than that at this stage — is
+                that as the era of the Counts of Flanders ended, descendants of this
+                comital line may have carried the name <em>van Vlaenderen</em> forward
+                not as a description of geographic origin, but as a form of inherited
+                identity. If so, the surname may have seeded one or more of the family
+                lines that later appear in the Meetjesland parish registers. This
+                connection is plausible and supported by circumstantial evidence, but it
+                has not been proven. The archival work required to confirm or refute it
+                is ongoing.
+              </p>
+            </div>
 
             <div className={styles.pullQuote}>
               <span className={styles.pullQuoteMark}>"</span>
-              How does a title become a surname?
+              One name. One region. The question is whether it was ever truly one family.
               <span className={styles.pullQuoteMark}>"</span>
             </div>
 
-            <p>
-              This site gathers the historical record, the documented family lines,
-              the miller families, the migrations — and holds open that question.
+            <p className={styles.callToAction}>
+              This project is collaborative by design. If you carry the name{' '}
+              <strong>Van Vlaenderen</strong> — in any historical spelling — or if you
+              descend from a Van Vlaenderen woman whose line continued under a different
+              name, your family records and DNA results may hold a piece of the answer.
+              We invite you to explore what has been gathered here, compare it against
+              your own research, and get in touch.
             </p>
 
-            <p className={styles.callToAction}>
-              If you carry the name <strong>Van Vlaenderen</strong>, you may hold
-              part of the answer. We invite you to explore, compare records,
-              contribute family history, and join the ongoing genealogical project
-              to better understand the origin of our shared name.
+            <p className={styles.researchNote}>
+              No claim is made here that any living person descends from the Counts of
+              Flanders. We are researchers, not storytellers. The evidence will go where
+              it goes.
             </p>
           </div>
 
@@ -172,6 +227,8 @@ export default function HomePage({ onNav }: HomePageProps) {
         <span>© 2026 VanVlaenderen.org</span>
         <span className={styles.footerDivider}>·</span>
         <span>East Flanders, Belgium</span>
+        <span className={styles.footerDivider}>·</span>
+        <span>An independent genealogical research project</span>
         <span className={styles.footerDivider}>·</span>
         <span>No publication without permission</span>
       </div>

@@ -223,6 +223,58 @@
   color: var(--gold) !important;
 }
 
+.visitorNote {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  padding: 1rem 1.5rem;
+  border-left: 2px solid rgba(232, 184, 48, 0.25);
+  border-radius: 0 4px 4px 0;
+  background: rgba(232, 184, 48, 0.03);
+}
+
+.hypothesisBlock {
+  background: rgba(232, 184, 48, 0.04);
+  border: 1px solid rgba(232, 184, 48, 0.18);
+  border-radius: 4px;
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.hypothesisBlock p {
+  margin: 0;
+}
+
+.hypothesisLabel {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(232, 184, 48, 0.55);
+}
+
+.hypothesisTitle {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--gold);
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.researchNote {
+  font-family: var(--font-body);
+  font-size: 0.92rem !important;
+  color: var(--text-muted) !important;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.7;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(232, 184, 48, 0.12);
+}
+
 .mysteryActions {
   display: flex;
   gap: 1rem;
