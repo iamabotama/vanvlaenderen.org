@@ -1,3 +1,39 @@
+/* ─── DNA Helix background wrapper ──────────────────────────── */
+.contentWrap {
+  position: relative;
+  isolation: isolate;
+}
+
+.helixBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.helixBg canvas {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100%;
+}
+
+/* Ensure content text sits above the helix canvas */
+.contentWrap > :not(.helixBg) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Override content box background to let helix show through */
+.contentWrap :global(.content) {
+  background: rgba(6, 4, 0, 0.55) !important;
+}
+
+/* ─── DNA type cards ─────────────────────────────────────────── */
 .dnaGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
