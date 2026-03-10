@@ -5,8 +5,7 @@ import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
 import manuscriptNoblewoman from '../assets/images/manuscript-noblewoman.jpg';
 import cronike from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 import styles from './HomePage.module.css';
-
-type Tab = 'home' | 'mill' | 'name' | 'dna' | 'contact';
+import { Tab } from '../components/Nav';
 
 interface HomePageProps {
   onNav: (tab: Tab) => void;
@@ -34,18 +33,18 @@ const cards = [
     quote: 'Where did the name begin — and how many families share a single root?',
   },
   {
+    id: 'victor' as Tab,
+    title: 'Victor van Vlaanderen',
+    subtitle: 'Medieval Research',
+    img: manuscriptNoblewoman,
+    quote: 'A historically grounded bastard son of Louis II "de Male," Count of Flanders.',
+  },
+  {
     id: 'dna' as Tab,
     title: 'Are We Connected?',
     subtitle: 'The DNA project',
     img: cronike,
     quote: 'Y-DNA and autosomal testing are being used to test whether all Van Vlaenderen lines share a common ancestor.',
-  },
-  {
-    id: 'contact' as Tab,
-    title: 'Join the Research',
-    subtitle: 'Your story matters',
-    img: meetjeslandMap,
-    quote: 'If you carry the name, you may hold part of the answer.',
   },
 ];
 
@@ -156,6 +155,9 @@ export default function HomePage({ onNav }: HomePageProps) {
                 has not been proven. The archival work required to confirm or refute it
                 is ongoing.
               </p>
+              <button className={styles.primaryBtn} onClick={() => onNav('victor')}>
+                View the Victor van Vlaanderen Dossier →
+              </button>
             </div>
 
             <div className={styles.pullQuote}>
