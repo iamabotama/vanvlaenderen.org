@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Nav, { Tab } from './components/Nav';
+import Nav from './components/Nav';
+import type { Tab } from './components/Nav';
 import FamilyTreeCanvas from './components/FamilyTreeCanvas';
 import HomePage from './pages/HomePage';
 import MillPage from './pages/MillPage';

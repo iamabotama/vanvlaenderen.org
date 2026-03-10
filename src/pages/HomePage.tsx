@@ -1,11 +1,11 @@
 import lionShield from '../assets/images/lion-shield.png';
 import heroBg from '../assets/images/hero-background.jpg';
 import windmill from '../assets/images/places/van-vlaenderensmolen-vinderhoute-cc-by-sa-3.0.jpg';
-import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
+// import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
 import manuscriptNoblewoman from '../assets/images/manuscript-noblewoman.jpg';
 import cronike from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 import styles from './HomePage.module.css';
-import { Tab } from '../components/Nav';
+import type { Tab } from '../components/Nav';
 
 interface HomePageProps {
   onNav: (tab: Tab) => void;
