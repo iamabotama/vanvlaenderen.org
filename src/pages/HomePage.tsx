@@ -33,11 +33,11 @@ const cards = [
     quote: 'Where did the name begin — and how many families share a single root?',
   },
   {
-    id: 'victor' as Tab,
-    title: 'Victor van Vlaanderen',
-    subtitle: 'Medieval Research',
+    id: 'research' as Tab,
+    title: 'Research',
+    subtitle: 'Medieval & Collateral Lines',
     img: manuscriptNoblewoman,
-    quote: 'A historically grounded bastard son of Louis II "de Male," Count of Flanders.',
+    quote: 'Exploring the lineages of Louis II "de Male," Count of Flanders, including Victor and the Praet line.',
   },
   {
     id: 'dna' as Tab,
@@ -136,7 +136,7 @@ export default function HomePage({ onNav }: HomePageProps) {
               <div className={styles.hypothesisLabel}>Working hypothesis two</div>
               <div className={styles.hypothesisTitle}>A title that became a surname</div>
               <p>
-                Historical records document a figure named <strong>Victor van Vlaanderen</strong>,
+                Historical records document a figure named <strong>Victor van Vlaenderen</strong>,
                 an acknowledged natural son of Louis II, Count of Flanders, who held the
                 lordship of Wessegem in the parish of Ursel — the very heart of the region
                 where the Van Vlaenderen surname later appears in parish registers. Victor
@@ -155,8 +155,8 @@ export default function HomePage({ onNav }: HomePageProps) {
                 has not been proven. The archival work required to confirm or refute it
                 is ongoing.
               </p>
-              <button className={styles.primaryBtn} onClick={() => onNav('victor')}>
-                View the Victor van Vlaanderen Dossier →
+              <button className={styles.primaryBtn} onClick={() => onNav('research')}>
+                View the Research Dossier →
               </button>
             </div>
 

@@ -118,7 +118,7 @@ export default function NamePage({ onNavigate }: NamePageProps) {
           </p>
           <div className={nameStyles.spellingList}>
             {[
-              'Van Vlaenderen', 'Van Vlaanderen', 'Van Vlaendereen',
+              'Van Vlaenderen', 'Van Vlaenderen', 'Van Vlaendereen',
               'Vanvlaenderen', 'Van Flanderen', 'Vanflanderen',
               'de Flandre', 'van Vlanderen', 'Van Vlaendren',
             ].map(s => (

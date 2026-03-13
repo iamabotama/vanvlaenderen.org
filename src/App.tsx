@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage';
 import MillPage from './pages/MillPage';
 import NamePage from './pages/NamePage';
 import DnaPage from './pages/DnaPage';
-import VictorPage from './pages/VictorPage';
+import ResearchPage from './pages/ResearchPage';
 import ContactPage from './pages/ContactPage';
 import './App.css';
 
@@ -28,7 +28,7 @@ export default function App() {
         {activeTab === 'home'    && <HomePage onNav={handleNav} />}
         {activeTab === 'mill'    && <MillPage />}
         {activeTab === 'name'    && <NamePage onNavigate={(tab) => handleNav(tab as Tab)} />}
-        {activeTab === 'victor'  && <VictorPage />}
+        {activeTab === 'research'  && <ResearchPage />}
         {activeTab === 'dna'     && <DnaPage />}
         {activeTab === 'contact' && <ContactPage />}
       </main>

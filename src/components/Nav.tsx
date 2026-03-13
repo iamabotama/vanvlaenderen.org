@@ -12,7 +12,7 @@ const tabs: { id: Tab; label: string }[] = [
   { id: 'home',    label: 'Home' },
   { id: 'mill',    label: 'The Mill' },
   { id: 'name',    label: 'The Name' },
-  { id: 'victor',  label: 'Victor van Vlaanderen' },
+  { id: 'research',  label: 'Research' },
   { id: 'dna',     label: 'Are We Connected?' },
   { id: 'contact', label: 'Get in Touch' },
 ];
