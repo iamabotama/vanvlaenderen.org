@@ -254,7 +254,7 @@ export default function ResearchPage() {
           <div className={styles.ctaNote}>
             We are actively seeking to bridge the gap between the 15th-century records and 
             the early modern parish registers, and to further document the Praet lineage.
-          </p>
+          </div>
         </div>
       </div>
     </div>

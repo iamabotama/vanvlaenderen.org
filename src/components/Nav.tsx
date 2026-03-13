@@ -1,7 +1,7 @@
 import lionShield from '../assets/images/lion-shield.png';
 import styles from './Nav.module.css';
 
-export type Tab = 'home' | 'mill' | 'name' | 'dna' | 'victor' | 'contact';
+export type Tab = 'home' | 'mill' | 'name' | 'dna' | 'research' | 'contact';
 
 interface NavProps {
   active: Tab;
