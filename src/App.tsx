@@ -7,14 +7,23 @@ import MillPage from './pages/MillPage';
 import NamePage from './pages/NamePage';
 import DnaPage from './pages/DnaPage';
 import ResearchPage from './pages/ResearchPage';
+import VictorLineagePage from './pages/VictorLineagePage';
+import LouisFrieseLineagePage from './pages/LouisFrieseLineagePage';
 import ContactPage from './pages/ContactPage';
 import './App.css';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('home');
+  const [researchSubpage, setResearchSubpage] = useState<'main' | 'victor' | 'louis-friese'>('main');
 
   const handleNav = (tab: Tab) => {
     setActiveTab(tab);
+    setResearchSubpage('main');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleResearchNav = (subpage: 'main' | 'victor' | 'louis-friese') => {
+    setResearchSubpage(subpage);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -28,7 +37,9 @@ export default function App() {
         {activeTab === 'home'    && <HomePage onNav={handleNav} />}
         {activeTab === 'mill'    && <MillPage />}
         {activeTab === 'name'    && <NamePage onNavigate={(tab) => handleNav(tab as Tab)} />}
-        {activeTab === 'research'  && <ResearchPage />}
+        {activeTab === 'research' && researchSubpage === 'main' && <ResearchPage onNavigate={handleResearchNav} />}
+        {activeTab === 'research' && researchSubpage === 'victor' && <VictorLineagePage onNavigate={handleResearchNav} />}
+        {activeTab === 'research' && researchSubpage === 'louis-friese' && <LouisFrieseLineagePage onNavigate={handleResearchNav} />}
         {activeTab === 'dna'     && <DnaPage />}
         {activeTab === 'contact' && <ContactPage />}
       </main>
