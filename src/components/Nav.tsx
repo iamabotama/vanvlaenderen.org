@@ -1,7 +1,7 @@
 import lionShield from '../assets/images/lion-shield.png';
 import styles from './Nav.module.css';
 
-export type Tab = 'home' | 'mill' | 'name' | 'dna' | 'research' | 'contact';
+export type Tab = 'home' | 'mill' | 'name' | 'dna' | 'research' | 'about' | 'contact';
 
 interface NavProps {
   active: Tab;
@@ -14,6 +14,7 @@ const tabs: { id: Tab; label: string }[] = [
   { id: 'name',    label: 'The Name' },
   { id: 'research',  label: 'Research' },
   { id: 'dna',     label: 'Are We Connected?' },
+  { id: 'about',   label: 'About Us' },
   { id: 'contact', label: 'Get in Touch' },
 ];
 
