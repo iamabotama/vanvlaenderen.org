@@ -196,6 +196,60 @@
   text-decoration: underline;
 }
 
+.branchCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.branchCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(232, 184, 48, 0.15);
+  padding: 2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.branchCard:hover {
+  border-color: var(--gold);
+  background: rgba(232, 184, 48, 0.05);
+  transform: translateY(-5px);
+}
+
+.branchCard h3 {
+  font-family: var(--font-display);
+  color: var(--gold);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.branchCard p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.branchLink {
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+
+.branchLink:hover {
+  opacity: 0.8;
+}
+
 @media (max-width: 600px) {
   .treeChildren {
     flex-direction: column;

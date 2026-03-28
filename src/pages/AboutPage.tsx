@@ -1,7 +1,14 @@
+import { useState } from 'react';
 import styles from './InnerPage.module.css';
 import aboutStyles from './AboutPage.module.css';
+import michaelConstanceGhent from '../assets/images/michael-constance-ghent.jpg';
+import type { Tab } from '../components/Nav';
 
-export default function AboutPage() {
+interface AboutPageProps {
+  onNavigate?: (tab: Tab) => void;
+}
+
+export default function AboutPage({ onNavigate }: AboutPageProps) {
   return (
     <div className={styles.page}>
 
@@ -79,7 +86,7 @@ export default function AboutPage() {
 
         <div className={aboutStyles.photoContainer}>
           <img
-            src="/new_images/ghent_canal.jpg"
+            src={michaelConstanceGhent}
             alt="Michael and Constance conducting field research in East Flanders"
             className={aboutStyles.photo}
           />
@@ -129,14 +136,18 @@ export default function AboutPage() {
           </p>
         </section>
 
-        <div className={styles.ctaBox}>
+        <button 
+          className={styles.ctaBox}
+          onClick={() => onNavigate?.('contact')}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, width: '100%', textAlign: 'center' }}
+        >
           <div className={styles.ctaText}>
             Are you a researcher, historian, or descendant interested in contributing?
           </div>
           <div className={styles.ctaNote}>
             We welcome collaboration and look forward to hearing from you.
           </div>
-        </div>
+        </button>
 
       </div>
     </div>
