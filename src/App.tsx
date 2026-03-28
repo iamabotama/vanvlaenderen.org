@@ -42,7 +42,7 @@ export default function App() {
         {activeTab === 'research' && researchSubpage === 'victor' && <VictorLineagePage onNavigate={handleResearchNav} />}
         {activeTab === 'research' && researchSubpage === 'louis-friese' && <LouisFrieseLineagePage onNavigate={handleResearchNav} />}
         {activeTab === 'dna'     && <DnaPage />}
-        {activeTab === 'about'   && <AboutPage />}
+        {activeTab === 'about'   && <AboutPage onNavigate={handleNav} />}
         {activeTab === 'contact' && <ContactPage />}
       </main>
     </>
