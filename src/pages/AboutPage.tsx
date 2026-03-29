@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styles from './InnerPage.module.css';
 import aboutStyles from './AboutPage.module.css';
 import michaelConstanceGhent from '../assets/images/michael-constance-ghent.jpg';
