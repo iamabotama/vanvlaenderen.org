@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import styles from './InnerPage.module.css';
 import aboutStyles from './AboutPage.module.css';
-import michaelConstanceGhent from '../assets/images/michael-constance-ghent.jpg';
+import michaelConstanceCanal from '../assets/images/michael-constance-canal.jpg';
 import type { Tab } from '../components/Nav';
 
 interface AboutPageProps {
@@ -86,7 +85,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
 
         <div className={aboutStyles.photoContainer}>
           <img
-            src={michaelConstanceGhent}
+            src={michaelConstanceCanal}
             alt="Michael and Constance conducting field research in East Flanders"
             className={aboutStyles.photo}
           />
