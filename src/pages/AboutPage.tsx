@@ -15,73 +15,63 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
 
       {/* ── Text-only Hero ────────────────────────────────────────── */}
       <div className={styles.textHero}>
-        <div className={styles.eyebrow}>Van Vlaenderen · About This Project</div>
-        <h1>The Van Vlaenderen Research Initiative</h1>
+        <div className={styles.eyebrow}>{t('about.hero_eyebrow')}</div>
+        <h1>{t('about.hero_title')}</h1>
         <div className="gold-rule" />
         <p className={styles.heroLead}>
-          A genealogical and historical project dedicated to documenting the origins, 
-          migration patterns, and familial connections of the Van Vlaenderen surname.
+          {t('about.hero_lead')}
         </p>
       </div>
 
       <div className={styles.content}>
 
         <section className={styles.section}>
-          <h2>Research Scope and Methodology</h2>
+          <h2>{t('about.scope_heading')}</h2>
           <p>
-            Our work focuses on the <strong>Meetjesland region of East Flanders</strong>, 
-            specifically the parishes and villages of Bassevelde, Boekhoute, Waarschoot, 
-            Oostwinkel, and their surrounding areas. We employ a multi-disciplinary approach 
-            that integrates traditional archival research with modern genetic genealogy.
+            {t('about.scope_intro')}
           </p>
           <p>
-            Our primary source material includes:
+            {t('about.scope_sources')}
           </p>
         </section>
 
         <div className={aboutStyles.sourcesList}>
           <div className={aboutStyles.sourceItem}>
-            <div className={aboutStyles.sourceLabel}>Parish Registers and Civil Records</div>
+            <div className={aboutStyles.sourceLabel}>{t('about.source_parish')}</div>
             <div className={aboutStyles.sourceDesc}>
-              Systematic indexing of births, marriages, and deaths from the 17th century forward.
+              {t('about.source_parish_desc')}
             </div>
           </div>
           <div className={aboutStyles.sourceItem}>
-            <div className={aboutStyles.sourceLabel}>Estate Inventories (<em>Staten van Goed</em>)</div>
+            <div className={aboutStyles.sourceLabel}>{t('about.source_estate')}</div>
             <div className={aboutStyles.sourceDesc}>
-              Analysis of inheritance and property records to reconstruct family structures.
+              {t('about.source_estate_desc')}
             </div>
           </div>
           <div className={aboutStyles.sourceItem}>
-            <div className={aboutStyles.sourceLabel}>Land Registers and Notarial Archives</div>
+            <div className={aboutStyles.sourceLabel}>{t('about.source_land')}</div>
             <div className={aboutStyles.sourceDesc}>
-              Mapping land ownership and legal transactions to trace geographic movement.
+              {t('about.source_land_desc')}
             </div>
           </div>
           <div className={aboutStyles.sourceItem}>
-            <div className={aboutStyles.sourceLabel}>Y-DNA Analysis</div>
+            <div className={aboutStyles.sourceLabel}>{t('about.source_dna')}</div>
             <div className={aboutStyles.sourceDesc}>
-              Utilizing paternal-line genetic testing to investigate shared origins between geographically distinct branches.
+              {t('about.source_dna_desc')}
             </div>
           </div>
         </div>
 
         <section className={styles.section}>
           <p>
-            We maintain a strict distinction between documented evidence and working hypotheses. 
-            Our findings are subject to ongoing revision as new archival material and DNA results 
-            become available.
+            {t('about.methodology_note')}
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>Project Origins</h2>
+          <h2>{t('about.origins_heading')}</h2>
           <p>
-            The initiative was established by siblings <strong>Michael and Constance Van Flandern</strong>. 
-            The project's initial impetus was a personal effort to reconstruct our own family history, 
-            which had been obscured by the early loss of family members in our father's generation. 
-            This absence of inherited records necessitated a rigorous, source-based approach that 
-            eventually expanded into a broader study of the Van Vlaenderen surname across time and region.
+            {t('about.origins_body')}
           </p>
         </section>
 
@@ -92,48 +82,44 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             className={aboutStyles.photo}
           />
           <div className={aboutStyles.photoCaption}>
-            Michael and Constance Van Flandern conducting field research in East Flanders.
+            {t('about.photo_caption')}
           </div>
         </div>
 
         <section className={styles.section}>
-          <h2>Collaborative Goals</h2>
+          <h2>{t('about.goals_heading')}</h2>
           <p>
-            This website serves as a platform for organizing findings, referencing primary sources, 
-            and facilitating collaboration with the broader research community. We are committed to 
-            an open-exchange model and welcome contact from researchers, historians, and family 
-            historians across disciplines and geographies.
+            {t('about.goals_intro')}
           </p>
           <p>
-            We are actively seeking:
+            {t('about.goals_seeking')}
           </p>
         </section>
 
         <div className={aboutStyles.collaborationGrid}>
           <div className={aboutStyles.collaborationCard}>
-            <div className={aboutStyles.collaborationTitle}>Historians and Genealogists</div>
+            <div className={aboutStyles.collaborationTitle}>{t('about.collab_historians')}</div>
             <div className={aboutStyles.collaborationDesc}>
-              Particularly those specializing in the Meetjesland or Flemish migratory patterns.
+              {t('about.collab_historians_desc')}
             </div>
           </div>
           <div className={aboutStyles.collaborationCard}>
-            <div className={aboutStyles.collaborationTitle}>DNA Participants</div>
+            <div className={aboutStyles.collaborationTitle}>{t('about.collab_dna')}</div>
             <div className={aboutStyles.collaborationDesc}>
-              Individuals bearing the Van Vlaenderen surname (in any historical spelling) interested in Y-DNA testing.
+              {t('about.collab_dna_desc')}
             </div>
           </div>
           <div className={aboutStyles.collaborationCard}>
-            <div className={aboutStyles.collaborationTitle}>Family Researchers</div>
+            <div className={aboutStyles.collaborationTitle}>{t('about.collab_family')}</div>
             <div className={aboutStyles.collaborationDesc}>
-              Descendants with relevant primary source documents, such as family bibles or 19th-century correspondence.
+              {t('about.collab_family_desc')}
             </div>
           </div>
         </div>
 
         <section className={styles.section}>
           <p>
-            By bridging the gap between 15th-century comital records and early modern parish registers, 
-            we aim to provide a comprehensive account of the Van Vlaenderen heritage.
+            {t('about.closing')}
           </p>
         </section>
 
@@ -159,10 +145,10 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, width: '100%', textAlign: 'center' }}
         >
           <div className={styles.ctaText}>
-            Are you a researcher, historian, or descendant interested in contributing?
+            {t('about.contact_cta_body')}
           </div>
           <div className={styles.ctaNote}>
-            We welcome collaboration and look forward to hearing from you.
+            {t('about.contact_cta_note')}
           </div>
         </button>
       </div>

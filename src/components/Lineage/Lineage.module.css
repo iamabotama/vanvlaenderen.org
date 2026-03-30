@@ -247,9 +247,9 @@
 .cardActive .badge_birth,
 .cardActive .badge_marriage,
 .cardActive .badge_death {
-  background: var(--color-background-primary);
-  color: inherit;
-  border-color: currentColor;
+  background: var(--color-background-secondary);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-secondary);
 }
 
 .badgeLink {
