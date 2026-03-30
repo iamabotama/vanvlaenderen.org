@@ -6,16 +6,44 @@ import polaroidCollage from '../assets/images/polaroid-collage.jpg';
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:info@vanvlaenderen.org?subject=${encodeURIComponent(form.subject || 'Van Vlaenderen Enquiry')}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
-    window.location.href = mailtoLink;
-    setSent(true);
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('https://formspree.io/f/xyzgqpvw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject || 'General Enquiry',
+          message: form.message,
+        }),
+      });
+
+      if (response.ok) {
+        setSent(true);
+        setForm({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setError('There was an issue sending your message. Please try again.');
+      }
+    } catch (err) {
+      setError('There was an issue sending your message. Please try again.');
+      console.error('Form submission error:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -92,10 +120,15 @@ export default function ContactPage() {
             {sent ? (
               <div className={contactStyles.sentMsg}>
                 <div className={contactStyles.sentIcon}>✓</div>
-                <div>Your message has been prepared in your email client. Thank you for reaching out to the Van Vlaenderen archive.</div>
+                <div>Thank you for reaching out! We have received your message and will respond as soon as possible.</div>
               </div>
             ) : (
               <form className={contactStyles.form} onSubmit={handleSubmit}>
+                {error && (
+                  <div className={contactStyles.errorMsg}>
+                    {error}
+                  </div>
+                )}
                 <div className={contactStyles.field}>
                   <label htmlFor="name">Your Name</label>
                   <input
@@ -131,8 +164,8 @@ export default function ContactPage() {
                     value={form.message} onChange={handleChange} required
                   />
                 </div>
-                <button type="submit" className={contactStyles.submitBtn}>
-                  Send Message →
+                <button type="submit" className={contactStyles.submitBtn} disabled={loading}>
+                  {loading ? 'Sending...' : 'Send Message →'}
                 </button>
               </form>
             )}

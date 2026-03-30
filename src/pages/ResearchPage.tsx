@@ -138,7 +138,7 @@ export default function ResearchPage({ onNavigate }: ResearchPageProps) {
           </p>
         </section>
 
-        <div className={styles.ctaBox}>
+        <div className={styles.ctaBox} onClick={() => onNavigate?.('contact')} style={{ cursor: 'pointer' }}>
           <div className={styles.ctaText}>
             Do you have research that connects to the lines of Victor van Vlaenderen or the Praet branch?
           </div>

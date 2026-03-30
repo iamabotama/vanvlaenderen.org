@@ -141,7 +141,7 @@ export default function VictorLineagePage({ onNavigate }: VictorLineagePageProps
           </div>
         </section>
 
-        <div className={styles.ctaBox}>
+        <div className={styles.ctaBox} onClick={() => onNavigate?.('contact')} style={{ cursor: 'pointer' }}>
           <div className={styles.ctaText}>
             Do you have research that connects to the line of Victor van Vlaenderen?
           </div>

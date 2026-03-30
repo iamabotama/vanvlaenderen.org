@@ -3,7 +3,11 @@ import dnaStyles from './DnaPage.module.css';
 import vintageFamilyPhoto from '../assets/images/vintage-family-photo.jpg';
 import cronikeShields from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 
-export default function DnaPage() {
+interface DnaPageProps {
+  onNavigate?: (tab: string) => void;
+}
+
+export default function DnaPage({ onNavigate }: DnaPageProps) {
   return (
     <div className={styles.page}>
 
@@ -169,7 +173,7 @@ export default function DnaPage() {
           </div>
         </div>
 
-        <div className={styles.ctaBox}>
+        <div className={styles.ctaBox} onClick={() => onNavigate?.('contact')} style={{ cursor: 'pointer' }}>
           <div className={styles.ctaText}>
             Are you a Van Vlaenderen descendant who has already taken a DNA test?
           </div>

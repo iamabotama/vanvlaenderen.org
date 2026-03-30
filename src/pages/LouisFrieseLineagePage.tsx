@@ -157,7 +157,7 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
           </div>
         </section>
 
-        <div className={styles.ctaBox}>
+        <div className={styles.ctaBox} onClick={() => onNavigate?.('contact')} style={{ cursor: 'pointer' }}>
           <div className={styles.ctaText}>
             Do you have research that connects to the Praet branch?
           </div>

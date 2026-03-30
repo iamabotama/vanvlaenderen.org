@@ -3,7 +3,11 @@ import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
 import styles from './InnerPage.module.css';
 import millStyles from './MillPage.module.css';
 
-export default function MillPage() {
+interface MillPageProps {
+  onNavigate?: (tab: string) => void;
+}
+
+export default function MillPage({ onNavigate }: MillPageProps) {
   return (
     <div className={styles.page}>
 
@@ -176,7 +180,7 @@ export default function MillPage() {
           </div>
         </div>
 
-        <div className={styles.ctaBox}>
+        <div className={styles.ctaBox} onClick={() => onNavigate?.('contact')} style={{ cursor: 'pointer' }}>
           <div className={styles.ctaText}>
             Do you have stories, photographs, or documents connected to the Van Vlaenderen family,
             the mill at Vinderhoute, or the Meetjesland?
