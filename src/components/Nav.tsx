@@ -1,24 +1,19 @@
+import { useTranslation } from 'react-i18next';
 import lionShield from '../assets/images/lion-shield.png';
+import { LanguageToggle } from './LanguageToggle';
 import styles from './Nav.module.css';
 
-export type Tab = 'home' | 'mill' | 'name' | 'dna' | 'research' | 'about' | 'contact';
+export type Tab = 'home' | 'mill' | 'name' | 'dna' | 'research' | 'lineage' | 'about' | 'contact';
 
 interface NavProps {
   active: Tab;
   onNav: (tab: Tab) => void;
 }
 
-const tabs: { id: Tab; label: string }[] = [
-  { id: 'home',    label: 'Home' },
-  { id: 'mill',    label: 'The Mill' },
-  { id: 'name',    label: 'The Name' },
-  { id: 'research',  label: 'Research' },
-  { id: 'dna',     label: 'Are We Connected?' },
-  { id: 'about',   label: 'About Us' },
-  { id: 'contact', label: 'Get in Touch' },
-];
+const tabIds: Tab[] = ['home', 'mill', 'name', 'research', 'dna', 'lineage', 'about', 'contact'];
 
 export default function Nav({ active, onNav }: NavProps) {
+  const { t } = useTranslation();
   return (
     <nav className={styles.nav}>
       <button className={styles.logo} onClick={() => onNav('home')} aria-label="Home">
@@ -26,17 +21,25 @@ export default function Nav({ active, onNav }: NavProps) {
         <span className={styles.logoText}>Van Vlaenderen</span>
       </button>
       <ul className={styles.tabs}>
-        {tabs.map(t => (
-          <li key={t.id}>
-            <button
-              className={`${styles.tab} ${active === t.id ? styles.active : ''}`}
-              onClick={() => onNav(t.id)}
-            >
-              {t.label}
-            </button>
-          </li>
-        ))}
+        {tabIds.map(tabId => {
+          const labelKey = tabId === 'dna' ? 'nav.dna' : 
+                          tabId === 'research' ? 'nav.history' :
+                          `nav.${tabId}`;
+          return (
+            <li key={tabId}>
+              <button
+                className={`${styles.tab} ${active === tabId ? styles.active : ''}`}
+                onClick={() => onNav(tabId)}
+              >
+                {t(labelKey)}
+              </button>
+            </li>
+          );
+        })}
       </ul>
+      <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
+        <LanguageToggle />
+      </div>
     </nav>
   );
 }

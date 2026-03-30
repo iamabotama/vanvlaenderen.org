@@ -11,6 +11,7 @@ import VictorLineagePage from './pages/VictorLineagePage';
 import LouisFrieseLineagePage from './pages/LouisFrieseLineagePage';
 import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
+import { LineagePage } from './components/Lineage';
 import './App.css';
 
 export default function App() {
@@ -46,6 +47,7 @@ export default function App() {
         {activeTab === 'research' && researchSubpage === 'victor' && <VictorLineagePage onNavigate={handleResearchNav} />}
         {activeTab === 'research' && researchSubpage === 'louis-friese' && <LouisFrieseLineagePage onNavigate={handleResearchNav} />}
         {activeTab === 'dna'     && <DnaPage onNavigate={(tab) => handleNav(tab as Tab)} />}
+        {activeTab === 'lineage' && <LineagePage />}
         {activeTab === 'about'   && <AboutPage onNavigate={handleNav} />}
         {activeTab === 'contact' && <ContactPage />}
       </main>

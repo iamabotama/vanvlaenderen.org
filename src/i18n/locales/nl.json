@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Over dit project",
+    "history": "Onze geschiedenis",
+    "mill": "De molen",
+    "name": "De naam",
+    "dna": "DNA",
+    "lineage": "Familielijn",
+    "contact": "Contact",
+    "language_toggle_label": "Taal"
+  },
+  "home": {
+    "hero_title": "Van Vlaenderen",
+    "hero_subtitle": "Uit Vlaanderen, naar de wereld",
+    "hero_body": "Een familienaam die 'uit Vlaanderen' betekent — voor Belgen vanzelfsprekend, voor de Amerikanen die hem dragen stilletjes betekenisvol. Dit is het verhaal van hoe een molenaarsfamilie uit Oost-Vlaanderen deel werd van het Amerikaanse verhaal.",
+    "cta_history": "Ontdek onze geschiedenis",
+    "cta_dna": "Doe mee aan het DNA-project"
+  },
+  "about": {
+    "page_title": "Over dit project",
+    "intro_heading": "Meer dan 15 jaar onderzoek",
+    "intro_body": "Wat begon als een zoektocht naar de onbekende roots van een astronoom, werd een van de meest boeiende onderzoeksreizen van ons leven. Onze vader wist nooit waar zijn familie vandaan kwam. Wij weten het nu.",
+    "project_heading": "Het onderzoek",
+    "project_body": "We hebben de lijn Van Vlaenderen gevolgd door meer dan 40 Oost-Vlaamse parochies, van een gedocumenteerde molenaar in het Gent van 1568 tot Charles Louis Van Vlaenderen, die Bassevelde in 1881 verliet voor Amerika. Onderweg werkten we met Vlaamse archieven, DNA-wetenschap en de generositeit van onderzoekers aan beide kanten van de Atlantische Oceaan.",
+    "tools_heading": "Onze werkwijze",
+    "tools_body": "Ons onderzoek steunt op Vlaamse burgerlijke en parochieregisters, archiefcollecties in het Rijksarchief Gent en het Rijksarchief Brugge, Y-DNA-analyse en AI-ondersteunde paleografie van 16de- en 17de-eeuws secretariusschrift.",
+    "festival_note": "We kwamen de naam Van Vlaenderen voor het eerst tegen op een promotiebanner van het Festival van Vlaanderen — een klein, surrealistisch moment dat alles in gang zette.",
+    "contributors_heading": "Het team",
+    "contributor_michael": "Michael — onderzoek, technologie en Amerikaanse familiegegevens",
+    "contributor_constance": "Constance — mede-onderzoeker en bewaarder van de familieherinnering"
+  },
+  "history": {
+    "page_title": "Onze geschiedenis",
+    "timeline_heading": "De gedocumenteerde lijn",
+    "section_ghent": "Gentse oorsprong",
+    "ghent_body": "De vroegst gedocumenteerde voorouder is Franciscus Van Vlaenderen, vermeld in de Sint-Salvatorparochie in Gent in 1568. Als wever die molenaar werd, weerspiegelt de verhuizing van zijn familie van de stad naar de landelijke parochies van Oost-Vlaanderen de bredere patronen van het Vlaamse plattelandsleven.",
+    "section_eastflanders": "Oost-Vlaanderen, 1600–1850",
+    "eastflanders_body": "Bijna drie eeuwen lang bewerkte de familie de grond en molens van parochies zoals Bassevelde, Oostwinkel, Boekhoute en Waarschoot. De naam Van Vlaenderen duikt geregeld op in doop-, huwelijks- en overlijdensregisters doorheen dit netwerk van dorpen.",
+    "section_charles": "Charles Louis vertrekt",
+    "charles_body": "In 1881 emigreerde Charles Louis Van Vlaenderen — geboren in Bassevelde in 1854 — naar Amerika. Hij trouwde met Jacqueline Vermaas, een Nederlandse immigrante, en bouwde een leven op in de Nieuwe Wereld. Zijn tak draagt de naam vandaag nog in Amerika.",
+    "section_noble": "Een speculatieve draad",
+    "noble_body": "Een afzonderlijke en onbewezen hypothese traceert een mogelijke lijn terug naar Victor van Vlaenderen, een gedocumenteerde natuurlijke zoon van Lodewijk II de Male, graaf van Vlaanderen, die voor 1442 stierf en de heerlijkheid Wessegem bezat. We presenteren dit als wat het is: een intrigerende mogelijkheid, geen bewezen verbinding.",
+    "noble_caveat": "Speculatief — nog niet gestaafd door documentair bewijs"
+  },
+  "mill": {
+    "page_title": "De Van Vlaenderensmolen",
+    "intro_heading": "Een molen in de familie",
+    "intro_body": "De molen is meer dan een herkenningspunt — het is de draad die generaties met elkaar verbindt. De familie Van Vlaenderen waren molenaarsgeslachten, en de molen in het hart van Bassevelde draagt hun naam nog steeds.",
+    "history_heading": "Geschiedenis van de molen",
+    "visit_heading": "Vandaag een bezoek brengen",
+    "visit_body": "De molen staat er nog steeds in Bassevelde en is een ankerpunt voor iedereen die de roots van deze familie wil opsporen."
+  },
+  "dna": {
+    "page_title": "DNA-samenwerking",
+    "intro_heading": "Wetenschap ontmoet familiegeschiedenis",
+    "intro_body": "Y-DNA-testen kunnen verbanden onthullen die papieren registers niet kunnen. Als u de achternaam Van Vlaenderen draagt — of een variant ervan — maakt uw DNA mogelijk deel uit van dit verhaal.",
+    "haplogroup_label": "Huidge haplogroep",
+    "haplogroup_value": "R-FT1573 (singleton)",
+    "what_heading": "Wat we zoeken",
+    "what_body": "We zijn op zoek naar mannelijke erfgenamen van Van Vlaenderen die bereid zijn een Big Y-700-test te doen. Autosomaal DNA (AncestryDNA, 23andMe) is nuttig voor nauwe verwantschappen, maar kan een gedeelde vaderlijke lijn over vele generaties niet bevestigen. Y-DNA wel.",
+    "privacy_heading": "Uw privacy",
+    "privacy_body": "Deelname is volledig vrijwillig. Uw resultaten zijn van u. We delen individuele resultaten nooit zonder uitdrukkelijke toestemming.",
+    "cta": "Contact opnemen over DNA"
+  },
+  "contact": {
+    "page_title": "Contact",
+    "intro_body": "Of u nu de naam deelt, een familieverhaal heeft of gewoon meer wilt weten — we horen graag van u.",
+    "name_label": "Uw naam",
+    "email_label": "E-mailadres",
+    "message_label": "Uw bericht",
+    "submit_label": "Verstuur bericht",
+    "privacy_note": "We respecteren uw privacy. Uw gegevens worden nooit gedeeld of gebruikt voor enig ander doel dan om u te antwoorden.",
+    "success_message": "Dank u — we nemen spoedig contact met u op."
+  },
+  "footer": {
+    "tagline": "Van Vlaenderen — uit Vlaanderen",
+    "rights": "Alle rechten voorbehouden",
+    "built_with": "Met zorg gebouwd in België en Amerika"
+  },
+  "common": {
+    "read_more": "Lees meer",
+    "back": "Terug",
+    "speculative": "Speculatief",
+    "documented": "Gedocumenteerd",
+    "loading": "Laden…",
+    "error": "Er is iets misgegaan"
+  },
+  "lineage": {
+    "page_title": "Familielijn",
+    "page_intro": "De gedocumenteerde Van Vlaenderen-lijn van Jeremiah (~1575) tot heden — opgespoord via Oost-Vlaamse parochieregisters, burgerlijke archieven en DNA. Klik op een voorouder voor de archiefdetails.",
+    "legend_label": "Verklaring bewijsstatus",
+    "tree_label": "Voorouderboom Van Vlaenderen",
+    "click_hint": "Klik op een kaart voor details",
+    "generation": "Generatie",
+    "born_prefix": "geb.",
+    "records_available": "Beschikbare documenten",
+    "status_documented": "Volledig gedocumenteerd",
+    "status_partial": "Gedeeltelijke documenten",
+    "status_inferred": "Afgeleid / bij benadering",
+    "status_modern": "Moderne familie",
+    "record_birth": "Geboorte",
+    "record_marriage": "Huwelijk",
+    "record_death": "Overlijden",
+    "view_archive": "Bekijk in archief",
+    "detail_born": "Geboren",
+    "detail_parish": "Parochie",
+    "detail_birth": "Geboorteakte",
+    "detail_marriage": "Huwelijksakte",
+    "detail_death": "Overlijdensakte",
+    "detail_status": "Bewijsstatus",
+    "source_note": "Parochie- en burgerlijke akten afkomstig van",
+    "source_note_2": " en Rijksarchief Brugge. Onderzoek lopende."
+  }
+}

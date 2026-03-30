@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "history": "Our History",
+    "mill": "The Mill",
+    "name": "The Name",
+    "dna": "DNA",
+    "lineage": "Lineage",
+    "contact": "Get in Touch",
+    "language_toggle_label": "Language"
+  },
+  "home": {
+    "hero_title": "Van Vlaenderen",
+    "hero_subtitle": "From Flanders, to the World",
+    "hero_body": "A family name that means 'from Flanders' — unremarkable to Belgians, and quietly profound to the Americans who carry it. This is the story of how a milling family from East Flanders became part of the American story.",
+    "cta_history": "Explore Our History",
+    "cta_dna": "Join the DNA Project"
+  },
+  "about": {
+    "page_title": "About This Project",
+    "intro_heading": "15+ Years in the Making",
+    "intro_body": "What began as a search for an astronomer's unknown origins became one of the most rewarding research journeys of our lives. Our father never knew where his family came from. We do now.",
+    "project_heading": "The Research",
+    "project_body": "We have traced the Van Vlaenderen line through 40+ East Flanders parishes, from a documented miller in 1568 Ghent to Charles Louis Van Vlaenderen, who left Bassevelde for America in 1881. Along the way we have worked with Flemish archives, DNA science, and the generosity of researchers on both sides of the Atlantic.",
+    "tools_heading": "How We Work",
+    "tools_body": "Our research draws on Flemish civil and parish records, archival collections at Rijksarchief Gent and Rijksarchief Brugge, Y-DNA analysis, and AI-assisted paleography of 16th–17th century secretary hand.",
+    "festival_note": "We first encountered the Van Vlaenderen name on a promotional banner at the Festival van Vlaenderen — a small, surreal moment that set everything in motion.",
+    "contributors_heading": "The Team",
+    "contributor_michael": "Michael — research, technology, and American family records",
+    "contributor_constance": "Constance — co-researcher and family memory keeper"
+  },
+  "history": {
+    "page_title": "Our History",
+    "timeline_heading": "The Documented Line",
+    "section_ghent": "Ghent Origins",
+    "ghent_body": "The earliest documented ancestor is Franciscus Van Vlaenderen, recorded in Sint-Salvator parish, Ghent, in 1568. A weaver turned miller, his family's movement from the city to the rural parishes of East Flanders over the following generations reflects the broader patterns of Flemish rural life.",
+    "section_eastflanders": "East Flanders, 1600–1850",
+    "eastflanders_body": "For nearly three centuries the family worked the land and mills of parishes including Bassevelde, Oostwinkel, Boekhoute, and Waarschoot. The Van Vlaenderen name appears consistently in baptism, marriage, and burial records across this network of villages.",
+    "section_charles": "Charles Louis Leaves",
+    "charles_body": "In 1881, Charles Louis Van Vlaenderen — born in Bassevelde in 1854 — emigrated to America. He married Jacqueline Vermaas, a Dutch immigrant, and built a life in the New World. It is his branch that carries the name in America today.",
+    "section_noble": "A Speculative Thread",
+    "noble_body": "A separate and unproven hypothesis traces a possible line back to Victor van Vlaenderen, a documented natural son of Louis II de Male, Count of Flanders, who died before 1442 and held the lordship of Wessegem. We present this as what it is: an intriguing possibility, not a proven connection.",
+    "noble_caveat": "Speculative — not yet supported by documentary evidence"
+  },
+  "mill": {
+    "page_title": "The Van Vlaenderensmolen",
+    "intro_heading": "A Mill in the Family",
+    "intro_body": "The mill is more than a landmark — it is the thread that connects generations. The Van Vlaenderen family were millers, and the mill at the heart of Bassevelde carries their name still.",
+    "history_heading": "History of the Mill",
+    "visit_heading": "Visiting Today",
+    "visit_body": "The mill remains standing in Bassevelde and is a touchstone for anyone tracing this family's roots."
+  },
+  "dna": {
+    "page_title": "DNA Collaboration",
+    "intro_heading": "Science Meets Family History",
+    "intro_body": "Y-DNA testing can reveal connections that paper records cannot. If you carry the Van Vlaenderen surname — or a variant — your DNA may be part of this story.",
+    "haplogroup_label": "Current haplogroup",
+    "haplogroup_value": "R-FT1573 (singleton)",
+    "what_heading": "What We're Looking For",
+    "what_body": "We are seeking male-line Van Vlaenderen descendants willing to take a Big Y-700 test. Autosomal DNA (AncestryDNA, 23andMe) is useful for close relationships but cannot confirm a shared paternal line across many generations. Y-DNA can.",
+    "privacy_heading": "Your Privacy",
+    "privacy_body": "Participation is entirely voluntary. Your results are your own. We will never share individual results without explicit permission.",
+    "cta": "Get in Touch About DNA"
+  },
+  "contact": {
+    "page_title": "Get in Touch",
+    "intro_body": "Whether you share the name, carry a family story, or simply want to know more — we would love to hear from you.",
+    "name_label": "Your name",
+    "email_label": "Email address",
+    "message_label": "Your message",
+    "submit_label": "Send message",
+    "privacy_note": "We respect your privacy. Your details will never be shared or used for any purpose other than responding to you.",
+    "success_message": "Thank you — we will be in touch."
+  },
+  "footer": {
+    "tagline": "Van Vlaenderen — from Flanders",
+    "rights": "All rights reserved",
+    "built_with": "Built with care in Belgium and America"
+  },
+  "common": {
+    "read_more": "Read more",
+    "back": "Back",
+    "speculative": "Speculative",
+    "documented": "Documented",
+    "loading": "Loading…",
+    "error": "Something went wrong"
+  },
+  "lineage": {
+    "page_title": "Family Lineage",
+    "page_intro": "The documented Van Vlaenderen line from Jeremiah (~1575) to the present — traced through East Flanders parish records, civil archives, and DNA. Click any ancestor to see the archival details.",
+    "legend_label": "Evidence status key",
+    "tree_label": "Van Vlaenderen ancestor tree",
+    "click_hint": "Click any card for details",
+    "generation": "Generation",
+    "born_prefix": "b.",
+    "records_available": "Records available",
+    "status_documented": "Fully documented",
+    "status_partial": "Partial records",
+    "status_inferred": "Inferred / approximate",
+    "status_modern": "Modern family",
+    "record_birth": "Birth",
+    "record_marriage": "Marriage",
+    "record_death": "Death",
+    "view_archive": "View in archive",
+    "detail_born": "Born",
+    "detail_parish": "Parish",
+    "detail_birth": "Birth record",
+    "detail_marriage": "Marriage record",
+    "detail_death": "Death record",
+    "detail_status": "Evidence status",
+    "source_note": "Parish and civil records sourced from",
+    "source_note_2": " and Rijksarchief Brugge. Research ongoing."
+  }
+}
