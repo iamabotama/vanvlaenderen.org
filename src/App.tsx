@@ -40,12 +40,12 @@ export default function App() {
       <Nav active={activeTab} onNav={handleNav} />
       <main style={{ position: 'relative', zIndex: 1 }}>
         {activeTab === 'home'    && <HomePage onNav={handleNav} />}
-        {activeTab === 'mill'    && <MillPage />}
+        {activeTab === 'mill'    && <MillPage onNavigate={(tab) => handleNav(tab as Tab)} />}
         {activeTab === 'name'    && <NamePage onNavigate={(tab) => handleNav(tab as Tab)} />}
         {activeTab === 'research' && researchSubpage === 'main' && <ResearchPage onNavigate={handleResearchNav} />}
         {activeTab === 'research' && researchSubpage === 'victor' && <VictorLineagePage onNavigate={handleResearchNav} />}
         {activeTab === 'research' && researchSubpage === 'louis-friese' && <LouisFrieseLineagePage onNavigate={handleResearchNav} />}
-        {activeTab === 'dna'     && <DnaPage />}
+        {activeTab === 'dna'     && <DnaPage onNavigate={(tab) => handleNav(tab as Tab)} />}
         {activeTab === 'about'   && <AboutPage onNavigate={handleNav} />}
         {activeTab === 'contact' && <ContactPage />}
       </main>
