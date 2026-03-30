@@ -4,7 +4,7 @@ import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaender
 
 
 interface ResearchPageProps {
-  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese') => void;
+  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese' | 'contact') => void;
 }
 
 export default function ResearchPage({ onNavigate }: ResearchPageProps) {

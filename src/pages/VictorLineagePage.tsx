@@ -4,7 +4,7 @@ import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaender
 import victorLineageImg from '../assets/images/heraldic/victor_lineage.png';
 
 interface VictorLineagePageProps {
-  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese') => void;
+  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese' | 'contact') => void;
 }
 
 export default function VictorLineagePage({ onNavigate }: VictorLineagePageProps) {

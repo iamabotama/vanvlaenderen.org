@@ -4,7 +4,7 @@ import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaender
 import louisFrieseLineageImg from '../assets/images/heraldic/louis_friese_lineage.png';
 
 interface LouisFrieseLineagePageProps {
-  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese') => void;
+  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese' | 'contact') => void;
 }
 
 export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineagePageProps) {

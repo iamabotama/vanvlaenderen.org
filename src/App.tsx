@@ -23,9 +23,13 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleResearchNav = (subpage: 'main' | 'victor' | 'louis-friese') => {
-    setResearchSubpage(subpage);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleResearchNav = (subpage: 'main' | 'victor' | 'louis-friese' | 'contact') => {
+    if (subpage === 'contact') {
+      handleNav('contact');
+    } else {
+      setResearchSubpage(subpage);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
