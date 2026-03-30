@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import styles from './InnerPage.module.css';
 import nameStyles from './NamePage.module.css';
 
@@ -12,6 +13,25 @@ interface NamePageProps {
 }
 
 export default function NamePage({ onNavigate }: NamePageProps) {
+  const { t } = useTranslation();
+
+  const villages = [
+    { name: t('name.village_bassevelde'), note: t('name.village_bassevelde_note') },
+    { name: t('name.village_boekhoute'), note: t('name.village_boekhoute_note') },
+    { name: t('name.village_ursel'), note: t('name.village_ursel_note') },
+    { name: t('name.village_evergem'), note: t('name.village_evergem_note') },
+    { name: t('name.village_lovendegem'), note: t('name.village_lovendegem_note') },
+    { name: t('name.village_sleidinge'), note: t('name.village_sleidinge_note') },
+    { name: t('name.village_wessegem'), note: t('name.village_wessegem_note') },
+    { name: t('name.village_vinderhoute'), note: t('name.village_vinderhoute_note') },
+  ];
+
+  const variations = [
+    'Van Vlaenderen', 'Van Vlaenderen', 'Van Vlaendereen',
+    'Vanvlaenderen', 'Van Flanderen', 'Vanflanderen',
+    'de Flandre', 'van Vlanderen', 'Van Vlaendren',
+  ];
+
   return (
     <div className={styles.page}>
 
@@ -24,13 +44,11 @@ export default function NamePage({ onNavigate }: NamePageProps) {
           <div className={styles.heroImgOverlay} />
         </div>
         <div className={styles.heroText}>
-          <div className={styles.eyebrow}>Van Vlaenderen · Origins &amp; Distribution</div>
-          <h1>The Name</h1>
+          <div className={styles.eyebrow}>{t('name.hero_eyebrow')}</div>
+          <h1>{t('name.hero_title')}</h1>
           <div className="gold-rule" />
           <p className={styles.heroLead}>
-            The surname Van Vlaenderen is traditionally understood as a locative name
-            meaning "from Flanders." But the story behind the name may be considerably
-            older — and more specific — than that.
+            {t('name.hero_lead')}
           </p>
         </div>
       </div>
@@ -38,26 +56,15 @@ export default function NamePage({ onNavigate }: NamePageProps) {
       <div className={styles.content}>
 
         <section className={styles.section}>
-          <h2>History of a Surname</h2>
+          <h2>{t('name.history_title')}</h2>
           <p>
-            Early parish and civic records show the name concentrated within a relatively
-            small area of the Meetjesland in East Flanders, particularly in Bassevelde,
-            Boekhoute, Evergem, Lovendegem, Sleidinge, Ursel, and Wessegem. The continuity
-            of the surname in this region across multiple generations invites closer
-            historical examination.
+            {t('name.history_p1')}
           </p>
           <p>
-            While the conventional toponymic explanation remains entirely plausible, the
-            geographic density and early persistence of the name — together with its relative
-            rarity outside East Flanders — invite an additional question: whether the surname
-            may at some point have developed from a more specific territorial or local
-            designation during the late medieval period, perhaps connected to the close
-            of the era of the Counts of Flanders.
+            {t('name.history_p2')}
           </p>
           <p>
-            This site gathers available documentation and invites Van Vlaenderens around
-            the world to explore the records, contribute family narratives, connect family
-            trees, and participate in the Van Vlaenderen Family Genealogy Project.
+            {t('name.history_p3')}
           </p>
         </section>
 
@@ -65,41 +72,27 @@ export default function NamePage({ onNavigate }: NamePageProps) {
         <div className={nameStyles.mapContainer}>
           <img
             src={meetjeslandMap}
-            alt="Map of the Meetjesland region in East Flanders showing Bassevelde and Ursel"
+            alt={t('name.map_alt')}
             className={nameStyles.mapImage}
           />
           <div className={nameStyles.mapCaption}>
-            The Meetjesland region of East Flanders — the villages of Bassevelde and Ursel
-            represent the documented heartland of the Van Vlaenderen surname, situated
-            between Bruges and Ghent.
+            {t('name.map_caption')}
           </div>
         </div>
 
         <div className={styles.pullQuote}>
           <blockquote>
-            "The name Van Vlaenderen is, in itself, a piece of history — a record of
-            movement, identity, and belonging written into the family's very title."
+            "{t('name.pull_quote')}"
           </blockquote>
         </div>
 
         <section className={styles.section}>
-          <h2>Where the Name Appears</h2>
+          <h2>{t('name.villages_title')}</h2>
           <p>
-            The Van Vlaenderen name appears in the historical records of several East
-            Flemish communities, concentrated in the Meetjesland region. The villages
-            where the name is most frequently documented include:
+            {t('name.villages_intro')}
           </p>
           <div className={nameStyles.villageGrid}>
-            {[
-              { name: 'Bassevelde',   note: 'Parish records from the 17th century' },
-              { name: 'Boekhoute',    note: 'Early civic and land records' },
-              { name: 'Ursel',        note: 'Land and mill ownership records' },
-              { name: 'Evergem',      note: 'Civil registration from 1796' },
-              { name: 'Lovendegem',   note: 'Municipal records, 19th century' },
-              { name: 'Sleidinge',    note: 'Parish and notarial records' },
-              { name: 'Wessegem',     note: 'Baptism and marriage registers' },
-              { name: 'Vinderhoute',  note: 'Home of the Van Vlaenderensmolen' },
-            ].map(v => (
+            {villages.map(v => (
               <div key={v.name} className={nameStyles.villageCard}>
                 <div className={nameStyles.villageName}>{v.name}</div>
                 <div className={nameStyles.villageNote}>{v.note}</div>
@@ -109,62 +102,40 @@ export default function NamePage({ onNavigate }: NamePageProps) {
         </section>
 
         <section className={styles.section}>
-          <h2>Spelling Variations</h2>
+          <h2>{t('name.variations_title')}</h2>
           <p>
-            Before standardised spelling was enforced through civil registration in the
-            Napoleonic period (after 1796 in Belgium), surnames were recorded phonetically
-            by parish priests and local officials. The Van Vlaenderen name appears in
-            historical documents in a wide variety of forms:
+            {t('name.variations_intro')}
           </p>
           <div className={nameStyles.spellingList}>
-            {[
-              'Van Vlaenderen', 'Van Vlaenderen', 'Van Vlaendereen',
-              'Vanvlaenderen', 'Van Flanderen', 'Vanflanderen',
-              'de Flandre', 'van Vlanderen', 'Van Vlaendren',
-            ].map(s => (
+            {variations.map(s => (
               <span key={s} className={nameStyles.spellingTag}>{s}</span>
             ))}
           </div>
           <p>
-            If you are researching the Van Vlaenderen family in historical archives,
-            it is worth searching for all of these variants, particularly in records
-            predating 1800.
+            {t('name.variations_footer')}
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>The Cronike Van Vlaenderen</h2>
+          <h2>{t('name.cronike_title')}</h2>
           <p>
-            One of the most important medieval chronicles of Flanders is the
-            <em> Cronike Van Vlaenderen</em> — the Chronicle of Flanders. This 15th-century
-            manuscript documents the history of the Counts of Flanders and the great
-            events of the region from its earliest recorded history. It is a remarkable
-            work of medieval historiography, richly illustrated with heraldic shields
-            and portraits of the Flemish nobility.
+            {t('name.cronike_p1')}
           </p>
 
           {/* Cronike document image */}
           <div className={nameStyles.documentContainer}>
             <img
               src={cronikeShields}
-              alt="Pages from the Cronike Van Vlaenderen showing heraldic shields labeled with Van Vlaenderen family members"
+              alt={t('name.document_alt')}
               className={nameStyles.documentImage}
             />
             <div className={nameStyles.documentCaption}>
-              Pages from the <em>Cronike Van Vlaenderen</em> — heraldic shields bearing the names
-              "Gillam Ban Claendren," "Philips Ban Claendren," "Boulben Ban Claendren," and
-              "die connestauell Ban Claendren." Direct documentary evidence of the Van Vlaenderen
-              name in medieval Flemish heraldic records.
+              {t('name.document_caption')}
             </div>
           </div>
 
           <p>
-            The chronicle is not a genealogical record of the Van Vlaenderen family,
-            but it provides essential context for understanding the world in which the
-            family lived. The Counts of Flanders — whose heraldic lion, the <em>Leeuw van
-            Vlaanderen</em>, became the symbol of the entire region — shaped the political,
-            economic, and cultural landscape that the Van Vlaenderen family inhabited
-            for generations.
+            {t('name.cronike_p2')}
           </p>
         </section>
 
@@ -173,47 +144,44 @@ export default function NamePage({ onNavigate }: NamePageProps) {
           <div className={nameStyles.manuscriptCard}>
             <img
               src={manuscriptNoblewoman}
-              alt="Countess of Flanders on horseback surrounded by heraldic shields — illuminated manuscript"
+              alt={t('name.manuscript_1_alt')}
             />
             <div className={nameStyles.manuscriptCaption}>
-              Countess of Flanders — from the <em>Cronike Van Vlaenderen</em>, surrounded by the
-              heraldic shields of the great Flemish houses
+              {t('name.manuscript_1_caption')}
             </div>
           </div>
           <div className={nameStyles.manuscriptCard}>
             <img
               src={knightPhilip}
-              alt="Philip of Alsace, Count of Flanders — illuminated manuscript illustration"
+              alt={t('name.manuscript_2_alt')}
             />
             <div className={nameStyles.manuscriptCaption}>
-              Philip of Alsace, Count of Flanders — bearing the black lion banner, from a
-              15th-century illuminated manuscript
+              {t('name.manuscript_2_caption')}
             </div>
           </div>
           <div className={nameStyles.manuscriptCard}>
             <img
               src={lionWoodcut}
-              alt="The Lion of Flanders — woodcut engraving"
+              alt={t('name.manuscript_3_alt')}
             />
             <div className={nameStyles.manuscriptCaption}>
-              The Lion of Flanders — the enduring symbol of the region the Van Vlaenderen
-              family called home for centuries
+              {t('name.manuscript_3_caption')}
             </div>
           </div>
         </div>
 
         <div className={styles.ctaBox}>
           <div className={styles.ctaText}>
-            Have you found the Van Vlaenderen name in a record, a document, or a family story?
+            {t('name.cta_text')}
           </div>
           <div className={styles.ctaNote}>
-            Every spelling variant and every location helps build a more complete picture.
+            {t('name.cta_note')}
           </div>
           <button
             className={nameStyles.shareStoryBtn}
             onClick={() => onNavigate?.('contact')}
           >
-            Share your story →
+            {t('name.cta_button')}
           </button>
         </div>
 

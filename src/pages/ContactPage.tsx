@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './InnerPage.module.css';
 import contactStyles from './ContactPage.module.css';
 import polaroidCollage from '../assets/images/polaroid-collage.jpg';
 
 export default function ContactPage() {
+  const { t } = useTranslation();
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
   const [error, setError] = useState('');
@@ -36,26 +38,52 @@ export default function ContactPage() {
         setSent(true);
         setForm({ name: '', email: '', subject: '', message: '' });
       } else {
-        setError('There was an issue sending your message. Please try again.');
+        setError(t('contact.form_error'));
       }
     } catch (err) {
-      setError('There was an issue sending your message. Please try again.');
+      setError(t('contact.form_error'));
       console.error('Form submission error:', err);
     } finally {
       setLoading(false);
     }
   };
 
+  const reasons = [
+    {
+      icon: '⚜',
+      title: t('contact.reason_name_title'),
+      text: t('contact.reason_name_text'),
+    },
+    {
+      icon: '⚜',
+      title: t('contact.reason_docs_title'),
+      text: t('contact.reason_docs_text'),
+    },
+    {
+      icon: '⚜',
+      title: t('contact.reason_dna_title'),
+      text: t('contact.reason_dna_text'),
+    },
+    {
+      icon: '⚜',
+      title: t('contact.reason_local_title'),
+      text: t('contact.reason_local_text'),
+    },
+    {
+      icon: '⚜',
+      title: t('contact.reason_question_title'),
+      text: t('contact.reason_question_text'),
+    },
+  ];
+
   return (
     <div className={styles.page}>
       <div className={styles.textHero}>
-        <div className={styles.eyebrow}>Van Vlaenderen · Connect</div>
-        <h1>Get in Touch</h1>
+        <div className={styles.eyebrow}>{t('contact.hero_eyebrow')}</div>
+        <h1>{t('contact.hero_title')}</h1>
         <div className="gold-rule" />
         <p className={styles.heroLead}>
-          Whether you carry the Van Vlaenderen name, descend from the family, or simply
-          have a question about the history — we would love to hear from you.
-          No obligation. No pressure. Just curiosity shared.
+          {t('contact.hero_lead')}
         </p>
       </div>
 
@@ -65,35 +93,9 @@ export default function ContactPage() {
 
           {/* Left: Why get in touch */}
           <div className={contactStyles.reasons}>
-            <h2>Why Reach Out?</h2>
+            <h2>{t('contact.reasons_title')}</h2>
             <div className={contactStyles.reasonsList}>
-              {[
-                {
-                  icon: '⚜',
-                  title: 'You carry the name',
-                  text: 'If your surname is Van Vlaenderen — in any spelling — we want to know your story. Every branch of the family matters.',
-                },
-                {
-                  icon: '⚜',
-                  title: 'You have documents or photographs',
-                  text: 'Old letters, birth certificates, photographs, land records — any document connected to the Van Vlaenderen family is valuable.',
-                },
-                {
-                  icon: '⚜',
-                  title: 'You have taken a DNA test',
-                  text: 'If you have tested with AncestryDNA, 23andMe, or FamilyTreeDNA and have Van Vlaenderen ancestry, your results could connect the branches.',
-                },
-                {
-                  icon: '⚜',
-                  title: 'You have local knowledge',
-                  text: 'If you live in or near the Meetjesland and know stories about the Van Vlaenderen family or the mill at Vinderhoute, please share them.',
-                },
-                {
-                  icon: '⚜',
-                  title: 'You have a question',
-                  text: 'Genealogical research can be confusing. If you have a question about the Van Vlaenderen family or how to research your own roots, ask away.',
-                },
-              ].map(r => (
+              {reasons.map(r => (
                 <div key={r.title} className={contactStyles.reasonItem}>
                   <div className={contactStyles.reasonIcon}>{r.icon}</div>
                   <div>
@@ -108,19 +110,18 @@ export default function ContactPage() {
             <div className={contactStyles.privacyNote}>
               <span className={contactStyles.privacyIcon}>⚜</span>
               <span>
-                Your personal information is never shared, sold, or published without your
-                explicit consent. This is a private family research project.
+                {t('contact.privacy_text')}
               </span>
             </div>
           </div>
 
           {/* Right: Contact form */}
           <div className={contactStyles.formWrap}>
-            <h2>Send a Message</h2>
+            <h2>{t('contact.form_title')}</h2>
             {sent ? (
               <div className={contactStyles.sentMsg}>
                 <div className={contactStyles.sentIcon}>✓</div>
-                <div>Thank you for reaching out! We have received your message and will respond as soon as possible.</div>
+                <div>{t('contact.form_success')}</div>
               </div>
             ) : (
               <form className={contactStyles.form} onSubmit={handleSubmit}>
@@ -130,42 +131,42 @@ export default function ContactPage() {
                   </div>
                 )}
                 <div className={contactStyles.field}>
-                  <label htmlFor="name">Your Name</label>
+                  <label htmlFor="name">{t('contact.form_name')}</label>
                   <input
                     id="name" name="name" type="text"
-                    placeholder="e.g. Jan Van Vlaenderen"
+                    placeholder={t('contact.form_name_placeholder')}
                     value={form.name} onChange={handleChange} required
                   />
                 </div>
                 <div className={contactStyles.field}>
-                  <label htmlFor="email">Email Address</label>
+                  <label htmlFor="email">{t('contact.form_email')}</label>
                   <input
                     id="email" name="email" type="email"
-                    placeholder="your@email.com"
+                    placeholder={t('contact.form_email_placeholder')}
                     value={form.email} onChange={handleChange} required
                   />
                 </div>
                 <div className={contactStyles.field}>
-                  <label htmlFor="subject">Subject</label>
+                  <label htmlFor="subject">{t('contact.form_subject')}</label>
                   <select id="subject" name="subject" value={form.subject} onChange={handleChange}>
-                    <option value="">Select a topic…</option>
-                    <option value="Van Vlaenderen Family Research">Family Research</option>
-                    <option value="Van Vlaenderen DNA Project">DNA Project</option>
-                    <option value="Van Vlaenderen Documents or Photographs">Documents or Photographs</option>
-                    <option value="The Van Vlaenderensmolen">The Mill</option>
-                    <option value="General Enquiry">General Enquiry</option>
+                    <option value="">{t('contact.form_subject_placeholder')}</option>
+                    <option value="Van Vlaenderen Family Research">{t('contact.form_subject_research')}</option>
+                    <option value="Van Vlaenderen DNA Project">{t('contact.form_subject_dna')}</option>
+                    <option value="Van Vlaenderen Documents or Photographs">{t('contact.form_subject_docs')}</option>
+                    <option value="The Van Vlaenderensmolen">{t('contact.form_subject_mill')}</option>
+                    <option value="General Enquiry">{t('contact.form_subject_general')}</option>
                   </select>
                 </div>
                 <div className={contactStyles.field}>
-                  <label htmlFor="message">Your Message</label>
+                  <label htmlFor="message">{t('contact.form_message')}</label>
                   <textarea
                     id="message" name="message" rows={6}
-                    placeholder="Tell us about your connection to the Van Vlaenderen family…"
+                    placeholder={t('contact.form_message_placeholder')}
                     value={form.message} onChange={handleChange} required
                   />
                 </div>
                 <button type="submit" className={contactStyles.submitBtn} disabled={loading}>
-                  {loading ? 'Sending...' : 'Send Message →'}
+                  {loading ? t('contact.form_sending') : t('contact.form_submit')}
                 </button>
               </form>
             )}
@@ -175,20 +176,18 @@ export default function ContactPage() {
 
         <div className={styles.pullQuote}>
           <blockquote>
-            "Family history is not just about the past. It is about understanding who we are
-            and where we come from — and perhaps finding others who share that journey."
+            "{t('contact.pull_quote')}"
           </blockquote>
         </div>
 
         <div className={contactStyles.collageContainer}>
           <img
             src={polaroidCollage}
-            alt="Family photographs pinned to a corkboard with clothespins"
+            alt={t('contact.collage_caption')}
             className={contactStyles.collageImage}
           />
           <div className={contactStyles.collageCaption}>
-            Every family has photographs. Every photograph tells part of the story.
-            Share yours with the Van Vlaenderen archive.
+            {t('contact.collage_caption')}
           </div>
         </div>
 
