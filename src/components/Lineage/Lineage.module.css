@@ -31,13 +31,13 @@
 .title {
   font-size: 1.75rem;
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: var(--gold);
   margin-bottom: 0.5rem;
 }
 
 .intro {
   font-size: 0.9375rem;
-  color: var(--color-text-secondary);
+  color: var(--text-primary);
   line-height: 1.65;
   max-width: 540px;
 }
@@ -51,7 +51,7 @@
   align-items: center;
   margin-bottom: 1.5rem;
   font-size: 0.75rem;
-  color: var(--color-text-secondary);
+  color: var(--text-muted);
 }
 
 .legendItem {
@@ -70,7 +70,7 @@
 .legendHint {
   margin-left: auto;
   font-size: 0.6875rem;
-  color: var(--color-text-tertiary);
+  color: var(--text-dim);
   font-style: italic;
 }
 
@@ -92,7 +92,7 @@
   width: 40px;
   flex-shrink: 0;
   font-size: 0.6875rem;
-  color: var(--color-text-tertiary);
+  color: var(--text-dim);
   padding-top: 13px;
   text-align: right;
   padding-right: 8px;
@@ -115,7 +115,7 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  background: var(--color-border-secondary);
+  background: var(--dark-border);
   transform: translateX(-50%);
 }
 
@@ -127,7 +127,7 @@
   top: 50%;
   width: 10px;
   height: 1px;
-  background: var(--color-border-secondary);
+  background: var(--dark-border);
 }
 
 /* Clip top half of line for first item */
@@ -149,10 +149,10 @@
   align-items: flex-start;
   gap: 2px;
   padding: 10px 12px;
-  border-radius: var(--border-radius-lg, 12px);
-  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: 12px;
+  border: 0.5px solid var(--dark-border);
   border-left: 3px solid var(--status-color);
-  background: var(--color-background-primary);
+  background: var(--dark-card);
   cursor: pointer;
   text-align: left;
   transition: border-color 0.15s, background 0.15s;
@@ -164,49 +164,49 @@
 }
 
 .card:hover {
-  border-color: var(--color-border-primary);
+  border-color: var(--gold-dim);
   border-left-color: var(--status-color);
-  background: var(--color-background-secondary);
+  background: var(--dark-mid);
 }
 
 .card:focus-visible {
-  outline: 2px solid var(--color-border-info);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
 }
 
 .cardActive {
-  border-color: var(--color-border-info);
+  border-color: var(--gold);
   border-left-color: var(--status-color);
-  background: var(--color-background-info);
+  background: var(--dark-mid);
 }
 
 .cardActive .cardName {
-  color: var(--color-text-primary) !important;
+  color: var(--text-primary) !important;
 }
 
 .cardActive .cardDate {
-  color: var(--color-text-secondary) !important;
+  color: var(--text-muted) !important;
 }
 
 .cardActive .cardParish {
-  color: var(--color-text-tertiary) !important;
+  color: var(--text-dim) !important;
 }
 
 .cardName {
   font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: var(--text-primary);
   line-height: 1.3;
 }
 
 .cardDate {
   font-size: 0.6875rem;
-  color: var(--color-text-secondary);
+  color: var(--text-muted);
 }
 
 .cardParish {
   font-size: 0.6875rem;
-  color: var(--color-text-tertiary);
+  color: var(--text-dim);
 }
 
 /* ─── Record badges ───────────────────────────────────────────── */
@@ -227,19 +227,19 @@
 }
 
 .badge_birth {
-  background: var(--color-background-primary);
+  background: var(--dark-card);
   color: #0F6E56;
   border-color: #0F6E56;
 }
 
 .badge_marriage {
-  background: var(--color-background-primary);
+  background: var(--dark-card);
   color: #0F6E56;
   border-color: #0F6E56;
 }
 
 .badge_death {
-  background: var(--color-background-primary);
+  background: var(--dark-card);
   color: #5F5E5A;
   border-color: #5F5E5A;
 }
@@ -247,9 +247,9 @@
 .cardActive .badge_birth,
 .cardActive .badge_marriage,
 .cardActive .badge_death {
-  background: var(--color-background-secondary) !important;
-  color: var(--color-text-primary) !important;
-  border-color: var(--color-border-secondary) !important;
+  background: var(--dark-border) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--gold-dim) !important;
 }
 
 .badgeLink {
@@ -269,9 +269,9 @@
 .detail {
   margin-top: 0.75rem;
   padding: 14px 16px;
-  border-radius: var(--border-radius-lg, 12px);
-  border: 0.5px solid var(--color-border-tertiary);
-  background: var(--color-background-primary);
+  border-radius: 12px;
+  border: 0.5px solid var(--dark-border);
+  background: var(--dark-card);
 
   /* Subtle slide-in */
   animation: slideIn 0.15s ease-out;
@@ -289,7 +289,7 @@
 .detailName {
   font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: var(--gold);
   margin-bottom: 10px;
 }
 
@@ -305,20 +305,20 @@
 
 .detailLabel {
   font-size: 0.6875rem;
-  color: var(--color-text-tertiary);
+  color: var(--text-dim);
   margin-bottom: 1px;
 }
 
 .detailValue {
-  color: var(--color-text-primary);
+  color: var(--text-primary);
 }
 
 .detailComment {
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 0.5px solid var(--color-border-tertiary);
+  border-top: 0.5px solid var(--dark-border);
   font-size: 0.75rem;
-  color: var(--color-text-secondary);
+  color: var(--text-muted);
   font-style: italic;
   line-height: 1.5;
 }
@@ -326,7 +326,7 @@
 /* ─── Archive link ─────────────────────────────────────────────── */
 
 .archiveLink {
-  color: var(--color-text-info);
+  color: var(--gold);
   text-decoration: none;
 }
 
@@ -339,9 +339,9 @@
 .sourceNote {
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 0.5px solid var(--color-border-tertiary);
+  border-top: 0.5px solid var(--dark-border);
   font-size: 0.75rem;
-  color: var(--color-text-tertiary);
+  color: var(--text-dim);
   line-height: 1.6;
 }
 
