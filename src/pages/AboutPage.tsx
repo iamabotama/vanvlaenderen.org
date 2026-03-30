@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import styles from './InnerPage.module.css';
 import aboutStyles from './AboutPage.module.css';
 import michaelConstanceCanal from '../assets/images/michael-constance-canal.jpg';
@@ -8,6 +9,7 @@ interface AboutPageProps {
 }
 
 export default function AboutPage({ onNavigate }: AboutPageProps) {
+  const { t } = useTranslation();
   return (
     <div className={styles.page}>
 
@@ -135,6 +137,22 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           </p>
         </section>
 
+        <section className={styles.section}>
+          <h2>{t('about.lineage_cta_heading')}</h2>
+          <p>
+            {t('about.lineage_cta_body')}
+          </p>
+          <button 
+            className={styles.ctaBox}
+            onClick={() => onNavigate?.('lineage')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, width: '100%', textAlign: 'center' }}
+          >
+            <div className={styles.ctaText}>
+              {t('about.lineage_cta_link')}
+            </div>
+          </button>
+        </section>
+
         <button 
           className={styles.ctaBox}
           onClick={() => onNavigate?.('contact')}
@@ -147,7 +165,6 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             We welcome collaboration and look forward to hearing from you.
           </div>
         </button>
-
       </div>
     </div>
   );

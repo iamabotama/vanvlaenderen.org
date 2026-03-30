@@ -10,7 +10,7 @@ interface NavProps {
   onNav: (tab: Tab) => void;
 }
 
-const tabIds: Tab[] = ['home', 'mill', 'name', 'research', 'dna', 'lineage', 'about', 'contact'];
+const tabIds: Tab[] = ['home', 'mill', 'name', 'research', 'dna', 'about', 'contact'];
 
 export default function Nav({ active, onNav }: NavProps) {
   const { t } = useTranslation();

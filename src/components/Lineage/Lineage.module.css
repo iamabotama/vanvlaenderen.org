@@ -180,6 +180,18 @@
   background: var(--color-background-info);
 }
 
+.cardActive .cardName {
+  color: var(--color-text-primary);
+}
+
+.cardActive .cardDate {
+  color: var(--color-text-secondary);
+}
+
+.cardActive .cardParish {
+  color: var(--color-text-tertiary);
+}
+
 .cardName {
   font-size: 0.8125rem;
   font-weight: 500;
@@ -215,21 +227,29 @@
 }
 
 .badge_birth {
-  background: var(--color-background-info);
-  color: var(--color-text-info);
-  border-color: var(--color-border-info);
+  background: var(--color-background-primary);
+  color: #0F6E56;
+  border-color: #0F6E56;
 }
 
 .badge_marriage {
-  background: var(--color-background-success);
-  color: var(--color-text-success);
-  border-color: var(--color-border-success);
+  background: var(--color-background-primary);
+  color: #0F6E56;
+  border-color: #0F6E56;
 }
 
 .badge_death {
-  background: var(--color-background-secondary);
-  color: var(--color-text-secondary);
-  border-color: var(--color-border-secondary);
+  background: var(--color-background-primary);
+  color: #5F5E5A;
+  border-color: #5F5E5A;
+}
+
+.cardActive .badge_birth,
+.cardActive .badge_marriage,
+.cardActive .badge_death {
+  background: var(--color-background-primary);
+  color: inherit;
+  border-color: currentColor;
 }
 
 .badgeLink {

@@ -6,7 +6,6 @@
     "mill": "De molen",
     "name": "De naam",
     "dna": "DNA",
-    "lineage": "Familielijn",
     "contact": "Contact",
     "language_toggle_label": "Taal"
   },
@@ -26,6 +25,9 @@
     "tools_heading": "Onze werkwijze",
     "tools_body": "Ons onderzoek steunt op Vlaamse burgerlijke en parochieregisters, archiefcollecties in het Rijksarchief Gent en het Rijksarchief Brugge, Y-DNA-analyse en AI-ondersteunde paleografie van 16de- en 17de-eeuws secretariusschrift.",
     "festival_note": "We kwamen de naam Van Vlaenderen voor het eerst tegen op een promotiebanner van het Festival van Vlaanderen — een klein, surrealistisch moment dat alles in gang zette.",
+    "lineage_cta_heading": "Verken de gedocumenteerde lijn",
+    "lineage_cta_body": "We hebben 14 generaties van de Van Vlaenderen-familie opgespoord via Oost-Vlaamse parochieregisters, burgerlijke archieven en DNA-analyse. Klik hieronder om de interactieve stamboom te zien.",
+    "lineage_cta_link": "Bekijk de familielijn",
     "contributors_heading": "Het team",
     "contributor_michael": "Michael — onderzoek, technologie en Amerikaanse familiegegevens",
     "contributor_constance": "Constance — mede-onderzoeker en bewaarder van de familieherinnering"
