@@ -181,15 +181,15 @@
 }
 
 .cardActive .cardName {
-  color: var(--color-text-primary);
+  color: var(--color-text-primary) !important;
 }
 
 .cardActive .cardDate {
-  color: var(--color-text-secondary);
+  color: var(--color-text-secondary) !important;
 }
 
 .cardActive .cardParish {
-  color: var(--color-text-tertiary);
+  color: var(--color-text-tertiary) !important;
 }
 
 .cardName {
@@ -247,9 +247,9 @@
 .cardActive .badge_birth,
 .cardActive .badge_marriage,
 .cardActive .badge_death {
-  background: var(--color-background-secondary);
-  color: var(--color-text-primary);
-  border-color: var(--color-border-secondary);
+  background: var(--color-background-secondary) !important;
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-border-secondary) !important;
 }
 
 .badgeLink {
