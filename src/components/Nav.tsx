@@ -22,7 +22,7 @@ export default function Nav({ active, onNav }: NavProps) {
       </button>
       <ul className={styles.tabs}>
         {tabIds.map(tabId => {
-          const labelKey = tabId === 'dna' ? 'nav.dna' : 
+          const labelKey = tabId === 'dna' ? 'nav.dna' :
                           tabId === 'research' ? 'nav.history' :
                           `nav.${tabId}`;
           return (

@@ -2,7 +2,7 @@
   "nav": {
     "home": "Home",
     "about": "Over dit project",
-    "history": "Onze geschiedenis",
+    "history": "Onderzoek",
     "mill": "De molen",
     "name": "De naam",
     "dna": "DNA",
@@ -11,7 +11,8 @@
   },
   "home": {
     "hero_title": "Van Vlaenderen",
-    "hero_subtitle": "Van Vlaanderen, naar de wereld",
+    "hero_subtitle_narrative": "Van Vlaanderen, naar de wereld",
+    "hero_subtitle_locations": "Meetjesland · Gent · Oost-Vlaanderen"
     "hero_body": "Een familienaam die 'uit Vlaanderen' betekent — voor Belgen vanzelfsprekend, voor de Amerikanen die hem dragen stilletjes betekenisvol. Dit is het verhaal van hoe een molenaarsfamilie uit Oost-Vlaanderen deel werd van het Amerikaanse verhaal.",
     "cta_history": "Ontdek onze geschiedenis",
     "cta_dna": "Doe mee aan het DNA-project",

@@ -62,7 +62,8 @@ export default function HomePage({ onNav }: HomePageProps) {
           <img src={lionShield} alt="Lion of Flanders" className={styles.shield} />
           <h1 className={styles.title}>Van Vlaenderen</h1>
           <div className={styles.subtitle}>
-            {t('home.hero_subtitle')} · Meetjesland · Ghent · East Flanders
+            <div className={styles.heroSubtitleNarrative}>{t('home.hero_subtitle_narrative')}</div>
+            <div className={styles.heroSubtitleLocations}>· {t('home.hero_subtitle_locations')}</div>
           </div>
           <div className={styles.heroScrollHint}>↓</div>
         </div>

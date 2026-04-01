@@ -2,7 +2,7 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "history": "Our History",
+    "history": "Research",
     "mill": "The Mill",
     "name": "The Name",
     "dna": "DNA",
@@ -11,7 +11,8 @@
     "language_toggle_label": "Language"
   },
   "home": {
-    "hero_subtitle": "From Flanders, to the World",
+    "hero_subtitle_narrative": "From Flanders, to the World",
+    "hero_subtitle_locations": "Meetjesland · Ghent · East Flanders",
     "mystery_question": "A surname. A region. An open question.",
     "mystery_intro_p1": "This site is a genealogical research project dedicated to the surname",
     "mystery_intro_p1_cont": "— a name borne by families who lived for centuries in the villages of the Meetjesland in East Flanders: Ursel, Bassevelde, Boekhoute, Kaprijke, Evergem, and their neighbours.",
