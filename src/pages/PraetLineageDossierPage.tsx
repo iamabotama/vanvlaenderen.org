@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+import React from 'react';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
@@ -8,8 +8,6 @@ interface PraetLineageDossierPageProps {
 }
 
 export default function PraetLineageDossierPage({ onNavigate }: PraetLineageDossierPageProps) {
-  const { t } = useTranslation();
-
   const lineageData = [
     { gen: 1, name: 'Louis Friese van Vlaenderen (d. 28 Sep 1396)', role: 'Bastard of Flanders; Lord of Praet & Woestine', spouse: '1) Unknown (La Woestine) 2) Maria van Ghistelles (after 25 Sep 1373)', level: 'Directly attested', levelClass: researchStyles.levelAttested },
     { gen: 2, name: 'Johan I van Vlaenderen (c.1396 - c.1440)', role: 'Lord of Praet; Knighted 1425 by Duke of Burgundy', spouse: 'Johanna van Reygersvliet (m. 1420)', level: 'Strongly corroborated', levelClass: researchStyles.levelCorroborated },

@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+import React from 'react';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
@@ -8,8 +8,6 @@ interface PraetDossierPageProps {
 }
 
 export default function PraetDossierPage({ onNavigate }: PraetDossierPageProps) {
-  const { t } = useTranslation();
-
   return (
     <div className={styles.page}>
       <div className={styles.heroStrip}>
