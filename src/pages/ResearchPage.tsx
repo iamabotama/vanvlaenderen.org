@@ -83,32 +83,40 @@ export default function ResearchPage({ onNavigate }: ResearchPageProps) {
         </section>
 
         <div className={researchStyles.branchCards}>
-          <div className={researchStyles.branchCard}>
+          <div
+            className={researchStyles.branchCard}
+            role="button"
+            tabIndex={0}
+            style={{ cursor: 'pointer' }}
+            onClick={() => onNavigate?.('victor')}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('victor'); } }}
+            aria-label={t('research.branch_victor_title')}
+          >
             <h3>{t('research.branch_victor_title')}</h3>
             <p>
               {t('research.branch_victor_text')}
             </p>
-            <button 
-              onClick={() => onNavigate?.('victor')} 
-              className={researchStyles.branchLink}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-            >
+            <span className={researchStyles.branchLink} aria-hidden="true">
               {t('research.branch_victor_link')}
-            </button>
+            </span>
           </div>
 
-          <div className={researchStyles.branchCard}>
+          <div
+            className={researchStyles.branchCard}
+            role="button"
+            tabIndex={0}
+            style={{ cursor: 'pointer' }}
+            onClick={() => onNavigate?.('louis-friese')}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('louis-friese'); } }}
+            aria-label={t('research.branch_louis_title')}
+          >
             <h3>{t('research.branch_louis_title')}</h3>
             <p>
               {t('research.branch_louis_text')}
             </p>
-            <button 
-              onClick={() => onNavigate?.('louis-friese')} 
-              className={researchStyles.branchLink}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-            >
+            <span className={researchStyles.branchLink} aria-hidden="true">
               {t('research.branch_louis_link')}
-            </button>
+            </span>
           </div>
         </div>
 
@@ -116,27 +124,35 @@ export default function ResearchPage({ onNavigate }: ResearchPageProps) {
           <h2>Archival Dossiers</h2>
           <p>For researchers seeking the underlying documentary evidence, we maintain detailed archival dossiers for each branch.</p>
           <div className={researchStyles.branchCards}>
-            <div className={researchStyles.branchCard} style={{ borderTop: '3px solid var(--gold)' }}>
+            <div
+              className={researchStyles.branchCard}
+              role="button"
+              tabIndex={0}
+              style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
+              onClick={() => onNavigate?.('victor-dossier' as any)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('victor-dossier' as any); } }}
+              aria-label="Victor van Vlaenderen Dossier"
+            >
               <h3>Victor van Vlaenderen Dossier</h3>
               <p>Direct charter summaries, territorial records, and military service documentation.</p>
-              <button 
-                onClick={() => onNavigate?.('victor-dossier' as any)} 
-                className={researchStyles.branchLink}
-                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-              >
+              <span className={researchStyles.branchLink} aria-hidden="true">
                 View Archival Evidence →
-              </button>
+              </span>
             </div>
-            <div className={researchStyles.branchCard} style={{ borderTop: '3px solid var(--gold)' }}>
+            <div
+              className={researchStyles.branchCard}
+              role="button"
+              tabIndex={0}
+              style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
+              onClick={() => onNavigate?.('praet-dossier' as any)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('praet-dossier' as any); } }}
+              aria-label="Louis Friese &amp; Praet Dossier"
+            >
               <h3>Louis Friese & Praet Dossier</h3>
               <p>Primary source extracts and territorial history of the House of Flanders-Praet.</p>
-              <button 
-                onClick={() => onNavigate?.('praet-dossier' as any)} 
-                className={researchStyles.branchLink}
-                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-              >
+              <span className={researchStyles.branchLink} aria-hidden="true">
                 View Archival Evidence →
-              </button>
+              </span>
             </div>
           </div>
         </section>

@@ -11,12 +11,7 @@
   border-left: 3px solid var(--gold);
   padding: 1rem 1.25rem;
   border-radius: 2px;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.villageCard:hover {
-  border-color: rgba(232, 184, 48, 0.5);
-  box-shadow: 0 4px 16px rgba(232, 184, 48, 0.1);
+  cursor: default;
 }
 
 .villageName {
@@ -49,12 +44,7 @@
   border: 1px solid rgba(232, 184, 48, 0.25);
   padding: 0.3rem 0.85rem;
   border-radius: 2px;
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.spellingTag:hover {
-  background: rgba(232, 184, 48, 0.14);
-  border-color: rgba(232, 184, 48, 0.5);
+  cursor: default;
 }
 
 .shareStoryBtn {
@@ -160,6 +150,7 @@
   overflow: hidden;
   border: 1px solid rgba(232, 184, 48, 0.22);
   background: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
   transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
@@ -167,6 +158,11 @@
   border-color: rgba(232, 184, 48, 0.55);
   box-shadow: 0 8px 28px rgba(232, 184, 48, 0.14);
   transform: translateY(-3px);
+}
+
+.manuscriptCard:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 
 .manuscriptCard img {
@@ -191,4 +187,61 @@
   font-style: italic;
   line-height: 1.5;
   border-top: 1px solid rgba(232, 184, 48, 0.14);
+}
+
+/* ─── Lightbox overlay ──────────────────────────────────────── */
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightboxImage {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+}
+
+.lightboxCaption {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-style: italic;
+  text-align: center;
+  max-width: 80vw;
+}
+
+.lightboxClose {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.lightboxClose:hover {
+  color: white;
 }

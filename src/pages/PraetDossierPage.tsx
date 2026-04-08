@@ -112,11 +112,11 @@ export default function PraetDossierPage({ onNavigate }: PraetDossierPageProps) 
           <h3>Notes & Bibliography</h3>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>1.</span>
-            Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">fmg.ac/Projects/MedLands/FLANDERS, HAINAUT.htm</a>
+            Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>2.</span>
-            Wikipedia. Louis II, Count of Flanders. <a href="https://en.wikipedia.org/wiki/Louis_II,_Count_of_Flanders" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">en.wikipedia.org/wiki/Louis_II,_Count_of_Flanders</a>
+            Wikipedia. Louis II, Count of Flanders. <a href="https://en.wikipedia.org/wiki/Louis_II,_Count_of_Flanders" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Wikipedia, Louis II, Count of Flanders</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>3.</span>
@@ -128,15 +128,15 @@ export default function PraetDossierPage({ onNavigate }: PraetDossierPageProps) 
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>5.</span>
-            Pattou, Etienne. Batards de Flandres. 2014. <a href="https://docplayer.fr/21492316-Batards-de-flandres.html" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">docplayer.fr/21492316-Batards-de-flandres.html</a>
+            Pattou, Etienne. Batards de Flandres. 2014. <a href="https://docplayer.fr/21492316-Batards-de-flandres.html" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Pattou, Batards de Flandres (2014)</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>6.</span>
-            Lauwens, Patrik. Verhalen uit de genealogie Van Praet. September 2010. <a href="https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">laurentii.be/Verhalen uit de genealogie Van Praet.pdf</a>
+            Lauwens, Patrik. Verhalen uit de genealogie Van Praet. September 2010. <a href="https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Lauwens, Verhalen uit de genealogie Van Praet (2010)</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>7.</span>
-            GenealogieOnline. West-Europese Adel: Johan I van Vlaanderen Heer van Praet. <a href="https://www.genealogieonline.nl/en/west-europese-adel/I75517.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">genealogieonline.nl/en/west-europese-adel/I75517.php</a>
+            GenealogieOnline. West-Europese Adel: Johan I van Vlaanderen Heer van Praet. <a href="https://www.genealogieonline.nl/en/west-europese-adel/I75517.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">GenealogieOnline, Johan I van Vlaanderen, Heer van Praet</a>
           </div>
         </section>
 

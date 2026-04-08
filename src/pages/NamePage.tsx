@@ -1,3 +1,4 @@
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './InnerPage.module.css';
 import nameStyles from './NamePage.module.css';
@@ -14,6 +15,19 @@ interface NamePageProps {
 
 export default function NamePage({ onNavigate }: NamePageProps) {
   const { t } = useTranslation();
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string; caption: string } | null>(null);
+
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+
+  // Close lightbox on Escape key
+  useEffect(() => {
+    if (!lightbox) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [lightbox, closeLightbox]);
 
   const villages = [
     { name: t('name.village_bassevelde'), note: t('name.village_bassevelde_note') },
@@ -30,6 +44,12 @@ export default function NamePage({ onNavigate }: NamePageProps) {
     'Van Vlaenderen', 'Van Vlaenderen', 'Van Vlaendereen',
     'Vanvlaenderen', 'Van Flanderen', 'Vanflanderen',
     'de Flandre', 'van Vlanderen', 'Van Vlaendren',
+  ];
+
+  const manuscripts = [
+    { src: manuscriptNoblewoman, alt: t('name.manuscript_1_alt'), caption: t('name.manuscript_1_caption') },
+    { src: knightPhilip, alt: t('name.manuscript_2_alt'), caption: t('name.manuscript_2_caption') },
+    { src: lionWoodcut, alt: t('name.manuscript_3_alt'), caption: t('name.manuscript_3_caption') },
   ];
 
   return (
@@ -139,35 +159,22 @@ export default function NamePage({ onNavigate }: NamePageProps) {
           </p>
         </section>
 
-        {/* Manuscript illustrations row */}
+        {/* Manuscript illustrations row — clickable, opens lightbox */}
         <div className={nameStyles.manuscriptRow}>
-          <div className={nameStyles.manuscriptCard}>
-            <img
-              src={manuscriptNoblewoman}
-              alt={t('name.manuscript_1_alt')}
-            />
-            <div className={nameStyles.manuscriptCaption}>
-              {t('name.manuscript_1_caption')}
+          {manuscripts.map((m, i) => (
+            <div
+              key={i}
+              className={nameStyles.manuscriptCard}
+              role="button"
+              tabIndex={0}
+              aria-label={`${m.caption} — click to enlarge`}
+              onClick={() => setLightbox(m)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setLightbox(m); } }}
+            >
+              <img src={m.src} alt={m.alt} />
+              <div className={nameStyles.manuscriptCaption}>{m.caption}</div>
             </div>
-          </div>
-          <div className={nameStyles.manuscriptCard}>
-            <img
-              src={knightPhilip}
-              alt={t('name.manuscript_2_alt')}
-            />
-            <div className={nameStyles.manuscriptCaption}>
-              {t('name.manuscript_2_caption')}
-            </div>
-          </div>
-          <div className={nameStyles.manuscriptCard}>
-            <img
-              src={lionWoodcut}
-              alt={t('name.manuscript_3_alt')}
-            />
-            <div className={nameStyles.manuscriptCaption}>
-              {t('name.manuscript_3_caption')}
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className={styles.ctaBox}>
@@ -186,6 +193,32 @@ export default function NamePage({ onNavigate }: NamePageProps) {
         </div>
 
       </div>
+
+      {/* ── Lightbox overlay ──────────────────────────────────────── */}
+      {lightbox && (
+        <div
+          className={nameStyles.lightboxOverlay}
+          onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image lightbox"
+        >
+          <button
+            className={nameStyles.lightboxClose}
+            onClick={closeLightbox}
+            aria-label="Close lightbox"
+          >
+            &times;
+          </button>
+          <img
+            src={lightbox.src}
+            alt={lightbox.alt}
+            className={nameStyles.lightboxImage}
+            onClick={(e) => e.stopPropagation()}
+          />
+          <div className={nameStyles.lightboxCaption}>{lightbox.caption}</div>
+        </div>
+      )}
     </div>
   );
 }

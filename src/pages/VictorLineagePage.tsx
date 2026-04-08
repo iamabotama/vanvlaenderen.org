@@ -94,16 +94,20 @@ export default function VictorLineagePage({ onNavigate }: VictorLineagePageProps
         </section>
 
         <section className={styles.section} style={{ marginTop: '3rem', borderTop: '1px solid rgba(232, 184, 48, 0.2)', paddingTop: '2rem' }}>
-          <div className={researchStyles.branchCard} style={{ borderTop: '3px solid var(--gold)', maxWidth: '100%' }}>
+          <div
+            className={researchStyles.branchCard}
+            role="button"
+            tabIndex={0}
+            style={{ borderTop: '3px solid var(--gold)', maxWidth: '100%', cursor: 'pointer' }}
+            onClick={() => onNavigate?.('victor-dossier' as any)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('victor-dossier' as any); } }}
+            aria-label="Victor van Vlaenderen: Archival Dossier"
+          >
             <h3>Victor van Vlaenderen: Archival Dossier</h3>
             <p>For researchers seeking the underlying documentary evidence, we maintain a detailed archival dossier including direct charter summaries, territorial records, and military service documentation.</p>
-            <button 
-              onClick={() => onNavigate?.('victor-dossier' as any)} 
-              className={researchStyles.branchLink}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-            >
+            <span className={researchStyles.branchLink} aria-hidden="true">
               View Archival Evidence →
-            </button>
+            </span>
           </div>
         </section>
 
@@ -117,24 +121,24 @@ export default function VictorLineagePage({ onNavigate }: VictorLineagePageProps
           <h3>{t('victor.sources_title')}</h3>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>1.</span>
-            {t('victor.source_1')} 
-            <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> fmg.ac/Projects/MedLands/FLANDERS, HAINAUT.htm</a>
+            {t('victor.source_1')}{' '}
+            <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>2.</span>
-            {t('victor.source_2')} 
-            <a href="https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> inventaris.onroerenderfgoed.be/erfgoedobjecten/33384</a>
+            {t('victor.source_2')}{' '}
+            <a href="https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Inventaris Onroerend Erfgoed, Erfgoedobject 33384</a>
           </div>
 
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>4.</span>
-            {t('victor.source_4')} 
-            <a href="https://www.dbnl.org/tekst/_vla001195401_01/_vla001195401_01_0055.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> dbnl.org/tekst/_vla001195401_01/_vla001195401_01_0055.php</a>
+            {t('victor.source_4')}{' '}
+            <a href="https://www.dbnl.org/tekst/_vla001195401_01/_vla001195401_01_0055.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DBNL, Vlaamse Stam (1954)</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>5.</span>
-            {t('victor.source_5')} 
-            <a href="https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf</a>
+            {t('victor.source_5')}{' '}
+            <a href="https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library, Thesis RUG01-001786522 (2012)</a>
           </div>
         </section>
 

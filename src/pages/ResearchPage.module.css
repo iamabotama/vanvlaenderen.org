@@ -213,10 +213,12 @@
   flex-direction: column;
 }
 
-.branchCard:hover {
+.branchCard:hover,
+.branchCard:focus-visible {
   border-color: var(--gold);
   background: rgba(232, 184, 48, 0.05);
   transform: translateY(-5px);
+  outline: none;
 }
 
 .branchCard h3 {

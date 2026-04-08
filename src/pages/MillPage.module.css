@@ -14,13 +14,7 @@
   overflow: hidden;
   border: 1px solid rgba(232, 184, 48, 0.28);
   background: rgba(0, 0, 0, 0.35);
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-}
-
-.millPhotoCard:hover {
-  border-color: rgba(232, 184, 48, 0.6);
-  box-shadow: 0 8px 28px rgba(232, 184, 48, 0.14);
-  transform: translateY(-3px);
+  cursor: default;
 }
 
 .millPhotoCard img {
@@ -29,12 +23,6 @@
   object-fit: cover;
   display: block;
   filter: sepia(10%) brightness(0.9);
-  transition: filter 0.4s, transform 0.4s;
-}
-
-.millPhotoCard:hover img {
-  filter: sepia(0%) brightness(1.0);
-  transform: scale(1.03);
 }
 
 .millPhotoCaption {
@@ -108,12 +96,7 @@
   border-radius: 3px;
   min-width: 170px;
   position: relative;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.lineageNode:hover {
-  border-color: rgba(232, 184, 48, 0.6);
-  box-shadow: 0 4px 16px rgba(232, 184, 48, 0.12);
+  cursor: default;
 }
 
 .lineageGeneration {

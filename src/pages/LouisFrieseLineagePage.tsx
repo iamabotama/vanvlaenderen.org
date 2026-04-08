@@ -90,27 +90,35 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
 
         <section className={styles.section} style={{ marginTop: '3rem', borderTop: '1px solid rgba(232, 184, 48, 0.2)', paddingTop: '2rem' }}>
           <div className={researchStyles.branchCards}>
-            <div className={researchStyles.branchCard} style={{ borderTop: '3px solid var(--gold)' }}>
+            <div
+              className={researchStyles.branchCard}
+              role="button"
+              tabIndex={0}
+              style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
+              onClick={() => onNavigate?.('praet-dossier' as any)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('praet-dossier' as any); } }}
+              aria-label="Louis Friese: Archival Dossier"
+            >
               <h3>Louis Friese: Archival Dossier</h3>
               <p>Primary source extracts and territorial history of the House of Flanders-Praet.</p>
-              <button 
-                onClick={() => onNavigate?.('praet-dossier' as any)} 
-                className={researchStyles.branchLink}
-                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-              >
+              <span className={researchStyles.branchLink} aria-hidden="true">
                 View Archival Evidence →
-              </button>
+              </span>
             </div>
-            <div className={researchStyles.branchCard} style={{ borderTop: '3px solid var(--gold)' }}>
+            <div
+              className={researchStyles.branchCard}
+              role="button"
+              tabIndex={0}
+              style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
+              onClick={() => onNavigate?.('praet-lineage-dossier' as any)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('praet-lineage-dossier' as any); } }}
+              aria-label="House of Praet: Lineage Dossier"
+            >
               <h3>House of Praet: Lineage Dossier</h3>
               <p>Documented generations from Louis Friese to the extinction of the legitimate male line.</p>
-              <button 
-                onClick={() => onNavigate?.('praet-lineage-dossier' as any)} 
-                className={researchStyles.branchLink}
-                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-              >
+              <span className={researchStyles.branchLink} aria-hidden="true">
                 View Lineage Evidence →
-              </button>
+              </span>
             </div>
           </div>
         </section>
@@ -119,33 +127,33 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
           <h3>{t('louis_friese.sources_title')}</h3>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>1.</span>
-            {t('louis_friese.source_1')} 
-            <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> fmg.ac/Projects/MedLands/FLANDERS, HAINAUT.htm</a>
+            {t('louis_friese.source_1')}{' '}
+            <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>2.</span>
-            {t('louis_friese.source_2')} 
-            <a href="https://fmg.ac/Projects/MedLands/FLEMISH%20NOBILITY.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> fmg.ac/Projects/MedLands/FLEMISH%20NOBILITY.htm</a>
+            {t('louis_friese.source_2')}{' '}
+            <a href="https://fmg.ac/Projects/MedLands/FLEMISH%20NOBILITY.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flemish Nobility</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>3.</span>
-            {t('louis_friese.source_3')} 
-            <a href="https://wappenwiki.org/index.php/House_of_Flanders-Praet" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> wappenwiki.org/index.php/House_of_Flanders-Praet</a>
+            {t('louis_friese.source_3')}{' '}
+            <a href="https://wappenwiki.org/index.php/House_of_Flanders-Praet" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Wappenwiki, House of Flanders-Praet</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>4.</span>
-            {t('louis_friese.source_4')} 
-            <a href="https://www.genealogieonline.nl/west-europese-adel/I75515.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> genealogieonline.nl/west-europese-adel/I75515.php</a>
+            {t('louis_friese.source_4')}{' '}
+            <a href="https://www.genealogieonline.nl/west-europese-adel/I75515.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">GenealogieOnline, West-Europese Adel: Louis le Friese</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>5.</span>
-            {t('louis_friese.source_5')} 
-            <a href="https://www.genealogieonline.nl/en/west-europese-adel/I194314.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> genealogieonline.nl/en/west-europese-adel/I194314.php</a>
+            {t('louis_friese.source_5')}{' '}
+            <a href="https://www.genealogieonline.nl/en/west-europese-adel/I194314.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">GenealogieOnline, West-Europese Adel: Johan I van Vlaanderen</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>6.</span>
-            {t('louis_friese.source_6')} 
-            <a href="https://www.dbnl.org/tekst/eras001corr10_01/eras001corr10_01_0112.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> dbnl.org/tekst/eras001corr10_01/eras001corr10_01_0112.php</a>
+            {t('louis_friese.source_6')}{' '}
+            <a href="https://www.dbnl.org/tekst/eras001corr10_01/eras001corr10_01_0112.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DBNL, Erasmus Correspondentie, Vol. 10</a>
           </div>
 
         </section>
