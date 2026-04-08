@@ -83,6 +83,30 @@ export default function VictorLineagePage({ onNavigate }: VictorLineagePageProps
           </p>
         </section>
 
+        <section className={styles.section}>
+          <h2>{t('victor.gap_title')} <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`}>{t('victor.badge_hypothesis')}</span></h2>
+          <p>{t('victor.gap_p1')}</p>
+          <p>{t('victor.gap_p2')}</p>
+          <p>{t('victor.gap_p3')}</p>
+          <p>{t('victor.gap_p4')}</p>
+          <p>{t('victor.gap_p5')}</p>
+          <p>{t('victor.gap_p6')}</p>
+        </section>
+
+        <section className={styles.section} style={{ marginTop: '3rem', borderTop: '1px solid rgba(232, 184, 48, 0.2)', paddingTop: '2rem' }}>
+          <div className={researchStyles.branchCard} style={{ borderTop: '3px solid var(--gold)', maxWidth: '100%' }}>
+            <h3>Victor van Vlaenderen: Archival Dossier</h3>
+            <p>For researchers seeking the underlying documentary evidence, we maintain a detailed archival dossier including direct charter summaries, territorial records, and military service documentation.</p>
+            <button 
+              onClick={() => onNavigate?.('victor-dossier' as any)} 
+              className={researchStyles.branchLink}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+            >
+              View Archival Evidence →
+            </button>
+          </div>
+        </section>
+
         <div className={styles.pullQuote}>
           <blockquote>
             "{t('victor.pull_quote')}"
@@ -101,11 +125,7 @@ export default function VictorLineagePage({ onNavigate }: VictorLineagePageProps
             {t('victor.source_2')} 
             <a href="https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> inventaris.onroerenderfgoed.be/erfgoedobjecten/33384</a>
           </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>3.</span>
-            {t('victor.source_3')} 
-            <a href="https://mijnplatteland.com/meetjesland/ursel/" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> mijnplatteland.com/meetjesland/ursel/</a>
-          </div>
+
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>4.</span>
             {t('victor.source_4')} 

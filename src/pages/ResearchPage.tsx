@@ -112,6 +112,35 @@ export default function ResearchPage({ onNavigate }: ResearchPageProps) {
           </div>
         </div>
 
+        <section className={styles.section} style={{ marginTop: '4rem' }}>
+          <h2>Archival Dossiers</h2>
+          <p>For researchers seeking the underlying documentary evidence, we maintain detailed archival dossiers for each branch.</p>
+          <div className={researchStyles.branchCards}>
+            <div className={researchStyles.branchCard} style={{ borderTop: '3px solid var(--gold)' }}>
+              <h3>Victor van Vlaenderen Dossier</h3>
+              <p>Direct charter summaries, territorial records, and military service documentation.</p>
+              <button 
+                onClick={() => onNavigate?.('victor-dossier' as any)} 
+                className={researchStyles.branchLink}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+              >
+                View Archival Evidence →
+              </button>
+            </div>
+            <div className={researchStyles.branchCard} style={{ borderTop: '3px solid var(--gold)' }}>
+              <h3>Louis Friese & Praet Dossier</h3>
+              <p>Primary source extracts and territorial history of the House of Flanders-Praet.</p>
+              <button 
+                onClick={() => onNavigate?.('praet-dossier' as any)} 
+                className={researchStyles.branchLink}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+              >
+                View Archival Evidence →
+              </button>
+            </div>
+          </div>
+        </section>
+
         <section className={styles.section}>
           <h2>{t('research.conclusion_title')}</h2>
           <p>

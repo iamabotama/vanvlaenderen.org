@@ -88,6 +88,33 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
           </ul>
         </section>
 
+        <section className={styles.section} style={{ marginTop: '3rem', borderTop: '1px solid rgba(232, 184, 48, 0.2)', paddingTop: '2rem' }}>
+          <div className={researchStyles.branchCards}>
+            <div className={researchStyles.branchCard} style={{ borderTop: '3px solid var(--gold)' }}>
+              <h3>Louis Friese: Archival Dossier</h3>
+              <p>Primary source extracts and territorial history of the House of Flanders-Praet.</p>
+              <button 
+                onClick={() => onNavigate?.('praet-dossier' as any)} 
+                className={researchStyles.branchLink}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+              >
+                View Archival Evidence →
+              </button>
+            </div>
+            <div className={researchStyles.branchCard} style={{ borderTop: '3px solid var(--gold)' }}>
+              <h3>House of Praet: Lineage Dossier</h3>
+              <p>Documented generations from Louis Friese to the extinction of the legitimate male line.</p>
+              <button 
+                onClick={() => onNavigate?.('praet-lineage-dossier' as any)} 
+                className={researchStyles.branchLink}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+              >
+                View Lineage Evidence →
+              </button>
+            </div>
+          </div>
+        </section>
+
         <section className={researchStyles.referenceList}>
           <h3>{t('louis_friese.sources_title')}</h3>
           <div className={researchStyles.refItem}>
@@ -120,11 +147,7 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
             {t('louis_friese.source_6')} 
             <a href="https://www.dbnl.org/tekst/eras001corr10_01/eras001corr10_01_0112.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> dbnl.org/tekst/eras001corr10_01/eras001corr10_01_0112.php</a>
           </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>7.</span>
-            {t('louis_friese.source_7')} 
-            <a href="https://journals.co.za/doi/abs/10.10520/ejc-familia-v50-n4-a4" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer"> journals.co.za/doi/abs/10.10520/ejc-familia-v50-n4-a4</a>
-          </div>
+
         </section>
 
         <div className={styles.ctaBox} onClick={() => onNavigate?.('contact')} style={{ cursor: 'pointer' }}>
