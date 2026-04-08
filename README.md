@@ -106,3 +106,4 @@ The `gh-pages` branch is configured to serve the live website at [https://vanvla
 ### 4. Rollbacks and Version Control
 
 This workflow leverages Git for robust version control. Every change is tracked, allowing for easy rollbacks if necessary. If an issue is discovered on the live site, the last commit on the `main` branch can be reverted, and the GitHub Actions workflow will automatically redeploy the previous stable version.
+ 
