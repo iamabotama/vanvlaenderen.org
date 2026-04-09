@@ -47,7 +47,6 @@ export default function ResearchPage({ onNavigate }: ResearchPageProps) {
 
         {/* ── Overview Diagram ────────────────────────────────────── */}
         <div className={researchStyles.treeContainer}>
-          <div className={researchStyles.treeTitle}>Louis II de Male &mdash; The Two Surname-Bearing Bastard Lines</div>
           <OverviewDiagram />
         </div>
 

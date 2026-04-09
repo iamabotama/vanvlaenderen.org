@@ -77,12 +77,9 @@ function mk(tag: string, attrs: Record<string, string | number>): SVGElement {
 }
 
 function measureTagText(text: string): number {
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
-  // Use the actual rendered font size (12px) with generous padding (32px) to prevent overflow
-  if (!ctx) return text.length * 8.5 + 32;
-  ctx.font = '600 12px Cinzel, serif';
-  return Math.ceil(ctx.measureText(text).width) + 32;
+  // Cinzel uppercase at 11px with letter-spacing 0.05em ≈ 8.5px per char.
+  // Generous estimate to guarantee no overflow across browsers.
+  return text.length * 9 + 40;
 }
 
 function renderNode(
@@ -94,9 +91,9 @@ function renderNode(
   onLeave: () => void,
   onClick: (data: NodeConfig, e: MouseEvent) => void,
 ): NodeRect {
-  const W = cfg.w || 180; // Bumped default width slightly
+  const W = cfg.w || 180;
   const tagWidth = cfg.tag ? Math.max(measureTagText(cfg.tag), 150) : 0;
-  const H = cfg.h || (cfg.tag ? 86 : cfg.dates ? 68 : 58); // Bumped default heights
+  const H = cfg.h || (cfg.tag ? 92 : cfg.dates ? 68 : 58);
   const g = mk('g', { 'data-n': '1' }) as SVGGElement;
   g.style.cursor = 'pointer';
   const color = cfg.color;
@@ -110,8 +107,7 @@ function renderNode(
   const lh = 18; // Bumped line height
   const hasDates = !!cfg.dates;
   const hasTag = !!cfg.tag;
-  // Extra 10px top padding so tag doesn't crowd the bottom of the box
-  const tagSlot = hasTag ? 28 : 0; // 10px gap + 18px pill
+  const tagSlot = hasTag ? 30 : 0; // 12px gap + 18px pill
   const contentH = lines.length * lh + (hasDates ? 16 : 0) + tagSlot;
   let ty = y + (H - contentH) / 2 + lh;
 
@@ -131,10 +127,9 @@ function renderNode(
   }
   if (hasTag) {
     const pillW = tagWidth;
-    // 10px gap below dates/name, then 18px pill
-    // ty is now pointing at the start of the tag slot (after the 10px gap)
-    g.appendChild(mk('rect', { x: x + W / 2 - pillW / 2, y: ty + 10, width: pillW, height: 18, rx: 3, fill: color + '25' }));
-    const tt = mk('text', { x: x + W / 2, y: ty + 23, 'text-anchor': 'middle', fill: color, 'font-family': 'Cinzel,serif', 'font-size': '12', 'font-weight': '600', 'letter-spacing': '0.07' });
+    // 12px gap below dates/name, then 18px pill
+    g.appendChild(mk('rect', { x: x + W / 2 - pillW / 2, y: ty + 12, width: pillW, height: 18, rx: 3, fill: color + '25' }));
+    const tt = mk('text', { x: x + W / 2, y: ty + 25, 'text-anchor': 'middle', fill: color, 'font-family': 'Cinzel,serif', 'font-size': '11', 'font-weight': '600', 'letter-spacing': '0.05' });
     tt.textContent = cfg.tag!;
     g.appendChild(tt);
   }
