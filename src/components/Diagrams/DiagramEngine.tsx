@@ -54,7 +54,7 @@ export const C = {
   blue: '#60a5fa',
   text: '#f0e8d0',
   sub: '#9aa0b0',
-  muted: '#8a90a0',
+  muted: '#b0b8c8',   // improved contrast (was #8a90a0)
   surf: '#1c2030',
 };
 
@@ -79,9 +79,9 @@ function mk(tag: string, attrs: Record<string, string | number>): SVGElement {
 function measureTagText(text: string): number {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  if (!ctx) return text.length * 6 + 20;
+  if (!ctx) return text.length * 6 + 24;
   ctx.font = '600 10px Cinzel, serif';
-  return ctx.measureText(text).width + 20;
+  return ctx.measureText(text).width + 24;
 }
 
 function renderNode(
@@ -109,7 +109,7 @@ function renderNode(
   const lh = 16;
   const hasDates = !!cfg.dates;
   const hasTag = !!cfg.tag;
-  const contentH = lines.length * lh + (hasDates ? 13 : 0) + (hasTag ? 16 : 0);
+  const contentH = lines.length * lh + (hasDates ? 14 : 0) + (hasTag ? 18 : 0);
   let ty = y + (H - contentH) / 2 + lh;
 
   lines.forEach(line => {
@@ -119,10 +119,11 @@ function renderNode(
     ty += lh;
   });
   if (hasDates) {
-    const t = mk('text', { x: x + W / 2, y: ty + 1, 'text-anchor': 'middle', fill: C.sub, 'font-family': 'EB Garamond,Georgia,serif', 'font-size': '10', 'font-style': 'italic' });
+    // Issue 4: bump date font size from 10 to 11
+    const t = mk('text', { x: x + W / 2, y: ty + 1, 'text-anchor': 'middle', fill: C.sub, 'font-family': 'EB Garamond,Georgia,serif', 'font-size': '11', 'font-style': 'italic' });
     t.textContent = cfg.dates!;
     g.appendChild(t);
-    ty += 13;
+    ty += 14;
   }
   if (hasTag) {
     const pillW = tagWidth;
@@ -148,13 +149,15 @@ function renderConnection(svg: SVGSVGElement, a: NodeRect, b: NodeRect, color: s
 }
 
 function renderLabel(svg: SVGSVGElement, x: number, y: number, text: string, color?: string, size?: number) {
-  const t = mk('text', { x, y, 'text-anchor': 'middle', fill: color || '#3a4055', 'font-family': 'Cinzel,serif', 'font-size': size || 9, 'letter-spacing': '0.08' });
+  // Issue 4: bump label font size from 9 to 12, improve default color
+  const t = mk('text', { x, y, 'text-anchor': 'middle', fill: color || '#6a7090', 'font-family': 'Cinzel,serif', 'font-size': size || 12, 'letter-spacing': '0.08' });
   t.textContent = text;
   svg.appendChild(t);
 }
 
 function renderAnnotation(svg: SVGSVGElement, x: number, y: number, text: string, color?: string) {
-  const t = mk('text', { x, y, fill: color || C.muted, 'font-family': 'EB Garamond,Georgia,serif', 'font-size': '11', 'font-style': 'italic' });
+  // Issue 4: bump annotation font size from 11 to 13, improve default color to #b0b8c8
+  const t = mk('text', { x, y, fill: color || C.muted, 'font-family': 'EB Garamond,Georgia,serif', 'font-size': '13', 'font-style': 'italic' });
   t.textContent = text;
   svg.appendChild(t);
 }
@@ -168,18 +171,28 @@ interface LineageDiagramProps {
 
 export default function LineageDiagram({ diagram, title, subtitle }: LineageDiagramProps) {
   const svgRef = useRef<SVGSVGElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const tipRef = useRef<HTMLDivElement>(null);
   const [tipData, setTipData] = useState<NodeConfig | null>(null);
+  // Issue 3: store position relative to wrapper, not viewport
   const [tipPos, setTipPos] = useState({ x: 0, y: 0 });
   const [pinned, setPinned] = useState<NodeConfig | null>(null);
   const nodeRects = useRef<Record<string, NodeRect>>({});
 
+  // Convert a clientX/clientY mouse position to wrapper-relative coordinates
+  const toWrapperPos = useCallback((clientX: number, clientY: number) => {
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return { x: clientX, y: clientY };
+    const rect = wrapper.getBoundingClientRect();
+    return { x: clientX - rect.left, y: clientY - rect.top };
+  }, []);
+
   const handleHover = useCallback((data: NodeConfig, e: MouseEvent) => {
     if (!pinned) {
       setTipData(data);
-      setTipPos({ x: e.clientX + 16, y: e.clientY + 16 });
+      setTipPos(toWrapperPos(e.clientX, e.clientY));
     }
-  }, [pinned]);
+  }, [pinned, toWrapperPos]);
 
   const handleLeave = useCallback(() => {
     if (!pinned) setTipData(null);
@@ -193,9 +206,9 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
     } else {
       setPinned(data);
       setTipData(data);
-      setTipPos({ x: e.clientX + 16, y: e.clientY + 16 });
+      setTipPos(toWrapperPos(e.clientX, e.clientY));
     }
-  }, [pinned]);
+  }, [pinned, toWrapperPos]);
 
   useEffect(() => {
     const handleDocClick = (e: MouseEvent) => {
@@ -211,12 +224,12 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {
       if (tipData && !pinned) {
-        setTipPos({ x: e.clientX + 16, y: e.clientY + 16 });
+        setTipPos(toWrapperPos(e.clientX, e.clientY));
       }
     };
     document.addEventListener('mousemove', handleMove);
     return () => document.removeEventListener('mousemove', handleMove);
-  }, [tipData, pinned]);
+  }, [tipData, pinned, toWrapperPos]);
 
   useEffect(() => {
     const svg = svgRef.current;
@@ -257,18 +270,23 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
 
   const ev = tipData?.ev ? EV[tipData.ev] || EV.strong : null;
 
-  // Adjust tooltip position to stay on screen
-  let tx = tipPos.x;
-  let ty = tipPos.y;
-  if (tipRef.current) {
-    const w = tipRef.current.offsetWidth;
-    const h = tipRef.current.offsetHeight;
-    if (tx + w > window.innerWidth - 8) tx = tx - w - 32;
-    if (ty + h > window.innerHeight - 8) ty = ty - h - 32;
+  // Issue 3: constrain tooltip within the wrapper bounds (position: absolute)
+  let tx = tipPos.x + 16;
+  let ty = tipPos.y + 16;
+  if (tipRef.current && wrapperRef.current) {
+    const tipW = tipRef.current.offsetWidth || 270;
+    const tipH = tipRef.current.offsetHeight || 120;
+    const wrapperW = wrapperRef.current.offsetWidth;
+    const wrapperH = wrapperRef.current.offsetHeight;
+    if (tx + tipW > wrapperW - 8) tx = tipPos.x - tipW - 16;
+    if (ty + tipH > wrapperH - 8) ty = tipPos.y - tipH - 16;
+    // Hard clamp to wrapper edges
+    tx = Math.max(8, Math.min(tx, wrapperW - tipW - 8));
+    ty = Math.max(8, Math.min(ty, wrapperH - tipH - 8));
   }
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div ref={wrapperRef} style={{ position: 'relative' }}>
       {title && (
         <div style={{ marginBottom: '16px' }}>
           {subtitle && <div style={{ fontFamily: 'Cinzel,serif', fontSize: '10px', letterSpacing: '0.22em', color: '#c4a55a', textTransform: 'uppercase', marginBottom: '6px' }}>{subtitle}</div>}
@@ -287,12 +305,12 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
         </div>
       </div>
 
-      {/* Tooltip */}
+      {/* Issue 3: Tooltip — position: absolute, constrained within wrapper */}
       {tipData && (
         <div
           ref={tipRef}
           style={{
-            position: 'fixed',
+            position: 'absolute',
             left: tx,
             top: ty,
             background: '#0d0f14',

@@ -1,7 +1,7 @@
 import LineageDiagram, { C, type DiagramDef } from './DiagramEngine';
 
 const diagram: DiagramDef = {
-  viewBox: '0 0 920 720',
+  viewBox: '0 0 920 820',
   nodes: [
     { id: 'lm', x: 360, y: 18, cfg: { name: 'Louis II de Male', dates: 'Count of Flanders \u00b7 1330\u20131384', body: "In 1373 purchased the leengoed of Praet in Oedelem from the van Praet family, then granted it to his natural son Louis Friese.", src: 'FMG MedLands [817]; Lauwens (2010)', color: C.root, ev: 'direct', w: 200, h: 55 } },
     { id: 'fri', x: 355, y: 120, cfg: { name: 'Louis Friese van Vlaenderen', dates: 'c.1350 \u2013 28 Sep 1396', tag: 'LORD OF PRAET & WOESTINE', body: "Natural son of Louis de Male by a daughter of Monsieur de Borre. Praet granted c.1373. Married (2nd) Marie van Gistel. Killed at Nicopolis.", src: 'FMG MedLands [864\u2013869]; Vredius (1643); Espinoy (1631)', color: C.praet, ev: 'direct', w: 210, h: 74 } },
@@ -29,10 +29,10 @@ const diagram: DiagramDef = {
     { from: 'j1', to: 'oth', color: C.blue },
   ],
   labels: [
-    { x: 152, y: 228, text: 'CADET BRANCHES FROM JOHAN I', color: C.praet + '77' },
+    { x: 152, y: 228, text: 'CADET BRANCHES FROM JOHAN I', color: C.praet },
   ],
   annotations: [
-    { x: 580, y: 600, text: '\u2190 1517: 6 fiefs at Knesselare (Meetjesland)', color: C.focus + 'aa' },
+    { x: 580, y: 600, text: '← 1517: 6 fiefs at Knesselare (Meetjesland)', color: C.focus },
   ],
   legendItems: [
     { color: '#4ade80', label: 'Directly attested (charter or epitaph)' },
@@ -46,7 +46,7 @@ export default function PraetDiagram() {
   return (
     <LineageDiagram
       diagram={diagram}
-      title="The House of Flanders-Praet \u2014 Six Generations"
+      title="The House of Flanders-Praet — Six Generations"
       subtitle="Louis Friese / Praet Line"
     />
   );

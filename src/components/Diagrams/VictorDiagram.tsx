@@ -35,7 +35,7 @@ export default function VictorDiagram() {
   return (
     <LineageDiagram
       diagram={diagram}
-      title="Victor van Vlaenderen \u2014 Documented Line and Evidentiary Gap"
+      title="Victor van Vlaenderen — Documented Line and Evidentiary Gap"
       subtitle="Victor van Vlaenderen Page"
     />
   );

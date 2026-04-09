@@ -28,12 +28,12 @@ const diagram: DiagramDef = {
     { from: 'l4', to: 'j2', color: C.red },
   ],
   labels: [
-    { x: 183, y: 125, text: "VICTOR'S LINE", color: C.victor + '88' },
-    { x: 745, y: 125, text: 'PRAET LINE', color: C.praet + '88' },
+    { x: 183, y: 125, text: "VICTOR'S LINE", color: C.victor },
+    { x: 745, y: 125, text: 'PRAET LINE', color: C.praet },
   ],
   annotations: [
     { x: 460, y: 108, text: '13 documented illegitimate children \u2014 two surname-bearing lines shown' },
-    { x: 745, y: 346, text: '(Lodewijk II and III \u2014 see Diagram 3)', color: '#3a4055' },
+    { x: 745, y: 346, text: '(Lodewijk II and III — see Diagram 3)', color: '#8090a8' },
   ],
   legendItems: [
     { color: C.root, label: 'Comital source' },
@@ -50,7 +50,6 @@ export default function OverviewDiagram() {
   return (
     <LineageDiagram
       diagram={diagram}
-      title="Louis II de Male \u2014 The Two Surname-Bearing Bastard Lines"
       subtitle="Research Overview"
     />
   );
