@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 export interface NodeConfig {
@@ -12,12 +12,6 @@ export interface NodeConfig {
   focus?: boolean;
   w?: number;
   h?: number;
-}
-
-export interface NodeRect {
-  x: number; y: number; W: number; H: number;
-  cx: number; cy: number; top: number; bot: number;
-  left: number; right: number;
 }
 
 export interface ConnectionDef {
@@ -68,123 +62,138 @@ const EV: Record<string, { label: string; bg: string; c: string }> = {
   ends: { label: 'Line Ends Here', bg: 'rgba(248,113,113,0.18)', c: '#f87171' },
 };
 
-// ── SVG helpers ────────────────────────────────────────────────────────────
-const NS = 'http://www.w3.org/2000/svg';
-function mk(tag: string, attrs: Record<string, string | number>): SVGElement {
-  const e = document.createElementNS(NS, tag);
-  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, String(v));
-  return e;
+// ── Connection path helper ─────────────────────────────────────────────────
+interface NodeBox {
+  cx: number;
+  top: number;
+  bot: number;
 }
 
-/**
- * Render a node. Tags are rendered as text first; pill rects are sized
- * AFTER rendering via getBBox() so they always fit the actual text.
- * Returns a list of deferred pill-sizing callbacks to run after the
- * node group is appended to the live SVG DOM.
- */
-function renderNode(
-  svg: SVGSVGElement,
-  cfg: NodeConfig,
-  x: number,
-  y: number,
-  onHover: (data: NodeConfig, e: MouseEvent) => void,
-  onLeave: () => void,
-  onClick: (data: NodeConfig, e: MouseEvent) => void,
-): { rect: NodeRect; fixPills: () => void } {
-  const W = cfg.w || 180;
-  const hasTag = !!cfg.tag;
-  // Reserve space: 14px gap + 22px pill
-  const tagSlot = hasTag ? 36 : 0;
-  const H = cfg.h || (hasTag ? 96 : cfg.dates ? 68 : 58);
-  const g = mk('g', { 'data-n': '1' }) as SVGGElement;
-  g.style.cursor = 'pointer';
-  const color = cfg.color;
-
-  // glow
-  g.appendChild(mk('rect', { x: x - 2, y: y - 2, width: W + 4, height: H + 4, rx: 8, ry: 8, fill: color + '14', stroke: color + '28', 'stroke-width': 1 }));
-  // bg
-  g.appendChild(mk('rect', { x, y, width: W, height: H, rx: 6, ry: 6, fill: cfg.focus ? '#1e1c10' : C.surf, stroke: color, 'stroke-width': cfg.focus ? 2.5 : 1.5 }));
-
-  const lines = (cfg.name || '').split('\n');
-  const lh = 18;
-  const hasDates = !!cfg.dates;
-  const contentH = lines.length * lh + (hasDates ? 16 : 0) + tagSlot;
-  let ty = y + (H - contentH) / 2 + lh;
-
-  lines.forEach(line => {
-    const t = mk('text', { x: x + W / 2, y: ty, 'text-anchor': 'middle', fill: C.text, 'font-family': 'Cinzel,serif', 'font-size': cfg.focus ? '14' : '13', 'font-weight': '600' });
-    t.textContent = line;
-    g.appendChild(t);
-    ty += lh;
-  });
-  if (hasDates) {
-    const t = mk('text', { x: x + W / 2, y: ty + 1, 'text-anchor': 'middle', fill: C.sub, 'font-family': 'EB Garamond,Georgia,serif', 'font-size': '13', 'font-style': 'italic' });
-    t.textContent = cfg.dates!;
-    g.appendChild(t);
-    ty += 16;
-  }
-
-  // Tag: render text first, pill rect placeholder second.
-  // The pill rect will be sized after the group is in the DOM.
-  let tagTextEl: SVGElement | null = null;
-  let tagPillEl: SVGElement | null = null;
-  if (hasTag) {
-    const pillY = ty + 14;
-    // Placeholder pill rect — will be resized in fixPills()
-    tagPillEl = mk('rect', { x: 0, y: pillY, width: 0, height: 22, rx: 3, fill: color + '44', stroke: color + '66', 'stroke-width': 0.5 });
-    g.appendChild(tagPillEl);
-    tagTextEl = mk('text', { x: x + W / 2, y: pillY + 15, 'text-anchor': 'middle', fill: color, 'font-family': 'Cinzel,serif', 'font-size': '11', 'font-weight': '600', 'letter-spacing': '0.55' });
-    tagTextEl.textContent = cfg.tag!;
-    g.appendChild(tagTextEl);
-  }
-
-  g.addEventListener('mouseenter', (e) => onHover(cfg, e as MouseEvent));
-  g.addEventListener('mouseleave', () => onLeave());
-  g.addEventListener('click', (e) => onClick(cfg, e as MouseEvent));
-  svg.appendChild(g);
-
-  // Deferred pill sizing — must be called after the group is in the DOM
-  const fixPills = () => {
-    if (tagTextEl && tagPillEl) {
-      try {
-        const bbox = (tagTextEl as SVGTextElement).getBBox();
-        const pad = 16; // 8px padding on each side
-        const pillW = bbox.width + pad;
-        const pillX = x + W / 2 - pillW / 2;
-        tagPillEl.setAttribute('x', String(pillX));
-        tagPillEl.setAttribute('width', String(pillW));
-      } catch {
-        // Fallback if getBBox fails (e.g., element not in DOM)
-        const fallbackW = cfg.tag!.length * 9 + 40;
-        tagPillEl.setAttribute('x', String(x + W / 2 - fallbackW / 2));
-        tagPillEl.setAttribute('width', String(fallbackW));
-      }
-    }
-  };
-
-  return {
-    rect: { x, y, W, H, cx: x + W / 2, cy: y + H / 2, top: y, bot: y + H, left: x, right: x + W },
-    fixPills,
-  };
-}
-
-function renderConnection(svg: SVGSVGElement, a: NodeRect, b: NodeRect, color: string, dashed?: boolean) {
+function connectionPath(a: NodeBox, b: NodeBox): string {
   const my = (a.bot + b.top) / 2;
-  const d = `M${a.cx},${a.bot} C${a.cx},${my + 16} ${b.cx},${my - 16} ${b.cx},${b.top}`;
-  const p = mk('path', { d, stroke: color, 'stroke-width': dashed ? 1.5 : 2, fill: 'none', opacity: dashed ? 0.5 : 0.7, 'stroke-dasharray': dashed ? '5 4' : 'none' });
-  svg.insertBefore(p, svg.firstChild!.nextSibling);
+  return `M${a.cx},${a.bot} C${a.cx},${my + 16} ${b.cx},${my - 16} ${b.cx},${b.top}`;
 }
 
-function renderLabel(svg: SVGSVGElement, x: number, y: number, text: string, color?: string, size?: number) {
-  const t = mk('text', { x, y, 'text-anchor': 'middle', fill: color || '#d0d4dc', 'font-family': 'Cinzel,serif', 'font-size': size || 14, 'letter-spacing': '0.08' });
-  t.textContent = text;
-  svg.appendChild(t);
+// ── Node component ─────────────────────────────────────────────────────────
+interface NodeProps {
+  cfg: NodeConfig;
+  x: number;
+  y: number;
+  onClick: (cfg: NodeConfig, e: React.MouseEvent) => void;
+  onMouseEnter: (cfg: NodeConfig, e: React.MouseEvent) => void;
+  onMouseLeave: () => void;
 }
 
-function renderAnnotation(svg: SVGSVGElement, x: number, y: number, text: string, color?: string) {
-  const t = mk('text', { x, y, fill: color || C.muted, 'font-family': 'EB Garamond,Georgia,serif', 'font-size': '15', 'font-style': 'italic' });
-  t.textContent = text;
-  svg.appendChild(t);
+function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }: NodeProps) {
+  const W = cfg.w || 180;
+  const H = cfg.h || (cfg.tag ? 96 : cfg.dates ? 68 : 58);
+  const color = cfg.color;
+  const lines = (cfg.name || '').split('\n');
+
+  return (
+    <div
+      data-n="1"
+      onClick={(e) => onClick(cfg, e)}
+      onMouseEnter={(e) => onMouseEnter(cfg, e)}
+      onMouseLeave={onMouseLeave}
+      style={{
+        position: 'absolute',
+        left: x,
+        top: y,
+        width: W,
+        height: H,
+        cursor: 'pointer',
+      }}
+    >
+      {/* Glow */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: -2,
+          borderRadius: 8,
+          background: color + '14',
+          border: `1px solid ${color}28`,
+          pointerEvents: 'none',
+        }}
+      />
+      {/* Card */}
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100%',
+          borderRadius: 6,
+          background: cfg.focus ? '#1e1c10' : C.surf,
+          border: `${cfg.focus ? 2.5 : 1.5}px solid ${color}`,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '6px 8px',
+          boxSizing: 'border-box',
+        }}
+      >
+        {/* Name lines */}
+        {lines.map((line, i) => (
+          <div
+            key={i}
+            style={{
+              fontFamily: 'Cinzel, serif',
+              fontSize: cfg.focus ? 14 : 13,
+              fontWeight: 600,
+              color: C.text,
+              textAlign: 'center',
+              lineHeight: '18px',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {line}
+          </div>
+        ))}
+
+        {/* Dates */}
+        {cfg.dates && (
+          <div
+            style={{
+              fontFamily: 'EB Garamond, Georgia, serif',
+              fontSize: 13,
+              fontStyle: 'italic',
+              color: C.sub,
+              textAlign: 'center',
+              lineHeight: '16px',
+              marginTop: 1,
+            }}
+          >
+            {cfg.dates}
+          </div>
+        )}
+
+        {/* Tag pill — inline-block, auto-sizes to text content */}
+        {cfg.tag && (
+          <span
+            style={{
+              display: 'inline-block',
+              marginTop: 6,
+              padding: '3px 8px',
+              borderRadius: 3,
+              background: color + '44',
+              border: `0.5px solid ${color}66`,
+              fontFamily: 'Cinzel, serif',
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: '0.55px',
+              color: color,
+              textAlign: 'center',
+              lineHeight: '15px',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {cfg.tag}
+          </span>
+        )}
+      </div>
+    </div>
+  );
 }
 
 // ── Main component ─────────────────────────────────────────────────────────
@@ -195,33 +204,72 @@ interface LineageDiagramProps {
 }
 
 export default function LineageDiagram({ diagram, title, subtitle }: LineageDiagramProps) {
-  const svgRef = useRef<SVGSVGElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLDivElement>(null);
   const tipRef = useRef<HTMLDivElement>(null);
   const [tipData, setTipData] = useState<NodeConfig | null>(null);
   const [tipPos, setTipPos] = useState({ x: 0, y: 0 });
   const [pinned, setPinned] = useState<NodeConfig | null>(null);
-  const nodeRects = useRef<Record<string, NodeRect>>({});
+  const [scale, setScale] = useState(1);
 
-  const toWrapperPos = useCallback((clientX: number, clientY: number) => {
-    const wrapper = wrapperRef.current;
-    if (!wrapper) return { x: clientX, y: clientY };
-    const rect = wrapper.getBoundingClientRect();
-    return { x: clientX - rect.left, y: clientY - rect.top };
-  }, []);
+  // Parse viewBox for canvas dimensions
+  const [canvasW, canvasH] = useMemo(() => {
+    const parts = diagram.viewBox.split(/\s+/).map(Number);
+    return [parts[2] || 920, parts[3] || 580];
+  }, [diagram.viewBox]);
 
-  const handleHover = useCallback((data: NodeConfig, e: MouseEvent) => {
+  // Build node box lookup for connections
+  const nodeBoxes = useMemo(() => {
+    const boxes: Record<string, NodeBox> = {};
+    for (const n of diagram.nodes) {
+      const W = n.cfg.w || 180;
+      const H = n.cfg.h || (n.cfg.tag ? 96 : n.cfg.dates ? 68 : 58);
+      boxes[n.id] = {
+        cx: n.x + W / 2,
+        top: n.y,
+        bot: n.y + H,
+      };
+    }
+    return boxes;
+  }, [diagram.nodes]);
+
+  // Responsive scaling via ResizeObserver
+  useEffect(() => {
+    const container = canvasRef.current?.parentElement;
+    if (!container) return;
+    const update = () => {
+      const parentW = container.offsetWidth;
+      if (parentW > 0) setScale(parentW / canvasW);
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(container);
+    return () => ro.disconnect();
+  }, [canvasW]);
+
+  const toCanvasPos = useCallback((clientX: number, clientY: number) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return { x: clientX, y: clientY };
+    const rect = canvas.getBoundingClientRect();
+    const currentScale = rect.width / canvasW;
+    return {
+      x: (clientX - rect.left) / currentScale,
+      y: (clientY - rect.top) / currentScale,
+    };
+  }, [canvasW]);
+
+  const handleHover = useCallback((data: NodeConfig, e: React.MouseEvent) => {
     if (!pinned) {
       setTipData(data);
-      setTipPos(toWrapperPos(e.clientX, e.clientY));
+      setTipPos(toCanvasPos(e.clientX, e.clientY));
     }
-  }, [pinned, toWrapperPos]);
+  }, [pinned, toCanvasPos]);
 
   const handleLeave = useCallback(() => {
     if (!pinned) setTipData(null);
   }, [pinned]);
 
-  const handleClick = useCallback((data: NodeConfig, e: MouseEvent) => {
+  const handleClick = useCallback((data: NodeConfig, e: React.MouseEvent) => {
     e.stopPropagation();
     if (pinned === data) {
       setPinned(null);
@@ -229,10 +277,11 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
     } else {
       setPinned(data);
       setTipData(data);
-      setTipPos(toWrapperPos(e.clientX, e.clientY));
+      setTipPos(toCanvasPos(e.clientX, e.clientY));
     }
-  }, [pinned, toWrapperPos]);
+  }, [pinned, toCanvasPos]);
 
+  // Dismiss tooltip on outside click
   useEffect(() => {
     const handleDocClick = (e: MouseEvent) => {
       if (!(e.target as HTMLElement).closest('[data-n]')) {
@@ -244,138 +293,296 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
     return () => document.removeEventListener('click', handleDocClick);
   }, []);
 
+  // Follow mouse for hover tooltip
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {
       if (tipData && !pinned) {
-        setTipPos(toWrapperPos(e.clientX, e.clientY));
+        setTipPos(toCanvasPos(e.clientX, e.clientY));
       }
     };
     document.addEventListener('mousemove', handleMove);
     return () => document.removeEventListener('mousemove', handleMove);
-  }, [tipData, pinned, toWrapperPos]);
-
-  useEffect(() => {
-    const svg = svgRef.current;
-    if (!svg) return;
-    while (svg.childNodes.length > 0) svg.removeChild(svg.lastChild!);
-    svg.appendChild(mk('rect', { width: '100%', height: '100%', fill: '#12151c' }));
-
-    const rects: Record<string, NodeRect> = {};
-    const pillFixers: (() => void)[] = [];
-
-    for (const n of diagram.nodes) {
-      const { rect, fixPills } = renderNode(svg, n.cfg, n.x, n.y, handleHover, handleLeave, handleClick);
-      rects[n.id] = rect;
-      pillFixers.push(fixPills);
-    }
-    nodeRects.current = rects;
-
-    for (const c of diagram.connections) {
-      if (rects[c.from] && rects[c.to]) {
-        renderConnection(svg, rects[c.from], rects[c.to], c.color, c.dashed);
-      }
-    }
-
-    if (diagram.labels) {
-      for (const l of diagram.labels) {
-        renderLabel(svg, l.x, l.y, l.text, l.color, l.size);
-      }
-    }
-
-    if (diagram.annotations) {
-      for (const a of diagram.annotations) {
-        renderAnnotation(svg, a.x, a.y, a.text, a.color);
-      }
-    }
-
-    // Run all pill fixers after fonts are loaded.
-    // document.fonts.ready waits for ALL web fonts (including Cinzel) to finish loading.
-    // This prevents getBBox from measuring fallback serif metrics on first page load.
-    document.fonts.ready.then(() => {
-      requestAnimationFrame(() => {
-        pillFixers.forEach(fn => fn());
-      });
-    });
-  }, [diagram, handleHover, handleLeave, handleClick]);
+  }, [tipData, pinned, toCanvasPos]);
 
   const ev = tipData?.ev ? EV[tipData.ev] || EV.strong : null;
 
+  // Tooltip positioning (in canvas coordinate space)
   let tx = tipPos.x + 16;
   let ty = tipPos.y + 16;
-  if (tipRef.current && wrapperRef.current) {
-    const tipW = tipRef.current.offsetWidth || 270;
-    const tipH = tipRef.current.offsetHeight || 120;
-    const wrapperW = wrapperRef.current.offsetWidth;
-    const wrapperH = wrapperRef.current.offsetHeight;
-    if (tx + tipW > wrapperW - 8) tx = tipPos.x - tipW - 16;
-    if (ty + tipH > wrapperH - 8) ty = tipPos.y - tipH - 16;
-    tx = Math.max(8, Math.min(tx, wrapperW - tipW - 8));
-    ty = Math.max(8, Math.min(ty, wrapperH - tipH - 8));
-  }
+  const tipW = 270;
+  const tipH = 160;
+  if (tx + tipW > canvasW - 8) tx = tipPos.x - tipW - 16;
+  if (ty + tipH > canvasH - 8) ty = tipPos.y - tipH - 16;
+  tx = Math.max(8, Math.min(tx, canvasW - tipW - 8));
+  ty = Math.max(8, Math.min(ty, canvasH - tipH - 8));
 
   return (
     <div ref={wrapperRef} style={{ position: 'relative' }}>
       {title && (
-        <div style={{ marginBottom: '16px' }}>
-          {subtitle && <div style={{ fontFamily: 'Cinzel,serif', fontSize: '12px', letterSpacing: '0.22em', color: '#c4a55a', textTransform: 'uppercase', marginBottom: '6px' }}>{subtitle}</div>}
-          <h3 style={{ fontFamily: 'Cinzel,serif', fontSize: 'clamp(17px, 3vw, 22px)', color: '#f0e8d0', margin: '0 0 6px' }}>{title}</h3>
+        <div style={{ marginBottom: 16 }}>
+          {subtitle && (
+            <div
+              style={{
+                fontFamily: 'Cinzel, serif',
+                fontSize: 12,
+                letterSpacing: '0.22em',
+                color: '#c4a55a',
+                textTransform: 'uppercase',
+                marginBottom: 6,
+              }}
+            >
+              {subtitle}
+            </div>
+          )}
+          <h3
+            style={{
+              fontFamily: 'Cinzel, serif',
+              fontSize: 'clamp(17px, 3vw, 22px)',
+              color: '#f0e8d0',
+              margin: '0 0 6px',
+            }}
+          >
+            {title}
+          </h3>
         </div>
       )}
-      <div style={{ background: '#12151c', border: '1px solid #252836', borderRadius: '8px', overflow: 'hidden' }}>
-        <svg ref={svgRef} viewBox={diagram.viewBox} xmlns={NS} style={{ display: 'block', width: '100%', height: 'auto' }} />
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 18px', padding: '12px 16px', borderTop: '1px solid #1e2230', background: 'rgba(255,255,255,0.015)' }}>
+
+      <div
+        style={{
+          background: '#12151c',
+          border: '1px solid #252836',
+          borderRadius: 8,
+          overflow: 'hidden',
+        }}
+      >
+        {/* Scaled canvas container — aspect ratio preserved */}
+        <div
+          style={{
+            position: 'relative',
+            width: '100%',
+            paddingBottom: `${(canvasH / canvasW) * 100}%`,
+            overflow: 'hidden',
+          }}
+        >
+          <div
+            ref={canvasRef}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: canvasW,
+              height: canvasH,
+              transformOrigin: 'top left',
+              transform: `scale(${scale})`,
+              background: '#12151c',
+            }}
+          >
+            {/* Connection lines — lightweight SVG for bezier paths only */}
+            <svg
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: canvasW,
+                height: canvasH,
+                pointerEvents: 'none',
+              }}
+              viewBox={`0 0 ${canvasW} ${canvasH}`}
+            >
+              {diagram.connections.map((conn, i) => {
+                const a = nodeBoxes[conn.from];
+                const b = nodeBoxes[conn.to];
+                if (!a || !b) return null;
+                return (
+                  <path
+                    key={i}
+                    d={connectionPath(a, b)}
+                    stroke={conn.color}
+                    strokeWidth={conn.dashed ? 1.5 : 2}
+                    fill="none"
+                    opacity={conn.dashed ? 0.5 : 0.7}
+                    strokeDasharray={conn.dashed ? '5 4' : undefined}
+                  />
+                );
+              })}
+            </svg>
+
+            {/* Labels */}
+            {diagram.labels?.map((label, i) => (
+              <div
+                key={`label-${i}`}
+                style={{
+                  position: 'absolute',
+                  left: label.x,
+                  top: label.y,
+                  transform: 'translate(-50%, -50%)',
+                  fontFamily: 'Cinzel, serif',
+                  fontSize: label.size || 14,
+                  letterSpacing: '0.08em',
+                  color: label.color || '#d0d4dc',
+                  whiteSpace: 'nowrap',
+                  pointerEvents: 'none',
+                }}
+              >
+                {label.text}
+              </div>
+            ))}
+
+            {/* Annotations */}
+            {diagram.annotations?.map((ann, i) => (
+              <div
+                key={`ann-${i}`}
+                style={{
+                  position: 'absolute',
+                  left: ann.x,
+                  top: ann.y,
+                  transform: 'translateY(-50%)',
+                  fontFamily: 'EB Garamond, Georgia, serif',
+                  fontSize: 15,
+                  fontStyle: 'italic',
+                  color: ann.color || C.muted,
+                  whiteSpace: 'nowrap',
+                  pointerEvents: 'none',
+                }}
+              >
+                {ann.text}
+              </div>
+            ))}
+
+            {/* Nodes — HTML divs with CSS styling */}
+            {diagram.nodes.map((n) => (
+              <DiagramNode
+                key={n.id}
+                cfg={n.cfg}
+                x={n.x}
+                y={n.y}
+                onClick={handleClick}
+                onMouseEnter={handleHover}
+                onMouseLeave={handleLeave}
+              />
+            ))}
+
+            {/* Tooltip — positioned in canvas space, scales with diagram */}
+            {tipData && (
+              <div
+                ref={tipRef}
+                data-n="1"
+                style={{
+                  position: 'absolute',
+                  left: tx,
+                  top: ty,
+                  background: '#0d0f14',
+                  border: '1px solid #7a6535',
+                  borderRadius: 6,
+                  padding: '13px 15px',
+                  maxWidth: 270,
+                  pointerEvents: 'none',
+                  zIndex: 9999,
+                  fontFamily: 'EB Garamond, Georgia, serif',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.6)',
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: 'Cinzel, serif',
+                    fontSize: 15,
+                    fontWeight: 600,
+                    color: '#f0e8d0',
+                    marginBottom: 4,
+                  }}
+                >
+                  {tipData.name?.replace('\n', ' ')}
+                </div>
+                {tipData.dates && (
+                  <div
+                    style={{
+                      fontSize: 13,
+                      color: '#d0d4dc',
+                      marginBottom: 7,
+                      fontStyle: 'italic',
+                    }}
+                  >
+                    {tipData.dates}
+                  </div>
+                )}
+                {ev && (
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      fontSize: 11,
+                      padding: '2px 7px',
+                      borderRadius: 3,
+                      fontFamily: 'Cinzel, serif',
+                      letterSpacing: '0.07em',
+                      textTransform: 'uppercase',
+                      marginBottom: 7,
+                      background: ev.bg,
+                      color: ev.c,
+                    }}
+                  >
+                    {ev.label}
+                  </span>
+                )}
+                {tipData.body && (
+                  <div style={{ fontSize: 15, color: '#f0e8d0', lineHeight: 1.55 }}>
+                    {tipData.body}
+                  </div>
+                )}
+                {tipData.src && (
+                  <div
+                    style={{
+                      fontSize: 13,
+                      color: '#d0d4dc',
+                      marginTop: 8,
+                      paddingTop: 7,
+                      borderTop: '1px solid #1e2230',
+                      fontStyle: 'italic',
+                    }}
+                  >
+                    Source: {tipData.src}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Legend */}
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '10px 18px',
+            padding: '12px 16px',
+            borderTop: '1px solid #1e2230',
+            background: 'rgba(255,255,255,0.015)',
+          }}
+        >
           {diagram.legendItems.map((item, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '7px', fontSize: '14px', color: '#d0d4dc' }}>
-              <div style={{ width: '11px', height: '11px', borderRadius: '2px', flexShrink: 0, background: item.color }} />
+            <div
+              key={i}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 7,
+                fontSize: 14,
+                color: '#d0d4dc',
+              }}
+            >
+              <div
+                style={{
+                  width: 11,
+                  height: 11,
+                  borderRadius: 2,
+                  flexShrink: 0,
+                  background: item.color,
+                }}
+              />
               {item.label}
             </div>
           ))}
         </div>
       </div>
-
-      {tipData && (
-        <div
-          ref={tipRef}
-          style={{
-            position: 'absolute',
-            left: tx,
-            top: ty,
-            background: '#0d0f14',
-            border: '1px solid #7a6535',
-            borderRadius: '6px',
-            padding: '13px 15px',
-            maxWidth: '270px',
-            pointerEvents: 'none',
-            zIndex: 9999,
-            fontFamily: 'EB Garamond, Georgia, serif',
-            boxShadow: '0 4px 24px rgba(0,0,0,0.6)',
-          }}
-        >
-          <div style={{ fontFamily: 'Cinzel,serif', fontSize: '15px', fontWeight: 600, color: '#f0e8d0', marginBottom: '4px' }}>
-            {tipData.name?.replace('\n', ' ')}
-          </div>
-          {tipData.dates && (
-            <div style={{ fontSize: '13px', color: '#d0d4dc', marginBottom: '7px', fontStyle: 'italic' }}>
-              {tipData.dates}
-            </div>
-          )}
-          {ev && (
-            <span style={{ display: 'inline-block', fontSize: '11px', padding: '2px 7px', borderRadius: '3px', fontFamily: 'Cinzel,serif', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '7px', background: ev.bg, color: ev.c }}>
-              {ev.label}
-            </span>
-          )}
-          {tipData.body && (
-            <div style={{ fontSize: '15px', color: '#f0e8d0', lineHeight: 1.55 }}>
-              {tipData.body}
-            </div>
-          )}
-          {tipData.src && (
-            <div style={{ fontSize: '13px', color: '#d0d4dc', marginTop: '8px', paddingTop: '7px', borderTop: '1px solid #1e2230', fontStyle: 'italic' }}>
-              Source: {tipData.src}
-            </div>
-          )}
-        </div>
-      )}
     </div>
   );
 }

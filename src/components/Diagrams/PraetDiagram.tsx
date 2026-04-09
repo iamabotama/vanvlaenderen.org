@@ -150,7 +150,7 @@ const diagram: DiagramDef = {
     { x: X3, y: 350, text: "CHILDREN OF JOHAN I (SIBLINGS)", color: '#f0e8d0' },
   ],
   annotations: [
-    { x: X3 + 220, y: 680, text: '← 1517: 6 fiefs at Knesselare (Meetjesland)', color: C.focus },
+    { x: X3 + 220, y: 680, text: '\u2190 1517: 6 fiefs at Knesselare (Meetjesland)', color: C.focus },
   ],
   legendItems: [
     { color: '#4ade80', label: 'Directly attested (charter or epitaph)' },
