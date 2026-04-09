@@ -5,6 +5,7 @@ import nameStyles from './NamePage.module.css';
 
 import cronikeShields from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
+import { ResearchMap } from '../components/ResearchMap';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
 import lionWoodcut from '../assets/images/lion-woodcut.jpg';
@@ -88,7 +89,10 @@ export default function NamePage({ onNavigate }: NamePageProps) {
           </p>
         </section>
 
-        {/* Meetjesland Map */}
+        {/* Interactive Research Map */}
+        <ResearchMap />
+
+        {/* Static Meetjesland Map */}
         <div className={nameStyles.mapContainer}>
           <img
             src={meetjeslandMap}

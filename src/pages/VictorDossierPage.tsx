@@ -1,4 +1,3 @@
-
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
@@ -17,86 +16,259 @@ export default function VictorDossierPage({ onNavigate }: VictorDossierPageProps
         >
           <div className={styles.heroImgOverlay} />
         </div>
-        <div className={styles.heroContent}>
-          <div className={styles.heroEyebrow}>Van Vlaenderen · Archival Evidence</div>
-          <h1 className={styles.heroTitle}>Victor van Vlaenderen Dossier</h1>
+        <div className={styles.heroText}>
+          <div className={styles.eyebrow}>Van Vlaenderen &middot; Archival Evidence</div>
+          <h1>Victor van Vlaenderen</h1>
+          <div className="gold-rule" />
           <p className={styles.heroLead}>
-            Direct charter summaries, territorial records, and military service documentation.
+            Bastard son of Louis II de Male, Count of Flanders; lord of Wessegem in Ursel; attested father of Lodewyc, Janne, and Adam van Vlaendren. Updated April 2026 with FMG MedLands primary charter data.
           </p>
         </div>
       </div>
 
-      <div className={styles.contentContainer}>
-        <div className={styles.breadcrumb}>
-          <button onClick={() => onNavigate?.('main')} className={styles.breadcrumbLink}>Research</button>
-          <span className={styles.breadcrumbSeparator}>/</span>
-          <button onClick={() => onNavigate?.('victor')} className={styles.breadcrumbLink}>Victor van Vlaenderen</button>
-          <span className={styles.breadcrumbSeparator}>/</span>
-          <span className={styles.breadcrumbCurrent}>Dossier</span>
+      <div className={styles.content}>
+        <div className={researchStyles.dossierHeader}>
+          <h2 className={researchStyles.dossierTitle}>Archival Dossier</h2>
+          <div className={researchStyles.dossierMeta}>Updated April 2026</div>
         </div>
 
+        {/* ── Methodology ──────────────────────────────────────────── */}
+        <section className={researchStyles.methodologyBox}>
+          <span className={researchStyles.methodologyTitle}>Method</span>
+          <p style={{ fontSize: '0.9rem', marginBottom: '1rem', color: 'var(--text-muted)' }}>
+            This dossier follows a four-level evidentiary framework. <strong>Directly attested</strong> statements rest on quoted charter language or explicit documentary summaries in a published authority. <strong>Strongly corroborated</strong> statements are supported by concordant published sources. <strong>Probable</strong> statements are source-based but require fuller inspection of underlying editions. <strong>Hypotheses</strong> are genealogical inferences proposed for further testing.
+          </p>
+          <div className={researchStyles.methodologyGrid}>
+            <div className={researchStyles.methodItem}>
+              <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`} style={{ marginLeft: 0, marginBottom: '5px' }}>Directly Attested</span>
+              <span style={{ fontSize: '0.8rem', display: 'block' }}>Quoted charter language or explicit documentary summary.</span>
+            </div>
+            <div className={researchStyles.methodItem}>
+              <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`} style={{ marginLeft: 0, marginBottom: '5px' }}>Strongly Corroborated</span>
+              <span style={{ fontSize: '0.8rem', display: 'block' }}>Supported by concordant published historical authorities.</span>
+            </div>
+            <div className={researchStyles.methodItem}>
+              <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelProbable}`} style={{ marginLeft: 0, marginBottom: '5px' }}>Probable</span>
+              <span style={{ fontSize: '0.8rem', display: 'block' }}>Source-based but require fuller inspection of underlying edition.</span>
+            </div>
+            <div className={researchStyles.methodItem}>
+              <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`} style={{ marginLeft: 0, marginBottom: '5px' }}>Hypothesis</span>
+              <span style={{ fontSize: '0.8rem', display: 'block' }}>Genealogical inferences proposed for further testing.</span>
+            </div>
+          </div>
+          <p style={{ fontSize: '0.85rem', marginTop: '1.5rem', fontStyle: 'italic', color: 'var(--text-muted)', borderTop: '1px solid rgba(232, 184, 48, 0.1)', paddingTop: '1rem' }}>
+            <strong>Note:</strong> FMG footnote numbers in square brackets refer to the Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut document (v5.0, January 2025).
+          </p>
+        </section>
+
+        {/* ── Identity and Parentage ──────────────────────────────── */}
         <section className={styles.section}>
-          <h2>Archival Summary: Victor van Vlaenderen</h2>
-          <p>The following table summarizes the primary documentary evidence for Victor van Vlaenderen, Lord of Wessegem.</p>
-          
-          <div className={researchStyles.dossierTableContainer}>
-            <table className={researchStyles.dossierTable}>
+          <h2>Identity and Parentage <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
+          <p>
+            Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders. FMG MedLands lists him as illegitimate child 9 of Louis II, noting that Espinoy records his parentage (no source cited) [841], and that his mother is named in her 12 May 1427 charter. He is identified as Seigneur d'Ursele et de Wesseghem and as a Burgundian admiral.
+          </p>
+        </section>
+
+        {/* ── Territorial Setting ─────────────────────────────────── */}
+        <section className={styles.section}>
+          <h2>Territorial Setting: Wessegem and Ursel <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
+          <p>
+            The Flemish heritage inventory for the Hof van Wessegem states that by the end of the fourteenth century 'Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male,' were lords of Wessegem, and that the property reverted to the comital domain in 1431.
+          </p>
+          <p>
+            A local Ursel history states that in 1399 Wessegem passed to Victor van Vlaanderen, 'another bastard son of Louis van Male,' and that he often resided there.
+          </p>
+          <p style={{ fontSize: '0.9rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
+            Note on spelling: the FMG 1441 charter text consistently renders the lordship as 'Desele ende van Wesseghem' &mdash; Desele rather than Ursele. Both forms refer to the same location. Ursele is the parish; Desele / Wessegem is the specific seigneurie within it.
+          </p>
+        </section>
+
+        {/* ── Victor's Testament ──────────────────────────────────── */}
+        <section className={styles.section}>
+          <h2>Victor's Testament (1430) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
+          <p>
+            The testament of 'her Victor van Vlaendren', dated 1430, named executors 'mher Robert van Vlaendren heere van Elverdinghe, Vlamertinghe, Burggrave van Ypre en Karle van Vlaendren beede sijn broeders.' This is summarised in FMG MedLands from Vredius (1643) <em>Pars secunda</em> p.285, citing the Vander Strate manuscript. It confirms Victor was alive in 1430 and had at least two brothers &mdash; Robert [Roeland] and Karel van Vlaenderen.
+          </p>
+        </section>
+
+        {/* ── Direct Charter Nucleus ──────────────────────────────── */}
+        <section className={styles.section}>
+          <h2>Direct Charter Nucleus <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
+
+          <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '1.5rem' }}>Charter 1: 12 May 1427</h3>
+          <p>
+            FMG MedLands [846] summarises a charter from Vredius (1643), <em>Pars secunda</em> p.285, citing the Ghent partition court records (<em>In actis curiae partitionum Gandensium, Ex regist. part.</em> f.56): 'Joncfr. Mergriete Haelfhuuts Heinricx Mayen...wijf, moeder van Mer Victoere van Vlaenderen' donated property to 'Lodekinen ende Hannekinen mher Victoers hears soens naturlicke kinderen die by heeft by Alyssen van Boyeghem' and 'Adaemkine svoorsz mer Victoers natuerlick zone die hy heeft by Gertruden Liendekins.'
+          </p>
+          <p>
+            This charter directly attests: (1) Mergriete Haelfhuuts as Victor's mother; (2) Lodewyc and Janne as Victor's natural sons by Alix van Boyeghem; (3) Adam as Victor's natural son by Gertrud Lindekens; (4) the distinction between the two mothers.
+          </p>
+
+          <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '2rem' }}>Charter 2: 10 March 1441 O.S. (= 10 March 1442 N.S.)</h3>
+          <p>
+            FMG MedLands [847,852,854] summarises a charter from Vredius (1643) citing the same Ghent partition records: 'Joncfr. Mergriete Aelfhuuts Heindricx Maye...wijf' donated property to 'Lodewyc, Janne ende Adam van Vlaendren natuerliche sonen van wijlen edelen...mer Victor van Vlaendren heere was van Desele ende van Wesseghem...zone was vande voorz Joncf. Mergriete.'
+          </p>
+          <p>
+            This charter directly attests: (1) all three sons named together; (2) Victor described as deceased ('wijlen'); (3) the lordship spelled 'Desele ende van Wesseghem'; (4) Mergriete as Victor's mother.
+          </p>
+
+          <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '2rem' }}>Charter 3: 18 March 1446 O.S. (= 18 March 1447 N.S.)</h3>
+          <p>
+            FMG MedLands [855] summarises a charter from Vredius (1643), <em>Pars secunda</em> pp.286&ndash;7: 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem' donated money from 'joncfr Margriete Aelhuuts zijn groete vrauwe' to 'Christiane van Rouse fil Gheerarts.'
+          </p>
+          <p>
+            This charter directly attests: (1) Adam is alive as late as 18 March 1447 N.S. &mdash; his death terminus, previously set at 1442, is now extended five years; (2) Adam explicitly names Victor as 'Rudder, Heer van Orsele en van Wesseghem' &mdash; Knight, Lord of Ursel and Wessegem; (3) Margriete Aelfhuuts remains Adam's active patroness in 1446, four years after the previous donation; (4) the lordship now spelled 'Orsele' &mdash; confirming Ursel and Wessegem as a paired designation.
+          </p>
+        </section>
+
+        {/* ── Chronology ──────────────────────────────────────────── */}
+        <section className={styles.section}>
+          <h2>Chronology <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '1rem', fontSize: '0.9rem' }}>
               <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Source Type</th>
-                  <th>Key Evidence / Summary</th>
-                  <th>Status</th>
+                <tr style={{ borderBottom: '2px solid var(--gold)', textAlign: 'left' }}>
+                  <th style={{ padding: '10px', color: 'var(--gold)' }}>Person</th>
+                  <th style={{ padding: '10px', color: 'var(--gold)' }}>Event</th>
+                  <th style={{ padding: '10px', color: 'var(--gold)' }}>Date</th>
+                  <th style={{ padding: '10px', color: 'var(--gold)' }}>Source</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1396</td>
-                  <td>Military Record</td>
-                  <td>Victor appointed as "admiraal" (admiral) or coastal commander. Served as captain of Biervliet.</td>
-                  <td><span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Attested</span></td>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)' }}>
+                  <td style={{ padding: '10px' }}>Victor</td>
+                  <td style={{ padding: '10px' }}>Active (Ursel history)</td>
+                  <td style={{ padding: '10px' }}>1399</td>
+                  <td style={{ padding: '10px' }}>Local history</td>
                 </tr>
-                <tr>
-                  <td>1399</td>
-                  <td>Land Record</td>
-                  <td>Lordship of Wessegem (Ursel) passed to Victor van Vlaenderen, natural son of Louis de Male.</td>
-                  <td><span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Attested</span></td>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)', backgroundColor: 'rgba(255,255,255,0.02)' }}>
+                  <td style={{ padding: '10px' }}>Victor</td>
+                  <td style={{ padding: '10px' }}>Married Jeanne de Gavre</td>
+                  <td style={{ padding: '10px' }}>15 Sep 1420</td>
+                  <td style={{ padding: '10px' }}>FMG [844]</td>
                 </tr>
-                <tr>
-                  <td>1427 (May 12)</td>
-                  <td>Charter</td>
-                  <td>Charter naming "Adam van Vlandren" as natural son of "mer Victor van Vlaendren" by Gertruden Liendekins.</td>
-                  <td><span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Attested</span></td>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)' }}>
+                  <td style={{ padding: '10px' }}>Victor</td>
+                  <td style={{ padding: '10px' }}>Testament</td>
+                  <td style={{ padding: '10px' }}>1430</td>
+                  <td style={{ padding: '10px' }}>FMG [842]</td>
                 </tr>
-                <tr>
-                  <td>1431</td>
-                  <td>Land Record</td>
-                  <td>Lordship of Wessegem reverted to the comital domain following Victor's death (or lack of legitimate heirs).</td>
-                  <td><span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Attested</span></td>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)', backgroundColor: 'rgba(255,255,255,0.02)' }}>
+                  <td style={{ padding: '10px' }}>Adam</td>
+                  <td style={{ padding: '10px' }}>Named in charter</td>
+                  <td style={{ padding: '10px' }}>12 May 1427</td>
+                  <td style={{ padding: '10px' }}>FMG [853]</td>
                 </tr>
-                <tr>
-                  <td>1441 (Mar 10)</td>
-                  <td>Ghent Act</td>
-                  <td>Property donation to "Lodewyc, Janne ende Adam van Vlaendren," natural sons of the late Victor.</td>
-                  <td><span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Attested</span></td>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)' }}>
+                  <td style={{ padding: '10px' }}>Victor</td>
+                  <td style={{ padding: '10px' }}>Deceased ('wijlen')</td>
+                  <td style={{ padding: '10px' }}>before 10 Mar 1442 N.S.</td>
+                  <td style={{ padding: '10px' }}>FMG [847]</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)', backgroundColor: 'rgba(255,255,255,0.02)' }}>
+                  <td style={{ padding: '10px' }}>Adam</td>
+                  <td style={{ padding: '10px' }}>Named in charter</td>
+                  <td style={{ padding: '10px' }}>10 Mar 1442 N.S.</td>
+                  <td style={{ padding: '10px' }}>FMG [854]</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)' }}>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Adam</td>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Active donor in charter</td>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>18 Mar 1447 N.S.</td>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>FMG [855]</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
+        {/* ── Lodewyc's Descendants ──────────────────────────────── */}
         <section className={styles.section}>
-          <h2>Territorial Context</h2>
+          <h2>Lodewyc van Vlaenderen &mdash; Documented Descendants <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            The connection to Wessegem is critical. Wessegem was a seigneurie within the parish of Ursel. 
-            The fact that Victor and his sons are documented here—in the exact geographic heart of the 
-            later Van Vlaenderen surname distribution—provides the strongest circumstantial link for 
-            the continuity hypothesis.
+            Lodewyc (also Louis) van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch (source: Bethune (1900) <em>Epitaphes</em>, third part, p.356 [848]) records the burial of 'Jacquemine de Wilde, ghesellenede van Lodewijc van Vlaenderen, fs Victor...naturelicken zone van...Lodewijc van Male' who died 1482, and nearby 'haer Joos van Vlaenderen fs Lodewijcx.'
+          </p>
+          <p>
+            Lodewyc and Jacqueline had two documented children:
+          </p>
+          <p>
+            <strong>(1) Josse van Vlaenderen</strong> (-young, bur Oostborch). Documented by the same Oostborch epitaph [849]. Died young &mdash; cannot be the Joos van Vlaenderen appearing in the 1547 Brugse Vrije probate record. His existence does, however, confirm that the name Josse/Joos was in active use within Victor's direct line in the mid-to-late 15th century.
+          </p>
+          <p>
+            <strong>(2) Margareta van Vlaenderen.</strong> Charters dated 1478 and 1486 [FMG 850] record that 'Marguerite de Flandres' married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe.
+          </p>
+          <p style={{ fontSize: '0.9rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
+            Note on Oostborch: the location of this burial site requires identification. If Oostborch is in or near the Meetjesland, the geographic connection to the later parish-record Van Vlaenderens would be strengthened.
           </p>
         </section>
 
-        <div className={styles.ctaSection}>
-          <button onClick={() => onNavigate?.('victor')} className={styles.ctaButton}>
+        {/* ── Naval and Military Activity ─────────────────────────── */}
+        <section className={styles.section}>
+          <h2>Naval and Military Activity <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
+          <p>
+            A DBNL article states: 'Victor was, en dit is belangrijk, kapitein van de vesting Biervliet.' A UGent-hosted study on Flemish corsair warfare notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.' These sources support Victor's coastal and naval command role.
+          </p>
+        </section>
+
+        {/* ── Genealogical Significance ───────────────────────────── */}
+        <section className={styles.section}>
+          <h2>Genealogical Significance <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`}>Hypothesis</span></h2>
+          <p>
+            The published record establishes an illegitimate comital branch rooted in the Ursel/Wessegem region, with Victor's acknowledged natural sons bearing the surname form <em>van Vlaendren</em> across three directly attested primary documents spanning 1427&ndash;1447. This does not by itself prove continuous descent to the later parish-record Van Vlaenderens of the Meetjesland. It does, however, provide a substantial medieval documentary nucleus that makes such a continuity hypothesis materially stronger than a mere coincidence-of-surname explanation.
+          </p>
+        </section>
+
+        {/* ── Notes & Bibliography ────────────────────────────────── */}
+        <section className={researchStyles.referenceList}>
+          <h3>Notes &amp; Bibliography</h3>
+          <p style={{ fontSize: '0.85rem', fontStyle: 'italic', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+            FMG. Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut. v5.0, updated January 2025. All footnote numbers in square brackets refer to this source.
+          </p>
+          <div className={researchStyles.refItem}>
+            <span className={researchStyles.refNumber}>1.</span>
+            FMG MedLands: Flanders, Hainaut. Victor entry and Adam entry with charters [841]&ndash;[855]. Source for all three charters: Vredius, Olivarius. <em>Sigilla Comitum Flandriae et Inscriptiones Diplomatum.</em> Bruges, 1643. Pars secunda, pp.285&ndash;287.{' '}
+            <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
+          </div>
+          <div className={researchStyles.refItem}>
+            <span className={researchStyles.refNumber}>2.</span>
+            Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem. Quote: 'Eind 14de eeuw vinden we Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male, als heren van Wessegem; in 1431 terug bij het kroondomein gevoegd.'{' '}
+            <a href="https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Inventaris Onroerend Erfgoed, Erfgoedobject 33384</a>
+          </div>
+          <div className={researchStyles.refItem}>
+            <span className={researchStyles.refNumber}>3.</span>
+            Ursel, een Meetjeslands dorp. States that in 1399 Wessegem passed to Victor van Vlaanderen, another bastard son of Louis van Male.{' '}
+            <a href="https://mijnplatteland.com/meetjesland/ursel/" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ursel, een Meetjeslands dorp</a>
+          </div>
+          <div className={researchStyles.refItem}>
+            <span className={researchStyles.refNumber}>4.</span>
+            Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. [FMG 848&ndash;849]. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen.
+          </div>
+          <div className={researchStyles.refItem}>
+            <span className={researchStyles.refNumber}>5.</span>
+            Degryse, R. Willem Beukel(s) van Hughevliet. <em>De Vlaamse Gids</em> 38 (1954).{' '}
+            <a href="https://www.dbnl.org/tekst/_vla001195401_01/_vla001195401_01_0055.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DBNL, Vlaamse Stam (1954)</a>
+          </div>
+          <div className={researchStyles.refItem}>
+            <span className={researchStyles.refNumber}>6.</span>
+            Corvers en zeeschuimers van den Vlaemsche zeecoste. UGent repository copy.{' '}
+            <a href="https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library, Thesis RUG01-001786522 (2012)</a>
+          </div>
+        </section>
+
+        <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
+          <button
+            onClick={() => onNavigate?.('victor')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: 'var(--gold)',
+              fontSize: '16px',
+              textDecoration: 'underline',
+              fontFamily: 'var(--font-ui)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em'
+            }}
+          >
             Return to Victor Lineage
           </button>
         </div>

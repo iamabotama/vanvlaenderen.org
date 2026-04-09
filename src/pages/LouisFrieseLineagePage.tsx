@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
-import louisFrieseLineageImg from '../assets/images/heraldic/louis_friese_lineage.png';
+import { PraetDiagram } from '../components/Diagrams';
 
 interface LouisFrieseLineagePageProps {
-  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese' | 'contact') => void;
+  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese' | 'contact' | 'victor-dossier' | 'praet-dossier' | 'praet-lineage-dossier') => void;
 }
 
 export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineagePageProps) {
@@ -26,7 +26,7 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
           <h1>{t('louis_friese.hero_title')}</h1>
           <div className="gold-rule" />
           <p className={styles.heroLead}>
-            {t('louis_friese.hero_lead')}
+            Natural son of Louis II de Male, Count of Flanders. Lord of Praet and Woestine. Killed at the Battle of Nicopolis, 28 September 1396. Founder of the House of Flanders-Praet &mdash; six generations using van Vlaenderen as a hereditary surname.
           </p>
         </div>
       </div>
@@ -34,11 +34,12 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
       <div className={styles.content}>
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>{t('louis_friese.dossier_title')}</h2>
-          <div className={researchStyles.dossierMeta}>{t('louis_friese.dossier_updated')}</div>
+          <div className={researchStyles.dossierMeta}>Updated April 2026</div>
         </div>
 
+        {/* ── The Praet Branch ─────────────────────────────────────── */}
         <section className={styles.section}>
-          <h2>{t('louis_friese.praet_title')} <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>{t('louis_friese.badge_corroborated')}</span></h2>
+          <h2>{t('louis_friese.praet_title')} <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
             {t('louis_friese.praet_p1')}
           </p>
@@ -59,11 +60,88 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
           </p>
         </section>
 
+        {/* ── Interactive Diagram ─────────────────────────────────── */}
         <div className={researchStyles.treeContainer}>
-          <div className={researchStyles.treeTitle}>{t('louis_friese.tree_title')}</div>
-          <img src={louisFrieseLineageImg} alt={t('louis_friese.tree_alt')} style={{ width: '100%', maxWidth: '600px', margin: '20px auto', display: 'block' }} />
+          <div className={researchStyles.treeTitle}>The House of Flanders-Praet &mdash; Six Generations</div>
+          <PraetDiagram />
         </div>
 
+        {/* ── Johan I's Seven Children ────────────────────────────── */}
+        <section className={styles.section}>
+          <h2>Johan I's Seven Documented Children <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
+          <p>
+            Johan I van Vlaenderen (d. after 10 Sep 1439), lord of Praet and Woestine, issued his own charter as lord of Praet on 10 September 1439 [FMG 873]. He married Johanna van Reygersvliet [875]. Seven children are documented from primary sources:
+          </p>
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '1rem', fontSize: '0.88rem' }}>
+              <thead>
+                <tr style={{ borderBottom: '2px solid var(--gold)', textAlign: 'left' }}>
+                  <th style={{ padding: '10px', color: 'var(--gold)' }}>Name</th>
+                  <th style={{ padding: '10px', color: 'var(--gold)' }}>Dates</th>
+                  <th style={{ padding: '10px', color: 'var(--gold)' }}>Notes</th>
+                  <th style={{ padding: '10px', color: 'var(--gold)' }}>Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)' }}>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Lodewijk II</td>
+                  <td style={{ padding: '10px' }}>d. 24 Aug 1488</td>
+                  <td style={{ padding: '10px' }}>Lord of Praet; married Louise de Bruges</td>
+                  <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Epitaph [876]</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)', backgroundColor: 'rgba(255,255,255,0.02)' }}>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Jean de Flandre</td>
+                  <td style={{ padding: '10px' }}>d. 6 Sep 1523</td>
+                  <td style={{ padding: '10px' }}>Heer van Onlede; Grand Bailiff of Bruges</td>
+                  <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Epitaph [879]</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)' }}>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Josse de Flandre</td>
+                  <td style={{ padding: '10px' }}>d. after 1526</td>
+                  <td style={{ padding: '10px' }}>Inherited Onlede, Bevere, Wijchuize; married Martina van Moerkerke; line survived to 1592</td>
+                  <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Buylaert [881,882]</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)', backgroundColor: 'rgba(255,255,255,0.02)' }}>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Jeanne de Flandre</td>
+                  <td style={{ padding: '10px' }}>d. after 1446</td>
+                  <td style={{ padding: '10px' }}>Married Jean Seigneur de Poucques, Vicomte d'Ypres</td>
+                  <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Charter [884,885]</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)' }}>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Marguerite de Flandre</td>
+                  <td style={{ padding: '10px' }}>fl. c.1440s</td>
+                  <td style={{ padding: '10px' }}>Married Louis de Bailleul</td>
+                  <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Vredius MS [886]</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)', backgroundColor: 'rgba(255,255,255,0.02)' }}>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Isabelle de Flandre</td>
+                  <td style={{ padding: '10px' }}>fl. c.1440s</td>
+                  <td style={{ padding: '10px' }}>Married Waleran de Landas</td>
+                  <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Vredius MS [887]</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)' }}>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Landrade de Flandre</td>
+                  <td style={{ padding: '10px' }}>fl. c.1460s</td>
+                  <td style={{ padding: '10px' }}>Canoness at Mons Sainte-Waudru</td>
+                  <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Vredius MS [888]</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* ── 1517 Knesselare Charter ─────────────────────────────── */}
+        <section className={styles.section}>
+          <h2>The 1517 Knesselare Charter <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
+          <p>
+            A charter [FMG 891] records Lodewijk IV van Vlaenderen holding six fiefs at Knesselare from the seigneurie of Wessegem in 1517. Knesselare is one of the parishes in the active research coverage, and it sits geographically between the Praet lordship (Oedelem/Beernem) and the core Van Vlaenderen cluster in the Meetjesland.
+          </p>
+          <p>
+            This charter does not establish a family connection between the Praet van Vlaenderens and the commoner Van Vlaenderens who later appear in Knesselare parish records. But it confirms that the Praet branch had territorial interests in the precise geographic area where the later parish-record bearers lived &mdash; which is relevant to the branch-control problem identified in the research design.
+          </p>
+        </section>
+
+        {/* ── Surname Survival ────────────────────────────────────── */}
         <section className={styles.section}>
           <h2>{t('louis_friese.survival_title')} <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`}>{t('louis_friese.badge_hypothesis')}</span></h2>
           <p>
@@ -74,6 +152,7 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
           </p>
         </section>
 
+        {/* ── Key Figures ─────────────────────────────────────────── */}
         <section className={styles.section}>
           <h2>{t('louis_friese.figures_title')}</h2>
           <p>
@@ -88,6 +167,7 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
           </ul>
         </section>
 
+        {/* ── Dossier Links ───────────────────────────────────────── */}
         <section className={styles.section} style={{ marginTop: '3rem', borderTop: '1px solid rgba(232, 184, 48, 0.2)', paddingTop: '2rem' }}>
           <div className={researchStyles.branchCards}>
             <div
@@ -95,14 +175,14 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
               role="button"
               tabIndex={0}
               style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => onNavigate?.('praet-dossier' as any)}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('praet-dossier' as any); } }}
+              onClick={() => onNavigate?.('praet-dossier')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('praet-dossier'); } }}
               aria-label="Louis Friese: Archival Dossier"
             >
               <h3>Louis Friese: Archival Dossier</h3>
-              <p>Primary source extracts and territorial history of the House of Flanders-Praet.</p>
+              <p>Primary source extracts, territorial history, and the surname van Vlaenderen as comital identity.</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
-                View Archival Evidence →
+                View Archival Evidence &rarr;
               </span>
             </div>
             <div
@@ -110,19 +190,20 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
               role="button"
               tabIndex={0}
               style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => onNavigate?.('praet-lineage-dossier' as any)}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('praet-lineage-dossier' as any); } }}
+              onClick={() => onNavigate?.('praet-lineage-dossier')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('praet-lineage-dossier'); } }}
               aria-label="House of Praet: Lineage Dossier"
             >
               <h3>House of Praet: Lineage Dossier</h3>
-              <p>Documented generations from Louis Friese to the extinction of the legitimate male line.</p>
+              <p>Six generations with primary-source confirmed data. Includes Johan I's seven children, Josse de Flandre cadet branch, and the 1517 Knesselare charter.</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
-                View Lineage Evidence →
+                View Lineage Evidence &rarr;
               </span>
             </div>
           </div>
         </section>
 
+        {/* ── Sources ─────────────────────────────────────────────── */}
         <section className={researchStyles.referenceList}>
           <h3>{t('louis_friese.sources_title')}</h3>
           <div className={researchStyles.refItem}>
@@ -155,7 +236,10 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
             {t('louis_friese.source_6')}{' '}
             <a href="https://www.dbnl.org/tekst/eras001corr10_01/eras001corr10_01_0112.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DBNL, Erasmus Correspondentie, Vol. 10</a>
           </div>
-
+          <div className={researchStyles.refItem}>
+            <span className={researchStyles.refNumber}>7.</span>
+            Buylaert, Frederik. Published genealogical and prosopographical research on Flemish nobility. Cited via FMG MedLands [881,882] for Josse de Flandre.
+          </div>
         </section>
 
         <div className={styles.ctaBox} onClick={() => onNavigate?.('contact')} style={{ cursor: 'pointer' }}>
@@ -167,16 +251,19 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
           </div>
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid #ccc' }}>
-          <button 
-            onClick={() => onNavigate?.('main')} 
-            style={{ 
-              background: 'none', 
-              border: 'none', 
-              cursor: 'pointer', 
-              color: '#8b7355', 
+        <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
+          <button
+            onClick={() => onNavigate?.('main')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: 'var(--gold)',
               fontSize: '16px',
-              textDecoration: 'underline'
+              textDecoration: 'underline',
+              fontFamily: 'var(--font-ui)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em'
             }}
           >
             {t('louis_friese.back_button')}

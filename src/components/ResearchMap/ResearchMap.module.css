@@ -1,0 +1,194 @@
+/* ── Map Wrapper ──────────────────────────────────────────────────── */
+.mapWrapper {
+  position: relative;
+  width: 100%;
+  margin: 2rem 0;
+  border: 1px solid rgba(196, 165, 90, 0.25);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #0a0804;
+}
+
+/* ── Map Container ───────────────────────────────────────────────── */
+.map {
+  width: 100%;
+  height: 520px;
+  background: #0a0804;
+  z-index: 1;
+}
+
+/* Override Leaflet popup styling */
+.mapWrapper :global(.leaflet-popup-content-wrapper) {
+  background: #1a1610;
+  color: #f0e8d0;
+  border: 1px solid rgba(196, 165, 90, 0.3);
+  border-radius: 4px;
+  font-family: var(--font-ui, 'EB Garamond', serif);
+  font-size: 0.85rem;
+}
+
+.mapWrapper :global(.leaflet-popup-tip) {
+  background: #1a1610;
+  border: 1px solid rgba(196, 165, 90, 0.3);
+}
+
+.mapWrapper :global(.leaflet-popup-close-button) {
+  color: #c4a55a !important;
+}
+
+/* ── Controls ────────────────────────────────────────────────────── */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(10, 8, 4, 0.9);
+  border-bottom: 1px solid rgba(196, 165, 90, 0.15);
+  z-index: 10;
+}
+
+.controlGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.controlLabel {
+  font-family: var(--font-ui, 'EB Garamond', serif);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #8a90a0;
+  white-space: nowrap;
+}
+
+.toggleGroup {
+  display: flex;
+  gap: 2px;
+}
+
+.toggleBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(196, 165, 90, 0.2);
+  color: #8a90a0;
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  font-family: var(--font-ui, 'EB Garamond', serif);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+}
+
+.toggleBtn:hover {
+  color: #f0e8d0;
+  border-color: rgba(196, 165, 90, 0.4);
+}
+
+.toggleActive {
+  background: rgba(196, 165, 90, 0.2);
+  color: #c4a55a;
+  border-color: #c4a55a;
+}
+
+/* ── Popup ────────────────────────────────────────────────────────── */
+.popup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 120px;
+}
+
+.popup strong {
+  color: #c4a55a;
+  font-size: 0.9rem;
+}
+
+.popupDetail {
+  font-size: 0.78rem;
+  color: #8a90a0;
+}
+
+.popupNote {
+  font-size: 0.75rem;
+  color: #a08840;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* ── Legend ────────────────────────────────────────────────────────── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(10, 8, 4, 0.9);
+  border-top: 1px solid rgba(196, 165, 90, 0.15);
+}
+
+.legendSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.legendTitle {
+  font-family: var(--font-ui, 'EB Garamond', serif);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #8a90a0;
+  margin-right: 0.25rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: #f0e8d0;
+  font-family: var(--font-ui, 'EB Garamond', serif);
+}
+
+.legendDot {
+  display: inline-block;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendRing {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.legendLine {
+  display: inline-block;
+  width: 20px;
+  height: 0;
+  border-top: 2px dashed;
+  flex-shrink: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .map {
+    height: 400px;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .legend {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
