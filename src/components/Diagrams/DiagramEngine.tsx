@@ -288,10 +288,13 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
       }
     }
 
-    // Run all pill fixers after everything is in the DOM.
-    // Use requestAnimationFrame to ensure fonts are loaded and layout is complete.
-    requestAnimationFrame(() => {
-      pillFixers.forEach(fn => fn());
+    // Run all pill fixers after fonts are loaded.
+    // document.fonts.ready waits for ALL web fonts (including Cinzel) to finish loading.
+    // This prevents getBBox from measuring fallback serif metrics on first page load.
+    document.fonts.ready.then(() => {
+      requestAnimationFrame(() => {
+        pillFixers.forEach(fn => fn());
+      });
     });
   }, [diagram, handleHover, handleLeave, handleClick]);
 
