@@ -110,7 +110,9 @@ function renderNode(
   const lh = 18; // Bumped line height
   const hasDates = !!cfg.dates;
   const hasTag = !!cfg.tag;
-  const contentH = lines.length * lh + (hasDates ? 16 : 0) + (hasTag ? 20 : 0);
+  // Extra 10px top padding so tag doesn't crowd the bottom of the box
+  const tagSlot = hasTag ? 28 : 0; // 10px gap + 18px pill
+  const contentH = lines.length * lh + (hasDates ? 16 : 0) + tagSlot;
   let ty = y + (H - contentH) / 2 + lh;
 
   lines.forEach(line => {
@@ -129,9 +131,10 @@ function renderNode(
   }
   if (hasTag) {
     const pillW = tagWidth;
-    // Pill height 18px, text baseline at +14 (12px font + 2px top padding)
-    g.appendChild(mk('rect', { x: x + W / 2 - pillW / 2, y: ty + 2, width: pillW, height: 18, rx: 3, fill: color + '25' }));
-    const tt = mk('text', { x: x + W / 2, y: ty + 15, 'text-anchor': 'middle', fill: color, 'font-family': 'Cinzel,serif', 'font-size': '12', 'font-weight': '600', 'letter-spacing': '0.07' });
+    // 10px gap below dates/name, then 18px pill
+    // ty is now pointing at the start of the tag slot (after the 10px gap)
+    g.appendChild(mk('rect', { x: x + W / 2 - pillW / 2, y: ty + 10, width: pillW, height: 18, rx: 3, fill: color + '25' }));
+    const tt = mk('text', { x: x + W / 2, y: ty + 23, 'text-anchor': 'middle', fill: color, 'font-family': 'Cinzel,serif', 'font-size': '12', 'font-weight': '600', 'letter-spacing': '0.07' });
     tt.textContent = cfg.tag!;
     g.appendChild(tt);
   }

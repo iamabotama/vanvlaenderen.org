@@ -1,7 +1,7 @@
 import LineageDiagram, { C, type DiagramDef } from './DiagramEngine';
 
 const diagram: DiagramDef = {
-  viewBox: '0 0 920 540',
+  viewBox: '0 0 920 580',
   nodes: [
     { id: 'lm', x: 350, y: 20, cfg: { name: 'Louis II de Male', dates: 'Count of Flanders · 1330–1384', tag: 'HOUSE OF DAMPIERRE · LAST COUNT', body: "Fathered at least 13 illegitimate children. His death in 1384 ended Dampierre rule — the moment van Vlaenderen crystallises as a heritable surname among his bastard children.", src: 'Wikipedia; FMG MedLands [817]', color: C.root, ev: 'direct', w: 220, h: 76 } },
     { id: 'vic', x: 90, y: 145, cfg: { name: 'Victor van Vlaenderen', dates: 'd. before 10 Mar 1442', tag: 'LORD OF URSEL & WESSEGEM', body: "Natural son of Louis de Male. Lord of Ursel and Wessegem. Burgundian admiral; captain of Biervliet. Three natural sons documented in primary charters 1427–1447.", src: 'FMG MedLands [841–855]', color: C.victor, ev: 'direct', w: 185, h: 76 } },

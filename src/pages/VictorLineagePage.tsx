@@ -72,7 +72,6 @@ export default function VictorLineagePage({ onNavigate }: VictorLineagePageProps
 
         {/* ── Interactive Diagram ─────────────────────────────────── */}
         <div className={researchStyles.treeContainer}>
-          <div className={researchStyles.treeTitle}>Victor van Vlaenderen &mdash; Documented Line and Evidentiary Gap</div>
           <VictorDiagram />
         </div>
 

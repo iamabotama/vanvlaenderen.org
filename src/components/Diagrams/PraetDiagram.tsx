@@ -21,7 +21,7 @@ const X4 = X3 + NODE_W + GAP;
 const X5 = X4 + NODE_W + GAP;
 
 const diagram: DiagramDef = {
-  viewBox: '0 0 1100 940',
+  viewBox: '0 0 1100 1000',
   nodes: [
     {
       id: 'lm', x: X3, y: 18,
