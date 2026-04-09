@@ -53,8 +53,8 @@ export const C = {
   red: '#e06060',
   blue: '#60a5fa',
   text: '#f0e8d0',
-  sub: '#d0d4dc',     // improved contrast (was #9aa0b0)
-  muted: '#d0d4dc',   // improved contrast (was #b0b8c8)
+  sub: '#d0d4dc',
+  muted: '#d0d4dc',
   surf: '#1c2030',
 };
 
@@ -76,12 +76,12 @@ function mk(tag: string, attrs: Record<string, string | number>): SVGElement {
   return e;
 }
 
-function measureTagText(text: string): number {
-  // Cinzel uppercase at 11px with letter-spacing 0.05em ≈ 8.5px per char.
-  // Generous estimate to guarantee no overflow across browsers.
-  return text.length * 9 + 40;
-}
-
+/**
+ * Render a node. Tags are rendered as text first; pill rects are sized
+ * AFTER rendering via getBBox() so they always fit the actual text.
+ * Returns a list of deferred pill-sizing callbacks to run after the
+ * node group is appended to the live SVG DOM.
+ */
 function renderNode(
   svg: SVGSVGElement,
   cfg: NodeConfig,
@@ -90,10 +90,12 @@ function renderNode(
   onHover: (data: NodeConfig, e: MouseEvent) => void,
   onLeave: () => void,
   onClick: (data: NodeConfig, e: MouseEvent) => void,
-): NodeRect {
+): { rect: NodeRect; fixPills: () => void } {
   const W = cfg.w || 180;
-  const tagWidth = cfg.tag ? Math.max(measureTagText(cfg.tag), 150) : 0;
-  const H = cfg.h || (cfg.tag ? 94 : cfg.dates ? 68 : 58);
+  const hasTag = !!cfg.tag;
+  // Reserve space: 14px gap + 22px pill
+  const tagSlot = hasTag ? 36 : 0;
+  const H = cfg.h || (hasTag ? 96 : cfg.dates ? 68 : 58);
   const g = mk('g', { 'data-n': '1' }) as SVGGElement;
   g.style.cursor = 'pointer';
   const color = cfg.color;
@@ -104,34 +106,36 @@ function renderNode(
   g.appendChild(mk('rect', { x, y, width: W, height: H, rx: 6, ry: 6, fill: cfg.focus ? '#1e1c10' : C.surf, stroke: color, 'stroke-width': cfg.focus ? 2.5 : 1.5 }));
 
   const lines = (cfg.name || '').split('\n');
-  const lh = 18; // Bumped line height
+  const lh = 18;
   const hasDates = !!cfg.dates;
-  const hasTag = !!cfg.tag;
-  const tagSlot = hasTag ? 32 : 0; // 12px gap + 20px pill
   const contentH = lines.length * lh + (hasDates ? 16 : 0) + tagSlot;
   let ty = y + (H - contentH) / 2 + lh;
 
   lines.forEach(line => {
-    // Issue: bump name font size from 11/12 to 13/14
     const t = mk('text', { x: x + W / 2, y: ty, 'text-anchor': 'middle', fill: C.text, 'font-family': 'Cinzel,serif', 'font-size': cfg.focus ? '14' : '13', 'font-weight': '600' });
     t.textContent = line;
     g.appendChild(t);
     ty += lh;
   });
   if (hasDates) {
-    // Issue: bump date font size from 11 to 13
     const t = mk('text', { x: x + W / 2, y: ty + 1, 'text-anchor': 'middle', fill: C.sub, 'font-family': 'EB Garamond,Georgia,serif', 'font-size': '13', 'font-style': 'italic' });
     t.textContent = cfg.dates!;
     g.appendChild(t);
     ty += 16;
   }
+
+  // Tag: render text first, pill rect placeholder second.
+  // The pill rect will be sized after the group is in the DOM.
+  let tagTextEl: SVGElement | null = null;
+  let tagPillEl: SVGElement | null = null;
   if (hasTag) {
-    const pillW = tagWidth;
-    // 12px gap below dates/name, then 18px pill
-    g.appendChild(mk('rect', { x: x + W / 2 - pillW / 2, y: ty + 12, width: pillW, height: 20, rx: 3, fill: color + '44', stroke: color + '55', 'stroke-width': 0.5 }));
-    const tt = mk('text', { x: x + W / 2, y: ty + 26, 'text-anchor': 'middle', fill: color, 'font-family': 'Cinzel,serif', 'font-size': '11', 'font-weight': '600', 'letter-spacing': '0.55' });
-    tt.textContent = cfg.tag!;
-    g.appendChild(tt);
+    const pillY = ty + 14;
+    // Placeholder pill rect — will be resized in fixPills()
+    tagPillEl = mk('rect', { x: 0, y: pillY, width: 0, height: 22, rx: 3, fill: color + '44', stroke: color + '66', 'stroke-width': 0.5 });
+    g.appendChild(tagPillEl);
+    tagTextEl = mk('text', { x: x + W / 2, y: pillY + 15, 'text-anchor': 'middle', fill: color, 'font-family': 'Cinzel,serif', 'font-size': '11', 'font-weight': '600', 'letter-spacing': '0.55' });
+    tagTextEl.textContent = cfg.tag!;
+    g.appendChild(tagTextEl);
   }
 
   g.addEventListener('mouseenter', (e) => onHover(cfg, e as MouseEvent));
@@ -139,7 +143,29 @@ function renderNode(
   g.addEventListener('click', (e) => onClick(cfg, e as MouseEvent));
   svg.appendChild(g);
 
-  return { x, y, W, H, cx: x + W / 2, cy: y + H / 2, top: y, bot: y + H, left: x, right: x + W };
+  // Deferred pill sizing — must be called after the group is in the DOM
+  const fixPills = () => {
+    if (tagTextEl && tagPillEl) {
+      try {
+        const bbox = (tagTextEl as SVGTextElement).getBBox();
+        const pad = 16; // 8px padding on each side
+        const pillW = bbox.width + pad;
+        const pillX = x + W / 2 - pillW / 2;
+        tagPillEl.setAttribute('x', String(pillX));
+        tagPillEl.setAttribute('width', String(pillW));
+      } catch {
+        // Fallback if getBBox fails (e.g., element not in DOM)
+        const fallbackW = cfg.tag!.length * 9 + 40;
+        tagPillEl.setAttribute('x', String(x + W / 2 - fallbackW / 2));
+        tagPillEl.setAttribute('width', String(fallbackW));
+      }
+    }
+  };
+
+  return {
+    rect: { x, y, W, H, cx: x + W / 2, cy: y + H / 2, top: y, bot: y + H, left: x, right: x + W },
+    fixPills,
+  };
 }
 
 function renderConnection(svg: SVGSVGElement, a: NodeRect, b: NodeRect, color: string, dashed?: boolean) {
@@ -150,14 +176,12 @@ function renderConnection(svg: SVGSVGElement, a: NodeRect, b: NodeRect, color: s
 }
 
 function renderLabel(svg: SVGSVGElement, x: number, y: number, text: string, color?: string, size?: number) {
-  // Issue: bump label font size from 12 to 14, improve default color to #d0d4dc
   const t = mk('text', { x, y, 'text-anchor': 'middle', fill: color || '#d0d4dc', 'font-family': 'Cinzel,serif', 'font-size': size || 14, 'letter-spacing': '0.08' });
   t.textContent = text;
   svg.appendChild(t);
 }
 
 function renderAnnotation(svg: SVGSVGElement, x: number, y: number, text: string, color?: string) {
-  // Issue: bump annotation font size from 13 to 15, improve default color to #d0d4dc
   const t = mk('text', { x, y, fill: color || C.muted, 'font-family': 'EB Garamond,Georgia,serif', 'font-size': '15', 'font-style': 'italic' });
   t.textContent = text;
   svg.appendChild(t);
@@ -237,8 +261,12 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
     svg.appendChild(mk('rect', { width: '100%', height: '100%', fill: '#12151c' }));
 
     const rects: Record<string, NodeRect> = {};
+    const pillFixers: (() => void)[] = [];
+
     for (const n of diagram.nodes) {
-      rects[n.id] = renderNode(svg, n.cfg, n.x, n.y, handleHover, handleLeave, handleClick);
+      const { rect, fixPills } = renderNode(svg, n.cfg, n.x, n.y, handleHover, handleLeave, handleClick);
+      rects[n.id] = rect;
+      pillFixers.push(fixPills);
     }
     nodeRects.current = rects;
 
@@ -259,6 +287,12 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
         renderAnnotation(svg, a.x, a.y, a.text, a.color);
       }
     }
+
+    // Run all pill fixers after everything is in the DOM.
+    // Use requestAnimationFrame to ensure fonts are loaded and layout is complete.
+    requestAnimationFrame(() => {
+      pillFixers.forEach(fn => fn());
+    });
   }, [diagram, handleHover, handleLeave, handleClick]);
 
   const ev = tipData?.ev ? EV[tipData.ev] || EV.strong : null;
