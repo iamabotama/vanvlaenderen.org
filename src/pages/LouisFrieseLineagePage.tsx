@@ -62,7 +62,6 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
 
         {/* ── Interactive Diagram ─────────────────────────────────── */}
         <div className={researchStyles.treeContainer}>
-          <div className={researchStyles.treeTitle}>The House of Flanders-Praet &mdash; Six Generations</div>
           <PraetDiagram />
         </div>
 
