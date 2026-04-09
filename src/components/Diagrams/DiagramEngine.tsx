@@ -79,9 +79,10 @@ function mk(tag: string, attrs: Record<string, string | number>): SVGElement {
 function measureTagText(text: string): number {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  if (!ctx) return text.length * 7 + 24;
-  ctx.font = '600 12px Cinzel, serif'; // Bumped for measurement
-  return ctx.measureText(text).width + 24;
+  // Use the actual rendered font size (12px) with generous padding (32px) to prevent overflow
+  if (!ctx) return text.length * 8.5 + 32;
+  ctx.font = '600 12px Cinzel, serif';
+  return Math.ceil(ctx.measureText(text).width) + 32;
 }
 
 function renderNode(
@@ -94,7 +95,7 @@ function renderNode(
   onClick: (data: NodeConfig, e: MouseEvent) => void,
 ): NodeRect {
   const W = cfg.w || 180; // Bumped default width slightly
-  const tagWidth = cfg.tag ? Math.max(measureTagText(cfg.tag), 130) : 0;
+  const tagWidth = cfg.tag ? Math.max(measureTagText(cfg.tag), 150) : 0;
   const H = cfg.h || (cfg.tag ? 86 : cfg.dates ? 68 : 58); // Bumped default heights
   const g = mk('g', { 'data-n': '1' }) as SVGGElement;
   g.style.cursor = 'pointer';
@@ -128,9 +129,9 @@ function renderNode(
   }
   if (hasTag) {
     const pillW = tagWidth;
-    g.appendChild(mk('rect', { x: x + W / 2 - pillW / 2, y: ty + 2, width: pillW, height: 16, rx: 3, fill: color + '25' }));
-    // Issue: bump tag font size from 10 to 12
-    const tt = mk('text', { x: x + W / 2, y: ty + 14, 'text-anchor': 'middle', fill: color, 'font-family': 'Cinzel,serif', 'font-size': '12', 'font-weight': '600', 'letter-spacing': '0.07' });
+    // Pill height 18px, text baseline at +14 (12px font + 2px top padding)
+    g.appendChild(mk('rect', { x: x + W / 2 - pillW / 2, y: ty + 2, width: pillW, height: 18, rx: 3, fill: color + '25' }));
+    const tt = mk('text', { x: x + W / 2, y: ty + 15, 'text-anchor': 'middle', fill: color, 'font-family': 'Cinzel,serif', 'font-size': '12', 'font-weight': '600', 'letter-spacing': '0.07' });
     tt.textContent = cfg.tag!;
     g.appendChild(tt);
   }
