@@ -93,7 +93,7 @@ function renderNode(
 ): NodeRect {
   const W = cfg.w || 180;
   const tagWidth = cfg.tag ? Math.max(measureTagText(cfg.tag), 150) : 0;
-  const H = cfg.h || (cfg.tag ? 92 : cfg.dates ? 68 : 58);
+  const H = cfg.h || (cfg.tag ? 94 : cfg.dates ? 68 : 58);
   const g = mk('g', { 'data-n': '1' }) as SVGGElement;
   g.style.cursor = 'pointer';
   const color = cfg.color;
@@ -107,7 +107,7 @@ function renderNode(
   const lh = 18; // Bumped line height
   const hasDates = !!cfg.dates;
   const hasTag = !!cfg.tag;
-  const tagSlot = hasTag ? 30 : 0; // 12px gap + 18px pill
+  const tagSlot = hasTag ? 32 : 0; // 12px gap + 20px pill
   const contentH = lines.length * lh + (hasDates ? 16 : 0) + tagSlot;
   let ty = y + (H - contentH) / 2 + lh;
 
@@ -128,8 +128,8 @@ function renderNode(
   if (hasTag) {
     const pillW = tagWidth;
     // 12px gap below dates/name, then 18px pill
-    g.appendChild(mk('rect', { x: x + W / 2 - pillW / 2, y: ty + 12, width: pillW, height: 18, rx: 3, fill: color + '25' }));
-    const tt = mk('text', { x: x + W / 2, y: ty + 25, 'text-anchor': 'middle', fill: color, 'font-family': 'Cinzel,serif', 'font-size': '11', 'font-weight': '600', 'letter-spacing': '0.05' });
+    g.appendChild(mk('rect', { x: x + W / 2 - pillW / 2, y: ty + 12, width: pillW, height: 20, rx: 3, fill: color + '44', stroke: color + '55', 'stroke-width': 0.5 }));
+    const tt = mk('text', { x: x + W / 2, y: ty + 26, 'text-anchor': 'middle', fill: color, 'font-family': 'Cinzel,serif', 'font-size': '11', 'font-weight': '600', 'letter-spacing': '0.55' });
     tt.textContent = cfg.tag!;
     g.appendChild(tt);
   }
