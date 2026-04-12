@@ -1,0 +1,241 @@
+diff --git a/src/pages/AboutPage.tsx b/src/pages/AboutPage.tsx
+index 919e3ae..a6dc165 100644
+--- a/src/pages/AboutPage.tsx
++++ b/src/pages/AboutPage.tsx
+@@ -73,6 +73,42 @@ export default function AboutPage() {
+           <p>
+             {t('about.methodology_note')}
+           </p>
++          <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
++            <button
++              onClick={() => goTo('research')}
++              style={{
++                background: 'none',
++                border: '1px solid rgba(232,184,48,0.35)',
++                borderRadius: '4px',
++                color: 'var(--gold)',
++                cursor: 'pointer',
++                fontSize: '0.82rem',
++                fontFamily: 'var(--font-ui)',
++                letterSpacing: '0.1em',
++                textTransform: 'uppercase',
++                padding: '0.5rem 1.1rem',
++              }}
++            >
++              Research Overview &rarr;
++            </button>
++            <button
++              onClick={() => goToResearch('methodology')}
++              style={{
++                background: 'none',
++                border: '1px solid rgba(232,184,48,0.35)',
++                borderRadius: '4px',
++                color: 'var(--gold)',
++                cursor: 'pointer',
++                fontSize: '0.82rem',
++                fontFamily: 'var(--font-ui)',
++                letterSpacing: '0.1em',
++                textTransform: 'uppercase',
++                padding: '0.5rem 1.1rem',
++              }}
++            >
++              Methodology &amp; Sources &rarr;
++            </button>
++          </div>
+         </section>
+ 
+         <section className={styles.section}>
+diff --git a/src/pages/PraetDossierPage.tsx b/src/pages/PraetDossierPage.tsx
+index f812552..2c2730a 100644
+--- a/src/pages/PraetDossierPage.tsx
++++ b/src/pages/PraetDossierPage.tsx
+@@ -165,6 +165,23 @@ export default function PraetDossierPage() {
+           >
+             Back to Louis Friese Lineage
+           </button>
++          <button
++            onClick={() => goToResearch('bibliography')}
++            style={{
++              background: 'none',
++              border: 'none',
++              cursor: 'pointer',
++              color: 'var(--gold)',
++              fontSize: '14px',
++              textDecoration: 'underline',
++              fontFamily: 'var(--font-ui)',
++              textTransform: 'uppercase',
++              letterSpacing: '0.1em',
++              marginLeft: '1.5rem',
++            }}
++          >
++            Full Bibliography &rarr;
++          </button>
+         </div>
+       </div>
+     </div>
+diff --git a/src/pages/PraetLineageDossierPage.tsx b/src/pages/PraetLineageDossierPage.tsx
+index eb6f858..4b0559b 100644
+--- a/src/pages/PraetLineageDossierPage.tsx
++++ b/src/pages/PraetLineageDossierPage.tsx
+@@ -256,6 +256,23 @@ export default function PraetLineageDossierPage() {
+           >
+             Back to Louis Friese Lineage
+           </button>
++          <button
++            onClick={() => goToResearch('bibliography')}
++            style={{
++              background: 'none',
++              border: 'none',
++              cursor: 'pointer',
++              color: 'var(--gold)',
++              fontSize: '14px',
++              textDecoration: 'underline',
++              fontFamily: 'var(--font-ui)',
++              textTransform: 'uppercase',
++              letterSpacing: '0.1em',
++              marginLeft: '1.5rem',
++            }}
++          >
++            Full Bibliography &rarr;
++          </button>
+         </div>
+       </div>
+     </div>
+diff --git a/src/pages/ResearchPage.tsx b/src/pages/ResearchPage.tsx
+index 5f2ec1b..cf481d3 100644
+--- a/src/pages/ResearchPage.tsx
++++ b/src/pages/ResearchPage.tsx
+@@ -3,7 +3,11 @@ import styles from './InnerPage.module.css';
+ import researchStyles from './ResearchPage.module.css';
+ import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
+ import { OverviewDiagram } from '../components/Diagrams';
++import { lazy, Suspense } from 'react';
+ import { useNav } from '../hooks/useNav';
++
++// Leaflet touches window on import — lazy-load so it's skipped during SSR prerender
++const ResearchMap = lazy(() => import('../components/ResearchMap/ResearchMap'));
+ import { Helmet } from 'react-helmet-async';
+ 
+ export default function ResearchPage() {
+@@ -104,44 +108,43 @@ export default function ResearchPage() {
+           </div>
+         </div>
+ 
+-        {/* ── Methodology & Sources nav link ─────────────────────────── */}
+-        <section className={styles.section} style={{ textAlign: 'center', paddingTop: '1rem' }}>
+-          <button
+-            onClick={() => goToResearch('methodology')}
+-            style={{
+-              background: 'none',
+-              border: '1px solid rgba(232,184,48,0.35)',
+-              borderRadius: '4px',
+-              color: 'var(--gold)',
+-              cursor: 'pointer',
+-              fontSize: '0.85rem',
+-              fontFamily: 'var(--font-ui)',
+-              letterSpacing: '0.1em',
+-              textTransform: 'uppercase',
+-              padding: '0.6rem 1.4rem',
+-              transition: 'background 0.2s, border-color 0.2s',
+-            }}
+-          >
+-            Methodology &amp; Sources &rarr;
+-          </button>
+-          <button
+-            onClick={() => goToResearch('bibliography')}
+-            style={{
+-              background: 'none',
+-              border: '1px solid rgba(232,184,48,0.35)',
+-              borderRadius: '4px',
+-              color: 'var(--gold)',
+-              cursor: 'pointer',
+-              fontSize: '0.85rem',
+-              fontFamily: 'var(--font-ui)',
+-              letterSpacing: '0.1em',
+-              textTransform: 'uppercase',
+-              padding: '0.6rem 1.4rem',
+-              transition: 'background 0.2s, border-color 0.2s',
+-            }}
+-          >
+-            Sources &amp; Scholarship &rarr;
+-          </button>
++        {/* ── Reference Pages ─────────────────────────────────────────── */}
++        <section className={styles.section}>
++          <h2>Reference</h2>
++          <div className={researchStyles.branchCards}>
++            <div
++              className={researchStyles.branchCard}
++              tabIndex={0}
++              style={{ cursor: 'pointer' }}
++              onClick={() => goToResearch('methodology')}
++              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('methodology'); } }}
++              aria-label="Methodology and Sources"
++            >
++              <h3>Methodology &amp; Sources</h3>
++              <p>
++                How archival documents are transcribed and translated, and the curated reading list of primary and secondary works that underpin the research.
++              </p>
++              <span className={researchStyles.branchLink} aria-hidden="true">
++                Methodology &amp; Sources &rarr;
++              </span>
++            </div>
++            <div
++              className={researchStyles.branchCard}
++              tabIndex={0}
++              style={{ cursor: 'pointer' }}
++              onClick={() => goToResearch('bibliography')}
++              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('bibliography'); } }}
++              aria-label="Sources and Scholarship"
++            >
++              <h3>Sources &amp; Scholarship</h3>
++              <p>
++                Primary sources, archival finding aids, and scholarly literature cited in the dossiers — the evidentiary basis of the project in one place.
++              </p>
++              <span className={researchStyles.branchLink} aria-hidden="true">
++                Sources &amp; Scholarship &rarr;
++              </span>
++            </div>
++          </div>
+         </section>
+ 
+         {/* ── Methodology ─────────────────────────────────────────── */}
+@@ -167,6 +170,11 @@ export default function ResearchPage() {
+           </div>
+         </section>
+ 
++        {/* Interactive Research Map */}
++        <Suspense fallback={<div style={{ height: '400px' }} />}>
++          <ResearchMap />
++        </Suspense>
++
+         {/* ── Archival Dossiers ────────────────────────────────────── */}
+         <section className={styles.section} style={{ marginTop: '3rem' }}>
+           <h2>Archival Dossiers</h2>
+diff --git a/src/pages/VictorDossierPage.tsx b/src/pages/VictorDossierPage.tsx
+index c6eccb8..4ca8165 100644
+--- a/src/pages/VictorDossierPage.tsx
++++ b/src/pages/VictorDossierPage.tsx
+@@ -279,6 +279,23 @@ export default function VictorDossierPage() {
+           >
+             Return to Victor Lineage
+           </button>
++          <button
++            onClick={() => goToResearch('bibliography')}
++            style={{
++              background: 'none',
++              border: 'none',
++              cursor: 'pointer',
++              color: 'var(--gold)',
++              fontSize: '14px',
++              textDecoration: 'underline',
++              fontFamily: 'var(--font-ui)',
++              textTransform: 'uppercase',
++              letterSpacing: '0.1em',
++              marginLeft: '1.5rem',
++            }}
++          >
++            Full Bibliography &rarr;
++          </button>
+         </div>
+       </div>
+     </div>
