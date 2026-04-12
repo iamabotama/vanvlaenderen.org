@@ -4,9 +4,14 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Base is '/' because we use a custom domain (vanvlaenderen.org)
   base: '/',
   server: {
     allowedHosts: true,
+  },
+  build: {
+    outDir: 'dist',
+  },
+  ssr: {
+    noExternal: ['react-helmet-async'],
   },
 })

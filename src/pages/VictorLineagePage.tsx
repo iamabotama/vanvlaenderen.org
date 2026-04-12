@@ -3,16 +3,24 @@ import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { VictorDiagram } from '../components/Diagrams';
+import { useNav } from '../hooks/useNav';
+import { Helmet } from 'react-helmet-async';
 
-interface VictorLineagePageProps {
-  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese' | 'contact' | 'victor-dossier' | 'praet-dossier' | 'praet-lineage-dossier') => void;
-}
-
-export default function VictorLineagePage({ onNavigate }: VictorLineagePageProps) {
+export default function VictorLineagePage() {
+  const { goToResearch } = useNav();
   const { t } = useTranslation();
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>Victor van Vlaenderen — Lord of Wessegem | vanvlaenderen.org</title>
+        <meta name="description" content="Victor van Vlaenderen: bastard son of Louis II de Male, Lord of Ursel and Wessegem, father of Lodewyc, Janne, and Adam van Vlaendren per the 1441/42 charter." />
+        <link rel="canonical" href="https://vanvlaenderen.org/research/victor" />
+        <meta property="og:title" content="Victor van Vlaenderen — Lord of Wessegem" />
+        <meta property="og:description" content="Bastard son of Louis II de Male. Father of Lodewyc, Janne, and Adam van Vlaendren — documented in the 1441 charter." />
+        <meta property="og:url" content="https://vanvlaenderen.org/research/victor" />
+        <meta property="og:type" content="article" />
+      </Helmet>
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <div className={styles.heroStrip}>
         <div
@@ -135,8 +143,8 @@ export default function VictorLineagePage({ onNavigate }: VictorLineagePageProps
             role="button"
             tabIndex={0}
             style={{ borderTop: '3px solid var(--gold)', maxWidth: '100%', cursor: 'pointer' }}
-            onClick={() => onNavigate?.('victor-dossier')}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('victor-dossier'); } }}
+            onClick={() => goToResearch('victor-dossier')}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('victor-dossier'); } }}
             aria-label="Victor van Vlaenderen: Archival Dossier"
           >
             <h3>Victor van Vlaenderen: Archival Dossier</h3>
@@ -182,7 +190,7 @@ export default function VictorLineagePage({ onNavigate }: VictorLineagePageProps
           </div>
         </section>
 
-        <div className={styles.ctaBox} onClick={() => onNavigate?.('contact')} style={{ cursor: 'pointer' }}>
+        <div className={styles.ctaBox} onClick={() => goToResearch('contact')} style={{ cursor: 'pointer' }}>
           <div className={styles.ctaText}>
             {t('victor.cta_text')}
           </div>
@@ -193,7 +201,7 @@ export default function VictorLineagePage({ onNavigate }: VictorLineagePageProps
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
           <button
-            onClick={() => onNavigate?.('main')}
+            onClick={() => goToResearch('main')}
             style={{
               background: 'none',
               border: 'none',

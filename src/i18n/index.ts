@@ -26,14 +26,14 @@ i18n
     },
   });
 
-// Set HTML lang attribute on init
+// Set HTML lang attribute on init (browser only)
 i18n.on('initialized', () => {
-  document.documentElement.lang = i18n.language;
+  if (typeof document !== 'undefined') document.documentElement.lang = i18n.language;
 });
 
-// Update HTML lang attribute when language changes
+// Update HTML lang attribute when language changes (browser only)
 i18n.on('languageChanged', (lng) => {
-  document.documentElement.lang = lng;
+  if (typeof document !== 'undefined') document.documentElement.lang = lng;
 });
 
 export default i18n;

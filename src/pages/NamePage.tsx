@@ -1,20 +1,20 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './InnerPage.module.css';
 import nameStyles from './NamePage.module.css';
 
 import cronikeShields from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
-import { ResearchMap } from '../components/ResearchMap';
+// Leaflet touches window on import — lazy-load so it's skipped during SSR prerender
+const ResearchMap = lazy(() => import('../components/ResearchMap/ResearchMap'));
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
 import lionWoodcut from '../assets/images/lion-woodcut.jpg';
+import { useNav } from '../hooks/useNav';
+import { Helmet } from 'react-helmet-async';
 
-interface NamePageProps {
-  onNavigate?: (tab: string) => void;
-}
-
-export default function NamePage({ onNavigate }: NamePageProps) {
+export default function NamePage() {
+  const { goTo } = useNav();
   const { t } = useTranslation();
   const [lightbox, setLightbox] = useState<{ src: string; alt: string; caption: string } | null>(null);
 
@@ -55,6 +55,15 @@ export default function NamePage({ onNavigate }: NamePageProps) {
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>The Name — Where "Van Vlaenderen" Comes From | vanvlaenderen.org</title>
+        <meta name="description" content="Analysis of the Van Vlaenderen surname: why it is comital identity, not a common toponym. Evidence from Victor van Vlaenderen's 1441 charter and the bastard children of Louis II de Male." />
+        <link rel="canonical" href="https://vanvlaenderen.org/name" />
+        <meta property="og:title" content="The Name — Where Van Vlaenderen Comes From" />
+        <meta property="og:description" content="Comital identity, not a toponym. Evidence from the 1441 charter of Victor van Vlaenderen." />
+        <meta property="og:url" content="https://vanvlaenderen.org/name" />
+        <meta property="og:type" content="article" />
+      </Helmet>
 
       {/* ── Hero: split image + text ──────────────────────────────── */}
       <div className={styles.heroStrip}>
@@ -90,7 +99,9 @@ export default function NamePage({ onNavigate }: NamePageProps) {
         </section>
 
         {/* Interactive Research Map */}
-        <ResearchMap />
+        <Suspense fallback={<div style={{ height: '400px' }} />}>
+          <ResearchMap />
+        </Suspense>
 
         {/* Static Meetjesland Map */}
         <div className={nameStyles.mapContainer}>
@@ -190,7 +201,7 @@ export default function NamePage({ onNavigate }: NamePageProps) {
           </div>
           <button
             className={nameStyles.shareStoryBtn}
-            onClick={() => onNavigate?.('contact')}
+            onClick={() => goTo('contact')}
           >
             {t('name.cta_button')}
           </button>

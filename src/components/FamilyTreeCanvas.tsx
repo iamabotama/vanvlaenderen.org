@@ -72,6 +72,9 @@ interface TSeg {
 
 // ── Component ──────────────────────────────────────────────────────────────
 export default function FamilyTreeCanvas() {
+  // SSR guard — canvas and window don't exist in Node during prerender
+  if (typeof window === 'undefined') return null;
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {

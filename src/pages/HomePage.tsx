@@ -6,11 +6,9 @@ import windmill from '../assets/images/places/van-vlaenderensmolen-vinderhoute-c
 import manuscriptNoblewoman from '../assets/images/manuscript-noblewoman.jpg';
 import cronike from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 import styles from './HomePage.module.css';
+import { useNav } from '../hooks/useNav';
 import type { Tab } from '../components/Nav';
-
-interface HomePageProps {
-  onNav: (tab: Tab) => void;
-}
+import { Helmet } from 'react-helmet-async';
 
 const villages = [
   'Ursel', 'Bassevelde', 'Boekhoute', 'Evergem', 'Merendree',
@@ -18,7 +16,8 @@ const villages = [
   'Eeklo', 'Ghent',
 ];
 
-export default function HomePage({ onNav }: HomePageProps) {
+export default function HomePage() {
+  const { goTo } = useNav();
   const { t } = useTranslation();
 
   const cards = [
@@ -54,6 +53,17 @@ export default function HomePage({ onNav }: HomePageProps) {
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>Van Vlaenderen — Flemish Heritage &amp; Family History Research</title>
+        <meta name="description" content="Genealogical research tracing the Van Vlaenderen surname to Louis II de Male, Count of Flanders (1330–1384). Fourteen generations documented from Meetjesland to America." />
+        <link rel="canonical" href="https://vanvlaenderen.org/" />
+        <meta property="og:title" content="Van Vlaenderen — Flemish Heritage Research" />
+        <meta property="og:description" content="Tracing the Van Vlaenderen surname to Louis II de Male, Count of Flanders. Fourteen generations, archival evidence, Y-DNA research." />
+        <meta property="og:url" content="https://vanvlaenderen.org/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://vanvlaenderen.org/assets/hero-background-rVYnRAiM.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
 
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <div className={styles.hero} style={{ backgroundImage: `url(${heroBg})` }}>
@@ -126,7 +136,7 @@ export default function HomePage({ onNav }: HomePageProps) {
               <p>
                 {t('home.hypothesis_two_p2')}
               </p>
-              <button className={styles.primaryBtn} onClick={() => onNav('research')}>
+              <button className={styles.primaryBtn} onClick={() => goTo('research')}>
                 {t('home.cta_research')} →
               </button>
             </div>
@@ -147,10 +157,10 @@ export default function HomePage({ onNav }: HomePageProps) {
           </div>
 
           <div className={styles.mysteryActions}>
-            <button className={styles.primaryBtn} onClick={() => onNav('name')}>
+            <button className={styles.primaryBtn} onClick={() => goTo('name')}>
               {t('home.cta_explore')}
             </button>
-            <button className={styles.secondaryBtn} onClick={() => onNav('contact')}>
+            <button className={styles.secondaryBtn} onClick={() => goTo('contact')}>
               {t('home.cta_contribute')}
             </button>
           </div>
@@ -172,7 +182,7 @@ export default function HomePage({ onNav }: HomePageProps) {
             <button
               key={card.id}
               className={styles.card}
-              onClick={() => onNav(card.id)}
+              onClick={() => goTo(card.id)}
             >
               <div className={styles.cardImg}>
                 <img src={card.img} alt={t(card.titleKey)} />

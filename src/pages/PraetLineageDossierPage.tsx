@@ -1,12 +1,11 @@
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
+import { useNav } from '../hooks/useNav';
+import { Helmet } from 'react-helmet-async';
 
-interface PraetLineageDossierPageProps {
-  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese' | 'contact' | 'victor-dossier' | 'praet-dossier' | 'praet-lineage-dossier') => void;
-}
-
-export default function PraetLineageDossierPage({ onNavigate }: PraetLineageDossierPageProps) {
+export default function PraetLineageDossierPage() {
+  const { goToResearch } = useNav();
   const lineageData = [
     { gen: 1, name: 'Louis Friese van Vlaenderen', dates: 'c.1350 \u2013 28 Sep 1396', role: 'Bastard of Flanders; Lord of Praet & Woestine', spouse: '1) Unknown (La Woestine) 2) Marie van Gistel', sources: 'Vredius MS via FMG [864\u2013869]; Wikipedia', level: 'Directly attested', levelClass: researchStyles.levelAttested },
     { gen: 2, name: 'Johan I van Vlaenderen', dates: 'd. after 10 Sep 1439', role: 'Lord of Praet & Woestine; Burgher of Praet', spouse: 'Johanna van Reygersvliet', sources: 'Charter 10 Sep 1439 via FMG [873]; Vredius MS [875]', level: 'Directly attested', levelClass: researchStyles.levelAttested },
@@ -18,6 +17,15 @@ export default function PraetLineageDossierPage({ onNavigate }: PraetLineageDoss
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>Praet Lineage Detail — Van Vlaenderen Research | vanvlaenderen.org</title>
+        <meta name="description" content="Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Jean I, Louis II, Jacob, and Lodewijk IV — the research control for Van Vlaenderen surname attribution." />
+        <link rel="canonical" href="https://vanvlaenderen.org/research/praet-lineage-dossier" />
+        <meta property="og:title" content="Praet Lineage Detail — Van Vlaenderen Research" />
+        <meta property="og:description" content="Generational evidence for the Praet descent. Functions as a documented research control for Van Vlaenderen surname attribution." />
+        <meta property="og:url" content="https://vanvlaenderen.org/research/praet-lineage-dossier" />
+        <meta property="og:type" content="article" />
+      </Helmet>
       <div className={styles.heroStrip}>
         <div
           className={styles.heroImg}
@@ -233,7 +241,7 @@ export default function PraetLineageDossierPage({ onNavigate }: PraetLineageDoss
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
           <button
-            onClick={() => onNavigate?.('louis-friese')}
+            onClick={() => goToResearch('louis-friese')}
             style={{
               background: 'none',
               border: 'none',

@@ -3,16 +3,24 @@ import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { OverviewDiagram } from '../components/Diagrams';
+import { useNav } from '../hooks/useNav';
+import { Helmet } from 'react-helmet-async';
 
-interface ResearchPageProps {
-  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese' | 'contact' | 'victor-dossier' | 'praet-dossier' | 'praet-lineage-dossier') => void;
-}
-
-export default function ResearchPage({ onNavigate }: ResearchPageProps) {
+export default function ResearchPage() {
+  const { goToResearch } = useNav();
   const { t } = useTranslation();
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>Research Overview — Van Vlaenderen Archival Dossiers | vanvlaenderen.org</title>
+        <meta name="description" content="Overview of Van Vlaenderen archival research: the Victor line (Lord of Wessegem) and the Louis Friese / Praet line, both descending from Louis II de Male, Count of Flanders." />
+        <link rel="canonical" href="https://vanvlaenderen.org/research" />
+        <meta property="og:title" content="Research Overview — Van Vlaenderen Archival Dossiers" />
+        <meta property="og:description" content="Two surname-bearing bastard lines of Louis II de Male: Victor van Vlaenderen and Louis Friese van Vlaenderen." />
+        <meta property="og:url" content="https://vanvlaenderen.org/research" />
+        <meta property="og:type" content="article" />
+      </Helmet>
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <div className={styles.heroStrip}>
         <div
@@ -61,8 +69,8 @@ export default function ResearchPage({ onNavigate }: ResearchPageProps) {
             role="button"
             tabIndex={0}
             style={{ cursor: 'pointer' }}
-            onClick={() => onNavigate?.('victor')}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('victor'); } }}
+            onClick={() => goToResearch('victor')}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('victor'); } }}
             aria-label="Victor van Vlaenderen"
           >
             <h3>Victor van Vlaenderen</h3>
@@ -79,8 +87,8 @@ export default function ResearchPage({ onNavigate }: ResearchPageProps) {
             role="button"
             tabIndex={0}
             style={{ cursor: 'pointer' }}
-            onClick={() => onNavigate?.('louis-friese')}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('louis-friese'); } }}
+            onClick={() => goToResearch('louis-friese')}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('louis-friese'); } }}
             aria-label="Louis Friese van Vlaenderen"
           >
             <h3>Louis Friese van Vlaenderen</h3>
@@ -126,8 +134,8 @@ export default function ResearchPage({ onNavigate }: ResearchPageProps) {
               role="button"
               tabIndex={0}
               style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => onNavigate?.('victor-dossier')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('victor-dossier'); } }}
+              onClick={() => goToResearch('victor-dossier')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('victor-dossier'); } }}
               aria-label="Victor van Vlaenderen Dossier"
             >
               <h3>Victor van Vlaenderen Dossier</h3>
@@ -141,8 +149,8 @@ export default function ResearchPage({ onNavigate }: ResearchPageProps) {
               role="button"
               tabIndex={0}
               style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => onNavigate?.('praet-dossier')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('praet-dossier'); } }}
+              onClick={() => goToResearch('praet-dossier')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('praet-dossier'); } }}
               aria-label="Louis Friese Archival Dossier"
             >
               <h3>Louis Friese: Archival Dossier</h3>
@@ -156,8 +164,8 @@ export default function ResearchPage({ onNavigate }: ResearchPageProps) {
               role="button"
               tabIndex={0}
               style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => onNavigate?.('praet-lineage-dossier')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('praet-lineage-dossier'); } }}
+              onClick={() => goToResearch('praet-lineage-dossier')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('praet-lineage-dossier'); } }}
               aria-label="House of Praet Lineage Dossier"
             >
               <h3>House of Praet: Lineage Dossier</h3>
@@ -177,7 +185,7 @@ export default function ResearchPage({ onNavigate }: ResearchPageProps) {
           </p>
         </section>
 
-        <div className={styles.ctaBox} onClick={() => onNavigate?.('contact')} style={{ cursor: 'pointer' }}>
+        <div className={styles.ctaBox} onClick={() => goToResearch('contact')} style={{ cursor: 'pointer' }}>
           <div className={styles.ctaText}>
             {t('research.cta_text')}
           </div>

@@ -3,16 +3,24 @@ import millVinderhoute from '../assets/images/places/van-vlaenderensmolen-vinder
 import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
 import styles from './InnerPage.module.css';
 import millStyles from './MillPage.module.css';
+import { useNav } from '../hooks/useNav';
+import { Helmet } from 'react-helmet-async';
 
-interface MillPageProps {
-  onNavigate?: (tab: string) => void;
-}
-
-export default function MillPage({ onNavigate }: MillPageProps) {
+export default function MillPage() {
+  const { goTo } = useNav();
   const { t } = useTranslation();
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>The Mill — Van Vlaenderen Family Origins | vanvlaenderen.org</title>
+        <meta name="description" content="The documented miller lineage of the Van Vlaenderen family from 1568 Ghent through East Flanders — Wassegem, Oostwinkel, Waarschoot, Boekhoute, and Bassevelde." />
+        <link rel="canonical" href="https://vanvlaenderen.org/mill" />
+        <meta property="og:title" content="The Mill — Van Vlaenderen Family Origins" />
+        <meta property="og:description" content="Documented miller lineage from 1568 Ghent through East Flanders." />
+        <meta property="og:url" content="https://vanvlaenderen.org/mill" />
+        <meta property="og:type" content="article" />
+      </Helmet>
 
       {/* ── Hero: windmill image + text ───────────────────────────── */}
       <div className={styles.heroStrip}>
@@ -155,7 +163,7 @@ export default function MillPage({ onNavigate }: MillPageProps) {
           </div>
         </div>
 
-        <div className={styles.ctaBox} onClick={() => onNavigate?.('contact')} style={{ cursor: 'pointer' }}>
+        <div className={styles.ctaBox} onClick={() => goTo('contact')} style={{ cursor: 'pointer' }}>
           <div className={styles.ctaText}>
             {t('mill.cta_text')}
           </div>
