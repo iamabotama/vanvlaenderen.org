@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /research/
+
+User-agent: Claude-Web
+Allow: /research/
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://vanvlaenderen.org/sitemap.xml
