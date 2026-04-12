@@ -16,6 +16,9 @@ export default function VictorDossierPage() {
         <meta property="og:description" content="Primary source evidence: the 1427 and 1441/42 charters, Wessegem heritage, and Victor's three natural sons." />
         <meta property="og:url" content="https://vanvlaenderen.org/research/victor-dossier" />
         <meta property="og:type" content="article" />
+
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Victor van Vlaenderen \u2014 Archival Dossier","description":"Primary source dossier for Victor van Vlaenderen: 1427 and 1441/42 charter evidence, FMG MedLands documentation, Hof van Wessegem heritage record, and the Alix van Boyeghem connection.","url":"https://vanvlaenderen.org/research/victor-dossier","inLanguage":"en","dateModified":"2026-04-11","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Victor van Vlaenderen","item":"https://vanvlaenderen.org/research/victor"},{"@type":"ListItem","position":4,"name":"Archival Dossier","item":"https://vanvlaenderen.org/research/victor-dossier"}]}</script>
       </Helmet>
       <div className={styles.heroStrip}>
         <div
@@ -278,6 +281,23 @@ export default function VictorDossierPage() {
             }}
           >
             Return to Victor Lineage
+          </button>
+          <button
+            onClick={() => goToResearch('bibliography')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: 'var(--gold)',
+              fontSize: '14px',
+              textDecoration: 'underline',
+              fontFamily: 'var(--font-ui)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              marginLeft: '1.5rem',
+            }}
+          >
+            Full Bibliography &rarr;
           </button>
         </div>
       </div>

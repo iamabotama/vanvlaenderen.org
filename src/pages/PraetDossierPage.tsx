@@ -17,6 +17,9 @@ export default function PraetDossierPage() {
         <meta property="og:description" content="From Louis Friese van Vlaenderen to Lodewijk IV, Knight of the Golden Fleece. Primary and secondary sources for the Praet bastard line." />
         <meta property="og:url" content="https://vanvlaenderen.org/research/praet-dossier" />
         <meta property="og:type" content="article" />
+
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"The Praet Line \u2014 Archival Dossier","description":"Archival dossier for the Praet line: Louis Friese van Vlaenderen through Lodewijk IV (Louis of Praet, Knight of the Golden Fleece, d. 1555).","url":"https://vanvlaenderen.org/research/praet-dossier","inLanguage":"en","dateModified":"2026-04-11","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Louis Friese van Vlaenderen","item":"https://vanvlaenderen.org/research/louis-friese"},{"@type":"ListItem","position":4,"name":"Archival Dossier","item":"https://vanvlaenderen.org/research/praet-dossier"}]}</script>
       </Helmet>
       <div className={styles.heroStrip}>
         <div
@@ -164,6 +167,23 @@ export default function PraetDossierPage() {
             }}
           >
             Back to Louis Friese Lineage
+          </button>
+          <button
+            onClick={() => goToResearch('bibliography')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: 'var(--gold)',
+              fontSize: '14px',
+              textDecoration: 'underline',
+              fontFamily: 'var(--font-ui)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              marginLeft: '1.5rem',
+            }}
+          >
+            Full Bibliography &rarr;
           </button>
         </div>
       </div>

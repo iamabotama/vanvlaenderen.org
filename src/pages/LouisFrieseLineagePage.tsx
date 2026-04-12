@@ -71,6 +71,10 @@ export default function LouisFrieseLineagePage() {
         {/* ── Interactive Diagram ─────────────────────────────────── */}
         <div className={researchStyles.treeContainer}>
           <PraetDiagram />
+          <div className="sr-only">
+            <h3>Praet line lineage — text summary</h3>
+            <p>This diagram shows the descent from Louis II de Male, Count of Flanders (1330–1384), through his natural son Louis Friese van Vlaenderen (c.1350 – 28 September 1396), Lord of Praet and Woestine, killed at Nicopolis. Louis Friese's son Johan I van Vlaenderen (died after 10 September 1439), Lord of Praet, had seven documented children: Jean de Flandre (died 6 September 1523, Grand Bailiff of Bruges); Josse de Flandre (died after 1526, line survived to at least 1592); Lodewijk II van Vlaenderen (died 24 August 1488, Lord of Praet); Jeanne de Flandre (died after 1446); and three further daughters Marguerite, Isabelle, and Landrade. Lodewijk II's son was Lodewijk III van Vlaenderen (died 1 January 1490), whose son was Lodewijk IV van Vlaenderen (died 1555), Knight of the Golden Fleece (1531), Grand Bailiff of Ghent and Bruges, Stadtholder of Holland and Zeeland, and advisor to Charles V. Lodewijk IV's only son Jan II van Vlaenderen (died 10 December 1545) predeceased his father without issue, ending the legitimate Praet male line. The Praet line functions as a documented research control: men styled van Vlaenderen in 16th-century records cannot be assigned to Victor's descendants without first eliminating a possible Praet connection.</p>
+          </div>
         </div>
 
         {/* ── Johan I's Seven Children ────────────────────────────── */}

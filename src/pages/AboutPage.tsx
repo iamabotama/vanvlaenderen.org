@@ -73,6 +73,42 @@ export default function AboutPage() {
           <p>
             {t('about.methodology_note')}
           </p>
+          <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <button
+              onClick={() => goTo('research')}
+              style={{
+                background: 'none',
+                border: '1px solid rgba(232,184,48,0.35)',
+                borderRadius: '4px',
+                color: 'var(--gold)',
+                cursor: 'pointer',
+                fontSize: '0.82rem',
+                fontFamily: 'var(--font-ui)',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                padding: '0.5rem 1.1rem',
+              }}
+            >
+              Research Overview &rarr;
+            </button>
+            <button
+              onClick={() => goToResearch('methodology')}
+              style={{
+                background: 'none',
+                border: '1px solid rgba(232,184,48,0.35)',
+                borderRadius: '4px',
+                color: 'var(--gold)',
+                cursor: 'pointer',
+                fontSize: '0.82rem',
+                fontFamily: 'var(--font-ui)',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                padding: '0.5rem 1.1rem',
+              }}
+            >
+              Methodology &amp; Sources &rarr;
+            </button>
+          </div>
         </section>
 
         <section className={styles.section}>

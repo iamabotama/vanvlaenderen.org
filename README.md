@@ -78,32 +78,103 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Development Workflow
 
-To ensure a smooth and reliable development process, we follow a structured workflow:
+Every push to `main` triggers the GitHub Actions build and deploys automatically to vanvlaenderen.org. Review changes locally with `pnpm dev` before pushing.
 
-### 1. Persistent Development Branches
+**Rollbacks:** `git revert <hash>` and push — GitHub Actions redeploys automatically.
 
-We use persistent development branches for ongoing research and content updates:
+---
 
-*   **`mvf`**: The primary development branch for Mike van Vlaenderen.
-*   **`kvf`**: (Planned) The development branch for your brother.
-*   **`cvf`**: (Planned) The development branch for your sister.
+## Content Workflow
 
-This allows multiple contributors to work on different parts of the research simultaneously without interference.
+### Adding a Source to the Bibliography
 
-### 2. Testing and Review
+The bibliography data lives in **`public/data/bibliography.json`** — not in the page component. Adding a new source requires no knowledge of React or TypeScript.
 
-Before merging any changes to the `main` branch, the agent will provide a **temporary, publicly accessible URL** from the respective development branch (e.g., `mvf`). This allows for thorough verification of new content, functionality, and layout in a live-like environment without impacting the production site.
+1. Open `public/data/bibliography.json`
+2. Find the correct section:
+   - `sections.primarySources.subsections.*` for primary sources and finding aids
+   - `sections.scholarlyLiterature.groups[n].entries` for scholarly literature
+3. Add a new entry object:
 
-### 3. Automated Deployment (Publishing)
+```json
+{
+  "type": "Primary Source",
+  "author": "Surname, Firstname",
+  "year": "1958",
+  "title": "Title of the work",
+  "publisher": "Publisher, place and year.",
+  "note": "Annotation explaining why this source matters to the research.",
+  "url": "https://example.com",
+  "urlLabel": "Free download (Internet Archive)"
+}
+```
 
-Once the changes in a development branch have been reviewed and approved, the agent will merge that branch into the `main` branch. This action automatically triggers a **GitHub Actions workflow** (`.github/workflows/deploy.yml`) that performs the following steps:
+The `url` and `urlLabel` fields are optional. Valid `type` values (controls badge colour): `Primary Source`, `Finding Aid`, `Belgian Historiography`, `Meetjesland`, `Methodology`, `Genetic Genealogy`.
 
-*   **Build**: The project is built for production, optimizing all assets and code.
-*   **Deploy**: The built files are automatically deployed to the `gh-pages` branch.
+4. Update `"lastUpdated"` at the top of the file to today's date
+5. Commit and push — the site updates automatically
 
-The `gh-pages` branch is configured to serve the live website at [https://vanvlaenderen.org](https://vanvlaenderen.org). Therefore, **pushing to the `main` branch is now the single action required to publish changes to the live website.**
+**Rule:** New source *identified but not yet obtained* → add to `docs/lions-of-flanders-todo.md` only. New source *in hand and cited in a dossier* → add to `bibliography.json` and update the todo.
 
-### 4. Rollbacks and Version Control
+---
 
-This workflow leverages Git for robust version control. Every change is tracked, allowing for easy rollbacks if necessary. If an issue is discovered on the live site, the last commit on the `main` branch can be reverted, and the GitHub Actions workflow will automatically redeploy the previous stable version.
- 
+### Adding a Citation Link to a Dossier Page
+
+Dossier pages are in `src/pages/` (`VictorDossierPage.tsx`, `PraetDossierPage.tsx`, `PraetLineageDossierPage.tsx`). Each has a Notes & Bibliography section with numbered references.
+
+1. Find the reference by number: `<span className={researchStyles.refNumber}>3.</span>`
+2. Add or update the `<a href="...">` tag immediately after it
+3. Commit and push
+
+**Evidence levels** — use consistently when writing new claims:
+
+| Level | Meaning |
+|---|---|
+| **Directly Attested** | Primary source states it explicitly |
+| **Strongly Corroborated** | Multiple independent sources agree |
+| **Probable** | Consistent with evidence; no contradicting source |
+| **Hypothesis** | Working assumption; requires archival confirmation |
+
+---
+
+### Four-Bucket Framework
+
+Before adding any "van Vlaenderen" appearance from a historical source to a dossier, classify it:
+
+| Bucket | Type | Examples |
+|---|---|---|
+| 1 | Territorial / governmental phrase | *de Staeden van Vlaenderen*; *Kamer van Redeninge van Vlaenderen* |
+| 2 | Feudal title / noble titulature | *dienstman Mijnsheeren van Vlaenderen* |
+| 3 | Official staff / office phrase | *mijns heeren van Vlaenderen messagier* |
+| 4 | True hereditary surname | D. Van Vlaenderen schepen Meygem; land record individuals |
+
+Only Bucket 4 entries are genealogical evidence. Never add a Bucket 1–3 appearance to the dossiers as a surname attestation.
+
+---
+
+### Research Tracking Documents
+
+Three documents in **`docs/`** are versioned with the repo:
+
+| File | Purpose |
+|---|---|
+| `docs/lions-of-flanders-todo.md` | Research to-do — archival targets, source chain status, findings |
+| `docs/vanvlaenderen.org-todo.md` | Website backlog and changelog |
+| `docs/lions-of-flanders-reading-list.md` | Curated reading list with acquisition notes |
+
+Edit directly in Codespaces or via the GitHub web editor. **Claude maintains these files** — when a finding is confirmed, Claude generates a patch updating the relevant `docs/` file alongside any site changes.
+
+---
+
+### How Patch Files Work
+
+```bash
+# Apply a patch from Claude:
+git apply my-change.patch
+git add -A
+git commit -m "description"
+git push origin main
+rm my-change.patch
+```
+
+If `git apply` fails with a context error, the patched file has diverged — ask Claude to regenerate against the current file.
