@@ -37,6 +37,8 @@ const ROUTES = [
   '/lineage',
   '/about',
   '/contact',
+  '/research/bibliography',
+  '/research/methodology',
 ]
 
 // ── Head tag builder ───────────────────────────────────────────────────────
@@ -183,6 +185,8 @@ function writeSitemap(PAGE_META) {
     '/lineage':                        { priority: '0.8', changefreq: 'monthly' },
     '/about':                          { priority: '0.6', changefreq: 'yearly'  },
     '/contact':                        { priority: '0.5', changefreq: 'yearly'  },
+    '/research/bibliography':          { priority: '0.9', changefreq: 'weekly'  },
+    '/research/methodology':           { priority: '0.8', changefreq: 'monthly' },
   }
 
   const urls = ROUTES.map(route => {
