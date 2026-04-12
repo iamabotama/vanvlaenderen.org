@@ -139,7 +139,15 @@ async function prerender() {
     process.exit(1)
   }
 
-  const template = fs.readFileSync(templatePath, 'utf-8')
+  // Read the Vite-built template and ensure #root is empty before use.
+  // If a previous prerender run wrote homepage content into dist/index.html,
+  // injectIntoTemplate would fail to find '<div id="root"></div>' and silently
+  // return the homepage HTML for every route. Stripping it here is the fix.
+  const rawTemplate = fs.readFileSync(templatePath, 'utf-8')
+  const template = rawTemplate.replace(
+    /<div id="root">[\s\S]*?<\/div>/,
+    '<div id="root"></div>'
+  )
   let ok = 0
 
   for (const route of ROUTES) {
