@@ -2,11 +2,168 @@ import { jsxs, jsx, Fragment } from "react/jsx-runtime";
 import React4, { Component, useRef, useEffect, lazy, useState, useCallback, Suspense, useMemo, StrictMode } from "react";
 import { renderToString } from "react-dom/server";
 import { useNavigate, useLocation, Routes, Route, Navigate, StaticRouter } from "react-router-dom";
-import fastCompare from "react-fast-compare";
-import invariant from "invariant";
-import shallowEqual from "shallowequal";
 import i18n from "i18next";
 import { useTranslation, initReactI18next } from "react-i18next";
+function getDefaultExportFromCjs(x) {
+  return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
+}
+var reactFastCompare;
+var hasRequiredReactFastCompare;
+function requireReactFastCompare() {
+  if (hasRequiredReactFastCompare) return reactFastCompare;
+  hasRequiredReactFastCompare = 1;
+  var hasElementType = typeof Element !== "undefined";
+  var hasMap = typeof Map === "function";
+  var hasSet = typeof Set === "function";
+  var hasArrayBuffer = typeof ArrayBuffer === "function" && !!ArrayBuffer.isView;
+  function equal(a, b) {
+    if (a === b) return true;
+    if (a && b && typeof a == "object" && typeof b == "object") {
+      if (a.constructor !== b.constructor) return false;
+      var length, i, keys;
+      if (Array.isArray(a)) {
+        length = a.length;
+        if (length != b.length) return false;
+        for (i = length; i-- !== 0; )
+          if (!equal(a[i], b[i])) return false;
+        return true;
+      }
+      var it;
+      if (hasMap && a instanceof Map && b instanceof Map) {
+        if (a.size !== b.size) return false;
+        it = a.entries();
+        while (!(i = it.next()).done)
+          if (!b.has(i.value[0])) return false;
+        it = a.entries();
+        while (!(i = it.next()).done)
+          if (!equal(i.value[1], b.get(i.value[0]))) return false;
+        return true;
+      }
+      if (hasSet && a instanceof Set && b instanceof Set) {
+        if (a.size !== b.size) return false;
+        it = a.entries();
+        while (!(i = it.next()).done)
+          if (!b.has(i.value[0])) return false;
+        return true;
+      }
+      if (hasArrayBuffer && ArrayBuffer.isView(a) && ArrayBuffer.isView(b)) {
+        length = a.length;
+        if (length != b.length) return false;
+        for (i = length; i-- !== 0; )
+          if (a[i] !== b[i]) return false;
+        return true;
+      }
+      if (a.constructor === RegExp) return a.source === b.source && a.flags === b.flags;
+      if (a.valueOf !== Object.prototype.valueOf && typeof a.valueOf === "function" && typeof b.valueOf === "function") return a.valueOf() === b.valueOf();
+      if (a.toString !== Object.prototype.toString && typeof a.toString === "function" && typeof b.toString === "function") return a.toString() === b.toString();
+      keys = Object.keys(a);
+      length = keys.length;
+      if (length !== Object.keys(b).length) return false;
+      for (i = length; i-- !== 0; )
+        if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
+      if (hasElementType && a instanceof Element) return false;
+      for (i = length; i-- !== 0; ) {
+        if ((keys[i] === "_owner" || keys[i] === "__v" || keys[i] === "__o") && a.$$typeof) {
+          continue;
+        }
+        if (!equal(a[keys[i]], b[keys[i]])) return false;
+      }
+      return true;
+    }
+    return a !== a && b !== b;
+  }
+  reactFastCompare = function isEqual(a, b) {
+    try {
+      return equal(a, b);
+    } catch (error) {
+      if ((error.message || "").match(/stack|recursion/i)) {
+        console.warn("react-fast-compare cannot handle circular refs");
+        return false;
+      }
+      throw error;
+    }
+  };
+  return reactFastCompare;
+}
+var reactFastCompareExports = requireReactFastCompare();
+const fastCompare = /* @__PURE__ */ getDefaultExportFromCjs(reactFastCompareExports);
+var invariant_1;
+var hasRequiredInvariant;
+function requireInvariant() {
+  if (hasRequiredInvariant) return invariant_1;
+  hasRequiredInvariant = 1;
+  var NODE_ENV = process.env.NODE_ENV;
+  var invariant2 = function(condition, format, a, b, c, d, e, f) {
+    if (NODE_ENV !== "production") {
+      if (format === void 0) {
+        throw new Error("invariant requires an error message argument");
+      }
+    }
+    if (!condition) {
+      var error;
+      if (format === void 0) {
+        error = new Error(
+          "Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings."
+        );
+      } else {
+        var args = [a, b, c, d, e, f];
+        var argIndex = 0;
+        error = new Error(
+          format.replace(/%s/g, function() {
+            return args[argIndex++];
+          })
+        );
+        error.name = "Invariant Violation";
+      }
+      error.framesToPop = 1;
+      throw error;
+    }
+  };
+  invariant_1 = invariant2;
+  return invariant_1;
+}
+var invariantExports = requireInvariant();
+const invariant = /* @__PURE__ */ getDefaultExportFromCjs(invariantExports);
+var shallowequal;
+var hasRequiredShallowequal;
+function requireShallowequal() {
+  if (hasRequiredShallowequal) return shallowequal;
+  hasRequiredShallowequal = 1;
+  shallowequal = function shallowEqual2(objA, objB, compare, compareContext) {
+    var ret = compare ? compare.call(compareContext, objA, objB) : void 0;
+    if (ret !== void 0) {
+      return !!ret;
+    }
+    if (objA === objB) {
+      return true;
+    }
+    if (typeof objA !== "object" || !objA || typeof objB !== "object" || !objB) {
+      return false;
+    }
+    var keysA = Object.keys(objA);
+    var keysB = Object.keys(objB);
+    if (keysA.length !== keysB.length) {
+      return false;
+    }
+    var bHasOwnProperty = Object.prototype.hasOwnProperty.bind(objB);
+    for (var idx = 0; idx < keysA.length; idx++) {
+      var key = keysA[idx];
+      if (!bHasOwnProperty(key)) {
+        return false;
+      }
+      var valueA = objA[key];
+      var valueB = objB[key];
+      ret = compare ? compare.call(compareContext, valueA, valueB, key) : void 0;
+      if (ret === false || ret === void 0 && valueA !== valueB) {
+        return false;
+      }
+    }
+    return true;
+  };
+  return shallowequal;
+}
+var shallowequalExports = requireShallowequal();
+const shallowEqual = /* @__PURE__ */ getDefaultExportFromCjs(shallowequalExports);
 var TAG_NAMES = /* @__PURE__ */ ((TAG_NAMES2) => {
   TAG_NAMES2["BASE"] = "base";
   TAG_NAMES2["BODY"] = "body";
@@ -1930,7 +2087,7 @@ const nameStyles = {
 const manuscriptNoblewoman = "/assets/cronike-van-vlaenderen-countess-of-flanders-FFuOL0Qw.jpg";
 const knightPhilip = "/assets/cronike-van-vlaenderen-philip-of-alsace-knight-DGQauyu8.jpg";
 const lionWoodcut = "/assets/lion-woodcut-BatZURmx.jpg";
-const ResearchMap = lazy(() => import("./assets/ResearchMap-DF8B_k4w.js"));
+const ResearchMap$1 = lazy(() => import("./assets/ResearchMap-DF8B_k4w.js"));
 function NamePage() {
   const { goTo } = useNav();
   const { t } = useTranslation();
@@ -2057,7 +2214,7 @@ function NamePage() {
         ] }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)", fontSize: "0.95rem" }, children: t("name.four_bucket_conclusion") })
       ] }),
-      /* @__PURE__ */ jsx(Suspense, { fallback: /* @__PURE__ */ jsx("div", { style: { height: "400px" } }), children: /* @__PURE__ */ jsx(ResearchMap, {}) }),
+      /* @__PURE__ */ jsx(Suspense, { fallback: /* @__PURE__ */ jsx("div", { style: { height: "400px" } }), children: /* @__PURE__ */ jsx(ResearchMap$1, {}) }),
       /* @__PURE__ */ jsxs("div", { className: nameStyles.mapContainer, children: [
         /* @__PURE__ */ jsx(
           "img",
@@ -3185,6 +3342,7 @@ function PraetDiagram() {
     }
   );
 }
+const ResearchMap = lazy(() => import("./assets/ResearchMap-DF8B_k4w.js"));
 function ResearchPage() {
   const { goToResearch } = useNav();
   const { t } = useTranslation();
@@ -3300,6 +3458,7 @@ function ResearchPage() {
           ] })
         ] })
       ] }),
+      /* @__PURE__ */ jsx(Suspense, { fallback: /* @__PURE__ */ jsx("div", { style: { height: "400px" } }), children: /* @__PURE__ */ jsx(ResearchMap, {}) }),
       /* @__PURE__ */ jsxs("section", { className: styles$1.section, style: { marginTop: "3rem" }, children: [
         /* @__PURE__ */ jsx("h2", { children: "Archival Dossiers" }),
         /* @__PURE__ */ jsx("p", { children: "For researchers seeking the underlying documentary evidence, we maintain detailed archival dossiers with full charter transcriptions, epitaph data, and source analysis." }),
