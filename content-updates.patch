@@ -1,0 +1,598 @@
+From 0b57ec1d75ffa50fde234d128d61a534d49e4f57 Mon Sep 17 00:00:00 2001
+From: Michael Van Flandern <mvf@vanvlaenderen.org>
+Date: Sat, 11 Apr 2026 23:43:23 +0000
+Subject: [PATCH 1/2] fix deploy.yml: trigger on main not mvf-v2 (per README
+ workflow)
+
+---
+ .github/workflows/deploy.yml | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/.github/workflows/deploy.yml b/.github/workflows/deploy.yml
+index ef5ee58..cbd1fd3 100644
+--- a/.github/workflows/deploy.yml
++++ b/.github/workflows/deploy.yml
+@@ -3,10 +3,9 @@ name: Build & Deploy to GitHub Pages
+ on:
+   push:
+     branches:
+-      - mvf-v2        # deploy from the v2 rearchitect branch
+-      - mvf           # keep mvf as fallback during transition
++      - main          # production deploy — triggers on merge to main
+ 
+-  # Allow manual trigger from GitHub Actions tab
++  # Allow manual trigger from GitHub Actions tab (useful for previews)
+   workflow_dispatch:
+ 
+ jobs:
+@@ -45,6 +44,3 @@ jobs:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+           publish_dir: ./dist
+           publish_branch: gh-pages
+-          # Ensure SPA fallback: copy index.html as 404.html for any
+-          # routes that aren't prerendered (shouldn't happen, but safety net)
+-          keep_files: false
+-- 
+2.43.0
+
+
+From bfc052267d8bbc573b107f7dcffac81713c219d5 Mon Sep 17 00:00:00 2001
+From: Michael Van Flandern <mvf@vanvlaenderen.org>
+Date: Sun, 12 Apr 2026 00:24:40 +0000
+Subject: [PATCH 2/2] content: handoff edits + new MethodologyPage
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Handoff edits (VVL_Manus_Handoff.docx):
+- Edit 1-A: Replace unsupported Praet cadet claim in ResearchPage card
+- Edit 1-B: Add crystallisation insight paragraph to Research Overview
+- Edit 2-A: Replace Survival of Surname section with hedged text (en+nl)
+- Edit 2-B: Remove Rootenberg/Swanepoel source_7 from both locale files
+- Edit 3-A: Not present in codebase; gap framing already correctly hedged
+
+New page: /research/methodology
+- MethodologyPage.tsx: two sections — Transcription & Translation
+  Methodology (verbatim from doc) + Recommended Reading (6 groups,
+  structured data, acquisition links)
+- Wired into App.tsx router and PATH_TO_TAB
+- Added to pageMeta.ts and prerender.mjs (now 14/14 routes)
+- Methodology & Sources nav link added to ResearchPage
+- useNav.ts: methodology subpage added to RESEARCH_PATHS
+---
+ scripts/prerender.mjs         |   1 +
+ src/App.tsx                   |   2 +
+ src/hooks/useNav.ts           |   3 +-
+ src/i18n/locales/en.json      |  17 +-
+ src/i18n/locales/nl.json      |  13 +-
+ src/pageMeta.ts               |   8 +
+ src/pages/MethodologyPage.tsx | 308 ++++++++++++++++++++++++++++++++++
+ src/pages/ResearchPage.tsx    |  27 ++-
+ 8 files changed, 361 insertions(+), 18 deletions(-)
+ create mode 100644 src/pages/MethodologyPage.tsx
+
+diff --git a/scripts/prerender.mjs b/scripts/prerender.mjs
+index 93d007d..49bfc37 100644
+--- a/scripts/prerender.mjs
++++ b/scripts/prerender.mjs
+@@ -34,6 +34,7 @@ const ROUTES = [
+   '/research/victor-dossier',
+   '/research/praet-dossier',
+   '/research/praet-lineage-dossier',
++  '/research/methodology',
+   '/lineage',
+   '/about',
+   '/contact',
+diff --git a/src/App.tsx b/src/App.tsx
+index 941cc3a..bbd4a14 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -14,6 +14,7 @@ import PraetLineageDossierPage from './pages/PraetLineageDossierPage';
+ import ContactPage from './pages/ContactPage';
+ import AboutPage from './pages/AboutPage';
+ import { LineagePage } from './components/Lineage';
++import MethodologyPage from './pages/MethodologyPage';
+ import './App.css';
+ 
+ export default function App() {
+@@ -37,6 +38,7 @@ export default function App() {
+           <Route path="/research/victor-dossier"       element={<VictorDossierPage />} />
+           <Route path="/research/praet-dossier"        element={<PraetDossierPage />} />
+           <Route path="/research/praet-lineage-dossier" element={<PraetLineageDossierPage />} />
++          <Route path="/research/methodology"              element={<MethodologyPage />} />
+           <Route path="/lineage"                       element={<LineagePage />} />
+           <Route path="/about"                         element={<AboutPage />} />
+           <Route path="/contact"                       element={<ContactPage />} />
+diff --git a/src/hooks/useNav.ts b/src/hooks/useNav.ts
+index a7a81ea..ad79115 100644
+--- a/src/hooks/useNav.ts
++++ b/src/hooks/useNav.ts
+@@ -11,7 +11,7 @@
+ import { useNavigate } from 'react-router-dom';
+ 
+ export type TopTab = 'home' | 'mill' | 'name' | 'dna' | 'research' | 'lineage' | 'about' | 'contact';
+-export type ResearchSubpage = 'main' | 'victor' | 'louis-friese' | 'victor-dossier' | 'praet-dossier' | 'praet-lineage-dossier';
++export type ResearchSubpage = 'main' | 'victor' | 'louis-friese' | 'victor-dossier' | 'praet-dossier' | 'praet-lineage-dossier' | 'methodology';
+ 
+ const TOP_PATHS: Record<TopTab, string> = {
+   home:     '/',
+@@ -31,6 +31,7 @@ const RESEARCH_PATHS: Record<ResearchSubpage, string> = {
+   'victor-dossier':        '/research/victor-dossier',
+   'praet-dossier':         '/research/praet-dossier',
+   'praet-lineage-dossier': '/research/praet-lineage-dossier',
++  'methodology':             '/research/methodology',
+ };
+ 
+ export function useNav() {
+diff --git a/src/i18n/locales/en.json b/src/i18n/locales/en.json
+index 10ae2df..3d7415b 100644
+--- a/src/i18n/locales/en.json
++++ b/src/i18n/locales/en.json
+@@ -500,8 +500,8 @@
+     "praet_p1": "Louis Friese van Vlaenderen — also styled Lodewijk de Fries or Louis le Frison — was an illegitimate son of Louis II de Male, Count of Flanders. He was granted the lordship of Praet (Oedelem) and the lordship of Woestine, establishing a significant noble branch that bore the van Vlaenderen surname for several generations.",
+     "praet_p2": "The House of Flanders-Praet is one of the most well-documented illegitimate branches of the comital house. Its members held high offices, including the Golden Fleece, and served as advisors to the Dukes of Burgundy and the Habsburg sovereigns.",
+     "extinction_title": "The Extinction of the Noble Line",
+-    "extinction_p1": "The direct noble line of the House of Flanders-Praet is traditionally considered to have become extinct in the male line in 1556 with the death of Louis of Flanders, Lord of Praet, a prominent diplomat and advisor to Emperor Charles V. However, this \"extinction\" typically refers only to the primary, titled branch of the family.",
+-    "extinction_p2": "Our research investigates the possibility that younger sons and cadet branches of the Praet line survived and continued the Van Vlaenderen name in a non-noble capacity. The movement of these branches into the rural parishes of East Flanders would mirror the patterns seen in other illegitimate noble lineages of the period.",
++    "extinction_p1": "The legitimate male line of the House of Flanders-Praet ended with the death of Lodewijk IV (Louis of Praet) in 1556. His only documented son, Jan II, predeceased him without issue at Veere in 1545, dying childless. The lordship of Praet subsequently passed to other families through the female line.",
++    "extinction_p2": "A documented cadet branch does exist: Josse de Flandre, son of Johan I, is attested by Buylaert and survived until at least 1592 — but his line is styled ‘de Flandre’ in the sources reviewed, not ‘van Vlaenderen.’ Whether any branch of the Praet network adopted the Van Vlaenderen surname form into the commoner population remains unproven and is an open archival question.",
+     "figures_title": "Key Figures of the Praet Line",
+     "figure_1": "Louis Friese van Vlaenderen (d. 1396) — Founder; Lord of Praet and Woestine.",
+     "figure_2": "Johan I van Vlaenderen (d. c.1440) — Lord of Praet; Knighted by the Duke of Burgundy.",
+@@ -518,20 +518,19 @@
+     "praet_p4": "The lordship of Praet was acquired by Louis de Male in 1373 and subsequently granted to Louis Friese. This established the family's seat in West Flanders, though their influence and holdings extended across the county.",
+     "praet_p5": "The consistent use of 'van Vlaenderen' by this branch is a key focus of our research. It demonstrates how the name functioned as a hereditary marker of comital descent during the transition from the Dampierre dynasty to the House of Burgundy.",
+     "praet_p6": "The legitimate male line of the House of Flanders-Praet ended with the death of Lodewijk IV in 1556. His only documented son, Jan II, predeceased him without issue, and the lordship of Praet passed to other families.",
+-    "survival_title": "Survival of the Surname",
+-    "survival_p1": "While the legitimate male line of the Praet lordship ended in 1556, the question of whether cadet or illegitimate branches of this house survived and integrated into the broader Van Vlaenderen population of the Meetjesland remains a subject of investigation.",
+-    "survival_p2": "The Praet line serves as a critical 'research control' for our project. By documenting the known members of this high-status branch, we can better distinguish them from the contemporary Van Vlaenderen families appearing in the parish registers of Ursel, Bassevelde, and the surrounding villages.",
++    "survival_title": "The End of the Praet Male Line",
++    "survival_p1": "The legitimate Praet male line ended with the death of Lodewijk IV in 1556. His only documented son, Jan II, predeceased him without issue. Whether younger or illegitimate sons of the broader Praet lineage continued to carry the surname Van Vlaenderen into the commoner population has not been demonstrated from primary sources and remains an open research question. Any such connection requires independent archival verification — specifically in the Raad van Vlaanderen records and comital charter collections at Rijksarchief Gent — before it can be asserted.",
++    "survival_p2": "The end of the legitimate Praet line does, however, create a documented research context. Men styled ‘van Vlaenderen’ in sixteenth-century Flemish records cannot be assigned to Victor’s descendants without first eliminating the possibility that they belong to the Praet orbit or to another collateral bastard branch. This is precisely why the Praet line functions as a research control rather than a parallel positive claim.",
+     "figures_intro": "The following individuals represent the primary descent of the House of Flanders-Praet:",
+     "figure_5": "Lodewijk IV van Vlaenderen (d. 1555) — Knight of the Golden Fleece; Stadtholder of Holland.",
+     "source_4": "GenealogieOnline: West-Europese Adel (Lodewijk van Vlaanderen).",
+     "source_5": "GenealogieOnline: West-Europese Adel (Johan van Vlaanderen).",
+     "source_6": "DBNL: Correspondence of Erasmus (referencing Louis of Praet).",
+-    "source_7": "Rootenberg, S. F. U. (2013). \"The Van Hille descent of the Swanepoel family\". Familia, 50(4), 221-228.",
+-    "cta_text": "Do you have research on the cadet branches of the House of Praet?",
+-    "cta_note": "We are investigating the potential survival of the van Vlaenderen name through non-seigneurial lines of this house.",
++    "cta_text": "Do you have research connecting to the Praet or Victor lines?",
++    "cta_note": "We are investigating the documentary record of both bastard lines of Louis de Male and welcome contact from researchers working on related Flemish medieval genealogy.",
+     "badge_corroborated": "Strongly Corroborated",
+     "badge_hypothesis": "Hypothesis",
+     "badge_attested": "Directly Attested",
+     "badge_probable": "Probable"
+   }
+-}
++}
+\ No newline at end of file
+diff --git a/src/i18n/locales/nl.json b/src/i18n/locales/nl.json
+index 9f36c52..2e69a74 100644
+--- a/src/i18n/locales/nl.json
++++ b/src/i18n/locales/nl.json
+@@ -440,8 +440,8 @@
+     "praet_p1": "Lodewijk 'de Fries' van Vlaenderen — ook wel Lodewijk de Fries of Louis le Frison genoemd — was een onwettige zoon van Lodewijk II van Male, graaf van Vlaanderen. Hij kreeg de heerlijkheid Praet (Oedelem) en de heerlijkheid Woestine toegewezen, waarmee hij een belangrijke adellijke tak stichtte die gedurende verschillende generaties de achternaam van Vlaenderen droeg.",
+     "praet_p2": "Het huis van Vlaanderen-Praet is een van de best gedocumenteerde onwettige takken van het grafelijk huis. De leden bekleedden hoge ambten, waaronder het Gulden Vlies, en dienden als adviseurs van de hertogen van Bourgondië en de Habsburgse vorsten.",
+     "extinction_title": "Het uitsterven van de adellijke lijn",
+-    "extinction_p1": "De directe adellijke lijn van het Huis Vlaanderen-Praet wordt traditioneel geacht in de mannelijke lijn te zijn uitgestorven in 1556 met de dood van Lodewijk van Vlaanderen, heer van Praet, een prominent diplomaat en adviseur van keizer Karel V. Dit \"uitsterven\" heeft echter doorgaans alleen betrekking op de primaire, getitelde tak van de familie.",
+-    "extinction_p2": "Ons onderzoek onderzoekt de mogelijkheid dat jongere zonen en zijtakken van de Praet-lijn overleefden en de naam Van Vlaenderen voortzetten in een niet-adellijke hoedanigheid. De verhuizing van deze takken naar de landelijke parochies van Oost-Vlaanderen zou de patronen weerspiegelen die te zien zijn bij andere onwettige adellijke linies uit die periode.",
++    "extinction_p1": "De wettige mannelijke lijn van het Huis Vlaanderen-Praet eindigde met de dood van Lodewijk IV (Louis van Praet) in 1556. Zijn enige gedocumenteerde zoon, Jan II, overleed voor hem in 1545 in Veere, kinderloos.",
++    "extinction_p2": "Een gedocumenteerde zijlijn bestaat wel: Josse de Flandre, zoon van Johan I, is bevestigd door Buylaert en overleefde tot minstens 1592 — maar zijn lijn wordt in de bronnen aangeduid als ‘de Flandre’, niet als ‘van Vlaenderen.’",
+     "figures_title": "Sleutelfiguren van de Praet-lijn",
+     "figure_1": "Lodewijk 'de Fries' van Vlaenderen (d. 1396) — Stichter; heer van Praet en Woestine.",
+     "figure_2": "Johan I van Vlaenderen (d. ca. 1440) — Heer van Praet; geridderd door de hertog van Bourgondië.",
+@@ -458,15 +458,14 @@
+     "praet_p4": "De heerlijkheid Praet werd in 1373 door Lodewijk van Male verworven en vervolgens aan Lodewijk de Fries geschonken. Hiermee werd de zetel van de familie in West-Vlaanderen gevestigd, hoewel hun invloed en bezittingen zich over het hele graafschap uitstrekten.",
+     "praet_p5": "Het consistente gebruik van 'van Vlaenderen' door deze tak is een belangrijk aandachtspunt van ons onderzoek. Het laat zien hoe de naam fungeerde als een erfelijk kenmerk van grafelijke afstamming tijdens de overgang van de Dampierre-dynastie naar het huis van Bourgondië.",
+     "praet_p6": "De legitieme mannelijke lijn van het huis van Vlaanderen-Praet eindigde met de dood van Lodewijk IV in 1556. Zijn enige gedocumenteerde zoon, Jan II, stierf vóór hem zonder nakomelingen, en de heerlijkheid Praet ging over op andere families.",
+-    "survival_title": "Voortbestaan van de achternaam",
+-    "survival_p1": "Hoewel de legitieme mannelijke lijn van de heerlijkheid Praet in 1556 eindigde, blijft de vraag of zijtakken of onwettige takken van dit huis overleefden en opgingen in de bredere Van Vlaenderen-bevolking van het Meetjesland een onderwerp van onderzoek.",
+-    "survival_p2": "De Praet-lijn dient als een cruciaal 'onderzoekscontrolepunt' voor ons project. Door de bekende leden van deze hooggeplaatste tak te documenteren, kunnen we hen beter onderscheiden van de hedendaagse Van Vlaenderen-families die voorkomen in de parochieregisters van Ursel, Bassevelde en de omliggende dorpen.",
++    "survival_title": "Het einde van de mannelijke lijn van Praet",
++    "survival_p1": "De wettige mannelijke lijn van Praet eindigde met de dood van Lodewijk IV in 1556. Zijn enige gedocumenteerde zoon, Jan II, overleed voor hem zonder nakomelingen. Of jongere of onwettige zonen van de bredere Praet-lijn de achternaam Van Vlaenderen hebben voortgezet in de gewone bevolking is niet aangetoond uit primaire bronnen en blijft een open onderzoeksvraag.",
++    "survival_p2": "Het einde van de wettige Praet-lijn creëert echter wel een gedocumenteerde onderzoekscontext. Mannen die in zestiende-eeuwse Vlaamse archieven als ‘van Vlaenderen’ worden aangeduid, kunnen niet aan Victors nakomelingen worden toegeschreven zonder eerst de mogelijkheid uit te sluiten dat zij tot de Praet-kring of een andere bastaard-zijlijn behoren.",
+     "figures_intro": "De volgende personen vertegenwoordigen de primaire afstamming van het huis van Vlaanderen-Praet:",
+     "figure_5": "Lodewijk IV van Vlaenderen (d. 1555) — Ridder in de Orde van het Gulden Vlies; stadhouder van Holland.",
+     "source_4": "GenealogieOnline: West-Europese Adel (Lodewijk van Vlaanderen).",
+     "source_5": "GenealogieOnline: West-Europese Adel (Johan van Vlaanderen).",
+     "source_6": "DBNL: Correspondentie van Erasmus (verwijzend naar Lodewijk van Praet).",
+-    "source_7": "Rootenberg, S. F. U. (2013). \"The Van Hille descent of the Swanepoel family\". Familia, 50(4), 221-228.",
+     "cta_text": "Heeft u onderzoek naar de zijtakken van het huis van Praet?",
+     "cta_note": "We onderzoeken het mogelijke voortbestaan van de naam van Vlaenderen via niet-seigneuriale lijnen van dit huis.",
+     "badge_corroborated": "Sterk gecorroboreerd",
+@@ -474,4 +473,4 @@
+     "badge_attested": "Direct geattesteerd",
+     "badge_probable": "Waarschijnlijk"
+   }
+-}
++}
+\ No newline at end of file
+diff --git a/src/pageMeta.ts b/src/pageMeta.ts
+index 0c0ed7b..31a8038 100644
+--- a/src/pageMeta.ts
++++ b/src/pageMeta.ts
+@@ -100,6 +100,14 @@ export const PAGE_META: Record<string, PageMeta> = {
+     ogDescription: 'Generational evidence for the Praet descent. Functions as a documented research control for Van Vlaenderen surname attribution.',
+     ogType: 'article',
+   },
++  '/research/methodology': {
++    title: 'Methodology & Sources — Van Vlaenderen Research | vanvlaenderen.org',
++    description: 'Transcription and translation methodology for the Van Vlaenderen archival research project, plus a curated reading list of primary and secondary sources.',
++    canonical: 'https://vanvlaenderen.org/research/methodology',
++    ogTitle: 'Methodology & Sources — Van Vlaenderen Research',
++    ogDescription: 'How archival documents are transcribed and translated, and the historiographical sources that underpin the research.',
++    ogType: 'article' as const,
++  },
+   '/lineage': {
+     title: 'Lineage — Fourteen Generations | vanvlaenderen.org',
+     description: 'The documented American lineage of the Van Vlaenderen / Van Flandern family: fourteen generations from Jeremiah Van Vlaenderen (~1575) to the present, with archival deep-links.',
+diff --git a/src/pages/MethodologyPage.tsx b/src/pages/MethodologyPage.tsx
+new file mode 100644
+index 0000000..698991b
+--- /dev/null
++++ b/src/pages/MethodologyPage.tsx
+@@ -0,0 +1,308 @@
++import { Helmet } from 'react-helmet-async';
++import { useNav } from '../hooks/useNav';
++import styles from './InnerPage.module.css';
++import researchStyles from './ResearchPage.module.css';
++import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
++
++interface ReadingEntry {
++  author: string;
++  year: string;
++  title: string;
++  note: string;
++  links?: { label: string; url: string }[];
++  availability?: string;
++}
++
++const READING_LIST: { group: string; entries: ReadingEntry[] }[] = [
++  {
++    group: 'The County of Flanders and the Comital House',
++    entries: [
++      {
++        author: 'Warlop, E.',
++        year: '1975–76',
++        title: 'The Flemish Nobility Before 1300',
++        note: 'The foundational English-language prosopographical study of Flemish noble families. The alphabetic repertory of noble families in volumes 3–4 is an essential reference for tracing any lineage with pre-1300 roots in Flanders, including the van Praet family. Available in four volumes.',
++        links: [
++          { label: 'Amazon', url: 'https://www.amazon.com/s?k=Warlop+Flemish+Nobility+Before+1300' },
++          { label: 'Free download (Internet Archive)', url: 'https://archive.org/details/flemishnobilityb0002unse_q5k3' },
++          { label: 'Used copies (AbeBooks)', url: 'https://www.abebooks.com/book-search/title/flemish-nobility-before-1300/' },
++        ],
++      },
++      {
++        author: 'Prevenier, W. & Blockmans, W.',
++        year: '1986',
++        title: 'The Burgundian Netherlands',
++        note: 'The standard illustrated survey of the Burgundian Low Countries 1380–1530 — exactly the period in which the van Vlaenderen surname crystallises and the Praet line flourishes. Provides essential political and cultural context for Louis de Male and his bastard children. Richly illustrated.',
++        links: [
++          { label: 'Amazon', url: 'https://www.amazon.com/Burgundian-Netherlands-Walter-Prevenier/dp/0521306116' },
++          { label: 'Free download (Internet Archive)', url: 'https://archive.org/details/burgundiannether0000prev' },
++          { label: 'Used copies (AbeBooks)', url: 'https://www.abebooks.com/9780521306119/Burgundian-Netherlands-Prevenier-Walter-Wim-0521306116/plp' },
++        ],
++      },
++      {
++        author: 'Blockmans, W. & Prevenier, W.',
++        year: '1999',
++        title: 'The Promised Lands: The Low Countries Under Burgundian Rule, 1369–1530',
++        note: 'The accessible single-volume companion to The Burgundian Netherlands. Organised thematically around the key problems of Burgundian history — state formation, social structure, urban economy — rather than as a chronological narrative. Better suited as a first read than the 1986 volume.',
++        links: [
++          { label: 'Amazon', url: 'https://www.amazon.com/Promised-Lands-Countries-Burgundian-Rule/dp/0812216504' },
++          { label: 'Used copies (AbeBooks)', url: 'https://www.abebooks.com/book-search/title/promised-lands-low-countries-under-burgundian/' },
++        ],
++      },
++    ],
++  },
++  {
++    group: 'Flemish Nobility and Social Structure',
++    entries: [
++      {
++        author: 'Buylaert, F.',
++        year: '2010',
++        title: 'Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen',
++        note: 'The most important recent study of the Flemish nobility in the 14th–15th centuries, by the same Buylaert cited in FMG MedLands for the Josse de Flandre cadet branch. Demonstrates the nobility\'s adaptability and social mobility during exactly the period our research covers. In Dutch. An English-language article by the same author ("The late medieval crisis of the nobility reconsidered: the case of Flanders", Journal of Social History 45, 2012) covers the main arguments and is freely available.',
++        links: [
++          { label: 'Amazon', url: 'https://www.amazon.com/Eeuwen-Van-Ambitie-Laatmiddeleeuws-Verhandelingen/dp/9065690751' },
++          { label: 'Free download (Academia.edu)', url: 'https://www.academia.edu/2418411/Frederik_Buylaert_Eeuwen_van_ambitie' },
++        ],
++      },
++    ],
++  },
++  {
++    group: 'The Meetjesland: Regional History and Rural Economy',
++    entries: [
++      {
++        author: 'Augustyn, B. & Thoen, E.',
++        year: '1987',
++        title: '\'Van veen tot bos: Krachtlijnen van de landschapsevolutie van het Noordvlaamse Meetjesland van de 12e tot de 19e eeuw\'',
++        note: 'The key article on the landscape history of the northern Flemish Meetjesland from the 12th to the 19th century — covering precisely the geographic area of our research. Documents the transition from peat extraction to the sandy-loam landscape that characterises the area in the parish-record period. In Dutch. Published in Historisch-Geografisch Tijdschrift.',
++        availability: 'Not widely available outside Belgian library systems. Can be requested through interlibrary loan or directly from the authors\' institutional repositories at Ghent University.',
++      },
++    ],
++  },
++  {
++    group: 'Archival Research Methodology and Palaeography',
++    entries: [
++      {
++        author: 'Munby, L.',
++        year: '2003',
++        title: 'Reading and Understanding Old Documents: A Guide to Palaeography',
++        note: 'A practical English-language guide to reading historical handwriting, focused on secretary hand and other scripts common in early modern documents. Useful companion for working through the kinds of documents encountered in Belgian state archives.',
++        links: [
++          { label: 'Amazon', url: 'https://www.amazon.com/s?k=Munby+Reading+Understanding+Old+Documents+Palaeography' },
++          { label: 'Used copies (AbeBooks)', url: 'https://www.abebooks.com/book-search/title/reading-understanding-old-documents/' },
++        ],
++      },
++      {
++        author: 'Moens, J.',
++        year: 'Various editions',
++        title: 'Inleiding tot de historische kritiek',
++        note: 'Standard Belgian introduction to historical source criticism and archival methodology. Covers the evaluation of primary sources, dating conventions, and document types encountered in Flemish archives. In Dutch. Available through Ghent University library and Belgian academic publishers.',
++      },
++    ],
++  },
++  {
++    group: 'Digital Genealogy and Genetic Methods',
++    entries: [
++      {
++        author: 'Bettinger, B. & Wayne, D.',
++        year: '2016',
++        title: 'Genetic Genealogy in Practice',
++        note: 'The National Genealogical Society\'s standard reference for DNA evidence in genealogical research. Covers Y-DNA, autosomal, and mtDNA methods with specific guidance on using DNA to break through brick walls — the primary use case for this project\'s Y-DNA research thread.',
++        links: [
++          { label: 'Amazon', url: 'https://www.amazon.com/Genetic-Genealogy-Practice-National-Genealogical/dp/1935815296' },
++          { label: 'Used copies (AbeBooks)', url: 'https://www.abebooks.com/book-search/title/genetic-genealogy-practice/' },
++        ],
++      },
++    ],
++  },
++  {
++    group: 'Primary Sources and Reference Works',
++    entries: [
++      {
++        author: 'Cawley, C.',
++        year: '2025 (v5.0)',
++        title: 'MedLands: Flanders, Hainaut (online)',
++        note: 'The Foundation for Medieval Genealogy\'s encyclopaedia of territories and noble families in the medieval western world. The primary reference for all comital and bastard-line citations in this project. Free to access online. Version 5.0 updated January 2025.',
++        links: [
++          { label: 'Free access (FMG)', url: 'https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm' },
++        ],
++      },
++      {
++        author: 'Vredius, O. (Olivier de Wree)',
++        year: '1643',
++        title: 'Sigilla Comitum Flandriae et Inscriptiones Diplomatum',
++        note: 'Published in Bruges in 1643, this is the 17th-century primary source compilation that underlies most of the FMG MedLands charter citations used in this project. Pars secunda, pp.285–287 is the specific locus for the Victor van Vlaenderen charter evidence.',
++        links: [
++          { label: 'Free download (Internet Archive)', url: 'https://archive.org/details/bub_gb_CNSBZDBvNV4C' },
++        ],
++      },
++    ],
++  },
++];
++
++export default function MethodologyPage() {
++  const { goToResearch } = useNav();
++
++  return (
++    <div className={styles.page}>
++      <Helmet>
++        <title>Methodology & Sources — Van Vlaenderen Research | vanvlaenderen.org</title>
++        <meta name="description" content="Transcription and translation methodology for the Van Vlaenderen archival research project, plus a curated reading list of primary and secondary sources." />
++        <link rel="canonical" href="https://vanvlaenderen.org/research/methodology" />
++        <meta property="og:title" content="Methodology & Sources — Van Vlaenderen Research" />
++        <meta property="og:description" content="How archival documents are transcribed and translated, and the historiographical sources that underpin the research." />
++        <meta property="og:url" content="https://vanvlaenderen.org/research/methodology" />
++        <meta property="og:type" content="article" />
++      </Helmet>
++
++      {/* ── Hero ─────────────────────────────────────────────────── */}
++      <div className={styles.heroStrip}>
++        <div
++          className={styles.heroImg}
++          style={{ backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: 'center top' }}
++        >
++          <div className={styles.heroImgOverlay} />
++        </div>
++        <div className={styles.heroText}>
++          <div className={styles.eyebrow}>Van Vlaenderen &middot; Research Foundations</div>
++          <h1>Methodology &amp; Sources</h1>
++          <div className="gold-rule" />
++          <p className={styles.heroLead}>
++            How archival documents are read, transcribed, and translated — and the
++            published works that form the historiographical foundation for this research.
++          </p>
++        </div>
++      </div>
++
++      <div className={styles.content}>
++        <div className={researchStyles.dossierHeader}>
++          <h2 className={researchStyles.dossierTitle}>Research Foundations</h2>
++          <div className={researchStyles.dossierMeta}>Updated April 2026</div>
++        </div>
++
++        {/* ── Section 1: Transcription & Translation Methodology ── */}
++        <section className={styles.section}>
++          <h2>Transcription and Translation Methodology</h2>
++          <p>
++            Archival documents in this project are transcribed using an iterative,
++            multi-system approach. Gemini (Google) serves as the primary real-time
++            reading tool: integrated directly into the browser, it can analyse document
++            images without a separate upload step, allowing the researcher to ask
++            questions about specific characters, words, or passages while actively
++            zooming and navigating the original scan. This ambient availability makes
++            it the natural first pass for difficult passages.
++          </p>
++          <p>
++            Outputs from Gemini are then cross-checked against independent readings
++            from Claude (Anthropic), GPT-4 (OpenAI), Transkribus, and Tryleo. Where
++            readings converge across systems, confidence is high. Where they diverge,
++            the researcher returns to the original image, zooming to individual
++            characters and applying knowledge of the letter forms, abbreviations, and
++            spelling conventions of the period.
++          </p>
++          <p>
++            Translation follows the same iterative logic. Early modern Dutch and Latin
++            passages are translated independently by multiple systems, with the
++            researcher cross-checking against known vocabulary, named entities already
++            established in the research, and the documentary context. Passages involving
++            specialist palaeographic challenges &mdash; secretary hand abbreviations,
++            damaged text, unusual personal names &mdash; are treated as uncertain until
++            verified by at least two independent readings.
++          </p>
++          <p>
++            Each AI system is given learning samples from the same document hand before
++            being asked to transcribe difficult passages, allowing the system to calibrate
++            to individual scribal idiosyncrasies. This is the same principle professional
++            palaeographers apply when learning a new hand.
++          </p>
++          <p>
++            AI tools in this project are research instruments, not citation sources.
++            Every claim on this site traces to a named primary or secondary authority.
++            Tool outputs that cannot be verified against a named source are flagged
++            as provisional.
++          </p>
++        </section>
++
++        {/* ── Section 2: Recommended Reading ─────────────────────── */}
++        <section className={styles.section}>
++          <h2>Recommended Reading</h2>
++          <p>
++            The following works form the historiographical foundation for this project.
++            They are the sources against which our findings are tested and the
++            authorities whose frameworks we apply. Entries are grouped by theme.
++            Acquisition links are provided where available.
++          </p>
++
++          {READING_LIST.map((group) => (
++            <div key={group.group} style={{ marginTop: '2.5rem' }}>
++              <h3 style={{
++                color: 'var(--gold)',
++                fontSize: '1rem',
++                fontWeight: 600,
++                letterSpacing: '0.08em',
++                textTransform: 'uppercase',
++                marginBottom: '1.25rem',
++                paddingBottom: '0.5rem',
++                borderBottom: '1px solid rgba(232,184,48,0.2)',
++              }}>
++                {group.group}
++              </h3>
++
++              {group.entries.map((entry, i) => (
++                <div key={i} style={{
++                  background: 'rgba(255,255,255,0.03)',
++                  border: '1px solid rgba(232,184,48,0.15)',
++                  borderRadius: '4px',
++                  padding: '1.25rem 1.5rem',
++                  marginBottom: '1rem',
++                }}>
++                  <p style={{ marginBottom: '0.4rem' }}>
++                    <strong style={{ color: 'var(--text-primary)' }}>{entry.author}</strong>
++                    {' '}
++                    <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>({entry.year}).</span>
++                    {' '}
++                    <em style={{ color: 'var(--gold-light)' }}>{entry.title}.</em>
++                  </p>
++                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', margin: '0.5rem 0' }}>
++                    {entry.note}
++                  </p>
++                  {entry.availability && (
++                    <p style={{ fontSize: '0.85rem', fontStyle: 'italic', color: 'var(--text-muted)', marginTop: '0.4rem' }}>
++                      <em>Note: {entry.availability}</em>
++                    </p>
++                  )}
++                  {entry.links && entry.links.length > 0 && (
++                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '0.75rem' }}>
++                      {entry.links.map((link) => (
++                        <a
++                          key={link.url}
++                          href={link.url}
++                          target="_blank"
++                          rel="noopener noreferrer"
++                          className={researchStyles.refLink}
++                          style={{ fontSize: '0.85rem' }}
++                        >
++                          {link.label} &rarr;
++                        </a>
++                      ))}
++                    </div>
++                  )}
++                </div>
++              ))}
++            </div>
++          ))}
++        </section>
++
++        {/* ── Back nav ────────────────────────────────────────────── */}
++        <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid rgba(232,184,48,0.15)' }}>
++          <button
++            onClick={() => goToResearch('main')}
++            className={researchStyles.refLink}
++            style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.9rem' }}
++          >
++            &larr; Back to Research Overview
++          </button>
++        </div>
++      </div>
++    </div>
++  );
++}
+diff --git a/src/pages/ResearchPage.tsx b/src/pages/ResearchPage.tsx
+index 2c3baac..706fe64 100644
+--- a/src/pages/ResearchPage.tsx
++++ b/src/pages/ResearchPage.tsx
+@@ -51,6 +51,9 @@ export default function ResearchPage() {
+           <p>
+             The research is structured around two documented lines descending from Louis de Male. Both lines used <em>van Vlaenderen</em> (and its variants: van Vlaendren, de Flandre, de Flandres) as a hereditary surname &mdash; not a geographic descriptor, but a marker of comital illegitimate descent that crystallised at the precise moment the Dampierre line's hold on Flanders ended with Louis de Male's death in 1384.
+           </p>
++          <p>
++            There is a further dimension worth noting. Louis II de Male was the last Count of Flanders from the House of Dampierre. On his death in 1384, the county passed to his daughter Margaret and her husband Philip the Bold of Burgundy, and the Dampierre hold on Flanders ended permanently. The evidence suggests that <em>van Vlaenderen</em> crystallised as a heritable surname among Louis&apos;s bastard children at precisely this moment &mdash; not as a geographic descriptor meaning &lsquo;from Flanders,&rsquo; but as an inherited identity marking comital blood at the point when the title itself was extinguished. This pattern is documented independently in both Victor&apos;s line and the Praet line, and it is one of the strongest arguments that the surname functions as inherited comital identity rather than as a common toponym. It also narrows the field: families adopting <em>van Vlaenderen</em> as a geographic descriptor after 1384 would have had diminishing reason to do so, since Flanders was no longer ruled by a Flemish count. Bearers of the name after that date are more plausibly connected to the bastard comital network than to generic toponymy.
++          </p>
+         </section>
+ 
+         {/* ── Overview Diagram ────────────────────────────────────── */}
+@@ -93,7 +96,7 @@ export default function ResearchPage() {
+           >
+             <h3>Louis Friese van Vlaenderen</h3>
+             <p>
+-              Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis 1396. Founded the House of Flanders-Praet &mdash; six generations using van Vlaenderen as a hereditary surname. The 1517 Knesselare charter places the Praet branch in direct territorial contact with the Meetjesland research cluster.
++              Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis 1396. Founded the House of Flanders-Praet &mdash; six generations using <em>van Vlaenderen</em> as a hereditary surname. The legitimate male line ended with the death of Lodewijk IV in 1556. Whether the surname continued through cadet or illegitimate branches into the commoner population remains an open research question.
+             </p>
+             <span className={researchStyles.branchLink} aria-hidden="true">
+               Explore the Praet Line &rarr;
+@@ -101,6 +104,28 @@ export default function ResearchPage() {
+           </div>
+         </div>
+ 
++        {/* ── Methodology & Sources nav link ─────────────────────────── */}
++        <section className={styles.section} style={{ textAlign: 'center', paddingTop: '1rem' }}>
++          <button
++            onClick={() => goToResearch('methodology')}
++            style={{
++              background: 'none',
++              border: '1px solid rgba(232,184,48,0.35)',
++              borderRadius: '4px',
++              color: 'var(--gold)',
++              cursor: 'pointer',
++              fontSize: '0.85rem',
++              fontFamily: 'var(--font-ui)',
++              letterSpacing: '0.1em',
++              textTransform: 'uppercase',
++              padding: '0.6rem 1.4rem',
++              transition: 'background 0.2s, border-color 0.2s',
++            }}
++          >
++            Methodology &amp; Sources &rarr;
++          </button>
++        </section>
++
+         {/* ── Methodology ─────────────────────────────────────────── */}
+         <section className={researchStyles.methodologyBox} style={{ marginTop: '3rem' }}>
+           <span className={researchStyles.methodologyTitle}>{t('research.methodology_title')}</span>
+-- 
+2.43.0
+
