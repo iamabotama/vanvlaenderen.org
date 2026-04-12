@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
@@ -5,6 +6,9 @@ import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaender
 import { OverviewDiagram } from '../components/Diagrams';
 import { useNav } from '../hooks/useNav';
 import { Helmet } from 'react-helmet-async';
+
+// Leaflet touches window on import — lazy-load so it's skipped during SSR prerender
+const ResearchMap = lazy(() => import('../components/ResearchMap/ResearchMap'));
 
 export default function ResearchPage() {
   const { goToResearch } = useNav();
@@ -123,6 +127,11 @@ export default function ResearchPage() {
             </div>
           </div>
         </section>
+
+        {/* Interactive Research Map */}
+        <Suspense fallback={<div style={{ height: '400px' }} />}>
+          <ResearchMap />
+        </Suspense>
 
         {/* ── Archival Dossiers ────────────────────────────────────── */}
         <section className={styles.section} style={{ marginTop: '3rem' }}>
