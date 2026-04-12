@@ -6,7 +6,7 @@ import { useNav } from '../hooks/useNav';
 import { Helmet } from 'react-helmet-async';
 
 export default function AboutPage() {
-  const { goTo } = useNav();
+  const { goTo, goToResearch } = useNav();
   const { t } = useTranslation();
   return (
     <div className={styles.page}>

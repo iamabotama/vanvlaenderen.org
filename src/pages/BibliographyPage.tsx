@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
@@ -98,7 +97,6 @@ function EntryCard({ e }: { e: BibEntry }) {
 
 // ── Page ───────────────────────────────────────────────────────────────────
 export default function BibliographyPage() {
-  const { t } = useTranslation();
   const [data, setData] = useState<BibData | null>(null);
   const [error, setError] = useState(false);
 
