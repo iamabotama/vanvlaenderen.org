@@ -3387,9 +3387,22 @@ function ResearchPage() {
           "The research is structured around two documented lines descending from Louis de Male. Both lines used ",
           /* @__PURE__ */ jsx("em", { children: "van Vlaenderen" }),
           " (and its variants: van Vlaendren, de Flandre, de Flandres) as a hereditary surname — not a geographic descriptor, but a marker of comital illegitimate descent that crystallised at the precise moment the Dampierre line's hold on Flanders ended with Louis de Male's death in 1384."
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "There is a further dimension worth noting. Louis II de Male was the last Count of Flanders from the House of Dampierre. On his death in 1384, the county passed to his daughter Margaret and her husband Philip the Bold of Burgundy, and the Dampierre hold on Flanders ended permanently. The evidence suggests that ",
+          /* @__PURE__ */ jsx("em", { children: "van Vlaenderen" }),
+          " crystallised as a heritable surname among Louis's bastard children at precisely this moment — not as a geographic descriptor meaning ‘from Flanders,’ but as an inherited identity marking comital blood at the point when the title itself was extinguished. This pattern is documented independently in both Victor's line and the Praet line, and it is one of the strongest arguments that the surname functions as inherited comital identity rather than as a common toponym. It also narrows the field: families adopting ",
+          /* @__PURE__ */ jsx("em", { children: "van Vlaenderen" }),
+          " as a geographic descriptor after 1384 would have had diminishing reason to do so, since Flanders was no longer ruled by a Flemish count. Bearers of the name after that date are more plausibly connected to the bastard comital network than to generic toponymy."
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: researchStyles.treeContainer, children: /* @__PURE__ */ jsx(OverviewDiagram, {}) }),
+      /* @__PURE__ */ jsxs("div", { className: researchStyles.treeContainer, children: [
+        /* @__PURE__ */ jsx(OverviewDiagram, {}),
+        /* @__PURE__ */ jsxs("div", { className: "sr-only", children: [
+          /* @__PURE__ */ jsx("h3", { children: "Research overview diagram — text summary" }),
+          /* @__PURE__ */ jsx("p", { children: "This diagram presents both surname-bearing bastard lines descending from Louis II de Male, Count of Flanders (1330–1384), the last Count from the House of Dampierre. Left branch (Victor's line): Victor van Vlaenderen (died before 1442), Lord of Ursel and Wessegem, had three documented natural sons — Lodewyc, Janne, and Adam van Vlaendren — all named in primary charters 1427–1447. Adam van Vlaendren (research focus, fl. 1427 – 1447) is the primary bridge candidate to the early modern parish-record Van Vlaenderens of the Meetjesland. A ~100-year evidentiary gap separates Adam from Joos van Vlaenderen (fl. 1547), the first confirmed early modern bearer. Right branch (Praet line): Louis Friese van Vlaenderen (c.1350 – 1396), Lord of Praet and Woestine, founded the House of Flanders-Praet through his son Johan I van Vlaenderen. The line descends through multiple generations to Lodewijk IV van Vlaenderen (died 1555), Knight of the Golden Fleece, whose 1517 charter shows him holding six fiefs at Knesselare from the Wessegem seigneurie — a direct Meetjesland territorial connection. The legitimate Praet male line ended with Jan II van Vlaenderen (died 10 December 1545), who predeceased his father without issue." })
+        ] })
+      ] }),
       /* @__PURE__ */ jsx("section", { className: styles$1.section, children: /* @__PURE__ */ jsx("h2", { children: "Research Branches" }) }),
       /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
         /* @__PURE__ */ jsxs(
@@ -3431,11 +3444,62 @@ function ResearchPage() {
             "aria-label": "Louis Friese van Vlaenderen",
             children: [
               /* @__PURE__ */ jsx("h3", { children: "Louis Friese van Vlaenderen" }),
-              /* @__PURE__ */ jsx("p", { children: "Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis 1396. Founded the House of Flanders-Praet — six generations using van Vlaenderen as a hereditary surname. The 1517 Knesselare charter places the Praet branch in direct territorial contact with the Meetjesland research cluster." }),
+              /* @__PURE__ */ jsxs("p", { children: [
+                "Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis 1396. Founded the House of Flanders-Praet — six generations using ",
+                /* @__PURE__ */ jsx("em", { children: "van Vlaenderen" }),
+                " as a hereditary surname. The legitimate male line ended with the death of Lodewijk IV in 1556. Whether the surname continued through cadet or illegitimate branches into the commoner population remains an open research question."
+              ] }),
               /* @__PURE__ */ jsx("span", { className: researchStyles.branchLink, "aria-hidden": "true", children: "Explore the Praet Line →" })
             ]
           }
         )
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: "Reference" }),
+        /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
+          /* @__PURE__ */ jsxs(
+            "div",
+            {
+              className: researchStyles.branchCard,
+              tabIndex: 0,
+              style: { cursor: "pointer" },
+              onClick: () => goToResearch("methodology"),
+              onKeyDown: (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  goToResearch("methodology");
+                }
+              },
+              "aria-label": "Methodology and Sources",
+              children: [
+                /* @__PURE__ */ jsx("h3", { children: "Methodology & Sources" }),
+                /* @__PURE__ */ jsx("p", { children: "How archival documents are transcribed and translated, and the curated reading list of primary and secondary works that underpin the research." }),
+                /* @__PURE__ */ jsx("span", { className: researchStyles.branchLink, "aria-hidden": "true", children: "Methodology & Sources →" })
+              ]
+            }
+          ),
+          /* @__PURE__ */ jsxs(
+            "div",
+            {
+              className: researchStyles.branchCard,
+              tabIndex: 0,
+              style: { cursor: "pointer" },
+              onClick: () => goToResearch("bibliography"),
+              onKeyDown: (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  goToResearch("bibliography");
+                }
+              },
+              "aria-label": "Sources and Scholarship",
+              children: [
+                /* @__PURE__ */ jsx("h3", { children: "Sources & Scholarship" }),
+                /* @__PURE__ */ jsx("p", { children: "Primary sources, archival finding aids, and scholarly literature cited in the dossiers — the evidentiary basis of the project in one place." }),
+                /* @__PURE__ */ jsx("span", { className: researchStyles.branchLink, "aria-hidden": "true", children: "Sources & Scholarship →" })
+              ]
+            }
+          )
+        ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: researchStyles.methodologyBox, style: { marginTop: "3rem" }, children: [
         /* @__PURE__ */ jsx("span", { className: researchStyles.methodologyTitle, children: t("research.methodology_title") }),
@@ -3609,7 +3673,13 @@ function VictorLineagePage() {
           " 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem' donates money from 'joncfr Margriete Aelhuuts zijn groete vrauwe' to Christiane van Rouse. Adam is the active donor — the only charter where he acts independently [FMG 855]."
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: researchStyles.treeContainer, children: /* @__PURE__ */ jsx(VictorDiagram, {}) }),
+      /* @__PURE__ */ jsxs("div", { className: researchStyles.treeContainer, children: [
+        /* @__PURE__ */ jsx(VictorDiagram, {}),
+        /* @__PURE__ */ jsxs("div", { className: "sr-only", children: [
+          /* @__PURE__ */ jsx("h3", { children: "Victor van Vlaenderen lineage — text summary" }),
+          /* @__PURE__ */ jsx("p", { children: "This diagram shows the descent from Louis II de Male, Count of Flanders (1330–1384), through his natural son Victor van Vlaenderen (died before 1442), Lord of Ursel and Wessegem. Victor had three documented natural sons by Alix van Boyeghem: Lodewyc van Vlaendren (fl. 1427–1442), Janne van Vlaendren (fl. 1427–1442), and Adam van Vlaendren (fl. 1427 – 18 March 1447), the primary research focus and bridge candidate. Lodewyc married Jacqueline de Wilde and had two children: Josse van Vlaenderen (died young, buried Oostborch) and Margareta van Vlaenderen (fl. 1478–1486, married into noble families). An evidentiary gap of approximately 100 years separates Adam (last confirmed 1447) from Joos van Vlaenderen (fl. 1547), the first confirmed early modern bearer as testator in the Brugse Vrije probate records (TBO 184, bundle 21300). No direct genealogical link between Adam and Joos has yet been demonstrated. Key archival targets for bridging this gap: cijnsboeken and leenboeken (Ambacht Ursel / Maldegem), Staten van Goed, and Raad van Vlaanderen records at Rijksarchief Gent." })
+        ] })
+      ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Adam van Vlaendren (fl. 1427 – 18 Mar 1447 N.S.) ",
@@ -3781,7 +3851,13 @@ function LouisFrieseLineagePage() {
         /* @__PURE__ */ jsx("p", { children: t("louis_friese.praet_p5") }),
         /* @__PURE__ */ jsx("p", { children: t("louis_friese.praet_p6") })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: researchStyles.treeContainer, children: /* @__PURE__ */ jsx(PraetDiagram, {}) }),
+      /* @__PURE__ */ jsxs("div", { className: researchStyles.treeContainer, children: [
+        /* @__PURE__ */ jsx(PraetDiagram, {}),
+        /* @__PURE__ */ jsxs("div", { className: "sr-only", children: [
+          /* @__PURE__ */ jsx("h3", { children: "Praet line lineage — text summary" }),
+          /* @__PURE__ */ jsx("p", { children: "This diagram shows the descent from Louis II de Male, Count of Flanders (1330–1384), through his natural son Louis Friese van Vlaenderen (c.1350 – 28 September 1396), Lord of Praet and Woestine, killed at Nicopolis. Louis Friese's son Johan I van Vlaenderen (died after 10 September 1439), Lord of Praet, had seven documented children: Jean de Flandre (died 6 September 1523, Grand Bailiff of Bruges); Josse de Flandre (died after 1526, line survived to at least 1592); Lodewijk II van Vlaenderen (died 24 August 1488, Lord of Praet); Jeanne de Flandre (died after 1446); and three further daughters Marguerite, Isabelle, and Landrade. Lodewijk II's son was Lodewijk III van Vlaenderen (died 1 January 1490), whose son was Lodewijk IV van Vlaenderen (died 1555), Knight of the Golden Fleece (1531), Grand Bailiff of Ghent and Bruges, Stadtholder of Holland and Zeeland, and advisor to Charles V. Lodewijk IV's only son Jan II van Vlaenderen (died 10 December 1545) predeceased his father without issue, ending the legitimate Praet male line. The Praet line functions as a documented research control: men styled van Vlaenderen in 16th-century records cannot be assigned to Victor's descendants without first eliminating a possible Praet connection." })
+        ] })
+      ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Johan I's Seven Documented Children ",
@@ -3993,7 +4069,9 @@ function VictorDossierPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:title", content: "Victor van Vlaenderen — Archival Dossier" }),
       /* @__PURE__ */ jsx("meta", { property: "og:description", content: "Primary source evidence: the 1427 and 1441/42 charters, Wessegem heritage, and Victor's three natural sons." }),
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/victor-dossier" }),
-      /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
+      /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Victor van Vlaenderen \\u2014 Archival Dossier","description":"Primary source dossier for Victor van Vlaenderen: 1427 and 1441/42 charter evidence, FMG MedLands documentation, Hof van Wessegem heritage record, and the Alix van Boyeghem connection.","url":"https://vanvlaenderen.org/research/victor-dossier","inLanguage":"en","dateModified":"2026-04-11","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}` } }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Victor van Vlaenderen","item":"https://vanvlaenderen.org/research/victor"},{"@type":"ListItem","position":4,"name":"Archival Dossier","item":"https://vanvlaenderen.org/research/victor-dossier"}]}` } })
     ] }),
     /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
       /* @__PURE__ */ jsx(
@@ -4245,24 +4323,45 @@ function VictorDossierPage() {
           /* @__PURE__ */ jsx("a", { href: "https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library, Thesis RUG01-001786522 (2012)" })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
-        "button",
-        {
-          onClick: () => goToResearch("victor"),
-          style: {
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            color: "var(--gold)",
-            fontSize: "16px",
-            textDecoration: "underline",
-            fontFamily: "var(--font-ui)",
-            textTransform: "uppercase",
-            letterSpacing: "0.1em"
-          },
-          children: "Return to Victor Lineage"
-        }
-      ) })
+      /* @__PURE__ */ jsxs("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: [
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            onClick: () => goToResearch("victor"),
+            style: {
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "var(--gold)",
+              fontSize: "16px",
+              textDecoration: "underline",
+              fontFamily: "var(--font-ui)",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em"
+            },
+            children: "Return to Victor Lineage"
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            onClick: () => goToResearch("bibliography"),
+            style: {
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "var(--gold)",
+              fontSize: "14px",
+              textDecoration: "underline",
+              fontFamily: "var(--font-ui)",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              marginLeft: "1.5rem"
+            },
+            children: "Full Bibliography →"
+          }
+        )
+      ] })
     ] })
   ] });
 }
@@ -4276,7 +4375,9 @@ function PraetDossierPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:title", content: "The Praet Line — Archival Dossier" }),
       /* @__PURE__ */ jsx("meta", { property: "og:description", content: "From Louis Friese van Vlaenderen to Lodewijk IV, Knight of the Golden Fleece. Primary and secondary sources for the Praet bastard line." }),
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/praet-dossier" }),
-      /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
+      /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"The Praet Line \\u2014 Archival Dossier","description":"Archival dossier for the Praet line: Louis Friese van Vlaenderen through Lodewijk IV (Louis of Praet, Knight of the Golden Fleece, d. 1555).","url":"https://vanvlaenderen.org/research/praet-dossier","inLanguage":"en","dateModified":"2026-04-11","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}` } }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Louis Friese van Vlaenderen","item":"https://vanvlaenderen.org/research/louis-friese"},{"@type":"ListItem","position":4,"name":"Archival Dossier","item":"https://vanvlaenderen.org/research/praet-dossier"}]}` } })
     ] }),
     /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
       /* @__PURE__ */ jsx(
@@ -4431,24 +4532,45 @@ function PraetDossierPage() {
           /* @__PURE__ */ jsx("a", { href: "https://www.genealogieonline.nl/en/west-europese-adel/I75517.php", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "GenealogieOnline, Johan I van Vlaanderen, Heer van Praet" })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
-        "button",
-        {
-          onClick: () => goToResearch("louis-friese"),
-          style: {
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            color: "var(--gold)",
-            fontSize: "16px",
-            textDecoration: "underline",
-            fontFamily: "var(--font-ui)",
-            textTransform: "uppercase",
-            letterSpacing: "0.1em"
-          },
-          children: "Back to Louis Friese Lineage"
-        }
-      ) })
+      /* @__PURE__ */ jsxs("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: [
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            onClick: () => goToResearch("louis-friese"),
+            style: {
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "var(--gold)",
+              fontSize: "16px",
+              textDecoration: "underline",
+              fontFamily: "var(--font-ui)",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em"
+            },
+            children: "Back to Louis Friese Lineage"
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            onClick: () => goToResearch("bibliography"),
+            style: {
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "var(--gold)",
+              fontSize: "14px",
+              textDecoration: "underline",
+              fontFamily: "var(--font-ui)",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              marginLeft: "1.5rem"
+            },
+            children: "Full Bibliography →"
+          }
+        )
+      ] })
     ] })
   ] });
 }
@@ -4470,7 +4592,9 @@ function PraetLineageDossierPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:title", content: "Praet Lineage Detail — Van Vlaenderen Research" }),
       /* @__PURE__ */ jsx("meta", { property: "og:description", content: "Generational evidence for the Praet descent. Functions as a documented research control for Van Vlaenderen surname attribution." }),
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/praet-lineage-dossier" }),
-      /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
+      /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Praet Lineage Detail \\u2014 Van Vlaenderen Research","description":"Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Jean I, Louis II, Jacob, and Lodewijk IV.","url":"https://vanvlaenderen.org/research/praet-lineage-dossier","inLanguage":"en","dateModified":"2026-04-11","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}` } }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Louis Friese van Vlaenderen","item":"https://vanvlaenderen.org/research/louis-friese"},{"@type":"ListItem","position":4,"name":"Lineage Detail","item":"https://vanvlaenderen.org/research/praet-lineage-dossier"}]}` } })
     ] }),
     /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
       /* @__PURE__ */ jsx(
@@ -4676,24 +4800,45 @@ function PraetLineageDossierPage() {
           "Buylaert, Frederik. Published genealogical and prosopographical research on Flemish nobility. Cited via FMG MedLands [881,882] for Josse de Flandre and cadet Praet branches."
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
-        "button",
-        {
-          onClick: () => goToResearch("louis-friese"),
-          style: {
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            color: "var(--gold)",
-            fontSize: "16px",
-            textDecoration: "underline",
-            fontFamily: "var(--font-ui)",
-            textTransform: "uppercase",
-            letterSpacing: "0.1em"
-          },
-          children: "Back to Louis Friese Lineage"
-        }
-      ) })
+      /* @__PURE__ */ jsxs("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: [
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            onClick: () => goToResearch("louis-friese"),
+            style: {
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "var(--gold)",
+              fontSize: "16px",
+              textDecoration: "underline",
+              fontFamily: "var(--font-ui)",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em"
+            },
+            children: "Back to Louis Friese Lineage"
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "button",
+          {
+            onClick: () => goToResearch("bibliography"),
+            style: {
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "var(--gold)",
+              fontSize: "14px",
+              textDecoration: "underline",
+              fontFamily: "var(--font-ui)",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              marginLeft: "1.5rem"
+            },
+            children: "Full Bibliography →"
+          }
+        )
+      ] })
     ] })
   ] });
 }
@@ -4945,7 +5090,7 @@ const aboutStyles = {
 };
 const michaelConstanceCanal = "/assets/michael-constance-canal-CzKbZRok.jpg";
 function AboutPage() {
-  const { goTo } = useNav();
+  const { goTo, goToResearch } = useNav();
   const { t } = useTranslation();
   return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
@@ -4987,7 +5132,49 @@ function AboutPage() {
           /* @__PURE__ */ jsx("div", { className: aboutStyles.sourceDesc, children: t("about.source_dna_desc") })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("section", { className: styles$1.section, children: /* @__PURE__ */ jsx("p", { children: t("about.methodology_note") }) }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsx("p", { children: t("about.methodology_note") }),
+        /* @__PURE__ */ jsxs("div", { style: { marginTop: "1rem", display: "flex", gap: "1rem", flexWrap: "wrap" }, children: [
+          /* @__PURE__ */ jsx(
+            "button",
+            {
+              onClick: () => goTo("research"),
+              style: {
+                background: "none",
+                border: "1px solid rgba(232,184,48,0.35)",
+                borderRadius: "4px",
+                color: "var(--gold)",
+                cursor: "pointer",
+                fontSize: "0.82rem",
+                fontFamily: "var(--font-ui)",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                padding: "0.5rem 1.1rem"
+              },
+              children: "Research Overview →"
+            }
+          ),
+          /* @__PURE__ */ jsx(
+            "button",
+            {
+              onClick: () => goToResearch("methodology"),
+              style: {
+                background: "none",
+                border: "1px solid rgba(232,184,48,0.35)",
+                borderRadius: "4px",
+                color: "var(--gold)",
+                cursor: "pointer",
+                fontSize: "0.82rem",
+                fontFamily: "var(--font-ui)",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                padding: "0.5rem 1.1rem"
+              },
+              children: "Methodology & Sources →"
+            }
+          )
+        ] })
+      ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("about.origins_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("about.origins_body") })
@@ -5429,6 +5616,352 @@ function LineagePage() {
     ] })
   ] });
 }
+const READING_LIST = [
+  {
+    group: "The County of Flanders and the Comital House",
+    entries: [
+      {
+        author: "Warlop, E.",
+        year: "1975–76",
+        title: "The Flemish Nobility Before 1300",
+        note: "The foundational English-language prosopographical study of Flemish noble families. The alphabetic repertory of noble families in volumes 3–4 is an essential reference for tracing any lineage with pre-1300 roots in Flanders, including the van Praet family. Available in four volumes.",
+        links: [
+          { label: "Amazon", url: "https://www.amazon.com/s?k=Warlop+Flemish+Nobility+Before+1300" },
+          { label: "Free download (Internet Archive)", url: "https://archive.org/details/flemishnobilityb0002unse_q5k3" },
+          { label: "Used copies (AbeBooks)", url: "https://www.abebooks.com/book-search/title/flemish-nobility-before-1300/" }
+        ]
+      },
+      {
+        author: "Prevenier, W. & Blockmans, W.",
+        year: "1986",
+        title: "The Burgundian Netherlands",
+        note: "The standard illustrated survey of the Burgundian Low Countries 1380–1530 — exactly the period in which the van Vlaenderen surname crystallises and the Praet line flourishes. Provides essential political and cultural context for Louis de Male and his bastard children. Richly illustrated.",
+        links: [
+          { label: "Amazon", url: "https://www.amazon.com/Burgundian-Netherlands-Walter-Prevenier/dp/0521306116" },
+          { label: "Free download (Internet Archive)", url: "https://archive.org/details/burgundiannether0000prev" },
+          { label: "Used copies (AbeBooks)", url: "https://www.abebooks.com/9780521306119/Burgundian-Netherlands-Prevenier-Walter-Wim-0521306116/plp" }
+        ]
+      },
+      {
+        author: "Blockmans, W. & Prevenier, W.",
+        year: "1999",
+        title: "The Promised Lands: The Low Countries Under Burgundian Rule, 1369–1530",
+        note: "The accessible single-volume companion to The Burgundian Netherlands. Organised thematically around the key problems of Burgundian history — state formation, social structure, urban economy — rather than as a chronological narrative. Better suited as a first read than the 1986 volume.",
+        links: [
+          { label: "Amazon", url: "https://www.amazon.com/Promised-Lands-Countries-Burgundian-Rule/dp/0812216504" },
+          { label: "Used copies (AbeBooks)", url: "https://www.abebooks.com/book-search/title/promised-lands-low-countries-under-burgundian/" }
+        ]
+      }
+    ]
+  },
+  {
+    group: "Flemish Nobility and Social Structure",
+    entries: [
+      {
+        author: "Buylaert, F.",
+        year: "2010",
+        title: "Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen",
+        note: `The most important recent study of the Flemish nobility in the 14th–15th centuries, by the same Buylaert cited in FMG MedLands for the Josse de Flandre cadet branch. Demonstrates the nobility's adaptability and social mobility during exactly the period our research covers. In Dutch. An English-language article by the same author ("The late medieval crisis of the nobility reconsidered: the case of Flanders", Journal of Social History 45, 2012) covers the main arguments and is freely available.`,
+        links: [
+          { label: "Amazon", url: "https://www.amazon.com/Eeuwen-Van-Ambitie-Laatmiddeleeuws-Verhandelingen/dp/9065690751" },
+          { label: "Free download (Academia.edu)", url: "https://www.academia.edu/2418411/Frederik_Buylaert_Eeuwen_van_ambitie" }
+        ]
+      }
+    ]
+  },
+  {
+    group: "The Meetjesland: Regional History and Rural Economy",
+    entries: [
+      {
+        author: "Augustyn, B. & Thoen, E.",
+        year: "1987",
+        title: "'Van veen tot bos: Krachtlijnen van de landschapsevolutie van het Noordvlaamse Meetjesland van de 12e tot de 19e eeuw'",
+        note: "The key article on the landscape history of the northern Flemish Meetjesland from the 12th to the 19th century — covering precisely the geographic area of our research. Documents the transition from peat extraction to the sandy-loam landscape that characterises the area in the parish-record period. In Dutch. Published in Historisch-Geografisch Tijdschrift.",
+        availability: "Not widely available outside Belgian library systems. Can be requested through interlibrary loan or directly from the authors' institutional repositories at Ghent University."
+      }
+    ]
+  },
+  {
+    group: "Archival Research Methodology and Palaeography",
+    entries: [
+      {
+        author: "Munby, L.",
+        year: "2003",
+        title: "Reading and Understanding Old Documents: A Guide to Palaeography",
+        note: "A practical English-language guide to reading historical handwriting, focused on secretary hand and other scripts common in early modern documents. Useful companion for working through the kinds of documents encountered in Belgian state archives.",
+        links: [
+          { label: "Amazon", url: "https://www.amazon.com/s?k=Munby+Reading+Understanding+Old+Documents+Palaeography" },
+          { label: "Used copies (AbeBooks)", url: "https://www.abebooks.com/book-search/title/reading-understanding-old-documents/" }
+        ]
+      },
+      {
+        author: "Moens, J.",
+        year: "Various editions",
+        title: "Inleiding tot de historische kritiek",
+        note: "Standard Belgian introduction to historical source criticism and archival methodology. Covers the evaluation of primary sources, dating conventions, and document types encountered in Flemish archives. In Dutch. Available through Ghent University library and Belgian academic publishers."
+      }
+    ]
+  },
+  {
+    group: "Digital Genealogy and Genetic Methods",
+    entries: [
+      {
+        author: "Bettinger, B. & Wayne, D.",
+        year: "2016",
+        title: "Genetic Genealogy in Practice",
+        note: "The National Genealogical Society's standard reference for DNA evidence in genealogical research. Covers Y-DNA, autosomal, and mtDNA methods with specific guidance on using DNA to break through brick walls — the primary use case for this project's Y-DNA research thread.",
+        links: [
+          { label: "Amazon", url: "https://www.amazon.com/Genetic-Genealogy-Practice-National-Genealogical/dp/1935815296" },
+          { label: "Used copies (AbeBooks)", url: "https://www.abebooks.com/book-search/title/genetic-genealogy-practice/" }
+        ]
+      }
+    ]
+  },
+  {
+    group: "Primary Sources and Reference Works",
+    entries: [
+      {
+        author: "Cawley, C.",
+        year: "2025 (v5.0)",
+        title: "MedLands: Flanders, Hainaut (online)",
+        note: "The Foundation for Medieval Genealogy's encyclopaedia of territories and noble families in the medieval western world. The primary reference for all comital and bastard-line citations in this project. Free to access online. Version 5.0 updated January 2025.",
+        links: [
+          { label: "Free access (FMG)", url: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" }
+        ]
+      },
+      {
+        author: "Vredius, O. (Olivier de Wree)",
+        year: "1643",
+        title: "Sigilla Comitum Flandriae et Inscriptiones Diplomatum",
+        note: "Published in Bruges in 1643, this is the 17th-century primary source compilation that underlies most of the FMG MedLands charter citations used in this project. Pars secunda, pp.285–287 is the specific locus for the Victor van Vlaenderen charter evidence.",
+        links: [
+          { label: "Free download (Internet Archive)", url: "https://archive.org/details/bub_gb_CNSBZDBvNV4C" }
+        ]
+      }
+    ]
+  }
+];
+function MethodologyPage() {
+  const { goToResearch } = useNav();
+  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+    /* @__PURE__ */ jsxs(Helmet, { children: [
+      /* @__PURE__ */ jsx("title", { children: "Methodology & Sources — Van Vlaenderen Research | vanvlaenderen.org" }),
+      /* @__PURE__ */ jsx("meta", { name: "description", content: "Transcription and translation methodology for the Van Vlaenderen archival research project, plus a curated reading list of primary and secondary sources." }),
+      /* @__PURE__ */ jsx("link", { rel: "canonical", href: "https://vanvlaenderen.org/research/methodology" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:title", content: "Methodology & Sources — Van Vlaenderen Research" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:description", content: "How archival documents are transcribed and translated, and the historiographical sources that underpin the research." }),
+      /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/methodology" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+      /* @__PURE__ */ jsx(
+        "div",
+        {
+          className: styles$1.heroImg,
+          style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
+          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+        }
+      ),
+      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: "Van Vlaenderen · Research Foundations" }),
+        /* @__PURE__ */ jsx("h1", { children: "Methodology & Sources" }),
+        /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
+        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "How archival documents are read, transcribed, and translated — and the published works that form the historiographical foundation for this research." })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+      /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
+        /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Research Foundations" }),
+        /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: "Transcription and Translation Methodology" }),
+        /* @__PURE__ */ jsx("p", { children: "Archival documents in this project are transcribed using an iterative, multi-system approach. Gemini (Google) serves as the primary real-time reading tool: integrated directly into the browser, it can analyse document images without a separate upload step, allowing the researcher to ask questions about specific characters, words, or passages while actively zooming and navigating the original scan. This ambient availability makes it the natural first pass for difficult passages." }),
+        /* @__PURE__ */ jsx("p", { children: "Outputs from Gemini are then cross-checked against independent readings from Claude (Anthropic), GPT-4 (OpenAI), Transkribus, and Tryleo. Where readings converge across systems, confidence is high. Where they diverge, the researcher returns to the original image, zooming to individual characters and applying knowledge of the letter forms, abbreviations, and spelling conventions of the period." }),
+        /* @__PURE__ */ jsx("p", { children: "Translation follows the same iterative logic. Early modern Dutch and Latin passages are translated independently by multiple systems, with the researcher cross-checking against known vocabulary, named entities already established in the research, and the documentary context. Passages involving specialist palaeographic challenges — secretary hand abbreviations, damaged text, unusual personal names — are treated as uncertain until verified by at least two independent readings." }),
+        /* @__PURE__ */ jsx("p", { children: "Each AI system is given learning samples from the same document hand before being asked to transcribe difficult passages, allowing the system to calibrate to individual scribal idiosyncrasies. This is the same principle professional palaeographers apply when learning a new hand." }),
+        /* @__PURE__ */ jsx("p", { children: "AI tools in this project are research instruments, not citation sources. Every claim on this site traces to a named primary or secondary authority. Tool outputs that cannot be verified against a named source are flagged as provisional." })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: "Recommended Reading" }),
+        /* @__PURE__ */ jsx("p", { children: "The following works form the historiographical foundation for this project. They are the sources against which our findings are tested and the authorities whose frameworks we apply. Entries are grouped by theme. Acquisition links are provided where available." }),
+        READING_LIST.map((group) => /* @__PURE__ */ jsxs("div", { style: { marginTop: "2.5rem" }, children: [
+          /* @__PURE__ */ jsx("h3", { style: {
+            color: "var(--gold)",
+            fontSize: "1rem",
+            fontWeight: 600,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            marginBottom: "1.25rem",
+            paddingBottom: "0.5rem",
+            borderBottom: "1px solid rgba(232,184,48,0.2)"
+          }, children: group.group }),
+          group.entries.map((entry, i) => /* @__PURE__ */ jsxs("div", { style: {
+            background: "rgba(255,255,255,0.03)",
+            border: "1px solid rgba(232,184,48,0.15)",
+            borderRadius: "4px",
+            padding: "1.25rem 1.5rem",
+            marginBottom: "1rem"
+          }, children: [
+            /* @__PURE__ */ jsxs("p", { style: { marginBottom: "0.4rem" }, children: [
+              /* @__PURE__ */ jsx("strong", { style: { color: "var(--text-primary)" }, children: entry.author }),
+              " ",
+              /* @__PURE__ */ jsxs("span", { style: { color: "var(--text-muted)", fontSize: "0.9rem" }, children: [
+                "(",
+                entry.year,
+                ")."
+              ] }),
+              " ",
+              /* @__PURE__ */ jsxs("em", { style: { color: "var(--gold-light)" }, children: [
+                entry.title,
+                "."
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", margin: "0.5rem 0" }, children: entry.note }),
+            entry.availability && /* @__PURE__ */ jsx("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)", marginTop: "0.4rem" }, children: /* @__PURE__ */ jsxs("em", { children: [
+              "Note: ",
+              entry.availability
+            ] }) }),
+            entry.links && entry.links.length > 0 && /* @__PURE__ */ jsx("div", { style: { display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "0.75rem" }, children: entry.links.map((link) => /* @__PURE__ */ jsxs(
+              "a",
+              {
+                href: link.url,
+                target: "_blank",
+                rel: "noopener noreferrer",
+                className: researchStyles.refLink,
+                style: { fontSize: "0.85rem" },
+                children: [
+                  link.label,
+                  " →"
+                ]
+              },
+              link.url
+            )) })
+          ] }, i))
+        ] }, group.group))
+      ] }),
+      /* @__PURE__ */ jsx("div", { style: { marginTop: "3rem", paddingTop: "2rem", borderTop: "1px solid rgba(232,184,48,0.15)" }, children: /* @__PURE__ */ jsx(
+        "button",
+        {
+          onClick: () => goToResearch("main"),
+          className: researchStyles.refLink,
+          style: { background: "none", border: "none", cursor: "pointer", fontSize: "0.9rem" },
+          children: "← Back to Research Overview"
+        }
+      ) })
+    ] })
+  ] });
+}
+const TYPE_COLORS = {
+  "Primary Source": { bg: "rgba(232,184,48,0.15)", color: "#e8b830" },
+  "Finding Aid": { bg: "rgba(74,222,128,0.15)", color: "#4ade80" },
+  "Belgian Historiography": { bg: "rgba(147,197,253,0.15)", color: "#93c5fd" },
+  "Meetjesland": { bg: "rgba(196,165,255,0.15)", color: "#c4a5ff" },
+  "Methodology": { bg: "rgba(251,191,36,0.15)", color: "#fbbf24" },
+  "Genetic Genealogy": { bg: "rgba(52,211,153,0.15)", color: "#34d399" }
+};
+function typeBadge(type) {
+  const c = TYPE_COLORS[type] ?? { bg: "rgba(255,255,255,0.1)", color: "#ccc" };
+  return /* @__PURE__ */ jsx("span", { style: {
+    background: c.bg,
+    color: c.color,
+    fontSize: "0.7rem",
+    fontFamily: "var(--font-ui)",
+    letterSpacing: "0.08em",
+    textTransform: "uppercase",
+    padding: "2px 8px",
+    borderRadius: "3px",
+    border: `1px solid ${c.color}33`,
+    whiteSpace: "nowrap"
+  }, children: type });
+}
+function EntryCard({ e }) {
+  return /* @__PURE__ */ jsxs("div", { style: {
+    borderLeft: "2px solid rgba(232,184,48,0.25)",
+    paddingLeft: "1rem",
+    marginBottom: "1.5rem"
+  }, children: [
+    /* @__PURE__ */ jsxs("div", { style: { display: "flex", alignItems: "center", gap: "0.6rem", flexWrap: "wrap", marginBottom: "0.3rem" }, children: [
+      typeBadge(e.type),
+      /* @__PURE__ */ jsx("span", { style: { color: "var(--gold)", fontWeight: 600, fontFamily: "var(--font-ui)", fontSize: "0.9rem" }, children: e.author }),
+      /* @__PURE__ */ jsxs("span", { style: { color: "rgba(255,255,255,0.45)", fontSize: "0.85rem" }, children: [
+        "(",
+        e.year,
+        ")"
+      ] })
+    ] }),
+    /* @__PURE__ */ jsx("div", { style: { color: "rgba(255,255,255,0.9)", fontStyle: "italic", marginBottom: "0.25rem", fontSize: "0.95rem" }, children: e.title }),
+    e.publisher && /* @__PURE__ */ jsx("div", { style: { color: "rgba(255,255,255,0.5)", fontSize: "0.8rem", marginBottom: "0.25rem" }, children: e.publisher }),
+    /* @__PURE__ */ jsx("div", { style: { color: "rgba(255,255,255,0.7)", fontSize: "0.875rem", lineHeight: 1.6 }, children: e.note }),
+    e.url && /* @__PURE__ */ jsx(
+      "a",
+      {
+        href: e.url,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        className: researchStyles.refLink,
+        style: { display: "inline-block", marginTop: "0.4rem", fontSize: "0.8rem" },
+        children: e.urlLabel ?? e.url
+      }
+    )
+  ] });
+}
+function BibliographyPage() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(false);
+  useEffect(() => {
+    fetch("/data/bibliography.json").then((r) => {
+      if (!r.ok) throw new Error();
+      return r.json();
+    }).then(setData).catch(() => setError(true));
+  }, []);
+  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+    /* @__PURE__ */ jsxs(Helmet, { children: [
+      /* @__PURE__ */ jsx("title", { children: "Sources & Scholarship — Van Vlaenderen" }),
+      /* @__PURE__ */ jsx("meta", { name: "description", content: "Primary sources, archival finding aids, and scholarly literature cited in the Van Vlaenderen research dossiers." }),
+      /* @__PURE__ */ jsx("link", { rel: "canonical", href: "https://vanvlaenderen.org/research/bibliography" })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: styles$1.inner, children: [
+      /* @__PURE__ */ jsx("h1", { children: "Sources & Scholarship" }),
+      /* @__PURE__ */ jsx("p", { style: { color: "rgba(255,255,255,0.65)", marginBottom: "2rem", maxWidth: "680px", lineHeight: 1.7 }, children: "The primary sources, archival finding aids, and scholarly literature that underpin the research presented in the dossiers. Entries in the first section are directly quoted or cited. Entries in the second section are recommended reading for researchers interested in the broader historiographical context." }),
+      error && /* @__PURE__ */ jsx("p", { style: { color: "#f87171" }, children: "Bibliography data could not be loaded." }),
+      data && /* @__PURE__ */ jsxs(Fragment, { children: [
+        /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+          /* @__PURE__ */ jsx("h2", { children: data.sections.primarySources.label }),
+          Object.values(data.sections.primarySources.subsections).map((sub) => /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2rem" }, children: [
+            /* @__PURE__ */ jsx("h3", { style: {
+              color: "rgba(255,255,255,0.55)",
+              fontFamily: "var(--font-ui)",
+              fontSize: "0.8rem",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              marginBottom: "1rem"
+            }, children: sub.label }),
+            sub.entries.map((e, i) => /* @__PURE__ */ jsx(EntryCard, { e }, i))
+          ] }, sub.label))
+        ] }),
+        /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+          /* @__PURE__ */ jsx("h2", { children: data.sections.scholarlyLiterature.label }),
+          data.sections.scholarlyLiterature.groups.map((group) => /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2.5rem" }, children: [
+            /* @__PURE__ */ jsx("h3", { style: {
+              color: "rgba(255,255,255,0.55)",
+              fontFamily: "var(--font-ui)",
+              fontSize: "0.8rem",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              marginBottom: "1rem"
+            }, children: group.heading }),
+            group.entries.map((e, i) => /* @__PURE__ */ jsx(EntryCard, { e }, i))
+          ] }, group.heading))
+        ] }),
+        /* @__PURE__ */ jsxs("p", { style: { color: "rgba(255,255,255,0.3)", fontSize: "0.75rem", marginTop: "2rem" }, children: [
+          "Last updated: ",
+          data.lastUpdated
+        ] })
+      ] })
+    ] })
+  ] });
+}
 function App() {
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx(FamilyTreeCanvas, {}),
@@ -5444,6 +5977,8 @@ function App() {
       /* @__PURE__ */ jsx(Route, { path: "/research/victor-dossier", element: /* @__PURE__ */ jsx(VictorDossierPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/research/praet-dossier", element: /* @__PURE__ */ jsx(PraetDossierPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/research/praet-lineage-dossier", element: /* @__PURE__ */ jsx(PraetLineageDossierPage, {}) }),
+      /* @__PURE__ */ jsx(Route, { path: "/research/methodology", element: /* @__PURE__ */ jsx(MethodologyPage, {}) }),
+      /* @__PURE__ */ jsx(Route, { path: "/research/bibliography", element: /* @__PURE__ */ jsx(BibliographyPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/lineage", element: /* @__PURE__ */ jsx(LineagePage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/about", element: /* @__PURE__ */ jsx(AboutPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/contact", element: /* @__PURE__ */ jsx(ContactPage, {}) }),
