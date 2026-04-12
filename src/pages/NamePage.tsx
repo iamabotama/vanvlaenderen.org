@@ -98,6 +98,81 @@ export default function NamePage() {
           </p>
         </section>
 
+        {/* ── Four-Bucket Section ──────────────────────────────── */}
+        <section className={styles.section}>
+          <h2>{t('name.four_bucket_title')}</h2>
+          <p>{t('name.four_bucket_intro')}</p>
+          <p>{t('name.four_bucket_rebuttal')}</p>
+
+          <div style={{ margin: '2rem 0' }}>
+            <div style={{
+              fontSize: '0.78rem',
+              fontFamily: 'var(--font-ui)',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'var(--gold)',
+              marginBottom: '1rem',
+            }}>
+              {t('name.four_bucket_table_heading')}
+            </div>
+
+            {[
+              { num: '1', label: t('name.four_bucket_b1_label'), desc: t('name.four_bucket_b1_desc'), muted: true },
+              { num: '2', label: t('name.four_bucket_b2_label'), desc: t('name.four_bucket_b2_desc'), muted: true },
+              { num: '3', label: t('name.four_bucket_b3_label'), desc: t('name.four_bucket_b3_desc'), muted: true },
+              { num: '4', label: t('name.four_bucket_b4_label'), desc: t('name.four_bucket_b4_desc'), muted: false },
+            ].map(({ num, label, desc, muted }) => (
+              <div key={num} style={{
+                display: 'grid',
+                gridTemplateColumns: '2.5rem 1fr',
+                gap: '0 1rem',
+                padding: '1rem 1.25rem',
+                marginBottom: '0.5rem',
+                borderRadius: '4px',
+                background: muted
+                  ? 'rgba(255,255,255,0.02)'
+                  : 'rgba(232,184,48,0.06)',
+                border: muted
+                  ? '1px solid rgba(255,255,255,0.06)'
+                  : '1px solid rgba(232,184,48,0.25)',
+                boxShadow: muted ? 'none' : '0 0 12px rgba(232,184,48,0.07)',
+              }}>
+                <div style={{
+                  fontSize: '1.4rem',
+                  fontWeight: 700,
+                  color: muted ? 'var(--text-muted)' : 'var(--gold)',
+                  lineHeight: 1,
+                  paddingTop: '0.1rem',
+                }}>
+                  {num}
+                </div>
+                <div>
+                  <div style={{
+                    fontWeight: 600,
+                    color: muted ? 'var(--text-muted)' : 'var(--text-primary)',
+                    marginBottom: '0.3rem',
+                    fontSize: '0.9rem',
+                  }}>
+                    {label}
+                  </div>
+                  <div style={{
+                    fontSize: '0.875rem',
+                    color: 'var(--text-muted)',
+                    lineHeight: 1.6,
+                  }}>
+                    {desc}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ fontStyle: 'italic', color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+            {t('name.four_bucket_conclusion')}
+          </p>
+        </section>
+
         {/* Interactive Research Map */}
         <Suspense fallback={<div style={{ height: '400px' }} />}>
           <ResearchMap />
@@ -112,6 +187,9 @@ export default function NamePage() {
           />
           <div className={nameStyles.mapCaption}>
             {t('name.map_caption')}
+          </div>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontStyle: 'italic', marginTop: '0.5rem', padding: '0 0.5rem' }}>
+            {t('name.map_caption_bucket_note')}
           </div>
         </div>
 
