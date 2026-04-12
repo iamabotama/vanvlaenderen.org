@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Explicitly allow research content for AI crawlers
+User-agent: GPTBot
+Allow: /research/
+Allow: /dossier/
+
+User-agent: Claude-Web
+Allow: /research/
+Allow: /dossier/
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://vanvlaenderen.org/sitemap.xml

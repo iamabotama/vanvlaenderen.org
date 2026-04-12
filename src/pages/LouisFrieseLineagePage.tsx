@@ -3,16 +3,24 @@ import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { PraetDiagram } from '../components/Diagrams';
+import { useNav } from '../hooks/useNav';
+import { Helmet } from 'react-helmet-async';
 
-interface LouisFrieseLineagePageProps {
-  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese' | 'contact' | 'victor-dossier' | 'praet-dossier' | 'praet-lineage-dossier') => void;
-}
-
-export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineagePageProps) {
+export default function LouisFrieseLineagePage() {
+  const { goToResearch } = useNav();
   const { t } = useTranslation();
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>Louis Friese van Vlaenderen — The Praet Line | vanvlaenderen.org</title>
+        <meta name="description" content="Louis Friese van Vlaenderen, Lord of Praet and Woestine: the second bastard line of Louis II de Male using the Van Vlaenderen surname. Ancestor of Lodewijk IV (Louis of Praet)." />
+        <link rel="canonical" href="https://vanvlaenderen.org/research/louis-friese" />
+        <meta property="og:title" content="Louis Friese van Vlaenderen — The Praet Line" />
+        <meta property="og:description" content="The Praet bastard line: Louis Friese van Vlaenderen to Lodewijk IV, Knight of the Golden Fleece — extinct 1556." />
+        <meta property="og:url" content="https://vanvlaenderen.org/research/louis-friese" />
+        <meta property="og:type" content="article" />
+      </Helmet>
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <div className={styles.heroStrip}>
         <div
@@ -174,8 +182,8 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
               role="button"
               tabIndex={0}
               style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => onNavigate?.('praet-dossier')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('praet-dossier'); } }}
+              onClick={() => goToResearch('praet-dossier')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('praet-dossier'); } }}
               aria-label="Louis Friese: Archival Dossier"
             >
               <h3>Louis Friese: Archival Dossier</h3>
@@ -189,8 +197,8 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
               role="button"
               tabIndex={0}
               style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => onNavigate?.('praet-lineage-dossier')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate?.('praet-lineage-dossier'); } }}
+              onClick={() => goToResearch('praet-lineage-dossier')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('praet-lineage-dossier'); } }}
               aria-label="House of Praet: Lineage Dossier"
             >
               <h3>House of Praet: Lineage Dossier</h3>
@@ -241,7 +249,7 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
           </div>
         </section>
 
-        <div className={styles.ctaBox} onClick={() => onNavigate?.('contact')} style={{ cursor: 'pointer' }}>
+        <div className={styles.ctaBox} onClick={() => goToResearch('contact')} style={{ cursor: 'pointer' }}>
           <div className={styles.ctaText}>
             {t('louis_friese.cta_text')}
           </div>
@@ -252,7 +260,7 @@ export default function LouisFrieseLineagePage({ onNavigate }: LouisFrieseLineag
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
           <button
-            onClick={() => onNavigate?.('main')}
+            onClick={() => goToResearch('main')}
             style={{
               background: 'none',
               border: 'none',

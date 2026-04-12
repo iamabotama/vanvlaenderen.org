@@ -3,16 +3,23 @@ import styles from './InnerPage.module.css';
 import dnaStyles from './DnaPage.module.css';
 import vintageFamilyPhoto from '../assets/images/vintage-family-photo.jpg';
 import cronikeShields from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
-import type { Tab } from '../components/Nav';
+import { useNav } from '../hooks/useNav';
+import { Helmet } from 'react-helmet-async';
 
-interface DnaPageProps {
-  onNavigate?: (tab: Tab) => void;
-}
-
-export default function DnaPage({ onNavigate }: DnaPageProps) {
+export default function DnaPage() {
+  const { goTo } = useNav();
   const { t } = useTranslation();
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>DNA Evidence — Y-DNA Research | vanvlaenderen.org</title>
+        <meta name="description" content="Y-DNA haplogroup research for the Van Vlaenderen patrilineal line. Big Y-700 results, R-FT1573 singleton branch, and the case for a single common ancestor." />
+        <link rel="canonical" href="https://vanvlaenderen.org/dna" />
+        <meta property="og:title" content="DNA Evidence — Van Vlaenderen Y-DNA Research" />
+        <meta property="og:description" content="Y-DNA analysis placing the Van Vlaenderen line in haplogroup R-FT1573. Big Y-700 results and single-ancestor hypothesis." />
+        <meta property="og:url" content="https://vanvlaenderen.org/dna" />
+        <meta property="og:type" content="article" />
+      </Helmet>
 
       {/* ── Hero: shields image + text ────────────────────────────── */}
       <div className={styles.heroStrip}>
@@ -119,7 +126,7 @@ export default function DnaPage({ onNavigate }: DnaPageProps) {
 
         <button 
           className={styles.ctaBox}
-          onClick={() => onNavigate?.('contact')}
+          onClick={() => goTo('contact')}
           style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, width: '100%', textAlign: 'center' }}
         >
           <div className={styles.ctaText}>

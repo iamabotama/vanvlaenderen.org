@@ -1,13 +1,18 @@
-name: Deploy to GitHub Pages
+name: Build & Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main          # production deploy — triggers on merge to main
+
+  # Allow manual trigger from GitHub Actions tab (useful for previews)
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed for peaceiris/actions-gh-pages
 
     steps:
       - name: Checkout
@@ -24,8 +29,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build project
-        run: pnpm build
+      - name: Build client bundle
+        run: pnpm exec tsc -b && pnpm exec vite build
+
+      - name: Build SSR bundle
+        run: pnpm exec vite build --ssr src/entry-server.tsx --outDir dist/server
+
+      - name: Prerender all routes
+        run: node scripts/prerender.mjs
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

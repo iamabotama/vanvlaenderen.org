@@ -1,14 +1,22 @@
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
+import { useNav } from '../hooks/useNav';
+import { Helmet } from 'react-helmet-async';
 
-interface VictorDossierPageProps {
-  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese' | 'contact' | 'victor-dossier' | 'praet-dossier' | 'praet-lineage-dossier') => void;
-}
-
-export default function VictorDossierPage({ onNavigate }: VictorDossierPageProps) {
+export default function VictorDossierPage() {
+  const { goToResearch } = useNav();
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>Victor van Vlaenderen — Archival Dossier | vanvlaenderen.org</title>
+        <meta name="description" content="Primary source dossier for Victor van Vlaenderen: 1427 and 1441/42 charter evidence, FMG MedLands documentation, Hof van Wessegem heritage record, and the Alix van Boyeghem connection." />
+        <link rel="canonical" href="https://vanvlaenderen.org/research/victor-dossier" />
+        <meta property="og:title" content="Victor van Vlaenderen — Archival Dossier" />
+        <meta property="og:description" content="Primary source evidence: the 1427 and 1441/42 charters, Wessegem heritage, and Victor's three natural sons." />
+        <meta property="og:url" content="https://vanvlaenderen.org/research/victor-dossier" />
+        <meta property="og:type" content="article" />
+      </Helmet>
       <div className={styles.heroStrip}>
         <div
           className={styles.heroImg}
@@ -256,7 +264,7 @@ export default function VictorDossierPage({ onNavigate }: VictorDossierPageProps
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
           <button
-            onClick={() => onNavigate?.('victor')}
+            onClick={() => goToResearch('victor')}
             style={{
               background: 'none',
               border: 'none',

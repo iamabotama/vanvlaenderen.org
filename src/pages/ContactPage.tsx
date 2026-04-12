@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './InnerPage.module.css';
 import contactStyles from './ContactPage.module.css';
 import polaroidCollage from '../assets/images/polaroid-collage.jpg';
+import { Helmet } from 'react-helmet-async';
 
 export default function ContactPage() {
   const { t } = useTranslation();
@@ -78,6 +79,14 @@ export default function ContactPage() {
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>Contact — Van Vlaenderen Research | vanvlaenderen.org</title>
+        <meta name="description" content="Get in touch with the Van Vlaenderen research project. Share family connections, Y-DNA results, or archival findings related to the Van Vlaenderen / Van Flandern surname." />
+        <link rel="canonical" href="https://vanvlaenderen.org/contact" />
+        <meta property="og:title" content="Contact — Van Vlaenderen Research" />
+        <meta property="og:url" content="https://vanvlaenderen.org/contact" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <div className={styles.textHero}>
         <div className={styles.eyebrow}>{t('contact.hero_eyebrow')}</div>
         <h1>{t('contact.hero_title')}</h1>

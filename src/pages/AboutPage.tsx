@@ -2,16 +2,23 @@ import { useTranslation } from 'react-i18next';
 import styles from './InnerPage.module.css';
 import aboutStyles from './AboutPage.module.css';
 import michaelConstanceCanal from '../assets/images/michael-constance-canal.jpg';
-import type { Tab } from '../components/Nav';
+import { useNav } from '../hooks/useNav';
+import { Helmet } from 'react-helmet-async';
 
-interface AboutPageProps {
-  onNavigate?: (tab: Tab) => void;
-}
-
-export default function AboutPage({ onNavigate }: AboutPageProps) {
+export default function AboutPage() {
+  const { goTo } = useNav();
   const { t } = useTranslation();
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>About — Lions of Flanders Project | vanvlaenderen.org</title>
+        <meta name="description" content="About the Lions of Flanders project: Michael and Constance Van Flandern's 15-year research into Flemish heritage, archival fieldwork in Belgium, and the path from Bassevelde to America." />
+        <link rel="canonical" href="https://vanvlaenderen.org/about" />
+        <meta property="og:title" content="About — Lions of Flanders Project" />
+        <meta property="og:description" content="Fifteen years of research into a Flemish family name. Archival fieldwork in Ghent, Bruges, and the Meetjesland." />
+        <meta property="og:url" content="https://vanvlaenderen.org/about" />
+        <meta property="og:type" content="website" />
+      </Helmet>
 
       {/* ── Text-only Hero ────────────────────────────────────────── */}
       <div className={styles.textHero}>
@@ -130,7 +137,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           </p>
           <button 
             className={styles.ctaBox}
-            onClick={() => onNavigate?.('lineage')}
+            onClick={() => goTo('lineage')}
             style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, width: '100%', textAlign: 'center' }}
           >
             <div className={styles.ctaText}>
@@ -141,7 +148,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
 
         <button 
           className={styles.ctaBox}
-          onClick={() => onNavigate?.('contact')}
+          onClick={() => goTo('contact')}
           style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, width: '100%', textAlign: 'center' }}
         >
           <div className={styles.ctaText}>

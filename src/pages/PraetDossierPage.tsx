@@ -2,14 +2,22 @@
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
+import { useNav } from '../hooks/useNav';
+import { Helmet } from 'react-helmet-async';
 
-interface PraetDossierPageProps {
-  onNavigate?: (subpage: 'main' | 'victor' | 'louis-friese' | 'contact' | 'victor-dossier' | 'praet-dossier' | 'praet-lineage-dossier') => void;
-}
-
-export default function PraetDossierPage({ onNavigate }: PraetDossierPageProps) {
+export default function PraetDossierPage() {
+  const { goToResearch } = useNav();
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>The Praet Line — Archival Dossier | vanvlaenderen.org</title>
+        <meta name="description" content="Archival dossier for the Praet line: Louis Friese van Vlaenderen through Lodewijk IV (Louis of Praet, Knight of the Golden Fleece, d. 1555). Sources, evidence levels, and open research questions." />
+        <link rel="canonical" href="https://vanvlaenderen.org/research/praet-dossier" />
+        <meta property="og:title" content="The Praet Line — Archival Dossier" />
+        <meta property="og:description" content="From Louis Friese van Vlaenderen to Lodewijk IV, Knight of the Golden Fleece. Primary and secondary sources for the Praet bastard line." />
+        <meta property="og:url" content="https://vanvlaenderen.org/research/praet-dossier" />
+        <meta property="og:type" content="article" />
+      </Helmet>
       <div className={styles.heroStrip}>
         <div
           className={styles.heroImg}
@@ -142,7 +150,7 @@ export default function PraetDossierPage({ onNavigate }: PraetDossierPageProps) 
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
           <button 
-            onClick={() => onNavigate?.('louis-friese')} 
+            onClick={() => goToResearch('louis-friese')} 
             style={{ 
               background: 'none', 
               border: 'none', 
