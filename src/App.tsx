@@ -14,6 +14,8 @@ import PraetLineageDossierPage from './pages/PraetLineageDossierPage';
 import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 import { LineagePage } from './components/Lineage';
+import MethodologyPage from './pages/MethodologyPage';
+import BibliographyPage from './pages/BibliographyPage';
 import './App.css';
 
 export default function App() {
@@ -37,6 +39,8 @@ export default function App() {
           <Route path="/research/victor-dossier"       element={<VictorDossierPage />} />
           <Route path="/research/praet-dossier"        element={<PraetDossierPage />} />
           <Route path="/research/praet-lineage-dossier" element={<PraetLineageDossierPage />} />
+          <Route path="/research/methodology"              element={<MethodologyPage />} />
+          <Route path="/research/bibliography"             element={<BibliographyPage />} />
           <Route path="/lineage"                       element={<LineagePage />} />
           <Route path="/about"                         element={<AboutPage />} />
           <Route path="/contact"                       element={<ContactPage />} />
