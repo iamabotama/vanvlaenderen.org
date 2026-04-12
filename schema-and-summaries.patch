@@ -1,0 +1,333 @@
+diff --git a/src/index.css b/src/index.css
+index 2ebf857..9d83fa2 100644
+--- a/src/index.css
++++ b/src/index.css
+@@ -148,3 +148,16 @@ a:hover { color: var(--gold-light); }
+   background: rgba(232, 184, 48, 0.25);
+   color: var(--text-primary);
+ }
++
++/* Visually hidden but available to screen readers and crawlers */
++.sr-only {
++  position: absolute;
++  width: 1px;
++  height: 1px;
++  padding: 0;
++  margin: -1px;
++  overflow: hidden;
++  clip: rect(0, 0, 0, 0);
++  white-space: nowrap;
++  border: 0;
++}
+diff --git a/src/pages/AboutPage.tsx b/src/pages/AboutPage.tsx
+index 919e3ae..a6dc165 100644
+--- a/src/pages/AboutPage.tsx
++++ b/src/pages/AboutPage.tsx
+@@ -73,6 +73,42 @@ export default function AboutPage() {
+           <p>
+             {t('about.methodology_note')}
+           </p>
++          <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
++            <button
++              onClick={() => goTo('research')}
++              style={{
++                background: 'none',
++                border: '1px solid rgba(232,184,48,0.35)',
++                borderRadius: '4px',
++                color: 'var(--gold)',
++                cursor: 'pointer',
++                fontSize: '0.82rem',
++                fontFamily: 'var(--font-ui)',
++                letterSpacing: '0.1em',
++                textTransform: 'uppercase',
++                padding: '0.5rem 1.1rem',
++              }}
++            >
++              Research Overview &rarr;
++            </button>
++            <button
++              onClick={() => goToResearch('methodology')}
++              style={{
++                background: 'none',
++                border: '1px solid rgba(232,184,48,0.35)',
++                borderRadius: '4px',
++                color: 'var(--gold)',
++                cursor: 'pointer',
++                fontSize: '0.82rem',
++                fontFamily: 'var(--font-ui)',
++                letterSpacing: '0.1em',
++                textTransform: 'uppercase',
++                padding: '0.5rem 1.1rem',
++              }}
++            >
++              Methodology &amp; Sources &rarr;
++            </button>
++          </div>
+         </section>
+ 
+         <section className={styles.section}>
+diff --git a/src/pages/LouisFrieseLineagePage.tsx b/src/pages/LouisFrieseLineagePage.tsx
+index 7413be3..675621c 100644
+--- a/src/pages/LouisFrieseLineagePage.tsx
++++ b/src/pages/LouisFrieseLineagePage.tsx
+@@ -71,6 +71,10 @@ export default function LouisFrieseLineagePage() {
+         {/* ── Interactive Diagram ─────────────────────────────────── */}
+         <div className={researchStyles.treeContainer}>
+           <PraetDiagram />
++          <div className="sr-only">
++            <h3>Praet line lineage — text summary</h3>
++            <p>This diagram shows the descent from Louis II de Male, Count of Flanders (1330–1384), through his natural son Louis Friese van Vlaenderen (c.1350 – 28 September 1396), Lord of Praet and Woestine, killed at Nicopolis. Louis Friese's son Johan I van Vlaenderen (died after 10 September 1439), Lord of Praet, had seven documented children: Jean de Flandre (died 6 September 1523, Grand Bailiff of Bruges); Josse de Flandre (died after 1526, line survived to at least 1592); Lodewijk II van Vlaenderen (died 24 August 1488, Lord of Praet); Jeanne de Flandre (died after 1446); and three further daughters Marguerite, Isabelle, and Landrade. Lodewijk II's son was Lodewijk III van Vlaenderen (died 1 January 1490), whose son was Lodewijk IV van Vlaenderen (died 1555), Knight of the Golden Fleece (1531), Grand Bailiff of Ghent and Bruges, Stadtholder of Holland and Zeeland, and advisor to Charles V. Lodewijk IV's only son Jan II van Vlaenderen (died 10 December 1545) predeceased his father without issue, ending the legitimate Praet male line. The Praet line functions as a documented research control: men styled van Vlaenderen in 16th-century records cannot be assigned to Victor's descendants without first eliminating a possible Praet connection.</p>
++          </div>
+         </div>
+ 
+         {/* ── Johan I's Seven Children ────────────────────────────── */}
+diff --git a/src/pages/PraetDossierPage.tsx b/src/pages/PraetDossierPage.tsx
+index f812552..bc4dd90 100644
+--- a/src/pages/PraetDossierPage.tsx
++++ b/src/pages/PraetDossierPage.tsx
+@@ -17,6 +17,9 @@ export default function PraetDossierPage() {
+         <meta property="og:description" content="From Louis Friese van Vlaenderen to Lodewijk IV, Knight of the Golden Fleece. Primary and secondary sources for the Praet bastard line." />
+         <meta property="og:url" content="https://vanvlaenderen.org/research/praet-dossier" />
+         <meta property="og:type" content="article" />
++
++        <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"The Praet Line \u2014 Archival Dossier","description":"Archival dossier for the Praet line: Louis Friese van Vlaenderen through Lodewijk IV (Louis of Praet, Knight of the Golden Fleece, d. 1555).","url":"https://vanvlaenderen.org/research/praet-dossier","inLanguage":"en","dateModified":"2026-04-11","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}</script>
++        <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Louis Friese van Vlaenderen","item":"https://vanvlaenderen.org/research/louis-friese"},{"@type":"ListItem","position":4,"name":"Archival Dossier","item":"https://vanvlaenderen.org/research/praet-dossier"}]}</script>
+       </Helmet>
+       <div className={styles.heroStrip}>
+         <div
+@@ -165,6 +168,23 @@ export default function PraetDossierPage() {
+           >
+             Back to Louis Friese Lineage
+           </button>
++          <button
++            onClick={() => goToResearch('bibliography')}
++            style={{
++              background: 'none',
++              border: 'none',
++              cursor: 'pointer',
++              color: 'var(--gold)',
++              fontSize: '14px',
++              textDecoration: 'underline',
++              fontFamily: 'var(--font-ui)',
++              textTransform: 'uppercase',
++              letterSpacing: '0.1em',
++              marginLeft: '1.5rem',
++            }}
++          >
++            Full Bibliography &rarr;
++          </button>
+         </div>
+       </div>
+     </div>
+diff --git a/src/pages/PraetLineageDossierPage.tsx b/src/pages/PraetLineageDossierPage.tsx
+index eb6f858..6b64889 100644
+--- a/src/pages/PraetLineageDossierPage.tsx
++++ b/src/pages/PraetLineageDossierPage.tsx
+@@ -25,6 +25,9 @@ export default function PraetLineageDossierPage() {
+         <meta property="og:description" content="Generational evidence for the Praet descent. Functions as a documented research control for Van Vlaenderen surname attribution." />
+         <meta property="og:url" content="https://vanvlaenderen.org/research/praet-lineage-dossier" />
+         <meta property="og:type" content="article" />
++
++        <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Praet Lineage Detail \u2014 Van Vlaenderen Research","description":"Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Jean I, Louis II, Jacob, and Lodewijk IV.","url":"https://vanvlaenderen.org/research/praet-lineage-dossier","inLanguage":"en","dateModified":"2026-04-11","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}</script>
++        <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Louis Friese van Vlaenderen","item":"https://vanvlaenderen.org/research/louis-friese"},{"@type":"ListItem","position":4,"name":"Lineage Detail","item":"https://vanvlaenderen.org/research/praet-lineage-dossier"}]}</script>
+       </Helmet>
+       <div className={styles.heroStrip}>
+         <div
+@@ -256,6 +259,23 @@ export default function PraetLineageDossierPage() {
+           >
+             Back to Louis Friese Lineage
+           </button>
++          <button
++            onClick={() => goToResearch('bibliography')}
++            style={{
++              background: 'none',
++              border: 'none',
++              cursor: 'pointer',
++              color: 'var(--gold)',
++              fontSize: '14px',
++              textDecoration: 'underline',
++              fontFamily: 'var(--font-ui)',
++              textTransform: 'uppercase',
++              letterSpacing: '0.1em',
++              marginLeft: '1.5rem',
++            }}
++          >
++            Full Bibliography &rarr;
++          </button>
+         </div>
+       </div>
+     </div>
+diff --git a/src/pages/ResearchPage.tsx b/src/pages/ResearchPage.tsx
+index 5f2ec1b..ac06173 100644
+--- a/src/pages/ResearchPage.tsx
++++ b/src/pages/ResearchPage.tsx
+@@ -3,7 +3,11 @@ import styles from './InnerPage.module.css';
+ import researchStyles from './ResearchPage.module.css';
+ import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
+ import { OverviewDiagram } from '../components/Diagrams';
++import { lazy, Suspense } from 'react';
+ import { useNav } from '../hooks/useNav';
++
++// Leaflet touches window on import — lazy-load so it's skipped during SSR prerender
++const ResearchMap = lazy(() => import('../components/ResearchMap/ResearchMap'));
+ import { Helmet } from 'react-helmet-async';
+ 
+ export default function ResearchPage() {
+@@ -59,6 +63,10 @@ export default function ResearchPage() {
+         {/* ── Overview Diagram ────────────────────────────────────── */}
+         <div className={researchStyles.treeContainer}>
+           <OverviewDiagram />
++          <div className="sr-only">
++            <h3>Research overview diagram — text summary</h3>
++            <p>This diagram presents both surname-bearing bastard lines descending from Louis II de Male, Count of Flanders (1330–1384), the last Count from the House of Dampierre. Left branch (Victor's line): Victor van Vlaenderen (died before 1442), Lord of Ursel and Wessegem, had three documented natural sons — Lodewyc, Janne, and Adam van Vlaendren — all named in primary charters 1427–1447. Adam van Vlaendren (research focus, fl. 1427 – 1447) is the primary bridge candidate to the early modern parish-record Van Vlaenderens of the Meetjesland. A ~100-year evidentiary gap separates Adam from Joos van Vlaenderen (fl. 1547), the first confirmed early modern bearer. Right branch (Praet line): Louis Friese van Vlaenderen (c.1350 – 1396), Lord of Praet and Woestine, founded the House of Flanders-Praet through his son Johan I van Vlaenderen. The line descends through multiple generations to Lodewijk IV van Vlaenderen (died 1555), Knight of the Golden Fleece, whose 1517 charter shows him holding six fiefs at Knesselare from the Wessegem seigneurie — a direct Meetjesland territorial connection. The legitimate Praet male line ended with Jan II van Vlaenderen (died 10 December 1545), who predeceased his father without issue.</p>
++          </div>
+         </div>
+ 
+         {/* ── Branch Cards ────────────────────────────────────────── */}
+@@ -104,44 +112,43 @@ export default function ResearchPage() {
+           </div>
+         </div>
+ 
+-        {/* ── Methodology & Sources nav link ─────────────────────────── */}
+-        <section className={styles.section} style={{ textAlign: 'center', paddingTop: '1rem' }}>
+-          <button
+-            onClick={() => goToResearch('methodology')}
+-            style={{
+-              background: 'none',
+-              border: '1px solid rgba(232,184,48,0.35)',
+-              borderRadius: '4px',
+-              color: 'var(--gold)',
+-              cursor: 'pointer',
+-              fontSize: '0.85rem',
+-              fontFamily: 'var(--font-ui)',
+-              letterSpacing: '0.1em',
+-              textTransform: 'uppercase',
+-              padding: '0.6rem 1.4rem',
+-              transition: 'background 0.2s, border-color 0.2s',
+-            }}
+-          >
+-            Methodology &amp; Sources &rarr;
+-          </button>
+-          <button
+-            onClick={() => goToResearch('bibliography')}
+-            style={{
+-              background: 'none',
+-              border: '1px solid rgba(232,184,48,0.35)',
+-              borderRadius: '4px',
+-              color: 'var(--gold)',
+-              cursor: 'pointer',
+-              fontSize: '0.85rem',
+-              fontFamily: 'var(--font-ui)',
+-              letterSpacing: '0.1em',
+-              textTransform: 'uppercase',
+-              padding: '0.6rem 1.4rem',
+-              transition: 'background 0.2s, border-color 0.2s',
+-            }}
+-          >
+-            Sources &amp; Scholarship &rarr;
+-          </button>
++        {/* ── Reference Pages ─────────────────────────────────────────── */}
++        <section className={styles.section}>
++          <h2>Reference</h2>
++          <div className={researchStyles.branchCards}>
++            <div
++              className={researchStyles.branchCard}
++              tabIndex={0}
++              style={{ cursor: 'pointer' }}
++              onClick={() => goToResearch('methodology')}
++              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('methodology'); } }}
++              aria-label="Methodology and Sources"
++            >
++              <h3>Methodology &amp; Sources</h3>
++              <p>
++                How archival documents are transcribed and translated, and the curated reading list of primary and secondary works that underpin the research.
++              </p>
++              <span className={researchStyles.branchLink} aria-hidden="true">
++                Methodology &amp; Sources &rarr;
++              </span>
++            </div>
++            <div
++              className={researchStyles.branchCard}
++              tabIndex={0}
++              style={{ cursor: 'pointer' }}
++              onClick={() => goToResearch('bibliography')}
++              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('bibliography'); } }}
++              aria-label="Sources and Scholarship"
++            >
++              <h3>Sources &amp; Scholarship</h3>
++              <p>
++                Primary sources, archival finding aids, and scholarly literature cited in the dossiers — the evidentiary basis of the project in one place.
++              </p>
++              <span className={researchStyles.branchLink} aria-hidden="true">
++                Sources &amp; Scholarship &rarr;
++              </span>
++            </div>
++          </div>
+         </section>
+ 
+         {/* ── Methodology ─────────────────────────────────────────── */}
+@@ -167,6 +174,11 @@ export default function ResearchPage() {
+           </div>
+         </section>
+ 
++        {/* Interactive Research Map */}
++        <Suspense fallback={<div style={{ height: '400px' }} />}>
++          <ResearchMap />
++        </Suspense>
++
+         {/* ── Archival Dossiers ────────────────────────────────────── */}
+         <section className={styles.section} style={{ marginTop: '3rem' }}>
+           <h2>Archival Dossiers</h2>
+diff --git a/src/pages/VictorDossierPage.tsx b/src/pages/VictorDossierPage.tsx
+index c6eccb8..96eaa7a 100644
+--- a/src/pages/VictorDossierPage.tsx
++++ b/src/pages/VictorDossierPage.tsx
+@@ -16,6 +16,9 @@ export default function VictorDossierPage() {
+         <meta property="og:description" content="Primary source evidence: the 1427 and 1441/42 charters, Wessegem heritage, and Victor's three natural sons." />
+         <meta property="og:url" content="https://vanvlaenderen.org/research/victor-dossier" />
+         <meta property="og:type" content="article" />
++
++        <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Victor van Vlaenderen \u2014 Archival Dossier","description":"Primary source dossier for Victor van Vlaenderen: 1427 and 1441/42 charter evidence, FMG MedLands documentation, Hof van Wessegem heritage record, and the Alix van Boyeghem connection.","url":"https://vanvlaenderen.org/research/victor-dossier","inLanguage":"en","dateModified":"2026-04-11","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}</script>
++        <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Victor van Vlaenderen","item":"https://vanvlaenderen.org/research/victor"},{"@type":"ListItem","position":4,"name":"Archival Dossier","item":"https://vanvlaenderen.org/research/victor-dossier"}]}</script>
+       </Helmet>
+       <div className={styles.heroStrip}>
+         <div
+@@ -279,6 +282,23 @@ export default function VictorDossierPage() {
+           >
+             Return to Victor Lineage
+           </button>
++          <button
++            onClick={() => goToResearch('bibliography')}
++            style={{
++              background: 'none',
++              border: 'none',
++              cursor: 'pointer',
++              color: 'var(--gold)',
++              fontSize: '14px',
++              textDecoration: 'underline',
++              fontFamily: 'var(--font-ui)',
++              textTransform: 'uppercase',
++              letterSpacing: '0.1em',
++              marginLeft: '1.5rem',
++            }}
++          >
++            Full Bibliography &rarr;
++          </button>
+         </div>
+       </div>
+     </div>
+diff --git a/src/pages/VictorLineagePage.tsx b/src/pages/VictorLineagePage.tsx
+index 8711aef..6aa6ad4 100644
+--- a/src/pages/VictorLineagePage.tsx
++++ b/src/pages/VictorLineagePage.tsx
+@@ -81,6 +81,10 @@ export default function VictorLineagePage() {
+         {/* ── Interactive Diagram ─────────────────────────────────── */}
+         <div className={researchStyles.treeContainer}>
+           <VictorDiagram />
++          <div className="sr-only">
++            <h3>Victor van Vlaenderen lineage — text summary</h3>
++            <p>This diagram shows the descent from Louis II de Male, Count of Flanders (1330–1384), through his natural son Victor van Vlaenderen (died before 1442), Lord of Ursel and Wessegem. Victor had three documented natural sons by Alix van Boyeghem: Lodewyc van Vlaendren (fl. 1427–1442), Janne van Vlaendren (fl. 1427–1442), and Adam van Vlaendren (fl. 1427 – 18 March 1447), the primary research focus and bridge candidate. Lodewyc married Jacqueline de Wilde and had two children: Josse van Vlaenderen (died young, buried Oostborch) and Margareta van Vlaenderen (fl. 1478–1486, married into noble families). An evidentiary gap of approximately 100 years separates Adam (last confirmed 1447) from Joos van Vlaenderen (fl. 1547), the first confirmed early modern bearer as testator in the Brugse Vrije probate records (TBO 184, bundle 21300). No direct genealogical link between Adam and Joos has yet been demonstrated. Key archival targets for bridging this gap: cijnsboeken and leenboeken (Ambacht Ursel / Maldegem), Staten van Goed, and Raad van Vlaanderen records at Rijksarchief Gent.</p>
++          </div>
+         </div>
+ 
+         {/* ── Adam van Vlaendren ──────────────────────────────────── */}
