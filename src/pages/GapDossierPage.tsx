@@ -306,7 +306,10 @@ export default function GapDossierPage() {
           </p>
           <p style={{ fontSize: '0.85rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
             Current status: plausible. Josse's branch is the shortest documentary path. Surname form
-            in his descendants not yet confirmed in sources reviewed.
+            in his descendants not yet confirmed in sources reviewed. Note: in late medieval and early
+            modern records, the alternation between <em>de Flandre</em> and <em>van Vlaenderen</em> often
+            reflects the scribe's working language (Latin/French vs. Dutch) rather than the family's
+            chosen identity — the same individual can appear under both forms in different documents.
           </p>
 
           <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '2rem' }}>
