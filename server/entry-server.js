@@ -4311,8 +4311,12 @@ function VictorDossierPage() {
         /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
           /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "1." }),
           "FMG MedLands: Flanders, Hainaut. Victor entry and Adam entry with charters [841]–[855]. Source for all three charters: Vredius, Olivarius. ",
-          /* @__PURE__ */ jsx("em", { children: "Sigilla Comitum Flandriae et Inscriptiones Diplomatum." }),
-          " Bruges, 1643. Pars secunda, pp.285–287.",
+          /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum." }),
+          " Bruges: J.B. & Lucas Kerchovios, 1643. Pars secunda, pp.285–287. Note: Vredius cites these charters as deriving from the Ghent partition court records (",
+          /* @__PURE__ */ jsx("em", { children: "In actis curiae partitionum Gandensium, Ex regist. part." }),
+          " f.56). The underlying register has not been independently verified at Rijksarchief Gent. Research lead: ",
+          /* @__PURE__ */ jsx("em", { children: "Curiae partitionum Gandensium" }),
+          " may correspond to the RAG Jaarregisters van de Keure or Staten van Goed series.",
           " ",
           /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Foundation for Medieval Genealogy, MedLands: Flanders & Hainaut" })
         ] }),
@@ -4332,7 +4336,7 @@ function VictorDossierPage() {
           /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "4." }),
           "Bethune, J.B. de. ",
           /* @__PURE__ */ jsx("em", { children: "Epitaphes et monuments des eglises de la Flandre." }),
-          " Third part. 1900. p.356. [FMG 848–849]. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen."
+          " Third part. 1900. p.356. [FMG 848–849]. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen. Print only — not digitised. Held at KBR Brussels (Royal Library of Belgium) and Ghent University Library."
         ] }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
           /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "5." }),
@@ -4344,7 +4348,9 @@ function VictorDossierPage() {
         ] }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
           /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "6." }),
-          "Corvers en zeeschuimers van den Vlaemsche zeecoste. UGent repository copy.",
+          "Brouwers, D.D. ",
+          /* @__PURE__ */ jsx("em", { children: "Corvers en zeeschuimers van den Vlaemsche zeecoste." }),
+          " Unpublished thesis, Ghent University, 2012. Notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.'",
           " ",
           /* @__PURE__ */ jsx("a", { href: "https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library, Thesis RUG01-001786522 (2012)" })
         ] })
@@ -4449,7 +4455,17 @@ function PraetDossierPage() {
         ] }),
         /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.85rem", marginTop: "1.5rem", fontStyle: "italic", color: "var(--text-muted)", borderTop: "1px solid rgba(232, 184, 48, 0.1)", paddingTop: "1rem" }, children: [
           /* @__PURE__ */ jsx("strong", { children: "Note on primary sources:" }),
-          " the two principal authorities for this lineage are Philippe de l'Espinoy, Recherche des antiquitez et noblesse de Flandres (Douai, 1631), and Olivarius Vredius (Olivier de Wree), Sigilla Comitum Flandriae et Inscriptiones Diplomatum (Bruges, 1639). Both are published antiquarian works of recognised scholarly standing. Neither has been accessed directly; both are cited through the Foundation for Medieval Genealogy MedLands summaries."
+          " the two principal authorities for this lineage are Philippe de l'Espinoy, ",
+          /* @__PURE__ */ jsx("em", { children: "Recherche des antiquitez et noblesse de Flandres" }),
+          " (Douai, 1631), and Olivarius Vredius (Olivier de Wree), ",
+          /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum" }),
+          " (Bruges, 1643). Both are published antiquarian works of recognised scholarly standing. Neither has been accessed directly; both are cited through the Foundation for Medieval Genealogy MedLands summaries. Note: Vredius also published an earlier ",
+          /* @__PURE__ */ jsx("em", { children: "Sigilla Comitum Flandriae" }),
+          " (Bruges, 1639) — a study of the counts' seals — which is a separate work. The genealogical proofs for bastard lines are in the 1643 ",
+          /* @__PURE__ */ jsx("em", { children: "Genealogia" }),
+          ", not the 1639 ",
+          /* @__PURE__ */ jsx("em", { children: "Sigilla" }),
+          "."
         ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
@@ -4462,7 +4478,7 @@ function PraetDossierPage() {
           /* @__PURE__ */ jsx("sup", { children: "[2]" })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "FMG MedLands, summarising Vredius (1639), preserves the following verbatim extract: ",
+          "FMG MedLands, summarising Vredius (1643), preserves the following verbatim extract: ",
           /* @__PURE__ */ jsx("em", { children: "messire Loys de Frise fils bastard de Loys de Male conte de Flandre, lequel il eut d une fille de Monsieur de Borre." }),
           " This passage directly attests Louis Friese's name, his bastard status, his father Louis de Male, and his maternal descent from the family of Monsieur de Borre.",
           /* @__PURE__ */ jsx("sup", { children: "[1][3]" })
@@ -4536,11 +4552,19 @@ function PraetDossierPage() {
         ] }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
           /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "3." }),
-          "Vredius, Olivarius (Olivier de Wree). Sigilla Comitum Flandriae et Inscriptiones Diplomatum. Bruges, 1639."
+          "Vredius, Olivarius (Olivier de Wree). ",
+          /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum." }),
+          " Bruges: J.B. & Lucas Kerchovios, 1643. Vol. 2 of 2. [496 pp.] Not freely digitised; held at major European research libraries.",
+          " ",
+          /* @__PURE__ */ jsx("a", { href: "https://www.rct.uk/collection/1021446", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Royal Collection Trust catalogue entry" })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
           /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "4." }),
-          "Espinoy, Philippe de l'Espinoy. Recherche des antiquitez et noblesse de Flandres. Douai, 1631."
+          "Espinoy, Philippe de l'Espinoy. ",
+          /* @__PURE__ */ jsx("em", { children: "Recherche des antiquitez et noblesse de Flandres." }),
+          " Douai: veuve M. Wyon, 1631. BnF shelfmark M-1432.",
+          " ",
+          /* @__PURE__ */ jsx("a", { href: "https://gallica.bnf.fr/ark:/12148/bpt6k1180858", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Free access (Gallica / BnF)" })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
           /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "5." }),
@@ -4799,7 +4823,7 @@ function PraetLineageDossierPage() {
           /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "2." }),
           "Bethune, J.B. de. ",
           /* @__PURE__ */ jsx("em", { children: "Epitaphes et monuments des eglises de la Flandre." }),
-          " Third part. 1900. Primary epitaph transcriptions for Aeltere, Beveren bij Roeselare, and Languemarc."
+          " Third part. 1900. Primary epitaph transcriptions for Aeltere, Beveren bij Roeselare, and Languemarc. Print only — not digitised. Held at KBR Brussels and Ghent University Library."
         ] }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
           /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "3." }),
@@ -4817,13 +4841,19 @@ function PraetLineageDossierPage() {
         ] }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
           /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "5." }),
-          "Nederland's Adelsboek 1908. Van Boetzelaer entry.",
+          "Nederland's Adelsboek. Vol. 6 (1908). 's-Gravenhage: W.P. van Stockum en Zoon. Van Boetzelaer entry.",
           " ",
-          /* @__PURE__ */ jsx("a", { href: "https://www.scribd.com/document/651555576/Nederland-s-Adelsboek-1908", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Nederland's Adelsboek 1908" })
+          /* @__PURE__ */ jsx("a", { href: "https://archive.org/details/nederlandsadelsb28unse_4", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Internet Archive (1908 volume)" })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
           /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "6." }),
-          "Buylaert, Frederik. Published genealogical and prosopographical research on Flemish nobility. Cited via FMG MedLands [881,882] for Josse de Flandre and cadet Praet branches."
+          "Buylaert, Frederik. ",
+          /* @__PURE__ */ jsx("em", { children: "Repertorium van de Vlaamse adel (ca. 1350–ca. 1500)." }),
+          " Gent: Academia Press, 2011. Prosopographical register of Flemish noble families 1350–1500; the source for Josse de Flandre and cadet Praet branch data cited via FMG MedLands [881, 882]. See also by the same author: ",
+          /* @__PURE__ */ jsx("em", { children: "Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen" }),
+          " (Brussels: Royal Academy, 2010), the accompanying narrative history.",
+          " ",
+          /* @__PURE__ */ jsx("a", { href: "https://lib.ugent.be/nl/catalog/rug01:001699683", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library catalogue" })
         ] })
       ] }),
       /* @__PURE__ */ jsxs("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: [
