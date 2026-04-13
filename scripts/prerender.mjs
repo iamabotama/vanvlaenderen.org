@@ -208,7 +208,7 @@ function writeSitemap(PAGE_META) {
   const urls = ROUTES.filter(route => route !== '/docs').map(route => {
     const sm  = routeMeta[route] ?? { priority: '0.7', changefreq: 'monthly' }
     const loc = PAGE_META[route]?.canonical
-              ?? `https://vanvlaenderen.org${route === '/' ? '' : route}`
+              ?? `https://vanvlaenderen.org${route === '/' ? '' : route + '/'}`
     return `  <url>
     <loc>${loc}</loc>
     <lastmod>${today}</lastmod>
