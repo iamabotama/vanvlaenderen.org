@@ -6061,7 +6061,13 @@ function GapDossierPage() {
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: "Hypothesis" })
         ] }),
         /* @__PURE__ */ jsx("p", { children: "The Josse de Flandre cadet branch, documented to at least 1592, represents a Praet-line van Vlaenderen population that survived into the parish-record period. The 1517 Knesselare charter places Lodewijk IV in direct territorial contact with the research zone. Under this hypothesis the TBO 184 individuals and/or Jeremiah's generation descend from Josse's branch. The gap would be closed by tracing Josse's descendants through Buylaert's sources and into Meetjesland records." }),
-        /* @__PURE__ */ jsx("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }, children: "Current status: plausible. Josse's branch is the shortest documentary path. Surname form in his descendants not yet confirmed in sources reviewed." }),
+        /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }, children: [
+          "Current status: plausible. Josse's branch is the shortest documentary path. Surname form in his descendants not yet confirmed in sources reviewed. Note: in late medieval and early modern records, the alternation between ",
+          /* @__PURE__ */ jsx("em", { children: "de Flandre" }),
+          " and ",
+          /* @__PURE__ */ jsx("em", { children: "van Vlaenderen" }),
+          " often reflects the scribe's working language (Latin/French vs. Dutch) rather than the family's chosen identity — the same individual can appear under both forms in different documents."
+        ] }),
         /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "2rem" }, children: [
           "Hypothesis C — Independent Bucket 4 emergence ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: "Hypothesis" })
