@@ -1633,7 +1633,9 @@ const RESEARCH_PATHS = {
   "louis-friese": "/research/louis-friese",
   "victor-dossier": "/research/victor-dossier",
   "praet-dossier": "/research/praet-dossier",
-  "praet-lineage-dossier": "/research/praet-lineage-dossier"
+  "praet-lineage-dossier": "/research/praet-lineage-dossier",
+  "methodology": "/research/methodology",
+  "bibliography": "/research/bibliography"
 };
 function useNav() {
   const navigate = useNavigate();
