@@ -80,7 +80,27 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 
 ## 📋 CHANGELOG
 
-### April 12, 2026 — Build fix, new pages live, branch cleanup, gap dossier, docs page
+### April 12, 2026 — Citation audit across all three dossiers + bibliography
+
+**Vredius edition correction (critical)**
+- Identified that Vredius published two separate works: *Sigilla Comitum Flandriae* (1639, seals study) and *Genealogia Comitum Flandriae, Pars secunda* (1643, genealogical proofs). Bastard-line charter evidence is in the 1643 *Genealogia*, not the 1639 *Sigilla*
+- Victor dossier ref 1: corrected title from *Sigilla* → *Genealogia, Pars secunda* (1643); was already citing correct year
+- Praet dossier: corrected both inline text and ref 3 from *Sigilla* (1639) → *Genealogia* (1643); added two-work clarification note
+- bibliography.json Vredius entry: corrected title, publisher, URL → Royal Collection Trust catalogue (1639 Internet Archive link removed — pointed to wrong work)
+
+**Archival signatures added**
+- bibliography.json Brugse Vrije entry: full signature added — RAB, Brugse Vrije, TBO 184, nrs. 21300 (1547) and 21302 (1549), case ref 2026/0451
+- Victor dossier ref 1: RAG research lead note added — *Curiae partitionum Gandensium* may correspond to RAG Jaarregisters van de Keure or Staten van Goed series
+
+**Additional fixes**
+- Praet dossier ref 4: Espinoy Gallica link added (ark:/12148/bpt6k1180858, BnF shelfmark M-1432)
+- Praet lineage dossier ref 5: Nederland's Adelsboek — Scribd replaced with Internet Archive link
+- Praet lineage dossier ref 6: Buylaert — proper citation added (*Repertorium van de Vlaamse adel*, Academia Press, 2011 + *Eeuwen van ambitie*, 2010; UGent library link)
+- Victor dossier ref 4 + Praet lineage ref 2: Bethune *Epitaphes* flagged as print only, held at KBR Brussels and Ghent University Library
+- Victor dossier ref 6: *Corvers en zeeschuimers* given full author attribution (Brouwers, D.D., UGent thesis 2012)
+- bibliography.json *Cronike van Vlaenderen*: corrected to 1531 Vorsterman *Excellente Cronike van Vlaenderen* with proper Gallica ARK
+-
+- ### April 12, 2026 — Build fix, new pages live, branch cleanup, gap dossier, docs page
 
 **Bug fix — root cause of build failures**
 - JSON-LD schema curly braces inside TSX template literals were breaking Vite compilation
