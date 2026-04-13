@@ -39,6 +39,7 @@ const ROUTES = [
   '/contact',
   '/research/bibliography',
   '/research/methodology',
+  '/research/gap-dossier',
 ]
 
 // ── Head tag builder ───────────────────────────────────────────────────────

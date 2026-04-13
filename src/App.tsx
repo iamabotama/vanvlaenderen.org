@@ -16,6 +16,7 @@ import AboutPage from './pages/AboutPage';
 import { LineagePage } from './components/Lineage';
 import MethodologyPage from './pages/MethodologyPage';
 import GapDossierPage from './pages/GapDossierPage';
+import DocsPage from './pages/DocsPage';
 import BibliographyPage from './pages/BibliographyPage';
 import './App.css';
 
@@ -46,6 +47,7 @@ export default function App() {
           <Route path="/lineage"                       element={<LineagePage />} />
           <Route path="/about"                         element={<AboutPage />} />
           <Route path="/contact"                       element={<ContactPage />} />
+          <Route path="/docs"                          element={<DocsPage />} />
           {/* Catch-all */}
           <Route path="*"                              element={<Navigate to="/" replace />} />
         </Routes>
