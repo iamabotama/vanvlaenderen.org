@@ -11,11 +11,11 @@
               "type": "Primary Source",
               "author": "Vredius, Olivarius (Olivier de Wree)",
               "year": "1643",
-              "title": "Sigilla Comitum Flandriae et Inscriptiones Diplomatum",
-              "publisher": "Bruges: Jan van den Kerckhove. Pars secunda.",
-              "note": "The single most important primary source for this project. Vredius preserves verbatim extracts from the Ghent partition court registers and numerous manuscript sources, many of which no longer survive independently. All three Victor van Vlaenderen charters (1427, 1441, 1446) are preserved here at pp.285-287. Directly attested at FMG MedLands footnotes [846-855].",
-              "url": "https://archive.org/details/bub_gb_CNSBZDBvNV4C",
-              "urlLabel": "Free download (Internet Archive)"
+              "title": "Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum",
+              "publisher": "Bruges: J.B. & Lucas Kerchovios, 1642-1643. Vol. 2 of 2. [496 pp.]",
+              "note": "The single most important primary source for this project. Vredius preserves verbatim extracts from the Ghent partition court registers and numerous manuscript sources, many of which no longer survive independently. All three Victor van Vlaenderen charters (1427, 1441, 1446) are preserved here at pp.285-287. Directly attested at FMG MedLands footnotes [846-855]. Note: Vredius also published an earlier Sigilla Comitum Flandriae (Bruges, 1639) — a study of the counts’ seals — which is a separate work. The genealogical proofs for bastard lines are in the 1643 Genealogia (Pars secunda), not the 1639 Sigilla.",
+              "url": "https://www.rct.uk/collection/1021446",
+              "urlLabel": "Royal Collection Trust catalogue (physical copy)"
             },
             {
               "type": "Primary Source",
@@ -52,13 +52,13 @@
           "entries": [
             {
               "type": "Primary Source",
-              "author": "Anon.",
-              "year": "15th century",
-              "title": "Cronike Van Vlaenderen",
-              "publisher": "Manuscript. Bibliotheque nationale de France, Paris.",
-              "note": "The Chronicle of Flanders, a 15th-century narrative history of the Counts of Flanders. Referenced on the Name page as providing context for the world the Van Vlaenderen family inhabited. The heraldic shields displayed in the manuscript are shown on the Name page.",
-              "url": "https://gallica.bnf.fr/",
-              "urlLabel": "Gallica (BnF)"
+              "author": "Anon. (ed. Vorsterman, Willem)",
+              "year": "1531",
+              "title": "Excellente Cronike van Vlaenderen",
+              "publisher": "Antwerp: Willem Vorsterman, 1531. Large folio edition.",
+              "note": "Chronicle of the foresters and counts of Flanders, from Liederic de Buc (621 AD) to the late 15th century. Printed in 1531 as the first edition of a chronicle tradition preserved in seven related 15th-century manuscripts. The heraldic shields displayed on the Name page are from this chronicle tradition. Referenced for context on the world the Van Vlaenderen family inhabited.",
+              "url": "https://gallica.bnf.fr/ark:/12148/bpt6k6365314v",
+              "urlLabel": "Gallica (BnF) — 1531 Vorsterman edition"
             },
             {
               "type": "Primary Source",
@@ -78,10 +78,10 @@
             {
               "type": "Primary Source",
               "author": "Brugse Vrije, Staten van Goed",
-              "year": "1548",
-              "title": "Probate record of Joos van Vlaenderen",
-              "publisher": "Rijksarchief Brugge. Series TBO 184, bundle 21300.",
-              "note": "The earliest confirmed early modern document naming a bearer of the Van Vlaenderen surname in the Meetjesland area. Records Joos van Vlaenderen as testator, 1547. Accessed during the March-April 2026 research visit to Belgium."
+              "year": "1547",
+              "title": "Probate and guardianship records of Joos van Vlaenderen",
+              "publisher": "Rijksarchief Brugge (RAB), Brugse Vrije, Staten van Goed, Eerste Reeks, TBO 184, nrs. 21300 (1547) and 21302 (1549). Case reference 2026/0451.",
+              "note": "The earliest confirmed early modern documents naming a bearer of the Van Vlaenderen surname in the Meetjesland area. Bundle 21300 records Joos van Vlaenderen as testator, 1547; bundle 21302 records a guardianship proceeding, 1549. Jacob’s land described as adjacent to Phillip’s — strong kinship indicator. Consulted in person, April 2026. Archival signature fully verified."
             },
             {
               "type": "Primary Source",

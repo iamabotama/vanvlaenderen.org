@@ -219,7 +219,7 @@ export default function PraetLineageDossierPage() {
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>2.</span>
-            Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. Primary epitaph transcriptions for Aeltere, Beveren bij Roeselare, and Languemarc.
+            Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. Primary epitaph transcriptions for Aeltere, Beveren bij Roeselare, and Languemarc. Print only — not digitised. Held at KBR Brussels and Ghent University Library.
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>3.</span>
@@ -233,12 +233,13 @@ export default function PraetLineageDossierPage() {
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>5.</span>
-            Nederland's Adelsboek 1908. Van Boetzelaer entry.{' '}
-            <a href="https://www.scribd.com/document/651555576/Nederland-s-Adelsboek-1908" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Nederland's Adelsboek 1908</a>
+            Nederland's Adelsboek. Vol. 6 (1908). 's-Gravenhage: W.P. van Stockum en Zoon. Van Boetzelaer entry.{' '}
+            <a href="https://archive.org/details/nederlandsadelsb28unse_4" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Internet Archive (1908 volume)</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>6.</span>
-            Buylaert, Frederik. Published genealogical and prosopographical research on Flemish nobility. Cited via FMG MedLands [881,882] for Josse de Flandre and cadet Praet branches.
+            Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350–ca. 1500).</em> Gent: Academia Press, 2011. Prosopographical register of Flemish noble families 1350–1500; the source for Josse de Flandre and cadet Praet branch data cited via FMG MedLands [881, 882]. See also by the same author: <em>Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen</em> (Brussels: Royal Academy, 2010), the accompanying narrative history.{' '}
+            <a href="https://lib.ugent.be/nl/catalog/rug01:001699683" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library catalogue</a>
           </div>
         </section>
 

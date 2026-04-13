@@ -236,7 +236,7 @@ export default function VictorDossierPage() {
           </p>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>1.</span>
-            FMG MedLands: Flanders, Hainaut. Victor entry and Adam entry with charters [841]&ndash;[855]. Source for all three charters: Vredius, Olivarius. <em>Sigilla Comitum Flandriae et Inscriptiones Diplomatum.</em> Bruges, 1643. Pars secunda, pp.285&ndash;287.{' '}
+            FMG MedLands: Flanders, Hainaut. Victor entry and Adam entry with charters [841]&ndash;[855]. Source for all three charters: Vredius, Olivarius. <em>Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum.</em> Bruges: J.B. &amp; Lucas Kerchovios, 1643. Pars secunda, pp.285&ndash;287. Note: Vredius cites these charters as deriving from the Ghent partition court records (<em>In actis curiae partitionum Gandensium, Ex regist. part.</em> f.56). The underlying register has not been independently verified at Rijksarchief Gent. Research lead: <em>Curiae partitionum Gandensium</em> may correspond to the RAG Jaarregisters van de Keure or Staten van Goed series.{' '}
             <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
           </div>
           <div className={researchStyles.refItem}>
@@ -251,7 +251,7 @@ export default function VictorDossierPage() {
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>4.</span>
-            Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. [FMG 848&ndash;849]. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen.
+            Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. [FMG 848&ndash;849]. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen. Print only — not digitised. Held at KBR Brussels (Royal Library of Belgium) and Ghent University Library.
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>5.</span>
@@ -260,7 +260,7 @@ export default function VictorDossierPage() {
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>6.</span>
-            Corvers en zeeschuimers van den Vlaemsche zeecoste. UGent repository copy.{' '}
+            Brouwers, D.D. <em>Corvers en zeeschuimers van den Vlaemsche zeecoste.</em> Unpublished thesis, Ghent University, 2012. Notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.'{' '}
             <a href="https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library, Thesis RUG01-001786522 (2012)</a>
           </div>
         </section>

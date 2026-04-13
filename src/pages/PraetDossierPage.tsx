@@ -68,7 +68,7 @@ export default function PraetDossierPage() {
             </div>
           </div>
           <p style={{ fontSize: '0.85rem', marginTop: '1.5rem', fontStyle: 'italic', color: 'var(--text-muted)', borderTop: '1px solid rgba(232, 184, 48, 0.1)', paddingTop: '1rem' }}>
-            <strong>Note on primary sources:</strong> the two principal authorities for this lineage are Philippe de l'Espinoy, Recherche des antiquitez et noblesse de Flandres (Douai, 1631), and Olivarius Vredius (Olivier de Wree), Sigilla Comitum Flandriae et Inscriptiones Diplomatum (Bruges, 1639). Both are published antiquarian works of recognised scholarly standing. Neither has been accessed directly; both are cited through the Foundation for Medieval Genealogy MedLands summaries.
+            <strong>Note on primary sources:</strong> the two principal authorities for this lineage are Philippe de l'Espinoy, <em>Recherche des antiquitez et noblesse de Flandres</em> (Douai, 1631), and Olivarius Vredius (Olivier de Wree), <em>Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum</em> (Bruges, 1643). Both are published antiquarian works of recognised scholarly standing. Neither has been accessed directly; both are cited through the Foundation for Medieval Genealogy MedLands summaries. Note: Vredius also published an earlier <em>Sigilla Comitum Flandriae</em> (Bruges, 1639) — a study of the counts' seals — which is a separate work. The genealogical proofs for bastard lines are in the 1643 <em>Genealogia</em>, not the 1639 <em>Sigilla</em>.
           </p>
         </section>
 
@@ -78,7 +78,7 @@ export default function PraetDossierPage() {
             Louis Friese van Vlaenderen — also styled Lodewijk de Fries, Louis le Frison, and Louis le Friese de Flandre — was an illegitimate son of Louis II de Male, Count of Flanders (1330-1384). Wikipedia's article on Louis of Praet confirms that Lodewijk IV van Vlaenderen (Louis of Praet) was descended through his father from a bastard son of Louis of Male, count of Flanders, establishing the comital-bastard ancestry of the entire Praet branch.<sup>[2]</sup>
           </p>
           <p>
-            FMG MedLands, summarising Vredius (1639), preserves the following verbatim extract: <em>messire Loys de Frise fils bastard de Loys de Male conte de Flandre, lequel il eut d une fille de Monsieur de Borre.</em> This passage directly attests Louis Friese's name, his bastard status, his father Louis de Male, and his maternal descent from the family of Monsieur de Borre.<sup>[1][3]</sup>
+            FMG MedLands, summarising Vredius (1643), preserves the following verbatim extract: <em>messire Loys de Frise fils bastard de Loys de Male conte de Flandre, lequel il eut d une fille de Monsieur de Borre.</em> This passage directly attests Louis Friese's name, his bastard status, his father Louis de Male, and his maternal descent from the family of Monsieur de Borre.<sup>[1][3]</sup>
           </p>
           <p>
             FMG MedLands, summarising Espinoy (1631), preserves a record that in 1420 the lands and baronies of Praet and La Woestine were conveyed to the illegitimate son of Louis de Male, styled <em>Messire Louys de Flandres dit le Frizon.</em> This passage directly attests his territorial grant and the variant surname le Frizon.<sup>[1][4]</sup>
@@ -131,11 +131,13 @@ export default function PraetDossierPage() {
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>3.</span>
-            Vredius, Olivarius (Olivier de Wree). Sigilla Comitum Flandriae et Inscriptiones Diplomatum. Bruges, 1639.
+            Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum.</em> Bruges: J.B. &amp; Lucas Kerchovios, 1643. Vol. 2 of 2. [496 pp.] Not freely digitised; held at major European research libraries.{' '}
+            <a href="https://www.rct.uk/collection/1021446" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Royal Collection Trust catalogue entry</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>4.</span>
-            Espinoy, Philippe de l'Espinoy. Recherche des antiquitez et noblesse de Flandres. Douai, 1631.
+            Espinoy, Philippe de l'Espinoy. <em>Recherche des antiquitez et noblesse de Flandres.</em> Douai: veuve M. Wyon, 1631. BnF shelfmark M-1432.{' '}
+            <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>5.</span>
