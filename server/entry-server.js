@@ -4,6 +4,8 @@ import { renderToString } from "react-dom/server";
 import { useNavigate, useLocation, Routes, Route, Navigate, StaticRouter } from "react-router-dom";
 import i18n from "i18next";
 import { useTranslation, initReactI18next } from "react-i18next";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 function getDefaultExportFromCjs(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
 }
@@ -1521,7 +1523,7 @@ const heroBg = "/assets/hero-background-rVYnRAiM.jpg";
 const millVinderhoute = "/assets/van-vlaenderensmolen-vinderhoute-cc-by-sa-3.0-DLfqQN5a.jpg";
 const manuscriptNoblewoman$1 = "/assets/manuscript-noblewoman-DWtkNqY0.jpg";
 const cronikeShields = "/assets/cronike-van-vlaenderen-shields-double-page-CTwR9X-P.jpg";
-const page$2 = "_page_10apn_1";
+const page$3 = "_page_10apn_1";
 const hero = "_hero_10apn_8";
 const heroOverlay = "_heroOverlay_10apn_18";
 const heroContent = "_heroContent_10apn_29";
@@ -1569,7 +1571,7 @@ const cardArrow = "_cardArrow_10apn_466";
 const footerStrip = "_footerStrip_10apn_476";
 const footerDivider = "_footerDivider_10apn_492";
 const styles$2 = {
-  page: page$2,
+  page: page$3,
   hero,
   heroOverlay,
   heroContent,
@@ -1830,7 +1832,7 @@ function HomePage() {
   ] });
 }
 const meetjeslandMap$1 = "/assets/meetjesland-map-CT1b2Tqt.jpg";
-const page$1 = "_page_5rbee_3";
+const page$2 = "_page_5rbee_3";
 const heroStrip = "_heroStrip_5rbee_15";
 const heroImg = "_heroImg_5rbee_21";
 const heroImgOverlay = "_heroImgOverlay_5rbee_28";
@@ -1838,7 +1840,7 @@ const heroText = "_heroText_5rbee_35";
 const textHero = "_textHero_5rbee_48";
 const eyebrow = "_eyebrow_5rbee_59";
 const heroLead = "_heroLead_5rbee_68";
-const content = "_content_5rbee_78";
+const content$1 = "_content_5rbee_78";
 const section = "_section_5rbee_87";
 const pullQuote = "_pullQuote_5rbee_108";
 const mapNote = "_mapNote_5rbee_133";
@@ -1849,7 +1851,7 @@ const ctaBox = "_ctaBox_5rbee_180";
 const ctaText = "_ctaText_5rbee_195";
 const ctaNote = "_ctaNote_5rbee_204";
 const styles$1 = {
-  page: page$1,
+  page: page$2,
   heroStrip,
   heroImg,
   heroImgOverlay,
@@ -1857,7 +1859,7 @@ const styles$1 = {
   textHero,
   eyebrow,
   heroLead,
-  content,
+  content: content$1,
   section,
   pullQuote,
   mapNote,
@@ -5420,8 +5422,8 @@ const vanVlaenderenLineage = [
     comment: "Earliest known ancestor. All dates inferred. Note spelling variant — no final -e in surname."
   }
 ];
-const page = "_page_6h410_21";
-const header = "_header_6h410_27";
+const page$1 = "_page_6h410_21";
+const header$1 = "_header_6h410_27";
 const title = "_title_6h410_31";
 const intro = "_intro_6h410_38";
 const legend = "_legend_6h410_47";
@@ -5455,8 +5457,8 @@ const detailComment = "_detailComment_6h410_316";
 const archiveLink = "_archiveLink_6h410_328";
 const sourceNote = "_sourceNote_6h410_339";
 const styles = {
-  page,
-  header,
+  page: page$1,
+  header: header$1,
   title,
   intro,
   legend,
@@ -6155,6 +6157,530 @@ function GapDossierPage() {
     ] })
   ] });
 }
+const researchTodo = `# Lions of Flanders — Research To-Do List
+*Last updated: April 12, 2026*
+
+---
+
+## 🔴 HIGH PRIORITY
+
+### Debrabandere Source Chain — Immediate Targets
+- [x] Obtain **WFB2** entry for Van Vlaenderen — **COMPLETE via CBG Familienamenbank** (cbgfamilienamen.nl, free, no login) — see extracted entry below
+- [x] Read the **actual dictionary entry for Vlaenderen / van Vlaenderen** in WFB2 — **COMPLETE** — see extracted entry and analysis below
+- [ ] **DEBR. 1958** = *Kortrijkse persoonsnamen omstreeks 1400*, Debrabandere, 1958, 261pp. — **West Flanders (Kortrijk), not East Flanders** — relevant only as the intermediate source for the 1426 Jaquemaerde attestation in the citation chain. If closing that chain to the original Kortrijk register matters, worth obtaining (€10 at Miagenea, Ghent, Belgium/NL shipping only: https://www.booksinbelgium.be/nl/b/kortrijkse-persoonsnamen-omstreeks-1400-f-debrabandere-12983694). Lower priority than GYSS. 1999 for East Flanders surname research.
+- [ ] **DEBR. 1980** = *Kortrijkse Naamkunde 1200-1300 met een kumulatief familienamenregister*, Debrabandere, 1980, 288pp. — **West Flanders (Kortrijk), not East Flanders** — lower priority than GYSS. 1999. Cumulative family names index across the Kortrijk series is the main value, but WFB2 via CBG already covers this comprehensively for surname purposes. Defer until GYSS. 1999 and DEBR. 1999 (Vier Ambachten / East Flanders) are searched. Available €20 from Collectomundi, Belgium/NL shipping only: https://www.booksinbelgium.be/nl/b/kortrijkse-naamkunde-1200-1300-met-een-kumulatief-familienamenregister-f-de-brabandere-12395225
+- [ ] Locate **DEBR. 1980'** = *Persoonsnamen in de Leiestreek voor 1200* — Leie valley names before 1200
+- [x] Download **WFZ** (Debrabandere, *Dict. of Family Names in Zeeland*, 2009) — **COMPLETE** — see WFZ entry extracted below
+
+### CLM — Louis de Male Cartulary (HIGHEST PRIORITY for Victor hypothesis)
+- [ ] Locate **CLM** = Th. de Limburg-Stirum, *Cartulaire de Louis de Male, comte de Flandre* (1348–1358), Brugge, 1898–1901 — **Note:** CLM is explicitly cited in the WFB2 foreword bibliography (cbgfamilienamen.nl/nfb/aanhangsels/wfb-voorwerk.pdf), confirming Debrabandere used it as a source — strengthens case for obtaining it. Ghent University Library holds it (lib.ugent.be/catalog/rug01:002005149); 2017 reprint on AbeBooks
+- [ ] Search CLM for Victor van Vlaenderen, Wessegem/Ursel lordship, and the 1441/1442 charter naming Lodewyc, Janne, and Adam van Vlaendren
+
+### 1280 Catharina de Flandria — Earliest Attestation
+- [ ] Trace exact citation in WFB2 for *1280 Catharina de Flandria*
+- [ ] Check **Corpus-Gysseling (CG)** = *Corpus van Middelnederlandse teksten (tot en met het jaar 1300)*
+- [ ] Determine her status context: widow / religious / noblewoman / urban citizen / landholder
+
+### West Flanders / Third Origin Thread
+- [ ] Investigate **Jacob van Vlaendre, Ypres, 1376** — determine record type and residency vs. transaction
+- [ ] Investigate **Jaquemaerde van Vlaendren, Kortrijk, 1426** — civic/estate record; source DEBR. 1958
+- [ ] Assess whether Ypres–Kortrijk arc connects to **Volckerinckhove cluster** as coherent western branch
+
+### Comital Bastard Line
+- [ ] Evaluate whether any of **Louis I de Crécy's** illegitimate children have documented descendants in the Lille / West Flanders zone
+- [ ] Confirm whether the Geneanet Flandres Bâtards chart continues to Louis II de Male's bastards (swipe right)
+
+---
+
+## 🟡 MEDIUM PRIORITY
+
+### Meygem Schepen — New Lead
+- [ ] Identify **D. Van Vlaenderen, schepen of Meygem** (mid-19th century municipal directory) — trace through Ghent civil registration and population registers
+- [ ] Confirm geographic continuity with 16th–17th century land records in same Meetjesland corridor
+- [ ] Check whether this family connects to the Bassevelde / Boekhoute line or represents a parallel East Flanders branch
+
+### Ghent City Directory Cluster — New Lead
+- [ ] **C. Vanvlaenderen** (rag merchant) and **widow K. Vanvlaenderen**, Begijnhofboulevard 18 — trace through Ghent population registers, census books, civil registration
+- [ ] Additional entries: J. Vanvlaenderen (grocer, Brugse Steenweg 142); G. Vanvlaenderen (Catholic school administrator, Vlotstraat 22)
+- [ ] **De Flandre G.** (Godshuizenboulevard 96) — French-form variant; note in variant chain
+
+### Cumulative Social Profile — Book Argument
+The family's standing across centuries constitutes a distinct argument strand:
+- *meester* titles · office holders · millers · landholders · estate inventory appearances · civic magistracy (schepen, Meygem)
+- [ ] Compile this profile formally as a section or sidebar in Chapter 1 or 2
+- [ ] Frame as: not a diffuse generic place-name — a socially established East Flemish family with multi-generational standing and a tight geographic core
+
+### Bruges Records — Connect to Civic Sources
+- [ ] Cross-reference 1547–49 Bruges land record names (Philips, Jacob, Cornelis, Frans, Suzanna, Joos, Baldwin) against:
+  - **ROB** = Register op de oorkonden van het stadsbestuur van Brugge
+  - **PARM** = indices on Bruges burgher books
+  - **JAM / JAM II** = Brugse poorters (burgher rolls)
+  - **GAILLIARD** = Bruges city archives, family-name tables
+
+### Rijksarchief Gent Follow-Up
+- [ ] Review findings from March 31 appointment — document which of the 20 requests yielded results
+- [ ] Process Goal 1 thread results (pre-parish records, Franciscus 1568 gap)
+- [ ] Process Goal 2 thread results (Constance's comital connection research)
+- [ ] Follow up on any documents not yet received / needing copies
+
+### Familiekunde Vlaanderen / Aalter
+- [ ] Send follow-up letter to archief@aalter.be (archivist was absent during visit)
+
+### Zeeland Thread
+- [ ] Connect Laureys Arentsz van Vlaenderen (Ritthem, ~1530–1601) and Arent van Vlaenderen (postal messenger, Middelburg–Ghent, 1596) to WFZ attestations
+- [ ] Assess "Laurentius" naming pattern (Arnoldus naming son Laurentius, 1628) as possible ancestral memory link
+
+---
+
+## 🟢 BACKLOG / LONGER TERM
+
+### Documentary Chain to Build
+> **1376 Ypres / 1426 Kortrijk → 1547–49 Bruges land records → 1600s Meetjesland → 1800s Bassevelde/Boekhoute → Charles Louis (1854, emigrated 1881)**
+
+- [ ] Map all known attestations onto this chain with source citations
+- [ ] Identify remaining gaps and assign archival targets
+
+### Variant Form Analysis
+> Van Vlaenderen · Van Vlaanderen · Van Vlaendren · van Vlaendre · van Flandre · de Flandria · Deflandre
+
+- [ ] Compile full variant list with dates, places, and sources
+- [ ] Include in Chapter 1 of *Lions of Flanders*
+
+### Y-DNA
+- [ ] Follow up with **Pieter van Vlaanderen (Piet)** re: Y-DNA collaboration, Big Y-700, R-FT1573
+- [ ] Join **Benelux DNA Project** and **Flanders-Flemish DNA Project**
+- [ ] Continue outreach to male-line descendants for Y-DNA testing
+
+### Lions of Flanders Book
+- [ ] Integrate CBG/Debrabandere attestations into Chapter 1
+- [ ] Use Debrabandere's methodology as scholarly grounding: *"the modern spelling alone cannot determine the surname's origin; early documentary forms and regional continuity must guide interpretation"*
+- [ ] Frame Ypres 1376 / Kortrijk 1426 / Volckerinckhove cluster as "western branch" hypothesis
+- [ ] Decide whether Louis I bâtards chart belongs as atmospheric context or active hypothesis
+- [ ] Continue 27-week self-publishing timeline
+- [ ] Add four-bucket framework as analytical sidebar or footnote in Chapter 1 — framework already live on vanvlaenderen.org/name as reference
+
+### vanvlaenderen.org
+→ See **vanvlaenderen.org-todo.md** for full website backlog, citation audit tasks, and changelog.
+
+**April 12, 2026 sprint complete** — build failures resolved (JSON-LD/TSX curly brace fix, \`a27ed3b\`), \`/research/bibliography\` and \`/research/methodology\` now live, all cross-linking from docs spec deployed, ScholarlyArticle + BreadcrumbList schema on all dossier pages, \`.sr-only\` diagram summaries live, Research page navigation fix (\`useNav.ts\`), \`mvf-v2\` deleted, \`mvf\` reset to main. See website todo for open items.
+
+---
+
+## 📥 INBOX — Constance's Notes
+*(Add here as received)*
+
+---
+
+## ✍️ Book Language — Settled Formulations
+
+These phrasings have been developed and approved for use in *Lions of Flanders*:
+
+**On the etymological vs. genealogical distinction:**
+> "Debrabandere does not assign a noble etymology to the name form itself — but this is an etymological statement, not a genealogical one. Whether a hereditary lineage cluster emerged from a historically specific family branch remains fully open."
+
+**On the institutional phrase vs. surname distinction:**
+> "While 'van Vlaenderen' frequently appears in administrative headings simply meaning 'of Flanders' — as in *Souvereyne Kamer van Redeninge van Vlaenderen* or *De Gedeputeerde van de Staeden van Vlaenderen* — our documentary evidence also shows it functioning independently as a hereditary surname attached to identifiable individuals and family clusters in East Flanders."
+
+**On Debrabandere's methodology:**
+> "The modern spelling alone cannot determine the surname's origin; early documentary forms and regional continuity must guide interpretation."
+
+**Four-bucket framework for classifying "van Vlaenderen" appearances in sources:**
+This taxonomy should be applied consistently when evaluating any new record. Framework is now live on vanvlaenderen.org/name.
+
+| Bucket | Type | Examples |
+|--------|------|---------|
+| 1 | Territorial / governmental phrase | *de Staeden van Vlaenderen*; *Kamer van Redeninge van Vlaenderen* |
+| 2 | Feudal title / noble titulature | *dienstman Mijnsheeren van Vlaenderen* (Jan den Hinne) |
+| 3 | Official staff / office phrase | *mijns heeren van Vlaenderen messagier* (Gentse stadsrekeningen 346.12) — **note: Bucket 3 is often the progenitor of Bucket 4** |
+| 4 | True hereditary surname | D. Van Vlaenderen schepen Meygem; Ghent directory households; land record individuals |
+
+The genealogical case rests on Bucket 4. Buckets 2 and 3 are the linguistic bridge — the phrase was prestigious, normalized, and embedded in documentary culture. Bucket 1 must be excluded from surname evidence but cited for institutional resonance. Together, Buckets 1–3 explain *why* a hereditary surname based on this phrase could emerge and stabilize; Bucket 4 is the evidence that it did. Framework applies equally to French variants: *de Flandre*, *de Flandres*.
+
+- [x] ~~Add four-bucket framework as analytical sidebar or footnote in Chapter 1~~ — **live on vanvlaenderen.org/name; adapt for book**
+- [x] ~~Apply four-bucket framework to vanvlaenderen.org explanatory note~~ — **live on /name page**
+- [ ] **Identify and obtain the Debrabandere-Gysseling joint edition** — likely *Persoonsnamen in de vier ambachten, 14e en 15e eeuw* (Debrabandere & Gysseling, 1999); covers personal names in the Vier Ambachten (Boekhoute, Assenede, Axel, Hulst) — the heart of your research zone; page 102 commentary and page 665 index almost certainly from this volume; contains *messagier* reference (346.12) and Jan den Hinne entry (p. 419)
+- [ ] Check page 419 of that edition for the full Jan den Hinne entry in context
+- [ ] Note: Gysseling also published the **Corpus van Middelnederlandse teksten (CG)** and the **Toponymisch Woordenboek** — he is the single scholar linking your surname, place-name, and personal-name research threads
+
+---
+
+## 🔍 WFB2 Apparatus — Key Findings for Active Use
+
+These items were extracted directly from the WFB2 preface and abbreviations list and should be applied to research and writing immediately.
+
+**Critical primary sources newly identified in WFB2:**
+
+| Code | Full Citation | Why It Matters |
+|------|--------------|----------------|
+| BEELE | W. Beele, *Studie van de Ieperse persoonsnamen uit de stads- en baljuwsrekeningen 1250–1400*, 1975 | Ypres personal names 1250–1400 — directly covers the Jacob van Vlaendre (1376) milieu |
+| BEELE 1959 | W. Beele, *Bijdrage tot de studie van de persoonsnamen uit het Ieperse in de XIIIe en XIVe eeuw*, lic.verh. Leuven, 1959 | Ypres 13th–14th century names |
+| VG | *Lijst Verbeurde Goederen 1382*, ARA, Rekenkamer 1163 | Confiscated goods list 1382 — immediately post-Ghent rebellion, Louis II era; may contain van Vlaendren individuals |
+| WYFFELS | C. Wyffels, *Analyses de reconnaissances de dettes passées devant les échevins d'Ypres (1249–1291)*, Brussel, 1991 | Ypres debt recognitions 1249–1291 — potential pre-1376 bridge |
+| VERKEST | R.M. Verkest, *Anthroponymische studie aan de hand van de Brugse stadsrekeningen van 1298–1303*, lic.verh. Leuven, 1949 | Bruges city accounts 1298–1303 — earliest Bruges surname attestations |
+| VERHULST-GYSS | A. Verhulst & M. Gysseling, *Le Compte Général de 1187 (Gros Brief)*, Brussel, 1962 | 12th-century Flemish financial institutions — foundational source |
+| V.D.AUW. | D. Van den Auweele, *De Brugse gijzelaarslijsten van 1301, 1305 en 1328*, Hand.Em. 110 (1973) | Bruges hostage lists 1301–1328 — Flemish political upheaval period |
+| BAELDE | L. Baelde, *Antroponymie van de poorterslijst van Kortrijk anno 1440*, lic.verh. Leuven, 1982 | Kortrijk burgher list 1440 — covers same milieu as Jaquemaerde 1426 |
+| AUBRY | M. Aubry, *4000 Bourgeois de Lille au XIVe siècle*, Lille, 1999 | 4000 Lille burghers 14th century — **direct source to check for Lille/French Flanders van Vlaenderen entries** |
+| VAN G. 1963–75 | A. Van Geertsom, *De hoofdcijnsboeken van de Sint-Baafsabdij te Gent* (1462, 1475, 1560–1796) | Sint-Baafs Abbey rent books — East Flanders family names across multiple centuries |
+| V Register | *Register van de Vierschaar*, SAK/RAK | Court/tribunal registers — better than parish records for surname continuity across generations |
+
+**Methodological terms to use in book and website writing:**
+- *Verhaspeling* — deformation/corruption of a name (use when explaining why variants don't imply separate origins)
+- *Reïnterpretatie* — folk-etymological reshaping (use when addressing the "it just means from Flanders" objection)
+- *Wisseling* — consonant interchange explaining spelling drift (Vlaendren/Vlaenderen/Vlaanderen)
+
+**DEBR. 1980 and 1980' confirmed:** The preface explicitly states: *"Nadat wij in 1980 ons laatste Kortrijkse antroponymisch materiaal (DEBR. 1980 en 1980') hadden uitgegeven..."* — these are definitively Debrabandere's own Kortrijk name studies, the last before he began WFB2.
+
+**AUBRY (Lille) is now a priority target** — 4000 Bourgeois de Lille au XIVe siècle is exactly the source to search for Lille-area van Vlaenderen entries to test the third-origin hypothesis.
+
+- [ ] Search **AUBRY** (*4000 Bourgeois de Lille*, 1999) for van Vlaendren / de Flandre entries
+- [ ] Search **VG** (Verbeurde Goederen 1382, ARA Rekenkamer 1163) for van Vlaendren individuals
+- [ ] Locate **BEELE** (Ypres personal names 1250–1400) — directly contextualizes Jacob van Vlaendre 1376
+- [ ] Locate **WYFFELS** (Ypres debt recognitions 1249–1291) — potential pre-1376 Ypres bridge
+- [ ] Locate **BAELDE** (Kortrijk burgher list 1440) — covers Jaquemaerde 1426 milieu
+- [ ] Check **V.D.HAL.** (Gentse meerseniersambacht 1305–1540) for van Vlaenderen entries in Ghent guild records
+
+---
+
+## 📚 Key Sources Reference
+
+| Code | Full Citation | Relevance |
+|------|--------------|-----------|
+| WFB2 | Debrabandere, *Dict. of Family Names in Belgium and N. France*, LJ Veen, 2003 | Primary surname authority; 1376 & 1426 attestations |
+| WFZ | Debrabandere, *Dict. of Family Names in Zeeland*, 2009 | Zeeland thread — **searched; no hereditary surname bearers found** |
+| DEBR. 1958 | Debrabandere, *Kortrijkse persoonsnamen omstreeks 1400* | Source for 1426 Jaquemaerde, Kortrijk |
+| DEBR. 1980 | Debrabandere, *Kortrijkse naamkunde 1200–1300* | Pre-1376 West Flanders forms |
+| DEBR. 1980' | Debrabandere, *Persoonsnamen in de Leiestreek voor 1200* | Pre-1200 Leie valley names |
+| CLM | Limburg-Stirum, *Cartulaire de Louis de Male*, Brugge, 1898–1901 | Primary source for Victor / Louis II hypothesis |
+| CG | *Corpus van Middelnederlandse teksten (tot en met 1300)* | Best source for 1280 Catharina de Flandria |
+| GYSS. 1999 | Gysseling & Debrabandere, *Persoonsnamen in de Vier Ambachten 14e en 15e eeuw*, KCTD 71 (1999), 491-588 | Jan den Hinne / messagier entries; covers Boekhoute, Assenede, Axel, Hulst |
+
+---
+*This is a living document. Add discoveries as they come in.*
+
+### Citation Chain — Reconstruct to Archive Level
+The goal: dictionary → academic monograph → archive register → manuscript folio.
+
+**1376 Jacop van Vlaendre, Ypres:**
+> WFB2 → **BEELE 1975** (*Ieperse persoonsnamen uit stads- en baljuwsrekeningen 1250–1400*) → Ypres city/bailiff accounts → original medieval ledger
+- [ ] Search BEELE 1975 on DBNL, Google Books, HathiTrust, *Handelingen van het Genootschap voor Geschiedenis*
+- [ ] Exact phrase search: \`"Jacop van Vlaendre"\` on Google Books and Internet Archive
+- [ ] Contact Stadsarchief Ieper if needed for underlying account book
+
+**1426 Jaquemaerde van Vlaendren, Kortrijk:**
+> WFB2 → **DEBR. 1980 / 1980'** → Kortrijk city register / Vierschaar → original folio
+- [ ] Search: \`"Frans Debrabandere" Kortrijk 1980 persoonsnamen\` on DBNL and Google Books
+- [ ] Exact phrase search: \`"Jaquemaerde van Vlaendren"\` on Google Books and Internet Archive
+- [ ] Check *Vlaamse Stam*, *Naamkunde*, *Handelingen Emulatie Brugge* for Debrabandere Kortrijk articles
+- [ ] Ultimate archive homes: SAK (Stadsarchief Kortrijk), Weeskamer registers, Register van de Vierschaar
+
+### New from WFB2 PDF — Additional Source Identifications
+- [ ] **DEBR. 1957** = Debrabandere, *Aantekeningen uit de Kortrijkse antroponymie van omstreeks 1400*, MVN 33 (1957), 7–16 — journal article **precursor** to DEBR. 1958; may contain first published appearance of 1426 Kortrijk attestation; search *Mededelingen van de Vereniging voor Naamkunde* vol. 33
+- [ ] **⬇️ DOWNLOAD NOW: GYSS. 1999** = Gysseling & Debrabandere, *Persoonsnamen in de Vier Ambachten 14e en 15e eeuw*, KCTD 71 (1999), pp. 491–588 — **free via KCTD portal: https://openjournals.ugent.be/hctd** — covers Assenede, Boekhoute, Axel, Hulst = the heart of the research zone. This is the **East Flanders equivalent** of DEBR. 1958 and should be searched before any West Flanders purchases. Search specifically for *Vlaenderen* / *Flandre* entries.
+- [ ] **⬇️ DOWNLOAD NOW: DEBR. 1999** = Debrabandere, *Persoonsnamen in Hulster Ambacht 1300–1400*, KCTD 71 (1999), pp. 295–490 — **free via KCTD portal: https://openjournals.ugent.be/hctd** — companion to GYSS. 1999 in same volume; Hulster Ambacht borders Boekhoute/Assenede zone directly. Download and search alongside GYSS. 1999.
+- [ ] **DEBR. 2000** = Debrabandere, *Persoonsnamen in de Kortrijkse baljuwsrekeningen 1385–1400*, KCTD 72 (2000), 203–412 — bailiff accounts Kortrijk 1385–1400; may contain van Vlaendren entries
+- [ ] **GSB** = A. Van Werveke, *Gentse stads- en baljuwsrekeningen (1351–1364)*, Brussel, 1970 — **this is the source of the Gentse stadsrekeningen images Constance found**; check index for van Vlaenderen entries
+- [ ] **RSG** = N. De Pauw & J. Vuylsteke, *De rekeningen der stad Gent. Tijdvak van Jacob van Artevelde 1336–1349*, Gent, 1874–1885 — earlier Ghent accounts; Artevelde period
+
+### Online Access — Sources Located
+- [x] **KCTD full archive** = ALL volumes 1927–present freely available at https://openjournals.ugent.be/hctd — download GYSS. 1999 (vol. 71, pp. 491–588), DEBR. 1999 (vol. 71, pp. 295–490), DEBR. 2000 (vol. 72, pp. 203–412), DEBR. 2002 (vol. 74, pp. 69–330) directly from this URL
+- [ ] **CLM** = Not digitized as free text; held at Ghent University Library (catalog: lib.ugent.be/catalog/rug01:002005149); 2017 reprint available on AbeBooks; original also available secondhand via Antiquariaat A. Kok & Zn., Amsterdam — note it includes an alphabetical personal names index
+- [ ] **DBNL Debrabandere 1993 (Vol 2, L-Z)** — the 1993 first edition Vol 2 (L–Z) is on DBNL at https://www.dbnl.org/tekst/debr001verk01_01/ — check if V/Vlaenderen section is accessible (may be copyright restricted; try direct URL)
+- [x] **WFZ (Zeeland surnames)** = Full PDF confirmed at https://www.naamkunde.net/wp-content/uploads/2010/01/WZF-Debrabandere.pdf — **downloaded and searched; no hereditary surname bearers**
+- [x] **DEBR. 2019 Corrigenda & Addenda** = *Nog Corrigenda en Addenda*, KCTD 91 (2019) — **READ; van Vlaenderen entry stands uncorrected**
+- [ ] **Familienamendatabank Marcel Vervloet** — partial online version of WFB2; search *Vlaenderen* at this database (mentioned at taalverhalen.be)
+- [ ] **Beljike** — online Belgian surname list based on Debrabandere; search *van Vlaenderen* variants
+- [x] **CBG Familienamenbank** — WFB2 Van Vlaenderen entry obtained and read — **COMPLETE** — see WFB2 entry extracted below
+- [ ] **familienaam.be** — Debrabandere's dictionary being added in partnership with Familiekunde Vlaanderen; check for Van Vlaenderen entry (may mirror CBG result)
+
+### WFZ — van Vlaanderen Entry (EXTRACTED April 10, 2026)
+Full text of the WFZ entry:
+
+> **Vlaanderen, (van); Vlaander, van Vlaenderen:** Naar de afkomst uit het graafschap Vlaanderen. 1309-10 mijn here Robrecht van Vlaendren, Aardenburg (HAES. 169). Hier wordt Robrecht van Béthune bedoeld, graaf van Vlaanderen (1305-1322).
+> **Vlaenderen, van,** zie (van) Vlaanderen.
+
+**Findings:** WFZ has ONE Zeeland attestation (1309-10, Aardenburg) — the Count himself, not a surname bearer. Confirms no hereditary van Vlaenderen surname bearers in Zeeland. Strengthens East Flanders as the surname's geographic core. The Zeeland thread (Laureys Arentsz, Arent van Vlaenderen) must rest on other sources.
+
+- [x] WFZ downloaded and searched — **COMPLETE**
+- [ ] Obtain **HAES. 1954** = R. Haeserijn, *Bijnamen in de oudste rekening van Aardenburg a° 1309-1310*, VMKVA 1954, pp. 109-174
+- [ ] Note for book: WFZ absence of hereditary van Vlaenderen supports East Flanders rather than Zeeland as geographic core
+
+### WFB2 — Van Vlaenderen Entry (EXTRACTED April 11, 2026)
+Full text of WFB2 entry, obtained via CBG Familienamenbank (cbgfamilienamen.nl), free access:
+
+> **Flanders, (of); of Vla(e)nderen, of Vlaender:** Originating from Flanders, originally the coastal region; the later County of Flanders comprised the present-day territories, FV, OV, WV and Zeelandic Flanders. **1280 Catharina de Flandria; 1376 Jacop van Vlaendre, Ip. (BEELE); 1426 Jaquemaerde van Vlaendren, Ktr. (DEBR. 1958).** [WFB2]
+
+**Classification:** Pure *herkomstnaam* (origin name) — "originating from Flanders." PlN classification, no mention of comital connection, no note about historically specific family usage, no caveat about bastard lines.
+
+**What this means for the research:**
+- Debrabandere is making an etymological statement about word origin, not a genealogical statement about family continuity. The four-bucket framework addresses this directly: his PlN classification answers a different question than the one the research is asking.
+- The three attestations he cites (1280 Catharina, 1376 Jacop, 1426 Jaquemaerde) are now confirmed **Bucket 1–3 control cases** — all pre-cluster, none in the Meetjesland hereditary concentration. This is analytically useful: it shows Debrabandere's entry is built on pre-cluster evidence that does not engage with the East Flanders parish-record concentration at all.
+- The entry is stable: uncorrected in both the 2010 and 2019 corrigenda. Citable as-is from WFB2 (2003).
+- **The CBG version supersedes the 2003 print edition.** CBG's page states explicitly: "The entries in CBG Familienamen are based on a manuscript with improvements and additions by the author." This means the entry obtained via CBG reflects Debrabandere's most current version — post-2003, incorporating any improvements he made after publication. The physical book is not needed for the Van Vlaenderen entry. It remains useful for browsing related entries (Vlaanderen variants, de Flandre, de Flandria) and checking the full source apparatus in print form.
+
+**Action items from WFB2 entry:**
+- [x] WFB2 entry obtained and read — **COMPLETE**
+- [ ] Check **"analysis and explanation"** tab on cbgfamilienamen.nl for Van Vlaenderen — may contain additional commentary beyond the WFB2 documentation tab
+- [ ] Check **"variants"** tab on cbgfamilienamen.nl — may list de Flandre, de Flandria, Deflandre variants with their own entries
+- [ ] Confirm BEELE as source for 1376 Jacop entry — WFB2 cites BEELE without page number; locate BEELE 1975 to find the original attestation
+- [ ] Confirm DEBR. 1958 as source for 1426 Jaquemaerde — entry cites DEBR. 1958 (Kortrijkse persoonsnamen omstreeks 1400); this is now definitively confirmed as the intermediate source
+
+### DEBR. 2019 Corrigenda — Result (April 10, 2026)
+- [x] **READ AND SEARCHED** — van Vlaenderen does not appear in 2019 or 2010 corrigenda. WFB2 entry stands uncorrected and unrevised as of 2019. Entry is stable and citable as-is.
+- [ ] Note: **van Hovorst / Hoogvorst** entry mentions *Hogevorst in Bassevelde (OV)* as a PlN — worth a footnote in *Lions of Flanders* as a Bassevelde place-name parallel
+
+---
+
+## 📋 Citation Chain Status
+
+| Attestation | Dictionary Source | Intermediate Source | Archive Target | Status |
+|-------------|------------------|--------------------|--------------------|--------|
+| 1280 Catharina de Flandria | WFB2 | Corpus-Gysseling (CG) | Unknown | 🔴 Not traced |
+| 1309-10 Robrecht van Vlaendren, Aardenburg | WFZ (HAES. 169) | HAES. 1954 (VMKVA) | Stadsarchief Aardenburg | 🟡 Intermediate identified — **NOTE: Count of Flanders, not a surname bearer** |
+| 1376 Jacop van Vlaendre, Ypres | WFB2 | BEELE 1975 | Stadsarchief Ieper, bailiff accounts | 🟡 Intermediate identified |
+| 1426 Jaquemaerde van Vlaendren, Kortrijk | WFB2 | **DEBR. 1958** (confirmed from WFB2 entry) | SAK Kortrijk, Vierschaar or Weeskamer | 🟡 Intermediate confirmed |
+| 1547–49 Bruges land records (Joos, Jacob, Phillip) | TBO 184, bundle 21300 | — | Bruges State Archives ✅ | 🟢 Primary source in hand |
+
+---
+
+## 📰 Journals to Monitor
+
+- *Handelingen van het Genootschap voor Geschiedenis* (Bruges) — West Flemish archival studies
+- *Vlaamse Stam* — genealogical/historical; Debrabandere published series here 1953–1987
+- *Naamkunde* — linguistic; key for name-form analysis
+- *Handelingen Emulatie Brugge* — Bruges historical society; covers Bruges Vrije records
+- *Oostvlaamse Zanten* (O.K.Waas) — Waasland / East Flanders; Van Geertsom Sint-Baafs studies
+`;
+const readingList = "# Lions of Flanders — Reading List & Methodology\n*Last updated: April 12, 2026*\n*Companion document to the Research To-Do List*\n\nThis document serves two purposes:\n1. **Research reading list** — all scholarly sources identified, with status and relevance notes\n2. **Website deployment record** — the approved content for `/research/methodology` on vanvlaenderen.org, ready for Manus or manual implementation\n\n---\n\n## 🌐 WEBSITE DEPLOYMENT — /research/methodology\n\n**Status:** ✅ DEPLOYED April 12, 2026. Live at https://vanvlaenderen.org/research/methodology\n\n---\n\n### Section 1 — Transcription and Translation Methodology\n\n> Archival documents in this project are transcribed using an iterative, multi-system approach. Gemini (Google) serves as the primary real-time reading tool: integrated directly into the browser, it can analyse document images without a separate upload step, allowing the researcher to ask questions about specific characters, words, or passages while actively zooming and navigating the original scan. This ambient availability makes it the natural first pass for difficult passages.\n>\n> Outputs from Gemini are then cross-checked against independent readings from Claude (Anthropic), GPT-4 (OpenAI), Transkribus, and Tryleo. Where readings converge across systems, confidence is high. Where they diverge, the researcher returns to the original image, zooming to individual characters and applying knowledge of the letter forms, abbreviations, and spelling conventions of the period.\n>\n> Translation follows the same iterative logic. Early modern Dutch and Latin passages are translated independently by multiple systems, with the researcher cross-checking against known vocabulary, named entities already established in the research, and the documentary context. Passages involving specialist palaeographic challenges — secretary hand abbreviations, damaged text, unusual personal names — are treated as uncertain until verified by at least two independent readings.\n>\n> Each AI system is given learning samples from the same document hand before being asked to transcribe difficult passages, allowing the system to calibrate to individual scribal idiosyncrasies. This is the same principle professional palaeographers apply when learning a new hand.\n>\n> AI tools in this project are research instruments, not citation sources. Every claim on this site traces to a named primary or secondary authority. Tool outputs that cannot be verified against a named source are flagged as provisional.\n\n---\n\n### Section 2 — Recommended Reading\n\n> The following works form the historiographical foundation for this project. They are the sources against which our findings are tested and the authorities whose frameworks we apply. Entries are grouped by theme. Acquisition links are provided where available.\n\n#### The County of Flanders and the Comital House\n\n**Warlop, E.** (1975–76). *The Flemish Nobility Before 1300.*\nThe foundational English-language prosopographical study of Flemish noble families. The alphabetic repertory of noble families in volumes 3–4 is an essential reference for tracing any lineage with pre-1300 roots in Flanders, including the van Praet family. Available in four volumes.\n- Amazon: https://www.amazon.com/s?k=Warlop+Flemish+Nobility+Before+1300\n- Free download: https://archive.org/details/flemishnobilityb0002unse_q5k3\n- Used copies: https://www.abebooks.com/book-search/title/flemish-nobility-before-1300/\n\n**Prevenier, W. & Blockmans, W.** (1986). *The Burgundian Netherlands.*\nThe standard illustrated survey of the Burgundian Low Countries 1380–1530 — exactly the period in which the van Vlaenderen surname crystallises and the Praet line flourishes. Provides essential political and cultural context for Louis de Male and his bastard children. Richly illustrated.\n- Amazon: https://www.amazon.com/Burgundian-Netherlands-Walter-Prevenier/dp/0521306116\n- Free download: https://archive.org/details/burgundiannether0000prev\n- Used copies: https://www.abebooks.com/9780521306119/Burgundian-Netherlands-Prevenier-Walter-Wim-0521306116/plp\n\n**Blockmans, W. & Prevenier, W.** (1999). *The Promised Lands: The Low Countries Under Burgundian Rule, 1369–1530.*\nThe accessible single-volume companion to The Burgundian Netherlands. Organised thematically around the key problems of Burgundian history — state formation, social structure, urban economy — rather than as a chronological narrative. Better suited as a first read than the 1986 volume.\n- Amazon: https://www.amazon.com/Promised-Lands-Countries-Burgundian-Rule/dp/0812216504\n- Used copies: https://www.abebooks.com/book-search/title/promised-lands-low-countries-under-burgundian/\n\n#### Flemish Nobility and Social Structure\n\n**Buylaert, F.** (2010). *Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen.*\nThe most important recent study of the Flemish nobility in the 14th–15th centuries, by the same Buylaert cited in FMG MedLands for the Josse de Flandre cadet branch. Demonstrates the nobility's adaptability and social mobility during exactly the period our research covers. In Dutch. An English-language article by the same author ('The late medieval crisis of the nobility reconsidered: the case of Flanders', *Journal of Social History* 45, 2012) covers the main arguments and is freely available.\n- Amazon: https://www.amazon.com/Eeuwen-Van-Ambitie-Laatmiddeleeuws-Verhandelingen/dp/9065690751\n- Free download: https://www.academia.edu/2418411/Frederik_Buylaert_Eeuwen_van_ambitie\n\n#### The Meetjesland: Regional History and Rural Economy\n\n**Augustyn, B. & Thoen, E.** (1987). *'Van veen tot bos: Krachtlijnen van de landschapsevolutie van het Noordvlaamse Meetjesland van de 12e tot de 19e eeuw.'*\nThe key article on the landscape history of the northern Flemish Meetjesland from the 12th to the 19th century — covering precisely the geographic area of our research. Documents the transition from peat extraction to the sandy-loam landscape that characterises the area in the parish-record period. In Dutch. Published in *Historisch-Geografisch Tijdschrift*.\n*Note: not widely available outside Belgian library systems. Request through interlibrary loan or directly from the authors' institutional repositories at Ghent University.*\n\n#### Archival Research Methodology and Palaeography\n\n**Munby, L.** (2003). *Reading and Understanding Old Documents: A Guide to Palaeography.*\nA practical English-language guide to reading historical handwriting, focused on secretary hand and other scripts common in early modern documents. Useful companion for working through the kinds of documents encountered in Belgian state archives.\n- Amazon: https://www.amazon.com/s?k=Munby+Reading+Understanding+Old+Documents+Palaeography\n- Used copies: https://www.abebooks.com/book-search/title/reading-understanding-old-documents/\n\n**Moens, J.** (Various editions). *Inleiding tot de historische kritiek.*\nStandard Belgian introduction to historical source criticism and archival methodology. Covers the evaluation of primary sources, dating conventions, and document types encountered in Flemish archives. In Dutch. Available through Ghent University library and Belgian academic publishers.\n\n#### Digital Genealogy and Genetic Methods\n\n**Bettinger, B. & Wayne, D.** (2016). *Genetic Genealogy in Practice.*\nThe National Genealogical Society's standard reference for DNA evidence in genealogical research. Covers Y-DNA, autosomal, and mtDNA methods with specific guidance on using DNA to break through brick walls — the primary use case for this project's Y-DNA research thread.\n- Amazon: https://www.amazon.com/Genetic-Genealogy-Practice-National-Genealogical/dp/1935815296\n- Used copies: https://www.abebooks.com/book-search/title/genetic-genealogy-practice/\n\n#### Primary Sources and Reference Works\n\n**Cawley, C.** (2025, v5.0). *MedLands: Flanders, Hainaut* (online).\nThe Foundation for Medieval Genealogy's encyclopaedia of territories and noble families in the medieval western world. The primary reference for all comital and bastard-line citations in this project. Free to access online. Version 5.0 updated January 2025.\n- Free access: https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm\n\n**Vredius, O. (Olivier de Wree)** (1643). *Sigilla Comitum Flandriae et Inscriptiones Diplomatum.*\nPublished in Bruges in 1643, this is the 17th-century primary source compilation that underlies most of the FMG MedLands charter citations used in this project. The original is available on Internet Archive. Pars secunda, pp. 285–287 is the specific locus for the Victor van Vlaenderen charter evidence.\n- Free download: https://archive.org/details/bub_gb_CNSBZDBvNV4C\n\n---\n\n## 📖 RESEARCH READING LIST — Additional Sources\n\n*These sources are identified through active research but are not yet on the website reading list. They are tracked here for acquisition and consultation.*\n\n### Essential — Obtain and Read First\n\n**Debrabandere, Frans**\n*Woordenboek van de familienamen in België en Noord-Frankrijk* (WFB2)\nAmsterdam/Antwerp: LJ Veen, 2003. ISBN 9020402072.\n- **Status:** Not yet obtained\n- **Where:** KU Leuven / Ghent University library; Bol.com; ZVAB\n- **Key task:** Read entry for *Vlaenderen, van* — PlN-only or historically specific family usage?\n- **Contains:** 1376 Jacop van Vlaendre (Ypres) and 1426 Jaquemaerde van Vlaendren (Kortrijk) attestations\n\n**Limburg-Stirum, Th. de**\n*Cartulaire de Louis de Male, comte de Flandre* (CLM), Brugge, 1898–1901.\n- **Status:** Not yet obtained — check Belgica digital library / Ghent University\n- **Priority:** HIGHEST for Victor hypothesis\n- **Key task:** Search for Victor van Vlaenderen, Wessegem/Ursel lordship, 1441/1442 charter\n\n### High Priority — Locate and Consult\n\n**Debrabandere, Frans**\n*Kortrijkse persoonsnamen omstreeks 1400* (DEBR. 1958)\n- **Status:** Not yet located — try *Handelingen van het Genootschap voor Geschiedenis*, *Vlaamse Stam*\n- **Key task:** Confirms 1426 Jaquemaerde; may contain additional West Flanders attestations\n\n**Debrabandere, Frans**\n*Kortrijkse naamkunde 1200–1300* (DEBR. 1980)\n- **Status:** Not yet located\n- **Key task:** May push West Flanders van Vlaendren forms earlier than 1376\n\n**Debrabandere, Frans**\n*Persoonsnamen in de Leiestreek voor 1200* (DEBR. 1980')\n- **Status:** Not yet located\n- **Key task:** Leie valley names before 1200\n\n**Debrabandere, Frans & Gysseling, Maurits**\n*Persoonsnamen in de vier ambachten, 14e en 15e eeuw* (DEBR-GYSS 1999)\n- **Status:** Not yet obtained — almost certainly the source of the Jan den Hinne / *messagier* index images Constance found\n- **Covers:** Vier Ambachten: Boekhoute, Assenede, Axel, Hulst\n\n**Debrabandere, Frans**\n*Woordenboek van de familienamen in Zeeland* (WFZ), 2009\n- **Status:** Available at http://www.naamkunde.net/?p=309 — download pending\n- **Key task:** Zeeland thread; Laureys Arentsz and Arent van Vlaenderen\n\n**Beele, W.**\n*Studie van de Ieperse persoonsnamen uit de stads- en baljuwsrekeningen 1250–1400* (BEELE 1975)\n- **Status:** Not yet located — search DBNL, Google Books, HathiTrust\n- **Key task:** Almost certainly the source of 1376 Jacop van Vlaendre, Ypres\n\n**Beele, W.**\n*Bijdrage tot de studie van de persoonsnamen uit het Ieperse in de XIIIe en XIVe eeuw* (BEELE 1959), lic.verh. Leuven\n- **Status:** Not yet located\n- **Key task:** Ypres 13th–14th century names; companion to BEELE 1975\n\n### Targeted Searches — Specific Entries to Find\n\n**Aubry, M.**\n*4000 Bourgeois de Lille au XIVe siècle*, Lille, 1999.\n- **Status:** Not yet consulted\n- **Priority:** HIGH for Lille / third-origin hypothesis\n- **Key task:** Search for van Vlaendren / de Flandre entries\n\n**Corpus-Gysseling (CG)**\n*Corpus van Middelnederlandse teksten (tot en met het jaar 1300)*, ed. Gysseling, 1980.\n- **Status:** Digitized and searchable at https://ivdnt.org/corpora-lexica/corpus-gysseling/\n- **Key task:** Search for *Catharina de Flandria 1280* and any pre-1300 forms\n\n**Verbeurde Goederen 1382 (VG)**\nARA Brussels, Rekenkamer 1163.\n- **Status:** Archival — requires ARA Brussels visit or remote request\n- **Key task:** Search for van Vlaenderen individuals post-Ghent rebellion\n\n**Wyffels, C.**\n*Analyses de reconnaissances de dettes passées devant les échevins d'Ypres (1249–1291)*, Brussel, 1991.\n- **Status:** Not yet consulted\n- **Key task:** Potential pre-1376 Ypres bridge\n\n**Baelde, L.**\n*Antroponymie van de poorterslijst van Kortrijk anno 1440*, lic.verh. Leuven, 1982.\n- **Status:** Not yet located\n- **Key task:** Kortrijk burgher list 1440 — contextualizes Jaquemaerde 1426 milieu\n\n---\n\n## 📋 CITATION CHAIN STATUS\n\n| Attestation | Dictionary Source | Intermediate Source | Archive Target | Status |\n|-------------|------------------|--------------------|--------------------|--------|\n| 1280 Catharina de Flandria | WFB2 | Corpus-Gysseling (CG) | Unknown | 🔴 Not traced |\n| 1376 Jacop van Vlaendre, Ypres | WFB2 | BEELE 1975 | Stadsarchief Ieper, bailiff accounts | 🟡 Intermediate identified |\n| 1426 Jaquemaerde van Vlaendren, Kortrijk | WFB2 | DEBR. 1980 / 1980' | SAK Kortrijk, Vierschaar or Weeskamer | 🟡 Intermediate identified |\n| 1547–49 Bruges land records (Joos, Jacob, Phillip) | TBO 184, bundle 21300 | — | Bruges State Archives ✅ | 🟢 Primary source in hand |\n\n---\n\n## 📰 JOURNALS TO MONITOR\n\n- *Handelingen van het Genootschap voor Geschiedenis* (Bruges) — West Flemish archival studies\n- *Vlaamse Stam* — genealogical/historical; Debrabandere published series here 1953–1987\n- *Naamkunde* — linguistic; key for name-form analysis\n- *Handelingen Emulatie Brugge* — Bruges historical society; covers Bruges Vrije records\n- *Oostvlaamse Zanten* (O.K.Waas) — Waasland / East Flanders; Van Geertsom Sint-Baafs studies\n\n---\n*This is a living document. Update as sources are located, read, and cited. Website section is approved and ready for deployment.*\n\n---\n\n## 🌐 Online Access — Sources Located\n\n| Source | Access | URL |\n|--------|--------|-----|\n| KCTD full archive (all volumes 1927–present) | **Free, open access** | https://openjournals.ugent.be/hctd |\n| GYSS. 1999 (Vier Ambachten, vol. 71) | Free via KCTD portal | https://openjournals.ugent.be/hctd |\n| DEBR. 1999, 2000, 2002 (Kortrijk series) | Free via KCTD portal | https://openjournals.ugent.be/hctd |\n| CLM (Cartulaire Louis de Male) | Ghent University Library | http://lib.ugent.be/catalog/rug01:002005149 |\n| CLM (reprint/used copies) | AbeBooks | https://www.abebooks.com/servlet/SearchResults?tn=Cartulaire+Louis+Male |\n| Corpus-Gysseling (CG) | Free, searchable online | https://ivdnt.org/corpora-lexica/corpus-gysseling/ |\n| WFZ (Zeeland surnames) | Free PDF | http://www.naamkunde.net/?p=309 |\n| WFB2 van Vlaenderen entry | CBG online | https://www.cbgfamilienamen.nl (login required for full entry) |\n\n---\n\n## 🗺️ Research Strategy — Two-Track Approach\n\nPer Constance's AI analysis, the research is now at the point where secondary lexicographic evidence should be separated from primary documentary evidence:\n\n**Track 1 — Secondary lexicographic (largely complete)**\nDebrabandere's dictionaries and CBG give the scholarly framework, earliest attestations, and methodological vocabulary. This track is well-advanced.\n\n**Track 2 — Primary documentary (the next breakthrough)**\nThe actual 1376 and 1426 original records need to be found. This is where the academic case becomes publication-quality. Targets:\n- Stadsarchief Ieper (city and bailiff accounts 1250–1400 — BEELE 1975 source)\n- Stadsarchief Kortrijk / RAK Kortrijk (Weeskamer, Vierschaar registers — DEBR. 1958/1980 source)\n- Rijksarchief Gent (ongoing)\n- Brugse Vrije scans / Staten van Goed\n\n---\n\n## 🌐 Complete Online Access Table\n\n| Source | Access | URL / Notes |\n|--------|--------|-------------|\n| KCTD full archive (all volumes 1927–present) | **Free, open access** | https://openjournals.ugent.be/hctd |\n| GYSS. 1999 (Vier Ambachten, KCTD vol. 71) | Free via KCTD portal | Search vol. 71 at openjournals.ugent.be/hctd |\n| DEBR. 1999, 2000, 2002 (Kortrijk series) | Free via KCTD portal | Vols. 71, 72, 74 at openjournals.ugent.be/hctd |\n| DEBR. 2019 Nog Corrigenda & Addenda | ✅ READ — van Vlaenderen absent; entry stands uncorrected | https://openjournals.ugent.be/hctd/article/id/88833/ |\n| WFZ (Zeeland surnames, full PDF) | **Free, direct download** | https://www.naamkunde.net/wp-content/uploads/2010/01/WZF-Debrabandere.pdf |\n| Corpus-Gysseling (CG) | Free, searchable | https://ivdnt.org/corpora-lexica/corpus-gysseling/ |\n| CBG Familienamenbank (WFB2 documentation tab) | Free (login for full) | https://www.cbgfamilienamen.nl |\n| DBNL Debrabandere 1993 (Vol 1, A–K) | Partial / check access | https://www.dbnl.org/tekst/debr001verk01_01/ |\n| CLM (Cartulaire Louis de Male) | Ghent University Library | http://lib.ugent.be/catalog/rug01:002005149 |\n| CLM (reprint / used copies) | AbeBooks purchase | https://www.abebooks.com/servlet/SearchResults?tn=Cartulaire+Louis+Male |\n| WFB2 (2003, physical book) | Bol.com Belgium | https://www.bol.com/be/nl/p/woordenboek-van-familienamen-in-belgie/1001004001949982/ |\n| DEBR. 2019 (ResearchGate) | Request full text | https://www.researchgate.net/publication/377720459 |\n\n---\n\n## 📋 Updated Citation Chain Status\n\n| Attestation | Dictionary Source | Intermediate | Archive Target | Status |\n|-------------|-----------------|-------------|----------------|--------|\n| 1280 Catharina de Flandria | WFB2 | Corpus-Gysseling (CG) | Unknown | 🔴 Not traced |\n| 1309-10 Robrecht van Vlaendren, Aardenburg | WFZ (HAES. 169) | HAES. 1954 (VMKVA) | Stadsarchief Aardenburg | 🟡 Intermediate identified — **NOTE: this is the Count of Flanders, not a surname bearer** |\n| 1376 Jacop van Vlaendre, Ypres | WFB2 | BEELE 1975 | Stadsarchief Ieper, bailiff accounts | 🟡 Intermediate identified |\n| 1426 Jaquemaerde van Vlaendren, Kortrijk | WFB2 | DEBR. 1980 / 1980' | SAK Kortrijk, Vierschaar or Weeskamer | 🟡 Intermediate identified |\n| 1547–49 Bruges land records (Joos, Jacob, Phillip) | TBO 184, bundle 21300 | — | Bruges State Archives ✅ | 🟢 Primary source in hand |\n\n**Key WFZ finding (April 10, 2026):** The WFZ contains no hereditary van Vlaenderen surname bearers in Zeeland. The single attestation (1309-10, Aardenburg) refers to Count Robert de Béthune himself — Bucket 2 titular usage. The absence of a hereditary Zeeland surname cluster in WFZ strengthens the argument that **East Flanders is the geographic core** of the hereditary Van Vlaenderen surname.\n";
+const websiteTodo = '# vanvlaenderen.org — Website To-Do & Changelog\n*Last updated: April 12, 2026*\n*Repository: github.com/iamabotama/vanvlaenderen.org · Branch: main*\n\n---\n\n## 🔴 BACKLOG — HIGH PRIORITY\n\n### Citations & Source Links (Research Pages)\nThe research dossier pages currently have Notes & Bibliography sections with reference numbers, but most entries lack live hyperlinks to digitally accessible sources. The goal is that every Directly Attested and Strongly Corroborated claim either links inline to a digitised source or has a numbered reference with a working URL.\n\n**VictorDossierPage** (`/research/victor-dossier`)\n- [ ] FMG MedLands — link all `[FMG NNN]` footnote numbers to the specific anchor on fmg.ac where available\n- [ ] Inventaris Onroerend Erfgoed (Hof van Wessegem) — ref 2 already has link, verify it\'s still live: https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384\n- [ ] Ursel, een Meetjeslands dorp — ref 3 link: https://mijnplatteland.com/meetjesland/ursel/\n- [ ] Vredius (1643) *Sigilla Comitum Flandriae* — add Internet Archive link: https://archive.org/details/bub_gb_CNSBZDBvNV4C\n- [ ] DBNL sources (Degryse, UGent corsair study) — verify existing links are live\n- [ ] Bethune (1900) *Epitaphes* — not digitally accessible; flag as print-only\n\n**PraetDossierPage** (`/research/praet-dossier`)\n- [ ] Audit all source citations — identify which have URLs and which are print-only\n- [ ] Wikipedia Louis of Praet — add inline link\n- [ ] Pattou *Bâtards de Flandres* — add link: http://racineshistoire.free.fr/LGN/PDF/Flandre-B%E2tards.pdf\n- [ ] Remmé Genealogie Online — add link: https://www.genealogieonline.nl/en/genealogie-richard-remme/I97902.php\n\n**PraetLineageDossierPage** (`/research/praet-lineage-dossier`)\n- [ ] Same audit as Praet dossier — link Pattou, FMG, Wikipedia, Buylaert Academia.edu\n\n**VictorLineagePage** (`/research/victor`)\n- [ ] Audit inline citations — FMG refs, 1441/42 charter note, Wessegem references\n- [ ] Add link to Brugse Vrije TBO 184 via AGATHA portal where accessible\n\n**ResearchPage** (`/research`)\n- [ ] Crystallisation paragraph sources — add inline links to Wikipedia (Louis II, Count of Flanders) and Pattou\n\n### New Content Pages\n- [ ] `/research/methodology` — add Warlop *Flemish Nobility Before 1300* entry once acquisition confirmed (currently reading list only; no direct citation)\n- [ ] `/research/bibliography` — add WFB2 entry now that CBG access is confirmed:\n  - Author: Debrabandere, Frans\n  - Full entry via: cbgfamilienamen.nl (search Van Vlaenderen, WFB2 documentation tab) — **Note: CBG version is based on author\'s post-2003 manuscript with improvements; more current than the printed edition**\n  - Foreword/apparatus PDF: https://www.cbgfamilienamen.nl/nfb/aanhangsels/wfb-voorwerk.pdf\n- [ ] `/research/bibliography` — add CLM entry once obtained\n- [ ] Consider `/research/attestations` — a dedicated page mapping all known Van Vlaenderen attestations chronologically with bucket classifications and source links (longer term)\n\n---\n\n## 🟡 BACKLOG — MEDIUM PRIORITY\n\n### Content Improvements\n- [ ] **Name page** — add variant form section linking the four-bucket analysis to the spelling variants list; clarify that *de Flandre* / *de Flandria* / *Deflandre* are covered by the same framework\n- [ ] **Name page** — update CBG Familienamenbank note: WFB2 entry is now confirmed as purely PlN classification; update any hedging language that implied the entry was unknown\n- [ ] **Research Overview** — add link to `/research/bibliography` from the crystallisation paragraph source notes\n- [ ] **About page** — add Methodology & Sources link in project scope section (noted in handoff doc)\n- [ ] **Lineage page** — audit archive deep-links; verify all AGATHA / FamilySearch links still resolve\n- [ ] **All research pages** — add `<time dateTime="">` markup to "Updated April 2026" dates for Schema.org compatibility\n\n### Technical\n- [ ] **Code splitting** — Vite build warns that the single JS bundle exceeds 500KB. Split at route level using `React.lazy()` per page component to reduce initial load. Low urgency but worth doing before the site grows further.\n- [x] **Schema.org markup** — `ScholarlyArticle` + `BreadcrumbList` JSON-LD live on all three dossier pages. ✅ April 12, 2026\n- [ ] **French locale (fr)** — backlogged pending Lille/French Flanders research content. Add to i18n infrastructure when content is ready; no architectural change required.\n- [ ] **`/research/methodology`** — Augustyn & Thoen (1987) entry notes the article is not widely available; if a digitised copy is located, add link.\n\n### SEO / Crawlability\n- [ ] Verify Gemini can now crawl research content — Gemini requested a reassessment once crawl blocks were removed and content was prerendered. Run a test crawl and check whether `/research/victor-dossier` content is visible.\n- [ ] Submit sitemap.xml to Google Search Console: https://vanvlaenderen.org/sitemap.xml\n- [ ] Submit sitemap.xml to Bing Webmaster Tools\n\n---\n\n## 🟢 BACKLOG — LONGER TERM\n\n- [ ] **`/research/attestations`** — dedicated chronological attestation page: every known Van Vlaenderen record mapped with date, location, source, bucket classification, and link. Derived from the Citation Chain Status table in the research todo. Highly crawlable; strong SEO signal for scholarly searches.\n- [x] **Hidden text summaries for diagrams** — `.sr-only` diagram summaries live on all three diagram pages. ✅ April 12, 2026\n- [ ] **Image alt text audit** — all manuscript and heraldic images should have specific descriptive alt text (e.g. "Heraldic shields from the Cronike Van Vlaenderen, 15th century manuscript, BnF" not "heraldic image").\n- [ ] **`/research/zeeland`** — possible future page if Zeeland thread develops (Laureys Arentsz, Arent van Vlaenderen). Skeleton only until primary sources are in hand.\n- [ ] **Constance\'s research** — Goal 2 thread (comital connection) may generate new dossier content once Rijksarchief Gent results are processed.\n\n---\n\n## 📋 CHANGELOG\n\n### April 12, 2026 — Build fix, new pages live, branch cleanup\n\n**Bug fix — root cause of build failures**\n- JSON-LD schema curly braces inside TSX template literals were breaking Vite compilation\n- Fix: wrapped all JSON-LD blocks in `dangerouslySetInnerHTML` (`a27ed3b`)\n- Secondary issues resolved in same pass: `MethodologyPage.tsx` had never been committed; `App.tsx` was missing routes for `/research/bibliography` and `/research/methodology`; prerender template corruption bug fixed\n\n**New pages now live**\n- `/research/bibliography` — 22 annotated entries, colour-coded badges, access links; `public/data/bibliography.json` is now the source of truth for bibliography entries\n- `/research/methodology` — transcription/translation methodology + curated reading list; nav link live from `/research`\n\n**Cross-linking complete** (per docs spec)\n- Reference cards on Research overview link to Bibliography\n- Full Bibliography linked from all three dossiers\n- Methodology & Sources linked from About page\n\n**Schema**\n- `ScholarlyArticle` + `BreadcrumbList` JSON-LD live on VictorDossierPage, PraetDossierPage, PraetLineageDossierPage\n\n**Accessibility**\n- `.sr-only` diagram summaries live on VictorDiagram, PraetDiagram, OverviewDiagram\n\n**Branch cleanup**\n- `dist/` removed from main branch tracking\n- `mvf-v2` deleted (remote + local)\n- `mvf` reset to match `main` exactly\n\n**Bug fix — Research page navigation**\n- `useNav.ts` was missing `methodology` and `bibliography` from `ResearchSubpage` type and `RESEARCH_PATHS` map\n- Links on Research page were falling back to `/research` instead of navigating to new pages\n\n### April 11, 2026 — Major rearchitecture + content sprint\n\n**Architecture**\n- Replaced hash-based routing with React Router v7 (BrowserRouter + Routes)\n- 15 routes now have proper URL paths: `/`, `/mill`, `/name`, `/dna`, `/research` + 6 sub-routes, `/lineage`, `/about`, `/contact`\n- Added SSG prerender pipeline: each route bakes to `dist/<route>/index.html` with real HTML content at build time\n- Eliminated Manus deployment dependency — deploy pipeline is self-contained GitHub Actions on `main` branch\n- Created `useNav` hook replacing all `onNavigate`/`onNav` callback props across every page component\n- Nav.tsx now self-manages active state from `useLocation`\n\n**SEO**\n- Per-page title, description, canonical URL, and Open Graph tags on all 15 routes (via `pageMeta.ts` registry)\n- `sitemap.xml` auto-generated by prerender script with priority/changefreq per route\n- `robots.txt` with explicit `Allow` directives for GPTBot and Claude-Web\n- `index.html` upgraded with full OG, Twitter Card, and Schema.org WebSite structured data\n- SSR guards: FamilyTreeCanvas returns null in Node; ResearchMap (Leaflet) lazy-loaded\n\n**Content — Handoff edits (VVL_Manus_Handoff.docx)**\n- Edit 1-A: Replaced unsupported Praet cadet claim in Research Overview card\n- Edit 1-B: Added crystallisation insight paragraph to Research Overview (surname emerges at dynastic extinction point, 1384)\n- Edit 2-A: Replaced "Survival of Surname" section in Louis Friese pages with hedged open-question text (EN + NL)\n- Edit 2-B: Removed Rootenberg/Swanepoel citation (no documented Van Vlaenderen connection)\n- Edit 3-A: Not required — Joos framing already correctly hedged in current codebase\n\n**New pages**\n- `/research/methodology` — transcription and translation methodology (verbatim from VVL_Methodology_Manus.docx) + curated reading list with acquisition links (6 thematic groups)\n- `/research/bibliography` — 22 annotated entries in two sections: Primary Sources & Finding Aids, Scholarly Literature. Colour-coded source type badges, access links throughout.\n\n**Name page — four-bucket framework**\n- Added analytical section "What Van Vlaenderen Was Doing in Medieval Documents" addressing the toponymic dismissal\n- Four-bucket taxonomy: Governmental phrase / Feudal titulature / Official staff / Hereditary surname\n- Explicitly covers French variants (de Flandre, de Flandres)\n- Bucket 3→4 transition mechanism noted (office-holder\'s son inherits name, not office)\n- Map caption clarification: map plots locations, not pre-classified surname attestations\n- Bucket 4 row highlighted in gold with subtle box-shadow\n- Bilingual EN + NL\n\n---\n\n### Pre-April 11, 2026 — Prior sessions (summary)\n\n- React 19 + Vite + TypeScript scaffold built\n- i18n infrastructure: react-i18next, EN/NL locale files, DeepL sync script\n- All core page components: HomePage, MillPage, NamePage, DnaPage, ResearchPage, VictorLineagePage, LouisFrieseLineagePage, VictorDossierPage, PraetDossierPage, PraetLineageDossierPage, AboutPage, ContactPage, LineagePage\n- FamilyTreeCanvas procedural background animation\n- ResearchMap (Leaflet) interactive map\n- VictorDiagram, PraetDiagram, OverviewDiagram SVG components\n- Lineage page: 14 generations from Jeremiah (~1575) to present with TypeScript types and archive deep-links\n- About page copy developed collaboratively\n- Initial multilingual implementation\n\n---\n*See github.com/iamabotama/vanvlaenderen.org/commits/main for full commit history.*\n';
+const page = {
+  minHeight: "100vh",
+  background: "var(--bg, #0d1117)",
+  color: "var(--text, #e6e6e6)",
+  fontFamily: "Georgia, serif",
+  paddingBottom: "4rem"
+};
+const header = {
+  background: "rgba(232, 184, 48, 0.06)",
+  borderBottom: "1px solid rgba(232, 184, 48, 0.2)",
+  padding: "1.5rem 2rem 1rem"
+};
+const tabBar = {
+  display: "flex",
+  gap: "0.5rem",
+  padding: "1rem 2rem 0",
+  borderBottom: "1px solid rgba(232, 184, 48, 0.15)",
+  flexWrap: "wrap"
+};
+const tabBtn = (active2) => ({
+  background: active2 ? "rgba(232, 184, 48, 0.15)" : "transparent",
+  border: active2 ? "1px solid rgba(232, 184, 48, 0.4)" : "1px solid rgba(255,255,255,0.1)",
+  color: active2 ? "#e8b830" : "#aaa",
+  padding: "0.4rem 1rem",
+  borderRadius: "4px 4px 0 0",
+  cursor: "pointer",
+  fontSize: "0.85rem",
+  fontFamily: "Georgia, serif",
+  marginBottom: "-1px",
+  transition: "all 0.15s"
+});
+const content = {
+  maxWidth: "900px",
+  margin: "0 auto",
+  padding: "2rem"
+};
+const mdWrap = {
+  lineHeight: 1.7,
+  fontSize: "0.92rem"
+};
+function BelgiumPlan() {
+  return /* @__PURE__ */ jsxs("div", { style: mdWrap, children: [
+    /* @__PURE__ */ jsx("h1", { style: { color: "#e8b830", borderBottom: "1px solid rgba(232,184,48,0.3)", paddingBottom: "0.5rem" }, children: "Belgium Genealogy Research Trip" }),
+    /* @__PURE__ */ jsxs("p", { style: { color: "#aaa", fontStyle: "italic" }, children: [
+      "Constance Van Flandern | Michael Van Flandern",
+      /* @__PURE__ */ jsx("br", {}),
+      "March 27 – April 3, 2026 · Bassevelde, Ghent, Aalter, Antwerp, Bruges"
+    ] }),
+    /* @__PURE__ */ jsx("h2", { style: { color: "#e8b830" }, children: "Trip Overview" }),
+    /* @__PURE__ */ jsx("p", { children: "Three research goals: (1) push the Van Vlaenderen lineage further back using pre-parish records — land registers, estate inventories, feudal court records, and schepenbank documents — particularly for the period 1450–1650; (2) gather evidence to determine whether the Meetjesland Van Vlaenderen families share a common origin with the noble Van Vlaenderen lines descending from the natural sons of Louis II de Male, Count of Flanders; and (3) absorb the landscape, architecture, and regional history that shaped our ancestors' lives." }),
+    /* @__PURE__ */ jsx("table", { style: { width: "100%", borderCollapse: "collapse", margin: "1rem 0", fontSize: "0.88rem" }, children: /* @__PURE__ */ jsxs("tbody", { children: [
+      /* @__PURE__ */ jsxs("tr", { children: [
+        /* @__PURE__ */ jsx("td", { style: { padding: "4px 12px 4px 0", color: "#e8b830", whiteSpace: "nowrap" }, children: "Base" }),
+        /* @__PURE__ */ jsx("td", { children: "Bassevelde" })
+      ] }),
+      /* @__PURE__ */ jsxs("tr", { children: [
+        /* @__PURE__ */ jsx("td", { style: { padding: "4px 12px 4px 0", color: "#e8b830", whiteSpace: "nowrap" }, children: "Rijksarchief Gent" }),
+        /* @__PURE__ */ jsxs("td", { children: [
+          "Tue & Thu (by appt.) · ",
+          /* @__PURE__ */ jsx("a", { href: "mailto:Rijksarchief.Gent@arch.be", style: { color: "#60a5fa" }, children: "Rijksarchief.Gent@arch.be" })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("tr", { children: [
+        /* @__PURE__ */ jsx("td", { style: { padding: "4px 12px 4px 0", color: "#e8b830", whiteSpace: "nowrap" }, children: "FV Documentatiecentrum Aalter" }),
+        /* @__PURE__ */ jsxs("td", { children: [
+          "Sat AM · ",
+          /* @__PURE__ */ jsx("a", { href: "mailto:archief@aalter.be", style: { color: "#60a5fa" }, children: "archief@aalter.be" })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("tr", { children: [
+        /* @__PURE__ */ jsx("td", { style: { padding: "4px 12px 4px 0", color: "#e8b830", whiteSpace: "nowrap" }, children: "FelixArchief Antwerp" }),
+        /* @__PURE__ */ jsx("td", { children: "Wed (Rik meeting)" })
+      ] }),
+      /* @__PURE__ */ jsxs("tr", { children: [
+        /* @__PURE__ */ jsx("td", { style: { padding: "4px 12px 4px 0", color: "#e8b830", whiteSpace: "nowrap" }, children: "Bruges archive" }),
+        /* @__PURE__ */ jsx("td", { children: "Thu AM · Case ref: 2026/0451" })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsxs("blockquote", { style: { borderLeft: "3px solid #e8b830", paddingLeft: "1rem", color: "#aaa", margin: "1rem 0" }, children: [
+      /* @__PURE__ */ jsx("strong", { children: "IMPORTANT:" }),
+      " Rijksarchief Gent reading room is open Tuesday, Wednesday, and Thursday ONLY — by appointment. Book both slots (Tue Mar 31 + Thu Apr 2) now via email. Confirm Easter week opening. Pre-request specific collections (see Research Plan)."
+    ] }),
+    /* @__PURE__ */ jsx("h2", { style: { color: "#e8b830", marginTop: "2rem" }, children: "Location 1 — Rijksarchief Gent" }),
+    /* @__PURE__ */ jsx("p", { style: { color: "#aaa", fontSize: "0.85rem" }, children: "Bagattenstraat 43, 9000 Gent · Open Tue/Wed/Thu by appointment · Visit: Tuesday March 31" }),
+    /* @__PURE__ */ jsx("p", { children: "Twenty documents pre-requested across two research threads. Michael works Goal 1 (pre-parish records); Constance works Goal 2 (comital connection). Reconvene at midday." }),
+    /* @__PURE__ */ jsx("h3", { style: { color: "#60a5fa" }, children: "Michael — Goal 1: Pre-Parish Records (M-1 through M-10)" }),
+    [
+      { id: "M-1", title: "Ambacht Boekhoute — Landboeken (AR22)", body: "Bunderboek van Bassevelde; Evenboek van den ambachte van Bouchaute (Boekhoute, Bassevelde, Oosteeklo); kopie landboek 1679 (1694). Per-parcel owner and tenant listings. Search all Van Vlaenderen entries; note neighbouring parcels.", note: "From early 17th century, landboeken were accompanied by parcel maps — often the oldest cartographic source showing a complete village. Ask whether maps survive for Bassevelde." },
+      { id: "M-2", title: "Ambacht Boekhoute — Wettelijke Passeringen (AR22, sectie III.A.3), 1538–1650", body: "Legal deeds: property sales, leases, inheritances, debts. Search Van Vlaenderen as buyer, seller, witness, or party in Bassevelde, Boekhoute, Oosteeklo." },
+      { id: "M-3", title: "Ambacht Boekhoute — Procesdossiers (AR22, sectie III.B.9), 1538–1650", body: "Court cases before the vierschaar and in appeal before the Raad van Vlaanderen. Search Van Vlaenderen as plaintiff or defendant." },
+      { id: "M-4", title: "Ambacht Assenede — Schepenbank en Wettelijke Passeringen, 1500–1650", body: "Legal deeds and court records. Search Van Vlaenderen as buyer, seller, witness, or party. Also ask archivist about dénombrements referencing Van Vlaenderen tenants in the Leenhof Ten Hulle te Bassevelde." },
+      { id: "M-5", title: "Ambacht Assenede — Leenhof Ten Hulle te Bassevelde, 13th century–1650", body: "Feudal court records going back to the 13th century. Search dénombrements and lease registers for Van Vlaenderen as feudal tenant or leaseholder." },
+      { id: "M-6", title: "Kasselrij Oudburg — Rekeningen van de Baljuws", body: "Series 1009–1013 (1605–1710); nr. 1010 (Jacques Adornes, 1558–1559). Bailiff accounts sometimes name prominent landholders by parish. Search Van Vlaenderen in Bassevelde, Oostwinkel, Waarschoot." },
+      { id: "M-7", title: "Kasselrij Oudburg — Denombrement van Paarden en Koeien, nr. 819 (1580–1589)", body: "Per-parish livestock census naming farm operators. The generation immediately before Jeremiah (~1575) — high potential for naming Van Vlaenderen farmers across Meetjesland parishes." },
+      { id: "M-8", title: "Ambacht Waarschoot — Kadaster/Terriers/Zettingboeken + Wezenkamer (AR190, sectie II.A + IV), 1571–1680", body: "Tax registers and orphan chamber records for Waarschoot. Wezenkamer (orphan chamber) records document minor children's property and guardianship when a parent died — often name grandparents and other relatives. Relevant to Petrus Van Vlaenderen (married Waarschoot 1655) and Livinus Van Vlaenderen (born Waarschoot 1658)." },
+      { id: "M-9", title: "Priorij van Waarschoot — Renteboeken en Eigendomsregisters", body: "Rental rolls and property registers from the priory. The priory held extensive land in Waarschoot and its records may name Van Vlaenderen tenants predating the parish registers. Ask archivist what survives." },
+      { id: "M-10", title: "Ambacht Ursel — Staten van Goed: Index + Vroegste Reeks (AR181)", body: "Nr. 516 (index on staten van goed and wettelijke passeringen, 1614–1742) — consult this first as a roadmap to the entire Ursel collection. Then nrs. 183–199 (staten van goed, voogdijrekeningen, akten van verdelingen, 1573–1689, with index) — earliest series, reaching back to 1573.", note: "AR181 also contains item nr. 627: 'Pierre van Vlaendren c. Pierre Bogaert, 1786' — a Van Vlaenderen litigating in the Ursel/Wessegem jurisdiction as late as 1786. Flag for Constance." }
+    ].map((req) => /* @__PURE__ */ jsxs("div", { style: { marginBottom: "1.25rem", paddingLeft: "1rem", borderLeft: "2px solid rgba(96,165,250,0.3)" }, children: [
+      /* @__PURE__ */ jsxs("p", { style: { margin: "0 0 0.25rem", fontWeight: "bold" }, children: [
+        /* @__PURE__ */ jsx("span", { style: { color: "#60a5fa" }, children: req.id }),
+        " — ",
+        req.title
+      ] }),
+      /* @__PURE__ */ jsx("p", { style: { margin: "0 0 0.25rem", fontSize: "0.88rem" }, children: req.body }),
+      req.note && /* @__PURE__ */ jsxs("p", { style: { margin: "0.25rem 0 0", fontSize: "0.83rem", color: "#e8b830", fontStyle: "italic" }, children: [
+        "⚑ ",
+        req.note
+      ] })
+    ] }, req.id)),
+    /* @__PURE__ */ jsx("h3", { style: { color: "#a78bfa", marginTop: "2rem" }, children: "Constance — Goal 2: Comital Connection (C-1 through C-10)" }),
+    [
+      { id: "C-1", title: "Oorkonden Graven van Vlaanderen — Testament Victor van Vlaenderen, 1430", body: "Primary documentary target for the noble connection. The testament of 'her Victor van Vlaendren' named brothers Robert and Charles van Vlaenderen as executors and granted the Lordship of Wessegem. Ask specifically whether an original, copy, or regest survives in the charter collection." },
+      { id: "C-2", title: "Oorkonden Graven van Vlaanderen — Heerlijkheid Wessegem/Ursel, 15th–16th century", body: "Any charters or regests referencing the Lordship of Wessegem and the Van Vlaenderen name. Seeking descendants of Victor: sons Lodewyc, Janne, and Adam van Vlaenderen." },
+      { id: "C-3", title: "Oorkonden Graven van Vlaanderen — Heerlijkheid Praet, 15th–16th century", body: "Records referencing cadet branches of the Praet line: Anton, Josse (Joos), and Jacob van Vlaenderen — individuals who may have transitioned from the noble Praet line into the Meetjesland gentry." },
+      { id: "C-4", title: "Ambacht Ursel — Leenhof van Wessegem; Schepenbank van Wessegem; Wessegemse Renten; Wettelijke Passeringen nr. 395 (AR181)", body: "Feudal court records, schepenbank registers, and rent registers of the Lordship of Wessegem — Victor van Vlaenderen's own lordship. Nr. 395 (1671–1681) explicitly covers Wessegem and Ursel 't Vrije. Search all Van Vlaenderen entries. See also procesdossier nr. 627: Pierre van Vlaendren c. Pierre Bogaert, 1786." },
+      { id: "C-5", title: "Ambacht Ursel — Wettelijke Passeringen, Vroegste Reeksen (AR181)", body: "Nr. 401 (1542, 1601–1619) — PRIORITY: earliest acts going back to 1542, covering all lordships within Ambacht Ursel including Wessegem. Nr. 388 (1619–1643, with index nr. 389); nr. 390 (1642–1652); nr. 391 (1642–1665)." },
+      { id: "C-6", title: "Ambacht Ursel — Ferieboeken (Procedurerollen) (AR181)", body: "Nr. 531 (1586–1599); nr. 532 (1599–1607); nr. 533 (1609–1612). Court procedure rolls naming all parties in local cases — systematic source for the Van Vlaenderen surname in the Ursel/Wessegem jurisdiction in the generations immediately after Jeremiah (~1575)." },
+      { id: "C-7", title: "Staten van Goed — Heerlijkheid en Baronie Praet met Oedelem", body: "Estate inventories from the Praet lordship jurisdiction. Any Van Vlaenderen as tenant, heir, or party before 1600 would be a strong circumstantial bridge to the noble Flanders-Praet line. Ask archivist which item numbers cover the period before 1600." },
+      { id: "C-8", title: "Sint-Baafsabdij — Heerlijkheidsarchief en Renteboeken, Meetjesland", body: "The Sint-Baafsabdij controlled vast East Flemish landholdings. Its rental rolls and lordship registers may name Van Vlaenderen tenants in the 15th–16th century in Bassevelde, Oostwinkel, Waarschoot, or Ursel. Ask archivist to advise on relevant items." },
+      { id: "C-9", title: "Raad van Vlaanderen — Procesdossiers", body: "High court appeals where a Van Vlaenderen party disputes land or inheritance in Bassevelde, Oostwinkel, Waarschoot, Ursel, or Boekhoute. Court dossiers can document family relationships not visible in parish records. Ask archivist to advise on available indices." },
+      { id: "C-10", title: "Oorkonden Graven van Vlaanderen — Erkenning Natuurlijke Kinderen Lodewijk II van Male", body: "Dotation or recognition charters for Victor van Vlaenderen and Louis 'Friese' van Vlaenderen — would name the mother, date of recognition, and lands granted. Ask archivist to confirm whether such documents survive in the charter collection." }
+    ].map((req) => /* @__PURE__ */ jsxs("div", { style: { marginBottom: "1.25rem", paddingLeft: "1rem", borderLeft: "2px solid rgba(167,139,250,0.3)" }, children: [
+      /* @__PURE__ */ jsxs("p", { style: { margin: "0 0 0.25rem", fontWeight: "bold" }, children: [
+        /* @__PURE__ */ jsx("span", { style: { color: "#a78bfa" }, children: req.id }),
+        " — ",
+        req.title
+      ] }),
+      /* @__PURE__ */ jsx("p", { style: { margin: 0, fontSize: "0.88rem" }, children: req.body })
+    ] }, req.id)),
+    /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "#aaa", fontSize: "0.85rem" }, children: "Constance: after working document requests, use the AGATHA reading room terminals to search Van Vlaenderen across East Flemish collections not covered above. This costs no document slot." }),
+    /* @__PURE__ */ jsx("h2", { style: { color: "#e8b830", marginTop: "2.5rem" }, children: "Location 2 — FV Documentatiecentrum Aalter" }),
+    /* @__PURE__ */ jsx("p", { style: { color: "#aaa", fontSize: "0.85rem" }, children: "ArtA'A, Stationsplein 25, 9880 Aalter · Open: Tue & Thu 9:00–19:00 | Sat 9:00–13:00 · €4 day entry (cash)" }),
+    /* @__PURE__ */ jsx("p", { children: "Your visit: Saturday, March 28, 9:00–13:00. The Meetjesland genealogy specialists. Use this visit to identify specific document numbers before your Rijksarchief days." }),
+    /* @__PURE__ */ jsxs("ul", { style: { fontSize: "0.88rem", lineHeight: 1.8 }, children: [
+      /* @__PURE__ */ jsx("li", { children: "Staten van Goed — Ambacht Assenede I (1521–1624) and II (1625–1681) — Indexed by Marijn Claeys. Search all Van Vlaenderen entries. Note reference numbers for original document requests at Rijksarchief" }),
+      /* @__PURE__ */ jsx("li", { children: "Staten van Goed — Ambacht Boekhoute I–III — Covers the Bassevelde jurisdiction directly" }),
+      /* @__PURE__ */ jsx("li", { children: "Staten van Goed — Ambacht Waarschoot, Oostwinkel en Ronsele — Three volumes; covers 17th-century ancestral parishes" }),
+      /* @__PURE__ */ jsx("li", { children: "Staten van Goed — Heerlijkheid en Baronie Praet met Oedelem — Indexed by R.L. Dewulf-Heus. Any Van Vlaenderen entry here connects directly to the noble Praet line" }),
+      /* @__PURE__ */ jsx("li", { children: "Processed parish registers — Oostwinkel, Waarschoot, Bassevelde, Boekhoute" }),
+      /* @__PURE__ */ jsx("li", { children: "Microfilm registers — Oostwinkel and Ronsele available on microfilm here" })
+    ] }),
+    /* @__PURE__ */ jsx("p", { style: { color: "#e8b830", fontStyle: "italic", fontSize: "0.85rem" }, children: "⚑ Ask the volunteers specifically about Van Vlaenderen. These are local specialists who may know of references, published family histories, or other researchers working on the same name." }),
+    /* @__PURE__ */ jsx("h2", { style: { color: "#e8b830", marginTop: "2.5rem" }, children: "Location 3 — FelixArchief Antwerp + Meeting with Rik" }),
+    /* @__PURE__ */ jsx("p", { style: { color: "#aaa", fontSize: "0.85rem" }, children: "Oude Leeuwenrui 29, 2000 Antwerpen · Wednesday, April 1" }),
+    /* @__PURE__ */ jsx("p", { children: "Primarily a meeting with Rik rather than independent archive research. Key questions:" }),
+    /* @__PURE__ */ jsxs("ul", { style: { fontSize: "0.88rem", lineHeight: 1.8 }, children: [
+      /* @__PURE__ */ jsx("li", { children: "Penningkohieren — 16th-century tax registers for East Flanders parishes — do any survive at FelixArchief that aren't at Rijksarchief Gent?" }),
+      /* @__PURE__ */ jsx("li", { children: "Raad van Vlaanderen records — High court appeals from East Flemish families sometimes document land disputes and chains of ownership extending back before the parish era" }),
+      /* @__PURE__ */ jsx("li", { children: "Van Vlaenderen in Antwerp records — The surname appears in Brussels (Laurent, 1645) and Ghent independently of the Meetjesland line — has Rik encountered it in any Antwerp-area sources?" }),
+      /* @__PURE__ */ jsx("li", { children: "Regional expertise — Rik may know of published genealogies, heemkundige studies, or other researchers working on Meetjesland families that haven't surfaced in your own searches" })
+    ] }),
+    /* @__PURE__ */ jsx("h2", { style: { color: "#e8b830", marginTop: "2.5rem" }, children: "Location 4 — Bruges State Archives (Rijksarchief Brugge)" }),
+    /* @__PURE__ */ jsx("p", { style: { color: "#aaa", fontSize: "0.85rem" }, children: "Thursday, April 2 · Appointment: webshop.arch.be/reservations · Case reference: 2026/0451 · Two seats: Michael + Constance" }),
+    /* @__PURE__ */ jsx("p", { children: "The Bruges archivist has confirmed two Joos Van Vlaenderen estate records from 1547 and 1549 in the Brugse Vrije collection — the oldest known documents naming a Van Vlaenderen in the Meetjesland / West Flemish borderzone." }),
+    [
+      { id: "B-1", title: "TBO 184 nr. 21300 (CONFIRMED)", body: "Brugse Vrije. Staten van Goed. Eerste Reeks. Estate/guardianship account relating to Joos Van Vlaenderen, 1547. Read carefully for heirs, guardians, witnesses, property location, and any further Van Vlaenderen names." },
+      { id: "B-2", title: "TBO 184 nr. 21302 (CONFIRMED)", body: "Brugse Vrije. Staten van Goed. Eerste Reeks. Estate/guardianship account relating to Joos Van Vlaenderen, 1549. Two records two years apart suggest ongoing guardianship — possibly for minor children after Joos's death. Calculate birth years of any named children: could they align with Jeremiah (~1575)?", note: "Key questions in both documents: What is the geographic location of Joos's property — does it fall within the Meetjesland corridor? Who are the heirs, guardians, and witnesses? Are any other Van Vlaenderen individuals named?" },
+      { id: "B-3", title: "TBO 184 — Adjacent Numbers or Further Van Vlaenderen Entries", body: "Ask the archivist whether numbers 21299, 21301, or 21303 relate to the same estate, or whether any other Van Vlaenderen entries appear elsewhere in TBO 184." },
+      { id: "B-4", title: "Brugse Vrije — Leenboeken (Feudal Registers)", body: "Any feudal register entries naming Van Vlaenderen as landholder or tenant in parishes adjacent to Bassevelde, Oostwinkel, or Waarschoot, 15th–16th century. The Brugse Vrije leenboeken extend back to the early 15th century and could reach toward Victor van Vlaenderen's generation." },
+      { id: "B-5", title: "Brugse Vrije — Schepenbank Wettelijke Passeringen, c. 1530–1560", body: "Legal deeds recorded before the Brugse Vrije court in the decades preceding Joos's 1547/1549 estate records. Seeking Joos Van Vlaenderen as an active adult in property transactions, loans, or witness appearances that would name family members and establish his geographic location." }
+    ].map((req) => /* @__PURE__ */ jsxs("div", { style: { marginBottom: "1.25rem", paddingLeft: "1rem", borderLeft: "2px solid rgba(232,184,48,0.35)" }, children: [
+      /* @__PURE__ */ jsxs("p", { style: { margin: "0 0 0.25rem", fontWeight: "bold" }, children: [
+        /* @__PURE__ */ jsx("span", { style: { color: "#e8b830" }, children: req.id }),
+        " — ",
+        req.title
+      ] }),
+      /* @__PURE__ */ jsx("p", { style: { margin: "0 0 0.25rem", fontSize: "0.88rem" }, children: req.body }),
+      req.note && /* @__PURE__ */ jsxs("p", { style: { margin: "0.25rem 0 0", fontSize: "0.83rem", color: "#e8b830", fontStyle: "italic" }, children: [
+        "⚑ ",
+        req.note
+      ] })
+    ] }, req.id)),
+    /* @__PURE__ */ jsx("h3", { style: { color: "#e8b830" }, children: "Research Strategy — Bruges" }),
+    /* @__PURE__ */ jsx("p", { style: { fontSize: "0.88rem" }, children: "Constance: work B-1 and B-2 methodically — transcribe every personal name, property location, and relationship. Michael: work B-3 through B-5 with the archivist's guidance. Midday check-in to cross-reference findings." }),
+    /* @__PURE__ */ jsxs("ul", { style: { fontSize: "0.88rem", lineHeight: 1.8 }, children: [
+      /* @__PURE__ */ jsx("li", { children: "Transcribe all personal names in full — every heir, guardian, witness, and creditor" }),
+      /* @__PURE__ */ jsx("li", { children: "Note all property locations — does any fall within the Meetjesland corridor linking Bassevelde and Oostwinkel?" }),
+      /* @__PURE__ */ jsx("li", { children: "If minor children are named, calculate approximate birth years — alignment with Jeremiah (~1575) or Noe (~1605) would be a major breakthrough" }),
+      /* @__PURE__ */ jsx("li", { children: "Note any Van Vlaenderen individuals other than Joos" })
+    ] })
+  ] });
+}
+function MarkdownDoc({ source }) {
+  return /* @__PURE__ */ jsx("div", { style: { ...mdWrap, overflowX: "auto" }, children: /* @__PURE__ */ jsx(
+    ReactMarkdown,
+    {
+      remarkPlugins: [remarkGfm],
+      components: {
+        h1: ({ children }) => /* @__PURE__ */ jsx("h1", { style: { color: "#e8b830", borderBottom: "1px solid rgba(232,184,48,0.3)", paddingBottom: "0.4rem", marginTop: "2rem" }, children }),
+        h2: ({ children }) => /* @__PURE__ */ jsx("h2", { style: { color: "#e8b830", marginTop: "1.75rem" }, children }),
+        h3: ({ children }) => /* @__PURE__ */ jsx("h3", { style: { color: "#60a5fa", marginTop: "1.25rem" }, children }),
+        h4: ({ children }) => /* @__PURE__ */ jsx("h4", { style: { color: "#a78bfa", marginTop: "1rem" }, children }),
+        a: ({ href, children }) => /* @__PURE__ */ jsx("a", { href, style: { color: "#60a5fa" }, target: "_blank", rel: "noopener noreferrer", children }),
+        code: ({ children }) => /* @__PURE__ */ jsx("code", { style: { background: "rgba(255,255,255,0.08)", padding: "0.1em 0.35em", borderRadius: "3px", fontSize: "0.85em", fontFamily: "monospace" }, children }),
+        blockquote: ({ children }) => /* @__PURE__ */ jsx("blockquote", { style: { borderLeft: "3px solid rgba(232,184,48,0.4)", paddingLeft: "1rem", color: "#aaa", margin: "1rem 0" }, children }),
+        table: ({ children }) => /* @__PURE__ */ jsx("table", { style: { borderCollapse: "collapse", width: "100%", margin: "1rem 0", fontSize: "0.88rem" }, children }),
+        th: ({ children }) => /* @__PURE__ */ jsx("th", { style: { textAlign: "left", padding: "6px 10px", background: "rgba(232,184,48,0.1)", borderBottom: "1px solid rgba(232,184,48,0.3)", color: "#e8b830" }, children }),
+        td: ({ children }) => /* @__PURE__ */ jsx("td", { style: { padding: "5px 10px", borderBottom: "1px solid rgba(255,255,255,0.06)" }, children }),
+        li: ({ children }) => /* @__PURE__ */ jsx("li", { style: { marginBottom: "0.2rem" }, children }),
+        hr: () => /* @__PURE__ */ jsx("hr", { style: { border: "none", borderTop: "1px solid rgba(232,184,48,0.15)", margin: "2rem 0" } }),
+        strong: ({ children }) => /* @__PURE__ */ jsx("strong", { style: { color: "#e0e0e0" }, children })
+      },
+      children: source
+    }
+  ) });
+}
+const TABS = [
+  { id: "research", label: "Research Notes" },
+  { id: "website", label: "Website Backlog" },
+  { id: "belgium", label: "Belgium Research Plan" }
+];
+function DocsPage() {
+  const [active2, setActive] = useState("research");
+  const researchSource = researchTodo + "\n\n---\n\n" + readingList;
+  return /* @__PURE__ */ jsxs("div", { style: page, children: [
+    /* @__PURE__ */ jsxs("div", { style: header, children: [
+      /* @__PURE__ */ jsx("div", { style: { fontSize: "0.75rem", letterSpacing: "0.1em", color: "#e8b830", textTransform: "uppercase", marginBottom: "0.25rem" }, children: "Van Vlaenderen · Working Documents" }),
+      /* @__PURE__ */ jsx("h1", { style: { margin: 0, fontSize: "1.4rem", color: "#e6e6e6" }, children: "Research & Project Files" }),
+      /* @__PURE__ */ jsx("p", { style: { margin: "0.35rem 0 0", fontSize: "0.82rem", color: "#666" }, children: "Private — not indexed or linked from the public site. Share URL directly with collaborators." })
+    ] }),
+    /* @__PURE__ */ jsx("div", { style: tabBar, children: TABS.map((tab2) => /* @__PURE__ */ jsx("button", { style: tabBtn(active2 === tab2.id), onClick: () => setActive(tab2.id), children: tab2.label }, tab2.id)) }),
+    /* @__PURE__ */ jsxs("div", { style: content, children: [
+      active2 === "research" && /* @__PURE__ */ jsx(MarkdownDoc, { source: researchSource }),
+      active2 === "website" && /* @__PURE__ */ jsx(MarkdownDoc, { source: websiteTodo }),
+      active2 === "belgium" && /* @__PURE__ */ jsx(BelgiumPlan, {})
+    ] })
+  ] });
+}
 const TYPE_COLORS = {
   "Primary Source": { bg: "rgba(232,184,48,0.15)", color: "#e8b830" },
   "Finding Aid": { bg: "rgba(74,222,128,0.15)", color: "#4ade80" },
@@ -6286,6 +6812,7 @@ function App() {
       /* @__PURE__ */ jsx(Route, { path: "/lineage", element: /* @__PURE__ */ jsx(LineagePage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/about", element: /* @__PURE__ */ jsx(AboutPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/contact", element: /* @__PURE__ */ jsx(ContactPage, {}) }),
+      /* @__PURE__ */ jsx(Route, { path: "/docs", element: /* @__PURE__ */ jsx(DocsPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "*", element: /* @__PURE__ */ jsx(Navigate, { to: "/", replace: true }) })
     ] }) })
   ] });
