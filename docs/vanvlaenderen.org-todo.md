@@ -1,5 +1,5 @@
 # vanvlaenderen.org — Website To-Do & Changelog
-*Last updated: April 11, 2026*
+*Last updated: April 12, 2026*
 *Repository: github.com/iamabotama/vanvlaenderen.org · Branch: main*
 
 ---
@@ -56,7 +56,7 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 
 ### Technical
 - [ ] **Code splitting** — Vite build warns that the single JS bundle exceeds 500KB. Split at route level using `React.lazy()` per page component to reduce initial load. Low urgency but worth doing before the site grows further.
-- [ ] **Schema.org markup** — add `ScholarlyArticle` or `ArchiveComponent` JSON-LD to research dossier pages. Currently only `WebSite` schema is on the homepage. Research pages deserve `Article` with `dateModified`, `author`, and `citation` properties.
+- [x] **Schema.org markup** — `ScholarlyArticle` + `BreadcrumbList` JSON-LD live on all three dossier pages. ✅ April 12, 2026
 - [ ] **French locale (fr)** — backlogged pending Lille/French Flanders research content. Add to i18n infrastructure when content is ready; no architectural change required.
 - [ ] **`/research/methodology`** — Augustyn & Thoen (1987) entry notes the article is not widely available; if a digitised copy is located, add link.
 
@@ -70,7 +70,7 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 ## 🟢 BACKLOG — LONGER TERM
 
 - [ ] **`/research/attestations`** — dedicated chronological attestation page: every known Van Vlaenderen record mapped with date, location, source, bucket classification, and link. Derived from the Citation Chain Status table in the research todo. Highly crawlable; strong SEO signal for scholarly searches.
-- [ ] **Hidden text summaries for diagrams** — the family tree diagrams (VictorDiagram, PraetDiagram, OverviewDiagram) are SVG/canvas and opaque to crawlers. Add visually-hidden `<p>` summaries listing the key lineage data for each diagram.
+- [x] **Hidden text summaries for diagrams** — `.sr-only` diagram summaries live on all three diagram pages. ✅ April 12, 2026
 - [ ] **Image alt text audit** — all manuscript and heraldic images should have specific descriptive alt text (e.g. "Heraldic shields from the Cronike Van Vlaenderen, 15th century manuscript, BnF" not "heraldic image").
 - [ ] **`/research/zeeland`** — possible future page if Zeeland thread develops (Laureys Arentsz, Arent van Vlaenderen). Skeleton only until primary sources are in hand.
 - [ ] **Constance's research** — Goal 2 thread (comital connection) may generate new dossier content once Rijksarchief Gent results are processed.
@@ -78,6 +78,37 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 ---
 
 ## 📋 CHANGELOG
+
+### April 12, 2026 — Build fix, new pages live, branch cleanup
+
+**Bug fix — root cause of build failures**
+- JSON-LD schema curly braces inside TSX template literals were breaking Vite compilation
+- Fix: wrapped all JSON-LD blocks in `dangerouslySetInnerHTML` (`a27ed3b`)
+- Secondary issues resolved in same pass: `MethodologyPage.tsx` had never been committed; `App.tsx` was missing routes for `/research/bibliography` and `/research/methodology`; prerender template corruption bug fixed
+
+**New pages now live**
+- `/research/bibliography` — 22 annotated entries, colour-coded badges, access links; `public/data/bibliography.json` is now the source of truth for bibliography entries
+- `/research/methodology` — transcription/translation methodology + curated reading list; nav link live from `/research`
+
+**Cross-linking complete** (per docs spec)
+- Reference cards on Research overview link to Bibliography
+- Full Bibliography linked from all three dossiers
+- Methodology & Sources linked from About page
+
+**Schema**
+- `ScholarlyArticle` + `BreadcrumbList` JSON-LD live on VictorDossierPage, PraetDossierPage, PraetLineageDossierPage
+
+**Accessibility**
+- `.sr-only` diagram summaries live on VictorDiagram, PraetDiagram, OverviewDiagram
+
+**Branch cleanup**
+- `dist/` removed from main branch tracking
+- `mvf-v2` deleted (remote + local)
+- `mvf` reset to match `main` exactly
+
+**Bug fix — Research page navigation**
+- `useNav.ts` was missing `methodology` and `bibliography` from `ResearchSubpage` type and `RESEARCH_PATHS` map
+- Links on Research page were falling back to `/research` instead of navigating to new pages
 
 ### April 11, 2026 — Major rearchitecture + content sprint
 

@@ -1,5 +1,5 @@
 # Lions of Flanders — Reading List & Methodology
-*Last updated: April 10, 2026*
+*Last updated: April 12, 2026*
 *Companion document to the Research To-Do List*
 
 This document serves two purposes:
@@ -10,8 +10,7 @@ This document serves two purposes:
 
 ## 🌐 WEBSITE DEPLOYMENT — /research/methodology
 
-**Status:** Ready to deploy. New page, does not currently exist.
-**Manus instructions:** Create page at `/research/methodology`. Style to match existing research subpages (dark background, same section heading style, same evidence/source formatting). Add nav link from `/research` — suggested label: **'Methodology & Sources'**. No changes to existing pages required.
+**Status:** ✅ DEPLOYED April 12, 2026. Live at https://vanvlaenderen.org/research/methodology
 
 ---
 

@@ -1,5 +1,5 @@
 # Lions of Flanders — Research To-Do List
-*Last updated: April 11, 2026*
+*Last updated: April 12, 2026*
 
 ---
 
@@ -103,7 +103,7 @@ The family's standing across centuries constitutes a distinct argument strand:
 ### vanvlaenderen.org
 → See **vanvlaenderen.org-todo.md** for full website backlog, citation audit tasks, and changelog.
 
-**April 11, 2026 sprint complete** — rearchitecture, SEO stack, Methodology & Bibliography pages, all handoff edits, four-bucket framework on Name page. See website todo for open items.
+**April 12, 2026 sprint complete** — build failures resolved (JSON-LD/TSX curly brace fix, `a27ed3b`), `/research/bibliography` and `/research/methodology` now live, all cross-linking from docs spec deployed, ScholarlyArticle + BreadcrumbList schema on all dossier pages, `.sr-only` diagram summaries live, Research page navigation fix (`useNav.ts`), `mvf-v2` deleted, `mvf` reset to main. See website todo for open items.
 
 ---
 
