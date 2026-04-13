@@ -6292,7 +6292,7 @@ The family's standing across centuries constitutes a distinct argument strand:
 ### vanvlaenderen.org
 → See **vanvlaenderen.org-todo.md** for full website backlog, citation audit tasks, and changelog.
 
-**April 12, 2026 sprint complete** — build failures resolved, \`/research/bibliography\`, \`/research/methodology\`, \`/research/gap-dossier\`, and \`/docs\` now live; gap dossier frames the 1447–1580 problem with two upper anchors (Victor + Praet), 1517 Knesselare charter, TBO 184 records, three working hypotheses, and Gemini's scribal language note on Josse's surname; private docs page live with curated Belgium research plan. See website todo for open items.
+**April 12, 2026 sprint complete** — build failures resolved, gap dossier live, private docs page live, citation audit complete across all three dossiers and bibliography.json. Key audit findings: Vredius 1639 (*Sigilla*) vs 1643 (*Genealogia, Pars secunda*) correctly differentiated; full archival signatures added for TBO 184 records; Buylaert, Bethune, Espinoy, Cronike van Vlaenderen all corrected or upgraded. See website todo changelog for full detail.
 
 ---
 
