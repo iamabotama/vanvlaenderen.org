@@ -1635,7 +1635,8 @@ const RESEARCH_PATHS = {
   "praet-dossier": "/research/praet-dossier",
   "praet-lineage-dossier": "/research/praet-lineage-dossier",
   "methodology": "/research/methodology",
-  "bibliography": "/research/bibliography"
+  "bibliography": "/research/bibliography",
+  "gap-dossier": "/research/gap-dossier"
 };
 function useNav() {
   const navigate = useNavigate();
@@ -1828,7 +1829,7 @@ function HomePage() {
     ] })
   ] });
 }
-const meetjeslandMap = "/assets/meetjesland-map-CT1b2Tqt.jpg";
+const meetjeslandMap$1 = "/assets/meetjesland-map-CT1b2Tqt.jpg";
 const page$1 = "_page_5rbee_3";
 const heroStrip = "_heroStrip_5rbee_15";
 const heroImg = "_heroImg_5rbee_21";
@@ -2008,7 +2009,7 @@ function MillPage() {
           "div",
           {
             className: millStyles.meetjeslandMapBg,
-            style: { backgroundImage: `url(${meetjeslandMap})` }
+            style: { backgroundImage: `url(${meetjeslandMap$1})` }
           }
         ),
         /* @__PURE__ */ jsxs("div", { className: millStyles.meetjeslandContent, children: [
@@ -2221,7 +2222,7 @@ function NamePage() {
         /* @__PURE__ */ jsx(
           "img",
           {
-            src: meetjeslandMap,
+            src: meetjeslandMap$1,
             alt: t("name.map_alt"),
             className: nameStyles.mapImage
           }
@@ -3459,6 +3460,27 @@ function ResearchPage() {
       /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Reference" }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
+          /* @__PURE__ */ jsxs(
+            "div",
+            {
+              className: researchStyles.branchCard,
+              tabIndex: 0,
+              style: { cursor: "pointer" },
+              onClick: () => goToResearch("gap-dossier"),
+              onKeyDown: (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  goToResearch("gap-dossier");
+                }
+              },
+              "aria-label": "The Documentary Gap",
+              children: [
+                /* @__PURE__ */ jsx("h3", { children: "The Documentary Gap, 1447–1580" }),
+                /* @__PURE__ */ jsx("p", { children: "The 130-year span between the last confirmed comital-line bearer and the first Meetjesland parish generation. Evidence in hand, searches completed, active archival targets, and three working hypotheses for how the gap closes." }),
+                /* @__PURE__ */ jsx("span", { className: researchStyles.branchLink, "aria-hidden": "true", children: "Explore the Gap →" })
+              ]
+            }
+          ),
           /* @__PURE__ */ jsxs(
             "div",
             {
@@ -5854,6 +5876,279 @@ function MethodologyPage() {
     ] })
   ] });
 }
+const meetjeslandMap = "/assets/meetjesland-map-D7thb5CK.jpg";
+function GapDossierPage() {
+  const { goTo } = useNav();
+  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+    /* @__PURE__ */ jsxs(Helmet, { children: [
+      /* @__PURE__ */ jsx("title", { children: "The Documentary Gap, 1447–1580 | vanvlaenderen.org" }),
+      /* @__PURE__ */ jsx("meta", { name: "description", content: "The 130-year gap between Adam van Vlaendren (last attested 1447) and the Meetjesland parish cluster (fl. 1547–). Archival evidence in hand, searches completed, active targets, and working hypotheses." }),
+      /* @__PURE__ */ jsx("link", { rel: "canonical", href: "https://vanvlaenderen.org/research/gap-dossier" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:title", content: "The Documentary Gap, 1447–1580 — Van Vlaenderen Research" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:description", content: "Named gap between the comital bastard lines and the Meetjesland parish cluster. Evidence in hand, active archival targets, and three working hypotheses." }),
+      /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/gap-dossier" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"The Documentary Gap, 1447–1580","description":"The evidentiary gap between the last confirmed comital-line van Vlaenderen bearer (1447) and the Meetjesland parish cluster (fl. 1547–). Archival evidence, search record, active targets, and working hypotheses.","url":"https://vanvlaenderen.org/research/gap-dossier","inLanguage":"en","dateModified":"2026-04-12","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}` } }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"The Gap (1447–1580)","item":"https://vanvlaenderen.org/research/gap-dossier"}]}` } })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+      /* @__PURE__ */ jsx(
+        "div",
+        {
+          className: styles$1.heroImg,
+          style: { backgroundImage: `url(${meetjeslandMap})`, backgroundPosition: "center center" },
+          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+        }
+      ),
+      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: "Van Vlaenderen · Research Dossier" }),
+        /* @__PURE__ */ jsx("h1", { children: "The Documentary Gap" }),
+        /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
+        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "1447–1580. The span between the last confirmed comital-line bearer and the first Meetjesland parish generation. This dossier names the gap, records what has been searched, and tracks the archival work required to close it." })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+      /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
+        /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Research Dossier" }),
+        /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: researchStyles.methodologyBox, children: [
+        /* @__PURE__ */ jsx("span", { className: researchStyles.methodologyTitle, children: "About this dossier" }),
+        /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)" }, children: "This dossier documents what is currently unknown. A gap of approximately 130 years separates the last confirmed bearers of the van Vlaenderen surname in the medieval comital record from the earliest confirmed Van Vlaenderen generation in the Meetjesland parish registers. Naming the gap precisely, recording what has been searched, and identifying the archival targets most likely to close it is itself a research contribution. This page will be updated as evidence emerges." }),
+        /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.85rem", marginTop: "1rem", fontStyle: "italic", color: "var(--text-muted)", borderTop: "1px solid rgba(232, 184, 48, 0.1)", paddingTop: "1rem" }, children: [
+          /* @__PURE__ */ jsx("strong", { children: "Evidence levels" }),
+          " follow the same four-tier framework used throughout the research dossiers:",
+          /* @__PURE__ */ jsx("strong", { children: " Directly Attested" }),
+          " (primary source; quoted or in hand),",
+          /* @__PURE__ */ jsx("strong", { children: " Strongly Corroborated" }),
+          " (concordant published sources),",
+          /* @__PURE__ */ jsx("strong", { children: " Probable" }),
+          " (source-based; fuller inspection pending),",
+          /* @__PURE__ */ jsx("strong", { children: " Hypothesis" }),
+          " (inference proposed for archival testing)."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: "The Problem" }),
+        /* @__PURE__ */ jsx("p", { children: "The Van Vlaenderen research has two well-documented clusters separated by a substantial chronological gap." }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          /* @__PURE__ */ jsx("strong", { children: "The lower anchor" }),
+          " — the Meetjesland parish cluster — is well established from the 1580s onward. The earliest generation in the documented American line is Jeremiah van Vlaenderen, born approximately 1575 in the Meetjesland. The cluster concentrates in Waarschoot, Oostwinkel, Bassevelde, and adjacent parishes, with continuous parish-record coverage from the 1580s through Charles Louis van Vlaenderen's emigration in 1881. The 1547 Bruges estate records (TBO 184, bundle 21300) push this anchor back further — placing Van Vlaenderen individuals in the same geographic zone approximately 30 years before Jeremiah's birth."
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          /* @__PURE__ */ jsx("strong", { children: "The upper anchor is not a single line but two" }),
+          ", both descending from Louis II de Male and both documented using ",
+          /* @__PURE__ */ jsx("em", { children: "van Vlaenderen" }),
+          " as a hereditary surname."
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          /* @__PURE__ */ jsx("em", { children: "Victor's line." }),
+          " Victor van Vlaenderen's three natural sons — Lodewyc, Janne, and Adam — are directly attested across three charters spanning 1427 to 1447. Adam van Vlandren is the last confirmed bearer of the surname in this line, his final attestation being a charter of 18 March 1447 N.S. After that date, no further record of any of Victor's sons has been located in any source yet consulted. The gap between Adam's last attestation and the lower anchor is approximately 130 years."
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          /* @__PURE__ */ jsx("em", { children: "The Praet line." }),
+          " Louis Friese van Vlaenderen (d. Nicopolis, 1396) founded a parallel comital-bastard branch whose surname use is documented across six generations through to Jan II van Vlaenderen (d. 10 December 1545). The legitimate Praet male line ends with Jan II, who died without issue. However, a documented cadet branch — Josse de Flandre, son of Johan I, married Martina van Moerkerke — survived until at least 1592, directly overlapping with the first parish-record generation of the Meetjesland cluster. The surname form used by Josse's descendants has not yet been confirmed in sources currently reviewed, but the branch is documented and the question remains open."
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "The gap, precisely stated, is not a single span but a structural problem: two comital lines bearing the surname are documented above 1545; a commoner cluster bearing the surname is documented below 1547; and no record has yet been located connecting either upper line to the lower cluster." })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsxs("h2", { children: [
+          "The 1517 Knesselare Charter — Closest Known Bridge ",
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "The single most significant piece of evidence currently in hand for the gap period is a charter of 1517 [FMG 891] recording Lodewijk IV van Vlaenderen holding six fiefs at Knesselare from the seigneurie of Wessegem." }),
+        /* @__PURE__ */ jsx("p", { children: "Knesselare sits geographically between the Praet lordship (Oedelem/Beernem) and the core Van Vlaenderen Meetjesland cluster. The Wessegem seigneurie is the same lordship held by Victor van Vlaenderen and his sons in the 15th century. This charter therefore places a Praet-line van Vlaenderen in direct territorial contact with the research zone, holding rights derived from Victor's former lordship, 30 years before the TBO 184 cluster and 58 years before Jeremiah's estimated birth." }),
+        /* @__PURE__ */ jsx("p", { children: "This charter does not establish a family connection between the Praet van Vlaenderens and the commoner Van Vlaenderen cluster. But it confirms that the two lines were operating in overlapping territory during the gap period, and that the Wessegem seigneurie — the geographic and genealogical anchor of the entire research — remained in van Vlaenderen hands well into the 16th century." }),
+        /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }, children: [
+          /* @__PURE__ */ jsx("strong", { children: "Archival note:" }),
+          " cited in FMG MedLands [891] via Vredius (1643). Underlying archive not yet directly consulted."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: "Evidence from the Gap Period" }),
+        /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "1.5rem" }, children: [
+          "Bruges State Archives, TBO 184, bundle 21300 (1547) ",
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "Estate records for Joos, Jacob, and Phillip van Vlaenderen, dated 1547. Jacob's land is described as adjacent to Phillip's — a strong indicator of family relationship. These are the earliest primary sources yet located for the Meetjesland cluster and predate the first parish-record generation by approximately 30 years. They are Bucket 4 hereditary surname attestations. No connection to either comital line is established." }),
+        /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }, children: [
+          /* @__PURE__ */ jsx("strong", { children: "Archival signature:" }),
+          " Rijksarchief Brugge, Brugse Vrije, TBO 184, nr. 21300. Consulted April 2026. Reference: case 2026/0451."
+        ] }),
+        /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "2rem" }, children: [
+          "Bruges State Archives, TBO 184, bundle 21302 (1549) ",
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "Guardianship record for Joos van Vlaenderen, 1549. Confirms the same Meetjesland cluster two years after bundle 21300." }),
+        /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }, children: [
+          /* @__PURE__ */ jsx("strong", { children: "Archival signature:" }),
+          " Rijksarchief Brugge, Brugse Vrije, TBO 184, nr. 21302. Consulted April 2026. Reference: case 2026/0451."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: "Search Record — Negative and Partial Results" }),
+        /* @__PURE__ */ jsx("p", { children: "The following sources have been searched without producing a bridging record:" }),
+        /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: [
+          "Debrabandere, ",
+          /* @__PURE__ */ jsx("em", { children: "Woordenboek van de familienamen in Zeeland" }),
+          " (WFZ), 2009"
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "Searched in full. One attestation in Zeeland (Aardenburg, 1309–10) refers to Count Robert de Béthune himself — Bucket 2 titular usage, not a surname bearer. No hereditary van Vlaenderen cluster in Zeeland. Strengthens East Flanders as the surname's geographic core." }),
+        /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: [
+          "Debrabandere, ",
+          /* @__PURE__ */ jsx("em", { children: "Woordenboek van de familienamen in België en Noord-Frankrijk" }),
+          " (WFB2), 2003"
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "Van Vlaenderen entry read via CBG Familienamenbank. Pure place-name classification; three attestations (1280, 1376, 1426), all pre-cluster, none in the Meetjesland. Entry uncorrected in 2010 and 2019 corrigenda. Does not engage with the East Flanders parish-record concentration." }),
+        /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "AGATHA portal — Staten van Goed searches, March 2026" }),
+        /* @__PURE__ */ jsx("p", { children: "Searched Ambacht Assenede I & II, Boekhoute I–III, Waarschoot/Oostwinkel/Ronsele, and Heerlijkheid Praet met Oedelem for Van Vlaenderen entries to build the Rijksarchief Gent request list. Results being processed." }),
+        /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "Familiekunde Vlaanderen, Aalter — visit March 2026" }),
+        /* @__PURE__ */ jsx("p", { children: "Archivist absent during visit. Follow-up correspondence pending." }),
+        /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "Rijksarchief Gent — Goal 1 and Goal 2 threads (appointment March 31, 2026)" }),
+        /* @__PURE__ */ jsx("p", { children: "Twenty documents requested across two research threads. Results being processed. Any record naming a Van Vlaenderen individual between 1447 and 1580 in the Meetjesland zone would be significant." })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: "Active Archival Targets" }),
+        /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: [
+          "1. Gysseling & Debrabandere, ",
+          /* @__PURE__ */ jsx("em", { children: "Persoonsnamen in de Vier Ambachten" }),
+          " (GYSS. 1999), KCTD vol. 71"
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Personal names in Boekhoute, Assenede, Axel, and Hulst — the heart of the research zone — in the 14th and 15th centuries. Free via the KCTD portal at",
+          " ",
+          /* @__PURE__ */ jsx("a", { href: "https://openjournals.ugent.be/hctd", target: "_blank", rel: "noopener noreferrer", className: researchStyles.refLink, children: "openjournals.ugent.be/hctd" }),
+          ". The single highest-priority unread source."
+        ] }),
+        /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "2. Buylaert — Josse de Flandre cadet branch documentation" }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Josse de Flandre's line (son of Johan I) is documented by Buylaert [FMG 881, 882] as surviving until at least 1592 — directly overlapping with the first Meetjesland parish-record generation. The underlying Buylaert prosopographical sources have not been consulted directly. Tracing Josse's children and grandchildren into parish or estate records, whether under ",
+          /* @__PURE__ */ jsx("em", { children: "van Vlaenderen" }),
+          ",",
+          " ",
+          /* @__PURE__ */ jsx("em", { children: "de Flandre" }),
+          ", or a variant form, is the shortest archival path to closing the Praet gap."
+        ] }),
+        /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "3. Rijksarchief Gent — Raad van Vlaanderen records" }),
+        /* @__PURE__ */ jsx("p", { children: "Court records of the Council of Flanders. Family disputes, property litigation, and testamentary proceedings often preserved surname continuity across generations that parish records missed. Recommended next archival target for both the Victor and Praet threads." }),
+        /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "4. Leenregisters — Kasselrij Oudburg and Brugse Vrije" }),
+        /* @__PURE__ */ jsx("p", { children: "The Wessegem seigneurie passed through van Vlaenderen hands from Victor through Lodewijk IV (confirmed 1517). Leenregisters tracking those holdings may record van Vlaenderen individuals through the gap period. The chain of Wessegem tenure is itself an archival thread worth following independently of the surname record." }),
+        /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "5. Verbeurde Goederen 1382 (VG), ARA Brussels, Rekenkamer 1163" }),
+        /* @__PURE__ */ jsx("p", { children: "Confiscated goods list compiled immediately after the Ghent rebellion of 1382, during Louis II de Male's final years. May contain van Vlaenderen individuals from the comital milieu. Requires ARA Brussels visit or remote request." }),
+        /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: [
+          "6. Limburg-Stirum, ",
+          /* @__PURE__ */ jsx("em", { children: "Cartulaire de Louis de Male" }),
+          " (CLM), Bruges, 1898–1901"
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Primary cartulary for Louis II de Male's reign with an alphabetical personal names index. Explicitly cited in the WFB2 apparatus. Held at",
+          " ",
+          /* @__PURE__ */ jsx("a", { href: "http://lib.ugent.be/catalog/rug01:002005149", target: "_blank", rel: "noopener noreferrer", className: researchStyles.refLink, children: "Ghent University Library" }),
+          ". Most direct route to additional 14th-century charter evidence for either comital line."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: "Working Hypotheses" }),
+        /* @__PURE__ */ jsx("p", { children: "Three hypotheses are currently viable. They are not mutually exclusive — the 1547 TBO 184 cluster could represent a mixed population drawing from more than one origin." }),
+        /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "1.5rem" }, children: [
+          "Hypothesis A — Descent from Victor's line ",
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: "Hypothesis" })
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "One of Victor's three sons (most probably Adam, the last attested) had descendants who settled in the Meetjesland as the family's comital identity faded into the commoner population. The surname persisted as a hereditary identifier. The gap would be closed by locating estate or leenregister records naming van Vlaenderen individuals in the Ursel/Assenede/Boekhoute zone between 1447 and 1547." }),
+        /* @__PURE__ */ jsx("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }, children: "Current status: plausible. Not evidenced. ~130-year gap." }),
+        /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "2rem" }, children: [
+          "Hypothesis B — Descent from the Praet line ",
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: "Hypothesis" })
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "The Josse de Flandre cadet branch, documented to at least 1592, represents a Praet-line van Vlaenderen population that survived into the parish-record period. The 1517 Knesselare charter places Lodewijk IV in direct territorial contact with the research zone. Under this hypothesis the TBO 184 individuals and/or Jeremiah's generation descend from Josse's branch. The gap would be closed by tracing Josse's descendants through Buylaert's sources and into Meetjesland records." }),
+        /* @__PURE__ */ jsx("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }, children: "Current status: plausible. Josse's branch is the shortest documentary path. Surname form in his descendants not yet confirmed in sources reviewed." }),
+        /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "2rem" }, children: [
+          "Hypothesis C — Independent Bucket 4 emergence ",
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: "Hypothesis" })
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "The Meetjesland Van Vlaenderens acquired the surname independently of either comital line — through the Bucket 3 mechanism (an office-holder's son inheriting the name rather than the office) or through geographic association with the former comital territory. Under this hypothesis no documentary chain connects the clusters and the gap is structural rather than resolvable by archival work alone." }),
+        /* @__PURE__ */ jsx("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }, children: "Current status: cannot be excluded. Y-DNA testing is the primary tool for distinguishing Hypothesis C from Hypotheses A and B." })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: "Y-DNA as a Parallel Verification Strategy" }),
+        /* @__PURE__ */ jsx("p", { children: "Documentary research alone cannot currently distinguish between the three working hypotheses. Y-DNA testing offers a complementary path: if additional male-line Van Vlaenderen descendants can be recruited for comparison, a shared haplogroup across geographically separated lines would support a common patrilineal ancestor (Hypotheses A or B), while divergent haplogroups between branches would support independent emergence (Hypothesis C). The American line has been tested (haplogroup R-FT1573, Big Y-700); no close database matches have been found to date." }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "The full genetic genealogy project — including haplogroup details, methodology, and how to participate — is documented on the",
+          " ",
+          /* @__PURE__ */ jsx(
+            "button",
+            {
+              onClick: () => goTo("dna"),
+              style: { background: "none", border: "none", cursor: "pointer", padding: 0, color: "var(--gold)", textDecoration: "underline", font: "inherit" },
+              children: "DNA page"
+            }
+          ),
+          "."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: researchStyles.referenceList, children: [
+        /* @__PURE__ */ jsx("h2", { children: "Notes & Bibliography" }),
+        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "1." }),
+          "Rijksarchief Brugge, Brugse Vrije, TBO 184, nr. 21300 (1547). Estate records, Joos, Jacob, and Phillip van Vlaenderen. Consulted April 2026. Reference: case 2026/0451."
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "2." }),
+          "Rijksarchief Brugge, Brugse Vrije, TBO 184, nr. 21302 (1549). Guardianship record, Joos van Vlaenderen. Consulted April 2026. Reference: case 2026/0451."
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "3." }),
+          "Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025. Adam van Vlaendren [855]; Lodewijk IV Knesselare charter [891]; Josse de Flandre [881, 882].",
+          " ",
+          /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Foundation for Medieval Genealogy, MedLands: Flanders & Hainaut" })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "4." }),
+          "Buylaert, Frederik. Prosopographical research on Flemish nobility. Cited via FMG MedLands [881, 882] for Josse de Flandre and cadet Praet branches. Underlying sources not yet directly consulted."
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "5." }),
+          "Debrabandere, Frans. ",
+          /* @__PURE__ */ jsx("em", { children: "Woordenboek van de familienamen in België en Noord-Frankrijk." }),
+          " ",
+          "LJ Veen, 2003. Van Vlaenderen entry via CBG Familienamenbank.",
+          " ",
+          /* @__PURE__ */ jsx("a", { href: "https://www.cbgfamilienamen.nl", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "cbgfamilienamen.nl" })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "6." }),
+          "Debrabandere, Frans. ",
+          /* @__PURE__ */ jsx("em", { children: "Woordenboek van de familienamen in Zeeland." }),
+          " 2009. Searched in full — no hereditary surname bearers.",
+          " ",
+          /* @__PURE__ */ jsx("a", { href: "https://www.naamkunde.net/wp-content/uploads/2010/01/WZF-Debrabandere.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Free PDF, naamkunde.net" })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "7." }),
+          "Gysseling, M. & Debrabandere, F. ",
+          /* @__PURE__ */ jsx("em", { children: "Persoonsnamen in de Vier Ambachten, 14e en 15e eeuw." }),
+          " ",
+          "KCTD vol. 71 (1999), pp. 491–588.",
+          " ",
+          /* @__PURE__ */ jsx("a", { href: "https://openjournals.ugent.be/hctd", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Free via KCTD portal" }),
+          " ",
+          "— not yet read."
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "8." }),
+          "Limburg-Stirum, Th. de. ",
+          /* @__PURE__ */ jsx("em", { children: "Cartulaire de Louis de Male, comte de Flandre." }),
+          " ",
+          "Bruges, 1898–1901. Held at",
+          " ",
+          /* @__PURE__ */ jsx("a", { href: "http://lib.ugent.be/catalog/rug01:002005149", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library" }),
+          " ",
+          "— not yet consulted."
+        ] })
+      ] })
+    ] })
+  ] });
+}
 const TYPE_COLORS = {
   "Primary Source": { bg: "rgba(232,184,48,0.15)", color: "#e8b830" },
   "Finding Aid": { bg: "rgba(74,222,128,0.15)", color: "#4ade80" },
@@ -5980,6 +6275,7 @@ function App() {
       /* @__PURE__ */ jsx(Route, { path: "/research/praet-dossier", element: /* @__PURE__ */ jsx(PraetDossierPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/research/praet-lineage-dossier", element: /* @__PURE__ */ jsx(PraetLineageDossierPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/research/methodology", element: /* @__PURE__ */ jsx(MethodologyPage, {}) }),
+      /* @__PURE__ */ jsx(Route, { path: "/research/gap-dossier", element: /* @__PURE__ */ jsx(GapDossierPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/research/bibliography", element: /* @__PURE__ */ jsx(BibliographyPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/lineage", element: /* @__PURE__ */ jsx(LineagePage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/about", element: /* @__PURE__ */ jsx(AboutPage, {}) }),
@@ -6086,6 +6382,14 @@ const PAGE_META = {
     ogTitle: "About — Lions of Flanders Project",
     ogDescription: "Fifteen years of research into a Flemish family name. Archival fieldwork in Ghent, Bruges, and the Meetjesland.",
     ogType: "website"
+  },
+  "/research/gap-dossier": {
+    title: "The Documentary Gap, 1447–1580 | vanvlaenderen.org",
+    description: "The 130-year gap between Adam van Vlaendren (last attested 1447) and the Meetjesland parish cluster (fl. 1547–). Archival evidence in hand, searches completed, active targets, and three working hypotheses.",
+    canonical: "https://vanvlaenderen.org/research/gap-dossier",
+    ogTitle: "The Documentary Gap, 1447–1580 — Van Vlaenderen Research",
+    ogDescription: "Named gap between the comital bastard lines and the Meetjesland parish cluster. Evidence in hand, active archival targets, and three working hypotheses.",
+    ogType: "article"
   },
   "/contact": {
     title: "Contact — Van Vlaenderen Research | vanvlaenderen.org",
