@@ -40,6 +40,7 @@ const ROUTES = [
   '/research/bibliography',
   '/research/methodology',
   '/research/gap-dossier',
+  '/docs',
 ]
 
 // ── Head tag builder ───────────────────────────────────────────────────────
@@ -153,9 +154,15 @@ async function prerender() {
 
   for (const route of ROUTES) {
     try {
-      const { html: appHtml } = render(route)
-      const meta = PAGE_META[route]
-      const pageHtml = injectIntoTemplate(template, appHtml, meta)
+      let pageHtml
+
+      if (route === '/docs') {
+        pageHtml = template
+      } else {
+        const { html: appHtml } = render(route)
+        const meta = PAGE_META[route]
+        pageHtml = injectIntoTemplate(template, appHtml, meta)
+      }
 
       const outDir  = route === '/' ? distDir : path.join(distDir, route.slice(1))
       fs.mkdirSync(outDir, { recursive: true })
