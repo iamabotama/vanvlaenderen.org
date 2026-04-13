@@ -116,6 +116,14 @@ export const PAGE_META: Record<string, PageMeta> = {
     ogDescription: 'Fifteen years of research into a Flemish family name. Archival fieldwork in Ghent, Bruges, and the Meetjesland.',
     ogType: 'website',
   },
+  '/research/gap-dossier': {
+    title: 'The Documentary Gap, 1447–1580 | vanvlaenderen.org',
+    description: 'The 130-year gap between Adam van Vlaendren (last attested 1447) and the Meetjesland parish cluster (fl. 1547–). Archival evidence in hand, searches completed, active targets, and three working hypotheses.',
+    canonical: 'https://vanvlaenderen.org/research/gap-dossier',
+    ogTitle: 'The Documentary Gap, 1447–1580 — Van Vlaenderen Research',
+    ogDescription: 'Named gap between the comital bastard lines and the Meetjesland parish cluster. Evidence in hand, active archival targets, and three working hypotheses.',
+    ogType: 'article',
+  },
   '/contact': {
     title: 'Contact — Van Vlaenderen Research | vanvlaenderen.org',
     description: 'Get in touch with the Van Vlaenderen research project. Share family connections, Y-DNA results, or archival findings related to the Van Vlaenderen / Van Flandern surname.',

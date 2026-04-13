@@ -120,6 +120,24 @@ export default function ResearchPage() {
               className={researchStyles.branchCard}
               tabIndex={0}
               style={{ cursor: 'pointer' }}
+              onClick={() => goToResearch('gap-dossier')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('gap-dossier'); } }}
+              aria-label="The Documentary Gap"
+            >
+              <h3>The Documentary Gap, 1447&ndash;1580</h3>
+              <p>
+                The 130-year span between the last confirmed comital-line bearer and the first Meetjesland
+                parish generation. Evidence in hand, searches completed, active archival targets, and
+                three working hypotheses for how the gap closes.
+              </p>
+              <span className={researchStyles.branchLink} aria-hidden="true">
+                Explore the Gap &rarr;
+              </span>
+            </div>
+            <div
+              className={researchStyles.branchCard}
+              tabIndex={0}
+              style={{ cursor: 'pointer' }}
               onClick={() => goToResearch('methodology')}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('methodology'); } }}
               aria-label="Methodology and Sources"
