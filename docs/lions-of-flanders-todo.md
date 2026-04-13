@@ -103,7 +103,7 @@ The family's standing across centuries constitutes a distinct argument strand:
 ### vanvlaenderen.org
 → See **vanvlaenderen.org-todo.md** for full website backlog, citation audit tasks, and changelog.
 
-**April 12, 2026 sprint complete** — build failures resolved (JSON-LD/TSX curly brace fix, `a27ed3b`), `/research/bibliography` and `/research/methodology` now live, all cross-linking from docs spec deployed, ScholarlyArticle + BreadcrumbList schema on all dossier pages, `.sr-only` diagram summaries live, Research page navigation fix (`useNav.ts`), `mvf-v2` deleted, `mvf` reset to main. See website todo for open items.
+**April 12, 2026 sprint complete** — build failures resolved, `/research/bibliography`, `/research/methodology`, `/research/gap-dossier`, and `/docs` now live; gap dossier frames the 1447–1580 problem with two upper anchors (Victor + Praet), 1517 Knesselare charter, TBO 184 records, three working hypotheses, and Gemini's scribal language note on Josse's surname; private docs page live with curated Belgium research plan. See website todo for open items.
 
 ---
 
