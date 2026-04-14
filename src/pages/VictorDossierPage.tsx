@@ -260,7 +260,7 @@ export default function VictorDossierPage() {
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>6.</span>
-            Brouwers, D.D. <em>Corvers en zeeschuimers van den Vlaemsche zeecoste.</em> Unpublished thesis, Ghent University, 2012. Notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.'{' '}
+            Tailler, Margaux. <em>Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees.</em> Master of Arts in History, Ghent University, 2011. Supervised by Jan Dumolyn. Notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.'{' '}
             <a href="https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library, Thesis RUG01-001786522 (2012)</a>
           </div>
         </section>

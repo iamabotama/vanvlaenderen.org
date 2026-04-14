@@ -80,6 +80,31 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 
 ## 📋 CHANGELOG
 
+### April 13, 2026 — Citation corrections + selective scholarly tone pass
+
+**Factual corrections (taken without reservation)**
+- Victor dossier ref 6 (*Corvers en zeeschuimers*): author corrected from "Brouwers, D.D." → **Tailler, Margaux**; year 2012 → **2011**; supervisor Jan Dumolyn added. Same fix applied to VictorLineagePage.
+- bibliography.json *Cronike van Vlaenderen*: unverified Gallica ARK replaced with confirmed Utrecht University Repository link
+- NamePage spelling variants: removed duplicate "Van Vlaenderen" entry
+- Note: Buylaert [881, 882] = *Repertorium van de Vlaamse adel* (2011) confirmed via FMG citation pattern — citation stands as-is
+
+**Legitimate softening (taken)**
+- Homepage hypothesis two: "circumstantial evidence" → "merits further investigation, but at present remains a hypothesis requiring additional archival and genetic evidence"
+- Homepage hypothesis one: "single common ancestor" → adds "within the early modern documentary period" to prevent overreach
+- DNA page: "almost certainly share a common paternal ancestor" → "closely matching Y-DNA results — particularly at the terminal SNP level — may share a relatively recent common paternal ancestor" (scientific accuracy)
+- DNA page: "compelling possibility" → "raises the possibility" ("compelling" implies conclusion)
+- Victor lineage gap: internal date inconsistency fixed — "Adam, fl. 1441" → "last confirmed 1447"
+- Victor lineage gap: "strongest available non-genealogical evidence" → "one of the strongest available forms of indirect evidence"
+- NamePage Wessegem village note: "Baptism and marriage registers" → "Medieval territorial and seigneurial references associated with the Ursel area" (historically imprecise as stated)
+- NamePage Cronike caption: "Direct documentary evidence of the Van Vlaenderen name" → reframed as contextual/political evidence (the shields refer to counts, not the surname family — caption was genuinely misleading)
+
+**Deliberately preserved (feedback declined)**
+- ResearchPage crystallisation paragraph: "not a geographic descriptor, but a marker of comital illegitimate descent" — this is the site's central interpretive argument; over-hedging flattens it
+- Victor pull quote: "most direct documented link" — pull quotes are assertive by convention
+- Name page four-bucket conclusion: "often the progenitor" and "it makes its persistence meaningful" — these are in an explicitly argumentative section
+- DNA pull quote: "Genealogy without genetics is like a map without a compass" — public-facing page, acceptable
+- Mill page: "craft passed from father to son" — evocative and not inaccurate
+
 ### April 12, 2026 — Citation audit across all three dossiers + bibliography
 
 **Vredius edition correction (critical)**

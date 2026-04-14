@@ -42,7 +42,7 @@ export default function NamePage() {
   ];
 
   const variations = [
-    'Van Vlaenderen', 'Van Vlaenderen', 'Van Vlaendereen',
+    'Van Vlaenderen', 'Van Vlaendereen',
     'Vanvlaenderen', 'Van Flanderen', 'Vanflanderen',
     'de Flandre', 'van Vlanderen', 'Van Vlaendren',
   ];

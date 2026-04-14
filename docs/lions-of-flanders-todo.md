@@ -103,6 +103,15 @@ The family's standing across centuries constitutes a distinct argument strand:
 ### vanvlaenderen.org
 → See **vanvlaenderen.org-todo.md** for full website backlog, citation audit tasks, and changelog.
 
+**April 13, 2026** — Citation corrections (Corvers author, Cronike URL) + selective scholarly tone pass from ChatGPT/Dr. Larmuseau review. Central interpretive arguments preserved. See website todo for full detail.
+
+### Next session agenda
+- [ ] Verify Gemini can crawl prerendered pages with trailing slash URLs
+- [ ] **GYSS. 1999** — download from KCTD portal and search (highest priority unread source)
+- [ ] **Oostborch** — identify modern location; if near Meetjesland, strengthens Lodewyc geographic link
+- [ ] **Digital gallery** — TBO 184 photos from Bruges visit as first addition
+- [ ] **Knesselare charter "Archival Quest" tag** — flag in gap dossier as single highest-value RAG target
+
 **April 12, 2026 sprint complete** — build failures resolved, gap dossier live, private docs page live, citation audit complete across all three dossiers and bibliography.json. Key audit findings: Vredius 1639 (*Sigilla*) vs 1643 (*Genealogia, Pars secunda*) correctly differentiated; full archival signatures added for TBO 184 records; Buylaert, Bethune, Espinoy, Cronike van Vlaenderen all corrected or upgraded. See website todo changelog for full detail.
 
 ---
