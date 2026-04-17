@@ -1639,7 +1639,8 @@ const RESEARCH_PATHS = {
   "methodology": "/research/methodology",
   "bibliography": "/research/bibliography",
   "gap-dossier": "/research/gap-dossier",
-  "nieus-seals": "/research/nieus-seals"
+  "nieus-seals": "/research/nieus-seals",
+  "drincham-dossier": "/research/drincham-dossier"
 };
 function useNav() {
   const navigate = useNavigate();
@@ -3650,6 +3651,28 @@ function ResearchPage() {
                 /* @__PURE__ */ jsx("h3", { children: "House of Praet: Lineage Dossier" }),
                 /* @__PURE__ */ jsx("p", { children: "Six generations with primary-source confirmed data. Johan I's seven children, Josse de Flandre cadet branch, and the 1517 Knesselare charter." }),
                 /* @__PURE__ */ jsx("span", { className: researchStyles.branchLink, "aria-hidden": "true", children: "View Lineage Evidence →" })
+              ]
+            }
+          ),
+          /* @__PURE__ */ jsxs(
+            "div",
+            {
+              className: researchStyles.branchCard,
+              role: "button",
+              tabIndex: 0,
+              style: { borderTop: "3px solid var(--gold)", cursor: "pointer" },
+              onClick: () => goToResearch("drincham-dossier"),
+              onKeyDown: (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  goToResearch("drincham-dossier");
+                }
+              },
+              "aria-label": "Jan sans terre van Vlaenderen Drincham Dossier",
+              children: [
+                /* @__PURE__ */ jsx("h3", { children: "Jan sans terre — Drincham Dossier" }),
+                /* @__PURE__ */ jsx("p", { children: "The 1383 Drincham land grant, four documented generations in the Cassel area, the Veurne epitaph of Jacques de Drincham, and the geographic-documentary case for the French Flanders Van Vlaenderen cluster." }),
+                /* @__PURE__ */ jsx("span", { className: researchStyles.branchLink, "aria-hidden": "true", children: "View Archival Evidence →" })
               ]
             }
           )
@@ -6962,11 +6985,11 @@ function BibliographyPage() {
     ] })
   ] });
 }
-const heatmap1500 = "/assets/heatmap-1500-DunssjTZ.png";
+const heatmap1500 = "/assets/heatmap-1500-4BkW-n_x.png";
 const heatmap1600 = "/assets/heatmap-1600-IVt8v83p.png";
-const heatmap1700 = "/assets/heatmap-1700-4BkW-n_x.png";
-const tdStyle = { padding: "10px 12px", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top", lineHeight: 1.5, fontSize: "0.88rem" };
-const thStyle = { padding: "10px 12px", color: "var(--gold)", textAlign: "left", fontWeight: 600, fontSize: "0.82rem", textTransform: "uppercase", letterSpacing: "0.05em", borderBottom: "1px solid rgba(232,184,48,0.3)" };
+const heatmap1700 = "/assets/heatmap-1700-DunssjTZ.png";
+const tdStyle$1 = { padding: "10px 12px", borderBottom: "1px solid rgba(255,255,255,0.06)", verticalAlign: "top", lineHeight: 1.5, fontSize: "0.88rem" };
+const thStyle$1 = { padding: "10px 12px", color: "var(--gold)", textAlign: "left", fontWeight: 600, fontSize: "0.82rem", textTransform: "uppercase", letterSpacing: "0.05em", borderBottom: "1px solid rgba(232,184,48,0.3)" };
 function HeatMapFigure({ src, alt, caption }) {
   return /* @__PURE__ */ jsxs("figure", { style: { margin: "2rem 0" }, children: [
     /* @__PURE__ */ jsx(
@@ -6985,14 +7008,14 @@ function DistributionTable({ rows, caption }) {
     /* @__PURE__ */ jsx("div", { style: { fontSize: "0.78rem", fontFamily: "var(--font-ui)", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }, children: caption }),
     /* @__PURE__ */ jsxs("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: "0.88rem" }, children: [
       /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
-        /* @__PURE__ */ jsx("th", { style: thStyle, children: "Municipality" }),
-        /* @__PURE__ */ jsx("th", { style: thStyle, children: "Region" }),
-        /* @__PURE__ */ jsx("th", { style: { ...thStyle, textAlign: "right" }, children: "Count" })
+        /* @__PURE__ */ jsx("th", { style: thStyle$1, children: "Municipality" }),
+        /* @__PURE__ */ jsx("th", { style: thStyle$1, children: "Region" }),
+        /* @__PURE__ */ jsx("th", { style: { ...thStyle$1, textAlign: "right" }, children: "Count" })
       ] }) }),
       /* @__PURE__ */ jsx("tbody", { children: rows.map(([place, region, count]) => /* @__PURE__ */ jsxs("tr", { style: { transition: "background 0.15s" }, children: [
-        /* @__PURE__ */ jsx("td", { style: tdStyle, children: /* @__PURE__ */ jsx("strong", { children: place }) }),
-        /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: region }),
-        /* @__PURE__ */ jsx("td", { style: { ...tdStyle, textAlign: "right", fontVariantNumeric: "tabular-nums", color: count === rows[0][2] ? "var(--gold)" : "var(--text-primary)" }, children: count })
+        /* @__PURE__ */ jsx("td", { style: tdStyle$1, children: /* @__PURE__ */ jsx("strong", { children: place }) }),
+        /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, color: "var(--text-muted)" }, children: region }),
+        /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, textAlign: "right", fontVariantNumeric: "tabular-nums", color: count === rows[0][2] ? "var(--gold)" : "var(--text-primary)" }, children: count })
       ] }, place)) })
     ] })
   ] });
@@ -7216,11 +7239,11 @@ function SurnameOriginsPage() {
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", marginBottom: "1rem", marginTop: "2rem", textTransform: "uppercase", letterSpacing: "0.08em", fontSize: "0.82rem" }, children: "Tier 1 — Natural sons of Louis II de Male" }),
         /* @__PURE__ */ jsx("div", { style: { overflowX: "auto" }, children: /* @__PURE__ */ jsxs("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: "0.875rem" }, children: [
           /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
-            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Name" }),
-            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Territory" }),
-            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Known descendants (surname-carrying)" }),
-            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Attested dates" }),
-            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Most plausible founding region" })
+            /* @__PURE__ */ jsx("th", { style: thStyle$1, children: "Name" }),
+            /* @__PURE__ */ jsx("th", { style: thStyle$1, children: "Territory" }),
+            /* @__PURE__ */ jsx("th", { style: thStyle$1, children: "Known descendants (surname-carrying)" }),
+            /* @__PURE__ */ jsx("th", { style: thStyle$1, children: "Attested dates" }),
+            /* @__PURE__ */ jsx("th", { style: thStyle$1, children: "Most plausible founding region" })
           ] }) }),
           /* @__PURE__ */ jsx("tbody", { children: [
             {
@@ -7272,33 +7295,33 @@ function SurnameOriginsPage() {
               highlight: false
             }
           ].map((row2) => /* @__PURE__ */ jsxs("tr", { children: [
-            /* @__PURE__ */ jsx("td", { style: { ...tdStyle, fontWeight: 500 }, children: row2.name }),
-            /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: row2.territory }),
-            /* @__PURE__ */ jsx("td", { style: tdStyle, children: row2.descendants }),
-            /* @__PURE__ */ jsx("td", { style: { ...tdStyle, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: row2.dates }),
-            /* @__PURE__ */ jsx("td", { style: tdStyle, children: row2.region })
+            /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, fontWeight: 500 }, children: row2.name }),
+            /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, color: "var(--text-muted)" }, children: row2.territory }),
+            /* @__PURE__ */ jsx("td", { style: tdStyle$1, children: row2.descendants }),
+            /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: row2.dates }),
+            /* @__PURE__ */ jsx("td", { style: tdStyle$1, children: row2.region })
           ] }, row2.name)) })
         ] }) }),
         /* @__PURE__ */ jsx("h3", { style: { fontSize: "0.82rem", color: "var(--gold)", marginBottom: "1rem", marginTop: "2.5rem", textTransform: "uppercase", letterSpacing: "0.08em" }, children: "Tier 2 — Documented descendants carrying the surname" }),
         /* @__PURE__ */ jsx("div", { style: { overflowX: "auto" }, children: /* @__PURE__ */ jsxs("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: "0.875rem", background: "rgba(255,255,255,0.015)" }, children: [
           /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
-            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Name and parentage" }),
-            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Territory / location" }),
-            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Known descendants" }),
-            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Attested dates" }),
-            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Most plausible founding region" })
+            /* @__PURE__ */ jsx("th", { style: thStyle$1, children: "Name and parentage" }),
+            /* @__PURE__ */ jsx("th", { style: thStyle$1, children: "Territory / location" }),
+            /* @__PURE__ */ jsx("th", { style: thStyle$1, children: "Known descendants" }),
+            /* @__PURE__ */ jsx("th", { style: thStyle$1, children: "Attested dates" }),
+            /* @__PURE__ */ jsx("th", { style: thStyle$1, children: "Most plausible founding region" })
           ] }) }),
           /* @__PURE__ */ jsxs("tbody", { children: [
             /* @__PURE__ */ jsxs("tr", { children: [
-              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle$1, fontWeight: 500 }, children: [
                 "Adam van Vlaenderen",
                 /* @__PURE__ */ jsx("br", {}),
                 /* @__PURE__ */ jsx("span", { style: { fontWeight: 400, color: "var(--text-muted)", fontSize: "0.82rem" }, children: "natural son of Victor; by Gertrud Lindekens" })
               ] }),
-              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: "Ghent / Meetjesland area. Transfers annuity in Ghent 1446/47. No fixed lordship." }),
-              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "None documented. No wife named." }),
-              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: "1427–1447 N.S." }),
-              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, borderLeft: "2px solid var(--gold)", paddingLeft: "1rem" }, children: [
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, color: "var(--text-muted)" }, children: "Ghent / Meetjesland area. Transfers annuity in Ghent 1446/47. No fixed lordship." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle$1, children: "None documented. No wife named." }),
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: "1427–1447 N.S." }),
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle$1, borderLeft: "2px solid var(--gold)", paddingLeft: "1rem" }, children: [
                 /* @__PURE__ */ jsx("strong", { children: "Meetjesland / Ghent — strongest candidate for Belgian cluster." }),
                 " Geographically closest to Sleidinge and Oostwinkel. Last attested 1447, three to four undocumented generations before Franciscus (1568). Record scarcity in the intervening period is the expected explanation for the gap, not a late founding event. See also:",
                 " ",
@@ -7306,68 +7329,68 @@ function SurnameOriginsPage() {
               ] })
             ] }),
             /* @__PURE__ */ jsxs("tr", { children: [
-              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle$1, fontWeight: 500 }, children: [
                 "Janne van Vlaenderen",
                 /* @__PURE__ */ jsx("br", {}),
                 /* @__PURE__ */ jsx("span", { style: { fontWeight: 400, color: "var(--text-muted)", fontSize: "0.82rem" }, children: "natural son of Victor; by Alyssen van Boyeghem" })
               ] }),
-              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: "Unknown — no lordship or location documented." }),
-              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "None documented." }),
-              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: "1427–1442 N.S." }),
-              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "Unknown region — cannot be excluded but provides no evidence to work with." })
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, color: "var(--text-muted)" }, children: "Unknown — no lordship or location documented." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle$1, children: "None documented." }),
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: "1427–1442 N.S." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle$1, children: "Unknown region — cannot be excluded but provides no evidence to work with." })
             ] }),
             /* @__PURE__ */ jsxs("tr", { children: [
-              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle$1, fontWeight: 500 }, children: [
                 "Lodewijc van Vlaenderen",
                 /* @__PURE__ */ jsx("br", {}),
                 /* @__PURE__ */ jsx("span", { style: { fontWeight: 400, color: "var(--text-muted)", fontSize: "0.82rem" }, children: "natural son of Victor; by Alyssen van Boyeghem" })
               ] }),
-              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: "Oostburg, Zeeuws-Vlaanderen. Buried in choir of Oostburg church with wife Jacqueline de Wilde (d. Apr 1482)." }),
-              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "Joos van Vlaenderen (died young, buried Oostburg — cannot be the Joos in the 1547 Brugse Vrije probate). Daughter Margareta (→ de Baenst; → van Schouteeten — surname lost). Documented male line ends." }),
-              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: "1427–1482" }),
-              /* @__PURE__ */ jsxs("td", { style: tdStyle, children: [
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, color: "var(--text-muted)" }, children: "Oostburg, Zeeuws-Vlaanderen. Buried in choir of Oostburg church with wife Jacqueline de Wilde (d. Apr 1482)." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle$1, children: "Joos van Vlaenderen (died young, buried Oostburg — cannot be the Joos in the 1547 Brugse Vrije probate). Daughter Margareta (→ de Baenst; → van Schouteeten — surname lost). Documented male line ends." }),
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: "1427–1482" }),
+              /* @__PURE__ */ jsxs("td", { style: tdStyle$1, children: [
                 /* @__PURE__ */ jsx("strong", { children: "Zeeuws-Vlaanderen / Zeeland." }),
                 " Documented male line ends at Oostburg. A systematic onomastic sweep of 3,000+ Zeeuws-Vlaanderen records (Gysseling, Vier Ambachten, c.1240–1500) yielded zero Bucket 4 hits — the surname is not indigenous to this region. An undocumented further child of Lodewijc could still anchor the Zeeland thread, but the bridge would not have been local."
               ] })
             ] }),
             /* @__PURE__ */ jsxs("tr", { children: [
-              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle$1, fontWeight: 500 }, children: [
                 "Jan van Vlaenderen",
                 /* @__PURE__ */ jsx("br", {}),
                 /* @__PURE__ */ jsx("span", { style: { fontWeight: 400, color: "var(--text-muted)", fontSize: "0.82rem" }, children: "son of Loys le Frison; Heer van Praet en de Woestijne" })
               ] }),
-              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: "Praet & Woestijne, Franc de Bruges. Active 1431–1439 in Ghent Keure records." }),
-              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "Lodewijc Heer van Praet (d. 1488) + daughters. Six-generation titled line. Lodewijc's epitaph is at Aalter." }),
-              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: "1431–1442" }),
-              /* @__PURE__ */ jsxs("td", { style: tdStyle, children: [
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, color: "var(--text-muted)" }, children: "Praet & Woestijne, Franc de Bruges. Active 1431–1439 in Ghent Keure records." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle$1, children: "Lodewijc Heer van Praet (d. 1488) + daughters. Six-generation titled line. Lodewijc's epitaph is at Aalter." }),
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: "1431–1442" }),
+              /* @__PURE__ */ jsxs("td", { style: tdStyle$1, children: [
                 /* @__PURE__ */ jsx("strong", { children: "Franc de Bruges / Brabant." }),
                 " Lodewijc Heer van Praet's epitaph at Aalter — which appears in the 1500 distribution data with 11 individuals — merits attention. Later marriages into Gruithuyse and Bourgogne families are consistent with the Wambeek/Brussels cluster."
               ] })
             ] }),
             /* @__PURE__ */ jsxs("tr", { children: [
-              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle$1, fontWeight: 500 }, children: [
                 "Jan van Vlaenderen",
                 /* @__PURE__ */ jsx("br", {}),
                 /* @__PURE__ */ jsx("span", { style: { fontWeight: 400, color: "var(--text-muted)", fontSize: "0.82rem" }, children: "son of Jan sans terre; Heer van Drincham" })
               ] }),
-              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: "Drincham, near Cassel, French Flanders." }),
-              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "Jan (Gen 3), Philippe (d. unmarried), Jacques (d. Veurne 1459), Loys, Francq. Four documented generations." }),
-              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: "c. 1400–c. 1430" }),
-              /* @__PURE__ */ jsxs("td", { style: tdStyle, children: [
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, color: "var(--text-muted)" }, children: "Drincham, near Cassel, French Flanders." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle$1, children: "Jan (Gen 3), Philippe (d. unmarried), Jacques (d. Veurne 1459), Loys, Francq. Four documented generations." }),
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: "c. 1400–c. 1430" }),
+              /* @__PURE__ */ jsxs("td", { style: tdStyle$1, children: [
                 /* @__PURE__ */ jsx("strong", { children: "French Flanders — plausible contributor to the Volckerinckhove cluster." }),
                 " Geography and chronology are consistent. Whether the Drincham line alone accounts for the cluster's scale, or an earlier Function 3 founding event is also required, remains an open question."
               ] })
             ] }),
             /* @__PURE__ */ jsxs("tr", { children: [
-              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle$1, fontWeight: 500 }, children: [
                 "Lodewijc van Vlaenderen Heer van Praet",
                 /* @__PURE__ */ jsx("br", {}),
                 /* @__PURE__ */ jsx("span", { style: { fontWeight: 400, color: "var(--text-muted)", fontSize: "0.82rem" }, children: "grandson of Loys le Frison; epitaph at Aalter, d. 24 Aug 1488" })
               ] }),
-              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: "Praet, Woestijne, Bevere, Ommele." }),
-              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "Loys, Jan (→ Jan van Onlede d. 1523), Jacques, Josse, Loyse, Jehenne de Flandre." }),
-              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: "c. 1440–1488" }),
-              /* @__PURE__ */ jsxs("td", { style: tdStyle, children: [
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, color: "var(--text-muted)" }, children: "Praet, Woestijne, Bevere, Ommele." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle$1, children: "Loys, Jan (→ Jan van Onlede d. 1523), Jacques, Josse, Loyse, Jehenne de Flandre." }),
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle$1, whiteSpace: "nowrap", color: "var(--text-muted)" }, children: "c. 1440–1488" }),
+              /* @__PURE__ */ jsxs("td", { style: tdStyle$1, children: [
                 /* @__PURE__ */ jsx("strong", { children: "Brabant / Brussels cluster (Wambeek)." }),
                 " Marriages into Gruithuyse and Bourgogne families draw descendants toward Brabant. Son Loys was Grand Bailiff of Ghent from 1515."
               ] })
@@ -7609,6 +7632,389 @@ function NieusSealPage() {
     ] })
   ] });
 }
+const tdStyle = {
+  padding: "9px 12px",
+  borderBottom: "1px solid rgba(255,255,255,0.06)",
+  verticalAlign: "top",
+  lineHeight: 1.55,
+  fontSize: "0.9rem"
+};
+const thStyle = {
+  padding: "9px 12px",
+  color: "var(--gold)",
+  textAlign: "left",
+  fontWeight: 600,
+  fontSize: "0.8rem",
+  textTransform: "uppercase",
+  letterSpacing: "0.05em",
+  borderBottom: "1px solid rgba(232,184,48,0.3)"
+};
+function DrinchamDossierPage() {
+  const navigate = useNavigate();
+  const nav2 = (path) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+    /* @__PURE__ */ jsxs(Helmet, { children: [
+      /* @__PURE__ */ jsx("title", { children: "Jan sans terre van Vlaenderen — Archival Dossier | vanvlaenderen.org" }),
+      /* @__PURE__ */ jsx("meta", { name: "description", content: "Primary source dossier for Jan 'sans terre' van Vlaenderen and the Drincham line: the 1383 land grant, four documented generations in the Cassel area, the Veurne epitaph of Jacques de Drincham, and the geographic-documentary case for French Flanders surname origin." }),
+      /* @__PURE__ */ jsx("link", { rel: "canonical", href: "https://vanvlaenderen.org/research/drincham-dossier" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:title", content: "Jan sans terre van Vlaenderen — Archival Dossier" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:description", content: "The 1383 Drincham land grant, four documented generations in French Flanders, and the geographic-documentary case for the Volckerinckhove cluster." }),
+      /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/drincham-dossier" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Jan sans terre van Vlaenderen \\u2014 Archival Dossier","description":"Primary source dossier for Jan sans terre van Vlaenderen and the Drincham line.","url":"https://vanvlaenderen.org/research/drincham-dossier","inLanguage":"en","dateModified":"2026-04-16","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}` } }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Drincham Dossier","item":"https://vanvlaenderen.org/research/drincham-dossier"}]}` } })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+      /* @__PURE__ */ jsx(
+        "div",
+        {
+          className: styles$1.heroImg,
+          style: { backgroundImage: `url(${knightPhilip})`, backgroundPosition: "top center" },
+          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+        }
+      ),
+      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: "Van Vlaenderen · Archival Dossier" }),
+        /* @__PURE__ */ jsx("h1", { children: 'Jan "sans terre" van Vlaenderen' }),
+        /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
+        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "Natural son of Louis II de Male, Count of Flanders; lord of Drincham near Cassel, French Flanders; progenitor of the most plausible documented founding line for the French Flanders Van Vlaenderen surname cluster. Updated April 2026 from direct reading of Vredius." })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+      /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
+        /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Archival Dossier" }),
+        /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: researchStyles.methodologyBox, children: [
+        /* @__PURE__ */ jsx("span", { className: researchStyles.methodologyTitle, children: "Method" }),
+        /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.9rem", marginBottom: "1rem", color: "var(--text-muted)" }, children: [
+          "This dossier follows the same four-level evidentiary framework as the Victor van Vlaenderen dossier. ",
+          /* @__PURE__ */ jsx("strong", { children: "Directly attested" }),
+          " statements rest on quoted charter language or explicit documentary summaries in a published authority. ",
+          /* @__PURE__ */ jsx("strong", { children: "Strongly corroborated" }),
+          " statements are supported by concordant published sources. ",
+          /* @__PURE__ */ jsx("strong", { children: "Probable" }),
+          " statements are source-based but require fuller inspection. ",
+          /* @__PURE__ */ jsx("strong", { children: "Hypotheses" }),
+          " are inferences proposed for further testing."
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: researchStyles.methodologyGrid, children: [
+          /* @__PURE__ */ jsxs("div", { className: researchStyles.methodItem, children: [
+            /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, style: { marginLeft: 0, marginBottom: "5px" }, children: "Directly Attested" }),
+            /* @__PURE__ */ jsx("span", { style: { fontSize: "0.8rem", display: "block" }, children: "Quoted charter language or explicit documentary summary." })
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: researchStyles.methodItem, children: [
+            /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, style: { marginLeft: 0, marginBottom: "5px" }, children: "Strongly Corroborated" }),
+            /* @__PURE__ */ jsx("span", { style: { fontSize: "0.8rem", display: "block" }, children: "Supported by concordant published historical authorities." })
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: researchStyles.methodItem, children: [
+            /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelProbable}`, style: { marginLeft: 0, marginBottom: "5px" }, children: "Probable" }),
+            /* @__PURE__ */ jsx("span", { style: { fontSize: "0.8rem", display: "block" }, children: "Source-based but requires fuller inspection of underlying edition." })
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: researchStyles.methodItem, children: [
+            /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, style: { marginLeft: 0, marginBottom: "5px" }, children: "Hypothesis" }),
+            /* @__PURE__ */ jsx("span", { style: { fontSize: "0.8rem", display: "block" }, children: "Genealogical inference proposed for further testing." })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.85rem", marginTop: "1.5rem", fontStyle: "italic", color: "var(--text-muted)", borderTop: "1px solid rgba(232, 184, 48, 0.1)", paddingTop: "1rem" }, children: [
+          /* @__PURE__ */ jsx("strong", { children: "Primary source:" }),
+          " Olivarius Vredius (Olivier de Wrée), ",
+          /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae" }),
+          ", Pars Secunda, Tabula XVI, foll. 281–283 (PDF pp. 291–293), Bruges: J.B. & Lucas Kerchovios, 1642–43. Direct reading conducted April 2026. Collateral attestation from FMG MedLands: Flanders, Hainaut (v5.0, January 2025) and de l'Espinoy, ",
+          /* @__PURE__ */ jsx("em", { children: "Recherche des antiquitez et noblesse de Flandres" }),
+          " (Douai, 1631)."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsxs("h2", { children: [
+          "Identity and Parentage ",
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Jan van Vlaenderen, surnamed ",
+          /* @__PURE__ */ jsx("em", { children: "sans terre" }),
+          ` ("without land"), was a natural son of Louis II de Male, Count of Flanders (1330–1384). De l'Espinoy identifies him as the fifth natural son of Louis de Male. His mother was `,
+          /* @__PURE__ */ jsx("strong", { children: "Ive de Luu" }),
+          ", recorded in Vredius."
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "The surname ",
+          /* @__PURE__ */ jsx("em", { children: "van Vlaenderen" }),
+          " — used by Jan and his descendants — is confirmed as a shared marker of comital bastard identity in the Gaillard text quoted by Vredius, which names all three brothers killed at Nicopolis explicitly under the Van Vlaenderen name:"
+        ] }),
+        /* @__PURE__ */ jsxs("div", { style: {
+          margin: "1.25rem 0",
+          padding: "1rem 1.5rem",
+          background: "rgba(232,184,48,0.04)",
+          borderLeft: "3px solid var(--gold)",
+          fontFamily: "var(--font-body)",
+          fontStyle: "italic",
+          fontSize: "0.9rem",
+          lineHeight: 1.75,
+          color: "var(--text-primary)"
+        }, children: [
+          '"In the battle of Nicopolis, where Duke Jan of Burgundy was taken prisoner, were slain: My Lord Loys van Vlaenderen, called le Hase; Lord Lodewyck van Vlaenderen, called le Friso; and my Lord Jan van Vlaenderen, called sans terre — all bastards of the noble Count Lodewijc van Male, all brave knights; and this happened in the year of Our Lord 1396."',
+          /* @__PURE__ */ jsx("div", { style: { fontSize: "0.8rem", color: "var(--text-muted)", marginTop: "0.5rem", fontStyle: "normal" }, children: "Gaillard, as quoted in Vredius, Tabula XVI. Middle Dutch original; translation by project." })
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Jan is also documented in Vredius's French-language summary from Grimarezius: ",
+          /* @__PURE__ */ jsx("em", { children: '"IEAN, b. de Flandres, dict sans terre, Chevalier, espousa GVILEMETTE de Nevele, fille de Messire Guillaume, Chevalier, & de Dame Guilemette de Halewijn, heritiere de Lichtervelde. Il mourut à la bataille devant la ville de Nicopoli..."' }),
+          " — confirming his wife ",
+          /* @__PURE__ */ jsx("strong", { children: "Guillemette de Nevele" }),
+          " (daughter of Willem de Nevele, Knight, and Guillemette de Halewijn, heiress of Lichtervelde) and his death at Nicopolis."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsxs("h2", { children: [
+          "The 1383 Land Grant ",
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "The founding event for the Drincham line is documented in Vredius from de l'Espinoy. On ",
+          /* @__PURE__ */ jsx("strong", { children: "22 November 1383" }),
+          ", Louis de Male granted Jan the castle and lordship of Drincham, near Cassel in French Flanders, confiscated from Jean de Scheurvelde. The verbatim French from de l'Espinoy as quoted in Vredius:"
+        ] }),
+        /* @__PURE__ */ jsxs("div", { style: {
+          margin: "1.25rem 0",
+          padding: "1rem 1.5rem",
+          background: "rgba(255,255,255,0.02)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          borderRadius: "4px",
+          fontFamily: "var(--font-body)",
+          fontStyle: "italic",
+          fontSize: "0.875rem",
+          lineHeight: 1.8,
+          color: "var(--text-muted)"
+        }, children: [
+          `"Messire IEAN de Flandres, fut le cinquiesme fils bastard dudict Comte de Flandres, & fut surnommé sans terre, auquel ledit Conte donna le chastel & maison de Drincam, avec le fief & avoir principal, rentes, revenues, Seigneuries, terres, prés, bois, caues, pastures, pescheries &c. & ce pour le pourveoir, affin qu'il puisse tant mieux entretenir son estat..."`,
+          /* @__PURE__ */ jsx("div", { style: { fontSize: "0.8rem", marginTop: "0.5rem", fontStyle: "normal" }, children: `De l'Espinoy as quoted in Vredius, Tabula XVI, fol. 281. Translation: "Sir Jean de Flandres was the fifth bastard son of the said Count of Flanders, and was surnamed sans terre, to whom the said Count gave the castle and house of Drincam, with the principal fief and assets, rents, revenues, lordships, lands, meadows, woods, waters, pastures, fisheries &c., in order to provide for him, so that he might better maintain his estate..."` })
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "The grant date of 22 November 1383 is significant for the project's research agenda: any Van Vlaenderen individual appearing in Cassel-area administrative records ",
+          /* @__PURE__ */ jsx("em", { children: "before" }),
+          " this date would establish a pre-bastard Function 3 origin for the French Flanders cluster; anything after 1383 is more plausibly a branch or continuation of this documented line."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsxs("h2", { children: [
+          "The Four Documented Generations ",
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "The Drincham line is the most extensively documented collateral bastard branch in Tabula XVI after the Praet line. Vredius documents four generations, spanning from Jan's death at Nicopolis (1396) through Jacques de Drincham's death at Veurne (1459) and his wife's death (1473), with further children named at Generation 3 whose lines are not fully traced." }),
+        /* @__PURE__ */ jsx("div", { style: { overflowX: "auto", marginTop: "1.5rem" }, children: /* @__PURE__ */ jsxs("table", { style: { width: "100%", borderCollapse: "collapse", fontSize: "0.9rem" }, children: [
+          /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Generation" }),
+            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Individual" }),
+            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Spouse" }),
+            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Key dates / notes" }),
+            /* @__PURE__ */ jsx("th", { style: thStyle, children: "Evidence" })
+          ] }) }),
+          /* @__PURE__ */ jsxs("tbody", { children: [
+            /* @__PURE__ */ jsxs("tr", { children: [
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--gold)", fontWeight: 600 }, children: "Gen 1" }),
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+                'Jan van Vlaenderen, "sans terre"',
+                /* @__PURE__ */ jsx("br", {}),
+                /* @__PURE__ */ jsx("span", { style: { fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: 400 }, children: "Lord of Drincham" })
+              ] }),
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: [
+                "Guillemette de Nevele",
+                /* @__PURE__ */ jsx("br", {}),
+                /* @__PURE__ */ jsx("span", { style: { fontSize: "0.82rem" }, children: "dau. of Willem de Nevele & Guillemette de Halewijn" })
+              ] }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "Land grant 22 Nov 1383. Killed at Nicopolis 28 Sep 1396. Mother: Ive de Luu." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" }) })
+            ] }),
+            /* @__PURE__ */ jsxs("tr", { style: { background: "rgba(255,255,255,0.015)" }, children: [
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--gold)", fontWeight: 600 }, children: "Gen 2" }),
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+                "Jan van Vlaenderen",
+                /* @__PURE__ */ jsx("br", {}),
+                /* @__PURE__ */ jsx("span", { style: { fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: 400 }, children: "Lord of Drincham" })
+              ] }),
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: [
+                "Isabella de Ghistelles",
+                /* @__PURE__ */ jsx("br", {}),
+                /* @__PURE__ */ jsx("span", { style: { fontSize: "0.82rem" }, children: "Dame de Vissaert" })
+              ] }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "Son of Gen 1. No dates given in source." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" }) })
+            ] }),
+            /* @__PURE__ */ jsxs("tr", { children: [
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--gold)", fontWeight: 600 }, children: "Gen 3" }),
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+                "Jan van Vlaenderen",
+                /* @__PURE__ */ jsx("br", {}),
+                /* @__PURE__ */ jsx("span", { style: { fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: 400 }, children: "Lord of Drincham" })
+              ] }),
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: "Isabella de Vernieulles" }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "Two sons (Philippe d. unmarried; Jan continued line) and three daughters. Gen 4 descends from second son Jan." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" }) })
+            ] }),
+            /* @__PURE__ */ jsxs("tr", { style: { background: "rgba(255,255,255,0.015)" }, children: [
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--gold)", fontWeight: 600 }, children: "Gen 3" }),
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+                "Jacques de Flandres",
+                /* @__PURE__ */ jsx("br", {}),
+                /* @__PURE__ */ jsx("span", { style: { fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: 400 }, children: "dict de Drincham" })
+              ] }),
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: [
+                "Guillemette de Bambeke",
+                /* @__PURE__ */ jsx("br", {}),
+                /* @__PURE__ */ jsx("span", { style: { fontSize: "0.82rem" }, children: "d. 19 April 1473" })
+              ] }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "Chamberlain to Philip the Good, Duke of Burgundy. Bailiff of Veurne/Furnes. Died 10 April 1459. Epitaph at Veurne (see below). Brother of the third-generation Jan above." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" }) })
+            ] }),
+            /* @__PURE__ */ jsxs("tr", { children: [
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--gold)", fontWeight: 600 }, children: "Gen 3" }),
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+                "Loys de Flandres",
+                /* @__PURE__ */ jsx("br", {}),
+                /* @__PURE__ */ jsx("span", { style: { fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: 400 }, children: "dict de Drincham" })
+              ] }),
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: "Unknown" }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "Named by Vredius as a further son of Gen 2. Line not traced beyond this generation in source." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" }) })
+            ] }),
+            /* @__PURE__ */ jsxs("tr", { style: { background: "rgba(255,255,255,0.015)" }, children: [
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--gold)", fontWeight: 600 }, children: "Gen 3" }),
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+                "Francq de Flandres",
+                /* @__PURE__ */ jsx("br", {}),
+                /* @__PURE__ */ jsx("span", { style: { fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: 400 }, children: "dict de Drincham" })
+              ] }),
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: "Unknown" }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "Named by Vredius as a further son of Gen 2. Line not traced beyond this generation in source." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" }) })
+            ] }),
+            /* @__PURE__ */ jsxs("tr", { children: [
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--gold)", fontWeight: 600 }, children: "Gen 4" }),
+              /* @__PURE__ */ jsxs("td", { style: { ...tdStyle, fontWeight: 500 }, children: [
+                "Jan de Flandres",
+                /* @__PURE__ */ jsx("br", {}),
+                /* @__PURE__ */ jsx("span", { style: { fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: 400 }, children: "legitimated at Arras" })
+              ] }),
+              /* @__PURE__ */ jsx("td", { style: { ...tdStyle, color: "var(--text-muted)" }, children: "Unknown" }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: "Son of Gen 3 Jan × Isabella de Vernieulles. Received a letter of legitimation from the Duke of Burgundy at Arras. Last documented member of the Drincham line in de Wrée. No further descendants recorded. Last attestation c. 1473 (inferred from mother's death date)." }),
+              /* @__PURE__ */ jsx("td", { style: tdStyle, children: /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" }) })
+            ] })
+          ] })
+        ] }) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsxs("h2", { children: [
+          "The Veurne Epitaph of Jacques de Drincham ",
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "The most concrete physical evidence for the Drincham line is the epitaph of Jacques de Flandres dict de Drincham at the church in Veurne (Furnes), West Flanders, preserved in Gaillard and quoted in Vredius. The original French:" }),
+        /* @__PURE__ */ jsxs("div", { style: {
+          margin: "1.25rem 0",
+          padding: "1rem 1.5rem",
+          background: "rgba(255,255,255,0.02)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          borderRadius: "4px",
+          fontFamily: "var(--font-body)",
+          fontStyle: "italic",
+          fontSize: "0.875rem",
+          lineHeight: 1.8,
+          color: "var(--text-muted)"
+        }, children: [
+          `"Cy gift Mesire IAQUES de Drincham, Chevalier, Conseillier & Chambellain de Monseigneur le Duc de Bourgongne, Conte de Flandre, & son Bailly de Furnes à son trespas, lequel mourut l'an de nostre Seigneur 1459. le x. d'Avril..."`,
+          /* @__PURE__ */ jsx("div", { style: { fontSize: "0.8rem", marginTop: "0.5rem", fontStyle: "normal" }, children: 'Translation: "Here lies Sir Jacques de Drincham, Knight, Counsellor and Chamberlain of My Lord the Duke of Burgundy, Count of Flanders, and his Bailiff of Furnes at his death, who died in the year of Our Lord 1459, on the 10th of April..."' })
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "The epitaph confirms: (1) Jacques held the title ",
+          /* @__PURE__ */ jsx("em", { children: "Chevalier" }),
+          " (Knight); (2) he served Philip the Good, Duke of Burgundy, as both Counsellor and Chamberlain; (3) he held the office of Bailiff of Veurne at his death; (4) death date 10 April 1459. His wife Guillemette de Bambeke's death is recorded as 19 April 1473, presumably from the same or an adjacent monument."
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Jacques's heraldic arms as recorded — ",
+          /* @__PURE__ */ jsx("em", { children: "de Ghistelles with a canton of Flanders and Luxembourg quartering" }),
+          " — are directly derived from his mother Isabella de Ghistelles (Gen 2 wife) and confirm the dynastic lineage visually. The Flanders canton explicitly asserts comital bastard descent."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsxs("h2", { children: [
+          "Geographic Significance and the French Flanders Hypothesis ",
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: "Hypothesis" })
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "The documented Drincham line spans roughly 1383 (land grant) to c. 1473 (death of Jacques's wife Guillemette de Bambeke). For approximately ninety years, multiple generations of Van Vlaenderen surname-bearers were physically present in the Cassel area of French Flanders — the precise geographic zone where Geneanet's distributional data shows the heaviest pre-1600 concentration of the surname." }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "The hypothesis — argued in full in the ",
+          /* @__PURE__ */ jsx("button", { onClick: () => nav2("/name/surname-origins"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Four Functions, Three Clusters analysis" }),
+          " — is that this geographic-documentary coincidence is the explanation for the French Flanders cluster. The argument does not depend on the Geneanet count being accurate (it almost certainly reflects noble-tree duplication). It depends on the observation that the earliest securely documented hereditary Van Vlaenderen surname-bearers in the Cassel zone are precisely the documented bastard comital line, making them the most parsimonious founding explanation."
+        ] }),
+        /* @__PURE__ */ jsx("p", { children: "The Drincham line's documented reach is also worth noting. Jacques de Drincham operated as Bailiff of Veurne and Chamberlain to Philip the Good — the kind of administrative reach across French Flanders and the Flemish coast that would explain how a surname attached to one castle near Cassel could spread across the broader Volckerinckhove/Renescure/Bollezeele zone visible in the later data. It should be noted that Veurne, while on the Flemish coast, is firmly in West Flanders — geographically distinct from the Zeeuws-Vlaanderen/Zeeland thread associated with Victor's son Lodewijc at Oostburg. The Drincham line's coastal footprint is a French Flanders and West Flemish phenomenon; the Zeeland anchor, to the extent one exists, belongs to the Victor line." }),
+        /* @__PURE__ */ jsxs("div", { className: researchStyles.methodologyBox, style: { marginTop: "1.5rem" }, children: [
+          /* @__PURE__ */ jsx("span", { className: researchStyles.methodologyTitle, style: { fontSize: "0.9rem" }, children: "Open Research Question — Generation 4 Gap" }),
+          /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", marginBottom: "0.75rem" }, children: "The Drincham line as documented by Vredius ends with Jan de Flandres (Gen 4), legitimated at Arras, with no further descendants recorded. Vredius was working from early seventeenth-century sources and may simply not have had access to later generations. The gap between Gen 4 (c. 1473) and the Geneanet-visible Volckerinckhove cluster does not invalidate the founding hypothesis, but it does mean the documentary chain is not continuous." }),
+          /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", marginBottom: 0 }, children: [
+            "The most productive archival test remains the ",
+            /* @__PURE__ */ jsx("strong", { children: "Archives Départementales du Nord" }),
+            " (Lille), which holds the Cassel castellany records. Any Van Vlaenderen individual in those records after 1383 — particularly after c. 1473 — would extend the documented line and narrow the gap to the modern Volckerinckhove population."
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: "Relationship to the Other Bastard Lines" }),
+        /* @__PURE__ */ jsx("p", { children: "Jan sans terre, Loys le Frison (Praet line), and Loys le Hase were all killed together at Nicopolis on 28 September 1396. The Gaillard text names all three in a single passage under the Van Vlaenderen surname, confirming the name was used by multiple natural sons simultaneously as a shared marker of comital bastard identity — not unique to any one branch." }),
+        /* @__PURE__ */ jsx("p", { children: "The Drincham line is geographically and genealogically distinct from the Victor line (Meetjesland/Belgian cluster) and the Praet line (Franc de Bruges/Brabant cluster). The three lines represent parallel surname-carrying foundations in different regions of Flanders, each anchored to a specific lordship granted by Louis de Male in the 1373–1399 period." }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "For the full multi-line analysis, see the ",
+          /* @__PURE__ */ jsx("button", { onClick: () => nav2("/name/surname-origins"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Four Functions, Three Clusters" }),
+          " article, and for the Praet line's separate documentation, see the ",
+          /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research/praet-dossier"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Praet Archival Dossier" }),
+          "."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: "Notes and Sources" }),
+        /* @__PURE__ */ jsxs("div", { className: researchStyles.referenceList, children: [
+          /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+            /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "1." }),
+            "Vredius, Olivarius (Olivier de Wrée). ",
+            /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem" }),
+            ", Pars Secunda: ",
+            /* @__PURE__ */ jsx("em", { children: "Continens Probationes XII posteriorum tabularum" }),
+            ". Bruges: J.B. & Lucas Kerchovios, 1642–43. Tabula XVI, foll. 281–283 (PDF pp. 291–293). Direct reading conducted April 2026. Principal source for all four generations and the 1383 land grant text."
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+            /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "2." }),
+            "De l'Espinoy, Philippe. ",
+            /* @__PURE__ */ jsx("em", { children: "Recherche des antiquitez et noblesse de Flandres" }),
+            ". Douai, 1631. Cited in Vredius as the source for the identification of Jan as the fifth bastard son and for the land grant details. Not accessed directly."
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+            /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "3." }),
+            "Foundation for Medieval Genealogy. ",
+            /* @__PURE__ */ jsx("em", { children: "MedLands: Flanders, Hainaut" }),
+            ", v5.0, updated January 2025. ",
+            /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS.htm", style: { color: "var(--gold)" }, target: "_blank", rel: "noopener noreferrer", children: "fmg.ac/Projects/MedLands/FLANDERS.htm" }),
+            ". Collateral verification of Jan sans terre entry."
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+            /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "4." }),
+            "Gaillard (cited in Vredius). Middle Dutch text naming Loys le Hase, Loys le Frison, and Jan sans terre as Van Vlaenderen at Nicopolis 1396. Tabula XVI. Direct quotation transcribed April 2026."
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
+            /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "5." }),
+            "Epitaph of Jacques de Drincham, Veurne church, as preserved in Gaillard and quoted in Vredius, Tabula XVI. Confirms death date 10 April 1459 and offices held."
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("div", { style: { borderTop: "1px solid rgba(232,184,48,0.15)", paddingTop: "1.5rem", marginTop: "1rem", display: "flex", gap: "1.5rem", fontSize: "0.875rem", flexWrap: "wrap" }, children: [
+        /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "← Research" }),
+        /* @__PURE__ */ jsx("button", { onClick: () => nav2("/name/surname-origins"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Four Functions, Three Clusters →" }),
+        /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research/praet-dossier"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Praet Archival Dossier →" }),
+        /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research/victor-dossier"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Victor Archival Dossier →" })
+      ] })
+    ] })
+  ] });
+}
 function App() {
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx(FamilyTreeCanvas, {}),
@@ -7629,6 +8035,7 @@ function App() {
       /* @__PURE__ */ jsx(Route, { path: "/research/bibliography", element: /* @__PURE__ */ jsx(BibliographyPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/name/surname-origins", element: /* @__PURE__ */ jsx(SurnameOriginsPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/research/nieus-seals", element: /* @__PURE__ */ jsx(NieusSealPage, {}) }),
+      /* @__PURE__ */ jsx(Route, { path: "/research/drincham-dossier", element: /* @__PURE__ */ jsx(DrinchamDossierPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/lineage", element: /* @__PURE__ */ jsx(LineagePage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/about", element: /* @__PURE__ */ jsx(AboutPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/contact", element: /* @__PURE__ */ jsx(ContactPage, {}) }),
@@ -7678,6 +8085,14 @@ const PAGE_META = {
     canonical: "https://vanvlaenderen.org/research/nieus-seals/",
     ogTitle: "Seals, Lions, and the Politics of a Surname",
     ogDescription: "Twelfth-century Flemish sigillography and the political meaning of territorial identity in the comital milieu.",
+    ogType: "article"
+  },
+  "/research/drincham-dossier": {
+    title: "Jan sans terre van Vlaenderen — Archival Dossier | vanvlaenderen.org",
+    description: "Primary source dossier for Jan sans terre van Vlaenderen and the Drincham line: the 1383 land grant, four documented generations in French Flanders, the Veurne epitaph, and the geographic-documentary case for the Volckerinckhove cluster.",
+    canonical: "https://vanvlaenderen.org/research/drincham-dossier/",
+    ogTitle: "Jan sans terre van Vlaenderen — Archival Dossier",
+    ogDescription: "The 1383 Drincham land grant, four generations in the Cassel area, and the French Flanders Van Vlaenderen surname origin hypothesis.",
     ogType: "article"
   },
   "/dna": {
