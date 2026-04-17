@@ -1,5 +1,5 @@
 # Lions of Flanders — Research To-Do List
-*Last updated: April 12, 2026*
+*Last updated: April 16, 2026*
 
 ---
 
@@ -30,6 +30,37 @@
 ### Comital Bastard Line
 - [ ] Evaluate whether any of **Louis I de Crécy's** illegitimate children have documented descendants in the Lille / West Flanders zone
 - [ ] Confirm whether the Geneanet Flandres Bâtards chart continues to Louis II de Male's bastards (swipe right)
+
+---
+
+### NEW — April 2026 Research Leads
+
+**HIGHEST PRIORITY — Arnoldus × De Jaeghere before 1600**
+- [ ] Geneanet deduplication exercise surfaced an **Arnoldus van Vlaenderen × Maria de Jaeghere** pairing dated c.1490. Documented line has Arnoldus "Aert" × Maeyken De Yaeghere, married Waarschoot 1620, died Oostwinkel 1666.
+- [ ] Three interpretations: (1) date error — Geneanet user guessed c.1490 birth for the 1620 Arnoldus; (2) genuine earlier individual — first named bridge candidate for 1447–1568 gap; (3) impossible — eliminated. Interpretation 2 is highest consequence.
+- [ ] **Action**: search parish record database and Waarschoot/Oostwinkel/Meetjesland records for any Van Vlaenderen × De Jaeghere pairing before 1600. If found with plausible dates (c.1480–1560), this is the first potential named individual bridging the Adam (1447) → Franciscus (1568) gap.
+
+**HIGH PRIORITY — Staten van Goed RAG (Ambacht Assenede I & II)**
+- [ ] Confirmed as **primary remaining bridge candidates** for the 1447–1568 gap following the Gysseling onomastic sweep. Gysseling did not index these records for the onomasticon. Not yet searched.
+- [ ] Also: Landboek/Leenhof records — same priority tier.
+- [ ] Archive: Rijksarchief Gent. Previous AGATHA portal searches covered Ambacht Assenede I & II but full record review not complete.
+
+**HIGH PRIORITY — Catherine van Staederen vs Catherine van Vlaenderen**
+- [ ] Geneanet deduplication found Catherine van Vlaenderen (Volckerinckhove/Cassel zone) being merged with Catherine van Staederen in some trees. Staederen = Staden, near Ypres, West Flanders — 40–50km from Cassel. These are almost certainly two different women.
+- [ ] **Action**: search West Flanders records (Ypres/Langemark area) for Catherine van Staederen independently of Volckerinckhove results. If she resolves as a separate individual, the Volckerinckhove cluster reduces from ~5 unique individuals to ~3.
+
+**HIGH PRIORITY — Louise van Vlaenderen-Drincham**
+- [ ] Named individual surfaced in Geneanet deduplication, appearing in the Drincham/Cassel thread. Not found in de Wrée's documented Drincham line. De Wrée notes unnamed daughters at Generation 2/3.
+- [ ] Hyphenated form *van Vlaenderen-Drincham* is unusual and potentially significant if authentic.
+- [ ] **Action**: check de Wrée Vol. 2 pp.281–283 for unnamed daughters; check Archives Départementales du Nord (Lille).
+
+**MEDIUM PRIORITY — Arras Legitimation Letter (Gen 4 Jan de Flandres)**
+- [ ] De Wrée records that Jan de Flandres (Generation 4, son of Gen 3 Jan × Isabella de Vernieulles) received a letter of legitimation from the Duke of Burgundy at Arras. This is the last documented member of the Drincham line.
+- [ ] **Action**: Archives Départementales du Nord (Lille) — search for the Arras legitimation letter. If located, this would be the bridge document for the Gen 4 gap and would confirm the line's continued presence in the Cassel area through the mid-to-late fifteenth century.
+
+**MEDIUM PRIORITY — Geneanet Deduplication: 551 → ~5 unique individuals**
+- [ ] Direct deduplication of the Geneanet pre-1500 Van Vlaenderen results confirms the entire Volckerinckhove/Renescure cluster reduces to approximately 5 unique individuals: Catherine van Vlaenderen (×Rémi Drieux), Baudouin van Vlaenderen, Margaretha de Mols, Nicolas Feuts (×2 husband traditions). All remaining 546+ entries are copies.
+- [ ] Once Catherine's connection to the Drincham line is confirmed from a primary source, update the Four Functions article methodological caveat to cite this as a specific worked example.
 
 ---
 
@@ -226,7 +257,7 @@ The goal: dictionary → academic monograph → archive register → manuscript 
 
 ### New from WFB2 PDF — Additional Source Identifications
 - [ ] **DEBR. 1957** = Debrabandere, *Aantekeningen uit de Kortrijkse antroponymie van omstreeks 1400*, MVN 33 (1957), 7–16 — journal article **precursor** to DEBR. 1958; may contain first published appearance of 1426 Kortrijk attestation; search *Mededelingen van de Vereniging voor Naamkunde* vol. 33
-- [ ] **⬇️ DOWNLOAD NOW: GYSS. 1999** = Gysseling & Debrabandere, *Persoonsnamen in de Vier Ambachten 14e en 15e eeuw*, KCTD 71 (1999), pp. 491–588 — **free via KCTD portal: https://openjournals.ugent.be/hctd** — covers Assenede, Boekhoute, Axel, Hulst = the heart of the research zone. This is the **East Flanders equivalent** of DEBR. 1958 and should be searched before any West Flanders purchases. Search specifically for *Vlaenderen* / *Flandre* entries.
+- [x] **GYSS. 1999** = Gysseling & Debrabandere, *Persoonsnamen in de Vier Ambachten 14e en 15e eeuw*, KCTD 71 (1999), pp. 491–588. **SEARCHED AND COMPLETE — April 2026.** V-section entries 407 (Vlaminc) → 408 (Vlascopere, de): no Van Vlaenderen entry at the critical alphabetical juncture. Zero Bucket 4 hits across 3,000+ individual mentions covering Sint-Baafsabdij, Sint-Pietersabdij, Rijke Gasthuis, Nieuwenbosse, Sint-Janskerk, and Karthuizers Gent fonds for Zeeuws-Vlaanderen, c.1240–1500. **Conclusion: Van Vlaenderen is not an indigenous Zeeuws-Vlaanderen surname formation. It arrives into Bassevelde/Assenede from elsewhere — most likely the Ghent hinterland, consistent with the 1568 Franciscus attestation.** Incorporated into Four Functions v5 article and Victor dossier.
 - [ ] **⬇️ DOWNLOAD NOW: DEBR. 1999** = Debrabandere, *Persoonsnamen in Hulster Ambacht 1300–1400*, KCTD 71 (1999), pp. 295–490 — **free via KCTD portal: https://openjournals.ugent.be/hctd** — companion to GYSS. 1999 in same volume; Hulster Ambacht borders Boekhoute/Assenede zone directly. Download and search alongside GYSS. 1999.
 - [ ] **DEBR. 2000** = Debrabandere, *Persoonsnamen in de Kortrijkse baljuwsrekeningen 1385–1400*, KCTD 72 (2000), 203–412 — bailiff accounts Kortrijk 1385–1400; may contain van Vlaendren entries
 - [ ] **GSB** = A. Van Werveke, *Gentse stads- en baljuwsrekeningen (1351–1364)*, Brussel, 1970 — **this is the source of the Gentse stadsrekeningen images Constance found**; check index for van Vlaenderen entries
@@ -290,6 +321,7 @@ Full text of WFB2 entry, obtained via CBG Familienamenbank (cbgfamilienamen.nl),
 | 1376 Jacop van Vlaendre, Ypres | WFB2 | BEELE 1975 | Stadsarchief Ieper, bailiff accounts | 🟡 Intermediate identified |
 | 1426 Jaquemaerde van Vlaendren, Kortrijk | WFB2 | **DEBR. 1958** (confirmed from WFB2 entry) | SAK Kortrijk, Vierschaar or Weeskamer | 🟡 Intermediate confirmed |
 | 1547–49 Bruges land records (Joos, Jacob, Phillip) | TBO 184, bundle 21300 | — | Bruges State Archives ✅ | 🟢 Primary source in hand |
+| Zeeuws-Vlaanderen medieval record, c.1240–1500 | Gysseling (GYSS. 1999) | Vier Ambachten onomastic index | Sint-Baafsabdij / Sint-Pietersabdij fonds | 🟢 **SEARCHED — zero Bucket 4 hits. Surname not indigenous to region.** |
 
 ---
 

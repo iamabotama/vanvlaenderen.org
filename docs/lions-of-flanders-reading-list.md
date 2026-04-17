@@ -1,20 +1,13 @@
 # Lions of Flanders — Reading List & Methodology
-*Last updated: April 12, 2026*
+*Last updated: April 16, 2026*
 *Companion document to the Research To-Do List*
 
-This document serves two purposes:
-1. **Research reading list** — all scholarly sources identified, with status and relevance notes
-2. **Website deployment record** — the approved content for `/research/methodology` on vanvlaenderen.org, ready for Manus or manual implementation
+This document covers two things: the project's transcription/translation methodology (source of record for the live page at `/research/methodology`) and an extended internal reading list covering both the public curated sources and the specialist onomastic/archival literature used in active research.
 
 ---
 
-## 🌐 WEBSITE DEPLOYMENT — /research/methodology
-
-**Status:** ✅ DEPLOYED April 12, 2026. Live at https://vanvlaenderen.org/research/methodology
-
----
-
-### Section 1 — Transcription and Translation Methodology
+## Transcription and Translation Methodology
+*Source of record for `/research/methodology` (live April 12, 2026)*
 
 > Archival documents in this project are transcribed using an iterative, multi-system approach. Gemini (Google) serves as the primary real-time reading tool: integrated directly into the browser, it can analyse document images without a separate upload step, allowing the researcher to ask questions about specific characters, words, or passages while actively zooming and navigating the original scan. This ambient availability makes it the natural first pass for difficult passages.
 >
@@ -28,7 +21,8 @@ This document serves two purposes:
 
 ---
 
-### Section 2 — Recommended Reading
+## Recommended Reading
+*Public reading list — also live at `/research/methodology`*
 
 > The following works form the historiographical foundation for this project. They are the sources against which our findings are tested and the authorities whose frameworks we apply. Entries are grouped by theme. Acquisition links are provided where available.
 
@@ -91,6 +85,12 @@ The Foundation for Medieval Genealogy's encyclopaedia of territories and noble f
 Published in Bruges in 1643, this is the 17th-century primary source compilation that underlies most of the FMG MedLands charter citations used in this project. The original is available on Internet Archive. Pars secunda, pp. 285–287 is the specific locus for the Victor van Vlaenderen charter evidence.
 - Free download: https://archive.org/details/bub_gb_CNSBZDBvNV4C
 
+**Nieus, Jean-François** (2021). "Aristocratic seal ownership in twelfth-century Flanders: A world in between." Preprint. Academia.edu. University of Namur. Forthcoming in peer-reviewed publication.
+Sigillographic study of noble seal usage in the County of Flanders, 1071–1200. Establishes that territorial designations in the elite Flemish milieu functioned as political and dynastic language, not mere geographic labels. Key findings: Philip of Alsace places the Flemish lion on the comital seal from 1163 (imitatio comitis); Michael II of Harnes (castellan of Cassel, constable of Flanders) confirmed as Dover Recognitio sealer (fn. 89; appendix p. 28); Baldwin II lord of Praat and Watervliet confirmed c.1190–1200. Provides contextual depth for the Van Vlaenderen surname hypothesis. Full text on file with project.
+- Scope: 1071–1200 only. Does not directly address 14th–15th century Van Vlaenderen lines — argument is contextual scaffolding, not direct evidential continuity.
+- Key pages: pp. 7–8, 17 n.89, 23–26, 28 (appendix)
+- **Status:** ✅ Read April 2026. Integrated into website (About page, Lineage page, Nieus Seals article at /research/nieus-seals, Drincham dossier)
+
 ---
 
 ## 📖 RESEARCH READING LIST — Additional Sources
@@ -102,9 +102,7 @@ Published in Bruges in 1643, this is the 17th-century primary source compilation
 **Debrabandere, Frans**
 *Woordenboek van de familienamen in België en Noord-Frankrijk* (WFB2)
 Amsterdam/Antwerp: LJ Veen, 2003. ISBN 9020402072.
-- **Status:** Not yet obtained
-- **Where:** KU Leuven / Ghent University library; Bol.com; ZVAB
-- **Key task:** Read entry for *Vlaenderen, van* — PlN-only or historically specific family usage?
+- **Status:** ✅ Entry obtained via CBG Familienamenbank (cbgfamilienamen.nl, free). Pure PlN classification. Three attestations: 1280 Catharina de Flandria, 1376 Jacop van Vlaendre (Ypres, BEELE), 1426 Jaquemaerde van Vlaendren (Kortrijk, DEBR.1958). Entry uncorrected in 2010 and 2019 corrigenda. CBG version supersedes print (author's post-2003 manuscript improvements).
 - **Contains:** 1376 Jacop van Vlaendre (Ypres) and 1426 Jaquemaerde van Vlaendren (Kortrijk) attestations
 
 **Limburg-Stirum, Th. de**
@@ -131,14 +129,15 @@ Amsterdam/Antwerp: LJ Veen, 2003. ISBN 9020402072.
 - **Key task:** Leie valley names before 1200
 
 **Debrabandere, Frans & Gysseling, Maurits**
-*Persoonsnamen in de vier ambachten, 14e en 15e eeuw* (DEBR-GYSS 1999)
-- **Status:** Not yet obtained — almost certainly the source of the Jan den Hinne / *messagier* index images Constance found
+*Persoonsnamen in de vier ambachten, 14e en 15e eeuw* (GYSS. 1999), KCTD 71 (1999), pp. 491–588
+- **Status:** ✅ SEARCHED AND COMPLETE — April 2026. Downloaded free via KCTD portal (openjournals.ugent.be/hctd).
+- **Result:** V-section (entries 394–417): NO Van Vlaenderen entry between Vlaminc (407) and Vlascopere (408). Zero Bucket 4 hits across 3,000+ individual mentions from Sint-Baafsabdij, Sint-Pietersabdij, Rijke Gasthuis, Nieuwenbosse, Sint-Janskerk, and Karthuizers Gent fonds for Zeeuws-Vlaanderen, c.1240–1500. **Conclusion: surname is not indigenous to Zeeuws-Vlaanderen. Arrives from Ghent hinterland.** Incorporated into Four Functions v5 article and Victor dossier.
 - **Covers:** Vier Ambachten: Boekhoute, Assenede, Axel, Hulst
 
 **Debrabandere, Frans**
 *Woordenboek van de familienamen in Zeeland* (WFZ), 2009
-- **Status:** Available at http://www.naamkunde.net/?p=309 — download pending
-- **Key task:** Zeeland thread; Laureys Arentsz and Arent van Vlaenderen
+- **Status:** ✅ Downloaded and searched — April 2026. Full PDF at https://www.naamkunde.net/wp-content/uploads/2010/01/WZF-Debrabandere.pdf
+- **Result:** ONE Zeeland attestation (1309-10 Robrecht van Vlaendren, Aardenburg) — the Count himself, not a surname bearer. No hereditary Van Vlaenderen surname bearers in Zeeland. Confirms East Flanders as geographic core.
 
 **Beele, W.**
 *Studie van de Ieperse persoonsnamen uit de stads- en baljuwsrekeningen 1250–1400* (BEELE 1975)

@@ -127,13 +127,25 @@ const READING_LIST: { group: string; entries: ReadingEntry[] }[] = [
         ],
       },
       {
-        author: 'Vredius, O. (Olivier de Wree)',
+        author: 'Vredius, O. (Olivier de Wrée)',
         year: '1643',
-        title: 'Sigilla Comitum Flandriae et Inscriptiones Diplomatum',
-        note: 'Published in Bruges in 1643, this is the 17th-century primary source compilation that underlies most of the FMG MedLands charter citations used in this project. Pars secunda, pp.285–287 is the specific locus for the Victor van Vlaenderen charter evidence.',
+        title: 'Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem, Pars Secunda: Continens Probationes XII posteriorum tabularum',
+        note: 'Published in Bruges in 1643, this is the 17th-century primary source compilation that is the direct basis for all bastard-line charter evidence in this project. Tabula XVI, foll. 275–288 covers Victor van Vlaenderen and all collateral bastard lines. Note: Vredius also published a separate Sigilla Comitum Flandriae (Bruges, 1639) — a study of the counts\' seals — which is a different work. The genealogical proofs for bastard lines are in the 1643 Genealogia.',
+      },
+    ],
+  },
+  {
+    group: 'Heraldry and Sigillography',
+    entries: [
+      {
+        author: 'Nieus, Jean-François',
+        year: '2021',
+        title: 'Aristocratic seal ownership in twelfth-century Flanders: A world in between',
+        note: 'A sigillographic study of noble seal usage in the County of Flanders, 1071–1200. Establishes that territorial designations in the elite Flemish milieu functioned as political and dynastic language, not mere geographic labels — the strongest contextual argument against the pure-toponymy hypothesis for the Van Vlaenderen surname. Key findings: Philip of Alsace places the Flemish lion on the comital seal from 1163; Michael II of Harnes (castellan of Cassel) confirmed at the Dover Recognitio; Baldwin II lord of Praat confirmed c.1190–1200. Preprint; forthcoming in peer-reviewed publication.',
         links: [
-          { label: 'Free download (Internet Archive)', url: 'https://archive.org/details/bub_gb_CNSBZDBvNV4C' },
+          { label: 'Preprint (Academia.edu)', url: 'https://www.academia.edu' },
         ],
+        availability: 'Preprint on file with project. Cite as forthcoming until peer-reviewed publication confirmed.',
       },
     ],
   },

@@ -12,6 +12,7 @@ import remarkGfm from 'remark-gfm';
 
 import researchTodo  from '../../docs/lions-of-flanders-todo.md?raw';
 import readingList   from '../../docs/lions-of-flanders-reading-list.md?raw';
+import analysisSessions from '../../docs/analysis-sessions.md?raw';
 import websiteTodo   from '../../docs/vanvlaenderen.org-todo.md?raw';
 
 // ── Styles ─────────────────────────────────────────────────────────────────
@@ -233,17 +234,17 @@ function MarkdownDoc({ source }: { source: string }) {
 // ── Page component ──────────────────────────────────────────────────────────
 
 const TABS = [
-  { id: 'research',  label: 'Research Notes' },
+  { id: 'research',  label: 'Research To-Do' },
+  { id: 'sources',   label: 'Sources & Reading' },
+  { id: 'analysis',  label: 'Analysis Log' },
   { id: 'website',   label: 'Website Backlog' },
-  { id: 'belgium',   label: 'Belgium Research Plan' },
+  { id: 'belgium',   label: 'Belgium Trip 2026' },
 ] as const;
 
 type TabId = typeof TABS[number]['id'];
 
 export default function DocsPage() {
   const [active, setActive] = useState<TabId>('research');
-
-  const researchSource = researchTodo + '\n\n---\n\n' + readingList;
 
   return (
     <div style={page}>
@@ -266,9 +267,11 @@ export default function DocsPage() {
       </div>
 
       <div style={content}>
-        {active === 'research' && <MarkdownDoc source={researchSource} />}
-        {active === 'website'  && <MarkdownDoc source={websiteTodo} />}
-        {active === 'belgium'  && <BelgiumPlan />}
+        {active === 'research'  && <MarkdownDoc source={researchTodo} />}
+        {active === 'sources'   && <MarkdownDoc source={readingList} />}
+        {active === 'analysis'  && <MarkdownDoc source={analysisSessions} />}
+        {active === 'website'   && <MarkdownDoc source={websiteTodo} />}
+        {active === 'belgium'   && <BelgiumPlan />}
       </div>
     </div>
   );
