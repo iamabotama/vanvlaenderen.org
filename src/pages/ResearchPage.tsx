@@ -249,6 +249,21 @@ export default function ResearchPage() {
                 View Lineage Evidence &rarr;
               </span>
             </div>
+            <div
+              className={researchStyles.branchCard}
+              role="button"
+              tabIndex={0}
+              style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
+              onClick={() => goToResearch('drincham-dossier')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('drincham-dossier'); } }}
+              aria-label="Jan sans terre van Vlaenderen Drincham Dossier"
+            >
+              <h3>Jan sans terre — Drincham Dossier</h3>
+              <p>The 1383 Drincham land grant, four documented generations in the Cassel area, the Veurne epitaph of Jacques de Drincham, and the geographic-documentary case for the French Flanders Van Vlaenderen cluster.</p>
+              <span className={researchStyles.branchLink} aria-hidden="true">
+                View Archival Evidence &rarr;
+              </span>
+            </div>
           </div>
         </section>
 

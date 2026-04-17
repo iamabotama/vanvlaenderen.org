@@ -20,6 +20,7 @@ import DocsPage from './pages/DocsPage';
 import BibliographyPage from './pages/BibliographyPage';
 import SurnameOriginsPage from './pages/SurnameOriginsPage';
 import NieusSealPage from './pages/NieusSealPage';
+import DrinchamDossierPage from './pages/DrinchamDossierPage';
 import './App.css';
 
 export default function App() {
@@ -48,6 +49,7 @@ export default function App() {
           <Route path="/research/bibliography"             element={<BibliographyPage />} />
           <Route path="/name/surname-origins"              element={<SurnameOriginsPage />} />
           <Route path="/research/nieus-seals"              element={<NieusSealPage />} />
+          <Route path="/research/drincham-dossier"          element={<DrinchamDossierPage />} />
           <Route path="/lineage"                       element={<LineagePage />} />
           <Route path="/about"                         element={<AboutPage />} />
           <Route path="/contact"                       element={<ContactPage />} />

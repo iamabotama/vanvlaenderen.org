@@ -60,6 +60,14 @@ export const PAGE_META: Record<string, PageMeta> = {
     ogDescription: 'Twelfth-century Flemish sigillography and the political meaning of territorial identity in the comital milieu.',
     ogType: 'article',
   },
+  '/research/drincham-dossier': {
+    title: 'Jan sans terre van Vlaenderen — Archival Dossier | vanvlaenderen.org',
+    description: 'Primary source dossier for Jan sans terre van Vlaenderen and the Drincham line: the 1383 land grant, four documented generations in French Flanders, the Veurne epitaph, and the geographic-documentary case for the Volckerinckhove cluster.',
+    canonical: 'https://vanvlaenderen.org/research/drincham-dossier/',
+    ogTitle: 'Jan sans terre van Vlaenderen — Archival Dossier',
+    ogDescription: 'The 1383 Drincham land grant, four generations in the Cassel area, and the French Flanders Van Vlaenderen surname origin hypothesis.',
+    ogType: 'article',
+  },
   '/dna': {
     title: 'DNA Evidence — Y-DNA Research | vanvlaenderen.org',
     description: 'Y-DNA haplogroup research for the Van Vlaenderen patrilineal line. Big Y-700 results, R-FT1573 singleton branch, and the case for a single common ancestor.',
