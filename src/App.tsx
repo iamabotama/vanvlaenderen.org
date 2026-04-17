@@ -18,6 +18,8 @@ import MethodologyPage from './pages/MethodologyPage';
 import GapDossierPage from './pages/GapDossierPage';
 import DocsPage from './pages/DocsPage';
 import BibliographyPage from './pages/BibliographyPage';
+import SurnameOriginsPage from './pages/SurnameOriginsPage';
+import NieusSealPage from './pages/NieusSealPage';
 import './App.css';
 
 export default function App() {
@@ -44,6 +46,8 @@ export default function App() {
           <Route path="/research/methodology"              element={<MethodologyPage />} />
           <Route path="/research/gap-dossier"              element={<GapDossierPage />} />
           <Route path="/research/bibliography"             element={<BibliographyPage />} />
+          <Route path="/name/surname-origins"              element={<SurnameOriginsPage />} />
+          <Route path="/research/nieus-seals"              element={<NieusSealPage />} />
           <Route path="/lineage"                       element={<LineagePage />} />
           <Route path="/about"                         element={<AboutPage />} />
           <Route path="/contact"                       element={<ContactPage />} />

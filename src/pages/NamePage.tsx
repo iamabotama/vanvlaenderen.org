@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import nameStyles from './NamePage.module.css';
 
@@ -15,6 +16,7 @@ import { Helmet } from 'react-helmet-async';
 
 export default function NamePage() {
   const { goTo } = useNav();
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [lightbox, setLightbox] = useState<{ src: string; alt: string; caption: string } | null>(null);
 
@@ -171,6 +173,41 @@ export default function NamePage() {
           <p style={{ fontStyle: 'italic', color: 'var(--text-muted)', fontSize: '0.95rem' }}>
             {t('name.four_bucket_conclusion')}
           </p>
+
+          {/* Teaser → Surname Origins article */}
+          <div style={{
+            marginTop: '2rem',
+            padding: '1.5rem 1.75rem',
+            background: 'rgba(232,184,48,0.04)',
+            border: '1px solid rgba(232,184,48,0.2)',
+            borderRadius: '4px',
+          }}>
+            <div style={{ fontSize: '0.72rem', fontFamily: 'var(--font-ui)', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: '0.6rem' }}>
+              Research Article
+            </div>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--gold)', marginBottom: '0.6rem' }}>
+              Four Functions, Three Clusters
+            </div>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '1rem', fontStyle: 'normal' }}>
+              The name appears, at first glance, to explain itself. But when the earliest surname populations are mapped geographically across three centuries, they cluster in ways that pure toponymy cannot explain — concentrated inside Flanders itself, stable over two hundred years in specific villages. This analysis sets out what the documentary and distributional evidence actually shows.
+            </p>
+            <button
+              onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              style={{
+                background: 'none',
+                border: '1px solid rgba(232,184,48,0.35)',
+                color: 'var(--gold)',
+                padding: '0.5rem 1rem',
+                cursor: 'pointer',
+                borderRadius: '3px',
+                fontSize: '0.82rem',
+                fontFamily: 'var(--font-ui)',
+                letterSpacing: '0.06em',
+              }}
+            >
+              Read the Analysis →
+            </button>
+          </div>
         </section>
 
         {/* Interactive Research Map */}

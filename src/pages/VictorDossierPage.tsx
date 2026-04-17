@@ -2,10 +2,12 @@ import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { useNav } from '../hooks/useNav';
+import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 export default function VictorDossierPage() {
   const { goToResearch } = useNav();
+  const navigate = useNavigate();
   return (
     <div className={styles.page}>
       <Helmet>
@@ -225,6 +227,15 @@ export default function VictorDossierPage() {
           <h2>Genealogical Significance <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`}>Hypothesis</span></h2>
           <p>
             The published record establishes an illegitimate comital branch rooted in the Ursel/Wessegem region, with Victor's acknowledged natural sons bearing the surname form <em>van Vlaendren</em> across three directly attested primary documents spanning 1427&ndash;1447. This does not by itself prove continuous descent to the later parish-record Van Vlaenderens of the Meetjesland. It does, however, provide a substantial medieval documentary nucleus that makes such a continuity hypothesis materially stronger than a mere coincidence-of-surname explanation.
+          </p>
+          <p>
+            The 150-year documentary gap between Adam's last attestation (18 March 1447) and Franciscus van Vlaenderen in Ghent (1568) is the central open question in the project. A systematic onomastic sweep of the Zeeuws-Vlaanderen record (Gysseling, Vier Ambachten, c.1240–1500) has confirmed the surname is not indigenous to that region — it arrives into Bassevelde/Assenede from the Ghent hinterland. The primary remaining bridge candidates are the Staten van Goed series at RAG (Ambacht Assenede I &amp; II) and the Landboek/Leenhof records. For the full distributional and documentary analysis of the surname's origin, see the{' '}
+            <button
+              onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+            >
+              Four Functions, Three Clusters analysis →
+            </button>
           </p>
         </section>
 

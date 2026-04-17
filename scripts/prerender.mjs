@@ -16,7 +16,7 @@
 
 import fs   from 'fs'
 import path from 'path'
-import { fileURLToPath } from 'url'
+import { fileURLToPath, pathToFileURL } from 'url'
 
 const __dirname   = path.dirname(fileURLToPath(import.meta.url))
 const distDir     = path.resolve(__dirname, '../dist')
@@ -41,6 +41,8 @@ const ROUTES = [
   '/research/methodology',
   '/research/gap-dossier',
   '/docs',
+  '/name/surname-origins',
+  '/research/nieus-seals',
 ]
 
 // ── Head tag builder ───────────────────────────────────────────────────────
@@ -134,7 +136,7 @@ async function prerender() {
     process.exit(1)
   }
 
-  const { render, PAGE_META } = await import(serverEntry)
+  const { render, PAGE_META } = await import(pathToFileURL(serverEntry).href)
 
   if (!PAGE_META) {
     console.error('❌  PAGE_META not exported from entry-server. Check src/entry-server.tsx.')
@@ -203,6 +205,8 @@ function writeSitemap(PAGE_META) {
     '/contact':                        { priority: '0.5', changefreq: 'yearly'  },
     '/research/bibliography':          { priority: '0.9', changefreq: 'weekly'  },
     '/research/methodology':           { priority: '0.8', changefreq: 'monthly' },
+    '/name/surname-origins':           { priority: '0.9', changefreq: 'monthly' },
+    '/research/nieus-seals':           { priority: '0.8', changefreq: 'monthly' },
   }
 
   const urls = ROUTES.filter(route => route !== '/docs').map(route => {

@@ -1,0 +1,73 @@
+diff --git a/docs/lions-of-flanders-todo.md b/docs/lions-of-flanders-todo.md
+index fd8f595..6e16015 100644
+--- a/docs/lions-of-flanders-todo.md
++++ b/docs/lions-of-flanders-todo.md
+@@ -103,7 +103,7 @@ The family's standing across centuries constitutes a distinct argument strand:
+ ### vanvlaenderen.org
+ → See **vanvlaenderen.org-todo.md** for full website backlog, citation audit tasks, and changelog.
+ 
+-**April 12, 2026 sprint complete** — build failures resolved (JSON-LD/TSX curly brace fix, `a27ed3b`), `/research/bibliography` and `/research/methodology` now live, all cross-linking from docs spec deployed, ScholarlyArticle + BreadcrumbList schema on all dossier pages, `.sr-only` diagram summaries live, Research page navigation fix (`useNav.ts`), `mvf-v2` deleted, `mvf` reset to main. See website todo for open items.
++**April 12, 2026 sprint complete** — build failures resolved, `/research/bibliography`, `/research/methodology`, `/research/gap-dossier`, and `/docs` now live; gap dossier frames the 1447–1580 problem with two upper anchors (Victor + Praet), 1517 Knesselare charter, TBO 184 records, three working hypotheses, and Gemini's scribal language note on Josse's surname; private docs page live with curated Belgium research plan. See website todo for open items.
+ 
+ ---
+ 
+diff --git a/docs/vanvlaenderen.org-todo.md b/docs/vanvlaenderen.org-todo.md
+index 8475780..fbd18aa 100644
+--- a/docs/vanvlaenderen.org-todo.md
++++ b/docs/vanvlaenderen.org-todo.md
+@@ -70,7 +70,8 @@ The research dossier pages currently have Notes & Bibliography sections with ref
+ ## 🟢 BACKLOG — LONGER TERM
+ 
+ - [ ] **`/research/attestations`** — dedicated chronological attestation page: every known Van Vlaenderen record mapped with date, location, source, bucket classification, and link. Derived from the Citation Chain Status table in the research todo. Highly crawlable; strong SEO signal for scholarly searches.
+-- [x] **Hidden text summaries for diagrams** — `.sr-only` diagram summaries live on all three diagram pages. ✅ April 12, 2026
++- [x] **Gap dossier** — `/research/gap-dossier` live. Two upper anchors (Victor + Praet), 1517 Knesselare charter, TBO 184, three hypotheses, Y-DNA handoff. ✅ April 12, 2026
++- [x] **Private docs page** — `/docs` live. Three tabs: Research Notes, Website Backlog, Belgium Research Plan. Not indexed, not in sitemap, blocked in robots.txt. ✅ April 12, 2026 — `.sr-only` diagram summaries live on all three diagram pages. ✅ April 12, 2026
+ - [ ] **Image alt text audit** — all manuscript and heraldic images should have specific descriptive alt text (e.g. "Heraldic shields from the Cronike Van Vlaenderen, 15th century manuscript, BnF" not "heraldic image").
+ - [ ] **`/research/zeeland`** — possible future page if Zeeland thread develops (Laureys Arentsz, Arent van Vlaenderen). Skeleton only until primary sources are in hand.
+ - [ ] **Constance's research** — Goal 2 thread (comital connection) may generate new dossier content once Rijksarchief Gent results are processed.
+@@ -79,7 +80,44 @@ The research dossier pages currently have Notes & Bibliography sections with ref
+ 
+ ## 📋 CHANGELOG
+ 
+-### April 12, 2026 — Build fix, new pages live, branch cleanup
++### April 12, 2026 — Build fix, new pages live, branch cleanup, gap dossier, docs page
++
++**Bug fix — root cause of build failures**
++- JSON-LD schema curly braces inside TSX template literals were breaking Vite compilation
++- Fix: wrapped all JSON-LD blocks in `dangerouslySetInnerHTML` (`a27ed3b`)
++- Secondary issues resolved in same pass: `MethodologyPage.tsx` had never been committed; `App.tsx` was missing routes for `/research/bibliography` and `/research/methodology`; prerender template corruption bug fixed
++
++**New pages now live**
++- `/research/bibliography` — 22 annotated entries, colour-coded badges, access links; `public/data/bibliography.json` is now the source of truth for bibliography entries
++- `/research/methodology` — transcription/translation methodology + curated reading list; nav link live from `/research`
++- `/research/gap-dossier` — gap dossier: two upper anchors (Victor's line, Praet line), 1517 Knesselare charter, TBO 184 records, three working hypotheses (A/B/C), Y-DNA handoff to DNA page; Gemini scribal language note added to Hypothesis B
++- `/docs` — private working documents page (not indexed, not in sitemap, blocked in robots.txt); three tabs: Research Notes, Website Backlog, Belgium Research Plan (PII-curated); uses react-markdown + remark-gfm; bare app shell served (SSR skipped)
++
++**Cross-linking complete** (per docs spec)
++- Reference cards on Research overview link to Bibliography, Methodology, and Gap Dossier
++- Full Bibliography linked from all three dossiers
++- Methodology & Sources linked from About page
++
++**Schema**
++- `ScholarlyArticle` + `BreadcrumbList` JSON-LD live on VictorDossierPage, PraetDossierPage, PraetLineageDossierPage, GapDossierPage
++
++**Accessibility**
++- `.sr-only` diagram summaries live on VictorDiagram, PraetDiagram, OverviewDiagram
++
++**Branch cleanup**
++- `dist/` removed from main branch tracking
++- `mvf-v2` deleted (remote + local)
++- `mvf` reset to match `main` exactly
++
++**Bug fix — Research page navigation**
++- `useNav.ts` was missing `methodology`, `bibliography`, and `gap-dossier` from `ResearchSubpage` type and `RESEARCH_PATHS` map
++
++**Dependencies added**
++- `react-markdown` ^10.1.0
++- `remark-gfm` ^4.0.1
++- `src/vite-env.d.ts` added to declare `?raw` imports
++
++
+ 
+ **Bug fix — root cause of build failures**
+ - JSON-LD schema curly braces inside TSX template literals were breaking Vite compilation

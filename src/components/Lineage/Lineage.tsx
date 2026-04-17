@@ -115,7 +115,21 @@ export function LineagePage() {
         <p className={styles.intro}>{t('lineage.page_intro')}</p>
       </header>
 
-      {/* Legend */}
+      {/* Nieus cultural context note */}
+      <div style={{
+        maxWidth: '780px',
+        margin: '0 auto 1.5rem',
+        padding: '1rem 1.5rem',
+        background: 'rgba(232,184,48,0.04)',
+        border: '1px solid rgba(232,184,48,0.18)',
+        borderRadius: '4px',
+        fontSize: '0.875rem',
+        color: 'var(--text-muted)',
+        lineHeight: 1.7,
+      }}>
+        The surname Van Vlaenderen — <em>from Flanders</em> — was anything but generic in a noble context. The black lion on gold that defines Flemish heraldic identity had been the comital seal device since at least 1163, when Count Philip of Alsace placed it on his seal matrix, sparking a wave of imitation across the Flemish nobility. In medieval Flanders, territorial designations functioned as dynastic and political language: scholarly research on twelfth-century noble sigillography has shown that aristocratic families used visual and symbolic culture tied to territory as an explicit marker of identity and claim. To carry the name <em>van Vlaenderen</em> in an elite milieu was to carry that symbolism.{' '}
+        <span style={{ fontStyle: 'italic', opacity: 0.75 }}>Nieus, "Aristocratic seal ownership in twelfth-century Flanders," 2021, pp. 23–26.</span>
+      </div>
       <div className={styles.legend} role="list" aria-label={t('lineage.legend_label')}>
         {(['documented', 'partial', 'inferred', 'modern'] as EvidenceStatus[]).map(s => (
           <div key={s} className={styles.legendItem} role="listitem">

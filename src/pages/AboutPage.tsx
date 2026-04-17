@@ -73,6 +73,12 @@ export default function AboutPage() {
           <p>
             {t('about.methodology_note')}
           </p>
+          <p style={{ marginTop: '1rem', fontSize: '0.975rem', color: 'var(--text-primary)', lineHeight: 1.85 }}>
+            In medieval Flanders, territorial designations were rarely neutral. Scholarly research on twelfth-century noble sigillography has shown that aristocratic families in Imperial Flanders — the eastern zone including Ghent, Aalst, and Dendermonde — used visual and symbolic culture tied to territory as political language, sometimes as an explicit assertion of dynastic identity against comital authority. By the fourteenth and fifteenth centuries, when our documented ancestors first appear in the record, this tradition of territorial self-identification was already centuries old. A name styled <em>van Vlaenderen</em> emerging from the comital milieu was not a generic address label — it was an identity claim with documentary, heraldic, and political depth.{' '}
+            <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
+              Nieus, "Aristocratic seal ownership in twelfth-century Flanders," 2021, p. 26.
+            </span>
+          </p>
           <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <button
               onClick={() => goTo('research')}

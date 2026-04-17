@@ -1,0 +1,183 @@
+diff --git a/docs/lions-of-flanders-todo.md b/docs/lions-of-flanders-todo.md
+index ad568ff..2f75ccd 100644
+--- a/docs/lions-of-flanders-todo.md
++++ b/docs/lions-of-flanders-todo.md
+@@ -103,6 +103,15 @@ The family's standing across centuries constitutes a distinct argument strand:
+ ### vanvlaenderen.org
+ → See **vanvlaenderen.org-todo.md** for full website backlog, citation audit tasks, and changelog.
+ 
++**April 13, 2026** — Citation corrections (Corvers author, Cronike URL) + selective scholarly tone pass from ChatGPT/Dr. Larmuseau review. Central interpretive arguments preserved. See website todo for full detail.
++
++### Next session agenda
++- [ ] Verify Gemini can crawl prerendered pages with trailing slash URLs
++- [ ] **GYSS. 1999** — download from KCTD portal and search (highest priority unread source)
++- [ ] **Oostborch** — identify modern location; if near Meetjesland, strengthens Lodewyc geographic link
++- [ ] **Digital gallery** — TBO 184 photos from Bruges visit as first addition
++- [ ] **Knesselare charter "Archival Quest" tag** — flag in gap dossier as single highest-value RAG target
++
+ **April 12, 2026 sprint complete** — build failures resolved, gap dossier live, private docs page live, citation audit complete across all three dossiers and bibliography.json. Key audit findings: Vredius 1639 (*Sigilla*) vs 1643 (*Genealogia, Pars secunda*) correctly differentiated; full archival signatures added for TBO 184 records; Buylaert, Bethune, Espinoy, Cronike van Vlaenderen all corrected or upgraded. See website todo changelog for full detail.
+ 
+ ---
+diff --git a/docs/vanvlaenderen.org-todo.md b/docs/vanvlaenderen.org-todo.md
+index 5f35c30..099cedc 100644
+--- a/docs/vanvlaenderen.org-todo.md
++++ b/docs/vanvlaenderen.org-todo.md
+@@ -80,6 +80,31 @@ The research dossier pages currently have Notes & Bibliography sections with ref
+ 
+ ## 📋 CHANGELOG
+ 
++### April 13, 2026 — Citation corrections + selective scholarly tone pass
++
++**Factual corrections (taken without reservation)**
++- Victor dossier ref 6 (*Corvers en zeeschuimers*): author corrected from "Brouwers, D.D." → **Tailler, Margaux**; year 2012 → **2011**; supervisor Jan Dumolyn added. Same fix applied to VictorLineagePage.
++- bibliography.json *Cronike van Vlaenderen*: unverified Gallica ARK replaced with confirmed Utrecht University Repository link
++- NamePage spelling variants: removed duplicate "Van Vlaenderen" entry
++- Note: Buylaert [881, 882] = *Repertorium van de Vlaamse adel* (2011) confirmed via FMG citation pattern — citation stands as-is
++
++**Legitimate softening (taken)**
++- Homepage hypothesis two: "circumstantial evidence" → "merits further investigation, but at present remains a hypothesis requiring additional archival and genetic evidence"
++- Homepage hypothesis one: "single common ancestor" → adds "within the early modern documentary period" to prevent overreach
++- DNA page: "almost certainly share a common paternal ancestor" → "closely matching Y-DNA results — particularly at the terminal SNP level — may share a relatively recent common paternal ancestor" (scientific accuracy)
++- DNA page: "compelling possibility" → "raises the possibility" ("compelling" implies conclusion)
++- Victor lineage gap: internal date inconsistency fixed — "Adam, fl. 1441" → "last confirmed 1447"
++- Victor lineage gap: "strongest available non-genealogical evidence" → "one of the strongest available forms of indirect evidence"
++- NamePage Wessegem village note: "Baptism and marriage registers" → "Medieval territorial and seigneurial references associated with the Ursel area" (historically imprecise as stated)
++- NamePage Cronike caption: "Direct documentary evidence of the Van Vlaenderen name" → reframed as contextual/political evidence (the shields refer to counts, not the surname family — caption was genuinely misleading)
++
++**Deliberately preserved (feedback declined)**
++- ResearchPage crystallisation paragraph: "not a geographic descriptor, but a marker of comital illegitimate descent" — this is the site's central interpretive argument; over-hedging flattens it
++- Victor pull quote: "most direct documented link" — pull quotes are assertive by convention
++- Name page four-bucket conclusion: "often the progenitor" and "it makes its persistence meaningful" — these are in an explicitly argumentative section
++- DNA pull quote: "Genealogy without genetics is like a map without a compass" — public-facing page, acceptable
++- Mill page: "craft passed from father to son" — evocative and not inaccurate
++
+ ### April 12, 2026 — Citation audit across all three dossiers + bibliography
+ 
+ **Vredius edition correction (critical)**
+diff --git a/public/data/bibliography.json b/public/data/bibliography.json
+index eb9207e..b1b4f54 100644
+--- a/public/data/bibliography.json
++++ b/public/data/bibliography.json
+@@ -57,8 +57,8 @@
+               "title": "Excellente Cronike van Vlaenderen",
+               "publisher": "Antwerp: Willem Vorsterman, 1531. Large folio edition.",
+               "note": "Chronicle of the foresters and counts of Flanders, from Liederic de Buc (621 AD) to the late 15th century. Printed in 1531 as the first edition of a chronicle tradition preserved in seven related 15th-century manuscripts. The heraldic shields displayed on the Name page are from this chronicle tradition. Referenced for context on the world the Van Vlaenderen family inhabited.",
+-              "url": "https://gallica.bnf.fr/ark:/12148/bpt6k6365314v",
+-              "urlLabel": "Gallica (BnF) — 1531 Vorsterman edition"
++              "url": "https://dspace.library.uu.nl/handle/1874/44656",
++              "urlLabel": "Free access (Utrecht University Repository — 1531 Vorsterman edition)"
+             },
+             {
+               "type": "Primary Source",
+diff --git a/src/i18n/locales/en.json b/src/i18n/locales/en.json
+index d0af6b1..5dd0961 100644
+--- a/src/i18n/locales/en.json
++++ b/src/i18n/locales/en.json
+@@ -21,11 +21,11 @@
+     "mystery_emerging": "But the documentary record raises two questions that a purely toponymic explanation does not easily answer — and this project exists to investigate them.",
+     "hypothesis_one_label": "Working hypothesis one",
+     "hypothesis_one_title": "A small number of founding families",
+-    "hypothesis_one_body": "When the earliest traceable Van Vlaenderen lines across the Meetjesland parishes are mapped together, the name does not appear to scatter randomly across the region. Early research suggests the possibility that all documented Van Vlaenderen lines descend from no more than two or three founding families — perhaps even a single common ancestor — rather than from independent families who happened to share a descriptive label. This hypothesis is being tested through parish record analysis and genetic genealogy. It remains unproven, and the evidence gathered so far is suggestive rather than conclusive.",
++    "hypothesis_one_body": "When the earliest traceable Van Vlaenderen lines across the Meetjesland parishes are mapped together, the name does not appear to scatter randomly across the region. Early research suggests the possibility that all documented Van Vlaenderen lines descend from no more than two or three founding families — perhaps even a single common ancestor within the early modern documentary period — rather than from independent families who happened to share a descriptive label. This hypothesis is being tested through parish record analysis and genetic genealogy. It remains unproven, and the evidence gathered so far is suggestive rather than conclusive.",
+     "hypothesis_two_label": "Working hypothesis two",
+     "hypothesis_two_title": "A title that became a surname",
+     "hypothesis_two_p1": "Historical records document a figure named Victor van Vlaenderen, an acknowledged natural son of Louis II, Count of Flanders, who held the lordship of Wessegem in the parish of Ursel — the very heart of the region where the Van Vlaenderen surname later appears in parish registers. Victor died before 1442, leaving documented natural sons Lodewyc, Janne, and Adam van Vlaendren. Local records place Adam in the Maldegem and Ursel area in the mid-fifteenth century.",
+-    "hypothesis_two_p2": "The working hypothesis — and it is no more than that at this stage — is that as the era of the Counts of Flanders ended, descendants of this comital line may have carried the name van Vlaenderen forward not as a description of geographic origin, but as a form of inherited identity. If so, the surname may have seeded one or more of the family lines that later appear in the Meetjesland parish registers. This connection is plausible and supported by circumstantial evidence, but it has not been proven. The archival work required to confirm or refute it is ongoing.",
++    "hypothesis_two_p2": "The working hypothesis — and it is no more than that at this stage — is that as the era of the Counts of Flanders ended, descendants of this comital line may have carried the name van Vlaenderen forward not as a description of geographic origin, but as a form of inherited identity. If so, the surname may have seeded one or more of the family lines that later appear in the Meetjesland parish registers. This connection is plausible and merits further investigation, but at present remains a hypothesis requiring additional archival and genetic evidence. The archival work required to confirm or refute it is ongoing.",
+     "pull_quote": "One name. One region. The question is whether it was ever truly one family.",
+     "cta_research": "View the Research Dossier",
+     "cta_collaborative_p1": "This project is collaborative by design. If you carry the name",
+@@ -184,7 +184,7 @@
+     "origin_heading": "The Question of Common Origin",
+     "origin_p1": "Genealogical research into the Van Vlaenderen name has identified several documented family lines rooted in the Meetjesland and surrounding regions of East Flanders. At first glance, these lines appear in different parishes and at different moments in the historical record.",
+     "origin_p2": "The traditional assumption has been that families bearing the surname Van Vlaenderen — meaning \"from Flanders\" — may have adopted it independently as a locative designation. Yet closer examination of parish registers, land records, and patterns of proximity reveals a striking geographic concentration and recurring associations between families carrying the name.",
+-    "origin_p3": "Rather than suggesting fragmentation, the documentation increasingly raises a compelling possibility: that many, perhaps even all, Van Vlaenderen families of the region may descend from a shared ancestor whose identity predates surviving parish records.",
++    "origin_p3": "Rather than suggesting fragmentation, the documentation raises the possibility that many, perhaps even all, Van Vlaenderen families of the region may descend from a shared ancestor whose identity predates surviving parish records.",
+     "origin_p4": "Traditional genealogical research — relying on parish registers, civil records, and land documents — allows us to reconstruct much of this story, but gaps remain in the medieval period. DNA testing offers a complementary avenue of inquiry, helping to determine whether present-day Van Vlaenderens share a common paternal lineage.",
+     "origin_p5": "This question remains open — and it is one that can only be answered collectively.",
+     "origin_p6": "If you bear the name Van Vlaenderen, your family history may hold an essential piece of the puzzle.",
+@@ -193,7 +193,7 @@
+     "dna_heading": "How DNA Genealogy Works",
+     "dna_intro": "Modern genetic genealogy uses several types of DNA testing to trace family connections across generations:",
+     "dna_ydna": "Y-DNA",
+-    "dna_ydna_desc": "Passed from father to son, Y-DNA testing traces the direct paternal line. It is particularly useful for surname research, as the Y chromosome and the surname are often inherited together. Two men who share a Y-DNA haplogroup and a surname almost certainly share a common paternal ancestor.",
++    "dna_ydna_desc": "Passed from father to son, Y-DNA testing traces the direct paternal line. It is particularly useful for surname research, as the Y chromosome and the surname are often inherited together. Two men who share the surname and closely matching Y-DNA results — particularly at the terminal SNP level — may share a relatively recent common paternal ancestor.",
+     "dna_autosomal": "Autosomal DNA",
+     "dna_autosomal_desc": "Autosomal DNA is inherited from both parents and can identify cousins across all family lines within approximately five to seven generations. Services such as AncestryDNA, 23andMe, and FamilyTreeDNA use autosomal testing to match you with living relatives who have also tested.",
+     "dna_mtdna": "mtDNA",
+@@ -399,13 +399,13 @@
+     "village_sleidinge": "Sleidinge",
+     "village_sleidinge_note": "Parish and notarial records",
+     "village_wessegem": "Wessegem",
+-    "village_wessegem_note": "Baptism and marriage registers",
++    "village_wessegem_note": "Medieval territorial and seigneurial references associated with the Ursel area",
+     "village_vinderhoute": "Vinderhoute",
+     "village_vinderhoute_note": "Home of the Van Vlaenderensmolen",
+     "variations_intro": "Before standardised spelling was enforced through civil registration in the Napoleonic period (after 1796 in Belgium), surnames were recorded phonetically by parish priests and local officials. The Van Vlaenderen name appears in historical documents in a wide variety of forms:",
+     "variations_footer": "If you are researching the Van Vlaenderen family in historical archives, it is worth searching for all of these variants, particularly in records predating 1800.",
+-    "document_alt": "Pages from the Cronike Van Vlaenderen showing heraldic shields labeled with Van Vlaenderen family members",
+-    "document_caption": "Pages from the Cronike Van Vlaenderen — heraldic shields bearing the names \"Gillam Ban Claendren,\" \"Philips Ban Claendren,\" \"Boulben Ban Claendren,\" and \"die connestauell Ban Claendren.\" Direct documentary evidence of the Van Vlaenderen name in medieval Flemish heraldic records.",
++    "document_alt": "Pages from the Cronike Van Vlaenderen showing heraldic shields with medieval Flemish labels referring to the Counts and noble houses of Flanders",
++    "document_caption": "Pages from the Cronike van Vlaenderen showing heraldic shields labeled with medieval forms referring to the Counts and noble houses of Flanders. These are not genealogical attestations of the later hereditary surname, but important contextual evidence for the linguistic and political use of 'van Vlaenderen' in medieval documentary culture.",
+     "manuscript_1_alt": "Countess of Flanders on horseback surrounded by heraldic shields — illuminated manuscript",
+     "manuscript_1_caption": "Countess of Flanders — from the Cronike Van Vlaenderen, surrounded by the heraldic shields of the great Flemish houses",
+     "manuscript_2_alt": "Philip of Alsace, Count of Flanders — illuminated manuscript illustration",
+@@ -495,10 +495,10 @@
+     "cta_text": "Do you have research that connects to the line of Victor van Vlaenderen?",
+     "cta_note": "We are actively seeking to bridge the gap between the 15th-century records and the early modern parish registers.",
+     "gap_title": "Bridging the Gap (1442-1547)",
+-    "gap_p1": "The single most important unresolved question in this research is the generational bridge between the last documented fifteenth-century van Vlaendren (Adam, fl. 1441) and the first confirmed early modern bearer (Joos, fl. 1547). This gap of approximately a century spans the transition from feudal record-keeping to consistent parish registration, and it is where the hypothesis of continuous descent either stands or falls.",
++    "gap_p1": "The single most important unresolved question in this research is the generational bridge between the last documented fifteenth-century van Vlaendren (Adam, last confirmed 1447) and the first confirmed early modern bearer (Joos, fl. 1547). This gap of approximately a century spans the transition from feudal record-keeping to consistent parish registration, and it is where the hypothesis of continuous descent either stands or falls.",
+     "gap_p2": "What the fifteenth-century record establishes is clear: Adam van Vlaendren, natural son of Victor, held land in the Ursel and Wessegem area and was alive as late as the 1441/42 charter. The lordship of Wessegem had reverted to the comital domain in 1431, which means Adam and his brothers did not inherit the lordship itself. They would instead appear in the records not as leaseholders, feudal tenants, or freeholders -- making them harder to trace but not untraceable.",
+     "gap_p3": "Three archival paths offer the most realistic prospect of closing the gap:",
+-    "gap_p4": "First, cijnsboeken (rent rolls) and leenboeken (feudal registers) for the ambachten of Ursel and Maldegem, covering the period 1440-1540. If land that was held by Victor's family in the 1420s and 1430s appears in the name van Vlaenderen one or two generations later, that constitutes property continuity -- the strongest available non-genealogical evidence of descent.",
++    "gap_p4": "First, cijnsboeken (rent rolls) and leenboeken (feudal registers) for the ambachten of Ursel and Maldegem, covering the period 1440-1540. If land that was held by Victor's family in the 1420s and 1430s appears in the name van Vlaenderen one or two generations later, that constitutes property continuity — one of the strongest available forms of indirect evidence for continuity of descent.",
+     "gap_p5": "Second, Staten van Goed (probate inventories) for the same region. If Adam died leaving heirs, an estate division record naming his children would be transformative. The relevant collections at Rijksarchief Gent include the Ambacht Ursel, Ambacht Maldegem, and the surrounding heerlijkheden.",
+     "gap_p6": "Third, Raad van Vlaanderen court records. Inheritance disputes, guardianship cases, and kinship statements in court proceedings sometimes preserve genealogical relationships that never appear in parish registers. These records are held at Rijksarchief Gent and have not yet been systematically searched for van Vlaenderen parties.",
+     "gap_p7": "The archival work required to bridge this gap is ongoing. Until it is complete, the connection between the fifteenth-century comital-bastard line and the sixteenth-century Meetjesland van Vlaenderens remains a well-supported hypothesis rather than a proven lineage.",
+@@ -548,4 +548,4 @@
+     "badge_attested": "Directly Attested",
+     "badge_probable": "Probable"
+   }
+-}
++}
+\ No newline at end of file
+diff --git a/src/pages/NamePage.tsx b/src/pages/NamePage.tsx
+index 5b74600..a831dd5 100644
+--- a/src/pages/NamePage.tsx
++++ b/src/pages/NamePage.tsx
+@@ -42,7 +42,7 @@ export default function NamePage() {
+   ];
+ 
+   const variations = [
+-    'Van Vlaenderen', 'Van Vlaenderen', 'Van Vlaendereen',
++    'Van Vlaenderen', 'Van Vlaendereen',
+     'Vanvlaenderen', 'Van Flanderen', 'Vanflanderen',
+     'de Flandre', 'van Vlanderen', 'Van Vlaendren',
+   ];
+diff --git a/src/pages/VictorDossierPage.tsx b/src/pages/VictorDossierPage.tsx
+index 0248942..57fda02 100644
+--- a/src/pages/VictorDossierPage.tsx
++++ b/src/pages/VictorDossierPage.tsx
+@@ -260,7 +260,7 @@ export default function VictorDossierPage() {
+           </div>
+           <div className={researchStyles.refItem}>
+             <span className={researchStyles.refNumber}>6.</span>
+-            Brouwers, D.D. <em>Corvers en zeeschuimers van den Vlaemsche zeecoste.</em> Unpublished thesis, Ghent University, 2012. Notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.'{' '}
++            Tailler, Margaux. <em>Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees.</em> Master of Arts in History, Ghent University, 2011. Supervised by Jan Dumolyn. Notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.'{' '}
+             <a href="https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library, Thesis RUG01-001786522 (2012)</a>
+           </div>
+         </section>
+diff --git a/src/pages/VictorLineagePage.tsx b/src/pages/VictorLineagePage.tsx
+index 6aa6ad4..cb2c373 100644
+--- a/src/pages/VictorLineagePage.tsx
++++ b/src/pages/VictorLineagePage.tsx
+@@ -189,7 +189,7 @@ export default function VictorLineagePage() {
+           </div>
+           <div className={researchStyles.refItem}>
+             <span className={researchStyles.refNumber}>5.</span>
+-            Corvers en zeeschuimers van den Vlaemsche zeecoste. UGent repository.{' '}
++            Tailler, Margaux. <em>Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees.</em> MA thesis, Ghent University, 2011. Supervised by Jan Dumolyn.{' '}
+             <a href="https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library, Thesis RUG01-001786522 (2012)</a>
+           </div>
+         </section>

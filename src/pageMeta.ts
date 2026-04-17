@@ -44,6 +44,22 @@ export const PAGE_META: Record<string, PageMeta> = {
     ogDescription: 'Comital identity, not a toponym. Evidence from the 1441 charter of Victor van Vlaenderen.',
     ogType: 'article',
   },
+  '/name/surname-origins': {
+    title: 'Four Functions, Three Clusters — The Van Vlaenderen Surname | vanvlaenderen.org',
+    description: 'A primary source and distributional analysis of the Van Vlaenderen surname: four documentary functions, three geographic clusters across three centuries, and competing hypotheses for the name\'s origin.',
+    canonical: 'https://vanvlaenderen.org/name/surname-origins/',
+    ogTitle: 'Four Functions, Three Clusters — The Van Vlaenderen Surname',
+    ogDescription: 'Distributional and documentary analysis testing the toponymic and bastard-line hypotheses for the Van Vlaenderen surname origin.',
+    ogType: 'article',
+  },
+  '/research/nieus-seals': {
+    title: 'Seals, Lions, and the Politics of a Surname | vanvlaenderen.org',
+    description: 'How twelfth-century Flemish noble seal culture illuminates the political and dynastic weight of territorial designations — and what that means for the Van Vlaenderen surname.',
+    canonical: 'https://vanvlaenderen.org/research/nieus-seals/',
+    ogTitle: 'Seals, Lions, and the Politics of a Surname',
+    ogDescription: 'Twelfth-century Flemish sigillography and the political meaning of territorial identity in the comital milieu.',
+    ogType: 'article',
+  },
   '/dna': {
     title: 'DNA Evidence — Y-DNA Research | vanvlaenderen.org',
     description: 'Y-DNA haplogroup research for the Van Vlaenderen patrilineal line. Big Y-700 results, R-FT1573 singleton branch, and the case for a single common ancestor.',

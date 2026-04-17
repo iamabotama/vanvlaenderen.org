@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
@@ -12,6 +13,7 @@ import { Helmet } from 'react-helmet-async';
 
 export default function ResearchPage() {
   const { goToResearch } = useNav();
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   return (
@@ -245,6 +247,44 @@ export default function ResearchPage() {
               <p>Six generations with primary-source confirmed data. Johan I's seven children, Josse de Flandre cadet branch, and the 1517 Knesselare charter.</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
                 View Lineage Evidence &rarr;
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Research Articles ────────────────────────────────────── */}
+        <section className={styles.section} style={{ marginTop: '3rem' }}>
+          <h2>Research Articles</h2>
+          <p>Analytical and contextual writing that sits alongside the archival evidence — distributional analysis, historical interpretation, and speculative threads with clearly marked evidentiary status.</p>
+          <div className={researchStyles.branchCards}>
+            <div
+              className={researchStyles.branchCard}
+              role="button"
+              tabIndex={0}
+              style={{ borderTop: '3px solid rgba(232,184,48,0.45)', cursor: 'pointer' }}
+              onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); } }}
+              aria-label="Four Functions Three Clusters"
+            >
+              <h3>Four Functions, Three Clusters</h3>
+              <p>A primary source and distributional analysis of the Van Vlaenderen surname across four documentary functions and three geographic clusters spanning three centuries. Tests the toponymic and bastard-line hypotheses against Geneanet heat-map data and the onomastic record.</p>
+              <span className={researchStyles.branchLink} aria-hidden="true">
+                Read Analysis &rarr;
+              </span>
+            </div>
+            <div
+              className={researchStyles.branchCard}
+              role="button"
+              tabIndex={0}
+              style={{ borderTop: '3px solid rgba(232,184,48,0.45)', cursor: 'pointer' }}
+              onClick={() => goToResearch('nieus-seals')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('nieus-seals'); } }}
+              aria-label="Seals Lions and the Politics of a Surname"
+            >
+              <h3>Seals, Lions, and the Politics of a Surname</h3>
+              <p>How twelfth-century Flemish noble seal culture — the lion, the Dover Recognitio, and the political weight of territorial identity — provides historical depth for the Van Vlaenderen hypothesis. Based on Nieus (2021).</p>
+              <span className={researchStyles.branchLink} aria-hidden="true">
+                Read Article &rarr;
               </span>
             </div>
           </div>
