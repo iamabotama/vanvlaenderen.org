@@ -2091,6 +2091,50 @@ const nameStyles = {
   lightboxCaption,
   lightboxClose
 };
+const dossierHeader = "_dossierHeader_1pohl_1";
+const dossierTitle = "_dossierTitle_1pohl_10";
+const dossierMeta = "_dossierMeta_1pohl_17";
+const methodologyBox = "_methodologyBox_1pohl_25";
+const methodologyTitle = "_methodologyTitle_1pohl_33";
+const methodologyGrid = "_methodologyGrid_1pohl_41";
+const methodItem = "_methodItem_1pohl_47";
+const methodLabel = "_methodLabel_1pohl_52";
+const evidenceLevel = "_evidenceLevel_1pohl_62";
+const levelAttested = "_levelAttested_1pohl_73";
+const levelCorroborated = "_levelCorroborated_1pohl_74";
+const levelProbable = "_levelProbable_1pohl_75";
+const levelHypothesis = "_levelHypothesis_1pohl_76";
+const treeContainer = "_treeContainer_1pohl_78";
+const referenceList = "_referenceList_1pohl_159";
+const refItem = "_refItem_1pohl_174";
+const refNumber = "_refNumber_1pohl_181";
+const refLink = "_refLink_1pohl_187";
+const branchCards = "_branchCards_1pohl_199";
+const branchCard = "_branchCard_1pohl_199";
+const branchLink = "_branchLink_1pohl_239";
+const researchStyles = {
+  dossierHeader,
+  dossierTitle,
+  dossierMeta,
+  methodologyBox,
+  methodologyTitle,
+  methodologyGrid,
+  methodItem,
+  methodLabel,
+  evidenceLevel,
+  levelAttested,
+  levelCorroborated,
+  levelProbable,
+  levelHypothesis,
+  treeContainer,
+  referenceList,
+  refItem,
+  refNumber,
+  refLink,
+  branchCards,
+  branchCard,
+  branchLink
+};
 const manuscriptNoblewoman = "/assets/cronike-van-vlaenderen-countess-of-flanders-FFuOL0Qw.jpg";
 const knightPhilip = "/assets/cronike-van-vlaenderen-philip-of-alsace-knight-DGQauyu8.jpg";
 const lionWoodcut = "/assets/lion-woodcut-BatZURmx.jpg";
@@ -2162,13 +2206,19 @@ function NamePage() {
     ] }),
     /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
       /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
-        /* @__PURE__ */ jsx("h2", { children: t("name.history_title") }),
+        /* @__PURE__ */ jsxs("h2", { children: [
+          t("name.history_title"),
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: t("research.method_corroborated_label") })
+        ] }),
         /* @__PURE__ */ jsx("p", { children: t("name.history_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("name.history_p2") }),
         /* @__PURE__ */ jsx("p", { children: t("name.history_p3") })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
-        /* @__PURE__ */ jsx("h2", { children: t("name.four_bucket_title") }),
+        /* @__PURE__ */ jsxs("h2", { children: [
+          t("name.four_bucket_title"),
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: t("research.method_attested_label") })
+        ] }),
         /* @__PURE__ */ jsx("p", { children: t("name.four_bucket_intro") }),
         /* @__PURE__ */ jsx("p", { children: t("name.four_bucket_rebuttal") }),
         /* @__PURE__ */ jsxs("div", { style: { margin: "2rem 0" }, children: [
@@ -2502,7 +2552,10 @@ function DnaPage() {
         /* @__PURE__ */ jsx("p", { children: /* @__PURE__ */ jsx("strong", { children: t("dna.origin_p6") }) })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
-        /* @__PURE__ */ jsx("h2", { children: t("dna.research_stands_heading") }),
+        /* @__PURE__ */ jsxs("h2", { children: [
+          t("dna.research_stands_heading"),
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: t("research.method_attested_label") })
+        ] }),
         /* @__PURE__ */ jsx("p", { children: t("dna.research_stands_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.research_stands_p2") }),
         /* @__PURE__ */ jsx("p", { children: /* @__PURE__ */ jsx("strong", { children: t("dna.research_stands_p3") }) }),
@@ -2541,7 +2594,10 @@ function DnaPage() {
         ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
-        /* @__PURE__ */ jsx("h2", { children: t("dna.testing_heading") }),
+        /* @__PURE__ */ jsxs("h2", { children: [
+          t("dna.testing_heading"),
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: t("research.method_hypothesis_label") })
+        ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           t("dna.testing_intro_pre"),
           " ",
@@ -2622,7 +2678,10 @@ function DnaPage() {
         /* @__PURE__ */ jsx("p", { children: /* @__PURE__ */ jsx("em", { children: t("dna.testing_close") }) })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
-        /* @__PURE__ */ jsx("h2", { children: t("dna.zeeland_heading") }),
+        /* @__PURE__ */ jsxs("h2", { children: [
+          t("dna.zeeland_heading"),
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: t("research.method_hypothesis_label") })
+        ] }),
         /* @__PURE__ */ jsx("p", { children: t("dna.zeeland_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.zeeland_p2") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.zeeland_p3") })
@@ -2823,50 +2882,6 @@ function DnaPage() {
     ] })
   ] });
 }
-const dossierHeader = "_dossierHeader_1pohl_1";
-const dossierTitle = "_dossierTitle_1pohl_10";
-const dossierMeta = "_dossierMeta_1pohl_17";
-const methodologyBox = "_methodologyBox_1pohl_25";
-const methodologyTitle = "_methodologyTitle_1pohl_33";
-const methodologyGrid = "_methodologyGrid_1pohl_41";
-const methodItem = "_methodItem_1pohl_47";
-const methodLabel = "_methodLabel_1pohl_52";
-const evidenceLevel = "_evidenceLevel_1pohl_62";
-const levelAttested = "_levelAttested_1pohl_73";
-const levelCorroborated = "_levelCorroborated_1pohl_74";
-const levelProbable = "_levelProbable_1pohl_75";
-const levelHypothesis = "_levelHypothesis_1pohl_76";
-const treeContainer = "_treeContainer_1pohl_78";
-const referenceList = "_referenceList_1pohl_159";
-const refItem = "_refItem_1pohl_174";
-const refNumber = "_refNumber_1pohl_181";
-const refLink = "_refLink_1pohl_187";
-const branchCards = "_branchCards_1pohl_199";
-const branchCard = "_branchCard_1pohl_199";
-const branchLink = "_branchLink_1pohl_239";
-const researchStyles = {
-  dossierHeader,
-  dossierTitle,
-  dossierMeta,
-  methodologyBox,
-  methodologyTitle,
-  methodologyGrid,
-  methodItem,
-  methodLabel,
-  evidenceLevel,
-  levelAttested,
-  levelCorroborated,
-  levelProbable,
-  levelHypothesis,
-  treeContainer,
-  referenceList,
-  refItem,
-  refNumber,
-  refLink,
-  branchCards,
-  branchCard,
-  branchLink
-};
 const C = {
   root: "#e8812a",
   victor: "#9b7fd4",
@@ -3750,7 +3765,10 @@ function ResearchPage() {
         /* @__PURE__ */ jsx("p", { style: { margin: 0, lineHeight: 1.7, color: "var(--text-primary)" }, children: t("research.tldr_body") })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
-        /* @__PURE__ */ jsx("h2", { children: t("research.three_lines_heading") }),
+        /* @__PURE__ */ jsxs("h2", { children: [
+          t("research.three_lines_heading"),
+          /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: t("research.method_corroborated_label") })
+        ] }),
         /* @__PURE__ */ jsx("p", { children: t("research.three_lines_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("research.three_lines_p2") }),
         /* @__PURE__ */ jsxs("div", { style: {
