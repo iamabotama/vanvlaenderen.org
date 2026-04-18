@@ -40,7 +40,7 @@ export default function ResearchPage() {
           <h1>{t('research.hero_title')}</h1>
           <div className="gold-rule" />
           <p className={styles.heroLead}>
-            Louis II de Male, Count of Flanders (1330&ndash;1384), fathered at least thirteen illegitimate children. Three of his natural sons founded documented surname-bearing lines that used <em>van Vlaenderen</em> as a hereditary identifier &mdash; each anchored to a distinct lordship, each leaving a distinct geographic footprint in the historical record.
+            {t('research.hero_lead')}
           </p>
         </div>
       </div>
@@ -48,20 +48,39 @@ export default function ResearchPage() {
       <div className={styles.content}>
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>{t('research.dossier_title')}</h2>
-          <div className={researchStyles.dossierMeta}>Updated April 2026</div>
+          <div className={researchStyles.dossierMeta}>{t('research.dossier_updated')}</div>
+        </div>
+
+        {/* ── Plain-English TL;DR callout ──────────────────────────── */}
+        <div style={{
+          margin: '2rem 0 2.5rem',
+          padding: '1.5rem 1.75rem',
+          background: 'rgba(232,184,48,0.04)',
+          border: '1px solid rgba(232,184,48,0.25)',
+          borderLeft: '3px solid var(--gold)',
+          borderRadius: '3px',
+        }}>
+          <div style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: '1.15rem',
+            color: 'var(--gold)',
+            marginBottom: '0.6rem',
+            letterSpacing: '0.02em',
+          }}>
+            {t('research.tldr_heading')}
+          </div>
+          <p style={{ margin: 0, lineHeight: 1.7, color: 'var(--text-primary)' }}>
+            {t('research.tldr_body')}
+          </p>
         </div>
 
         {/* ── Three-Line Structure ──────────────────────────────── */}
         <section className={styles.section}>
-          <h2>Three Lines, Three Clusters</h2>
-          <p>
-            The research is structured around three documented lines descending from Louis de Male. All three used <em>van Vlaenderen</em> (and its variants: van Vlaendren, de Flandre, de Flandres) as a hereditary surname &mdash; not a geographic descriptor, but a marker of comital illegitimate descent that crystallised at the precise moment the Dampierre line's hold on Flanders ended with Louis de Male's death in 1384. Each line is anchored to a specific lordship granted in the 1373&ndash;1399 period, and each corresponds to a distinct geographic cluster in the later distributional record.
-          </p>
-          <p>
-            There is a further dimension worth noting. Louis II de Male was the last Count of Flanders from the House of Dampierre. On his death in 1384, the county passed to his daughter Margaret and her husband Philip the Bold of Burgundy, and the Dampierre hold on Flanders ended permanently. The evidence suggests that <em>van Vlaenderen</em> crystallised as a heritable surname among Louis&apos;s bastard children at precisely this moment &mdash; not as a geographic descriptor meaning &lsquo;from Flanders,&rsquo; but as an inherited identity marking comital blood at the point when the title itself was extinguished. This pattern is documented independently in all three lines, and it is one of the strongest arguments that the surname functions as inherited comital identity rather than as a common toponym.
-          </p>
+          <h2>{t('research.three_lines_heading')}</h2>
+          <p>{t('research.three_lines_p1')}</p>
+          <p>{t('research.three_lines_p2')}</p>
 
-          {/* Four Functions teaser */}
+          {/* Toponymic Paradox teaser (reframed Four Functions teaser) */}
           <div style={{
             marginTop: '1.75rem',
             padding: '1.25rem 1.5rem',
@@ -70,13 +89,13 @@ export default function ResearchPage() {
             borderRadius: '4px',
           }}>
             <div style={{ fontSize: '0.72rem', fontFamily: 'var(--font-ui)', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
-              The Analytical Framework
+              {t('research.paradox_eyebrow')}
             </div>
             <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', color: 'var(--gold)', marginBottom: '0.5rem' }}>
-              Four Functions, Three Clusters
+              {t('research.paradox_title')}
             </div>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '0.9rem', fontStyle: 'normal' }}>
-              Before the three lines can be assessed, the phrase <em>van Vlaenderen</em> must be correctly interpreted in its documentary context — it performs at least four distinct functions in the medieval record, only one of which is a hereditary surname. The distributional evidence then maps each bastard line to a distinct geographic cluster across three centuries. This analysis is the evidential foundation for everything on this page.
+              {t('research.paradox_body')}
             </p>
             <button
               onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
@@ -92,7 +111,7 @@ export default function ResearchPage() {
                 letterSpacing: '0.06em',
               }}
             >
-              Read the Full Analysis →
+              {t('research.paradox_button')}
             </button>
           </div>
         </section>
@@ -101,14 +120,14 @@ export default function ResearchPage() {
         <div className={researchStyles.treeContainer}>
           <OverviewDiagram />
           <div className="sr-only">
-            <h3>Research overview diagram — text summary</h3>
-            <p>This diagram presents the surname-bearing bastard lines descending from Louis II de Male, Count of Flanders (1330–1384), the last Count from the House of Dampierre. Left branch (Victor's line): Victor van Vlaenderen (died before 1442), Lord of Ursel and Wessegem, had three documented natural sons — Lodewyc, Janne, and Adam van Vlaendren — all named in primary charters 1427–1447. Adam van Vlaendren is the primary bridge candidate to the Belgian/Meetjesland cluster. Right branch (Praet line): Louis Friese van Vlaenderen (c.1350–1396), Lord of Praet and Woestine, founded the House of Flanders-Praet through his son Johan I van Vlaenderen. The line descends through multiple generations to Lodewijk IV van Vlaenderen (died 1555). Third branch (Drincham/French Flanders line): Jan sans terre van Vlaenderen, granted Drincham castle near Cassel 1383, killed at Nicopolis 1396. Four documented generations through the 1470s — the primary founding line for the French Flanders/Volckerinckhove cluster. Note: diagram currently shows two branches; third branch update pending.</p>
+            <h3>{t('research.diagram_sr_heading')}</h3>
+            <p>{t('research.diagram_sr_text')}</p>
           </div>
         </div>
 
         {/* ── Branch Cards ────────────────────────────────────────── */}
         <section className={styles.section}>
-          <h2>Research Branches</h2>
+          <h2>{t('research.branches_heading')}</h2>
         </section>
 
         <div className={researchStyles.branchCards}>
@@ -119,14 +138,12 @@ export default function ResearchPage() {
             style={{ cursor: 'pointer' }}
             onClick={() => goToResearch('victor')}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('victor'); } }}
-            aria-label="Victor van Vlaenderen"
+            aria-label={t('research.branch_victor_name')}
           >
-            <h3>Victor van Vlaenderen</h3>
-            <p>
-              Natural son of Louis de Male. Lord of Ursel and Wessegem. Three natural sons documented across three primary charters (1427, 1441, 1446). Adam van Vlaendren, last attested 18 March 1447, is the primary bridge candidate to the Belgian/Meetjesland cluster.
-            </p>
+            <h3>{t('research.branch_victor_name')}</h3>
+            <p>{t('research.branch_victor_desc')}</p>
             <span className={researchStyles.branchLink} aria-hidden="true">
-              Explore Victor's Line &rarr;
+              {t('research.branch_victor_link')}
             </span>
           </div>
 
@@ -137,14 +154,12 @@ export default function ResearchPage() {
             style={{ cursor: 'pointer' }}
             onClick={() => goToResearch('louis-friese')}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('louis-friese'); } }}
-            aria-label="Louis Friese van Vlaenderen"
+            aria-label={t('research.branch_louis_name')}
           >
-            <h3>Louis Friese van Vlaenderen</h3>
-            <p>
-              Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis 1396. Founded the House of Flanders-Praet &mdash; six generations using <em>van Vlaenderen</em> as a hereditary surname. The Brabant/Brussels cluster.
-            </p>
+            <h3>{t('research.branch_louis_name')}</h3>
+            <p>{t('research.branch_louis_desc')}</p>
             <span className={researchStyles.branchLink} aria-hidden="true">
-              Explore the Praet Line &rarr;
+              {t('research.branch_louis_link')}
             </span>
           </div>
 
@@ -155,21 +170,19 @@ export default function ResearchPage() {
             style={{ cursor: 'pointer' }}
             onClick={() => goToResearch('drincham-dossier')}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('drincham-dossier'); } }}
-            aria-label="Jan sans terre van Vlaenderen"
+            aria-label={t('research.branch_drincham_name')}
           >
-            <h3>Jan "sans terre" van Vlaenderen</h3>
-            <p>
-              Natural son of Louis de Male. Granted Drincham castle near Cassel, 1383. Killed at Nicopolis 1396. Four documented generations in French Flanders through the 1470s &mdash; the primary founding line for the Volckerinckhove/French Flanders cluster.
-            </p>
+            <h3>{t('research.branch_drincham_name')}</h3>
+            <p>{t('research.branch_drincham_desc')}</p>
             <span className={researchStyles.branchLink} aria-hidden="true">
-              View Archival Dossier &rarr;
+              {t('research.branch_drincham_link')}
             </span>
           </div>
         </div>
 
         {/* ── Reference Pages ─────────────────────────────────────────── */}
         <section className={styles.section}>
-          <h2>Reference</h2>
+          <h2>{t('research.reference_heading')}</h2>
           <div className={researchStyles.branchCards}>
             <div
               className={researchStyles.branchCard}
@@ -177,16 +190,12 @@ export default function ResearchPage() {
               style={{ cursor: 'pointer' }}
               onClick={() => goToResearch('gap-dossier')}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('gap-dossier'); } }}
-              aria-label="The Documentary Gap"
+              aria-label={t('research.ref_gap_title')}
             >
-              <h3>The Documentary Gap, 1447&ndash;1580</h3>
-              <p>
-                The 130-year span between the last confirmed comital-line bearer and the first Meetjesland
-                parish generation. Evidence in hand, searches completed, active archival targets, and
-                three working hypotheses for how the gap closes.
-              </p>
+              <h3>{t('research.ref_gap_title')}</h3>
+              <p>{t('research.ref_gap_desc')}</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
-                Explore the Gap &rarr;
+                {t('research.ref_gap_link')}
               </span>
             </div>
             <div
@@ -195,14 +204,12 @@ export default function ResearchPage() {
               style={{ cursor: 'pointer' }}
               onClick={() => goToResearch('methodology')}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('methodology'); } }}
-              aria-label="Methodology and Sources"
+              aria-label={t('research.ref_methodology_title')}
             >
-              <h3>Methodology &amp; Sources</h3>
-              <p>
-                How archival documents are transcribed and translated, and the curated reading list of primary and secondary works that underpin the research.
-              </p>
+              <h3>{t('research.ref_methodology_title')}</h3>
+              <p>{t('research.ref_methodology_desc')}</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
-                Methodology &amp; Sources &rarr;
+                {t('research.ref_methodology_link')}
               </span>
             </div>
             <div
@@ -211,14 +218,12 @@ export default function ResearchPage() {
               style={{ cursor: 'pointer' }}
               onClick={() => goToResearch('bibliography')}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('bibliography'); } }}
-              aria-label="Sources and Scholarship"
+              aria-label={t('research.ref_bibliography_title')}
             >
-              <h3>Sources &amp; Scholarship</h3>
-              <p>
-                Primary sources, archival finding aids, and scholarly literature cited in the dossiers — the evidentiary basis of the project in one place.
-              </p>
+              <h3>{t('research.ref_bibliography_title')}</h3>
+              <p>{t('research.ref_bibliography_desc')}</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
-                Sources &amp; Scholarship &rarr;
+                {t('research.ref_bibliography_link')}
               </span>
             </div>
           </div>
@@ -254,8 +259,8 @@ export default function ResearchPage() {
 
         {/* ── Archival Dossiers ────────────────────────────────────── */}
         <section className={styles.section} style={{ marginTop: '3rem' }}>
-          <h2>Archival Dossiers</h2>
-          <p>For researchers seeking the underlying documentary evidence, we maintain detailed archival dossiers with full charter transcriptions, epitaph data, and source analysis.</p>
+          <h2>{t('research.dossiers_heading')}</h2>
+          <p>{t('research.dossiers_intro')}</p>
           <div className={researchStyles.branchCards}>
             <div
               className={researchStyles.branchCard}
@@ -264,12 +269,12 @@ export default function ResearchPage() {
               style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
               onClick={() => goToResearch('victor-dossier')}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('victor-dossier'); } }}
-              aria-label="Victor van Vlaenderen Dossier"
+              aria-label={t('research.dossier_victor_title')}
             >
-              <h3>Victor van Vlaenderen Dossier</h3>
-              <p>Three-charter nucleus (1427, 1441, 1446), Victor's 1430 testament, Lodewyc's descendants, and the Oostborch epitaph evidence.</p>
+              <h3>{t('research.dossier_victor_title')}</h3>
+              <p>{t('research.dossier_victor_desc')}</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
-                View Archival Evidence &rarr;
+                {t('research.dossier_victor_link')}
               </span>
             </div>
             <div
@@ -279,12 +284,12 @@ export default function ResearchPage() {
               style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
               onClick={() => goToResearch('praet-dossier')}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('praet-dossier'); } }}
-              aria-label="Louis Friese Archival Dossier"
+              aria-label={t('research.dossier_praet_title')}
             >
-              <h3>Louis Friese: Archival Dossier</h3>
-              <p>Primary source extracts and territorial history of the House of Flanders-Praet.</p>
+              <h3>{t('research.dossier_praet_title')}</h3>
+              <p>{t('research.dossier_praet_desc')}</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
-                View Archival Evidence &rarr;
+                {t('research.dossier_praet_link')}
               </span>
             </div>
             <div
@@ -294,12 +299,12 @@ export default function ResearchPage() {
               style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
               onClick={() => goToResearch('praet-lineage-dossier')}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('praet-lineage-dossier'); } }}
-              aria-label="House of Praet Lineage Dossier"
+              aria-label={t('research.dossier_praet_lineage_title')}
             >
-              <h3>House of Praet: Lineage Dossier</h3>
-              <p>Six generations with primary-source confirmed data. Johan I's seven children, Josse de Flandre cadet branch, and the 1517 Knesselare charter.</p>
+              <h3>{t('research.dossier_praet_lineage_title')}</h3>
+              <p>{t('research.dossier_praet_lineage_desc')}</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
-                View Lineage Evidence &rarr;
+                {t('research.dossier_praet_lineage_link')}
               </span>
             </div>
             <div
@@ -309,12 +314,12 @@ export default function ResearchPage() {
               style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
               onClick={() => goToResearch('drincham-dossier')}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('drincham-dossier'); } }}
-              aria-label="Jan sans terre van Vlaenderen Drincham Dossier"
+              aria-label={t('research.dossier_drincham_title')}
             >
-              <h3>Jan sans terre — Drincham Dossier</h3>
-              <p>The 1383 Drincham land grant, four documented generations in the Cassel area, the Veurne epitaph of Jacques de Drincham, and the geographic-documentary case for the French Flanders Van Vlaenderen cluster.</p>
+              <h3>{t('research.dossier_drincham_title')}</h3>
+              <p>{t('research.dossier_drincham_desc')}</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
-                View Archival Evidence &rarr;
+                {t('research.dossier_drincham_link')}
               </span>
             </div>
           </div>
@@ -322,8 +327,8 @@ export default function ResearchPage() {
 
         {/* ── Research Articles ────────────────────────────────────── */}
         <section className={styles.section} style={{ marginTop: '3rem' }}>
-          <h2>Research Articles</h2>
-          <p>Analytical and contextual writing that sits alongside the archival evidence — distributional analysis, historical interpretation, and speculative threads with clearly marked evidentiary status.</p>
+          <h2>{t('research.articles_heading')}</h2>
+          <p>{t('research.articles_intro')}</p>
           <div className={researchStyles.branchCards}>
             <div
               className={researchStyles.branchCard}
@@ -332,12 +337,12 @@ export default function ResearchPage() {
               style={{ borderTop: '3px solid rgba(232,184,48,0.45)', cursor: 'pointer' }}
               onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); } }}
-              aria-label="Four Functions Three Clusters"
+              aria-label={t('research.article_four_functions_title')}
             >
-              <h3>Four Functions, Three Clusters</h3>
-              <p>A primary source and distributional analysis of the Van Vlaenderen surname across four documentary functions and three geographic clusters spanning three centuries. Tests the toponymic and bastard-line hypotheses against Geneanet heat-map data and the onomastic record.</p>
+              <h3>{t('research.article_four_functions_title')}</h3>
+              <p>{t('research.article_four_functions_desc')}</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
-                Read Analysis &rarr;
+                {t('research.article_four_functions_link')}
               </span>
             </div>
             <div
@@ -347,14 +352,48 @@ export default function ResearchPage() {
               style={{ borderTop: '3px solid rgba(232,184,48,0.45)', cursor: 'pointer' }}
               onClick={() => goToResearch('nieus-seals')}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('nieus-seals'); } }}
-              aria-label="Seals Lions and the Politics of a Surname"
+              aria-label={t('research.article_nieus_title')}
             >
-              <h3>Seals, Lions, and the Politics of a Surname</h3>
-              <p>How twelfth-century Flemish noble seal culture — the lion, the Dover Recognitio, and the political weight of territorial identity — provides historical depth for the Van Vlaenderen hypothesis. Based on Nieus (2021).</p>
+              <h3>{t('research.article_nieus_title')}</h3>
+              <p>{t('research.article_nieus_desc')}</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
-                Read Article &rarr;
+                {t('research.article_nieus_link')}
               </span>
             </div>
+          </div>
+        </section>
+
+        {/* ── Notes and Sources ──────────────────────────────────── */}
+        <section className={styles.section}>
+          <h2>{t('research.notes_heading')}</h2>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontStyle: 'italic', marginBottom: '1.5rem' }}>
+            {t('research.notes_intro')}
+          </p>
+          <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.75 }}>
+            <p>
+              {t('research.notes_source_1_label')} {t('research.notes_source_1_text')}
+            </p>
+            <p>
+              {t('research.notes_source_2_label')} {t('research.notes_source_2_text')}
+            </p>
+            <p>
+              {t('research.notes_source_3_label')} {t('research.notes_source_3_text')}{' '}
+              <button
+                onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+              >
+                {t('research.notes_source_3_linktext')}
+              </button>
+            </p>
+            <p>
+              {t('research.notes_source_4_label')} {t('research.notes_source_4_text')}{' '}
+              <button
+                onClick={() => { goToResearch('nieus-seals'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+              >
+                {t('research.notes_source_4_linktext')}
+              </button>
+            </p>
           </div>
         </section>
 
