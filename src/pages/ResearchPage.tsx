@@ -20,10 +20,10 @@ export default function ResearchPage() {
     <div className={styles.page}>
       <Helmet>
         <title>Research Overview — Van Vlaenderen Archival Dossiers | vanvlaenderen.org</title>
-        <meta name="description" content="Overview of Van Vlaenderen archival research: the Victor line (Lord of Wessegem) and the Louis Friese / Praet line, both descending from Louis II de Male, Count of Flanders." />
+        <meta name="description" content="Archival research into the Van Vlaenderen surname: three documented bastard lines of Louis II de Male — Victor (Belgian cluster), Jan sans terre / Drincham (French Flanders), and Louis Friese / Praet (Brabant) — and the distributional evidence connecting each to a distinct geographic population." />
         <link rel="canonical" href="https://vanvlaenderen.org/research" />
         <meta property="og:title" content="Research Overview — Van Vlaenderen Archival Dossiers" />
-        <meta property="og:description" content="Two surname-bearing bastard lines of Louis II de Male: Victor van Vlaenderen and Louis Friese van Vlaenderen." />
+        <meta property="og:description" content="Three documented bastard lines of Louis II de Male: Victor, Jan sans terre, and Louis Friese — each anchored to a distinct lordship, each leaving a distinct geographic surname cluster." />
         <meta property="og:url" content="https://vanvlaenderen.org/research" />
         <meta property="og:type" content="article" />
       </Helmet>
@@ -40,7 +40,7 @@ export default function ResearchPage() {
           <h1>{t('research.hero_title')}</h1>
           <div className="gold-rule" />
           <p className={styles.heroLead}>
-            Louis II de Male, Count of Flanders (1330&ndash;1384), fathered at least thirteen illegitimate children. Two of his natural sons founded surname-bearing lines that used <em>van Vlaenderen</em> as a hereditary identifier: Victor van Vlaenderen and Louis Friese van Vlaenderen.
+            Louis II de Male, Count of Flanders (1330&ndash;1384), fathered at least thirteen illegitimate children. Three of his natural sons founded documented surname-bearing lines that used <em>van Vlaenderen</em> as a hereditary identifier &mdash; each anchored to a distinct lordship, each leaving a distinct geographic footprint in the historical record.
           </p>
         </div>
       </div>
@@ -51,15 +51,50 @@ export default function ResearchPage() {
           <div className={researchStyles.dossierMeta}>Updated April 2026</div>
         </div>
 
-        {/* ── Two-Line Structure ──────────────────────────────────── */}
+        {/* ── Three-Line Structure ──────────────────────────────── */}
         <section className={styles.section}>
-          <h2>The Two Surname-Bearing Lines</h2>
+          <h2>Three Lines, Three Clusters</h2>
           <p>
-            The research is structured around two documented lines descending from Louis de Male. Both lines used <em>van Vlaenderen</em> (and its variants: van Vlaendren, de Flandre, de Flandres) as a hereditary surname &mdash; not a geographic descriptor, but a marker of comital illegitimate descent that crystallised at the precise moment the Dampierre line's hold on Flanders ended with Louis de Male's death in 1384.
+            The research is structured around three documented lines descending from Louis de Male. All three used <em>van Vlaenderen</em> (and its variants: van Vlaendren, de Flandre, de Flandres) as a hereditary surname &mdash; not a geographic descriptor, but a marker of comital illegitimate descent that crystallised at the precise moment the Dampierre line's hold on Flanders ended with Louis de Male's death in 1384. Each line is anchored to a specific lordship granted in the 1373&ndash;1399 period, and each corresponds to a distinct geographic cluster in the later distributional record.
           </p>
           <p>
-            There is a further dimension worth noting. Louis II de Male was the last Count of Flanders from the House of Dampierre. On his death in 1384, the county passed to his daughter Margaret and her husband Philip the Bold of Burgundy, and the Dampierre hold on Flanders ended permanently. The evidence suggests that <em>van Vlaenderen</em> crystallised as a heritable surname among Louis&apos;s bastard children at precisely this moment &mdash; not as a geographic descriptor meaning &lsquo;from Flanders,&rsquo; but as an inherited identity marking comital blood at the point when the title itself was extinguished. This pattern is documented independently in both Victor&apos;s line and the Praet line, and it is one of the strongest arguments that the surname functions as inherited comital identity rather than as a common toponym. It also narrows the field: families adopting <em>van Vlaenderen</em> as a geographic descriptor after 1384 would have had diminishing reason to do so, since Flanders was no longer ruled by a Flemish count. Bearers of the name after that date are more plausibly connected to the bastard comital network than to generic toponymy.
+            There is a further dimension worth noting. Louis II de Male was the last Count of Flanders from the House of Dampierre. On his death in 1384, the county passed to his daughter Margaret and her husband Philip the Bold of Burgundy, and the Dampierre hold on Flanders ended permanently. The evidence suggests that <em>van Vlaenderen</em> crystallised as a heritable surname among Louis&apos;s bastard children at precisely this moment &mdash; not as a geographic descriptor meaning &lsquo;from Flanders,&rsquo; but as an inherited identity marking comital blood at the point when the title itself was extinguished. This pattern is documented independently in all three lines, and it is one of the strongest arguments that the surname functions as inherited comital identity rather than as a common toponym.
           </p>
+
+          {/* Four Functions teaser */}
+          <div style={{
+            marginTop: '1.75rem',
+            padding: '1.25rem 1.5rem',
+            background: 'rgba(232,184,48,0.04)',
+            border: '1px solid rgba(232,184,48,0.2)',
+            borderRadius: '4px',
+          }}>
+            <div style={{ fontSize: '0.72rem', fontFamily: 'var(--font-ui)', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
+              The Analytical Framework
+            </div>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', color: 'var(--gold)', marginBottom: '0.5rem' }}>
+              Four Functions, Three Clusters
+            </div>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '0.9rem', fontStyle: 'normal' }}>
+              Before the three lines can be assessed, the phrase <em>van Vlaenderen</em> must be correctly interpreted in its documentary context — it performs at least four distinct functions in the medieval record, only one of which is a hereditary surname. The distributional evidence then maps each bastard line to a distinct geographic cluster across three centuries. This analysis is the evidential foundation for everything on this page.
+            </p>
+            <button
+              onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              style={{
+                background: 'none',
+                border: '1px solid rgba(232,184,48,0.35)',
+                color: 'var(--gold)',
+                padding: '0.45rem 1rem',
+                cursor: 'pointer',
+                borderRadius: '3px',
+                fontSize: '0.82rem',
+                fontFamily: 'var(--font-ui)',
+                letterSpacing: '0.06em',
+              }}
+            >
+              Read the Full Analysis →
+            </button>
+          </div>
         </section>
 
         {/* ── Overview Diagram ────────────────────────────────────── */}
@@ -67,7 +102,7 @@ export default function ResearchPage() {
           <OverviewDiagram />
           <div className="sr-only">
             <h3>Research overview diagram — text summary</h3>
-            <p>This diagram presents both surname-bearing bastard lines descending from Louis II de Male, Count of Flanders (1330–1384), the last Count from the House of Dampierre. Left branch (Victor's line): Victor van Vlaenderen (died before 1442), Lord of Ursel and Wessegem, had three documented natural sons — Lodewyc, Janne, and Adam van Vlaendren — all named in primary charters 1427–1447. Adam van Vlaendren (research focus, fl. 1427 – 1447) is the primary bridge candidate to the early modern parish-record Van Vlaenderens of the Meetjesland. A ~100-year evidentiary gap separates Adam from Joos van Vlaenderen (fl. 1547), the first confirmed early modern bearer. Right branch (Praet line): Louis Friese van Vlaenderen (c.1350 – 1396), Lord of Praet and Woestine, founded the House of Flanders-Praet through his son Johan I van Vlaenderen. The line descends through multiple generations to Lodewijk IV van Vlaenderen (died 1555), Knight of the Golden Fleece, whose 1517 charter shows him holding six fiefs at Knesselare from the Wessegem seigneurie — a direct Meetjesland territorial connection. The legitimate Praet male line ended with Jan II van Vlaenderen (died 10 December 1545), who predeceased his father without issue.</p>
+            <p>This diagram presents the surname-bearing bastard lines descending from Louis II de Male, Count of Flanders (1330–1384), the last Count from the House of Dampierre. Left branch (Victor's line): Victor van Vlaenderen (died before 1442), Lord of Ursel and Wessegem, had three documented natural sons — Lodewyc, Janne, and Adam van Vlaendren — all named in primary charters 1427–1447. Adam van Vlaendren is the primary bridge candidate to the Belgian/Meetjesland cluster. Right branch (Praet line): Louis Friese van Vlaenderen (c.1350–1396), Lord of Praet and Woestine, founded the House of Flanders-Praet through his son Johan I van Vlaenderen. The line descends through multiple generations to Lodewijk IV van Vlaenderen (died 1555). Third branch (Drincham/French Flanders line): Jan sans terre van Vlaenderen, granted Drincham castle near Cassel 1383, killed at Nicopolis 1396. Four documented generations through the 1470s — the primary founding line for the French Flanders/Volckerinckhove cluster. Note: diagram currently shows two branches; third branch update pending.</p>
           </div>
         </div>
 
@@ -88,7 +123,7 @@ export default function ResearchPage() {
           >
             <h3>Victor van Vlaenderen</h3>
             <p>
-              Natural son of Louis de Male. Lord of Ursel and Wessegem. Three natural sons documented across three primary charters (1427, 1441, 1446). Adam van Vlaendren (fl. 1427 &ndash; 18 Mar 1447 N.S.) is the last confirmed 15th-century bearer and the primary research focus for bridging the evidentiary gap to the early modern parish records.
+              Natural son of Louis de Male. Lord of Ursel and Wessegem. Three natural sons documented across three primary charters (1427, 1441, 1446). Adam van Vlaendren, last attested 18 March 1447, is the primary bridge candidate to the Belgian/Meetjesland cluster.
             </p>
             <span className={researchStyles.branchLink} aria-hidden="true">
               Explore Victor's Line &rarr;
@@ -106,10 +141,28 @@ export default function ResearchPage() {
           >
             <h3>Louis Friese van Vlaenderen</h3>
             <p>
-              Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis 1396. Founded the House of Flanders-Praet &mdash; six generations using <em>van Vlaenderen</em> as a hereditary surname. The legitimate male line ended with the death of Lodewijk IV in 1556. Whether the surname continued through cadet or illegitimate branches into the commoner population remains an open research question.
+              Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis 1396. Founded the House of Flanders-Praet &mdash; six generations using <em>van Vlaenderen</em> as a hereditary surname. The Brabant/Brussels cluster.
             </p>
             <span className={researchStyles.branchLink} aria-hidden="true">
               Explore the Praet Line &rarr;
+            </span>
+          </div>
+
+          <div
+            className={researchStyles.branchCard}
+            role="button"
+            tabIndex={0}
+            style={{ cursor: 'pointer' }}
+            onClick={() => goToResearch('drincham-dossier')}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('drincham-dossier'); } }}
+            aria-label="Jan sans terre van Vlaenderen"
+          >
+            <h3>Jan "sans terre" van Vlaenderen</h3>
+            <p>
+              Natural son of Louis de Male. Granted Drincham castle near Cassel, 1383. Killed at Nicopolis 1396. Four documented generations in French Flanders through the 1470s &mdash; the primary founding line for the Volckerinckhove/French Flanders cluster.
+            </p>
+            <span className={researchStyles.branchLink} aria-hidden="true">
+              View Archival Dossier &rarr;
             </span>
           </div>
         </div>
