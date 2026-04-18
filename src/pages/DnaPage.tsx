@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import dnaStyles from './DnaPage.module.css';
 import vintageFamilyPhoto from '../assets/images/vintage-family-photo.jpg';
@@ -8,15 +9,16 @@ import { Helmet } from 'react-helmet-async';
 
 export default function DnaPage() {
   const { goTo } = useNav();
+  const nav = useNavigate();
   const { t } = useTranslation();
   return (
     <div className={styles.page}>
       <Helmet>
-        <title>DNA Evidence — Y-DNA Research | vanvlaenderen.org</title>
-        <meta name="description" content="Y-DNA haplogroup research for the Van Vlaenderen patrilineal line. Big Y-700 results, R-FT1573 singleton branch, and the case for a single common ancestor." />
+        <title>DNA Project — Y-DNA Research | vanvlaenderen.org</title>
+        <meta name="description" content="A collaborative Y-DNA research project investigating whether Van Vlaenderen families share a common medieval paternal ancestor. Reference Big Y-700 result on haplogroup R-FT1573." />
         <link rel="canonical" href="https://vanvlaenderen.org/dna" />
-        <meta property="og:title" content="DNA Evidence — Van Vlaenderen Y-DNA Research" />
-        <meta property="og:description" content="Y-DNA analysis placing the Van Vlaenderen line in haplogroup R-FT1573. Big Y-700 results and single-ancestor hypothesis." />
+        <meta property="og:title" content="The Van Vlaenderen DNA Project" />
+        <meta property="og:description" content="Investigating whether Van Vlaenderen families share a common medieval paternal ancestor. Reference Big Y-700 result on haplogroup R-FT1573 — seeking additional male-line testers." />
         <meta property="og:url" content="https://vanvlaenderen.org/dna" />
         <meta property="og:type" content="article" />
       </Helmet>
@@ -51,6 +53,66 @@ export default function DnaPage() {
           <p>
             <strong>{t('dna.origin_p6')}</strong>
           </p>
+        </section>
+
+        <section className={styles.section}>
+          <h2>{t('dna.research_stands_heading')}</h2>
+          <p>{t('dna.research_stands_p1')}</p>
+          <p>{t('dna.research_stands_p2')}</p>
+          <p>
+            <strong>{t('dna.research_stands_p3')}</strong>
+          </p>
+          <p>{t('dna.research_stands_p4')}</p>
+        </section>
+
+        <section className={styles.section}>
+          <h2>{t('dna.testing_heading')}</h2>
+          <p>{t('dna.testing_intro')}</p>
+          <p>{t('dna.testing_hypotheses_intro')}</p>
+          <p>
+            <strong>{t('dna.testing_hyp1_label')}</strong>{' '}{t('dna.testing_hyp1_body')}
+          </p>
+          <p>
+            <strong>{t('dna.testing_hyp2_label')}</strong>{' '}{t('dna.testing_hyp2_body')}
+          </p>
+          <p>
+            <strong>{t('dna.testing_hyp3_label')}</strong>{' '}{t('dna.testing_hyp3_body')}{' '}
+            <button
+              onClick={() => nav('/name/surname-origins')}
+              style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+            >
+              {t('dna.testing_hyp3_linktext')}
+            </button>{' '}{t('dna.testing_hyp3_body_after')}
+          </p>
+          <p>{t('dna.testing_predictions_intro')}</p>
+          <p>
+            <strong>{t('dna.testing_pred1_label')}</strong>{' '}{t('dna.testing_pred1_body')}
+          </p>
+          <p>
+            <strong>{t('dna.testing_pred2_label')}</strong>{' '}{t('dna.testing_pred2_body')}
+          </p>
+          <p>
+            <strong>{t('dna.testing_pred3_label')}</strong>{' '}{t('dna.testing_pred3_body')}
+          </p>
+          <p>{t('dna.testing_p_mixed')}</p>
+          <p style={{ fontSize: '0.85em', opacity: 0.75, marginTop: '-0.5em' }}>
+            <em>
+              {t('dna.testing_p_mixed_source_label')}
+              <a href="https://doi.org/10.1098/rspb.2013.2400" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
+                {t('dna.testing_p_mixed_source_text')}
+              </a>
+            </em>
+          </p>
+          <p>
+            <em>{t('dna.testing_close')}</em>
+          </p>
+        </section>
+
+        <section className={styles.section}>
+          <h2>{t('dna.zeeland_heading')}</h2>
+          <p>{t('dna.zeeland_p1')}</p>
+          <p>{t('dna.zeeland_p2')}</p>
+          <p>{t('dna.zeeland_p3')}</p>
         </section>
 
         <div className={styles.pullQuote}>
@@ -104,6 +166,24 @@ export default function DnaPage() {
           <p>{t('dna.project_p3')}</p>
           <p>{t('dna.project_p4')}</p>
           <p>{t('dna.project_p5')}</p>
+        </section>
+
+        <section className={styles.section}>
+          <h2>{t('dna.privacy_heading')}</h2>
+          <p>{t('dna.privacy_intro')}</p>
+          <p>
+            <strong>{t('dna.privacy_ydna_label')}</strong>{' '}{t('dna.privacy_ydna_body')}
+          </p>
+          <p>
+            <strong>{t('dna.privacy_control_label')}</strong>{' '}{t('dna.privacy_control_body')}
+          </p>
+          <p>
+            <strong>{t('dna.privacy_publish_label')}</strong>{' '}{t('dna.privacy_publish_body')}
+          </p>
+          <p>
+            <strong>{t('dna.privacy_aggregate_label')}</strong>{' '}{t('dna.privacy_aggregate_body')}
+          </p>
+          <p>{t('dna.privacy_close')}</p>
         </section>
 
         <div className={dnaStyles.testingServices}>

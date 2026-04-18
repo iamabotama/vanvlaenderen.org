@@ -1,5 +1,5 @@
 # vanvlaenderen.org — Website To-Do & Changelog
-*Last updated: April 12, 2026*
+*Last updated: April 17, 2026*
 *Repository: github.com/iamabotama/vanvlaenderen.org · Branch: main*
 
 ---
@@ -53,6 +53,10 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 - [ ] **About page** — add Methodology & Sources link in project scope section (noted in handoff doc)
 - [ ] **Lineage page** — audit archive deep-links; verify all AGATHA / FamilySearch links still resolve
 - [ ] **All research pages** — add `<time dateTime="">` markup to "Updated April 2026" dates for Schema.org compatibility
+- [ ] **DNA page** — Geneanet heat maps integration. Embed the 1600–present and 1900–present surname heat maps alongside "Where the Research Stands" to visually ground the three-cluster claim. Resolve Geneanet licensing/attribution first. Higher priority than other DNA-page visuals.
+- [ ] **DNA page** — three-hypothesis prediction visualization. Small SVG figure showing the three predicted Y-DNA outcomes (shared deep haplogroup with regional sub-clusters; unrelated haplogroups; unrelated haplogroups + no comital ties). Needs to be legible at mobile widths, SSR-safe, with descriptive alt text. Follow-up after heat map integration.
+- [ ] **Site-wide language pass** — full Dutch review by a Flemish native speaker (Connie, Pieter, or Rik). Particular attention to new DNA-page technical terminology: *niet-paterniteitsgebeurtenissen*, *private varianten*, *niet-coderende regio's*, *haplogroep* usage. Also opportunity to audit older nl.json entries for drift.
+- [ ] **i18n cleanup** — audit and remove unreferenced legacy `dna.*` keys (`intro_heading`, `what_heading`, `science_title`, `goals_title`, `participation_title`, `results_heading`, `cta_text`, `haplogroup_label`, `haplogroup_value`, `science_p1/p2`, `goal_1/2/3`, `participation_p1/p2`, `intro_body`, `what_body`, `privacy_body`, `results_body`, `cta`). Component now references 75 of 97 dna.* keys; 22 are orphaned from earlier page iterations.
 
 ### Technical
 - [ ] **Code splitting** — Vite build warns that the single JS bundle exceeds 500KB. Split at route level using `React.lazy()` per page component to reduce initial load. Low urgency but worth doing before the site grows further.
@@ -79,6 +83,34 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 ---
 
 ## 📋 CHANGELOG
+
+### April 17, 2026 — DNA page rewrite: three-hypothesis frame + privacy section
+Substantial content update to `/dna` to convert the page from general invitation to structured research protocol. Work done in response to editorial feedback (Larmuseau-style critique) and discussion of the Four Functions, Three Clusters framework.
+
+**Content changes (`DnaPage.tsx`, `en.json`, `nl.json`):**
+- New section *Where the Research Stands* — discloses the reference Big Y-700 result on haplogroup **R-FT1573**, attributes it to the documented American line descending from Charles Louis Van Vlaenderen of Bassevelde (emigrated 1875), notes collateral modern distribution across Germany / Netherlands / England / USA, and frames the singleton-tester problem as the recruitment motivation.
+- New section *What We're Testing* — reframed from initial two-hypothesis draft to **three-hypothesis Option C**: (1) shared origin with regional substructure [comital hypothesis, names Victor in testable-not-explanatory frame]; (2) multiple unrelated origins via comital-association mechanism; (3) independent toponymic adoption [explicitly weakened by Four Functions analysis]. Each hypothesis paired with its predicted Y-DNA pattern. Cross-link to `/name/surname-origins` inline in hypothesis 3.
+- NPE framing retained with live citation to Larmuseau et al. (2013), *Proc. Roy. Soc. B* 280: 20132400 (DOI link, styled as small italic source line under the mixed-patterns paragraph).
+- Rewritten *Van Vlaenderen Genetic Genealogy Project* section — concrete sample-size targets (5–10 unrelated lines for first answer, 15–20 for regional substructure), recommends joining existing Flanders-Flemish and Benelux FTDNA projects, states intent to form dedicated Van Vlaenderen subgroup once numbers support it.
+- New *About Participation and Privacy* section — explicit statements on Y-DNA non-coding content (no medical info), data control, no individual publication without consent, aggregate-findings-only disclosure policy.
+- Meta description updated — removed over-confident "case for a single common ancestor" framing in favor of hypothesis-testing language.
+
+**i18n work:**
+- Backfilled 33 Dutch translations for keys the component was already using but that were missing from `nl.json` (silent English fallback bug — Dutch DNA page was broken below the hero).
+- Added Dutch equivalents for all new English keys.
+- en/nl `dna.*` now at full key parity (97 keys each).
+- 22 legacy orphaned `dna.*` keys flagged for future cleanup (see Content Improvements backlog).
+
+**Technical:**
+- Added `useNavigate` hook to `DnaPage.tsx` for inline cross-link to Surname Origins page.
+- Styling reuses the established gold-underlined button pattern from `DrinchamDossierPage.tsx`.
+- No new dependencies, no routing changes, no structural impact on build or prerender.
+
+**Deferred to backlog:**
+- Geneanet heat maps (1600–present + 1900–present) integration into the page.
+- Three-hypothesis prediction visualization (SVG tree topologies).
+- Full site Dutch language review.
+- Orphaned `dna.*` key cleanup.
 
 ### April 13, 2026 — Citation corrections + selective scholarly tone pass
 
