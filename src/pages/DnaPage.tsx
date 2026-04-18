@@ -67,7 +67,27 @@ export default function DnaPage() {
 
         <section className={styles.section}>
           <h2>{t('dna.testing_heading')}</h2>
-          <p>{t('dna.testing_intro')}</p>
+          <p>
+            {t('dna.testing_intro_pre')}{' '}
+            <button
+              onClick={() => nav('/research/victor-dossier')}
+              style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+            >
+              {t('dna.testing_intro_victor_text')}
+            </button>{' '}{t('dna.testing_intro_mid1')}{' '}
+            <button
+              onClick={() => nav('/research/drincham-dossier')}
+              style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+            >
+              {t('dna.testing_intro_drincham_text')}
+            </button>{' '}{t('dna.testing_intro_mid2')}{' '}
+            <button
+              onClick={() => nav('/research/praet-dossier')}
+              style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+            >
+              {t('dna.testing_intro_praet_text')}
+            </button>{' '}{t('dna.testing_intro_post')}
+          </p>
           <p>{t('dna.testing_hypotheses_intro')}</p>
           <p>
             <strong>{t('dna.testing_hyp1_label')}</strong>{' '}{t('dna.testing_hyp1_body')}
@@ -76,13 +96,13 @@ export default function DnaPage() {
             <strong>{t('dna.testing_hyp2_label')}</strong>{' '}{t('dna.testing_hyp2_body')}
           </p>
           <p>
-            <strong>{t('dna.testing_hyp3_label')}</strong>{' '}{t('dna.testing_hyp3_body')}{' '}
+            {t('dna.testing_toponymy_pre')}{' '}
             <button
               onClick={() => nav('/name/surname-origins')}
               style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
             >
-              {t('dna.testing_hyp3_linktext')}
-            </button>{' '}{t('dna.testing_hyp3_body_after')}
+              {t('dna.testing_toponymy_linktext')}
+            </button>{' '}{t('dna.testing_toponymy_post')}
           </p>
           <p>{t('dna.testing_predictions_intro')}</p>
           <p>
@@ -90,9 +110,6 @@ export default function DnaPage() {
           </p>
           <p>
             <strong>{t('dna.testing_pred2_label')}</strong>{' '}{t('dna.testing_pred2_body')}
-          </p>
-          <p>
-            <strong>{t('dna.testing_pred3_label')}</strong>{' '}{t('dna.testing_pred3_body')}
           </p>
           <p>{t('dna.testing_p_mixed')}</p>
           <p style={{ fontSize: '0.85em', opacity: 0.75, marginTop: '-0.5em' }}>
@@ -204,18 +221,53 @@ export default function DnaPage() {
           </div>
         </div>
 
-        <button 
-          className={styles.ctaBox}
-          onClick={() => goTo('contact')}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, width: '100%', textAlign: 'center' }}
-        >
+        <section className={styles.section}>
+          <h2>{t('dna.notes_heading')}</h2>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontStyle: 'italic', marginBottom: '1.5rem' }}>
+            {t('dna.notes_intro')}
+          </p>
+          <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.75 }}>
+            <p>
+              {t('dna.notes_source_1_label')} {t('dna.notes_source_1_text')}
+            </p>
+            <p>
+              {t('dna.notes_source_2_label')} {t('dna.notes_source_2_text')}{' '}
+              <button
+                onClick={() => { nav('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+              >
+                {t('dna.notes_source_2_linktext')}
+              </button>
+            </p>
+            <p>
+              {t('dna.notes_source_3_label')} {t('dna.notes_source_3_text')}{' '}
+              <a href="https://doi.org/10.1098/rspb.2013.2400" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)' }}>
+                DOI: 10.1098/rspb.2013.2400
+              </a>
+            </p>
+            <p>
+              {t('dna.notes_source_4_label')} {t('dna.notes_source_4_text')}{' '}
+              <a href="https://discover.familytreedna.com/y-dna/R-FT1573/tree" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)' }}>
+                {t('dna.notes_source_4_linktext')}
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <div className={styles.ctaBox}>
           <div className={styles.ctaText}>
             {t('dna.cta_body')}
           </div>
           <div className={styles.ctaNote}>
             {t('dna.cta_note')}
           </div>
-        </button>
+          <button
+            className={dnaStyles.joinTeamBtn}
+            onClick={() => goTo('contact')}
+          >
+            {t('dna.cta_button')}
+          </button>
+        </div>
 
       </div>
     </div>
