@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import styles from './InnerPage.module.css';
@@ -11,6 +12,8 @@ export default function DnaPage() {
   const { goTo } = useNav();
   const nav = useNavigate();
   const { t } = useTranslation();
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const toggle = (id: string) => setExpanded(prev => ({ ...prev, [id]: !prev[id] }));
   return (
     <div className={styles.page}>
       <Helmet>
@@ -64,6 +67,32 @@ export default function DnaPage() {
           </p>
           <p>{t('dna.research_stands_p4')}</p>
         </section>
+
+        {/* ── How to Participate (top CTA) ─────────────────────────── */}
+        <div className={dnaStyles.participateBlock}>
+          <h2 className={dnaStyles.participateHeading}>{t('dna.participate_heading')}</h2>
+          <p className={dnaStyles.participateIntro}>{t('dna.participate_intro')}</p>
+          <p className={dnaStyles.participateStep}>
+            <strong>{t('dna.participate_step1_label')}</strong>{' '}{t('dna.participate_step1_body')}
+          </p>
+          <p className={dnaStyles.participateStep}>
+            <strong>{t('dna.participate_step2_label')}</strong>{' '}{t('dna.participate_step2_body')}
+          </p>
+          <p className={dnaStyles.participateStep}>
+            <strong>{t('dna.participate_step3_label')}</strong>{' '}{t('dna.participate_step3_body')}
+          </p>
+          <div className={dnaStyles.participateButtonWrap}>
+            <button
+              className={dnaStyles.joinTeamBtn}
+              onClick={() => goTo('contact')}
+            >
+              {t('dna.participate_button')}
+            </button>
+          </div>
+          <div className={dnaStyles.participateAlternative}>
+            <strong>{t('dna.participate_alternative_label')}</strong>{' '}{t('dna.participate_alternative_body')}
+          </div>
+        </div>
 
         <section className={styles.section}>
           <h2>{t('dna.testing_heading')}</h2>
@@ -156,22 +185,88 @@ export default function DnaPage() {
           </p>
           <div className={dnaStyles.dnaGrid}>
             <div className={dnaStyles.dnaCard}>
-              <div className={dnaStyles.dnaType}>{t('dna.dna_ydna')}</div>
-              <div className={dnaStyles.dnaDesc}>
-                {t('dna.dna_ydna_desc')}
-              </div>
+              <button
+                className={dnaStyles.dnaCardToggle}
+                onClick={() => toggle('ydna')}
+                aria-expanded={!!expanded['ydna']}
+                aria-controls="dna-ydna-expanded"
+              >
+                <div className={dnaStyles.dnaCardHeader}>
+                  <div className={dnaStyles.dnaType}>{t('dna.dna_ydna')}</div>
+                  <div className={dnaStyles.dnaCardChevron}>{expanded['ydna'] ? '−' : '+'}</div>
+                </div>
+                <div className={dnaStyles.dnaDesc}>
+                  {t('dna.dna_ydna_desc')}
+                </div>
+              </button>
+              {expanded['ydna'] && (
+                <div id="dna-ydna-expanded" className={dnaStyles.dnaCardExpanded}>
+                  <div className={dnaStyles.dnaCardExpandedItem}>
+                    <strong>{t('dna.dna_ydna_already_label')}</strong>
+                    {t('dna.dna_ydna_already_body')}
+                  </div>
+                  <div className={dnaStyles.dnaCardExpandedItem}>
+                    <strong>{t('dna.dna_ydna_considering_label')}</strong>
+                    {t('dna.dna_ydna_considering_body')}
+                  </div>
+                </div>
+              )}
             </div>
             <div className={dnaStyles.dnaCard}>
-              <div className={dnaStyles.dnaType}>{t('dna.dna_autosomal')}</div>
-              <div className={dnaStyles.dnaDesc}>
-                {t('dna.dna_autosomal_desc')}
-              </div>
+              <button
+                className={dnaStyles.dnaCardToggle}
+                onClick={() => toggle('autosomal')}
+                aria-expanded={!!expanded['autosomal']}
+                aria-controls="dna-autosomal-expanded"
+              >
+                <div className={dnaStyles.dnaCardHeader}>
+                  <div className={dnaStyles.dnaType}>{t('dna.dna_autosomal')}</div>
+                  <div className={dnaStyles.dnaCardChevron}>{expanded['autosomal'] ? '−' : '+'}</div>
+                </div>
+                <div className={dnaStyles.dnaDesc}>
+                  {t('dna.dna_autosomal_desc')}
+                </div>
+              </button>
+              {expanded['autosomal'] && (
+                <div id="dna-autosomal-expanded" className={dnaStyles.dnaCardExpanded}>
+                  <div className={dnaStyles.dnaCardExpandedItem}>
+                    <strong>{t('dna.dna_autosomal_already_label')}</strong>
+                    {t('dna.dna_autosomal_already_body')}
+                  </div>
+                  <div className={dnaStyles.dnaCardExpandedItem}>
+                    <strong>{t('dna.dna_autosomal_considering_label')}</strong>
+                    {t('dna.dna_autosomal_considering_body')}
+                  </div>
+                </div>
+              )}
             </div>
             <div className={dnaStyles.dnaCard}>
-              <div className={dnaStyles.dnaType}>{t('dna.dna_mtdna')}</div>
-              <div className={dnaStyles.dnaDesc}>
-                {t('dna.dna_mtdna_desc')}
-              </div>
+              <button
+                className={dnaStyles.dnaCardToggle}
+                onClick={() => toggle('mtdna')}
+                aria-expanded={!!expanded['mtdna']}
+                aria-controls="dna-mtdna-expanded"
+              >
+                <div className={dnaStyles.dnaCardHeader}>
+                  <div className={dnaStyles.dnaType}>{t('dna.dna_mtdna')}</div>
+                  <div className={dnaStyles.dnaCardChevron}>{expanded['mtdna'] ? '−' : '+'}</div>
+                </div>
+                <div className={dnaStyles.dnaDesc}>
+                  {t('dna.dna_mtdna_desc')}
+                </div>
+              </button>
+              {expanded['mtdna'] && (
+                <div id="dna-mtdna-expanded" className={dnaStyles.dnaCardExpanded}>
+                  <div className={dnaStyles.dnaCardExpandedItem}>
+                    <strong>{t('dna.dna_mtdna_already_label')}</strong>
+                    {t('dna.dna_mtdna_already_body')}
+                  </div>
+                  <div className={dnaStyles.dnaCardExpandedItem}>
+                    <strong>{t('dna.dna_mtdna_considering_label')}</strong>
+                    {t('dna.dna_mtdna_considering_body')}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -202,24 +297,6 @@ export default function DnaPage() {
           </p>
           <p>{t('dna.privacy_close')}</p>
         </section>
-
-        <div className={dnaStyles.testingServices}>
-          <div className={dnaStyles.servicesHeading}>{t('dna.services_heading')}</div>
-          <div className={dnaStyles.servicesGrid}>
-            {[
-              { name: t('dna.service_familytreedna'),  note: t('dna.service_familytreedna_note'),  url: 'https://www.familytreedna.com' },
-              { name: t('dna.service_ancestry'),    note: t('dna.service_ancestry_note'),            url: 'https://www.ancestry.com/dna' },
-              { name: t('dna.service_23andme'),        note: t('dna.service_23andme_note'),            url: 'https://www.23andme.com' },
-              { name: t('dna.service_myheritage'), note: t('dna.service_myheritage_note'),              url: 'https://www.myheritage.com/dna' },
-            ].map(s => (
-              <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className={dnaStyles.serviceCard}>
-                <div className={dnaStyles.serviceName}>{s.name}</div>
-                <div className={dnaStyles.serviceNote}>{s.note}</div>
-                <div className={dnaStyles.serviceArrow}>↗</div>
-              </a>
-            ))}
-          </div>
-        </div>
 
         <section className={styles.section}>
           <h2>{t('dna.notes_heading')}</h2>
