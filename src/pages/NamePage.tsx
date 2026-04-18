@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import nameStyles from './NamePage.module.css';
+import researchStyles from './ResearchPage.module.css';
 
 import cronikeShields from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
@@ -88,7 +89,12 @@ export default function NamePage() {
       <div className={styles.content}>
 
         <section className={styles.section}>
-          <h2>{t('name.history_title')}</h2>
+          <h2>
+            {t('name.history_title')}
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>
+              {t('research.method_corroborated_label')}
+            </span>
+          </h2>
           <p>
             {t('name.history_p1')}
           </p>
@@ -102,7 +108,12 @@ export default function NamePage() {
 
         {/* ── Four-Bucket Section ──────────────────────────────── */}
         <section className={styles.section}>
-          <h2>{t('name.four_bucket_title')}</h2>
+          <h2>
+            {t('name.four_bucket_title')}
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>
+              {t('research.method_attested_label')}
+            </span>
+          </h2>
           <p>{t('name.four_bucket_intro')}</p>
           <p>{t('name.four_bucket_rebuttal')}</p>
 

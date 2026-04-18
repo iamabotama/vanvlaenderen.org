@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import dnaStyles from './DnaPage.module.css';
+import researchStyles from './ResearchPage.module.css';
 import vintageFamilyPhoto from '../assets/images/vintage-family-photo.jpg';
 import cronikeShields from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 import { useNav } from '../hooks/useNav';
@@ -59,7 +60,12 @@ export default function DnaPage() {
         </section>
 
         <section className={styles.section}>
-          <h2>{t('dna.research_stands_heading')}</h2>
+          <h2>
+            {t('dna.research_stands_heading')}
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>
+              {t('research.method_attested_label')}
+            </span>
+          </h2>
           <p>{t('dna.research_stands_p1')}</p>
           <p>{t('dna.research_stands_p2')}</p>
           <p>
@@ -95,7 +101,12 @@ export default function DnaPage() {
         </div>
 
         <section className={styles.section}>
-          <h2>{t('dna.testing_heading')}</h2>
+          <h2>
+            {t('dna.testing_heading')}
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`}>
+              {t('research.method_hypothesis_label')}
+            </span>
+          </h2>
           <p>
             {t('dna.testing_intro_pre')}{' '}
             <button
@@ -155,7 +166,12 @@ export default function DnaPage() {
         </section>
 
         <section className={styles.section}>
-          <h2>{t('dna.zeeland_heading')}</h2>
+          <h2>
+            {t('dna.zeeland_heading')}
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`}>
+              {t('research.method_hypothesis_label')}
+            </span>
+          </h2>
           <p>{t('dna.zeeland_p1')}</p>
           <p>{t('dna.zeeland_p2')}</p>
           <p>{t('dna.zeeland_p3')}</p>

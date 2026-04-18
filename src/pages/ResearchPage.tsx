@@ -76,7 +76,12 @@ export default function ResearchPage() {
 
         {/* ── Three-Line Structure ──────────────────────────────── */}
         <section className={styles.section}>
-          <h2>{t('research.three_lines_heading')}</h2>
+          <h2>
+            {t('research.three_lines_heading')}
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>
+              {t('research.method_corroborated_label')}
+            </span>
+          </h2>
           <p>{t('research.three_lines_p1')}</p>
           <p>{t('research.three_lines_p2')}</p>
 
