@@ -307,6 +307,40 @@ export default function NamePage() {
           ))}
         </div>
 
+        {/* ── Notes and Sources ──────────────────────────────────── */}
+        <section className={styles.section}>
+          <h2>{t('name.notes_heading')}</h2>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontStyle: 'italic', marginBottom: '1.5rem' }}>
+            {t('name.notes_intro')}
+          </p>
+          <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.75 }}>
+            <p>
+              {t('name.notes_source_1_label')} {t('name.notes_source_1_text')}{' '}
+              <button
+                onClick={() => { navigate('/research'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+              >
+                {t('name.notes_research_link')}
+              </button>
+            </p>
+            <p>
+              {t('name.notes_source_2_label')} {t('name.notes_source_2_text')}{' '}
+              <button
+                onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+              >
+                {t('name.notes_analysis_link')}
+              </button>
+            </p>
+            <p>
+              {t('name.notes_source_3_label')} {t('name.notes_source_3_text')}
+            </p>
+            <p>
+              {t('name.notes_source_4_label')} {t('name.notes_source_4_text')}
+            </p>
+          </div>
+        </section>
+
         <div className={styles.ctaBox}>
           <div className={styles.ctaText}>
             {t('name.cta_text')}
