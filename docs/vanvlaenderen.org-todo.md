@@ -1,5 +1,5 @@
 # vanvlaenderen.org — Website To-Do & Changelog
-*Last updated: April 17, 2026*
+*Last updated: April 18, 2026*
 *Repository: github.com/iamabotama/vanvlaenderen.org · Branch: main*
 
 ---
@@ -54,9 +54,11 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 - [ ] **Lineage page** — audit archive deep-links; verify all AGATHA / FamilySearch links still resolve
 - [ ] **All research pages** — add `<time dateTime="">` markup to "Updated April 2026" dates for Schema.org compatibility
 - [ ] **DNA page** — Geneanet heat maps integration. Embed the 1600–present and 1900–present surname heat maps alongside "Where the Research Stands" to visually ground the three-cluster claim. Resolve Geneanet licensing/attribution first. Higher priority than other DNA-page visuals.
-- [ ] **DNA page** — three-hypothesis prediction visualization. Small SVG figure showing the three predicted Y-DNA outcomes (shared deep haplogroup with regional sub-clusters; unrelated haplogroups; unrelated haplogroups + no comital ties). Needs to be legible at mobile widths, SSR-safe, with descriptive alt text. Follow-up after heat map integration.
-- [ ] **Site-wide language pass** — full Dutch review by a Flemish native speaker (Connie, Pieter, or Rik). Particular attention to new DNA-page technical terminology: *niet-paterniteitsgebeurtenissen*, *private varianten*, *niet-coderende regio's*, *haplogroep* usage. Also opportunity to audit older nl.json entries for drift.
-- [ ] **i18n cleanup** — audit and remove unreferenced legacy `dna.*` keys (`intro_heading`, `what_heading`, `science_title`, `goals_title`, `participation_title`, `results_heading`, `cta_text`, `haplogroup_label`, `haplogroup_value`, `science_p1/p2`, `goal_1/2/3`, `participation_p1/p2`, `intro_body`, `what_body`, `privacy_body`, `results_body`, `cta`). Component now references 75 of 97 dna.* keys; 22 are orphaned from earlier page iterations.
+- [ ] **Site-wide language pass** — full Dutch review by a Flemish native speaker (Connie, Pieter, or Rik). Particular attention to DNA-page technical terminology (*niet-paterniteitsgebeurtenissen*, *private varianten*, *niet-coderende regio's*, *haplogroep* usage), new About-page translations (April 18 pass), and the Research-page three-lines / Toponymic Paradox content.
+- [ ] **ResearchMap update** — add Louis de Male as progenitor point plus the three son lordships (Ursel/Wessegem for Victor, Drincham/Cassel for Jan sans terre, Praet for Louis Friese). The Drincham pin is currently missing entirely.
+- [ ] **OverviewDiagram component** — SVG still shows only two branches (Victor + Praet); third branch (Drincham) update pending. The Research-page sr-only text already notes this.
+- [ ] **Four Functions article (`/name/surname-origins`)** — optional clarity pass. Article is intellectually sound but long (540 lines) with structural redundancy: the French Flanders / Volckerinckhove cluster is discussed across four separate sections (Distribution Data observations, Testing Bastard-Line, Testing Pure Toponymy, Volckerinckhove Question). The individual-vs-distributional distinction (line 442) deserves more prominent placement. Optional tightening to reduce length by ~20% without changing substance.
+- [ ] **"Last updated" tags on dossier pages** — only the Research page currently surfaces a user-visible date (via `research.dossier_updated`). Dossier pages (Victor, Praet, Drincham) have `dateModified` in schema.org JSON-LD but nothing rendered. Add visible date strip. Design decision needed: manual i18n dates vs. git-derived.
 
 ### Technical
 - [ ] **Code splitting** — Vite build warns that the single JS bundle exceeds 500KB. Split at route level using `React.lazy()` per page component to reduce initial load. Low urgency but worth doing before the site grows further.
@@ -83,6 +85,63 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 ---
 
 ## 📋 CHANGELOG
+
+### April 17–18, 2026 — Editorial calibration pass: Name/DNA/Research realignment + reliability badges + i18n cleanup
+Six-commit block addressing internal editorial contradictions across the three top-level pages, closing Dutch translation gaps, migrating hardcoded English to i18n, adding structured citations, and making evidence-level classifications visible.
+
+**Context.** The DNA page rewrite of April 17 morning (commit `6af1f7b`, previous entry) introduced a three-hypothesis frame that was immediately inconsistent with the Four Functions article's two-level position on toponymy (falsified at the cluster level, possible for individual outlier bearers). This pass realigned the DNA page and, in the process, caught and fixed comparable calibration drift on Name and Research.
+
+**Name page — alignment with Four-Bucket analysis (commit `402bb69`):**
+- Rewrote `history_p2` to remove self-contradicting hedge ("conventional toponymic explanation remains entirely plausible") that undercut the Four-Bucket section following it. New paragraph previews the four-function framework and states the actual finding: small number of documented family lines clustering inside Flanders in the 1384 crystallization generation.
+- Added Notes and Sources section with 4 citations (Vredius/FMG MedLands, Four Functions cross-link, Debrabandere WFB2, Geneanet).
+- Removed 3 orphaned `intro_*` keys from pre-2026 two-branch structure.
+
+**DNA page Pass 1 — two-hypothesis reframe (commit `f45aec9`):**
+- Collapsed three hypotheses to two (shared comital origin vs. multiple unrelated comital origins). Both within the comital framework; both genuinely discriminable by Y-DNA.
+- Added toponymy acknowledgment paragraph aligning with Four Functions' two-level position — ruled out at cluster level, possible for individual outliers.
+- Corrected Hypothesis 1 attribution factual error: Louis de Male's three natural sons (Victor / Jan sans terre / Louis Friese), not Victor's three sons.
+- Added inline dossier links on first mention of Victor, Jan sans terre, Louis Friese.
+- Added Notes and Sources section (Vredius/FMG, Four Functions cross-link, Larmuseau 2013 DOI, FTDNA Discover R-FT1573 link).
+- Replaced naked CTA button with proper `ctaBox` + `.joinTeamBtn` pattern matching Name page. Added CTA copy committing to 48-hour response.
+
+**DNA page Pass 2 — recruitment restructure (commit `9d37ff1`):**
+- New "How to Participate" block after "Where the Research Stands" — gold-left-border callout with three numbered steps (Y-DNA test selection, group project, get in touch) and centered "Join the Team" button. Readers can act within the first screen.
+- Converted static DNA type cards (Y-DNA / Autosomal / mtDNA) to interactive accordions with "Already tested?" / "Considering testing?" follow-up content. ARIA-compliant keyboard-operable toggles.
+- Removed the four-card services grid entirely. Ancestry/23andMe/MyHeritage no longer featured as peer recommendations; FTDNA is sole recommendation, in the Participate block.
+- Autosomal-tester fallback preserved as "Already tested elsewhere?" note in Participate block — reaches broader audience without diluting primary ask.
+
+**Research page Pass 4 — full i18n migration + accessibility framing (commit `841ef14`):**
+- Option A migration: every hardcoded English body string moved to `research.*` i18n keys. Closed the Dutch-visitor regression where the core three-lines thesis was rendering in English despite NL toggle.
+- New plain-English TL;DR callout ("Why the Name Matters") between dossier header and Three Lines section. Calibrated to stay in two-level toponymy position; does not overclaim.
+- Reframed Four Functions teaser from "The Analytical Framework" (methodological warning) to "The Toponymic Paradox" (offensive argument). Body leads with geographic paradox: a surname meaning "from Flanders" used most heavily inside Flanders.
+- Added Notes and Sources section with 4 citations (Vredius, FMG, Four Functions, Nieus 2021). Nieus citation uses measured language ("provides historical depth") rather than "proves" — 12th-century sigillography is context for 14th-century naming, not proof.
+- Updated `conclusion_p1` to reflect current three-line research priorities: Adam–Meetjesland 1447–1568 documentary gap, Y-DNA cross-cluster comparison, specific archival targets (RAG Staten van Goed Ambacht Assenede I & II, Landboek/Leenhof, ADN Cassel castellany).
+- Removed 12 stale keys from pre-April-15 two-branch structure (`intro_*`, `branches_*`, `branch_victor_*`, `branch_louis_*`, `significance_*`). en/nl parity maintained at 83 keys.
+
+**Site-wide i18n cleanup (commit `8db0c7f`):**
+- Deleted 183 orphaned i18n keys across 10 namespaces that weren't referenced anywhere in source: `about.*` (11), `common.*` (6), `contact.*` (14), `dna.*` (31 including the 9 services_* keys Pass 2 deferred), `footer.*` (3), `history.*` (11, entire namespace from deleted /history route), `home.*` (5), `louis_friese.*` (11), `mill.*` (18), `name.*` (33), `nav.*` (1 — nav.lineage), `victor.*` (39).
+- Added 30 Dutch About translations. Previously EN-only; Dutch visitors were getting English fallback for hero lead, scope description, sources, methodology note, project origins, goals, collaboration categories, closing, contact CTA.
+- Final state: 483 keys in each locale, zero orphans, zero parity gaps, zero single-locale stragglers.
+- Net file size: en.json 89KB → 68KB (−21KB dead weight); nl.json 91KB → 71KB (net of 30 new translations).
+- Bundle reduction: main JS chunk went from ~1054KB to ~1014KB after cleanup.
+
+**Reliability badges on top-level pages (commit `aff53d0`):**
+- 6 inline evidence-level badges added across Name / DNA / Research using the established dossier-page pattern (`researchStyles.evidenceLevel` + color-coded `.levelX` classes). No new CSS; reuses existing styling.
+- **Research page (1):** "Three Lines, Three Clusters" → Strongly Corroborated.
+- **Name page (2):** "History of a Surname" → Strongly Corroborated; "What 'Van Vlaenderen' Was Doing in Medieval Documents" → Directly Attested.
+- **DNA page (3):** "Where the Research Stands" → Directly Attested; "What We're Testing" → Hypothesis; "The Zeeland Thread" → Hypothesis.
+- No new i18n keys — reuses existing `research.method_*_label` keys with EN/NL parity.
+- Sections deliberately NOT badged: hero sections (editorial voice), pull quotes (rhetorical), TL;DR and Toponymic Paradox teasers (accessibility framing), navigation/directory sections, conclusions, CTAs, educational content, privacy sections, Notes and Sources. Placement is strategic, not decorative.
+
+**Review handling pattern.** Two AI-generated reviews (Principal PM style, Larmuseau-style) during the session pushed for rhetorical escalation — "impossible" framings on toponymy, "proves" language on Nieus, "claim to the comital bloodline" rhetoric. Specific suggestions walked back the calibration deliberately established in Name page pass. Pattern: accept structural/visual suggestions (TL;DR callout, heat-map surfacing, accessibility framing), reject overclaim-y copy. Calibrated alternatives retained for TL;DR and Toponymic Paradox framing.
+
+**Deferred to backlog:**
+- OverviewDiagram SVG three-branch update (component still shows two branches).
+- Four Functions article clarity pass (article is sound but long; ~20% tightening possible).
+- Dutch native-speaker review, now with expanded scope covering new About-page and Research-page translations.
+- ResearchMap update to show Louis de Male + three sons (Drincham pin missing entirely).
+- Last-updated tags on dossier pages (design decision needed: manual i18n dates vs git-derived).
+- Geneanet heat maps integration on DNA page.
 
 ### April 17, 2026 — DNA page rewrite: three-hypothesis frame + privacy section
 Substantial content update to `/dna` to convert the page from general invitation to structured research protocol. Work done in response to editorial feedback (Larmuseau-style critique) and discussion of the Four Functions, Three Clusters framework.

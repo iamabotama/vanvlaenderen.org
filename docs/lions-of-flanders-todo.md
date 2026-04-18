@@ -1,5 +1,5 @@
 # Lions of Flanders — Research To-Do List
-*Last updated: April 16, 2026*
+*Last updated: April 18, 2026*
 
 ---
 
@@ -133,6 +133,8 @@ The family's standing across centuries constitutes a distinct argument strand:
 
 ### vanvlaenderen.org
 → See **vanvlaenderen.org-todo.md** for full website backlog, citation audit tasks, and changelog.
+
+**April 17–18, 2026** — Editorial calibration pass across top-level pages: Name page Four-Bucket realignment, DNA page two-hypothesis reframe with recruitment restructure (top CTA, accordion cards, "Join the Team"), Research page full i18n migration (Dutch visitors were seeing English on the three-lines thesis), Toponymic Paradox reframe, site-wide Notes and Sources additions, reliability badges on Name/DNA/Research, i18n cleanup (183 orphaned keys removed, 30 Dutch About translations added). See website todo for full detail.
 
 **April 13, 2026** — Citation corrections (Corvers author, Cronike URL) + selective scholarly tone pass from ChatGPT/Dr. Larmuseau review. Central interpretive arguments preserved. See website todo for full detail.
 
