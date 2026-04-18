@@ -322,7 +322,7 @@
   "research": {
     "hero_eyebrow": "Van Vlaenderen · Medieval Research",
     "hero_title": "Medieval & Collateral Lines",
-    "hero_lead": "Investigating the potential origins of the Van Vlaenderen surname within the illegitimate branches of the Comital House of Flanders.",
+    "hero_lead": "Archival research into three documented bastard lines of Louis II de Male — Victor, Jan sans terre, and Louis Friese — and the geographic clusters each left in the distributional record.",
     "dossier_title": "Research Overview",
     "dossier_updated": "Updated April 2026",
     "intro_title": "The Scope of Investigation",
@@ -340,7 +340,7 @@
     "significance_title": "Genealogical Significance",
     "significance_p1": "The central question of this research is whether the modern Van Vlaenderen families of the Meetjesland descend from these medieval comital-bastard lines. While the surname and geographic proximity (Ursel/Wessegem) are highly suggestive, the 'generational bridge' between 1450 and 1550 remains the primary focus of our ongoing archival work.",
     "branches_title": "Primary Research Branches",
-    "branches_intro": "Our investigation is currently divided into two main documented branches of the comital-bastard line:",
+    "branches_intro": "Our investigation is structured around three documented bastard lines, each anchored to a distinct lordship and each corresponding to a distinct geographic surname cluster:",
     "branch_victor_title": "The Line of Victor van Vlaenderen",
     "branch_victor_text": "Lord of Wessegem in Ursel. This branch is of particular interest due to its direct territorial connection to the heart of the Van Vlaenderen surname distribution.",
     "branch_victor_link": "Explore the Victor Lineage",
@@ -348,7 +348,7 @@
     "branch_louis_text": "The House of Flanders-Praet. A well-documented branch that held significant lordships and high offices in the Burgundian and Habsburg Netherlands.",
     "branch_louis_link": "Explore the Praet Lineage",
     "conclusion_title": "Ongoing Work",
-    "conclusion_p1": "We are actively searching the archives of Ghent and Bruges for 15th-century records that may provide the missing links between these medieval figures and the earliest ancestors found in parish registers.",
+    "conclusion_p1": "The three documented bastard lines each present distinct archival challenges. For the Belgian cluster, the primary target is the 1447–1568 documentary gap between Adam van Vlaenderen and Franciscus in Ghent. For French Flanders, the Cassel castellany records at the Archives Départementales du Nord remain the priority. For the Zeeland thread, the Staten van Goed RAG (Ambacht Assenede I & II) are the primary remaining bridge candidates. We welcome collaboration from researchers with access to any of these collections.",
     "cta_text": "Are you a researcher specializing in 15th-century Flemish archives?",
     "cta_note": "We welcome collaboration on the archival search for the 'missing generations' of the Van Vlaenderen line."
   },
