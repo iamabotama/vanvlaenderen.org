@@ -12,6 +12,13 @@ export interface NodeConfig {
   focus?: boolean;
   w?: number;
   h?: number;
+  // Optional visual variant. 'stacked' renders a stacked-paper metaphor
+  // (3 offset rectangles) used for collapsed groups of related nodes.
+  variant?: 'stacked';
+  // Node ids that are expanded by the expansion panel when this node is
+  // clicked. Only meaningful for stacked-variant nodes; supersedes the
+  // default hover tooltip behavior.
+  expandsTo?: string;
 }
 
 export interface ConnectionDef {
@@ -29,6 +36,21 @@ export interface AnnotationDef {
   x: number; y: number; text: string; color?: string;
 }
 
+// An expansion panel renders below the canvas (above the legend) when
+// triggered by clicking a node with `expandsTo` matching its id. Used for
+// "Other Documented Lines" stacked-paper pattern on the Overview diagram.
+export interface ExpansionEntry {
+  name: string;
+  dates?: string;
+  body: string;
+  src?: string;
+}
+export interface ExpansionPanelDef {
+  id: string;
+  heading: string;
+  entries: ExpansionEntry[];
+}
+
 export interface DiagramDef {
   viewBox: string;
   nodes: { id: string; cfg: NodeConfig; x: number; y: number }[];
@@ -36,6 +58,7 @@ export interface DiagramDef {
   labels?: LabelDef[];
   annotations?: AnnotationDef[];
   legendItems: { color: string; label: string }[];
+  expansions?: ExpansionPanelDef[];
 }
 
 // ── Color palette ──────────────────────────────────────────────────────────
@@ -89,6 +112,7 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }: NodePro
   const H = cfg.h || (cfg.tag ? 96 : cfg.dates ? 68 : 58);
   const color = cfg.color;
   const lines = (cfg.name || '').split('\n');
+  const isStacked = cfg.variant === 'stacked';
 
   return (
     <div
@@ -105,17 +129,53 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }: NodePro
         cursor: 'pointer',
       }}
     >
-      {/* Glow */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: -2,
-          borderRadius: 8,
-          background: color + '14',
-          border: `1px solid ${color}28`,
-          pointerEvents: 'none',
-        }}
-      />
+      {/* Stacked-paper back layers — rendered behind the main card */}
+      {isStacked && (
+        <>
+          <div
+            style={{
+              position: 'absolute',
+              left: 12,
+              top: 12,
+              width: '100%',
+              height: '100%',
+              borderRadius: 6,
+              background: '#1a1c24',
+              border: `1.5px solid ${color}`,
+              opacity: 0.55,
+              pointerEvents: 'none',
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              left: 6,
+              top: 6,
+              width: '100%',
+              height: '100%',
+              borderRadius: 6,
+              background: '#1b1e26',
+              border: `1.5px solid ${color}`,
+              opacity: 0.75,
+              pointerEvents: 'none',
+            }}
+          />
+        </>
+      )}
+
+      {/* Glow — not rendered for stacked (would double up on the back layers) */}
+      {!isStacked && (
+        <div
+          style={{
+            position: 'absolute',
+            inset: -2,
+            borderRadius: 8,
+            background: color + '14',
+            border: `1px solid ${color}28`,
+            pointerEvents: 'none',
+          }}
+        />
+      )}
       {/* Card */}
       <div
         style={{
@@ -209,8 +269,11 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
   const tipRef = useRef<HTMLDivElement>(null);
   const [tipData, setTipData] = useState<NodeConfig | null>(null);
   const [tipPos, setTipPos] = useState({ x: 0, y: 0 });
+  const [tipH, setTipH] = useState(160);
   const [pinned, setPinned] = useState<NodeConfig | null>(null);
   const [scale, setScale] = useState(1);
+  // Expansion panel state — holds the id of the currently-open panel, or null
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   // Parse viewBox for canvas dimensions
   const [canvasW, canvasH] = useMemo(() => {
@@ -259,6 +322,9 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
   }, [canvasW]);
 
   const handleHover = useCallback((data: NodeConfig, e: React.MouseEvent) => {
+    // Stacked variant nodes don't get hover tooltips — they have their own
+    // click-to-expand UX. Prevents the tooltip from overlaying the stacked card.
+    if (data.variant === 'stacked') return;
     if (!pinned) {
       setTipData(data);
       setTipPos(toCanvasPos(e.clientX, e.clientY));
@@ -271,6 +337,13 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
 
   const handleClick = useCallback((data: NodeConfig, e: React.MouseEvent) => {
     e.stopPropagation();
+    // Stacked nodes toggle their expansion panel instead of pinning a tooltip
+    if (data.variant === 'stacked' && data.expandsTo) {
+      setExpandedId((cur) => (cur === data.expandsTo ? null : data.expandsTo!));
+      setPinned(null);
+      setTipData(null);
+      return;
+    }
     if (pinned === data) {
       setPinned(null);
       setTipData(null);
@@ -304,13 +377,25 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
     return () => document.removeEventListener('mousemove', handleMove);
   }, [tipData, pinned, toCanvasPos]);
 
+  // Measure actual tooltip height after it renders so positioning logic has
+  // the real number rather than a fixed estimate. Prevents clipping of
+  // tooltips with long body text (previously tipH was hardcoded to 160).
+  useEffect(() => {
+    if (tipData && tipRef.current) {
+      const actualH = tipRef.current.offsetHeight;
+      if (actualH && actualH !== tipH) setTipH(actualH);
+    }
+  }, [tipData, tipH]);
+
   const ev = tipData?.ev ? EV[tipData.ev] || EV.strong : null;
 
   // Tooltip positioning (in canvas coordinate space)
+  // Tooltip height is measured after render (tipH state, updated via layout
+  // effect below) rather than hardcoded — prevents the old bug where tooltips
+  // with long body text were clipped at the canvas bottom.
   let tx = tipPos.x + 16;
   let ty = tipPos.y + 16;
   const tipW = 270;
-  const tipH = 160;
   if (tx + tipW > canvasW - 8) tx = tipPos.x - tipW - 16;
   if (ty + tipH > canvasH - 8) ty = tipPos.y - tipH - 16;
   tx = Math.max(8, Math.min(tx, canvasW - tipW - 8));
@@ -546,6 +631,127 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
             )}
           </div>
         </div>
+
+        {/* Expansion panel — renders below canvas when a stacked node is clicked */}
+        {expandedId && diagram.expansions && (() => {
+          const panel = diagram.expansions.find((p) => p.id === expandedId);
+          if (!panel) return null;
+          return (
+            <div
+              style={{
+                padding: '18px 20px 20px',
+                borderTop: '1px solid #1e2230',
+                background: 'rgba(156,163,175,0.04)',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'baseline',
+                  marginBottom: 14,
+                  gap: 12,
+                  flexWrap: 'wrap',
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: 'Cinzel, serif',
+                    fontSize: 12,
+                    letterSpacing: '0.18em',
+                    color: '#9ca3af',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  {panel.heading}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setExpandedId(null)}
+                  style={{
+                    fontFamily: 'Cinzel, serif',
+                    fontSize: 11,
+                    color: '#9ca3af',
+                    letterSpacing: '0.1em',
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: '4px 8px',
+                  }}
+                  aria-label="Close expansion panel"
+                >
+                  CLOSE ×
+                </button>
+              </div>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                  gap: 14,
+                }}
+              >
+                {panel.entries.map((entry, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      background: '#1c2030',
+                      border: '1px solid #6b7180',
+                      borderRadius: 6,
+                      padding: '12px 14px',
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontFamily: 'Cinzel, serif',
+                        fontSize: 13,
+                        fontWeight: 600,
+                        color: '#f0e8d0',
+                      }}
+                    >
+                      {entry.name}
+                    </div>
+                    {entry.dates && (
+                      <div
+                        style={{
+                          fontSize: 13,
+                          fontStyle: 'italic',
+                          color: '#d0d4dc',
+                          marginTop: 2,
+                        }}
+                      >
+                        {entry.dates}
+                      </div>
+                    )}
+                    <div
+                      style={{
+                        fontSize: 14,
+                        color: '#f0e8d0',
+                        marginTop: 8,
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {entry.body}
+                    </div>
+                    {entry.src && (
+                      <div
+                        style={{
+                          fontSize: 12,
+                          color: '#d0d4dc',
+                          marginTop: 8,
+                          paddingTop: 7,
+                          borderTop: '1px solid #2a2f40',
+                          fontStyle: 'italic',
+                        }}
+                      >
+                        Source: {entry.src}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Legend */}
         <div
