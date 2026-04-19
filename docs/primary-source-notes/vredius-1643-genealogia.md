@@ -544,31 +544,269 @@ Seven documents — spanning 1420 to 1482 — form the evidentiary core of Victo
 
 ## 3. The Praet line continuation
 
-> *Section skeleton. Seven generations documented, from Louis Friese through Jan II. Pass 1 corrections (Iossine 1546, Lodewijk II/III date conflicts, Jan II predeceased-father-by-ten-years) already landed on the public PraetLineageDossierPage. Full generation-by-generation source record to be filled in here, with each entry including Vredius page reference and verbatim tomb-inscription text.*
+Six documented generations from Louis Friese (d. 1396, §1.3.2) through Jan II van Vlaenderen (d. 1545). Vredius covers the line across both volumes: Tabula XVI pp. 275–279 carries Louis Friese, Johan I, Lodewijk II, and Lodewijk III; Vol 2 Tabula XIX pp. 387–388 carries the 16th-century continuation (Lodewijk IV, Jossine van Praet, Jan II). The Pass 1 factual corrections committed to the public `PraetLineageDossierPage` in April 2026 (commit d949693) already landed the key date corrections (Jossine d. 1546 not 1535; the Lodewijk II and III date conflicts flagged; Jan II predeceased father by ten years); this section preserves the underlying primary-source record.
 
 ### 3.1 Johan I van Vlaenderen (d. after 10 September 1439)
 
-> *Vredius p. 277. Johan I's own 1439 Praet charter ("Alle de ghene die dese jeghenwoordighe letteren sullen sien oft hooren lesen… Ian van Vlaendren/ Heere van Praet/ ende vander Woestine…"). First van-Vlaenderen bearer of record in the Praet line. Marriage to Johanna Reygersvliet, daughter of Henry (son of Gautier) van Reygersvliet. Seven documented children per subsequent Vredius entries: Lodewijk II, Jean de Flandre (d. 1523), Josse de Flandre (d. after 1526), Jeanne, Marguerite, Isabelle, Landrada.*
+**Vredius reference:** Tabula XVI, p. 277. Sigilla ref: Vol. 1, fol. 115.b. Marginal citation: *Arch. Francona[tensis]*.
 
-### 3.2 Lodewijk II van Vlaenderen (d. 1488)
+**Identification:** Son of Louis Friese and Marie de Ghistelles. Lord of Praet and Woestine. **First van-Vlaenderen bearer of record in the Praet line** — his 1439 diploma is the first document in which the surname form is used as the operative name rather than the epithet *le Frison* or *de Flandres* of his father's generation. Married Johanna van Reygersvliet, daughter of Henry, Knight, Lord of Boular and Schendelbeke, son of Gautier.
 
-> *Vredius pp. 277–278. Two primary sources in Vredius itself give different death days (tomb: St. Bavo's day 1 Oct; de l'Espinoy: St. Bartholomew's 24 Aug). Year 1488 is firm. Married Louise (Loyse) de Bruges van Gruuthuse. Buried Aalter. Six documented children: Loys, Jean, Jacques, Josse, Loyse, Jehenne de Flandre.*
+**Original text — Latin frame + verbatim Middle Dutch, Johan I's own 1439 Praet charter:**
 
-### 3.3 Lodewijk III van Vlaenderen (d. 1488/1490)
+> *Ioannes, unà cum suis Consulibus ac Senatoribus Pratensibus, nec non Consules & Senatores Franconatenses, anno 1439, ediderunt diploma, quod sic exorditur:*
 
-> *Vredius p. 279. Tomb vs Grimarez two-year discrepancy (tomb: "Op den Maendagh 1490"; Grimarez: "1488. 1. Ianvier"). Married Isabelle de Bourgogne (d. 12 Nov 1504, buried Ghent Galilee), daughter of Jean bâtard de Bourgogne Heer van Elverdinghe and Marie d'Halluin. This marriage consolidated the Elverdinghe/Vlamertinghe lordships into the Praet holdings.*
+> *Alle de ghene die dese jeghenwoordighe letteren sullen sien oft hooren lesen/ Burghmeesters en Schepenen 's landts vanden Vryen/ ende IAN van Vlaendren/ Heere van Praet/ ende vander Woestine/ ende Burghemeesters ende Schepenen/ vanden selven Heerschepe van Praet &c.*
 
-### 3.4 Lodewijk IV van Vlaenderen / Louis of Praet (d. 1555)
+> *Ita vero concludunt: Aldus ghedaen te Brugghe inde Camere 's landts vanden Vryen/ upden thiensten dach in September/ in 't jaer ons Heeren/ alsmen schreef duust vier hondert neghenendertich.*
 
-> *Vredius p. 387 (Vol 2 / Tabula XIX). Full titulature: Knight of the Golden Fleece, Lord of Praet, Woestyne, Elverdijnghe, Vlamertijnghe, Spiete, ende vander Mersch; Raad, Upper-camerlinck, Chief vande Financien van de K.M. Carolus den V.; Hoog-Bailliu van Brugghe ende van 't Brughsche Vrije; te sijnen overlijden Gouverneur ende Capitain van Vlaendren. Grand Bailiff of Ghent from 20 April 1515. Married Jossine van Praet.*
+**Translation:** *Johan, together with his councillors and senators of Praet, and also the councillors and senators of the Franc, in the year 1439, issued a diploma which begins thus: "To all who shall see or hear read these present letters, the burgomasters and aldermen of the Franc, and JAN van Vlaendren, Lord of Praet and of Woestine, and the burgomasters and aldermen of the same seigneury of Praet &c." And concludes thus: "Done at Bruges in the chamber of the Franc, the tenth day of September, in the year of Our Lord one thousand four hundred and thirty-nine."*
 
-### 3.5 Jossine van Praet (d. 10 December 1546)
+**Secondary attestation — Van Hecke MS:**
 
-> *Vredius p. 387. Died 10 December 1546 — nine years before her husband. Daughter of Charles van Praet Heer van Moerkercke and Paschijne van Halewijn (daughter of Charles van Halewijn Heer van Uytkercke). Buried Aalter beside Lodewijk IV.*
+> *IEAN de Flandres, Seign. de Praet & de la Woestine. IEANNE de Reygherfuliet, fille de Henry, fils de Gaultier.*
 
-### 3.6 Jan II van Vlaenderen (d. 10 December 1545)
+**Evidentiary notes:**
 
-> *Vredius p. 388. Married Jacqueline de Bourgogne (daughter of Adolf, Heer van Bevere), 1540. Died sans generation 10 December 1545 — ten years before his father Lodewijk IV, extinguishing the legitimate Praet male line a decade before Lodewijk IV himself died. Jacqueline remarried Jan Heer van Cruijningen and died in childbirth at Beveren, 1556.*
+- **Date terminus:** The 1439 charter establishes Johan I as alive and acting 10 September 1439. His death date is not given in Vredius; the *terminus post quem* is simply the 1439 charter, and he is clearly deceased by the 1446 Ghent partition citation of his daughter Ioanna's marriage (p. 278) that identifies her as "daughter of Meßire Iean de Praet & de la Woestine" in a way consistent with him being deceased.
+- **Joint jurisdiction:** The diploma is issued *jointly* by the Franc de Bruges (the "landts vanden Vryen") and by Johan I's own Praet seigneurie — indicating that the Praet lordship was a partial jurisdiction within the Franc, with its own aldermen's bench subordinate to the Franc's in some matters.
+- **Surname use confirmed:** The Dutch is unambiguous — "**IAN van Vlaendren/ Heere van Praet**" uses *van Vlaendren* as surname + lordship as title. This is distinct from his father Louis Friese's usage (*Louis de Flandres, dit le Frison*), where *de Flandres* is closer to a patronymic.
+- **Cross-sibling witness pattern:** Johan I appears as witness in the 1420 Victor-Gavre marriage contract (see §2.1: "M'her Jan van Vlaendren/ Heere van Woestijne ende van Praet"), one of the documents confirming the Maleanus cohort's cross-family solidarity.
+
+**Site placement:** Covered on `PraetLineageDossierPage` as Generation 2 of the lineage table; cited on `LouisFrieseLineagePage` as the sole attested child of Louis Friese who continued the line.
+
+**Research leads:**
+
+- **Ghent Keure register 1431, folio xxx** — p. 276 Vredius cites de l'Espinoy referencing "les registres desdicts Eschevins, de l'an mille quatre cens trente & un, fol. xxx" for a partition proceeding in which young Johan and his mother (Marie de Ghistelles) appeared before the Ghent échevins to divide Louis Friese's estate after Johan's majority. A direct read of RAG Jaarregisters van de Keure, 1431 volume at folio xxx, would recover the full partition text.
+- **Franc de Bruges chamber records, 10 September 1439** — the diploma should have a counterpart register entry in the Franc's own chamber records at Bruges City Archives (SAB).
+
+---
+
+### 3.2 Johan I's seven documented children
+
+**Vredius reference:** Tabula XVI, pp. 277–279, and the Damhouder extract for Lodewijk II on p. 278 which names the six children "Loys, Iean, Iaques, Ioffe, Loyfe, & Iehenne de Flandre" — plus Landrada from the 1442 Ghent partition at p. 279.
+
+**Identification:** The Damhouder list of Lodewijk II's own children includes a Louise and a Jehenne who are Lodewijk II's siblings, not his own daughters — the passage gives Johan I's full issue via his wife Louise de Bruges. Combining Damhouder with subsequent Vredius entries, Johan I's children are:
+
+1. **Lodewijk II van Vlaenderen** (Heer van Praet, d. 1488) — eldest son and heir. See §3.3.
+2. **Jean de Flandre** (d. 6 September 1523, Heer van Onlede, Beveren bij Roeselare; Grand Bailiff of Bruges) — see §3.6 below for tomb text.
+3. **Josse de Flandre** (d. after 1526) — married Martina van Moerkerke; inherited Onlede, Beveren, Wijchuize from his brother Jean; line continued to at least 1592 per Buylaert [FMG 881, 882]. See §3.6.
+4. **Jeanne de Flandre** — marriage reference in Ghent partition records 1446 to Jean, Lord of Pouckes, Viscount of Ypres (son of Eulard + Anastasia d'Oultre). Children Roland and Anastasia de Pouckes.
+5. **Marguerite de Flandre** — married Louis de Bailleul, Maréchal héritier de Flandre.
+6. **Isabelle de Flandre** — married Waleran, Lord of Landas. See §1.3.7 (same name, different person as Isabella the Louis II direct bastard).
+7. **Landrada de Flandre** — canoness at St. Waudru, Mons; never married. Her parentage is fixed by the 1442 Ghent partition quoted on p. 279 which names her guardian alongside her siblings Lodewijk II and Isabella.
+
+**Original text — Dutch partition 1442 (p. 279), confirming Landrada's parentage:**
+
+> *Acta Curiæ partitionum Gandensium anni 1442, recensent tutores Ludovici, Isabellæ, & Landradæ, liberorum Ioannis de Flandria, Domini de Praet, hoc modo: Joncheer Pieter van Boeleer wiert Vooght van Lodewijc/ Joncf. Lisbette/ ende Joncf. LANDRADA van Vlaendren/ fil. M'her Janen van Vlaendren/ Heere van Praet/ in Martio.*
+
+**Translation:** *The acts of the Ghent partition court of the year 1442 record the guardians of Ludovicus, Isabella, and Landrada, children of Johan of Flanders, Lord of Praet, in this manner: "Joncheer Peter van Boeleer became guardian of Lodewijk, Lady Lisbette, and Lady Landrada van Vlaendren, daughter of Sir Jan van Vlaendren, Lord of Praet, in March."*
+
+**Evidentiary notes:**
+
+- **Landrada is great-granddaughter of Louis II de Male**, not his direct bastard daughter. The 1442 Ghent partition fixes her as child of Johan I (Praet) — therefore grandchild of Louis Friese and great-grandchild of Louis II. The project supplement had initially, following one reading of Vredius, treated Landrada as a direct Louis II bastard; direct reading of the 1442 partition resolves this definitively. Cross-reference §1.3.8.
+- **Jean de Flandre's Onlede line and Josse's cadet branch** are attested via Buylaert; see §3.6 for their separate entries.
+- **Guardianship date:** The 1442 partition places Johan I as deceased by March 1442 (his minor children are under guardianship). Taken with the 10 September 1439 diploma, Johan I's death falls within the ~30 months between September 1439 and March 1442.
+
+**Site placement:** Summarised on `PraetLineageDossierPage` ("Johan I's Seven Documented Children" subsection). `LouisFrieseLineagePage` has a dedicated table listing all seven.
+
+**Research leads:**
+
+- **RAG Jaarregisters van de Keure, 1442 volume** — direct access to the partition of Johan I's estate would yield full guardianship terms, property descriptions, and potentially witnesses.
+- **Buylaert (2011)** *Repertorium van de Vlaamse adel* — full entries on Jean de Flandre and Josse de Flandre; worth separate documentation beyond what reaches Vredius via footnote.
+
+---
+
+### 3.3 Lodewijk II van Vlaenderen (d. 1488)
+
+**Vredius reference:** Tabula XVI, pp. 277–278. The main Aalter tomb inscription on p. 277; Damhouder with the St. Bartholomew reading on p. 278; Grimarez on p. 278.
+
+**Identification:** Heer van Praet, Woestine, Bevere, Ornlede. Son of Johan I and Johanna van Reygersvliet. Married **Louise (Loyse / Marie / Margareta) de Bruges**, daughter of Jean, Lord of Gruuthuse, and Marguerite Princess heritier of Steenhuise. Buried at Aalter (Haltre / Altere). **Two primary sources in Vredius disagree on his day of death; the year 1488 is firm.**
+
+**Original text — Aalter tomb inscription (Middle Dutch, p. 277):**
+
+> *Eorum epitaphium designatur in Ecclesia de Altere, hoc sensu: Door den hooghen autaer light M'her LODEWYC van Vlaendren/ Heere van Praet/ ende vanden lande van Woestine/ Bevere/ ende Ornlede/ fs. M'her Jans/ Rudder/ Heere van Praet. Hy hadde ghetrauwt Vrauwe MARIE (LOVYSE) van Brugghe/ filia mijn Heeren Jans/ Heere van Gruuthuyse/ die starf 1488. op S. Baefs dach.*
+
+**Original text — Damhouder, French, p. 278:**
+
+> *Damhouder: Audit Haltre, au grand autel, gist Meßire LOYS de Flandre, Seig. de Praet & de la Woestyne, Bevere, & Omlede, filz de Meßire Iehan & de Iehenne du Reyghersuliet, fille de Meßire Henry, Chevalier, Seigneur de Boular, & de Schendelbeke, lequel Meßire Loys de Flandre, mourut en l'an 1488, le jour de S. Berthelemy. Il avoit espousé Dame LOYSE de Bruges, fille de Meßire Iean, Seigneur de la Gruuthase, & de Madame Marguerite Princesse de Steenhuise, avec laquelle LOYSE de Bruges il eut Loys, Iean, Iaques, Ioffe, Loyfe, & Iehenne de Flandre.*
+
+**Original text — Grimarez, p. 278:**
+
+> *D. Grimarezius: LOYS de Flandres, Seigneur de Praet & de la Woestine, espousa Dame LOYSE de Gruithuyse, fille de Meßire Iean, Chevalier, Seign. de Gruithuyse, & de Dame Marguerite Princesse heritiere de Steenhuyse.*
+
+**Translation (Middle Dutch tomb):** *Their epitaph is recorded in the Church of Altere [Aalter], thus: Before the high altar lies Sir LODEWYC van Vlaendren, Lord of Praet, and of the lands of Woestine, Bevere, and Ornlede, son of Sir Jan, Knight, Lord of Praet. He had married Lady Marie (Louise) van Brugghe, daughter of my Lord Jan, Lord of Gruuthuyse, who died 1488 on St. Bavo's day.*
+
+**Evidentiary notes — the day-of-death conflict:**
+
+Two Vredius-preserved sources disagree by approximately five weeks:
+
+- **Aalter tomb inscription** (via Gaillard-era transcription): "*die starf 1488. op S. Baefs dach*" — St. Bavo's day = **1 October 1488**.
+- **Damhouder's transcript of the same tomb** or of a related obituary source: "*mourut en l'an 1488, le jour de S. Berthelemy*" — St. Bartholomew's day = **24 August 1488**.
+
+The year (1488) is firm in both. The day is genuinely in dispute within Vredius itself. Possibilities: (i) one source is simply wrong on the saint's day; (ii) the tomb itself is a later commemorative monument on which the day was mis-inscribed; (iii) different Lodewyc-of-Praet figures with the same 1488 death year — but this last possibility is foreclosed because both Damhouder and the tomb give the same wife (Louise de Bruges / Gruuthuse), same children, same father (Johan I), same lordships. It is the same man. The project publishes the year 1488 only, with both readings noted.
+
+**Evidentiary notes — general:**
+
+- **Six children listed** (per Damhouder): Loys (Lodewijk III, heir), Iean (Jean de Flandre of Beveren bij Roeselare), Iaques, Iossе, Loyfe, and Iehenne (Jeanne de Flandre who married Jean of Pouckes) — nota bene that Damhouder's list of Lodewijk II's children overlaps with the siblings of Lodewijk II himself (also named Iean, Iossе, Iehenne). These are distinct persons across two generations.
+- **The Gruuthuse connection.** Louise de Bruges was daughter of the celebrated Jean V de Bruges, Lord of Gruuthuse (d. 1492), a Burgundian courtier and librarian. The marriage tied the Praet branch to the most culturally prestigious lordship in late-15th-century Bruges.
+
+**Site placement:** Quoted in the `PraetLineageDossierPage` Generation 3 prose section after the April 2026 Pass 1 patch; the public page now presents both dates as primary-source disagreements rather than picking one.
+
+**Research leads:**
+
+- **Aalter church tomb physical survival** — the 1488 tomb is a large blue-stone monument per Gaillard's description ("*in medio chori de Altere, in tumba è lapide cæruleo*" on p. 387). Parts may survive despite iconoclasm damage. St. Corneliuskerk Aalter is the current building; any surviving heraldic stones would be in the choir or in the local heritage collection (Heemkring Aalter).
+- **Damhouder's underlying source** — Damhouder was Joos de Damhouder (1507–1581), Bruges jurist. His MS notes were later printed. Direct consultation of his *Praxis rerum civilium* (1567) and associated MS apparatus might indicate whether he had the St. Bartholomew reading from the tomb directly or from an intermediary source.
+
+---
+
+### 3.4 Lodewijk III van Vlaenderen (d. 1488 per Grimarez / 1490 per tomb)
+
+**Vredius reference:** Tabula XVI, p. 279. Tomb and Grimarez on the same page.
+
+**Identification:** Son of Lodewijk II and Louise de Bruges. Heer van Praet. Married **Isabella à Burgundia, Domina d'Elverdinghe** (Isabeau de Bourgogne) in **1487**. Isabella was daughter of Jean, bâtard de Bourgogne, Heer van Elverdinghe and Vlamertinghe, and Marie de Halewijn. The marriage consolidated the Elverdinghe/Vlamertinghe lordships into the Praet holdings. Appointed Grand Bailly of Ghent 20 April 1515 per the Insular Chamber of Accounts register. Died 1488 or 1490 — sources disagree. Buried at Aalter beside his father.
+
+**Original text — Aalter tomb inscription (p. 279):**
+
+> *Ejus monumentum designat Gaillard in templo Alterensi in tumulo paterno, Isabellæ vero Gandavi ad Galilæam: Op den Maendagh 1490 starf M'her LOYS van Vlaendren/ heere van Praet/ die ghetrauwt hadde Vrauwe ISABELLE van Bourgongnen; hy light alhier by zijnen Vader: Sy starf 1504/ den 12 November/ light te Ghent ten Galileen.*
+
+**Original text — Grimarez, French (p. 279):**
+
+> *D. Grimarezius: LOYS de Flandres, Seig. de Praet & de la Woestine, espousa 1487, Dame ISABEAV de Bourgongne, Dame de Elverdinghe, & de Vlamertinghe, fille de Iean & de Dame Marie de Halewijn, il mourut 1488. 1. Ianvier.*
+
+**Original text — Insular Chamber of Accounts (p. 279):**
+
+> *Idem ex regestis Cameræ rationum Insulis: LOYS de Flandres, Seigneur de Praet, fut commis grand Bailly de la ville de Gand, à exercer depuis le 20 d'Apuril 1515.*
+
+**Translation (Middle Dutch tomb):** *On a Monday in 1490 Sir LOYS van Vlaendren died, Lord of Praet, who had married Lady Isabelle of Burgundy; he lies here beside his father. She died 1504, the 12th of November, lies at Ghent in the Galilee.*
+
+*Grimarez: Louis de Flandres, Lord of Praet and of Woestine, married in 1487, Lady Isabeau of Burgundy, Lady of Elverdinghe and Vlamertinghe, daughter of Jean and of Lady Marie de Halewijn; he died 1488, 1 January.*
+
+*Chamber of Accounts: Louis de Flandres, Lord of Praet, was appointed Grand Bailly of the city of Ghent, to exercise from 20 April 1515.*
+
+**Evidentiary notes — the 1488 / 1490 date conflict:**
+
+The Aalter tomb inscription and Grimarez disagree by approximately two years:
+
+- **Aalter tomb:** "Op den Maendagh 1490" — on a Monday in 1490. The specific Monday is not given; the year is 1490.
+- **Grimarez:** "il mourut 1488. 1. Ianvier" — died 1488, 1 January.
+
+The discrepancy may reflect the **Easter-style year-change convention** used in some Flemish chancery records (see §2.2 note): a death "1488. 1. Ianvier" in chancery dating could correspond to January 1489 in modern reckoning, which is still two full years off from the tomb's 1490. The project publishes "d. 1488/1490" with both readings.
+
+- **But wait — the 20 April 1515 Grand Bailly appointment.** The Chamber of Accounts text names "LOYS de Flandres, Seigneur de Praet" as appointed Grand Bailly of Ghent to exercise from 20 April 1515. This cannot be Lodewijk III if he died in 1488/1490. It must refer to his son **Lodewijk IV** (see §3.5), who would have been about 27 years old in 1515 (if born c. 1488 and heir to his father at birth). Vredius places this entry under Lodewijk III's section but the content belongs to Lodewijk IV's biography. This is Vredius's own minor sectioning inconsistency, not a data conflict.
+
+**Evidentiary notes — general:**
+
+- **Isabella de Bourgogne's parentage:** She was the eldest daughter and heiress of Jean, bâtard de Bourgogne, Heer van Elverdinghe and Vlamertinghe, and Marie de Halewijn (daughter of Gauthier, Lord of la Borre, and Marie Visch). Her father's Burgundian-bastard status made her marriage strategically valuable: the Van-Vlaenderen-Praet line was marrying into a legitimized Burgundian branch.
+- **Note on her arms (Vol 2 p. 387, reproduced separately):** "*Elle portoit Ghistelles à dextre, au canton de Flandres, & à senestre à l'escusson de Luxembourg Duché*" — her heraldic shield displayed Ghistelles dexter with a canton of Flanders, and Luxembourg Duchy sinister. This shield decoration is Damhouder's report of her monumental arms.
+
+**Site placement:** `PraetLineageDossierPage` Generation 4 prose section, with both dates noted per Pass 1. The Grand Bailly 1515 appointment is correctly attributed to Lodewijk IV on the public page, not to Lodewijk III.
+
+**Research leads:**
+
+- **Ghent Galilee burial** — Isabella de Bourgogne was buried at Ghent "ten Galileen" — the Galilee being a chapel attached to the main church, possibly St. Bavo's Cathedral or another Ghent church. Verification via the Ghent Dominican chronicles or the St. Bavo burial register (if surviving).
+- **Insular Chamber of Accounts register 1515** — Archives départementales du Nord (Lille), Chambre des Comptes series B — the original 20 April 1515 appointment register should survive.
+
+---
+
+### 3.5 Lodewijk IV van Vlaenderen / Louis of Praet (d. 1555)
+
+**Vredius reference:** Vol 2, Tabula XIX, p. 387. Full tomb inscription in the middle of the chancel of Aalter church. Grimarez on the same page.
+
+**Identification:** Son of Lodewijk III and Isabella of Burgundy. **Knight of the Golden Fleece (1531).** Lord of Praet, Woestyne, Elverdinghe, Vlamertinghe, Spiete, and de Mersch. Senior Burgundian-Habsburg officer under Charles V: Councillor, Upper-Chamberlain, Chief of Finances, High-Bailiff of Bruges and of the Bruges Vrije; at his death, Governor and Captain of Flanders. Grand Bailly of Ghent from 20 April 1515 (per the misplaced entry in §3.4). Died 1555. Buried at Aalter beside his father and grandfather.
+
+**Original text — Aalter tomb inscription (Vol 2 p. 387, Middle Dutch):**
+
+> *Desumptum videtur ex eorum Epitaphio, quod, in medio chori de Altere, in tumba è lapide cæruleo, refert Gaillard hoc sensu: Inden middel vanden choor/ inde groote blauwe tombe/ light Mijn-Heere/ M'her LODEWYC van Vlaendren/ Rudder vander Ordre vanden Gulden Vliese/ Heere van Praet/ vanden lande vander Woestyne/ Elverdijnghe/ Vlamertijnghe/ Spiete/ ende vander Mersch/ Raed/ Upper-camerlinck/ Chief vande Financien van de K.M. Carolus den V. ende sijnen Hoogh-Bailliu van Brugghe/ ende van 't Brughsche Vrije/ te sijnen overlijden Gouverneur ende Capitain van Vlaendren/ die starf 1555.*
+
+**Original text — Grimarez, French (p. 387):**
+
+> *D. Grimarezius: Meßire LOVYS de Flandres, Chevalier de l'ordre de la Toison d'or, Seig. de Praet, du pays de la Woestine, de Woeste, d'Elverdinghe, & Vlamertinghe, d'Espier, & de Mersch, Conseillier, second Chambellan, & Chief des Finances de l'Empereur Charles V. & son Bailly de la ville de Bruges, espousa Dame IOSSINE de Praet, heritiere de Moerkercke; laquelle mourut en l'an 1555, gisent à Haltre.*
+
+**Translation (Middle Dutch tomb):** *It seems to be taken from their epitaph, which in the middle of the chancel of Altere [Aalter], in a great blue-stone tomb, Gaillard reports thus: In the middle of the choir, in the great blue tomb, lies My Lord, Sir LODEWYC van Vlaendren, Knight of the Order of the Golden Fleece, Lord of Praet, of the land of Woestyne, Elverdinghe, Vlamertinghe, Spiete, and of the Mersch; Councillor, Upper-Chamberlain, Chief of the Finances of His Imperial Majesty Charles V, and his High-Bailiff of Bruges and of the Brugges Vrije; at his death Governor and Captain of Flanders; who died 1555.*
+
+**Evidentiary notes:**
+
+- **Grimarez's date for Jossine is erroneous.** Grimarez writes "Dame IOSSINE de Praet… *laquelle mourut en l'an 1555, gisent à Haltre*." The "1555" applies grammatically to Jossine (*laquelle* = feminine relative pronoun), but the tomb inscription itself — quoted in full on the same page — gives Jossine's death as 10 December 1546. See §3.6. Grimarez has apparently conflated the husband's year with the wife's. The Middle Dutch tomb is primary; Grimarez is secondary and erroneous on this point.
+- **Full titulature significance.** Lodewijk IV's titles represent the peak of the Van Vlaenderen-Praet line's political reach: Knight of the Golden Fleece at the highest Burgundian-Habsburg chivalric rank; Chief of Finances of Charles V positions him at the center of imperial fiscal administration; Governor and Captain of Flanders at his death was the senior crown office in the county itself. No later Van Vlaenderen figure in the surviving documented lines came close to this rank.
+- **Spiete / Mersch.** Two lordships added to the Praet portfolio at or after Lodewijk IV's marriage: *Spiete* (Espier, in French form per Grimarez — possibly Oostwinkel-adjacent but location uncertain) and *de Mersch* (also uncertain; possibly a polder lordship in the Franc).
+- **Cross-reference to Wikipedia's Louis of Praet.** The modern Wikipedia biography identifies this figure as Louis of Praet, Knight of the Golden Fleece (inducted 1531 at the Tournai chapter), with full curriculum vitae through his Stadtholdership of Holland and Zeeland (1544–1546).
+
+**Site placement:** `PraetLineageDossierPage` Generation 5 — the full titulature text was added to the public page in the Pass 1 patch of April 2026.
+
+**Research leads:**
+
+- **Golden Fleece induction records.** The Order's archives (traditionally held at the Austrian Haus-, Hof- und Staatsarchiv, Vienna) preserve induction protocols and shield-painting commissions. 1531 Tournai chapter records would detail Lodewijk IV's formal titulature at induction.
+- **Chamber of Finances appointment records.** Brussels National Archives, Chambre des Comptes de Brabant, c. 1545–1555 — Lodewijk IV's tenure as Chief of Finances.
+
+---
+
+### 3.6 Jossine van Praet (d. 10 December 1546)
+
+**Vredius reference:** Vol 2, Tabula XIX, p. 387. Aalter tomb inscription continuation (same stone as Lodewijk IV).
+
+**Identification:** Wife of Lodewijk IV. Daughter of Charles van Praet, Heer van Moerkercke, and Paschijne van Halewijn (daughter of Charles van Halewijn, Heer van Uytkercke). **Heiress of the original van Praet baronial family** — meaning the Van Vlaenderen line held the Praet lordship by descent from Louis Friese (granted 1373 by Louis de Male) and by marriage to the last Praet baronial heiress. Died 10 December 1546, nine years before her husband. Buried at Aalter beside Lodewijk IV.
+
+**Original text — Aalter tomb inscription, continuation (Vol 2 p. 387, Middle Dutch):**
+
+> *Ende Me-vrauwe IOSYNE van Praet/ Vrauwe van Moerkercke/ M'her Charles van Praet/ Heere van Moerkercke dochter was/ M'her LODEWYCX ghesselnede/ die starf 1546. den 10. December.*
+
+**Original text — Damhouder on Paschijne (Vol 2 p. 387):**
+
+> *Genealogia nobilium Brugensium D. Damhouderii: Me-vrauwe Paschijne/ filia M'her Charles van Halewijn/ Heere van Uytkercke/ ende Raed des Keys. M. trauwde Jo. Charles van Praet/ Heere van Moerkercke/ ende hadde twee dochteren/ te weten IOSYNE ende Anna: Jo. IOSYNE van Praet trauwde M'her LODEWYC van Vlaendren/ Rudder vander Ordre/ ende Heere van Praet…*
+
+**Translation (tomb):** *And Lady IOSYNE van Praet, Lady of Moerkercke, who was daughter of Sir Charles van Praet, Lord of Moerkercke, wife of Sir LODEWYCX, who died 1546, the 10th of December.*
+
+*Damhouder: Lady Paschijne, daughter of Sir Charles van Halewijn, Lord of Uytkercke and Councillor of His Imperial Majesty, married Jonkheer Charles van Praet, Lord of Moerkercke, and had two daughters, namely IOSYNE and Anna: Jonkheer IOSYNE van Praet married Sir LODEWYC van Vlaendren, Knight of the Order, and Lord of Praet.*
+
+**Evidentiary notes:**
+
+- **The 1546 date corrects a 1535 error that had propagated on the public site prior to April 2026.** The supplement's reading (likely derived from a secondary source) had given 1535. Direct reading of the Vredius print at 300 DPI in April 2026 showed "1546. den 10. December" unambiguously. The Pass 1 patch corrected the public PraetLineageDossierPage entry.
+- **Grimarez's error (see §3.5 note):** Grimarez's French passage on the same page reads "*laquelle mourut en l'an 1555*," attributing the 1555 year to Jossine. The Middle Dutch tomb (primary) gives 1546; Grimarez is secondary and wrong here.
+- **Paschijne van Halewijn and the two-daughter structure.** Jossine's mother Paschijne had two daughters — IOSYNE (the elder, who married into the Van Vlaenderen-Praet line) and **Anna** (whose fate is not further traced on p. 387). Anna's descent may be documented elsewhere in Vredius or in the van Halewijn lineage records, but is not followed here.
+- **Jan (son of Lodewijk IV and Jossine):** The Damhouder passage continues (mid-page): "*daer hy by heeft Jo. Ian trauwde Me-vrauwe Iaquemijne/ de dochter van M'her Adolf van Bourgongne… Maer is ghestorven sonder generatie achter te laeten.*" — See §3.7 for Jan II's dedicated entry.
+
+**Site placement:** `PraetLineageDossierPage` Generation 5 prose, the Pass 1 patch updated the date from 1535 to 1546 with the primary-source quotation.
+
+**Research leads:**
+
+- **Paschijne van Halewijn's descendants (line of Anna).** Anna van Praet (Jossine's sister) — does she appear in the Boetzelaer / Carnesse / Langerak records that Lauwens 2010 traces? Possibly the same "Francoise van Praet van Moerkerke" figure, though generational placement needs work.
+- **Moerkercke lordship records.** The Praet-Moerkercke merger via Lodewijk IV's marriage may be documented in the Bruges Vrije leenhof records (SAB, Oud Stadsarchief).
+
+---
+
+### 3.7 Jan II van Vlaenderen (d. 10 December 1545, *avant son pere*)
+
+**Vredius reference:** Vol 2, Tabula XIX, p. 388. Dedicated entry with Aalter tomb and Grimarez gloss.
+
+**Identification:** Son of Lodewijk IV and Jossine van Praet. Heer van Woestyne, Elverdinghe, and Vlamertinghe. Married **Jacqueline (Iaquemijne) de Bourgogne** (daughter of Adolf, Heer van Beveren and Veere, Knight of the Golden Fleece) in **1540**. Died **10 December 1545** — ten years before his father, without issue (*starf sonder generatie*). **The legitimate Praet male line ended with his death, a decade before the 1555 Lodewijk IV himself died.**
+
+**Original text — Aalter tomb inscription (Vol 2 p. 388, Middle Dutch):**
+
+> *Gaillardus locum sepulturæ illorum designat in monumento paterno Halterensi, his verbis: Inde selve tombe light Jo. IAN van Vlaendren/ Heere van Woestine/ Elverdinghe/ ende Vlamertinghe/ fil. mijns Heeren Lodewijc/ Heere van Praet/ ende van Vrauw' Josijne voorseyt/ die starf 1545. den 10. December; hy hadde ghetrauwt Vrauw' IAQVELINE van Bourgongnen/ fil. M'her Adolf/ Heere van Bevere/ starf sonder generatie.*
+
+**Original text — Grimarez, French (Vol 2 p. 388):**
+
+> *Ioannes à Flandria, Dominus de Praet &c.; Iacoba Burgundica, filia Adolphi, Equitis. Commemoratur in genealogia præcedente. D. Grimarezius: IEHAN de Flandres, Seig. de Praet, & de la Woestine, Elverdinghe, &c. espousa 1540, Dame IAQVELINE de Bourgongne, fille de Meßire Adolf, Chevalier de la Toison d'Or, Seigneur de Bevere, vander Vere &c. Il mourut, sans generation, avant son pere, en l'an 1545. le 10. de Decembre: gist à Haltere.*
+
+**Translation (tomb):** *Gaillard records the place of their burial in the paternal monument at Aalter, in these words: In the same tomb lies Jonkheer JAN van Vlaendren, Lord of Woestine, Elverdinghe, and Vlamertinghe, son of my Lord Lodewijk, Lord of Praet, and of Lady Josyne aforesaid, who died 1545, the 10th of December; he had married Lady IAQVELINE of Burgundy, daughter of Sir Adolf, Lord of Bevere, died without issue.*
+
+*Grimarez: Sir Jean of Flanders, Lord of Praet and of Woestine, Elverdinghe, &c., married in 1540 Lady Iaqueline of Burgundy, daughter of Sir Adolf, Knight of the Golden Fleece, Lord of Bevere, of Vere, &c. He died, without issue, before his father, in the year 1545, the 10th of December: lies at Haltere.*
+
+**Evidentiary notes:**
+
+- **"Avant son pere, en l'an 1545" — the key phrase.** Grimarez's formulation is explicit: Jan II predeceased his father Lodewijk IV. Lodewijk IV lived on until 1555 (see §3.5); the legitimate Praet male line was therefore extinct from 1545 onwards, with the senior line surviving only through Lodewijk IV's own lifetime as a child-less widower for his last decade.
+- **Extinction point dated to 10 December 1545.** This is the single most important date for the Praet line's research role in the project: the legitimate line is extinct from this date. Any later "Van Vlaenderen" figure cannot descend from the senior Praet line; must come from (a) an earlier cadet branch (e.g., Josse de Flandre's line via Martina van Moerkerke, documented to ~1592 per Buylaert), (b) another Louis II bastard line (Victor, Robert of Elverdinghe's natural sons, Jan sans terre), (c) a different origin entirely.
+- **Jaquemijne de Bourgogne's second marriage.** Cross-referenced in Vol 2 p. 388 continuation: she remarried Jan, Heer van Cruijningen, and died "*van haer laetste kint*" ("of her last child") at Beveren in 1556 — i.e., in childbirth with her last child by her second husband. Her Veere epitaph reads to that effect.
+- **Day of death — note the 10 December coincidence:** Mother Jossine died 10 December 1546; son Jan died 10 December 1545. Exactly one year apart to the day. Too specific to be a scribal error for only one of them; plausibly a coincidence of anniversary, possibly a commemorative date deliberately chosen (second anniversary masses were a common medieval/early-modern devotional pattern). The tomb text and Grimarez agree on both dates.
+
+**Site placement:** `PraetLineageDossierPage` Generation 6 prose — the Pass 1 patch added the "predeceased father by ten years" context and cross-linked the Grimarez *avant son pere* phrasing.
+
+**Research leads:**
+
+- **Veere epitaph of Jaquemijne de Bourgogne** — referenced via FMG [895]. Full text should be sought in the Zeeuws Archives (Middelburg) if the Veere church monument survives.
+- **Adolf van Bourgogne's own genealogy.** Adolf of Beveren, Knight of the Golden Fleece — his full biography and descendants (including Jaquemijne and her siblings Margareta and Cornelius — see Vol 2 p. 381 and adjacent pages) would require a separate dossier thread.
+- **The 1540 marriage contract.** If surviving, would be registered with the Burgundian ducal chancery or in the Bruges Vrije leenhof records.
 
 ---
 
@@ -693,5 +931,6 @@ Retained in this document for completeness. Not given dedicated site real estate
 
 - **2026-04-19** — Initial skeleton created by Claude (Opus 4.7) following the direct-reading validation of Vredius (1643) conducted April 2026. Two to three representative entries per cohort filled in for format review; remaining entries to be completed in subsequent passes.
 - **2026-04-19** — Batch 1 filled in: Section 2 (Charter Nucleus for Victor's line, Tabula XVI Probationes pp. 283–289). Seven entries completed: 1420 Gavre marriage contract; 1427 Haelshuuts donation charter; 1430 testament; 1441 charter (Victor *wijlen*); 1446/1447 Adam transaction; Oostburg tomb of Jacqueline de Wilde + Joos van Vlaendren; Margareta van Vlaendren and the d'Erpe/Schoutheeten marriages. Each with verbatim Middle Dutch / Latin / French transcription, project-created translation, evidentiary notes, site cross-reference, and outstanding research leads.
+- **2026-04-19** — Batch 2 filled in: Section 3 (Praet line continuation). Seven generation entries completed: Johan I with the 10 September 1439 Bruges Franc diploma; Johan I's seven documented children with the 1442 Ghent partition fixing Landrada as Johan's daughter; Lodewijk II with the St. Bavo / St. Bartholomew day-of-death conflict within Vredius; Lodewijk III with the 1488 / 1490 date conflict (Grimarez vs Aalter tomb); Lodewijk IV with the full Aalter tomb Middle Dutch titulature and the Golden Fleece 1531 attestation; Jossine van Praet d. 10 December 1546 (Paschijne + Anna two-daughter structure); Jan II d. 10 December 1545 *avant son pere* (predeceased father by ten years, extinguishing the legitimate Praet male line a decade before Lodewijk IV himself died). Covers Tabula XVI pp. 275–279 plus Vol 2 Tabula XIX pp. 387–388.
 
 ---
