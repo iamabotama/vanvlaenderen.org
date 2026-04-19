@@ -9,9 +9,9 @@ export default function PraetLineageDossierPage() {
   const lineageData = [
     { gen: 1, name: 'Louis Friese van Vlaenderen', dates: 'c.1350 \u2013 28 Sep 1396', role: 'Bastard of Flanders; Lord of Praet & Woestine', spouse: '1) Unknown (La Woestine) 2) Marie van Gistel', sources: 'Vredius MS via FMG [864\u2013869]; Wikipedia', level: 'Directly attested', levelClass: researchStyles.levelAttested },
     { gen: 2, name: 'Johan I van Vlaenderen', dates: 'd. after 10 Sep 1439', role: 'Lord of Praet & Woestine; Burgher of Praet', spouse: 'Johanna van Reygersvliet', sources: 'Charter 10 Sep 1439 via FMG [873]; Vredius MS [875]', level: 'Directly attested', levelClass: researchStyles.levelAttested },
-    { gen: 3, name: 'Lodewijk II van Vlaenderen', dates: 'd. 24 Aug 1488', role: 'Lord of Praet, Woestine, Bevere, Onnele', spouse: 'Louise de Bruges dau. of Jan van Gruuthuse', sources: 'Epitaph Aeltere via FMG [876,878]', level: 'Directly attested', levelClass: researchStyles.levelAttested },
-    { gen: 4, name: 'Lodewijk III van Vlaenderen', dates: 'd. 1 Jan 1490', role: 'Lord of Praet', spouse: 'Isabelle de Bourgogne (d. 12 Nov 1504, bur Gent)', sources: 'Epitaph Aeltere via FMG [889,890]', level: 'Directly attested', levelClass: researchStyles.levelAttested },
-    { gen: 5, name: 'Lodewijk IV van Vlaenderen', dates: 'd. 1555', role: 'Knight of the Golden Fleece (1531); Grand Bailiff Ghent & Bruges; Stadtholder Holland & Zeeland; Advisor to Emperor Charles V', spouse: 'Jossine van Praet (d. 1535, bur Aeltere)', sources: 'Epitaph Aeltere via FMG [891\u2013893]; Wikipedia', level: 'Directly attested', levelClass: researchStyles.levelAttested },
+    { gen: 3, name: 'Lodewijk II van Vlaenderen', dates: 'd. 1488', role: 'Lord of Praet, Woestine, Bevere, Onnele', spouse: 'Louise de Bruges dau. of Jan van Gruuthuse', sources: 'Aalter tomb inscription and de l\u2019Espinoy via Vredius pp. 277\u2013278; FMG [876,878]', level: 'Directly attested', levelClass: researchStyles.levelAttested },
+    { gen: 4, name: 'Lodewijk III van Vlaenderen', dates: 'd. 1488 (Grimarez) / 1490 (tomb)', role: 'Lord of Praet', spouse: 'Isabelle de Bourgogne (d. 12 Nov 1504, bur Gent)', sources: 'Aalter tomb inscription and Grimarez via Vredius p. 279; FMG [889,890]', level: 'Directly attested', levelClass: researchStyles.levelAttested },
+    { gen: 5, name: 'Lodewijk IV van Vlaenderen', dates: 'd. 1555', role: 'Knight of the Golden Fleece (1531); Grand Bailiff Ghent & Bruges; Stadtholder Holland & Zeeland; Advisor to Emperor Charles V', spouse: 'Jossine van Praet (d. 10 Dec 1546, bur Aeltere)', sources: 'Aalter tomb inscription via Vredius p. 387; FMG [891\u2013893]; Wikipedia', level: 'Directly attested', levelClass: researchStyles.levelAttested },
     { gen: 6, name: 'Jan II van Vlaenderen', dates: 'd. 10 Dec 1545', role: 'Lord of Woestine, Elverdinghe, Vlamertinghe; predeceased father without issue', spouse: 'Jacqueline de Bourgogne (remarried; d. 1556 in childbirth)', sources: 'Epitaph Aeltere via FMG [894,895]', level: 'Directly attested', levelClass: researchStyles.levelAttested },
   ];
 
@@ -26,7 +26,7 @@ export default function PraetLineageDossierPage() {
         <meta property="og:url" content="https://vanvlaenderen.org/research/praet-lineage-dossier" />
         <meta property="og:type" content="article" />
 
-        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Praet Lineage Detail \\u2014 Van Vlaenderen Research","description":"Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Jean I, Louis II, Jacob, and Lodewijk IV.","url":"https://vanvlaenderen.org/research/praet-lineage-dossier","inLanguage":"en","dateModified":"2026-04-11","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}`}} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Praet Lineage Detail \\u2014 Van Vlaenderen Research","description":"Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Jean I, Louis II, Jacob, and Lodewijk IV.","url":"https://vanvlaenderen.org/research/praet-lineage-dossier","inLanguage":"en","dateModified":"2026-04-19","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}`}} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Louis Friese van Vlaenderen","item":"https://vanvlaenderen.org/research/louis-friese"},{"@type":"ListItem","position":4,"name":"Lineage Detail","item":"https://vanvlaenderen.org/research/praet-lineage-dossier"}]}`}} />
       </Helmet>
       <div className={styles.heroStrip}>
@@ -126,26 +126,26 @@ export default function PraetLineageDossierPage() {
           </div>
 
           <div style={{ marginBottom: '2.5rem' }}>
-            <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Lodewijk II van Vlaenderen (d. 24 Aug 1488) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h3>
+            <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Lodewijk II van Vlaenderen (d. 1488) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h3>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              Epitaph at Aeltere [FMG 876,878]: 'Lodewyc van Vlaenderen heere van Praet ende vanden lande van de Wostine, van Bevere ende van Onnele, fs mer Jans ruddere heere van Praet' died 1488 'op Ste Bartholomeus dach' (24 August), and married 'vrau Loije van Brugghe fs mijns heeren Jans hjeere van Gruuthuuse.' This is directly attested from a primary epitaph. His wife Louise de Bruges was the daughter of Jan van de Aa dit de Bruges, Heer van Gruuthuse en Grimbergen. Pere Anselme confirms her parentage and marriage [877].
+              Two primary sources agree on the year (1488) but disagree on the day. The Aalter tomb inscription, quoted in Vredius p. 277, reads: &lsquo;Voor den hooghen autaer light M&rsquo;her LODEWYC van Vlaenderen/ Heere van Praet/ ende vanden lande van Woestine/ Bevere/ ende Ornlede/ fs. M&rsquo;her Jans/ Rudder/ Heere van Praet&hellip; die starf 1488. op S. Baefs dach&rsquo; &mdash; St. Bavo&rsquo;s day, 1 October 1488. De l&rsquo;Espinoy, quoted by Vredius p. 278, reads: &lsquo;lequel Messire Loys de Flandre, mourut en l&rsquo;an 1488, le jour de S. Berthelemy&rsquo; &mdash; St. Bartholomew&rsquo;s day, 24 August 1488. Both sources agree he married &lsquo;vrau Loije van Brugghe fs mijns heeren Jans heere van Gruuthuuse&rsquo; &mdash; Louise de Bruges, daughter of Jan van de Aa dit de Bruges, Heer van Gruuthuse en Grimbergen. Pere Anselme confirms her parentage and marriage [FMG 877].
             </p>
           </div>
 
           <div style={{ marginBottom: '2.5rem' }}>
-            <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Lodewijk III van Vlaenderen (d. 1 Jan 1490) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h3>
+            <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Lodewijk III van Vlaenderen (d. 1488/1490) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h3>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              Epitaph at Aeltere [FMG 889]: 'Loijs van Vlaenderen heere van Praet...bij zijn vader' died 'op den nieudach 1490' (1 January 1490). His marriage to Isabelle de Bourgogne is confirmed by the same epitaph [890]: she died '12 Nov 1504' and was buried 'te Gent, te Galilee.' Isabelle was the daughter of Jean batard de Bourgogne Heer van Elverdinghe en Ulamertinghe and Marie d'Halluin. Source: Bethune (1900) epitaphs via FMG.
+              The Aalter tomb inscription quoted in Vredius p. 279 reads: &lsquo;Op den Maendagh 1490 starf M&rsquo;her LOYS van Vlaendren/ heere van Praet/ die ghetrauwt hadde Vrauwe ISABELLE van Bourgongnen; hy light alhier by zijnen Vader&rsquo; &mdash; a Monday in 1490, buried beside his father. Grimarez, also quoted on the same Vredius page, records his death as &lsquo;1488. 1. Ianvier&rsquo; &mdash; 1 January 1488. The two sources disagree by roughly two years; the discrepancy may reflect the Easter-style year-change convention used in some Flemish chancery records. His marriage to Isabelle de Bourgogne, daughter of Jean b&acirc;tard de Bourgogne Heer van Elverdinghe en Vlamertinghe and Marie d&rsquo;Halluin, is confirmed by the same tomb [FMG 890]. Isabelle died &lsquo;12 Nov 1504&rsquo; and was buried &lsquo;te Gent, te Galilee.&rsquo;
             </p>
           </div>
 
           <div style={{ marginBottom: '2.5rem' }}>
             <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Lodewijk IV van Vlaenderen / Louis of Praet (d. 1555) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h3>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              Epitaph at Aeltere [FMG 892]: 'Lodewijc van Vlaenderen ruddere vanden Gulden Vliese heere van Praet vander Woestine Bevere Onnele Elverdinghe Vlamertinghe.' Knight of the Golden Fleece (1531). Grand Bailiff of Ghent and Bruges. Stadtholder of Holland and Zeeland (1544&ndash;46). Advisor to Emperor Charles V.
+              The Aalter tomb inscription, quoted in Vredius p. 387, records his full titulature: &lsquo;M&rsquo;her LODEWYC van Vlaendren/ Rudder vander Ordre vanden Gulden Vliese/ Heere van Praet/ vanden lande vander Woestyne/ Elverdijnghe/ Vlamertijnghe/ Spiete/ ende vander Mersch/ Raed/ Upper-camerlinck/ Chief vande Financien van de K.M. Carolus den V. ende sijnen Hoogh-Bailliu van Brugghe/ ende van &rsquo;t Brughsche Vrije/ te sijnen overlijden Gouverneur ende Capitain van Vlaendren/ die starf 1555.&rsquo; Knight of the Golden Fleece (1531); Grand Bailiff of Ghent and Bruges; Stadtholder of Holland and Zeeland (1544&ndash;46); Advisor to Emperor Charles V.
             </p>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              Married Jossine van Praet (d. 1535, bur Aeltere), heiress of the original Praet baronial family. Epitaph [893] records: 'vrau Joosijne van Praet vrauwe van Praet vander Woestine.'
+              Married Jossine van Praet, daughter of Charles van Praet Heer van Moerkercke, heiress of the original Praet baronial family. The same Aalter tomb inscription records her death: &lsquo;Ende Me-vrauwe IOSYNE van Praet/ Vrauwe van Moerkercke/ M&rsquo;her Charles van Praet/ Heere van Moerkercke dochter was/ M&rsquo;her LODEWYCX ghesselnede/ die starf 1546. den 10. December&rsquo; &mdash; died 10 December 1546, nine years before her husband, buried beside him at Aalter [FMG 893].
             </p>
           </div>
 
@@ -159,7 +159,7 @@ export default function PraetLineageDossierPage() {
           <div style={{ marginBottom: '2.5rem' }}>
             <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Jan II van Vlaenderen (d. 10 Dec 1545) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h3>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              Epitaph at Aeltere [FMG 894]: 'joncheer Jan van Vlaenderen heere van de Woestijne, Elverdinghe ende Vlamertinghe, fs mer Lodewijcx heere van Praet ende van vrau Joosijne van Praet' died 10 Dec 1545. An epitaph at Veere [FMG 895] confirms his wife Jacqueline de Bourgogne remarried Jan Heer van Cruijningen and died 'van haer laetste kint' in 1556 at Beveren &mdash; in childbirth with her last child &mdash; and that she was childless by Jan van Vlaenderen. The legitimate Praet male line ends here.
+              The Aalter tomb inscription, quoted in Vredius p. 388, reads: &lsquo;Inde selve tombe light Jo. IAN van Vlaendren/ Heere van Woestine/ Elverdinghe/ ende Vlamertinghe/ fil. mijns Heeren Lodewijc/ Heere van Praet/ ende van Vrauw&rsquo; Josijne voorseyt/ die starf 1545. den 10. December; hy hadde ghetrauwt Vrauw&rsquo; IAQVELINE van Bourgongnen/ fil. M&rsquo;her Adolf/ Heere van Bevere/ starf sonder generatie.&rsquo; Grimarez on the same page adds that he &lsquo;mourut, sans generation, avant son pere, en l&rsquo;an 1545&rsquo; &mdash; he predeceased his father Lodewijk IV by exactly ten years, leaving the legitimate Praet male line extinct a decade before Lodewijk IV himself died in 1555. A separate epitaph at Veere [FMG 895] records that his widow Jacqueline de Bourgogne remarried Jan Heer van Cruijningen and died &lsquo;van haer laetste kint&rsquo; at Beveren in 1556 &mdash; in childbirth with her last child by her second husband &mdash; and that she was childless by Jan van Vlaenderen.
             </p>
           </div>
         </section>
@@ -214,31 +214,35 @@ export default function PraetLineageDossierPage() {
           <h3>Notes &amp; Bibliography</h3>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>1.</span>
-            Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025. Section B: Heeren van Praet. Footnote numbers in square brackets refer to this source.{' '}
-            <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
+            Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642&ndash;43. Tabula XVI, pp. 275&ndash;289 (Louis II de Male bastard cohort, including Louis Friese and the Praet descent through Lodewijk III); Tabula XIX, pp. 387&ndash;388 (Lodewijk IV, Jossine van Praet, and Jan II at Aalter). Direct reading of the 1643 print conducted April 2026. All tomb-inscription quotations in this dossier are verified against the Vredius print.
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>2.</span>
-            Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. Primary epitaph transcriptions for Aeltere, Beveren bij Roeselare, and Languemarc. Print only — not digitised. Held at KBR Brussels and Ghent University Library.
+            Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025. Section B: Heeren van Praet. Footnote numbers in square brackets refer to this source, which serves as a collateral summary apparatus for the Vredius transcriptions.{' '}
+            <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>3.</span>
+            Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. Primary epitaph transcriptions for Aeltere, Beveren bij Roeselare, and Languemarc. Print only &mdash; not digitised. Held at KBR Brussels and Ghent University Library.
+          </div>
+          <div className={researchStyles.refItem}>
+            <span className={researchStyles.refNumber}>4.</span>
             Wikipedia. Louis of Praet.{' '}
             <a href="https://en.wikipedia.org/wiki/Louis_of_Praet" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Wikipedia, Louis of Praet</a>
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>4.</span>
+            <span className={researchStyles.refNumber}>5.</span>
             Lauwens, Patrik. <em>Verhalen uit de genealogie Van Praet.</em> 2010.{' '}
             <a href="https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Lauwens, Verhalen uit de genealogie Van Praet (2010)</a>
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>5.</span>
-            Nederland's Adelsboek. Vol. 6 (1908). 's-Gravenhage: W.P. van Stockum en Zoon. Van Boetzelaer entry.{' '}
+            <span className={researchStyles.refNumber}>6.</span>
+            Nederland&rsquo;s Adelsboek. Vol. 6 (1908). &rsquo;s-Gravenhage: W.P. van Stockum en Zoon. Van Boetzelaer entry.{' '}
             <a href="https://archive.org/details/nederlandsadelsb28unse_4" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Internet Archive (1908 volume)</a>
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>6.</span>
-            Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350–ca. 1500).</em> Gent: Academia Press, 2011. Prosopographical register of Flemish noble families 1350–1500; the source for Josse de Flandre and cadet Praet branch data cited via FMG MedLands [881, 882]. See also by the same author: <em>Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen</em> (Brussels: Royal Academy, 2010), the accompanying narrative history.{' '}
+            <span className={researchStyles.refNumber}>7.</span>
+            Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350&ndash;ca. 1500).</em> Gent: Academia Press, 2011. Prosopographical register of Flemish noble families 1350&ndash;1500; the source for Josse de Flandre and cadet Praet branch data cited via FMG MedLands [881, 882]. See also by the same author: <em>Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen</em> (Brussels: Royal Academy, 2010), the accompanying narrative history.{' '}
             <a href="https://lib.ugent.be/nl/catalog/rug01:001699683" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library catalogue</a>
           </div>
         </section>

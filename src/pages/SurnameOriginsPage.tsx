@@ -391,7 +391,7 @@ export default function SurnameOriginsPage() {
                   <td style={tdStyle}><strong>French Flanders — plausible contributor to the Volckerinckhove cluster.</strong> Geography and chronology are consistent. Whether the Drincham line alone accounts for the cluster's scale, or an earlier Function 3 founding event is also required, remains an open question.</td>
                 </tr>
                 <tr>
-                  <td style={{ ...tdStyle, fontWeight: 500 }}>Lodewijc van Vlaenderen Heer van Praet<br /><span style={{ fontWeight: 400, color: 'var(--text-muted)', fontSize: '0.82rem' }}>grandson of Loys le Frison; epitaph at Aalter, d. 24 Aug 1488</span></td>
+                  <td style={{ ...tdStyle, fontWeight: 500 }}>Lodewijc van Vlaenderen Heer van Praet<br /><span style={{ fontWeight: 400, color: 'var(--text-muted)', fontSize: '0.82rem' }}>grandson of Loys le Frison; epitaph at Aalter, d. 1488</span></td>
                   <td style={{ ...tdStyle, color: 'var(--text-muted)' }}>Praet, Woestijne, Bevere, Ommele.</td>
                   <td style={tdStyle}>Loys, Jan (→ Jan van Onlede d. 1523), Jacques, Josse, Loyse, Jehenne de Flandre.</td>
                   <td style={{ ...tdStyle, whiteSpace: 'nowrap' as const, color: 'var(--text-muted)' }}>c. 1440–1488</td>
