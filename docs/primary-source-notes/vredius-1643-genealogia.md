@@ -88,7 +88,7 @@ Each entry records what Vredius attests about a single figure or closely linked 
 - Jossine van Praet (d. 10 December 1546)
 - Jan II van Vlaenderen (d. 10 December 1545, *avant son pere*)
 
-### 4. The Drincham line (Tabula XVI, Probationes pp. 281–283)
+### 4. The Drincham line (Tabula XVI, Probationes pp. 280–283)
 
 - 1383 grant from Louis de Male (Jan "sans terre")
 - Jan II, Heer van Drincham — m. Guillemette de Nevele
@@ -859,17 +859,210 @@ The discrepancy may reflect the **Easter-style year-change convention** used in 
 
 ---
 
-## 4. The Drincham line (Tabula XVI, Probationes pp. 281–283)
+## 4. The Drincham line (Tabula XVI, Probationes pp. 280–283)
 
-> *Section skeleton. Full entries to be filled in. Already extensively surfaced on DrinchamDossierPage as of April 2026. Section will serve as the archival record underlying that dossier.*
+The Drincham line descends from Jan sans terre (Johannes dictus Sine terra), the third and youngest of the three Louis II bastards killed at the Battle of Nicopolis on 28 September 1396 (alongside Louis Friese and Louis Haze — see §1.3.1 and §1.3.2). Jan sans terre received the lordship of Drincham in Artois (near Bergues in modern French Flanders) from his father Louis de Male by letters dated 22 November 1383, and married Guillemette de Nevele, heiress of the lordship of Drincham in Flanders. The line carries the surname *van Vlaenderen* / *de Flandres* conjoined with the territorial epithet *dictus Drincham* / *dit de Drincham* for four attested generations, plus a collateral illegitimate line legitimised in 1401 and a further Bambeke cadet through Simon.
 
-### 4.1 The 1383 grant from Louis de Male
+Four entries cover the line in Vredius. Publicly surfaced on `DrinchamDossierPage` as of April 2026; this section is the archival record underlying that dossier.
 
-### 4.2 Jan II, Heer van Drincham — m. Guillemette de Nevele
+### 4.1 Jan sans terre and the 1383 Drincham grant
 
-### 4.3 The third generation — Jacques de Drincham (d. Veurne 1459)
+**Vredius reference:** Tabula XVI, p. 280. Main section header: *"Ioannes à Flandria, dictus Sine terra / Guilielma de Nevele, Domina de Drincham."* De l'Espinoy citation (main text); Grimarez citation (inset).
 
-### 4.4 The 1401 Philip-the-Bold legitimation of Ioannes de Drinquam
+**Identification:** *Ioannes dictus Sine terra* (Jan sans terre, "John landless") — fifth documented bastard son of Louis de Male, Count of Flanders. Per De l'Espinoy he is *"le cinquiesme fils bastard dudit Comte de Flandres"* — the fifth bastard son. He was overnamed Sans Terre because his father had initially provided him with no landed inheritance; the 22 November 1383 grant corrected that by giving him the castle and manor of Drincham near Bergues (confiscated from Jean de Scheurvelde for an unspecified offence) plus the associated rents, revenues, seigneuries, lands, meadows, woods, waters, pastures, and fisheries. He married Guillemette (Wilhelmina) de Nevele, heiress of the lordship of Drincham through her mother Guilhelmette de Halewijn, herself heiress of Lichtervelde; Guillemette's father was Guillaume de Nevele. Jan sans terre was killed at the Battle of Nicopolis on 28 September 1396, alongside his half-brothers Louis Friese and Louis Haze, per Gaillard's Dutch account (see §1.3.2).
+
+**Original text — De l'Espinoy's French account of the 1383 grant (p. 280):**
+
+> *De l'Espinoy: Meßire IEAN de Flandres, fut le cinquiesme fils bastard dudit Comte de Flandres, & fut surnommé sans terre, auquel ledit Comte donna le chastel & maison de Drincham, avec le fief & avoir principal, rentes, revenuës, Seigneuries, terres, prés, bois, eaux, pastures, pescheries &c. & ce pour le pourveoir, affin qu'il puisse tant mieux & plus honorablement avoir sa soustenance, & servir ses Seigneurs, Princes, & amis: laquelle terre estoit escheue audit Comte par confiscation de Iean de Scheurvelde, qui estoit proche heritier de Iacques de Drincam, dernier possesseur: & comme plus amplement se voit par lettres dudit Comte, données en Arras, le vingtdeuxiesme jour du mois de Novembre, l'an mille trois cent huictante trois: il eut à femme Dame WILLEMINE de Nivelle, & eurent un fils, nommé IEAN comme le pere, lequel espousa Dame Isabeau de Guistelles, fille du Seigneur de Bebelsbeke.*
+
+**Original text — Grimarez's French confirmation (p. 280):**
+
+> *D. Grimarezius: IEAN, b. de Flandres, dict sans terre, Chevalier, espousa GVILEMETTE de Nevele, fille de Meßire Guillaume, Chevalier, & de Dame Guilemette de Halewijn, heritiere de Lichtervelde. Il mourut à la bataille devant la ville de Nicopoli en Bulgarie, avec ses deux freres, la veille de S. Michel 28. Septembre 1396. sa mere estoit Ivé de Lun.*
+
+**Translation (De l'Espinoy):** *Sir Jean de Flandres was the fifth bastard son of the said Count of Flanders, and was surnamed "Sans Terre" [landless]; to whom the said Count gave the castle and manor of Drincham, together with the principal fief, rents, revenues, seigneuries, lands, meadows, woods, waters, pastures, fisheries &c., and this in order to provide for him, so that he might have his sustenance the better and more honourably, and might serve his lords, princes, and friends. The said land had fallen to the said Count by the confiscation from Jean de Scheurvelde, who was the nearest heir of Jacques de Drincham, the last possessor. As is more fully seen by the letters of the said Count, given at Arras, the twenty-second day of November, the year one thousand three hundred and eighty-three. He took to wife Lady Wilhelmina de Nivelle, and they had a son named Jean like his father, who married Lady Isabeau de Guistelles, daughter of the Lord of Bebelsbeke.*
+
+**Translation (Grimarez):** *Jean, bastard of Flandres, called Sans Terre, Knight, married Guilemette de Nevele, daughter of Sir Guillaume, Knight, and of Lady Guilemette de Halewijn, heiress of Lichtervelde. He died at the battle before the city of Nicopoli in Bulgaria, with his two brothers, on the eve of St. Michael's, 28 September 1396. His mother was Ivé de Lun.*
+
+**Evidentiary notes:**
+
+- **22 November 1383 grant date.** The De l'Espinoy citation gives Arras as the issuing location and "le vingtdeuxiesme jour du mois de Novembre, l'an mille trois cent huictante trois" — 22 November 1383. This predates the birth of his son Jan II (who marries adult in the early 15th century) by at least a decade, consistent with the grant being at Jan sans terre's majority or adult establishment.
+- **Fifth bastard of Louis de Male.** De l'Espinoy's numbering is useful: "le cinquiesme fils bastard." The other four would be (in a plausible birth-order reconstruction consistent with Vredius's own sections) Victor (§1.3.3), Louis Friese (§1.3.2), Louis Haze (§1.3.1), and possibly Robert of Elverdinghe (§1.3.6) — though see §1.3.5 on the specific cohort ordering issue.
+- **Drincham's confiscation history.** The grant text adds colour: Drincham had belonged to Jacques de Drincham (last possessor); after his death it passed by confiscation to Count Louis (presumably after Jean de Scheurvelde, the nearest heir, committed some offence). Louis de Male then regranted it to his bastard son. This makes Jan sans terre's Drincham holding legally a ducal regrant of a previously confiscated fief, not an inherited patrimony.
+- **Jan sans terre's mother: Ivé de Lun.** Grimarez's brief note at the bottom of the p. 280 entry — "sa mere estoit Ivé de Lun" — is the only Vredius-preserved attribution of any Louis II bastard's mother. All other bastard entries are silent on the maternal side. "Ivé de Lun" is likely a garbling or abbreviation of a longer name; interpretation would require comparison with other Louis-de-Male mistress attributions in 14th-century sources.
+- **Nicopolis death — co-attested.** The 28 September 1396 death with his two brothers Louis Friese and Louis Haze is directly attested by Gaillard's Dutch account in §1.3.2 ("*Inden slach van Nicopoli… waeren verslegben/ Mijn Heere LOYS van Vlaendren… Heere LODEWYCK van Vlaendren… ende mijn Heere Jan van Vlaendren…*"). Three Louis-de-Male bastards died together in that single engagement.
+
+**Site placement:** `DrinchamDossierPage` covers Jan sans terre as the founder figure. The 1383 grant text and Nicopolis death are surfaced publicly.
+
+**Research leads:**
+
+- **22 November 1383 Arras charter** — the original Louis-de-Male letters-patent should survive in the Archives départementales du Nord (Lille), Chambre des Comptes series B, or in the Archives de l'État à Mons for Hainaut-adjacent confiscation records. The confiscation history of Drincham from Jacques de Drincham via Jean de Scheurvelde would be documented alongside.
+- **Ivé de Lun identification** — 14th-century Flemish mistress records of Louis de Male; possibly in the Brussels Archives générales du Royaume, Flanders chancery records.
+- **Lichtervelde inheritance chain** — Guilemette de Halewijn, heiress of Lichtervelde, → Guillaume de Nevele → Guilemette de Nevele (Jan sans terre's wife). The Lichtervelde lordship's further transmission through the Drincham line would show whether the inheritance was brought into the Drincham patrimony or remained separate.
+
+---
+
+### 4.2 Jan II, Heer van Drincham, and Isabella de Ghistelles (Domina de Viffaert)
+
+**Vredius reference:** Tabula XVI, p. 281. Section header: *"Ioannes de Flandria, Dominus de Drinchami / Isabella de Ghistelles, Domina de Viffaert. Vide quæ sequuntur."*
+
+**Identification:** Second generation of the Drincham line. Son of Jan sans terre and Guilemette de Nevele. Heer van Drincham. Married Isabella de Ghistelles, daughter of the Lord of Bebelsbeke (per De l'Espinoy p. 280 footnote: "*Dame Isabeau de Guistelles, fille du Seigneur de Bebelsbeke*"). She brought the lordship of Viffaert as her dowry or inheritance. Together they had four sons and at least one daughter:
+
+1. **Jan III** — eldest son and heir to Drincham. See §4.3.
+2. **Iacobus / Jacques de Drincham** — second son, married Guilielma de Bambeke. See §4.4.
+3. **Ludovicus / Loys de Drincham** — third son. Attested only by name in Vredius p. 282.
+4. **Franco (François) de Drincham** — youngest son. Attested only by name in Vredius p. 282.
+5. **Isabella de Drincham** — daughter, married Ghislebert de Lannoy. See §4.4 notes.
+
+Jan II also fathered **an illegitimate son Ioannes**, legitimised by Philip the Bold in July 1401 — see §4.5.
+
+**Original text — "Vetus genealogia MS familiæ de Drincham" cited on p. 281 (introducing Jan III):**
+
+> *Vetus genealogia MS familiæ de Drincham: Meßire IEHAN de Flandres, Seigneur de Drincham, fils aisné de Meßire IEAN de Flandre, Seigneur de Drincham, & de Dame ISABEAV de Ghiftelle, Dame de Viffaert, eut à femme Dame ISABEAV de Vernieulles, de laquelle eut deux fils & trois filles, dont l'aisné, nommé Philippe, mourut à marier.*
+
+**Translation:** *Old manuscript genealogy of the Drincham family: Sir Jean de Flandres, Lord of Drincham, eldest son of Sir Jean de Flandres, Lord of Drincham, and of Lady Isabeau de Ghistelle, Lady of Viffaert, took to wife Lady Isabeau de Vernieulles, of whom he had two sons and three daughters, of whom the eldest, named Philippe, died unmarried.*
+
+**Evidentiary notes:**
+
+- **Lordship inheritance.** Isabella de Ghistelles brought Viffaert into the Drincham patrimony. The Ghistelles connection is independent of the Ghistelles connection in the Praet line (Louis Friese's wife Marie de Ghistelles — see §1.3.2); Isabella here is described as daughter of "le Seigneur de Bebelsbeke" (Bebelsbeke = a lordship adjacent to Ghistelles, or Bebelsbeke is an alternate territorial name within the Ghistelles holdings).
+- **Cross-reference to Vredius's own "hic error est" note.** On p. 276 (§3 Praet line, under Maria de Ghistelles wife of Louis Friese), Vredius flags a De l'Espinoy error: De l'Espinoy had claimed that Louis Friese's "second son" was the founder of the Drincham line, which would conflate Jan sans terre (bastard brother of Louis Friese) with Louis Friese's own second son. Vredius corrects this: Jan sans terre is a separate bastard son of Louis de Male, not a grandson of Louis de Male via Louis Friese. The Drincham line descends from the Louis-de-Male bastard generation directly, in parallel with the Praet line.
+- **"Vide quae sequuntur"** — the Vredius header explicitly directs the reader to the subsequent entries for Jan II's issue, paralleling the same pattern used for Johan I in the Praet line (§3.1). Each Jan II / Jan III / Jan IV generation gets its own header rather than being enumerated as a single list.
+
+**Research leads:**
+
+- **Viffaert lordship records** — Bebelsbeke / Ghistelles / Viffaert are in the Bruges Vrije; leenhof records should document the Ghistelles-to-Drincham transfer.
+- **MS familiæ de Drincham.** Vredius cites a "Vetus genealogia MS" (old manuscript genealogy) of the Drincham family, held in the "MS du S. d'Orchy chez Moſr. Blomme" per the marginal citation on p. 281. This manuscript, if it survives in a Brussels or Lille archive, would be the authoritative early source for the Drincham line's internal genealogy.
+
+---
+
+### 4.3 Jan III, Heer van Drincham, and his son Jan IV
+
+**Vredius reference:** Tabula XVI, p. 281 continuation. Section header: *"Ioannes, Dominus de Drincham / Isabella de Vernieulles."*
+
+**Identification:** Third generation. Son of Jan II and Isabella de Ghistelles. Heer van Drincham. Married Isabella de Vernieulles. Two sons (Philippe, who died unmarried; Jan IV) and three unnamed daughters.
+
+**His son Philippus de Flandria** — *"Coelebs obiisse perhibetur in genealogia superiore, & hic in tabula supplendus, & præfigendus Ioanni."* — reported as having died a bachelor in the previous paragraph's genealogy; to be inserted in the table and prefixed to Jan IV's entry. So Philippus died unmarried and is only a placeholder.
+
+**Jan IV, Heer van Drincham** — second son of Jan III, became the heir after Philippus's death. Married Isabella de St. Omer, daughter of the Lord of Moerbeke. Two daughters (no sons), of whom the elder became the wife of Monsieur de Mastain (French noble, territorially unspecified in Vredius).
+
+**Original text — Jan IV's introduction (Vredius p. 281):**
+
+> *Eadem genealogia: Meßire IEHAN de Flandres, Chevalier, Seigneur de Drincham, second fils dudit Meßire Iehan & de ladite Dame Isabeau de Vernieulles; eut à femme Dame ISABEAV de S. Omer, fille au Seigneur de Moerbeke, de laquelle eust deux filles: de l'aisnée fille vient Monsieur de Maftain dernier mort.*
+
+**Translation:** *The same genealogy: Sir Jean de Flandres, Knight, Lord of Drincham, second son of the said Sir Jean and of the said Lady Isabeau de Vernieulles; took to wife Lady Isabeau de St. Omer, daughter of the Lord of Moerbeke, of whom he had two daughters: from the eldest daughter comes Monsieur de Mastain, recently deceased.*
+
+**Evidentiary notes:**
+
+- **Line extinction in the male through this branch.** Jan IV had only daughters. The Drincham senior male line therefore terminates at Jan IV's death (date not given in Vredius; inferred to be mid-to-late 15th century given his daughter's marriage to a "Monsieur de Mastain, dernier mort" — recently deceased at Vredius's 1643 time of writing — no, this phrase "dernier mort" in Grimarez's extract more likely refers to the Mastain line's own last holder at Grimarez's own time of writing, which is pre-1643). The Mastain line inherits whatever territorial patrimony Jan IV's elder daughter brought.
+- **Drincham lordship's fate.** The lordship itself, and with it the van Vlaenderen surname-bearing cadet use, continues through Jan II's second son Jacques (see §4.4) rather than through Jan III → Jan IV's daughter-only terminal generation. The surname-plus-Drincham style survives through Jacques and his son / grandson Simon (see §4.6).
+- **Three unnamed daughters of Jan III.** Vredius preserves their existence but not their names or marriages. Research potential: if their marriages can be traced, each would be a potential bridge figure carrying the Drincham connection into a non-Flemish noble line.
+
+**Research leads:**
+
+- **Monsieur de Mastain / Mastaing** — the Mastaing lordship in Hainaut. Jan IV's elder daughter's marriage to a Mastaing would be documented in Hainaut noble records (Archives de l'État à Mons).
+- **Isabella de St. Omer, Dame de Moerbeke** — the St.-Omer-of-Moerbeke family line. Note that the Moerbeke lordship here is distinct from Moerkerke (often confused in Flemish records).
+- **Three unnamed daughters** — further prosopographical research could identify any or all.
+
+---
+
+### 4.4 Jacques de Drincham, Heer van Bambeke (d. Veurne, 10 April 1459), with siblings Ludovicus, Franco, Isabella
+
+**Vredius reference:** Tabula XVI, p. 282. Two section headers: *"Iacobus de Flandria, dictus Drincham, sequitur fratres"* (to follow after the brothers) and later *"Iacobus de Flandria, dictus Drincham / Guilielma, Domina de Bambeke."*
+
+**Identification:** Second son of Jan II and Isabella de Ghistelles. Married Guilielma de Bambeke (daughter and heiress of Jean de Bambeke, dit Gallois), bringing the lordship of Bambeke into this branch. **Knight, Counsellor, and Chamberlain of Duke Philip the Good of Burgundy; and Bailiff of Veurne (Furnes) at the time of his death.** Died 10 April 1459, Veurne. Wife Guilielma died 19 April 1473. Buried in the choir of the monastery of S. Nicolai, Veurne.
+
+**Jacques's siblings (same parents — Jan II + Isabella de Ghistelles):**
+
+- **Ludovicus / Loys de Flandres, dict de Drincham** — third son. Attested only by name in Vredius p. 282, no further details given.
+- **Franco (François) de Flandres, dict de Drincham** — youngest son. Attested only by name in Vredius p. 282, no further details given.
+- **Isabella de Drincham** — daughter, married Ghislebert de Lannoy, Knight of the Golden Fleece, Lord of Willerval. See tomb transcription below.
+
+**Original text — Jacques + Guilielma tomb at Veurne (Vredius p. 282, French via Grimarez):**
+
+> *Epitaphium eorum designatur Furnis in choro monasterii S. Nicolai, hoc tenore: Cy gift Meßire IAQVES de Drincham, Chevalier, Conseillier, & Chambellain de Monseigneur le Duc de Bourgongne, Conte de Flandre, & son Bailly de Furnes à son trespas, lequel mourut l'an de nostre Seigneur 1459. le 10. d'Avril, & Dame GVILEMINE de Bambeke, fille de Iean de Bambeke, & alors espouse dudict Meßire IAQVES, laquelle mourut l'an de nostre Seign. 1473. le 19. d'Aparil. Il portoit de Ghiftelle, au premier canton de Flandre, & sur l'autre costé l'escuffon de Luxembourg, & defsoubs un cigne d'argent, & sa femme portoit d'hermine au premier canton de geule.*
+
+**Original text — Isabella de Drincham (sister of Jacques) + Ghislebert de Lannoy tomb (Vredius p. 282, French, location: S. Mauritii, Lille, before the high altar):**
+
+> *Traditur horum fuisse soror Isabella, nupta Guilleberto de Lannoy, quorum hoc epitaphium visitur Infulis, in S. Mauritii ante majus altare: Cy gist noble homme Meßire GVISLEBERT de Lannoy, Seigneur de Willerval, de Tronchiennes, frere & compagne, de l'ordre de la Toison d'or, qui trespaſſa l'an de nostre Seigneur 1462. le 22 d'Apuril. Et Dame ISABEAV de Drincham, Dame de Willerval, sa treschiere bien aymée compagne, laquelle trespassa l'an de nostre Seign. 1451. le 16. de Feburier.*
+
+**Translation (Jacques + Guilielma tomb):** *Their epitaph is recorded at Furnes in the choir of the monastery of St. Nicholas, in these terms: Here lies Sir Jacques de Drincham, Knight, Counsellor, and Chamberlain of My Lord the Duke of Burgundy, Count of Flanders, and his Bailiff of Furnes at his death, who died in the year of Our Lord 1459, the 10th of April, and Lady Guilelmine de Bambeke, daughter of Jean de Bambeke, and at that time wife of the said Sir Jacques, who died in the year of Our Lord 1473, the 19th of April. He bore Ghistelles in the first quarter of Flanders, and on the other side the escutcheon of Luxembourg, and beneath a silver swan; and his wife bore ermine in the first quarter of gules.*
+
+**Translation (Isabella de Drincham + Ghislebert de Lannoy tomb):** *Their sister is said to have been Isabeau, married to Ghislebert de Lannoy, whose epitaph is seen at Lille, in St. Maurice's church before the high altar: Here lies the noble man Sir Ghislebert de Lannoy, Lord of Willerval, of Tronchiennes, brother and companion of the Order of the Golden Fleece, who died in the year of Our Lord 1462, the 22nd of April. And Lady Isabeau de Drincham, Lady of Willerval, his very dear and beloved companion, who died in the year of Our Lord 1451, the 16th of February.*
+
+**Evidentiary notes:**
+
+- **High office under Philip the Good.** Jacques's titulature at his 1459 death — Counsellor, Chamberlain, and Bailiff of Veurne — places him in the senior tier of the Burgundian ducal administration. His family position (grandson of a Louis-de-Male bastard, sole surname-bearing cadet of the Drincham branch) is consistent with this rank.
+- **Bambeke lordship.** Bambeke (now Bambecque in French Flanders) was a smaller lordship in the Veurne-Furnes district. Guilielma's father Jean de Bambeke, *dit Gallois* — the "Gallois" epithet suggests a French-speaking origin or identification. The Bambeke holding passes into the Drincham branch through this marriage.
+- **Heraldic arms of Jacques.** The tomb reports quartering: Ghistelles (first quarter) + Flanders, with Luxembourg escutcheon on the other side and a silver swan below. Ghistelles comes from his mother Isabella de Ghistelles; Flanders the paternal quarter; Luxembourg suggests a maternal-grandmother or other matrilineal Luxembourg connection (possibly through Guilemette de Nevele's Halewijn-of-Lichtervelde inheritance — the House of Luxembourg held Ligny and other Flemish-adjacent lordships). The silver swan is probably a personal device rather than a family quartering.
+- **Isabella de Drincham's death precedes her husband's.** She died 16 February 1451, over a decade before her husband Ghislebert de Lannoy's 22 April 1462 death at Lille. Both were buried in St. Maurice, Lille, before the high altar.
+- **Ghislebert de Lannoy as Golden Fleece knight.** Ghislebert / Ghisbert de Lannoy (1386–1462) was Lord of Willerval and of Tronchiennes, a senior Burgundian courtier and Golden Fleece knight (inducted at the Order's early chapter). He is a well-documented historical figure whose diplomatic missions and writings survive. The Drincham marriage links the Van Vlaenderen-cadet-Drincham branch to the senior Lannoy line of Burgundian administration.
+
+**Site placement:** `DrinchamDossierPage` covers Jacques and his wife Guilielma. The Isabella-Lannoy connection is of interest as a high-prestige Drincham cadet marriage.
+
+**Research leads:**
+
+- **S. Nicolai Veurne monastery tomb** — if any portion of the 1459 tomb survives (the monastery itself was dissolved under Joseph II in the 1780s, but the church portion may have survived), an epigraphic check against the Vredius transcription would be valuable.
+- **S. Mauritii Lille tomb** — the Ghislebert de Lannoy / Isabella de Drincham tomb at Lille St. Maurice (1462). The church survives.
+- **Ghislebert de Lannoy's writings** — the famous "voyages" and diplomatic correspondence of Ghislebert de Lannoy are published (various 19th-century editions). If Isabella de Drincham is mentioned in any surviving letter or journal, biographical information about her would be recoverable.
+- **The Bambeke lordship** — its post-1473 descent from Guilielma de Bambeke's heirs would run through Simon de Flandria dictus Drincham (§4.6) into the next generation.
+
+---
+
+### 4.5 The 1401 Philip-the-Bold legitimation of the illegitimate Ioannes de Drincquam
+
+**Vredius reference:** Tabula XVI, pp. 281–282. Full text of the legitimation letter reproduced in Latin. Marginal citation: *"Arch. Cam. rat. Insul."* — Archives of the Chamber of Accounts, Lille.
+
+**Identification:** An illegitimate son of Jan II (Heer van Drincham, §4.2), by an unmarried woman named Iohanna Svinx, was legitimised by Duke Philip the Bold of Burgundy in July 1401 at Arras. The legitimation formally restored the son's *natalia* (status of legitimate birth) and made him eligible for inheritance.
+
+**Original text — the 1401 legitimation letter (Latin, verbatim, pp. 281–282):**
+
+> *Fuit & alter Ioannes nothus Ioannis de Drincham, cui Philippus Bonus natalia restituit diplomate sequente: PHILIPPVS quondam Regis Francorum filius, Dux Burgundiæ, Comes Flandriæ, Arthesii & Burgundiæ, Palatinus, Dominus de Salinis, Comesque Regiſteensis, Dominus de Machlinia &c. Naturæ vitium, minimè decolorat illegitimè genitos, quos vitæ decorat honestas &c. Notum igitur facimus &c. quod nos attendentes morum honeſtatem, & virtutum merita, quibus, prout teſtatur assertio fide digna, Ioannes de Drincquam, filius Domini Ioannis de Drincquam, Militis, decoratur, qui licet ex illegitimo coitu, videlicet ex dicto D. Ioanne, ejus patre, & Iohanna Svinx, ejus matre, ambobus tunc solutis, traxerit originem; se tamen Deo & hominibus, vita & moribus, gratum reddidit; & defectum natalium, quem patitur, supplent in eo merita probritatum, eundem Iohannem, de noſtris auctoritate, certa scientia, & gratia speciali, legitimamus per præsentes, & in eo defectum natalium, quem patitur, abolemus &c. Datum Atrebati, mense Iulii, anno Domini millesimo quadringentesimo primo. Per Dominum Ducem, ad relationem vestram. Daniel.*
+
+**Translation:** *There was also another Jean, the bastard son of Jean of Drincham, to whom Philip [the Bold] restored legitimate birth-status by the following diploma: PHILIP, formerly son of the King of France, Duke of Burgundy, Count of Flanders, Artois and Burgundy, Palatine, Lord of Salins, Count of Rethel, Lord of Malines &c. The defect of nature does not dishonour those begotten illegitimately when the honesty of their life adorns them &c. We therefore make known &c. that we, attending to the honesty of his morals, and the merits of virtues with which, as trustworthy assertion testifies, Ioannes de Drincquam, son of the Lord Ioannes de Drincquam, Knight, is adorned — he who, though he drew his origin from illegitimate union, namely from the said Lord Ioannes his father, and Iohanna Svinx his mother, both then free [unmarried] — has nevertheless rendered himself pleasing to God and to men by his life and morals; and the defect of birth which he suffers is supplied in him by the merits of his virtues. By our authority, certain knowledge, and special grace, We legitimise the same Ioannes by these presents, and abolish in him the defect of birth which he suffers, &c. Given at Arras, in the month of July, in the year of Our Lord one thousand four hundred and one. By the Lord Duke, at your relation. Daniel.*
+
+**Evidentiary notes:**
+
+- **"Philippus quondam Regis Francorum filius" — Philip the Bold, not Philip the Good.** The issuing duke is identified in the letter as Philip, son of the (former) King of France (King Jean II), Duke of Burgundy, Count of Flanders, Artois, and Burgundy Palatine. This is **Philip the Bold** (Philippe le Hardi, 1342–1404), who held all these titles and who issued the letter in July 1401. The phrase "Philippus Bonus" appearing in the narrative is *not* a cognomen "the Good" (Philip the Good ruled later, 1419–1467); rather, *Bonus natalia* is Latin for "good birth-status" — the legitimation phrase itself ("restored [to] good birth-status"). Misreading "Bonus natalia" as "the Good" would mis-attribute the letter to Philip the Good and mis-date it by about two decades.
+- **"Ambobus tunc solutis."** Both parents are specified as "then free" (unmarried) at the time of the conception — a standard canon-law formulation that distinguishes illegitimate births of single parents (more readily legitimisable) from adulterine or incestuous unions. Jan II's wife Isabella de Ghistelles was therefore not yet his wife at the time, OR Isabella had not yet come into the picture and Jan II's liaison with Iohanna Svinx predated his legitimate marriage.
+- **Iohanna Svinx identification.** The surname "Svinx" / "Swinx" — possibly a Flemish toponymic or occupational name. No further identification attempted in Vredius. Modern genealogical research may be able to place the mother's family.
+- **Two "Ioannes de Drincham" in the same generation.** This means there are two Jeans named Ioannes / Jean in Jan II's generation-plus-one: Jan III (legitimate eldest son, see §4.3) and the 1401-legitimised Jean (illegitimate but legally legitimised). Both bear the "de Drincham" territorial surname. The 1401-legitimised Jean's subsequent career and descendants are not traced in Vredius.
+- **Arras as issuing location.** Philip the Bold held his Burgundian-chancery court at Arras during parts of his reign. The July 1401 date fits the standard chancery schedule.
+- **Minister: "Per Dominum Ducem, ad relationem vestram. Daniel."** The diploma was issued "By the Lord Duke, at your relation [i.e., at your request], Daniel" — Daniel being the chancery scribe or herald who formalised it. This is a standard Burgundian chancery notarial mark.
+
+**Site placement:** Currently not prominently featured on `DrinchamDossierPage`. Worth surfacing as a distinct item — a legitimate 1401 Burgundian-chancery legitimation of a Van Vlaenderen-adjacent bastard establishes the Drincham line's Burgundian-court reach and adds a sibling figure (the legitimised Jean) to track.
+
+**Research leads:**
+
+- **Archives départementales du Nord (Lille), Chambre des Comptes** — series B, for the 1401 original letter and any subsequent chancery references to the legitimised Jean. The marginal citation "*Arch. Cam. rat. Insul.*" in Vredius points here.
+- **The legitimised Jean's descent** — does any subsequent chancery or leenhof record trace this second Jean de Drincham's own family? If so, this would add another potential surname-bearing Drincham branch running parallel to the main line.
+- **Iohanna Svinx family** — surname-chain research in 14th-century Flemish records.
+
+---
+
+### 4.6 Simon de Flandria dictus Drincham, Heer van Bambeke, and Margareta de Wissoc
+
+**Vredius reference:** Tabula XVI, p. 283. Section header: *"Simon de Flandria, dictus Drincham, Dominus de Bambeke / Margareta de Wissoc, Domina de Nieuwerleet."* Gaillard citation (inset: "Chez Vander Strate").
+
+**Identification:** Heer van Bambeke (inherited through his mother Guilielma de Bambeke from Jacques — see §4.4). Almost certainly the son of Jacques de Drincham + Guilielma de Bambeke (§4.4), though Vredius does not explicitly state the parentage on p. 283. The Bambeke lordship passes from Guilielma to Simon, consistent with son-of-Guilielma filiation. Married Margareta de Wissoc, Dame de Nieuwerleet — they had a daughter named Marguerite, who succeeded to both parental lordships (Bambeke and Nieuwerleet) and married (1) Denys de St. Omer, Lord of Houdecoutere, then (2) Charles de Halewijn.
+
+**Original text — Vredius p. 283 (Gaillard):**
+
+> *Gaillard: MARGVERITE de Wissoc, Dame de Nieuwerleet espousa SIMON de Flandres, dict de Drincham, Seigneur de Bambeque, eurent Marguerite, laquelle estoit Dame des susdits lieux &c. espousa 1. Denys de S. Omer, Seign. de Houdecoutere. 2. Charles de Halewijn.*
+
+**Translation:** *Gaillard: Marguerite de Wissoc, Lady of Nieuwerleet, married Simon de Flandres, called de Drincham, Lord of Bambeque; they had Marguerite, who became Lady of the said places &c., and married (1) Denis de St. Omer, Lord of Houdecoutere, (2) Charles de Halewijn.*
+
+**Evidentiary notes:**
+
+- **End of the male-line Drincham surname-bearing descent.** Simon's only attested child is a daughter Marguerite, who carried both Bambeke and Nieuwerleet into her Saint-Omer and then Halewijn marriages. The Drincham male-line van Vlaenderen surname-usage therefore terminates with Simon (no attested sons); it may have continued in Simon's brothers or uncles' descent if any, but not through this line.
+- **Parentage inferred, not directly stated.** Vredius does not explicitly name Simon's parents on p. 283. The inferred parentage (son of Jacques de Drincham + Guilielma de Bambeke, §4.4) rests on (a) the Bambeke lordship transmission, (b) positional placement in Vredius's layout immediately after the Jacques entry, (c) the generational timing (Jacques d. 1459, his son Simon plausibly married and Heer of Bambeke by the 1470s–1490s).
+- **The Halewijn second marriage.** Simon's daughter Marguerite's second marriage to "Charles de Halewijn" connects this line to the wider Halewijn / de Halewin noble network. This may be the same Halewijn family as Paschijne van Halewijn (Jossine van Praet's mother, §3.6) — which would tie the Drincham and Praet lines together at the generational level of their shared daughters' marriages, though not through descent.
+
+**Site placement:** `DrinchamDossierPage` would benefit from surfacing the Simon → Marguerite → St. Omer / Halewijn transition as the end-of-Drincham-line-as-van-Vlaenderen marker.
+
+**Research leads:**
+
+- **Simon's birth, death, and marriage dates** — not in Vredius. Prosopographical work in Flemish noble records of the late 15th century.
+- **Nieuwerleet lordship** — a small polder lordship in the Bruges Vrije. Records in Bruges State Archives.
+- **The Charles de Halewijn marriage chronology** — if Marguerite (Simon's daughter) married Charles de Halewijn in the early 16th century, the Halewijn generational placement would be traceable alongside the Jossine van Praet maternal Halewijn connection (§3.6), potentially illuminating whether they are cousins or siblings of the same generation.
 
 ---
 
@@ -997,5 +1190,6 @@ Buylaert 2011 *Repertorium van de Vlaamse adel* is the priority source for resol
 - **2026-04-19** — Batch 1 filled in: Section 2 (Charter Nucleus for Victor's line, Tabula XVI Probationes pp. 283–289). Seven entries completed: 1420 Gavre marriage contract; 1427 Haelshuuts donation charter; 1430 testament; 1441 charter (Victor *wijlen*); 1446/1447 Adam transaction; Oostburg tomb of Jacqueline de Wilde + Joos van Vlaendren; Margareta van Vlaendren and the d'Erpe/Schoutheeten marriages. Each with verbatim Middle Dutch / Latin / French transcription, project-created translation, evidentiary notes, site cross-reference, and outstanding research leads.
 - **2026-04-19** — Batch 2 filled in: Section 3 (Praet line continuation). Seven generation entries completed: Johan I with the 10 September 1439 Bruges Franc diploma; Johan I's children with the 1442 Ghent partition fixing Landrada as Johan's daughter (count later corrected from seven to five — see correction below); Lodewijk II with the St. Bavo / St. Bartholomew day-of-death conflict within Vredius; Lodewijk III with the 1488 / 1490 date conflict (Grimarez vs Aalter tomb); Lodewijk IV with the full Aalter tomb Middle Dutch titulature and the Golden Fleece 1531 attestation; Jossine van Praet d. 10 December 1546 (Paschijne + Anna two-daughter structure); Jan II d. 10 December 1545 *avant son pere* (predeceased father by ten years, extinguishing the legitimate Praet male line a decade before Lodewijk IV himself died). Covers Tabula XVI pp. 275–279 plus Vol 2 Tabula XIX pp. 387–388.
 - **2026-04-19** — Batch 2 corrections + post-1545 research thread handoff. (1) Corrected §3.2 from "seven documented children" to "five documented children" of Johan I, based on re-audit of Vredius p. 280 Beveren tomb text for Jean de Flandre d. 1523 which explicitly identifies him as "fils de Meßire **Loys** de Flandres" (Lodewijk II), not as son of Johan I. Jean de Flandre d. 1523 and his brother Josse de Flandre d. after 1526 are therefore Lodewijk II's children, not Johan I's. (2) Added new §3.3a covering Jean and Josse as the Onlede cadet branch. (3) Fixed §3.3 note on Damhouder's six-child list to clarify that Lodewijk II's daughter "Iehenne" is distinct from Ioanna-m-Pouckes (Johan I's daughter). (4) Added §7.6 flagging the post-1545 Van Vlaenderen-Praet generation research thread. (5) Created companion handoff document `docs/research-threads/post-1545-van-vlaenderen-praet.md` consolidating evidence for the Jacob van Vlaanderen + Catharina van Boetzelaer + son Lodewijk generation discovered via the Huygens Vrouwenlexicon during the Batch 3 cross-reference re-audit. (6) Started site-corrections backlog at `docs/pass-2-site-corrections-backlog.md` — site-side corrections deferred pending Buylaert 2011 verification and bundled with other site changes accumulated during remaining batches.
+- **2026-04-19** — Batch 3 filled in: Section 4 (Drincham line). Six generation/document entries completed covering Tabula XVI pp. 280–283: §4.1 Jan sans terre and the 22 November 1383 Arras grant of Drincham (De l'Espinoy + Grimarez, Nicopolis death co-attested, mother "Ivé de Lun" noted); §4.2 Jan II + Isabella de Ghistelles (Dame de Viffaert), with the Drincham family MS genealogy naming Jan III as eldest son; §4.3 Jan III + Isabella de Vernieulles, with the bachelor son Philippus placeholder and Jan IV + Isabella de St. Omer (Moerbeke) terminating the senior male line in two daughters (elder → Mastain); §4.4 Jacques de Drincham + Guilielma de Bambeke with full Veurne monastery S. Nicolai tomb text (d. 10 April 1459 / 19 April 1473) plus sibling Isabella de Drincham + Ghislebert de Lannoy tomb at Lille S. Maurice (d. 16 February 1451 / 22 April 1462) plus brothers Ludovicus and Franco attested by name; §4.5 the 1401 Philip-the-Bold legitimation at Arras of illegitimate son Ioannes (mother Iohanna Svinx) with full verbatim Latin text of the chancery diploma and a note correcting the potential "Philippus Bonus" misreading (Bonus natalia = "good birth-status," not a cognomen); §4.6 Simon de Flandria dictus Drincham + Margareta de Wissoc (Dame de Nieuwerleet), their daughter Marguerite's two marriages (1. Denys de St. Omer; 2. Charles de Halewijn) ending the male-line Drincham surname descent. Not user-facing; research record only.
 
 ---
