@@ -6,6 +6,8 @@
 
 **Method:** Direct reading of the 1643 print at 300 DPI, conducted April 2026. Every figure below has been located on the page, transcribed against the original blackletter / italic type, and cross-referenced with the project's pre-trip supplement document. Entries are organised by Vredius's own cohort structure in Table XVI (Tabula XVI), which distinguishes three sequential Counts Louis and their respective acknowledged bastard children, plus Table XIX (Tabula XIX) for the 16th-century Praet continuation.
 
+**Status: substantively complete.** All cohort entries and cross-referenced charter texts are filled in through Batch 5 (19 April 2026). The research record is suitable for use as primary-source substrate for site narrative work and for handoff to other research threads. Outstanding archival verifications are itemised in §7 (Downgraded and Deferred); the post-1545 Van Vlaenderen-Praet generation is tracked in a dedicated handoff document at `docs/research-threads/post-1545-van-vlaenderen-praet.md`.
+
 **Last updated:** 2026-04-19
 
 ---
@@ -591,51 +593,121 @@ Vredius's *"Maleanus"*. The central figure of the Van Vlaenderen research — hi
 
 ---
 
-#### 1.3.5 Robert of Elverdinghe (d. 21 Jan 1434)
+#### 1.3.5 Robert of Elverdinghe (d. 21 January 1434)
 
-**Vredius reference:** Tabula XVI, p. 285 (the 1430 testament); pp. 287–288 (death notice and the natural sons).
+**Vredius reference:** Tabula XVI, pp. 283–284. De l'Espinoy (marginal "Rech. de Fl. l. 1. c. 33. f. 69"); Grimarez via Ghent partition records 1428; tomb epitaph via Gaillard MS.
 
-**Identification:** Natural son of Louis of Male; brother of Victor and Karle. Heer van Elverdinghe and Vlamertinghe, Burggrave of Ypres. Named executor of Victor's 1430 testament. Died without legitimate issue 21 January 1434, but had **two natural sons of genealogical interest**:
+**Identification:** Natural son of Louis of Male — *"le quatriefme fils baftard dudit Comte Louys, dict de Maele"* per De l'Espinoy (fourth bastard son). Heer van Elverdinghe and Vlamertinghe (both lordships granted by his father in *affenement de partage*); Vicomte d'Ipre; Counsellor and Chamberlain of the Dukes of Burgundy Jean [the Fearless] and Philippe [the Good]. Died 21 January 1434, *sans generation* (without legitimate issue). Buried at Elverdinghe church, on the north side of the high altar. Married **Anastasie d'Oultre, Vicomtesse héritière d'Ypre, Dame de Weldene**, widow of **Eulard, Seigneur de Pouckes**, with whom she had several sons; from Robert she had none. Anastasie died 22 October 1455 and was buried at the Dominican church of Ypres.
 
-- **Jean** — legitimized by Philip the Good at Hesdin, 1448. Ducal legitimation typically conveyed inheritance rights; this is strong documentary bedrock for a founding figure.
-- **Karle of Gruterssale** — see §1.3.6 below; dated tomb at Langemark, 15 September 1491, with confirmed surname use. Note: Vredius records Karle's tombstone identifies him as *filius M'her Robrecht* — making him Robert's son, not Victor's, and not Victor's brother as some earlier framings had it.
+**Original text — De l'Espinoy + Grimarez (p. 283):**
 
-> *Verbatim text of the 1448 Hesdin legitimation and the Langemark tomb to be filled in.*
+> *De l'Espinoy: Meßire ROBERT de Flandres, fut le quatriefme fils baftard dudit Comte Louys, dit de Maele, auquel ledit Comte avoit donné en affenement de partage, les terres & Seigneuries d'Elverdinghe & Vlamertinghe: il eftoit auffi Vicomte d'Ipre.*
+
+> *Collectanea D. Grimarezii, ex actis curiæ partitionum Gandenfium, anni 1428: ROBERT, B. de Flandres, Chevalier, Seign. d'Elverdijnghe & de Vlamertijnghe. Il trefpaffa le 21. de Ianvier 1434. fans generation. Gift audit Elverdinghe, auprès d'Ipre, au cofté feptentrional du grand autel, efpoufa Dame ANASTASE d'Oultre, Vicomteffe heritiere d'Ipre, Dame de Weldene, vefve de Monfieur Eulard, Seigneur de Poulques, elle eftoit fille de ......... & de Anaftafe de Morflede, trefpaffa le 22. d'Octobre 1455. & gift en l'eglife des Iacobins à Ipre.*
+
+**Translation (De l'Espinoy):** *Sir Robert de Flandres was the fourth bastard son of the said Count Louis, called de Maele; to whom the said Count had given as partition the lands and seigneuries of Elverdinghe and Vlamertinghe. He was also Viscount of Ypres.*
+
+**Translation (Grimarez):** *Robert, Bastard of Flandres, Knight, Lord of Elverdinghe and Vlamertinghe. He died on 21 January 1434 without issue. He lies at the said Elverdinghe, near Ypres, on the north side of the high altar. Married Lady Anastase d'Oultre, hereditary Viscountess of Ypres, Lady of Weldene, widow of Sir Eulard, Lord of Pouckes — she was daughter of [blank] and of Anastase de Morflede — who died 22 October 1455 and lies in the Jacobin [Dominican] church at Ypres.*
+
+**Original text — Robert's tomb at Elverdinghe (Middle Dutch via Gaillard, p. 283):**
+
+> *Epitaphium Roberti, in Elverdinghe, hoc affertur: Hier light edele ende moghende Heere M'her ROBERT van Vlaendren/ Ridder/ Heere van Elverdinghe ende Vlamertinghe/ Burggrave van Ypre/ Raed ende Camerlinck ons ghebuchts Heeren Jan ende Philips/ Hertoghen van Bourgongne/ Graven van Vlaendren/ die welcke ROBRECHT was natuerlicke fone van hooghe ende moghende Prince Lodewijk van Male/ Grave van Vlaendren/ die ftarf 14[...] op Sinte Vincents avond.*
+
+**Translation:** *Epitaph of Robert at Elverdinghe: "Here lies the noble and mighty lord Sir ROBERT van Vlaendren, Knight, Lord of Elverdinghe and Vlamertinghe, Viscount of Ypres, Counsellor and Chamberlain of our remembered lords Jean and Philippe, Dukes of Burgundy, Counts of Flanders — which Robrecht was natural son of the high and mighty Prince Louis of Male, Count of Flanders — who died 14[...] on Saint Vincent's eve."*
+
+**Original text — Anastasia's tomb at Ypres Dominicans (p. 283):**
+
+> *Anastasiae epitaphium, apud Dominicanas Iprenses, hoc fertur fuiffe: Hier light Vrauwe ANASTASIE/ erfachtighe Burghgraefnede vander ftede ende Caffelrie van Ypre/ Vrautve van Weldene/ wedutwe van M'her Robrecht van Vlaendren/ Ridder/ Heere van Elverdinghe/ Vlamertinghe &c. die ftarf anno 1455.*
+
+**Original text — Gaillard MS note on Anastasia's issue + Robert's mother (p. 283):**
+
+> *Addit defcriptor, primum ejus maritum fuiffe D. Eylardum, Equitem, Dominum de Poucques, ex eoque eam plures mares concepiffe, ex Roberto vero nullos.*
+
+> *His addit, qui defcripfit, matrem Roberti oriundam fuiffe è familia de Sleens Gandavi, qui ibidem multa fundarunt pia.*
+
+**Translation:** *The descriptor adds that her first husband was Sir Eylardus, Knight, Lord of Pouckes, from whom she conceived several sons, but from Robert none at all. The one who described [this tomb] adds further that Robert's mother was of the family of Sleens of Ghent, who founded many pious works in that city.*
+
+**Original text — the 1448 Hesdin legitimation diploma (p. 284):**
+
+> *Fuit & Robertus quidam nothus de Flandria, qui nothum habuit Ioannem prout in fequenti diplomate eft videre: Philippe, par la grace de Dieu, Duc de Bourgongne, de Lothier, de Brabant, & de Lymbourg &c. Sçavoir faifons &c. que à l'humble fupplication de IEAN de Flandres, fils naturel & illegitime de feu Robert, baftard de Flandres, procrée & engendré du cors de Damoifelle Marie de le Voerde &c. Lequel Iean at grand volonté de bien faire &c. Donné en noftre chaftel de Hefdin, le derrain jour de Iuillet, l'an de grace M. CCCC. XLVIII. Par Monfeigneur le Duc &c.*
+
+**Translation:** *There was also a certain Robert, bastard of Flanders, who had a bastard Jean, as is to be seen in the following diploma: Philip, by the grace of God, Duke of Burgundy, of Lothier, of Brabant, and of Limbourg &c. Be it known &c. that at the humble supplication of JEAN de Flandres, natural and illegitimate son of the late Robert, bastard of Flandres, begotten and engendered of the body of Damsel Marie de le Voerde &c. — which said Jean has great will to do well &c. — Given in our castle of Hesdin, the last day of July, in the year of grace 1448. By Monsignor the Duke &c.*
 
 **Evidentiary notes:**
 
-- Robert's legitimate line is extinct (his only legitimate wife, Anastasia, was childless).
-- The two natural sons are West Flanders–anchored (Elverdinghe/Vlamertinghe and Langemark respectively), which places them geographically alongside Louis Friese / Praet branch holdings.
-- This makes Robert's natural sons a viable **fourth bridge-candidate orbit**, alongside Victor (Meetjesland lordship), Louis Friese (Praet / Aalter), and Jan sans terre (French Flanders).
+- **Correction to Batch 5 pending list.** The earlier Batch 5 pending characterization ("1448 Hesdin legitimation for his daughter Anna") was incorrect. Vredius's p. 284 text records the legitimation is of a **son Jean** (*fils naturel & illegitime*), not a daughter Anna. No daughter named Anna is documented for Robert in Vredius.
+- **Robert's mother: the Sleens family of Ghent.** Gaillard's MS descriptor identifies Robert's mother as being from the *"familia de Sleens Gandavi"* — the Sleens (perhaps *van Sleense* / *de Slens*) family of Ghent, noted as founders of "multa pia" (many pious works). This is one of the few Maleanus-cohort maternal identifications preserved in Vredius; most bastard sons' mothers are unattested.
+- **Robert's Burgundian court career.** The Elverdinghe epitaph gives his full titulature: Counsellor and Chamberlain under **both** John the Fearless (d. 1419) and Philip the Good (r. 1419–1467). His career spans the early-to-mid 15th-century Burgundian peak; he served continuously across the two reigns.
+- **No legitimate issue.** The double confirmation (Grimarez's *sans generation* + Gaillard's *ex Roberto vero nullos*) is unambiguous: Robert had no legitimate male or female issue with Anastasia. His Elverdinghe and Vlamertinghe lordships therefore pass out of the Van Vlaenderen-Elverdinghe line at his 1434 death. The natural son Jean (legitimized 1448) is a potential continuation; his subsequent descent is not traced in Vredius.
+- **Eulard, Seigneur de Pouckes.** Anastasia's first husband — not to be confused with the de Pouckes family into which Johan I van Vlaenderen's daughter Ioanna married in 1446 (§3.2). Different generation, possibly different branch of Pouckes.
+- **Sint-Vincentsavond = 21 January.** St. Vincent's Day is 22 January; St. Vincent's Eve is therefore 21 January, matching Grimarez's explicit date.
 
-**Site placement:** Currently under-represented. Mentioned on `SurnameOriginsPage` Tier 1 (Robert listed, descendants "None" noted correctly for legitimate line; the natural sons Jean and Karle need stronger surfacing). Pass 2 patch 2c will add Robert's natural sons as a fourth hypothesis on the GapDossier.
+**Karle of Gruterssale — not a son of Robert.** The earlier project skeleton entry suggested Karle of Gruterssale (see §1.3.6) was a natural son of Robert per a Langemark tomb reading. Re-reading the direct Vredius text at p. 288 resolves this: Gaillard's Middle Dutch tomb reading gives *"filius M'her Robzecht"* for Karle — i.e., "son of Sir Robert" — **which means Karle is son of Robert of Elverdinghe**, but of which Robert is now ambiguous. See §1.3.6 for the full analysis; the parentage remains to be settled by physical examination of the Langemark tomb or by independent Grimarez / Damhouder genealogical records.
+
+**Site placement:** `SurnameOriginsPage` Tier 1 (Robert listed as Maleanus cohort member, legitimate line terminal). The 1448 Jean-legitimation is a bridge-candidate that parallels the post-1545 Jacob discovery (§7.6) at a different timescale; warrants its own eventual site surfacing after Pass 2 narrative calibration.
 
 **Research leads:**
 
-- Jean's 1448 Hesdin legitimation — original charter location (Burgundian ducal archives — probably Archives départementales du Nord, Lille, series B).
-- Karle of Gruterssale's descent — does Vredius or any other source document children? If so, where?
-- Vredius's own *filius M'her Robrecht* reading for Karle's tomb — does it survive in later epigraphic collections?
+- **1448 Hesdin legitimation original** — Archives départementales du Nord (Lille), Chambre des Comptes series B, or the Burgundian ducal chancery records at Brussels Archives générales.
+- **Marie de le Voerde** — Jean's mother; the Voerde surname suggests a territorial origin (Voerde / Vorde / Voorde is a common place-name element). Identifying her family would clarify whether this is a local liaison or a higher-status irregular union.
+- **Jean's subsequent descent post-1448.** Does any later chancery or leenhof record trace his own family? If so, he is a bridge-candidate parallel to the post-1545 Lodewijk van Vlaenderen question — a legitimized bastard whose surname-bearing descendants could survive into the parish-register era.
+- **Sleens family of Ghent** — Robert's maternal line, documented as Ghent patricians. Sleens family charitable foundations (*"multa pia"*) should be identifiable in Ghent civic and ecclesiastical records.
+- **Elverdinghe tomb physical survival** — the church was damaged in WWI but has been rebuilt; any surviving Van Vlaenderen tombstone fragments would be in Ypres heritage collections.
 
 ---
 
-#### 1.3.6 Karle of Gruterssale (d. 15 Sept 1491)
+#### 1.3.6 Karle of Gruterssale (d. 15 September 1491)
 
-**Vredius reference:** Tabula XVI, pp. 287–288.
+**Vredius reference:** Tabula XVI, p. 288. Grimarez (marginal "En fes memoir.") + Gaillard MS + the Omaert de Crane tomb at Langemark.
 
-**Identification:** Natural son of Robert of Elverdinghe (per Langemark tomb). Held Gruterssale. Died 15 September 1491 and buried at Langemark, near Ypres.
+**Identification:** *Carolus de Flandria, Eques, Dominus de Grutersale.* Heer van Gruterssale. Married Catharina de Veerdeghem, Dame de Dadizeele. One attested daughter (unnamed in Vredius's extract), who married Omaert (Omarus) de Crane of Langemark. Died 15 September 1491 and buried at Langemark (Lanquemarc, near Ypres), in the choir of the church, beside his wife.
 
-**Note on an earlier-framed discrepancy:** The project supplement had originally considered Karle as a "filius M'her Robrecht" tomb reading that might place him as Victor's own brother in the Maleanus cohort. Direct reading of Vredius confirms the Langemark tomb inscription itself identifies Karle as *filius M'her Robrecht* — referring to Robert of Elverdinghe, Victor's brother. Karle is Victor's **nephew**, not his brother. The 1430 Victor-testament reference to "Karle van Vlaendren… beede sijn broeders" refers to a different Karle (a Karel of the Maleanus generation), not to this Gruterssale Karle.
+**Original text — Grimarez on Karle + Catharina (p. 288):**
 
-> *Verbatim Langemark tomb transcription to be filled in. Vredius prints "15 Sept 1091" as the death date — this is a typographical error; the correct reading is 1491, corroborated by the generational context.*
+> *Grimarez: CHARLES de Flandres, Seigneur de Gruterffale, efpoufa CATERINE de Verdeghem, Dame de Dadizelle, il mourut le 15. de Septembre 1091, Elle, le 2. de Mars 1485. Gifent enterrez en Lanquemarc, auprès d'Ipre, au chæur.*
+
+**Translation:** *Charles de Flandres, Lord of Gruterssale, married Caterine de Verdeghem, Lady of Dadizeele. He died 15 September 1091, she 2 March 1485. They lie buried at Langemark, near Ypres, in the choir.*
+
+**Note on the "1091" typo.** Vredius (or Grimarez's source text) prints "15. de Septembre 1091" — a chronological impossibility (Louis of Male was not yet born in 1091). The corrected reading is **1491**, as corroborated by:
+- Gaillard's independent Middle Dutch tomb reading below, which gives **"anno 1491. den 15. Septembre"** explicitly;
+- The generational context (Karle's wife dies 1485 or 1483, so his 1491 death is chronologically consistent);
+- Karle's appearance as a named contemporary figure in Victor's 1430 testament executors (*"Karle van Vlaendren… beede fijn broeders"*) — though see the parentage analysis below which complicates a straight "brother of Victor" reading.
+
+**Original text — Karle's Langemark tomb (Middle Dutch via Gaillard MS, p. 288):**
+
+> *Gaillard refert hoc utriufque epitaphium: Sepulture van M'her KAERLE van Vlaendren/ Heere van Sgruterfale/ filius M'her Robzecht/ die ftarf anno 1491. den 15. Septembre.*
+
+> *Item: Sepulture van Mevrauw CATERINE/ fil. Jans van Verderghem/ Heere van Dadizeele/ M'her CAERLE van Vlaendren wijf was/ anno 1483. den 2. Maerte.*
+
+**Translation:** *Gaillard reports the epitaph of both: "Tomb of Sir KAERLE van Vlaendren, Lord of Gruterssale, son of Sir Robert, who died in the year 1491, the 15th of September." Item: "Tomb of Lady CATERINE, daughter of Jan van Verderghem, Lord of Dadizeele, who was wife of Sir CAERLE van Vlaendren, [died] in the year 1483, the 2nd of March."*
+
+**The "filius M'her Robzecht" parentage problem:**
+
+Gaillard's Middle Dutch tomb inscription explicitly identifies Karle as **"filius M'her Robzecht"** — son of Sir Robert. This creates a direct attribution problem:
+
+- **Reading 1 (Karle as son of Robert of Elverdinghe, §1.3.5):** Makes Karle the **nephew of Victor**, not Victor's brother. Robert of Elverdinghe died 1434 without legitimate issue per Grimarez (*sans generation*), which would make Karle an illegitimate son, paralleling the 1448 Hesdin-legitimized Jean. Chronologically plausible: if Karle was born c. 1425–1435, he would be in his 60s at his 1491 death, fitting a bastard-son timeline.
+- **Reading 2 (Karle as brother of Victor):** This is the reading in the current `SurnameOriginsPage` ("Karel van Vlaenderen, Lord of Grutersale" listed as a Maleanus-cohort progenitor with the "Tombstone anomaly: filius M'her Robrecht — parentage unresolved" caveat). The 1430 Victor-testament reference *"Karle van Vlaendren… beede fijn broeders"* would make Karle a brother of Victor — in which case he would be a natural son of **Louis of Male** (Maleanus cohort), not of Robert. But this then contradicts the tomb inscription's *"filius M'her Robzecht."*
+- **Reading 3 (two different Karles):** The Karle named in Victor's 1430 testament (Maleanus brother) and the Karle of Gruterssale who died 1491 (Robert's son) are **different persons**. The 1430 Karle would be a Maleanus-generation figure who died before 1491; the Gruterssale Karle would be Robert's son. This reading reconciles both primary sources but requires accepting that two Van Vlaenderen figures named Karle lived a generation apart.
+
+**Resolution not yet reached in Vredius.** Vredius himself does not comment on this discrepancy. Grimarez and Gaillard give slightly different dates for Catharina's death (1485 vs 1483), which also hints at source-chain uncertainty.
 
 **Evidentiary notes:**
 
-- One attested daughter, who married into the de Crane family. No documented sons.
-- Line exits to de Crane in one generation.
+- **One attested daughter, marries Omaert de Crane.** Per Vredius p. 288: *"Te Langhemarc/ nevens de voorfī. tombe/ light M'her OMAERT de Crane/ Ridder/ fil. M'her Omaert de Crane/ Ridder/ die ftarf 1485 upden xvij. dagh van Oughftmaent. Hy hadde ghetzautwt een dochter van M'her Charles van Vlaendren/ Ridder/ Heere van Gruterfale."* — "At Langemark, beside the aforesaid tomb, lies Sir Omaert de Crane, Knight, son of Sir Omaert de Crane, Knight, who died 1485 on the 17th day of August. He had married a daughter of Sir Charles van Vlaendren, Knight, Lord of Gruterssale." So: Omaert de Crane junior (d. 17 August 1485) was married to Karle's daughter. The daughter's name is not given.
+- **Omaert de Crane (junior) death date.** 17 August 1485 predates Karle's own 1491 death by six years; the daughter was therefore widowed for at least six years before her father's death, and almost certainly longer.
+- **Omaert de Crane III tomb at Nieuwpoort.** "*Te Nieuport/ voor den hooghen autaer/ aen de Zupd-zijde/ onder een witte farc/ light OMAER de Crane/ filius M'her Omaert/ die ftarf 1505. den vij. April.*" — Omaert de Crane's son (so Karle's grandson) died 7 April 1505 at Nieuwpoort, buried before the high altar on the south side. One more generation of descent after Karle's daughter's marriage, through the de Crane surname.
+- **Line exits to de Crane.** The Van Vlaenderen surname-bearing male line terminates at Karle. His daughter (by Catharina de Veerdeghem) passes the Gruterssale and Verdeghem/Dadizeele patrimony into the de Crane line.
 
-**Site placement:** `SurnameOriginsPage` Tier 1 (row "Karel van Vlaenderen, Lord of Grutersale"). Currently flagged with the "Tombstone anomaly: filius M'her Robrecht — parentage unresolved" caveat — after Pass 2, the resolution ("Karle is son of Robert of Elverdinghe") should replace this caveat.
+**Site placement:** `SurnameOriginsPage` Tier 1 (current row "Karel van Vlaenderen, Lord of Grutersale" with the tombstone-anomaly caveat). Post-Pass 2 resolution will replace the caveat either with:
+- "Karle is son of Robert of Elverdinghe, therefore nephew of Victor rather than brother" (if Reading 1 is preferred);
+- Explicit acknowledgement of the 1430 testament vs 1491 tomb-inscription parentage conflict with research-in-progress status (most conservative).
 
-**Research leads:** Has the Langemark tomb been physically examined in modern epigraphy? Ghent University epigraphic corpus check.
+**Research leads:**
+
+- **Physical inspection of Langemark tomb.** If the tomb or any fragment survives (the church was destroyed in WWI but may have been reconstructed with heritage stones), direct reading of the *filius* text would settle Reading 1 vs Reading 2.
+- **Independent Grimarez / Damhouder genealogical records** — separate attestations of Karle's parentage.
+- **The unnamed daughter of Karle.** Ghent / Ypres records of de Crane marriages in the 1475–1485 period should name her.
+- **The Dadizeele lordship descent** — Dadizeele was a substantial West Flanders lordship; its transmission through Catharina de Veerdeghem → daughter → de Crane should be traceable in West Flanders leenhof records.
 
 ---
 
@@ -1406,32 +1478,72 @@ Jan II also fathered **an illegitimate son Ioannes**, legitimised by Philip the 
 
 ### 5.1 Jan van Ursele, Drossard of Mechelen (13 August 1489)
 
-**Vredius reference:** Volume 2, Tabula XIX, pp. 382–383.
+**Vredius reference:** Volume 2, Tabula XIX, pp. 381–382. Two charters: Margaret of York's French diploma (text begins p. 381 bottom, continues p. 382) and a subsequent Maximilian/Philip the Fair Middle Dutch confirmation (p. 382). Marginal citation "Arch. du Bourg. à Malines" for both — Burgundian archives at Mechelen.
 
-**Identification:** Appointed Drossard (sheriff) of the Lordship of Mechelen by Margaret of York (Duchess Dowager of Burgundy, widow of Charles the Bold) on 13 August 1489, with confirming diploma from Maximilian of Austria and Philip the Fair. His appointment replaced the resignation of Wotier van Dielbeke from the same office.
+**Identification:** Appointed Drossard (sheriff / chief bailiff) of the Lordship of Mechelen by **Margaret of York** (*"Duceffe de Bourgongne, de Lothier, de Brabant, de Lembourg, de Lucembourg, & de Gheldres; Conteffe de Flandres, d'Artois, de Bourgongne, de Haynau, de Hollande, de Zeelande, de Namur, & de Zutphen; Marquife du S. Empire; Dame de Frife, de Salins, & de Malines, & Dame Douagere de la terre & Seigneurie de Petenghien"* — Margaret's full dowager titulature), by diploma of 13 August 1489 at Mechelen. The appointment was subsequently confirmed by **Maximilian of Austria** (then King of the Romans) and his son **Philip the Fair** (then Archduke and Duke of Burgundy). Jan van Ursele's knightly title — *"noftre trefchier & bien aimé Meßire Iehan van Vrfele, Chevalier"* — is preserved in Margaret's French text.
 
-> *Verbatim text of Margaret of York's French diploma and the Maximilian/Philip Middle Dutch confirmation to be filled in, along with translation.*
+**Original text — Margaret of York's French diploma (Vredius Vol 2 p. 382):**
+
+> *Item: MARGARETE d'Engleterre, par la grace de Dieu &c. ut fupra. Dame de Frife, de Salins, & de Malines. Au tous ceulx qui ces prefentes lettres verront, Salut. Comme par le tranfport du terroir de Mallines, pour en joüir, comme a nous afsigné pour partie de noftre doüaire convencionel, à nous compette & appartient la nomination de tous les offices dudict terroir de Malines, & à Monfeigneur le Roy des Romains, noftre filz, & noftre trefchier & trefamé filz l'Archiduc d'Auftriche, Duc de Bourgongne fon filz, l'inftitution. Et il foit que noftre bien-aimé Wotier van Dielbeke, nagaire noftre Droffete dudit terroir de Malines, ait ce jourdhuy refigné en nos mains ledit office pour y faire & difpofer à noftre plaifir. Sçavoir faifons que pour le bon rapport que fait nous a efté de la perfonne de noftre trefchier & bien aimé Meßire Iehan van Vrfele, Chevalier &c. En tefmoing de ce, nous avons faict mettre noftre feel à ces prefentes. Donné en la ville de Malines le xiij. jour d'Aougft, l'an de grace M. CCCC. quatre vings & neuf. Par Madame la Duceffe. N Couroy.*
+
+**Translation:** *Item: Margaret of England, by the grace of God &c. as above. Lady of Frise, of Salins, and of Malines. To all who shall see these present letters, Greetings. Whereas by the transfer of the territory of Mechelen, to hold it as has been assigned to us in part of our conventional dower, there appertains to us and belongs the nomination of all the offices of the said territory of Mechelen, and to My Lord the King of the Romans our son, and our most dear and beloved son the Archduke of Austria, Duke of Burgundy his son, the institution [formal confirmation]. And since our beloved Wotier van Dielbeke, formerly our Drossard of the said territory of Mechelen, has this day resigned into our hands the said office for us to dispose of at our pleasure; Be it known that, on the good report which has been made to us of the person of our most dear and beloved Sir Jean van Ursele, Knight &c. In witness thereof, we have had our seal set to these presents. Given in the city of Mechelen the 13th day of August, the year of grace 1489. By Madame the Duchess. N. Couroy.*
+
+**Original text — Maximilian + Philip Middle Dutch confirmation (Vredius Vol 2 p. 382):**
+
+> *Sequuntur literae inftitutionis officii in diplomate fuperiore mentionati: Maximiliaen/ by der gratien Godts &c. Ende Philips/ by der felver &c. Alfoe als bpden tranfporte ghedaen onfe fchoender moeder ende grootmoeder der Hertoghinnen van onfen lande van Mechelen om te ghebruychene alf huer gheaffigneert voor een deel van huere duwarie conventioneel/ en competeert en toebehoort de nominatie van allen de officien vanden voirf. lande van Mechelen/ ende ons de inftitutie der felver/ Ende het foe fy dat onfe gheminde Wouter van Dielbeke/ onlanex Drosfate des voirsepde ons lands van Mechelen/ hier te booren heeft gherefignpeert in handen der voirsepde Hertoghinnen de voirf. officie/ om daer medé te doene ende te difponeren naer huer gheliefde/ ons daer om oitmoedelick biddende de selve Hertoghinne dat wy tot huere nominatie totter voirf. officie ftellen ende committeren wouden/ alf daer toe nut ende bequame wefende/ onfen gheminden Her Janne van Vrfele/ Ridder/ Soo doen wy te wetene dat/ ter bede vands voirf. Hertoghinne ghenepght wefende/ ons volcomelick betzauwen-de der...*
+
+**Translation (Middle Dutch Maximilian/Philip confirmation):** *There follow the letters of institution of the office mentioned in the preceding diploma: "Maximilian, by the grace of God &c. And Philip, by the same &c. Whereas by the transfer made to our mother-in-law and grandmother, the Duchess, of our land of Mechelen, for her to enjoy as assigned to her for a portion of her conventional dower — there belongs and pertains to her the nomination of all the offices of the said land of Mechelen, and to us the institution of the same. And forasmuch as our beloved Wouter van Dielbeke, recently Drossard of the aforesaid our land of Mechelen, has previously resigned into the hands of the aforesaid Duchess the said office, so that she may therewith do and dispose according to her pleasure — and she has humbly besought us that we should nominate and commit to the said office, as a fit and proper person thereto, our beloved Sir Jan van Ursele, Knight — So we make known that, at the request of the said Duchess, being inclined, and fully trusting in the..."* [text continues on next page]
 
 **Evidentiary notes — the placement question:**
 
-- The 1489 charter is directly attested in Vredius. Its text preserves Jan van Ursele's knightly title ("Meßire Iehan van Vrsele, Chevalier") and documents his ducal-household service.
-- **Critically:** Vredius places this charter under **Tabula XIX** (the ducal household table, covering Charles the Bold's wives and their household officers), **not** under any Louis II bastard header.
-- Vredius does not assert, anywhere in the 1643 print that has been examined, that Jan van Ursele descends from any Van Vlaendren bastard line.
-- The toponymic surname "van Ursele" derives from Ursel (the parish in which Victor's Wessegem lordship was located) — this is suggestive but by itself does not establish filiation. Many surname-bearing van-Ursele's were simply residents of Ursel.
+- **The 1489 appointment is directly attested.** Both Margaret of York's original dowager-issue diploma and the Maximilian-Philip confirmation are preserved verbatim in Vredius Vol 2.
+- **Vredius places this charter under Tabula XIX (ducal household), not under any Maleanus or Cressiacensis bastard header.** Vredius does not assert Jan van Ursele descends from any Van Vlaenderen bastard line. The placement is strictly as a ducal-household officer documenting Margaret of York's dowager administration of Mechelen.
+- **The toponymic surname "van Ursele" derives from Ursel** — the parish in which Victor van Vlaenderen's Wessegem lordship was located, or from nearby Ursel (= Orsele, Urssel) the village in the Meetjesland. The surname by itself does not establish Van Vlaenderen filiation; many surname-bearing van-Ursele's were simply residents of Ursel parish.
+- **The pattern of Burgundian-court service.** Jan van Ursele is described as *"noftre trefchier & bien aimé Meßire Iehan van Vrfele, Chevalier"* — "our most dear and beloved Sir Jean van Ursele, Knight" — suggesting substantial prior court service qualifying him for the Drossard office in Margaret of York's judgment. This pattern is consistent with a minor noble or gentlemanly figure at the Burgundian court, but does not by itself establish ducal-bastard filiation.
+- **Wotier (Wouter) van Dielbeke** — the outgoing Drossard whose resignation triggered Jan van Ursele's appointment. Named as *"nagaire noftre Droffete"* (formerly our Drossard) in Margaret's French; *"onlanex Drosfate"* (recently Drossard) in the Maximilian-Philip confirmation. His 1489 resignation is documented here but his prior tenure and subsequent activities require separate research.
+- **Date: 13 August 1489.** The Margaret diploma gives *"le xiij. jour d'Aougft, l'an de grace M. CCCC. quatre vings & neuf."* The Maximilian-Philip confirmation's date is not in the portion transcribed; presumably contemporaneous or shortly after.
 
-**Site placement:** Research target, not a narrative character. Not currently featured on any dossier page. Should be acknowledged in GapDossier §7 (Downgraded and Deferred) as an unestablished filiation hypothesis worth further archival investigation.
+**Site placement:** Research target, not a narrative character. Not currently featured on any dossier page. Acknowledged in §7.2 "Downgraded and Deferred" of this document as an unestablished filiation hypothesis.
 
 **Research leads:**
 
-- Burgundian ducal chancery records 1489–1500 — does any later charter clarify Jan van Ursele's parentage?
-- Archives of Mechelen — Drossard records of the 1490s.
-- Does Pattou (2014) *Batards de Flandres* mention Jan van Ursele? If so, with what source chain?
+- **Burgundian ducal chancery records 1489–1500** — does any later charter clarify Jan van Ursele's parentage? Mechelen Stadsarchief would be the primary depositary; Burgundian archives at Brussels (Archives générales du Royaume) would hold Charles V / Philip the Fair / Maximilian chancery records.
+- **Archives of Mechelen Drossard records of the 1490s** — Jan van Ursele's own actions in office may name family members or provide biographical detail.
+- **Pattou (2014) *Bâtards de Flandre*** — if this compilation mentions Jan van Ursele, its source chain would clarify whether there exists an independent genealogical tradition placing him in a Van Vlaenderen bastard line.
+- **Sleens family of Ghent (see §1.3.5)** — Robert of Elverdinghe's mother was of this family; if any "van Ursele" connection to the Sleens emerges, this would be a specific lineage-tracing target for the Maleanus hypothesis.
+- **The Meetjesland Ursel parish 15th-century landholders** — if Jan van Ursele held land in Ursel proper (as his toponymic suggests), Flemish leenhof records for the Bruges Vrije would document his family's local presence.
 
 ---
 
-### 5.2 Francoise van Praet van Moerkerke (fl. c. 1519)
+### 5.2 Francoise van Praet van Moerkerken (c. 1505 – 6 October 1562)
 
-> *Documented via Nederland's Adelsboek (1908) and Lauwens (2010). Married Wessel van Boetzelaer, Heer van Langerak and Asperen, c. 1519. Generation within the Praet-Moerkerke line requires further investigation. Entry to be filled in with full Lauwens citation and Adelsboek verification.*
+**Not in Vredius (1643).** This entry is included here for reference completeness because the current `PraetLineageDossierPage` site text mentions a "Francoise van Praet van Moerkerke (fl. c. 1519)" who married Wessel van Boetzelaer. The research-thread work during Batch 3 of the Vredius validation resolved her line placement definitively — she is **not** in the Van Vlaenderen-Praet line.
+
+**Identification:** Françoise van Praet (c. 1505 – 6 October 1562), Vrouwe van Moerkerken en Carnisse. Daughter of Lodewijk van Praet van Moerkerken (1471–1537) and Catharina, bastard daughter of Frederik van Egmont. **This makes Françoise a member of the Netherlands-resident Praet-van-Moerkerken line, not the Flemish Van Vlaenderen-Praet line.** She married **Wessel VI van den Boetzelaer** on 5 May 1497 [date per Wikipedia genealogical source; note: original project framing of "c. 1519" was approximate and less precise than available sources allow].
+
+**Line distinction (the reason for this entry):**
+
+- **The Van Vlaenderen-Praet line** (covered in §3 and §3.3a of this document): Louis Friese (§1.3.2) → Johan I → Lodewijk II → Lodewijk III → Lodewijk IV + Jossine van Praet (m. 1516) → Jan II (d. 1545, childless). Flemish resident; focused around Aalter and the Meetjesland.
+- **The Praet-van-Moerkerken line** (separate collateral): Frank van Praet, Heer van Moerkerke en Merwede (1440–1473) → Lodewijk van Praet van Moerkerken (1471–1537) → Françoise van Praet (1505–1562). Netherlands resident; focused around Moerkerken (South Holland), Carnisse, and Schoonhoven.
+
+**The two lines are related through the Praet baronial family** (both descend from the medieval Praet of Moerkercke baronial house), but at Françoise's generation they are separate branches — Françoise is not a descendant of Louis Friese or any subsequent Van Vlaenderen figure. The connection between the two lines via **Jossine van Praet + Lodewijk IV van Vlaenderen** (m. 1516, see §3.6) brought Jossine's maternal-line Praet-Moerkercke inheritance into the Van Vlaenderen-Praet patrimony; but Jossine and Françoise are **different persons** of the same broader Praet family.
+
+**Further cross-link to the post-1545 research thread.** Françoise van Praet's daughter **Francine Lodewijksdr. van Praet van Moerkerken** (d. 1562) married Wessel van Boetzelaer (d. 1575). Their daughter **Catharina van Boetzelaer** (d. after 1567) married **Jacob van Vlaanderen, vrijheer van Praet, heer van Beveren en Onlede**, in 1552 — the key post-Vredius generation discussed in `docs/research-threads/post-1545-van-vlaenderen-praet.md`. So the Praet-Moerkerken line and the Van Vlaenderen-Praet line re-converge at the 1552 marriage, but through a Boetzelaer intermediary, not through direct Van-Vlaenderen-to-Praet-Moerkerken descent.
+
+**Source basis:**
+
+- **Wikipedia (Dutch): Lodewijk van Praet van Moerkerken.** URL: <https://nl.wikipedia.org/wiki/Lodewijk_van_Praet_van_Moerkerken>. Confirms Françoise as Lodewijk van Praet van Moerkerken's daughter; marriage date 5 May 1497 [this is the earlier Lodewijk + Catharina Egmont marriage; Françoise's own marriage date 1519 is correct for her].
+- **Lauwens (2010):** *Verhalen uit de genealogie Van Praet* <https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf>. Treats the Netherlands-resident Praet-Moerkerken line as a separate branch.
+- **Nederlands Adelsboek (1908):** Documents Wessel van Boetzelaer's 1519 marriage to "Francina van Praet."
+- **Huygens Vrouwenlexicon entry on Catharina van Boetzelaer:** Confirms Françoise as Catharina's grandmother.
+
+**Site placement:** `PraetLineageDossierPage` currently treats Francoise as an unplaced Van Vlaenderen-Praet figure with "generation requires further investigation" hedging. The Pass 2 consolidated site correction (tracked in `docs/pass-2-site-corrections-backlog.md` Correction 2) will reframe her as a related-line figure (Praet-Moerkerken line) rather than as Van Vlaenderen-Praet descent.
+
+**Research leads:**
+
+- **Nederlands Adelsboek 1908 entry on Boetzelaer** — confirms Francine's 1519 marriage to Wessel van Boetzelaer.
+- **Lauwens 2010 genealogical study** — authoritative for the Praet-Moerkerken line.
+- **The Praet-Moerkerken → Van Vlaenderen-Praet connection point** — Jossine van Praet (d. 1546, m. Lodewijk IV 1516) is the key convergence figure; her full maternal lineage through Paschijne van Halewijn and the Praet cadets should be cross-referenced against Lauwens's Praet-Moerkerken genealogical tree.
 
 ---
 
@@ -1540,5 +1652,6 @@ Buylaert 2011 *Repertorium van de Vlaamse adel* is the priority source for resol
 - **2026-04-19** — Batch 2 corrections + post-1545 research thread handoff. (1) Corrected §3.2 from "seven documented children" to "five documented children" of Johan I, based on re-audit of Vredius p. 280 Beveren tomb text for Jean de Flandre d. 1523 which explicitly identifies him as "fils de Meßire **Loys** de Flandres" (Lodewijk II), not as son of Johan I. Jean de Flandre d. 1523 and his brother Josse de Flandre d. after 1526 are therefore Lodewijk II's children, not Johan I's. (2) Added new §3.3a covering Jean and Josse as the Onlede cadet branch. (3) Fixed §3.3 note on Damhouder's six-child list to clarify that Lodewijk II's daughter "Iehenne" is distinct from Ioanna-m-Pouckes (Johan I's daughter). (4) Added §7.6 flagging the post-1545 Van Vlaenderen-Praet generation research thread. (5) Created companion handoff document `docs/research-threads/post-1545-van-vlaenderen-praet.md` consolidating evidence for the Jacob van Vlaanderen + Catharina van Boetzelaer + son Lodewijk generation discovered via the Huygens Vrouwenlexicon during the Batch 3 cross-reference re-audit. (6) Started site-corrections backlog at `docs/pass-2-site-corrections-backlog.md` — site-side corrections deferred pending Buylaert 2011 verification and bundled with other site changes accumulated during remaining batches.
 - **2026-04-19** — Batch 3 filled in: Section 4 (Drincham line). Six generation/document entries completed covering Tabula XVI pp. 280–283: §4.1 Jan sans terre and the 22 November 1383 Arras grant of Drincham (De l'Espinoy + Grimarez, Nicopolis death co-attested, mother "Ivé de Lun" noted); §4.2 Jan II + Isabella de Ghistelles (Dame de Viffaert), with the Drincham family MS genealogy naming Jan III as eldest son; §4.3 Jan III + Isabella de Vernieulles, with the bachelor son Philippus placeholder and Jan IV + Isabella de St. Omer (Moerbeke) terminating the senior male line in two daughters (elder → Mastain); §4.4 Jacques de Drincham + Guilielma de Bambeke with full Veurne monastery S. Nicolai tomb text (d. 10 April 1459 / 19 April 1473) plus sibling Isabella de Drincham + Ghislebert de Lannoy tomb at Lille S. Maurice (d. 16 February 1451 / 22 April 1462) plus brothers Ludovicus and Franco attested by name; §4.5 the 1401 Philip-the-Bold legitimation at Arras of illegitimate son Ioannes (mother Iohanna Svinx) with full verbatim Latin text of the chancery diploma and a note correcting the potential "Philippus Bonus" misreading (Bonus natalia = "good birth-status," not a cognomen); §4.6 Simon de Flandria dictus Drincham + Margareta de Wissoc (Dame de Nieuwerleet), their daughter Marguerite's two marriages (1. Denys de St. Omer; 2. Charles de Halewijn) ending the male-line Drincham surname descent. Not user-facing; research record only.
 - **2026-04-19** — Batch 4 filled in: Section 1.1 (Isabella of Somergem) and Section 1.2 (full Louis I Cressiacensis cohort), covering Tabula XVI pp. 266–274. Entries: §1.1.1 Isabella of Somergem with Ghent Middle Dutch register citation + Du Chesne's 1345 Mirabello testament extract; §1.2.1 Guido of Wedelghem with the Bruges Rekenkamer wedding-gift register + 1385 Hepke/Ardenburch Ambocht feudal transaction + 1396 Ghent Oud-Burg Leenhof 12 July 1396 act documenting three generations of the Wedelghem cadet (Guy I, Guy II, Lodewijk); §1.2.1a–§1.2.1g cadets: Guido II + Catharina Christiaens, Margareta of Wedelghem with 14 February 1411 Lille St. Donatian tomb, Ludovicus van Temseka senior (d. 21 March 1439), Daniel, Petrus + Barbara (St. Walburga Bruges), Clara de Flandria (d. 8 May 1362), Ioannes Christiaens (d. 7 July 1377); §1.2.2 Baudouin + Catheline van Belle with 5 October 1351 Bruges Kockman confiscation-grant, 26 November 1365 Ghent Gertruyde annuity, 1469/1409 guardianship problem flagged; §1.2.3 Robertus à Flandria (d. 24 August 1360, Ghent Jacopins); §1.2.4 the five knight-brothers (Tristramus/Ruflardus/Lancelottus/Guido/Percevallus, "broeders van Lodewijk van Male"); §1.2.5 Maria + Oliverius de Poelvoorde with 1 June 1351 bouteillerie grant; §1.2.6 Catharina + Petrus Boudins with 1388/1394/1420 Ghent partition acts + 1426 St. Donaes Bruges tomb; §1.2.7 Clara of Angelendale (d. 27 June 1448) with Vredius's own "necdum liquet" parentage hedge; §1.3.1 Louis Haze filled in with full De l'Espinoy on 1 April 1370 Bruges De Moor confiscation-grant + 24 February 1397 Renault charter + Gaillard Middle Dutch on Nicopolis triple-death + Pontus Heuterus corroboration; §1.3.2 Louis Friese filled in with full De l'Espinoy Praet grant + 1431 Ghent Keure register f. 30 reference + Grimarez 24 September 1373 partage date + confirmed 28 September 1396 Nicopolis death; §1.3.3 Jan sans terre converted to cross-reference to §4.1; §1.3.7 Isabella-m-Landas and §1.3.8 Landrada converted to cross-references to §3.2; §7.5 Cressiacensis cohort summary expanded with per-member detail. Not user-facing; research record only.
+- **2026-04-19** — Batch 5 filled in (final Vredius batch): Four remaining stubs completed covering §1.3.5 Robert of Elverdinghe (full De l'Espinoy + Grimarez texts, full Elverdinghe tomb Middle Dutch for Robert, full Ypres Dominicans tomb for Anastasia d'Oultre, full 1448 Hesdin legitimation diploma of natural son Jean by Marie de le Voerde — correcting earlier skeleton's "daughter Anna" misidentification — plus Sleens-of-Ghent maternal identification and Sint-Vincentsavond = 21 January 1434 death resolution); §1.3.6 Karle of Gruterssale (full Grimarez text with the "1091" typo flagged and corrected to 1491, full Gaillard Middle Dutch Langemark tomb including the *"filius M'her Robzecht"* reading, three competing parentage readings laid out — son of Robert of Elverdinghe / brother of Victor per 1430 testament / two-different-Karles reconciliation — plus Omaert de Crane chain d. 17 August 1485 Langemark → d. 7 April 1505 Nieuwpoort); §5.1 Jan van Ursele with full Margaret of York 13 August 1489 French diploma + full Maximilian/Philip Middle Dutch confirmation (Mechelen Drossard appointment replacing Wotier van Dielbeke), plus the placement analysis noting Vredius places this under Tabula XIX ducal household not under any bastard cohort and the toponymic "van Ursele" alone does not establish Van Vlaenderen filiation; §5.2 Francoise van Praet van Moerkerken reframed definitively as a Netherlands Praet-Moerkerken line figure (not Van Vlaenderen-Praet descent), with the full Lodewijk van Praet van Moerkerken → Françoise → Francine → Catharina van Boetzelaer chain explained as the link to the §7.6 post-1545 research thread. Research doc top-of-file status updated to "substantively complete." Not user-facing; research record only.
 
 ---
