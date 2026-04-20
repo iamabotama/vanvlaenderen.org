@@ -278,6 +278,22 @@
   margin-bottom: 0.5rem;
 }
 
+.hypothesesBridge {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  text-align: center;
+  max-width: 44rem;
+  margin: 0.5rem auto !important;
+  padding: 0.5rem 1rem;
+}
+
+.hypothesesCta {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0 1.25rem;
+}
+
 .researchNote {
   font-family: var(--font-body);
   font-size: 0.92rem !important;

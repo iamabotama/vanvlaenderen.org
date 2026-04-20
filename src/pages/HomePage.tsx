@@ -131,11 +131,15 @@ export default function HomePage() {
               <div className={styles.hypothesisLabel}>{t('home.hypothesis_two_label')}</div>
               <div className={styles.hypothesisTitle}>{t('home.hypothesis_two_title')}</div>
               <p>
-                {t('home.hypothesis_two_p1')}
+                {t('home.hypothesis_two_body')}
               </p>
-              <p>
-                {t('home.hypothesis_two_p2')}
-              </p>
+            </div>
+
+            <p className={styles.hypothesesBridge}>
+              <em>{t('home.hypotheses_bridge')}</em>
+            </p>
+
+            <div className={styles.hypothesesCta}>
               <button className={styles.primaryBtn} onClick={() => goTo('research')}>
                 {t('home.cta_research')} →
               </button>

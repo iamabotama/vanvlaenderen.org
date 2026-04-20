@@ -3,7 +3,7 @@
 *Running list of site-side corrections identified during Pass 2 (Vredius direct-reading and narrative calibration work). Accumulated here as they surface during the research-record work in `docs/primary-source-notes/vredius-1643-genealogia.md`, to be tackled as a single consolidated site-correction patch after the research record is complete.*
 
 **Status:** Open, accumulating
-**Last updated:** 2026-04-19
+**Last updated:** 2026-04-20
 
 ---
 
@@ -61,6 +61,43 @@
 **Decision needed:** Whether to surface this on the live site now (based on the Huygens evidence alone) or to wait for Buylaert / Decavele verification before updating. The project lead (Michael) has indicated a preference for verification before site correction, so this is currently deferred pending the outcome of the handoff research thread.
 
 **If surfaced after verification:** The `PraetLineageDossierPage` needs a new section covering the Jacob-Catharina-son-Lodewijk generation, with appropriate research-in-progress framing if the thread has not closed.
+
+---
+
+## Style Rule — Surname rendering (*Van* / *van* convention)
+
+**Source of finding:** Discussion 20 April 2026 during Pass 2 narrative calibration. The V/v convention is inconsistent across different periods of record-keeping and across different bearers of the name; a site-wide rule was formalised to reconcile historical fidelity with respect for each individual's own recorded form.
+
+**Rule: contextual historical fidelity — render each name as its own records render it.**
+
+- **Medieval and early-modern figures (14th–16th century charters):** *lowercase* *van* following a given name or title. This matches what every primary-source charter we have transcribed actually shows (106 lowercase instances vs 0 uppercase in the Vredius record after a given name), and matches academic genealogy citation conventions (Buylaert, FMG, Valkeneers & Soen, Lauwens).
+  - *Victor van Vlaenderen*, *Margareta van Vlaendren*, *M'her Robrecht van Vlaendren*, *Lodewijk II van Vlaenderen*, *Louis Friese van Vlaenderen*, *Jan sans terre van Vlaenderen*
+
+- **18th-century parish-register figures and later, through the 1796 civil-register threshold:** follow the original source where known. Where the Napoleonic civil register or later Belgian records capitalise *Van*, preserve *Van*. Where an 18th-century priest wrote lowercase in his hand, preserve lowercase.
+
+- **Modern and contemporary family members:** render as they themselves are/were legally recorded on civil documents.
+  - *Michael Van Flandern*, *Tom Van Flandern*, *Robert Van Flandern*, *Charles Louis Van Vlaenderen* (19th-century Bassevelde-to-America line, pending verification of his actual civil-register form)
+
+- **Surname as standalone noun, adjective, or plural:** *capital* *Van* regardless of period.
+  - *the Van Vlaenderen project*, *Van Vlaenderen researchers*, *a Van Vlaenderen of Bassevelde*, *the Van Vlaenderens of the Meetjesland*
+
+- **Sentence start:** always capital.
+
+- **Latin charter contexts:** preserve the Latin form when quoting originals — *Victor de Flandria*, *Lodovicus Flandrensis* — and translate to the modern form in surrounding prose.
+
+**Why this rule rather than a uniform one:**
+
+- A uniform *Van* site-wide (modern Belgian civil-register style) would be incorrect for the medieval/early-modern figures, whose primary sources consistently use lowercase
+- A uniform *van* site-wide would override the project lead's own legally recorded name, and would impose medieval Dutch convention on a 20th/21st-century American family name that was legally fixed with capital *V*
+
+**Scope of changes needed in the existing site:**
+
+- **No change required** for medieval dossier copy — the dossier pages already render medieval figures with lowercase *van*, which matches the rule
+- **Audit needed** in the research-notes document `docs/primary-source-notes/vredius-1643-genealogia.md` — approximately a dozen places where authorial English prose writes "Van Vlaenderen" (capital V) for a specific medieval individual after their given name. These should be corrected to lowercase. Low priority; does not affect the live site
+- **No change required** for standalone surname uses across the site — "the Van Vlaenderen surname," "Van Vlaenderen project," etc. already follow the rule
+- **Future pages** covering the 19th-century emigration line or contemporary family members should use capital *Van* per the modern-records clause, once we've verified the exact civil-register form for Charles Louis and the generations between
+
+**Scope note:** This rule should be honoured in all new site content from this point forward. It is formalised here so future contributors have a single place to reference the convention.
 
 ---
 
