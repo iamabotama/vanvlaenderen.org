@@ -123,7 +123,38 @@ Each entry records what Vredius attests about a single figure or closely linked 
 
 Vredius's *"Nivernensis"*. Father of Louis of Crécy (Count of Flanders I, d. 1346). Never himself Count of Flanders. His acknowledged bastard issue listed under Tabula XVI before the Cressiacensis cohort.
 
-> *Entry to be filled in: Isabella of Somergem (d. 1365) — marriages to Simon de Mirabello and Arnoldus van Huerle; name exits via marriage. Great-aunt to Victor, not aunt.*
+#### 1.1.1 Isabella of Somergem, *quondam uxor Simonis de Mirabello, nunc Arnoldi van Huerle*
+
+**Vredius reference:** Tabula XVI, pp. 266–267. Middle Dutch entry cited from the records of a Ghent testamentary proceeding via marginal "Ibidem" (inferred from surrounding citation context = Ghent Schepenen register).
+
+**Identification:** Natural daughter of Louis of Nevers (Louis I of Crécy's father) — therefore **aunt of Louis of Crécy and great-aunt of Victor van Vlaenderen**. Vredius does not give her birth or death dates. She is attested only through her two marriages: first to Simon de Mirabello (*dictus van Hale*), Lord of Pervijze; after his death remarried to **Arnoldus van Huerle**, Lord of Raumene.
+
+**Original text — Middle Dutch register citation, top of p. 267:**
+
+> *Jou.re Lisbette/ mijns Heren SIMOENS wijf/ was van Mirabeelen/ diemen hiet van Hale/ die nu heeft minen Here Aernout van Huerle/ Heere van Raumene/ an d'een side &c. Minen Here Philippe van Maffemine/ Heere van Paernewijc/ Ridder/ ende SIMOENE van Mirabeele/ diemen heet van Hale/ alf verbangherss der testaments voorfs. an d'ander zide.*
+
+**Translation:** *Lady Lisbette, my Lord Simon's wife, was of Mirabello [who was] called "van Hale," whom Lord Aernout van Huerle, Lord of Raumene, now has on the one side &c. My Lord Philippe van Massemine, Lord of Paernewijc, Knight, and SIMON van Mirabello, called "van Hale," as executors of the aforesaid testament on the other side.*
+
+**Original text — Du Chesne on the first husband's 1345 testament (p. 267):**
+
+> *Du Chesne; Extraict des archives de l'Abbaye de Groenenbriele: Simon de Mirabelle, Chevalier, dit de Halle, fils de Iean, Seigneur de Pervys, at donné & fondé ledit cloistre. Il donne par son testament à François de Mirabelle, son frere. Item à Iean & Roland de Mirabelle. Item il donne la collation de cinc chapelles, par luy fondées en l'eglife Sainte Pharaïlde, à YWAIN de Varnewijck, qui avoit espousé une sienne fille. Item il donne quelques biens à Monsieur Gerard de Moerzeke, mary de fa soeur. Item à Monsieur Raffe d'Erpe, Seigneur de Meere, mary de fa niepce. Iceluy testament en datte de l'an M.CCC.XLV.*
+
+**Translation:** *Du Chesne; extract from the archives of the Abbey of Groenenbriele: Simon de Mirabelle, Knight, called "de Halle," son of Jean, Lord of Pervys, gave and founded the said cloister. By his testament he gives to François de Mirabelle, his brother. Item to Jean and Roland de Mirabelle. Item he gives the collation of five chapels, which he founded in the church of St. Pharailde, to YWAIN de Varnewijck, who had married one of his daughters. Item he gives some goods to Monsieur Gerard de Moerzeke, husband of his sister. Item to Monsieur Raffe d'Erpe, Lord of Meere, husband of his niece. The said testament dated the year 1345.*
+
+**Evidentiary notes:**
+
+- **Placement as aunt of Louis I, not aunt of Louis II.** Vredius positions this entry between "Louis of Nevers" (her father) material and the Cressiacensis cohort header. She is therefore Louis I's half-sister or sister by Louis of Nevers; not Louis II's aunt but his great-aunt.
+- **Surname exits in one generation.** Isabella's known daughter (unnamed, from the Simon de Mirabello marriage) married Ivan de Varnewijck; the Mirabello surname passes to her brother-in-law's descendants; the Van Vlaenderen surname does not continue. Name exits via marriage.
+- **Mirabello / "de Halle" convention.** The Mirabellos were a wealthy Ghent patrician family of Italian (likely Genoese or Lombard) banking origin. Simon de Mirabello (d. 1345) was a major Flemish political figure, briefly Regent of Flanders during Louis of Nevers's minority in 1337–1338, assassinated in Ghent 1345. The testament named here is his. Isabella's second marriage to Arnold van Huerle came after this first husband's death.
+- **Cross-link to §2.7 d'Erpe / Schoutheeten marriages.** The testament's bequest to *"Monsieur Raffe d'Erpe, Seigneur de Meere, mary de fa niepce"* attests Raffe d'Erpe of Meere as son-in-law by niece relationship. The Van Vlaenderen-d'Erpe marriage chain that runs through Margareta van Vlaenderen (§2.7, Victor's daughter) a century later would be in the same extended Flemish noble network; they are separate unions but the recurrence of the d'Erpe surname across the documented Van Vlaenderen cohort confirms the d'Erpe-of-Meere family as a persistent marriage partner across generations.
+
+**Site placement:** Downgraded — not featured on public pages. Part of the §7 "Downgraded and Deferred" consolidated cohort.
+
+**Research leads:**
+
+- **Simon de Mirabello's testament** — the 1345 testament is preserved in some form (Du Chesne's extract is secondary). Original or cartulary copy may survive in Ghent Stadsarchief.
+- **Arnoldus van Huerle, Lord of Raumene** — identification of Raumene (no longer a place-name in modern Flemish gazetteers) would locate this lordship.
+- **Philippe van Massemine, Lord of Paernewijc** — the testament executor. A separate branch of the Van Massemine / de Massemines noble family, identifiable through 14th-century Ghent records.
 
 ---
 
@@ -133,57 +164,317 @@ Vredius's *"Cressiacensis"*. Louis II de Male's father. His bastard cohort sits 
 
 #### 1.2.1 Guido of Wedelghem
 
-**Vredius reference:** Tabula XVI, pp. 267–268 (approx.).
+**Vredius reference:** Tabula XVI, pp. 267–268. Named under the **"Nothi Ludovici Cressiacensis, Comitis Flandriae, Nivernensis, & Rethellensis"** cohort header.
 
-**Identification:** Natural son of Louis of Crécy. Held Wedelghem by grant. Married a daughter of Peter vander Zijpe.
+**Identification:** Natural son of Louis of Crécy, Count of Flanders, Nevers, and Rethel (collectively *"Nivernensis, & Rethellensis"* in Vredius's formulation). Lord of Wedelghem (now Wondelgem, near Ghent). Knight. Married a daughter of Peter vander Zijpe — Ghent patrician stock per the wedding-gift entry in the Bruges Rekenkamer (Chamber of Accounts) tabulae rationales. Married his own daughter Margriete to Tristram de Messem 12 July 1396, with consent of his surviving son Guido II and minor brother(s) — Ghent Oud-Burg Leenhof act, dated "upden xij. dach van Hoymaent/ in 't jaer MCCC.XCVI."
 
-> *Verbatim transcription and translation to be filled in.*
+**Original text — Ghent wedding-gift register (p. 267, Bruges *tabulis rationalibus quaesturae Brugensis*):**
 
-**Evidentiary notes:** Son Guido II → daughter Margriete → m. Tristram de Messem by 1385. Line exits to Messem surname in one generation.
+> *In tabulis rationalibus quæfturæ Brugensis adnotatur id quod cohonestandis eorum nuptiis in vinum honorarium civitatis Brugensis Magiftratus decrevit, in haec verba: Gheghaven ter bruyloft-feeste van M'her Pieters dochter vander Zijpe/ die trauwde M'her GVY van Vlaendren &c. 4. 12. 6.*
 
-**Site placement:** Downgraded — not featured on public pages. No surname-bearing descent in the male line. Summarised in §7 of this document.
+**Translation:** *In the account-register of the Bruges Chamber [of Accounts] there is recorded that which, by the decree of the Bruges Magistracy, was appointed to honour their wedding with wine as civic gift, in these words: "Given at the wedding-feast of Master Peter's daughter of the Zijpe, who married Sir GUY van Vlaenderen &c. 4. 12. 6."* [= 4 pounds, 12 shillings, 6 pence, presumably groten.]
 
-**Research leads:** None outstanding.
+**Evidentiary notes:**
 
----
+- **Three-generation Van Vlaenderen-Wedelghem line.** Guido I (attested) → Guido II (son, named in Ghent Burg leenhof acts as "Guidonis nothi Flandrensis filius") → Margareta (daughter of Guido II, m. Tristram van Meffem 1396). Male-line exits at Guido II's son-line — only Margareta is traceable.
+- **Catharina Christiaens as Guido II's wife.** Per a 1385 Hepke / Ardenburch Ambocht feudal transaction (p. 268 top, Middle Dutch), Guido II acquired nine *gemeten* of land in the parish of Hepke, in Ardenburch Ambocht, from Margriete daughter of his wife Catharina Christiaens. The parties are named: "LODEWYCK/ mijns Heeren Guys fone W. van Vlaendren/ Ridder/ ende Joncvr. AGNES zijn wijff; ende daer quam GVY/ mijns Heeren Guys feune/ Ridder van Vlaendren/ ende begheerde een leen te ontfanghen van neghen ghemeten/ ligghende inde parochie van Hepke/ in Ardenburch Ambocht/ te Joncvr. MARGRIETE fijnte dochter/ behouf/ de welcke hy hadde by Vrauwe CATERINE/ filia GILLIS CHRISTIAENS/ ende dit leen cochte GVY voorfs. jeghens LODEWYC van Vlaendren/ fijn broeder voorfs. ende AGNIES TE fijn wijff 1385. upden 15. dach van Apzil."
+- **The 1396 Oud-Burg Leenhof declaration** (p. 269): "*Quam voor mannen van Leene vander Ouderburgh in Ghendt M'her Guy/ baftaerde fuene was van Vlaendren/ Ridder/ Heere van Wedelghem/ toeghde hoe dat hy fijn dochter MARGRIETE gheftelt hadde ten huwelicke met TRYSTRAN van Meffem/ Willems fuene/ ende dit by confent van fijn Guy/ M'her Guys fuene/ voorseyt/ ende broeder van MARGRIETE/ ende by fijn vooghden/ te weten M'her Pieter van Wulpen/ Ridder/ ende Jan Bretoen/ ende oock by confente van Lodewijck van Vlaendren/ M'her Guys Broeder &c. 1396. upden xij. dach van Hoymaent.*" — three generations of Guy Wedelghem males documented in this single act (Guy I, Guy II his son, Lodewijk his brother), plus the daughter Margriete being married.
+- **Name chain exit.** Margriete → Tristram van Meffem / de Messem line. The Messem line is well-attested in Ghent records; follow-on generational descent would require Ghent archival work independent of Vredius.
 
-#### 1.2.2 Baudouin + Catheline van Belle
+**Site placement:** Downgraded — not featured on public pages. Summarised in §7.5 with other Louis I Cressiacensis cohort figures.
 
-**Vredius reference:** Tabula XVI, pp. 268–270 (approx.).
+**Research leads:**
 
-**Identification:** Natural son of Louis of Crécy. Married Catheline van Belle (by 1351 per Kockman grant). Father of daughter Gertruyde (1365 annuity grant) and three minor sons Willem, Loyken, Ghielynken (guardianship case under Peter van Boeleer).
-
-> *Verbatim transcription of the Kockman 1351 grant and the 1365 Gertruyde annuity to be filled in.*
-
-**Evidentiary notes — the 1469/1409 problem:**
-
-Vredius prints the guardianship-of-minors year as **1469** for Baudouin's three sons under Peter van Boeleer. This is almost certainly a typo or transcription error: Baudouin himself was active in the 1350s–1360s, so his minor sons cannot possibly have been under guardianship in 1469 (they would have been 100+ years post their father's activity). The project supplement silently uses **1409**, which is internally consistent but departs from the Vredius print without acknowledgment. A Ghent archival check (Registers of Partitions, RAG Jaarregisters van de Keure) is required before this entry can be finalised. Until verified, the date remains flagged.
-
-**Site placement:** Downgraded — not featured on public pages. Summarised in §7.
-
-**Research leads:** Ghent archival verification of the Baudouin guardianship register entry — RAG, Jaarregisters van de Keure, c. 1400–1470 range.
+- **Peter vander Zijpe family** — Ghent patrician genealogy 14th century; Bruges or Ghent Stadsarchief leenhof registers.
+- **Tristram van Meffem / de Messem family** — Vredius p. 269 continues into the Ludovicus van Temseca entry (Margareta's second husband after Tristram's death, §1.2.4 below); the Messem descendants would be traceable through Ghent records.
+- **The 1385 Hepke lordship** — Ardenburch Ambocht is now in Zeeuws-Vlaanderen (Aardenburg area); polder records may survive in Middelburg Zeeuws Archief.
 
 ---
 
-#### 1.2.3 Robert of Ghent (d. 24 Aug 1360)
+#### 1.2.1a Guido II à Flandria + Catharina Christiaens → Margareta (nun); the Ludovicus-Agnes cadet
 
-> *Entry to be filled in.*
+**Vredius reference:** Tabula XVI, p. 268. Cadet detail within the Wedelghem line.
 
-#### 1.2.4 The knight-brothers: Tristram, Ruflard, Lancelot, Percevall, Guy
+**Sub-persons and dates:**
 
-> *Five knights named together in Vredius per Gaillard's transcription: "bastaerden van Graef Lodewijc van Nevers/ ende broeders van Lodewijc van Male." The generational label is Vredius's; the functional role is Victor's uncle-cohort in the bastard line. Four of the five have no documented descent; Guy married a Ghent citizen and produced one attested daughter. Entry to be filled in.*
+- **Catharina, filia Aegidii Christiaens, uxor Guidonis** — Guido II's wife. In Temseke family feudal tables, cited.
+- **Margareta Flandrica, Monialis** (nun) — daughter of Guido II + Catharina. From the Bruges Dominican monastery *Liber obituum*: "Suster MARGARITE van Vlaendren/ Obiit anno 1392." Died 1392.
+- **Ludovicus à Flandria + Agnes** (no surname given for Agnes) — a brother of Guido II by the same father Guido I. Couple together sold a feudal property to Guido II per preceding citation. Named in Vredius only by this transaction.
 
-#### 1.2.5 Maria
+---
 
-> *Entry to be filled in: m. Olivier de Poelvoorde 1 June 1351; name exits to Poelvoorde.*
+#### 1.2.1b Margareta of Wedelghem (d. 14 February 1411) — m. (1) Tristram van Meffem; (2) Ludovicus van Temseke
 
-#### 1.2.6 Catharina
+**Vredius reference:** Tabula XVI, pp. 269–270.
 
-> *Entry to be filled in: m. Peter Boudins (Ghent partition 1388 f.17); then Cornelius vanden Eeckhoute (1394 partition — Vredius prints "1304" which is a typo, corrected in FMG). Son Peter Boudins the younger d. 16 Oct 1426.*
+**Identification:** Daughter of Guido II of Wedelghem (§1.2.1a), so granddaughter of Guido I of Wedelghem, so great-great-granddaughter of Louis I of Crécy. Married first (1396) Tristram van Meffem, second (before 1397) **Ludovicus van Temseke**, Knight, later (at his death) Burgomaster of Bruges. Died 14 February 1411. Buried at St. Donatian Bruges, under the tomb of d'Heer Gillis Christiaens (her grandfather-in-law through her aunt's marriage).
 
-#### 1.2.7 Clara of Angelendale (d. 27 June 1448)
+**Original text — tomb inscription at St. Donatian Bruges (p. 269, Middle Dutch via Damhouder):**
 
-> *Entry to be filled in. Vredius explicitly hedges Clara's parentage with "necdum liquet" — "not yet clear." She may or may not belong in this cohort.*
+> *Onder de voorn. sepulture van d'Heer Gillis Chriftiaens/ light begraven Jo. MARGRIETE van Vlaendren/ filia M'her Guy/ Ridder/ wedutwe van d'Heer TRISTRAM van Meffem/ ende 'f Heer LODEWYC von Temseke wijf was/ de welcke overleet 1411. den 14. dagh in Sporcle; haer wapen es de geule au premier canton de Flandres, haer eerfte man van Meffem d'or au chevron & trois croiffans tout de gueille, ende Temseke d'or à trois tefts de cheyvaux de fable, bridé d'argent, & orné ou garny d'or.*
+
+**Translation:** *Beneath the aforementioned tomb of Sir Gillis Christiaens lies buried Lady MARGRIETE van Vlaendren, daughter of Sir Guy, Knight, widow of Sir TRISTRAM van Meffem and wife of Sir LODEWYC van Temseke, who died in 1411 the 14th day of February [Sporcle]; her arms are gules with the first quarter of Flanders, her first husband van Meffem [bore] or with a chevron and three crescents all of gules, and Temseke [bore] or with three horse-heads of sable, bridled of silver, and ornamented or garnished of gold.*
+
+**Evidentiary notes:**
+
+- **Heraldic quartering for Margareta.** *"de gueule au premier canton de Flandres"* — red with a first quarter of Flanders — is the standard bastard-descent heraldic signature (red ground with a "canton" showing the sovereign line's arms). This is the same formula used by most Van Vlaenderen-bastard-line figures in the 14th-15th centuries.
+- **Van Meffem and Van Temseke noble family identifications.** Both were Bruges-Ghent patrician-noble families. The Temseke branch (Latin *Temseca*) would be resident around Temse, East Flanders.
+- **Ludovicus van Temseke — Burgomaster of Bruges at his death.** His own tomb (in the Minorite / Franciscan convent of Bruges, "now destroyed by heretics" per Vredius) gave his patronymic "filius 'f Heer Jans, die starf 14... den 2x Maerte" — date partially obliterated.
+- **Vredius corrects Gaillard's Nivernensis/Cressiacensis error.** Gaillard's *Collectanea* as cited on p. 270 identifies Margareta's father Guy as "patrem habuit Guidonem Domini **Ludovici Nivernensis**, filii Roberti, Comitis Elandriae" — i.e., Gaillard erroneously makes Guy son of Louis II the Count of Nevers [should read "of Flanders"], son of Robert Count of Flanders. Vredius flags this explicitly: *"Errat hic Gaillard, qui Nivernensem, loco Cressiacensis, Ludovici filium facit Guidonem, hujus Margaretae patrem"* — "Gaillard errs here, making Guy the son of Louis Nivernensis [of Nevers] rather than of Louis Cressiacensis [of Crécy], as father of this Margareta." This correction is one of several throughout Tabula XVI where Vredius criticises earlier compilers.
+
+---
+
+#### 1.2.1c Ludovicus à Temseca (senior, m. Margareta) — his children and further descent
+
+**Vredius reference:** Tabula XVI, p. 270. From Damhouder's *liber genealogicus MS nobilium familiarum Brugensium*.
+
+**Identification:** Margareta's second husband (§1.2.1b). Died 21 March (*xxj. Maerte*) 1439 per the Gaillard collectanea. Children by Margareta of Wedelghem per Damhouder's list: **Daniel, Iooris, Guy, Pieter, Anna** — of whom Iooris, Guy, and Anna died in youth ("storven in hunlieden jonckheyt"). Daniel and Pieter had surviving issue; see §1.2.1d and §1.2.1e.
+
+**Original text — Damhouder MS genealogicus (Vol 2 partial citation, "Part. 1. fol. 41"):**
+
+> *Ludovici & Claræ liberos hoc ordine enumerat liber genealogicus MS. nobilium familiarum Brugensium D. Damhouderi, ubi & hi tres in juventute obiiffe perhibentur: M'her Lodewije van Themseke/ filius Jans/ ende van Catheline van Vudzele/ trauwde Vrauw Margriete van Vlaendren/ filia mijns Heeren Guy/ ende hadden Daneel/ Iooris/ Guy/ Pieter/ ende Anne. Io. IOORIS/ GVY/ ende ANNE storven in hunlieden jonckheyt.*
+
+**Translation:** *Damhouder's genealogical manuscript of the noble families of Bruges enumerates the children of Louis and Clara in this order, where also these three are reported to have died in youth: "Sir Lodewijk van Temseke, son of Jan, and of Catheline van Vudzele, married Lady Margriete van Vlaendren, daughter of my Lord Guy, and they had Daniel, Iooris, Guy, Pieter, and Anne. Iooris, Guy, and Anne died in their youth."*
+
+**Note on "Ludovici & Clarae liberos."** The Latin framing here paraphrases the Damhouder text with "Clarae" substituted for "Margaretae" — this is almost certainly a Vredius transcription slip; the Middle Dutch names the mother Margriete, not Clara. (Vredius is compiling: elsewhere a "Clara" wife of another Ludovicus à Temseca figure may have been in his notes and the names slipped.) Trust the Middle Dutch for the correct reading.
+
+---
+
+#### 1.2.1d Daniel à Temseca + Margareta van Meffem → Ludovicus (d.s.p.)
+
+**Vredius reference:** Tabula XVI, p. 270.
+
+Son of Ludovicus senior. Married Margareta van Meffem (a different Van Meffem than his mother's first husband). Had one son Lodewijk. Lodewijk died without issue: *"D'Heer LODEWYC van Temseken/ filius Io. Daniel/ is ghestorven fonder generatie."* Line exits.
+
+---
+
+#### 1.2.1e Petrus à Temseca + Catharina d'Eynault → Barbara (d.s.p.)
+
+**Vredius reference:** Tabula XVI, p. 271.
+
+Another son of Ludovicus senior. Married Catheline d'Eynault; daughter Barble. Tomb at St. Walburga Brugensis (inscription partially worn): "*Aen de torre/ onder een wit farc/ met motael/ licht Jo. PIETER van Temseken/ filius M'her Lodewijck/ Ridder/ ende Jo. CATHELYNE d'Eynauts; maer de fuperfcriptie es bupt.*" Barbara de Temseca also attested. No further descent after Barbara.
+
+---
+
+#### 1.2.1f Clara de Flandria (d. 8 May 1362) — daughter of Guido I
+
+**Vredius reference:** Tabula XVI, p. 271.
+
+**Identification:** Daughter of Guy I of Wedelghem (not of Guy II). Therefore sister of Guy II (§1.2.1a), not niece. Married first Aegidius / Gillis Christiaens (d. 28 November 1376 per Lille S. Donatian tomb), second Georgius Braderix. Died 8 May 1362 — **predeceasing her first husband by 14 years.** Buried at Lille St. Donatian alongside Gillis Christiaens under a single white marble tomb.
+
+**Original text — Lille St. Donatian tomb inscription (p. 271):**
+
+> *In sequenti monumento Ægidii Christiaens, quod fuit in S. Donatiani Brugensis, Clara dicitur fuifse uxor Georgii Braderix, vidua ipsius Ægidii, & filia Guidonis de Flandria: Onder een seer groote ende schoone sarc/ van wit marbele/ licht begraven d'Heer GILLIS CHRISTIAENS/ fil. 'f Heer Jans/ die ftarf 1376/ den xxviij. November. Ende Vrauwe CLARE/ M'her IOORIS Braderix wijf was/ Ridder/ 'f Heer GILLIS CHRISTIAENS wedutwe/ filia M'her GUY van Vlaendren/ Riddere/ de welcke ftarf 1362/ den viij. dagh in Meye.*
+
+**Evidentiary notes:**
+
+- **Vredius's explicit hedging on Clara's parentage.** On p. 268 Vredius writes *"Cujus ista Clara fuerit filia mihi necdum liquet"* — "Whose daughter this Clara was, is not yet clear to me." But on p. 271 the St. Donatian tomb inscription fixes her parentage: *"filia M'her GUY van Vlaendren, Riddere"* — daughter of Sir Guy of Flanders, Knight. The Guy referenced must be Guy I of Wedelghem (given Clara died 1362, before Guy II's 1385–1396 activity window). So she is sister of Guy II and aunt of Margareta of Wedelghem (§1.2.1b).
+- **Name chain exit.** Clara had no surname-bearing male descent. The Christiaens and Braderix surnames are the recipients of her children's lines. Note that both the Clara = daughter-of-Guy-I and Catharina = wife-of-Guy-II cases involve marriage to a Christiaens surname, which is what Vredius's p. 271 hedge is trying to disentangle (is there one Catharina Christiaens who's Clara's daughter and also Guy II's wife? Probably not; Vredius declines to resolve).
+- **The Christiaens-of-Bruges family.** A wealthy patrician Bruges family. Their own burials and epitaphs at St. Donatian provided the primary evidence for the Van Vlaenderen marriage-outs in this branch.
+
+---
+
+#### 1.2.1g Ioannes Christiaens (d. 7 July 1377)
+
+**Vredius reference:** Tabula XVI, p. 271.
+
+Son of Gillis Christiaens and Clara de Flandria (§1.2.1f). Tomb inscription at same Lille St. Donatian: *"Onder defen farc licht begraven JAN Christiaens/ filius 'f Heer Gillis/ die ftarf 1377/ den vij. in Hoymaent."* Died 7 July 1377 — the year following his father's 28 November 1376 death. No further descent.
+
+---
+
+#### 1.2.2 Baudouin à Flandria + Catheline van Belle — the Kockman grant (5 October 1351) and the Gertruyde annuity (26 November 1365)
+
+**Vredius reference:** Tabula XVI, p. 272. De l'Espinoy citation (marginal "Recherche des antiq. de Fland. chap. 31").
+
+**Identification:** Natural son of Louis of Crécy. Received the confiscated estates of Louis Kockman (a Flemish knight) from his father the Count by letters given at Bruges 5 October 1351. Married Catheline van Belle. Their daughter Gertruyde Flandrica was endowed by a second letter issued at Ghent 26 November 1365 with a fifteen-*sous-de-gros* annual annuity for her maintenance, the annuity being assigned to her mother Catheline.
+
+**Original text — De l'Espinoy citation of the Kockman grant + Gertruyde annuity (p. 272):**
+
+> *Philip. de l'Espinoy, de liberis illegitimis Ludovici Crefsiacensis: Ie trouve le premier avoir eſté un Meßire BAVLDVIN de Flandres, auquel ledit Comte donna pour maintenir & accroiftre son eftat, tous les biens confifquez de Louys Kockman, Chevalier, ce qu'appert par lettres dudit Comte, données à Bruges, le 5. jour du mois d'Octobre, en l'an 1351. Lequel BAVLDVIN eut à femme, Dame CATHELINE van Belle, de laquelle ledit Meßire BAVLDVIN eut une fille nommée Damoiselle Geertruyde de Flandres, & donna ledit Comte de Flandres, à ladite CATHELINE van Belle, femme dudit BAVLDVIN, son fils baftard, pour le fouftien de Geertruyde, fa fille, qu'elle eut dudit Meßire BAVLDVIN, son fils baftard, quinze fouls de gros par an, de rente viagere, ce que le tout nous tefmoignent les lettres dudit Comte, Données à Gand, le 26. jour du mois de Novembre, en l'an 1365.*
+
+**Translation:** *Philippe de l'Espinoy, concerning the illegitimate children of Louis of Crécy: I find the first to have been Sir Baudouin de Flandres, to whom the said Count gave, to maintain and enhance his estate, all the confiscated goods of Louis Kockman, Knight — as appears by letters of the said Count, given at Bruges the 5th day of October 1351. The said Baudouin took to wife Lady Catheline van Belle, of whom the said Sir Baudouin had a daughter named Lady Geertruyde de Flandres; and the said Count of Flanders gave to the said Catheline van Belle, wife of the said Baudouin his bastard son, for the support of Geertruyde his daughter whom she had by the said Sir Baudouin his bastard son, fifteen sous de gros per year of life-annuity — as all of this is testified by the letters of the said Count, given at Ghent the 26th day of November 1365.*
+
+**Evidentiary notes:**
+
+- **Two dated grants establish Baudouin's active period firmly in the 1350s–1360s.** The 1351 Kockman confiscation-grant places Baudouin as an adult by that date (born c. 1325–1335, mother unattested). The 1365 annuity to his wife for his daughter places him as a father of a minor-age daughter at that date. No death date in Vredius.
+- **The "fifteen sous de gros" (quinze sous de gros) annuity** is a modest but not trivial sum for a noble bastard's daughter's maintenance in the 1360s. A *sou de gros* of Flanders was 12 *deniers gros*; fifteen sous = 180 deniers = approximately £7-8 sterling equivalent per annum at contemporary rates. Sufficient to maintain a household but not to sustain an aristocratic lifestyle — consistent with Gertruyde being a minor daughter of a bastard line rather than a legitimate heiress.
+
+**Baudouin's three sons (p. 272) — the 1469/1409 guardianship problem:**
+
+> *Regesta partitionum Gandenfium anni 1469, horum trium Balduini liberorum tutorem fuiffe teftantur Petrum, Balduini fratrem; his verbis: Pieter van Vlaendren/ was Vooght van Willem/ Lopken/ Ghelepnken/ Boudins kinderen van Vlaendren/ Pieters broeder was.*
+
+Per the Ghent partition register dated "1469" (as printed in Vredius), Baudouin's three minor sons **Guilielmus (Willem), Ludovicus (Lopken), and Ghislenus (Ghelepnken)** were under the guardianship of their uncle Pieter van Vlaenderen (Baudouin's brother).
+
+**The date problem:** Vredius's print reads "1469." This is internally inconsistent with Baudouin's documented 1351 and 1365 dates — his sons cannot possibly have been minors in 1469 (they would have needed to be born to a father active 100+ years earlier). The project supplement silently reads "1409" as the corrected date, which is internally consistent but departs from the Vredius print.
+
+**Resolution:** pending Ghent archival verification. Registers of the Ghent Partition Court (RAG, *Jaarregisters van de Keure*) for the 1400–1470 range should be checked for the original register folio recording this guardianship. This is flagged in §7.1 of this document as "held for verification."
+
+**Gertrudis de Flandria** — Baudouin's named daughter from Catheline van Belle per De l'Espinoy; referred to by name only. No further descent.
+
+---
+
+#### 1.2.3 Robertus à Flandria (d. 24 August 1360)
+
+**Vredius reference:** Tabula XVI, pp. 272–273. De l'Espinoy citation (marginal "L. 1. c. 31. f. 65"); Gaillard *Collectanea MS*.
+
+**Identification:** Natural son of Louis of Crécy. Chevalier. Died at St. Bartholomew's day (24 August) 1360, buried at the Jacopin (Dominican) cloister in Ghent, a site later destroyed in the iconoclastic troubles (*"ruinée par ces derniers troubles"*).
+
+**Original text — De l'Espinoy + Gaillard extract + tomb inscription (pp. 272–273):**
+
+> *Phil. de l'Espinoy: Item ledit Comte Louys eut encore un autre fils bastard, nommé Meßire ROBERT de Flandres, qui fut auffi trefvaillant Chevalier, & eut fa fepulture au cloistre des Iacopins en la ville de Gand, laquelle a esté ruinée par ces derniers troubles, & trefpaffa le jour S. Barthelemy, l'an 1360.*
+
+> *Collectanea M S. Gaillardi: Te Ghent te Predickheeren light eenen ROBERT van Vlaendren/ die ftarf 1360. op S. Bartholomeus dach.*
+
+> *Epitaphium Roberti: Chy gift ROBERT de Flandres, baftard, Chevalier, qui tresp. en l'an 1360. le jour de S. Barthol. Priez pour l'ame.*
+
+**Translation:** *De l'Espinoy: Item, the said Count Louis also had another bastard son, named Sir Robert de Flandres, who was also a most valiant Knight, and had his burial in the Jacobin [Dominican] cloister in the city of Ghent — which has since been ruined by these recent troubles — and he died on St. Bartholomew's day, the year 1360. Gaillard: At Ghent at the Dominicans [Predikheeren] lies a certain Robert van Vlaendren, who died 1360 on St. Bartholomew's day. Epitaph: Here lies Robert de Flandres, bastard, Knight, who died in the year 1360 on the day of St. Bartholomew. Pray for his soul.*
+
+**Evidentiary notes:**
+
+- **Single attestation.** Robert's death at 1360 is his only attested act. He has no documented marriage, wife, or children in Vredius. Line terminates in one generation.
+- **Predikheeren / Jacopin Ghent.** The Dominican church and cloister at Ghent, destroyed iconoclastically in the 1566–1578 period (the "recent troubles" per De l'Espinoy writing c. 1631). Any surviving tomb fragments would be in the Ghent Stadsarchief or the St. Nicholas / St. Bavo cathedral collections.
+
+---
+
+#### 1.2.4 The five knight-brothers: Tristramus, Ruflardus, Lancelottus, Percevallus — and Guido (distinct from §1.2.1)
+
+**Vredius reference:** Tabula XVI, p. 273. Gaillard *Collectanea MS* (marginal "Ibidem" = same page's preceding citation source).
+
+**Identification:** Five knights listed together in Vredius per Gaillard's Middle Dutch transcription, all identified as "bastards of Count Lodewijk of Nevers [Louis I of Crécy] and brothers of Lodewijk of Male":
+
+1. **Tristramus de Flandria**, Dominus de Templo, Eques
+2. **Ruflardus de Flandria**, Eques
+3. **Lancelottus de Flandria**, Eques
+4. **Guido de Flandria**, Eques (possibly the same as Guido of Wedelghem in §1.2.1, or a different Guy)
+5. **Percevallus de Flandria**, Eques
+
+**Original text — Gaillard (p. 273):**
+
+> *Collectanea M S. Gaillardi, eos enumerant hoc modo: De baftaerden van Graef Lodewijk van Nevers/ ende broeders van Lodewijk van Male waeren: M'her TRISTRAM/ Heere vanden Tempel/ M'her RVFLARD/ M'her LANCELOT/ M'her GVY van Vlaendren/ alle Ridderen/ ende M'her PERCEVAL van Vlaendren/ Ridder.*
+
+**Translation:** *Gaillard's manuscript collection enumerates them thus: "The bastards of Count Lodewijk of Nevers [Louis I of Crécy], and brothers of Lodewijk of Male, were: Sir TRISTRAM, Lord of the Temple, Sir RUFLARD, Sir LANCELOT, Sir GUY of Flanders — all Knights — and Sir PERCEVAL of Flanders, Knight."*
+
+**Evidentiary notes:**
+
+- **"Broeders van Lodewijk van Male"** — brothers of Louis II de Male. This makes them Louis II's half-brothers via their shared father Louis I of Crécy (Louis I's bastards). The cohort is therefore **avuncular to Victor van Vlaenderen**, who is Louis II's son.
+- **Tristram, Lord of the Temple.** "*Heere vanden Tempel*" — likely a Templar-associated lordship (possibly around the former Templar commandery of Slijpe, near Bruges, which was transferred to the Hospitallers after 1312 but retained the "Temple" designation). Or could be a separate "Tempel" place-name in Flanders.
+- **Ruflard and Lancelot.** Arthurian given-names are unusual in 14th-century Flemish bastard nomenclature; possibly reflects Louis I's known taste for Arthurian literary culture (as Count of Nevers he commissioned chivalric romance manuscripts).
+- **Guy.** The name "Guy van Vlaendren Ridder" in this knight-brothers list may overlap with Guy of Wedelghem (§1.2.1). Vredius's layout is ambiguous: the Wedelghem entry appears to depict Guy as a documented figure with wife and descent; the knight-brothers entry depicts a Guy as a title-bearing knight with no further detail. These may be the same person (Guy of Wedelghem = Guy knight-brother) or different persons with the same name.
+- **Percevallus.** Continues the Arthurian-name pattern. No further documentation.
+- **No documented descent for any of Tristram, Ruflard, Lancelot, Perceval.** The knight-brother cohort is effectively terminal — four of the five (counting Guy once) leave no surname-bearing male line. Only the Wedelghem Guy branch (if distinct) carries the name forward for two more generations (§1.2.1).
+
+**Site placement:** Downgraded — mentioned in §7.5 consolidated Cressiacensis cohort summary. No individual page real estate.
+
+**Research leads:**
+
+- **Tristramus, Dominus de Templo** — identifying "de Templo" / "van den Tempel" geographically and administratively would locate the lordship.
+- **The four terminal knights' military records** — Flemish chancery or Burgundian court service records 1340s–1360s might turn up references.
+
+---
+
+#### 1.2.5 Maria de Flandria + Oliverius de Poelvoorde (1 June 1351 grant)
+
+**Vredius reference:** Tabula XVI, p. 273. De l'Espinoy citation (marginal "L. 1. c. 31. f. 65").
+
+**Identification:** Natural daughter of Louis of Crécy. Married Olivier de Poelvoorde, son of another Olivier, Buticularius (Cup-Bearer / Bottler) of Flanders. Louis of Crécy granted them the hereditary bouteillerie de son hostel as a fief, by letters issued at Male 1 June 1351 — the same year as Baudouin's Kockman grant (§1.2.2), suggesting a coordinated act of enfeoffment for multiple bastards in 1351.
+
+**Original text — De l'Espinoy extract (p. 273):**
+
+> *Phil. de l'Espinoy: La feconde fille baftarde dudit Comte Louys de Nevers, eftoit appellée Dame MARIE de Flandres, laquelle ledit Comte maria avec Olivier, fils d'OLIVIER de Poelvoorde, & donna ledit Comte avec ladite Dame fa fille, baftarde, la bouteillerie de son hoftel-hereditablement, à tenir en fief dudit Comte, & fes fucceffeurs, avec ladicte Seigneurie de Poelvoorde, laquelle bouteillerie avoit efté confifquée des predeceffeurs dudit OLIVIER, comme appert par lettres dudit Comte, données à Male, le premier jour du mois de Iuin, en l'an 1351.*
+
+**Translation:** *De l'Espinoy: The second bastard daughter of the said Count Louis of Nevers [Louis of Crécy] was called Lady Marie de Flandres, whom the said Count married to Olivier, son of Olivier de Poelvoorde; and the said Count gave with the said Lady his bastard daughter the hereditary Bouteillerie of his household, to hold in fief of the said Count and his successors, together with the said lordship of Poelvoorde — which Bouteillerie had been confiscated from the predecessors of said Olivier — as appears by letters of the said Count, given at Male, the first day of June, in the year 1351.*
+
+**Evidentiary notes:**
+
+- **The Bouteillerie of the Counts of Flanders.** A hereditary court office, responsible for the Count's wine cellars and ceremonial service at meals. A valuable honorific fief, not just a functional position.
+- **"La seconde fille bastarde."** De l'Espinoy numbers Maria as the second bastard daughter — the first being not yet identified in this extract (possibly Isabella of Somergem §1.1.1, if De l'Espinoy is counting across father and grandfather; or possibly Gertruyde, Baudouin's daughter).
+- **Poelvoorde.** A polder lordship in the Bruges Vrije. The Poelvoorde family's confiscation by Louis of Crécy, followed by the regrant via Maria's marriage, is parallel to other Kockman/De Moor confiscation-regrant patterns in Louis's reign.
+
+**Site placement:** Downgraded — no surname-bearing male descent. Line exits to Poelvoorde in one generation. Summarised in §7.5.
+
+**Research leads:**
+
+- **Poelvoorde descent through Maria's children.** Their children would be Van Poelvoorde / De Poelvoorde, not Van Vlaenderen; lineage traceable through Flemish polder records.
+- **Bouteillerie of Flanders records** — hereditary court office records, potentially preserved in Lille Chambre des Comptes or Bruges Vrije leenhof.
+
+---
+
+#### 1.2.6 Catharina de Flandria + Petrus Boudins (1. maritus) + Cornelius vanden Eeckhoute (2. maritus)
+
+**Vredius reference:** Tabula XVI, pp. 273–274. Ghent Partition Court acts: 1388 (registrum *f. 17* for first marriage), 1394 (*f. 45 verso* for second marriage), and 1420 (*f. 14 verso* for widower reference). Tomb epitaph from Damhouder *Genealogia nobilium Brugensium MS*.
+
+**Identification:** Natural sister of Louis II de Male (*"Ludovici Comitis nothae sororis"* per the 1420 act). **Therefore daughter of Louis I of Crécy** (Louis II's father). Married first **Petrus Boudins** (Senior), Bailly of Damme (later Bruges); after his death married **Cornelius vanden Eeckhoute**, Bailly of Ghent. Two sons by Petrus Senior: Ioannes and Robertus Boudins.
+
+**Original text — Ghent partition 1388 (p. 274) first marriage:**
+
+> *Et cum iifdem comparet in iifdem actis anno 1388: Compareerde voor Schepenen Joff. Kateline baftaerde van Vlaendren/ ende PIETER Boudins haer fone/ metgaders Corneliffe vanden Eeckhoute nu haren man &c. Actum prima Aprilis.*
+
+**Translation:** *And with the same appears in the same acts of the year 1388: "There appeared before the Aldermen Lady Kateline bastard of Flanders, and Pieter Boudins her son, together with Cornelis vanden Eeckhoute now her husband &c. Done 1 April [1388]."*
+
+**Original text — Petrus Boudins (Senior) tomb at St. Donaes Bruges (p. 274, from Damhouder MS):**
+
+> *Epitaphium Petri in cippo lapidis candidi, cui ex metallo fufo impreffa figura virilis, fago induta, & haec epigraphe: Cy gift noble homme PIERRE Boudins Penfionaire Efcuier de Monf. le Duc de Bourgongne, Conte de Flandre, jadis Efcoutette & Bailly de la ville de Bruges, qui treffaffa l'an mil quatre cens vingt fix, le XVI jour du mois d'Octobre. En l'eglife de S. Donas.*
+
+**Translation:** *Epitaph of Peter [the elder] on a white stone cippus, on which is impressed a cast-metal masculine figure clothed in a cloak, and this inscription: "Here lies the noble man Pierre Boudins, Pensionary Esquire of Monsignor the Duke of Burgundy, Count of Flanders, formerly Escoutette and Bailly of the city of Bruges, who died in the year one thousand four hundred twenty-six, the 16th day of the month of October. In the church of St. Donaes [Donatian]."*
+
+**Original text — 1420 Ghent act naming Cornelius as widower (p. 274):**
+
+> *In iifdem actis anni 1420. ipse Cornelius dicitur viduus Catherinae, Ludovici Comitis nothae fororis: CORNELIS vander Eeckhoute houdende bleven achter Joncff. CATHELINEN 'f Graven Lodewijc baftaerde fufter van Vlaendren/ van goeder ghedenckeniffen/ finen wettelicken wive was &c. Actum den 29. in Lauwaend.*
+
+**Translation:** *In the same acts of the year 1420, Cornelius himself is said to be the widower of Catharina, natural sister of Louis the Count: "Cornelis vander Eeckhoute remaining behind Lady CATHELINE, of Count Louis's bastard sister of Flanders, of good memory, was his lawful wife &c. Done the 29th of January [Lauwaend]."*
+
+**Evidentiary notes:**
+
+- **"Ludovici Comitis nothae sororis"** = natural sister of Louis the Count. Louis II de Male was Count by 1384; references after 1384 to "the Count" default to Louis II. Catharina's relationship "sister" (*soror*) makes her sister of Louis II, i.e., daughter of Louis I of Crécy. This matches the Cressiacensis cohort placement in Vredius.
+- **Petrus Boudins the elder (d. 16 October 1426).** A senior Burgundian-ducal civil servant — Pensionary-Esquire of Duke Philip the Good, former Escoutette (high-baillie, similar to a chief magistrate) and Bailly of Bruges. His tomb at St. Donaes was among the more prominent monuments of the church before the 1580 iconoclasm.
+- **Petrus Boudins the younger.** The son (also Pieter) died 16 October 1426 — same date/year appears on the elder's tomb, suggesting possibly father and son died same day, or (more likely) Vredius's transcription of an epitaph covers both men buried together. Further disambiguation would require inspection of surviving St. Donaes epigraphic records.
+- **Two sons by Petrus Senior: Ioannes and Robertus Boudins.** Litigated against their mother (now remarried to Cornelius) and stepfather in the 1394 Ghent partition court. This is the typical Flemish-inheritance dispute pattern when a widow remarries: sons from the first marriage contest the stepfather's admin of their paternal inheritance.
+- **1394 vs 1304 Vredius transcription.** Earlier project notes flagged that Vredius prints "1304" for the second-marriage act (which is chronologically impossible — Cornelius van Eeckhoute is active in the 1380s–1420s). The correct reading per context is **1394**. FMG has the correct 1394. This is a Vredius transcription error, not a data problem.
+
+**Site placement:** Downgraded — no Van Vlaenderen surname-bearing male descent. Boudins and Eeckhoute lines carry on as their own surnames. Summarised in §7.5.
+
+**Research leads:**
+
+- **St. Donaes Bruges tomb inscriptions** — the church was destroyed in 1799 under Napoleonic secularisation; any surviving tomb records are in the Bruges Stadsarchief epigraphic files or in 17th-century antiquarian transcriptions (Sanderus, Gaillard).
+- **Ioannes Boudins and Robertus Boudins** — their further descent in Ghent records.
+- **The 1394 Ghent partition register folio verification.**
+
+---
+
+#### 1.2.7 Clara of Angelendale (d. 27 June 1448) — parentage unclear
+
+**Vredius reference:** Tabula XVI, p. 268. Bruges Dominican monastery *Liber obituum*.
+
+**Identification:** Prioress of the Bruges Dominican convent *ter Inghelendale* (also spelled *Angelendale*, "Angels' Dale"). Issued a diploma dated September 1423 from the convent *"ftaende by Brugghe inde parochie van Afsebrouck"* (standing by Bruges in the parish of Assebroek). Died 27 June 1448.
+
+**Original text — Liber obituum + 1423 convent diploma (p. 268):**
+
+> *Ibidem legitur: Suster Clara van Vlaendren/ in haeren tijt Prioreffe/ Obiit anno 1448. den 27. Iunius.*
+
+> *Exftat & hoc diploma: Wy Suster Clara van Vlaendren/ Prioreffe vanden Cloofter ende Conventе ter Inghelendale/ datmen beet te Iacopineffe/ ftaende by Brugghe inde parochie van Affebrouck &c. Dit was ghedaen in 't jaer ons Heeren alfmen fchreef vier hondert drientwintich den feftienften dach in September.*
+
+**Translation:** *In the same [register]: "Sister Clara van Vlaendren, in her time Prioress, died in the year 1448 the 27th [day] of June." And this diploma is extant: "We Sister Clara van Vlaendren, Prioress of the Cloister and Convent of Inghelendale, which is called the Jacobinessen, standing by Bruges in the parish of Assebrouck &c. This was done in the year of Our Lord one thousand four hundred and twenty-three, the sixteenth day of September."*
+
+**Vredius's explicit hedging on parentage:**
+
+> *Cujus ifta Clara fuerit filia mihi necdum liquet.*
+
+**Translation:** *Whose daughter this Clara was, is not yet clear to me.*
+
+**Evidentiary notes:**
+
+- **Parentage uncertain within Vredius itself.** Vredius places Clara in the Cressiacensis cohort section but explicitly declines to identify her father. She could be a daughter of Louis of Crécy (in which case a younger sister to Baudouin/Guido/Robert/etc.), or of some earlier-generation Van Vlaenderen bastard. The placement is speculative.
+- **Long-lived religious figure.** Issuing a diploma in 1423 and dying 1448 places her career mostly in the early 15th century. If she was born c. 1380–1390, she cannot be a daughter of Louis of Crécy (d. 1346) — the chronology doesn't work. More likely she is a granddaughter or niece of one of the Cressiacensis cohort.
+- **Jacopinessen / Ingelendale convent at Assebroek.** A well-documented 14th-century Dominican nunnery near Bruges. Dissolved in the 1580s during the iconoclastic troubles.
+
+**Site placement:** Downgraded. Parentage uncertain. Summarised in §7.5.
+
+**Research leads:**
+
+- **Ingelendale / Jacopinessen convent archives** — may survive in Bruges Stadsarchief or Flemish Dominican archives.
+- **Parentage resolution** — cross-reference with late 14th-century Flemish noble daughter lists in Gaillard or Damhouder.
+
+---
 
 ---
 
@@ -193,53 +484,84 @@ Vredius's *"Maleanus"*. The central figure of the Van Vlaenderen research — hi
 
 #### 1.3.1 Louis Haze — Lodewijk de Haze
 
-**Vredius reference:** Tabula XVI, p. 275 (identification); p. 275 (Wessegem grant from De Moor forfeiture, dated 1 April 1370).
+**Vredius reference:** Tabula XVI, p. 275. De l'Espinoy citation (marginal "Antiq. de Fl. l. 1. c. 34 f. 69") and Gaillard via the Nicopolis death co-attestation.
 
-**Identification:** Natural son of Louis of Male, Count of Flanders. Received the confiscated estates of Gerard de Moor after De Moor's condemnation for murder. Died at the Battle of Nicopolis, 28 September 1396, alongside his half-brothers Louis Friese and Jan sans terre.
+**Identification:** Natural son of Louis of Male, Count of Flanders. Received the confiscated estates of Gerard de Moor, Knight — forfeited to the Count after De Moor's conviction for the murder of Sir Jean Tant — by letters dated 1 April 1370 at Bruges. Had a single attested son, Renaud de Flandres, Lord of le Vacke (or Vaque), per a 24 February 1397 charter issued immediately after his father's death at Nicopolis the previous autumn. Died at the Battle of Nicopolis 28 September 1396 with his half-brothers Louis Friese and Jan sans terre.
 
-> *Verbatim De Moor confiscation grant text to be filled in. Vredius: "deMesfire Gerard de Moor, Chevalier, à luy confisquez, pour meurtre… données le premier jour du mois d'Avril en l'an 1370."*
+**Original text — De l'Espinoy on the De Moor grant and the 1397 Renault charter (p. 275):**
+
+> *De l'Espinoy: Meßire LOVTS, dict le Haefe de Flandres, fut aufsi baftard dudit Comte Louys de Male, & fut aufsi un trefrenommé Chevalier. Ie n'ay pas trouvé qu'il ait efté marié, mais je trouve bien qu'il eut un fils nommé Renault de Flandres, Seigneur de le Vacke, ce qu'appert par lettres de l'an 1397. le 24. jour du mois de Feburier; & ledit Comte son pere luy donna, pour fon entretenement, tous les biens de Meßire Gerard de Moor, Chevalier, à luy confifquez, pour meurtre commis en la perfonne de Meßire Iean Tant, Chevalier, par lettres dudit Comte, données le premier jour du mois d'Avril en l'an 1370.*
+
+**Translation:** *De l'Espinoy: Sir Louis, called the Haze [Hare] of Flandres, was also a bastard of the said Count Louis de Male, and was also a most renowned knight. I have not found that he was married, but I do find that he had a son named Renaud de Flandres, Lord of le Vacke, as appears by letters of the year 1397, the 24th day of February. And the said Count his father gave him, for his maintenance, all the goods of Sir Gerard de Moor, Knight, confiscated from him for the murder committed on the person of Sir Jean Tant, Knight — by letters of the said Count, given the first day of April in the year 1370.*
+
+**Original text — Gaillard on the Nicopolis death (p. 275):**
+
+> *Cæfus fuit, cum duobus fratribus, Ludovico & Ioanne, prælio Nicopolitano, in Bulgaria, ubi Ioannes Intrepidus, anno 1396, in manus hoftium venit; de quo hæc Pontus Heuterus: A parte Francorum cecidit Ioannes Viennenfis, Guilielmus Tremulius, cum filio Montarelli Domino, Guilielmus Eufius, Bornus, Montagellius, Philippus Barrenfis, tres Ludovici Maleani filii nothi. Gaillardus, de Ioanne capto, & tribus filiis nothis Ludovici Maleani interfectis: Inden flach van Nicopoli/ daer Hertogh Jan van Bourgongnen ghevanghen was/ waeren verflegben/ Mijn Heere LOYS van Vlaendren/ diemen hiet Hafe van Vlaendren/ Heere LODEWYCK van Vlaendren/ diemen hiet de Vriefe/ ende mijn Heere Jan van Vlaendren/ diemen hiet fonder landt/ alle baftaerden van edelen Grave Lodewijk van Male/ alle vrome Ridders/ en dat ghefchiede in 't jaer ons Heeren 1396.*
+
+**Translation:** *He was slain, with two brothers, Louis and John, at the battle of Nicopolis in Bulgaria, where John the Fearless [Duke of Burgundy] fell into enemy hands, in the year 1396. Of which Pontus Heuterus writes: "On the French side there fell John of Vienne, Guillaume Tremulius with the son of the lord of Montarel, Guillaume Eufius, Bornus, Montagellius, Philippus Barrensis, three bastard sons of Louis of Male." Gaillard on the capture of John [the Fearless] and the three slain bastard sons of Louis of Male: "In the battle of Nicopolis, where Duke John of Burgundy was captured, my Lord LOYS of Flanders, called Hase of Flanders; Lord LODEWYCK of Flanders, called the Frieze; and my Lord JAN of Flanders, called Without Land — all bastards of the noble Count Louis of Male, all valiant knights — were slain. And this happened in the year of Our Lord 1396."*
 
 **Evidentiary notes:**
 
-- A single attested son: **Renaud (Renault) de Flandres, Seigneur de le Vacke.** Attested only in the charter of 24 February 1397, immediately after his father's death at Nicopolis. No further record of Renaud's descent has been located.
-- Note the Inventaris Onroerend Erfgoed record gives 1372 for Louis de Haze receiving Wessegem, and 1365 for Boudewijn van Praet receiving Wessegem prior to De Haze. Vredius's 1370 date is for the De Moor confiscation specifically, which may be a different transfer event from the Wessegem holding per se.
+- **Three bastards of Louis of Male die at Nicopolis together.** Gaillard's Middle Dutch co-attestation confirms Louis Haze, Louis Friese (de Vriefe), and Jan sans terre (Sonder Landt) all dying 28 September 1396. This triple-death anchors the chronology for the Maleanus cohort.
+- **Pontus Heuterus (1535–1602) as corroboration.** Heuterus's *Rerum Burgundicarum libri sex* (published 1584) names French-side casualties at Nicopolis; his reference to "three bastard sons of Louis Maleanus" directly matches Gaillard's three-Flemish-Van-Vlaenderen-bastards death claim.
+- **De Moor-Tant feud.** Louis of Male's 1 April 1370 grant transfers "all the goods" of Gerard de Moor to Louis Haze — a substantial grant, but ambiguous: did it include landed seigneuries or only movable goods? The phrase *tous les biens* would normally include real property. The Wessegem lordship held later by Louis Haze (per Inventaris Onroerend Erfgoed attestation for 1372) may or may not derive from this specific confiscation.
+- **No marriage; single illegitimate son.** De l'Espinoy specifies "*Ie n'ay pas trouvé qu'il ait efté marié, mais je trouve bien qu'il eut un fils*" — no record of a marriage, but a son Renaud is attested. Renaud is therefore presumably also illegitimate. No further descent after Renaud is documented in Vredius; line terminates.
 
-**Site placement:** Mentioned peripherally on the Victor dossier page (as co-lord of Wessegem with Victor, per Inventaris Onroerend Erfgoed Hof van Wessegem entry). No dedicated page. Should be added to GapDossier §7 Downgraded and Deferred — "one documented son, no further descent."
+**Site placement:** Mentioned peripherally on the Victor dossier page (as co-lord of Wessegem with Victor, per Inventaris Onroerend Erfgoed Hof van Wessegem entry). No dedicated page. Added to §7 "Downgraded and Deferred" in this document.
 
-**Research leads:** None outstanding — line appears to terminate at Renaud.
+**Research leads:**
+
+- **1 April 1370 Bruges charter** — original letters-patent in Archives départementales du Nord (Lille), Chambre des Comptes series B.
+- **24 February 1397 Renault charter** — also in Lille Chambre des Comptes; records the son's post-father's-death succession or endowment.
+- **Renaud de Flandres, Lord of le Vacke** — the Vacke / Vaque lordship location needs identification; further generations from Renaud, if any, require Flemish-Artois archival tracing.
 
 ---
 
 #### 1.3.2 Louis Friese — *le Frison, Louis le Friese de Flandre, Lodewijk de Fries*
 
-**Vredius reference:** Tabula XVI, pp. 275–277 (identification, marriages, death at Nicopolis, Praet grant). Also pp. 277–278 for Johan I's generation and the Gruuthuse / Lodewijk II transition.
+**Vredius reference:** Tabula XVI, pp. 275–277 (identification, Praet grant, marriages, Nicopolis death). Continuation into pp. 277–278 for the Johan I / Lodewijk II transition (covered in §3).
 
-**Identification:** Natural son of Louis of Male. Granted the lands and baronies of Praet and La Woestine by his father on the occasion of his marriage to Marie van Ghistelles. Died at Nicopolis 28 September 1396. **Founder of the Praet line — six generations of surname-bearing descendants through Jan II van Vlaenderen (d. 1545).**
+**Identification:** Natural son of Louis of Male. Granted the lands and baronies of Praet and La Woestine by his father on the occasion of his marriage to Marie de Ghistelles. Died at Nicopolis 28 September 1396 with his half-brothers Louis Haze and Jan sans terre (§1.3.1). **Founder of the Praet line** — six generations of surname-bearing descendants through Jan II van Vlaenderen (d. 1545), covered in detail in §3.
 
-> *Verbatim Espinoy transcription (via Vredius) of the Praet grant, and Vredius's own notice of Louis Friese's marriages and death at Nicopoli "le 28. de Septembre 1396", to be filled in.*
+**Original text — De l'Espinoy on the Praet grant (Vredius p. 276):**
+
+> *De l'Espinoy: Louys, Comte de Flandres, dit de Male, fils au fufdit Comte Louys de Crefsy, eut aufsi plufieurs fils baftards, tous vaillans & trefhardis Chevaliers, à fçavoir Meßire LOVTS de Flandres, dit le Frifon, lequel eft fort recommandé par touttes les hiftoires pour un fage, vaillant, & tref-redoubté Chevalier; auquel ledit Comte donna, en advancement de fon mariage avec Dame MARIE de Guiftelles, Dame de Zwevegham & de Roofebeke, les terres & Baronies de Praet & de la Woeftine: & Meßire Iean de Flandres, leur fils, apres la mort de fondit pere, appointfa par devant les Efchevins de la Keure à Gand, avec ladicte Dame, fa mere, Dame de Zweveghem & de Roofebeke, de tous les biens à luy efcheus par la mort dudit Meßire Louys fon pere, en fon vivant Seigneur de Praet & de la Woeftine: & par ledit appointeement donna à ladicte Dame, fa mere, pour tous droicts de fon doüaire, la fomme de quarante huit livres de gros, monnoye de Flandres, fa vie durant: ce qu'appert par les regiftres defdicts Efchevins, de l'an mille quatre cens trente & un, fol. xxx. Il porta d'argent au canton de Flandres.*
+
+**Original text — Grimarez on the 24 September 1373 partage + 1396 death (Vredius p. 277):**
+
+> *D. Grimarezius: LOYS B. de Flandres, dit le Frifon, Chevalier, Seigneur de la Woeftine, qu'il eut en partage, par acte du 24. de Septembre 1373. Il efpoufa Dame MARIE de Guiftelles, fille de Meßire Rogier, Chevalier, Seign. de Dudzeele, Straten, & de Dame Ifabeau heretiere de Dudzeele. Il mourut aufsi en ladite bataille devant Nicopoli le 28. de Septembre 1396.*
+
+**Translation (De l'Espinoy):** *Louis, Count of Flanders, called de Male, son of the aforesaid Count Louis of Crécy, also had several bastard sons, all valiant and most hardy knights — namely Sir Louis de Flandres, called the Frieze, who is highly commended in all the histories as a wise, valiant, and most redoubted knight. To whom the said Count gave, in advancement of his marriage with Lady Marie de Ghistelles, Lady of Zwevegem and of Roosebeke, the lands and baronies of Praet and of la Woestine. And Sir Jean de Flandres, their son, after the death of his said father, settled before the aldermen of the Keure at Ghent, with the said Lady his mother, Lady of Zwevegem and of Roosebeke, concerning all the goods fallen to him by the death of the said Sir Louis his father, in his lifetime Lord of Praet and of la Woestine. And by the said settlement he gave to the said Lady his mother, for all rights of her dower, the sum of forty-eight pounds groten, money of Flanders, for her lifetime — as appears by the registers of the said aldermen, for the year 1431, folio 30. He bore silver with a canton of Flanders.*
+
+**Translation (Grimarez):** *D. Grimarez: Louis, bastard of Flandres, called the Frieze, Knight, Lord of la Woestine, which he had in partition, by act of 24 September 1373. He married Lady Marie de Guistelles, daughter of Sir Rogier, Knight, Lord of Dudzeele, Straten, and of Lady Isabeau heiress of Dudzeele. He also died at the said battle before Nicopoli, the 28th of September 1396.*
 
 **Evidentiary notes:**
 
-- Two marriages: (1) unnamed wife connected to La Woestine; (2) **Marie de Ghistelles** (24 September 1373 Woestine partage), daughter of Meßire Rogier de Ghistelles and Isabeau heretiere de Dudzeele.
-- Louis Friese also styled "dit le Frison" — epithet originating in Flanders chronicles, not a surname.
-- Descent: son Johan I van Vlaenderen (d. after 10 Sept 1439), who is the first "van Vlaenderen" bearer of record in this line.
+- **Grant date and form.** Two closely related dates in Vredius: De l'Espinoy cites the grant indirectly (as an *"advancement de fon mariage"* — pre-marriage grant), no specific calendar date given; Grimarez specifies **24 September 1373** as the *"acte"* date for the partage of la Woestine. Vredius p. 276 additionally references a separate **25 December 1373** donation-letter seen by Robert de Grave. Best reading: the partage/pre-marriage grant was 24 September 1373; a follow-up seigneurie donation charter was issued 25 December 1373. Both dates in Vredius are internally coherent.
+- **The 1431 Ghent Keure register.** Louis Friese's son Johan I, with his mother Marie de Ghistelles, settled the post-death partage of the Praet/Woestine estate before the Ghent Keure aldermen in 1431 (folio 30 of that year's register). This is Johan I's first documented act and the *terminus post quem* for Louis Friese's death-period settlement — see §3.1 for the subsequent 1439 Bruges Franc diploma.
+- **Heraldry: silver with canton of Flanders.** The standard bastard-line canton (flag of Flanders: a black lion on gold ground) on a silver field. Parallel to other Van Vlaenderen bastards' heraldic pattern.
+- **Marie de Ghistelles's Ghistelles pedigree.** Daughter of Rogier de Ghistelles (Knight, Lord of Dudzeele and Straten) and Isabeau heiress of Dudzeele. Note the Dudzeele lordship is brought into the Ghistelles line through her mother, not her father. This makes Marie's eventual inheritance of Dudzeele a potential future holding of the Van Vlaenderen-Praet line.
+- **Nicopolis death co-attested with Louis Haze and Jan sans terre.** See §1.3.1 for the full Gaillard Middle Dutch text naming all three.
 
-**Site placement:** Central. Featured on:
-- `LouisFrieseLineagePage` (public page: /research/louis-friese)
-- `PraetDossierPage` (public dossier: /research/praet-dossier)
-- `PraetLineageDossierPage` (public lineage detail: /research/praet-lineage-dossier)
-- `SurnameOriginsPage` Tier 1 progenitor table
-- `ResearchPage` branch card
+**Site placement:** Central to the project. Featured on `LouisFrieseLineagePage` (`/research/louis-friese`), `PraetDossierPage` (`/research/praet-dossier`), `PraetLineageDossierPage`, `SurnameOriginsPage` Tier 1 progenitor table, and `ResearchPage` branch card.
 
-**Research leads:** None outstanding for Louis Friese himself. For the Praet continuation, see §3.
+**Research leads:**
+
+- **24 September 1373 partage / 25 December 1373 donation** — originals in Lille Chambre des Comptes.
+- **1431 Ghent Keure register folio 30** — direct reading would recover full text of the Johan I + Marie de Ghistelles settlement.
+- For Praet continuation from Johan I forward, see §3.
 
 ---
 
-#### 1.3.3 Jan sans terre
+#### 1.3.3 Jan sans terre (d. Nicopolis 28 September 1396)
 
-> *Entry to be filled in. Vredius Tabula XVI pp. 281–283. The 1383 grant of Drincham castle from Louis de Male (verbatim from Espinoy via Vredius). Son Jan II m. Guillemette de Nevele, heiress of Lichtervelde. Third-generation Jacques de Drincham d. Veurne 1459. Fourth-generation attestations through c. 1473. Note the 1401 Philip-the-Bold legitimation of a separate "Ioannes de Drinquam" at Arras, which is a distinct legal act from Jan II's baronial descent.*
+**Vredius reference:** Tabula XVI, p. 280 (first entry on the page under the Louis Friese / Praet material closing and before Johan I's own entry).
 
-**Site placement:** Featured on `DrinchamDossierPage` (already up-to-date as of April 2026). See also §4 of this document.
+**Identification:** *Ioannes à Flandria, dictus Sine terra*. Natural son of Louis of Male, fifth bastard son per De l'Espinoy's numbering. Killed at Nicopolis 28 September 1396 with his half-brothers Louis Haze and Louis Friese — the triple-bastard-death event co-attested by Pontus Heuterus and Gaillard (see §1.3.1). Founder of the Drincham line.
+
+**Full entry with verbatim De l'Espinoy + Grimarez texts, 22 November 1383 Arras grant of Drincham, mother "Ivé de Lun," marriage to Wilhelmina de Nevele (heiress of Lichtervelde), and descent through Jan II + subsequent generations: see §4.1 of this document.**
+
+**Site placement:** `DrinchamDossierPage` covers Jan sans terre as the founder figure. See also §4 entire section.
 
 ---
 
@@ -319,11 +641,25 @@ Vredius's *"Maleanus"*. The central figure of the Van Vlaenderen research — hi
 
 #### 1.3.7 Isabella (m. Waleran of Landas)
 
-> *Entry to be filled in: married Waleran, Lord of Landas and Warlain, son of Mathieu. Attested in Grimarez and Van Hecke manuscript sources cited by Vredius. Name exits via marriage.*
+**Vredius reference:** Tabula XVI, p. 279. Grimarez and Van Hecke citations.
+
+**Identification:** Not a direct bastard daughter of Louis II de Male. She is the daughter of Johan I van Vlaenderen (Praet line, §3.1) and Johanna van Reygersvliet — therefore granddaughter of Louis Friese (§1.3.2) and great-granddaughter of Louis II. The placement of this entry under the Maleanus cohort (§1.3) is a vestige of the pre-validation supplement's framing and is retained here as a cross-reference rather than reorganised.
+
+**Her 1442 partition-court placement and adult marriage to Waleran de Landas (son of Mathieu): see §3.2.** The full 1442 Ghent partition text naming her as a minor, plus the Grimarez and Van Hecke attestations of her marriage, are covered there.
+
+**Site placement:** See §3.2 and the consolidated site-corrections backlog.
 
 #### 1.3.8 Landrada — not Louis II's direct daughter
 
-> *Entry to be filled in. Key correction: the supplement initially treated Landrada as a direct bastard daughter of Louis II. Per the 1442 Ghent partition cited in Vredius, she is great-granddaughter via Louis Friese → Johan I → Landrada. Canoness at St. Waudru, Mons. Never married. Entry to be filled in with verbatim 1442 partition text.*
+**Vredius reference:** Tabula XVI, p. 279. 1442 Ghent partition court record.
+
+**Identification:** Not a direct bastard daughter of Louis II de Male. She is the daughter of Johan I van Vlaenderen (Praet line, §3.1) — therefore great-granddaughter via Louis Friese → Johan I → Landrada. Canoness at St. Waudru, Mons. Never married.
+
+**Key correction:** The project supplement had initially, following one reading of Vredius, treated Landrada as a direct Louis II bastard daughter. Direct reading of the 1442 Ghent partition text resolves this definitively — she is named in that partition as one of three minor children of "M'her Janen van Vlaendren, Heere van Praet" (Johan I). This is a generational misattribution that the Pass 1 validation work corrected.
+
+**The full 1442 partition verbatim text and the correction notes: see §3.2.**
+
+**Site placement:** See §3.2 and the consolidated site-corrections backlog.
 
 ---
 
@@ -1160,10 +1496,22 @@ A 14th-century Isabella van Vlaanderen is associated with the Oosteeklo Abbey fo
 
 ### 7.5 The Louis I Cressiacensis cohort — downgraded, not invalidated
 
-See §1.2. The full cohort (Guido of Wedelghem, Baudouin + sons, Robert of Ghent, the knight-brothers, Maria, Catharina, Clara of Angelendale) is fully attested in Vredius. The cohort is downgraded for two reasons:
+See §1.2. The full cohort is now documented in Vredius. Members covered in §1.1–§1.2 above:
 
-- Time gap: Louis of Crécy died 1346, fifty years before Louis of Male. Any surviving surname-bearing descendants would need one more generation of continuity than the Maleanus lines, which sharply reduces the probability of surviving to the modern parish-record period.
-- Descent patterns: most lines exit via female marriage (Maria → Poelvoorde; Catharina → Boudins / vanden Eeckhoute; Guido → Margriete → Messem; Isabella of Somergem → Mirabello / Huerle), carry the surname out of the Van Vlaenderen line in one generation.
+- **§1.1.1 Isabella of Somergem** (daughter of Louis of Nevers, so great-aunt of Victor) — m. Simon de Mirabello; remarried Arnoldus van Huerle. 1345 Mirabello testament extant via Du Chesne.
+- **§1.2.1 Guido of Wedelghem** — m. daughter of Peter vander Zijpe; son Guido II + Catharina Christiaens; daughter Margareta of Wedelghem (§1.2.1b, d. 14 February 1411 tomb at St. Donatian Bruges, m. Tristram van Meffem 1396 then Ludovicus van Temseke); collateral Ludovicus + Agnes. Three-generation descent with Temseca collateral (Daniel, Petrus — both terminal).
+- **§1.2.1f Clara de Flandria** (d. 8 May 1362, Lille St. Donatian tomb) — daughter of Guy I of Wedelghem — m. Gillis Christiaens (d. 1376) then Georgius Braderix; son Ioannes Christiaens (d. 7 July 1377).
+- **§1.2.2 Baudouin + Catheline van Belle** — 5 October 1351 Kockman confiscation-grant at Bruges; 26 November 1365 Gertruyde annuity at Ghent; three sons Willem, Ludovicus, Ghislenus (1469/1409 guardianship problem, see §7.1).
+- **§1.2.3 Robertus à Flandria** (d. 24 August 1360, Ghent Jacopins cloister — destroyed iconoclastically).
+- **§1.2.4 The five knight-brothers** (Tristramus Dominus de Templo, Ruflardus, Lancelottus, Guido, Percevallus) — no documented descent.
+- **§1.2.5 Maria de Flandria** — 1 June 1351 bouteillerie grant to m. Oliverius de Poelvoorde.
+- **§1.2.6 Catharina de Flandria** — m. Petrus Boudins (d. 16 October 1426, St. Donaes Bruges tomb); remarried Cornelius vanden Eeckhoute.
+- **§1.2.7 Clara of Angelendale** (d. 27 June 1448, Prioress of Jacopinessen Bruges) — parentage uncertain per Vredius's own *necdum liquet*.
+
+The cohort is downgraded, not invalidated, for two reasons:
+
+- **Time gap.** Louis of Crécy died 1346, fifty years before Louis of Male. Any surviving surname-bearing descendants would need one more generation of continuity than the Maleanus lines, which sharply reduces the probability of surviving to the modern parish-record period.
+- **Descent patterns.** Most lines exit via female marriage (Maria → Poelvoorde; Catharina → Boudins / vanden Eeckhoute; Guido → Margriete → Messem → Temseca; Clara → Christiaens / Braderix; Isabella of Somergem → Mirabello / Huerle). Surname exits the Van Vlaenderen line in one or two generations. Baudouin's three-son Willem/Ludovicus/Ghislenus cohort is the only potentially-surviving male line, and its documentation beyond the 1469/1409 guardianship does not survive in Vredius.
 
 Retained in this document for completeness. Not given dedicated site real estate on the "probability of living surname-bearing descent" filter that governs site emphasis.
 
@@ -1191,5 +1539,6 @@ Buylaert 2011 *Repertorium van de Vlaamse adel* is the priority source for resol
 - **2026-04-19** — Batch 2 filled in: Section 3 (Praet line continuation). Seven generation entries completed: Johan I with the 10 September 1439 Bruges Franc diploma; Johan I's children with the 1442 Ghent partition fixing Landrada as Johan's daughter (count later corrected from seven to five — see correction below); Lodewijk II with the St. Bavo / St. Bartholomew day-of-death conflict within Vredius; Lodewijk III with the 1488 / 1490 date conflict (Grimarez vs Aalter tomb); Lodewijk IV with the full Aalter tomb Middle Dutch titulature and the Golden Fleece 1531 attestation; Jossine van Praet d. 10 December 1546 (Paschijne + Anna two-daughter structure); Jan II d. 10 December 1545 *avant son pere* (predeceased father by ten years, extinguishing the legitimate Praet male line a decade before Lodewijk IV himself died). Covers Tabula XVI pp. 275–279 plus Vol 2 Tabula XIX pp. 387–388.
 - **2026-04-19** — Batch 2 corrections + post-1545 research thread handoff. (1) Corrected §3.2 from "seven documented children" to "five documented children" of Johan I, based on re-audit of Vredius p. 280 Beveren tomb text for Jean de Flandre d. 1523 which explicitly identifies him as "fils de Meßire **Loys** de Flandres" (Lodewijk II), not as son of Johan I. Jean de Flandre d. 1523 and his brother Josse de Flandre d. after 1526 are therefore Lodewijk II's children, not Johan I's. (2) Added new §3.3a covering Jean and Josse as the Onlede cadet branch. (3) Fixed §3.3 note on Damhouder's six-child list to clarify that Lodewijk II's daughter "Iehenne" is distinct from Ioanna-m-Pouckes (Johan I's daughter). (4) Added §7.6 flagging the post-1545 Van Vlaenderen-Praet generation research thread. (5) Created companion handoff document `docs/research-threads/post-1545-van-vlaenderen-praet.md` consolidating evidence for the Jacob van Vlaanderen + Catharina van Boetzelaer + son Lodewijk generation discovered via the Huygens Vrouwenlexicon during the Batch 3 cross-reference re-audit. (6) Started site-corrections backlog at `docs/pass-2-site-corrections-backlog.md` — site-side corrections deferred pending Buylaert 2011 verification and bundled with other site changes accumulated during remaining batches.
 - **2026-04-19** — Batch 3 filled in: Section 4 (Drincham line). Six generation/document entries completed covering Tabula XVI pp. 280–283: §4.1 Jan sans terre and the 22 November 1383 Arras grant of Drincham (De l'Espinoy + Grimarez, Nicopolis death co-attested, mother "Ivé de Lun" noted); §4.2 Jan II + Isabella de Ghistelles (Dame de Viffaert), with the Drincham family MS genealogy naming Jan III as eldest son; §4.3 Jan III + Isabella de Vernieulles, with the bachelor son Philippus placeholder and Jan IV + Isabella de St. Omer (Moerbeke) terminating the senior male line in two daughters (elder → Mastain); §4.4 Jacques de Drincham + Guilielma de Bambeke with full Veurne monastery S. Nicolai tomb text (d. 10 April 1459 / 19 April 1473) plus sibling Isabella de Drincham + Ghislebert de Lannoy tomb at Lille S. Maurice (d. 16 February 1451 / 22 April 1462) plus brothers Ludovicus and Franco attested by name; §4.5 the 1401 Philip-the-Bold legitimation at Arras of illegitimate son Ioannes (mother Iohanna Svinx) with full verbatim Latin text of the chancery diploma and a note correcting the potential "Philippus Bonus" misreading (Bonus natalia = "good birth-status," not a cognomen); §4.6 Simon de Flandria dictus Drincham + Margareta de Wissoc (Dame de Nieuwerleet), their daughter Marguerite's two marriages (1. Denys de St. Omer; 2. Charles de Halewijn) ending the male-line Drincham surname descent. Not user-facing; research record only.
+- **2026-04-19** — Batch 4 filled in: Section 1.1 (Isabella of Somergem) and Section 1.2 (full Louis I Cressiacensis cohort), covering Tabula XVI pp. 266–274. Entries: §1.1.1 Isabella of Somergem with Ghent Middle Dutch register citation + Du Chesne's 1345 Mirabello testament extract; §1.2.1 Guido of Wedelghem with the Bruges Rekenkamer wedding-gift register + 1385 Hepke/Ardenburch Ambocht feudal transaction + 1396 Ghent Oud-Burg Leenhof 12 July 1396 act documenting three generations of the Wedelghem cadet (Guy I, Guy II, Lodewijk); §1.2.1a–§1.2.1g cadets: Guido II + Catharina Christiaens, Margareta of Wedelghem with 14 February 1411 Lille St. Donatian tomb, Ludovicus van Temseka senior (d. 21 March 1439), Daniel, Petrus + Barbara (St. Walburga Bruges), Clara de Flandria (d. 8 May 1362), Ioannes Christiaens (d. 7 July 1377); §1.2.2 Baudouin + Catheline van Belle with 5 October 1351 Bruges Kockman confiscation-grant, 26 November 1365 Ghent Gertruyde annuity, 1469/1409 guardianship problem flagged; §1.2.3 Robertus à Flandria (d. 24 August 1360, Ghent Jacopins); §1.2.4 the five knight-brothers (Tristramus/Ruflardus/Lancelottus/Guido/Percevallus, "broeders van Lodewijk van Male"); §1.2.5 Maria + Oliverius de Poelvoorde with 1 June 1351 bouteillerie grant; §1.2.6 Catharina + Petrus Boudins with 1388/1394/1420 Ghent partition acts + 1426 St. Donaes Bruges tomb; §1.2.7 Clara of Angelendale (d. 27 June 1448) with Vredius's own "necdum liquet" parentage hedge; §1.3.1 Louis Haze filled in with full De l'Espinoy on 1 April 1370 Bruges De Moor confiscation-grant + 24 February 1397 Renault charter + Gaillard Middle Dutch on Nicopolis triple-death + Pontus Heuterus corroboration; §1.3.2 Louis Friese filled in with full De l'Espinoy Praet grant + 1431 Ghent Keure register f. 30 reference + Grimarez 24 September 1373 partage date + confirmed 28 September 1396 Nicopolis death; §1.3.3 Jan sans terre converted to cross-reference to §4.1; §1.3.7 Isabella-m-Landas and §1.3.8 Landrada converted to cross-references to §3.2; §7.5 Cressiacensis cohort summary expanded with per-member detail. Not user-facing; research record only.
 
 ---
