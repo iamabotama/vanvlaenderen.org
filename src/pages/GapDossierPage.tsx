@@ -93,10 +93,10 @@ export default function GapDossierPage() {
             comital-bastard branch whose surname use is documented across six generations through to
             Jan II van Vlaenderen (d. 10 December 1545). The legitimate Praet male line ends with Jan II,
             who died without issue. However, a documented cadet branch &mdash; Josse de Flandre, son of
-            Johan I, married Martina van Moerkerke &mdash; survived until at least 1592, directly overlapping
-            with the first parish-record generation of the Meetjesland cluster. The surname form used by
-            Josse's descendants has not yet been confirmed in sources currently reviewed, but the branch
-            is documented and the question remains open.
+            Lodewijk II and grandson of Johan I, married Martina van Moerkerke &mdash; survived until at
+            least 1592, directly overlapping with the first parish-record generation of the Meetjesland
+            cluster. The surname form used by Josse's descendants has not yet been confirmed in sources
+            currently reviewed, but the branch is documented and the question remains open.
           </p>
           <p>
             The gap, precisely stated, is not a single span but a structural problem: two comital lines
@@ -225,7 +225,7 @@ export default function GapDossierPage() {
             2. Buylaert &mdash; Josse de Flandre cadet branch documentation
           </h3>
           <p>
-            Josse de Flandre's line (son of Johan I) is documented by Buylaert [FMG 881, 882] as surviving
+            Josse de Flandre's line (son of Lodewijk II, grandson of Johan I) is documented by Buylaert [FMG 881, 882] as surviving
             until at least 1592 &mdash; directly overlapping with the first Meetjesland parish-record generation.
             The underlying Buylaert prosopographical sources have not been consulted directly. Tracing Josse's
             children and grandchildren into parish or estate records, whether under <em>van Vlaenderen</em>,{' '}

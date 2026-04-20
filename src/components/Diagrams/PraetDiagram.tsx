@@ -47,7 +47,7 @@ const diagram: DiagramDef = {
       cfg: {
         name: 'Johan I van Vlaenderen', dates: 'd. after 10 Sep 1439',
         tag: 'LORD OF PRAET',
-        body: "Son of Louis Friese. Issued own charter as Lord of Praet 10 Sep 1439. Married Johanna van Reygersvliet. Had seven documented children.",
+        body: "Son of Louis Friese. Issued own charter as Lord of Praet 10 Sep 1439. Married Johanna van Reygersvliet. Had five documented children (see sibling row below).",
         src: 'FMG MedLands [872,873,875]',
         color: C.praet, ev: 'direct', w: 200, h: 82,
       },
@@ -57,7 +57,7 @@ const diagram: DiagramDef = {
       id: 'jean', x: X1, y: ROW_Y,
       cfg: {
         name: 'Jean de Flandre', dates: 'd. 6 Sep 1523',
-        body: "Son of Johan I. Heer van Onlede en Beveren. Grand Bailiff of Bruges. Married Marguerite Boulengier.",
+        body: "Son of Lodewijk II (grandson of Johan I). Heer van Onlede en Beveren. Grand Bailiff of Bruges. Married Marguerite Boulengier. Note: diagram position shows him alongside Johan I's children for compact layout; biologically one generation lower.",
         src: 'FMG MedLands [879,880]',
         color: C.blue, ev: 'direct', w: NODE_W, h: 60,
       },
@@ -67,7 +67,7 @@ const diagram: DiagramDef = {
       cfg: {
         name: 'Josse de Flandre', dates: 'd. after 1526',
         tag: 'LINE TO 1592',
-        body: "Son of Johan I. Inherited lordships of Onlede, Bevere and Wijchuize 1523. Married Martina van Moerkerke. Multiple children; family survived to at least 1592.",
+        body: "Son of Lodewijk II (grandson of Johan I). Inherited lordships of Onlede, Bevere and Wijchuize from his brother Jean in 1523. Married Martina van Moerkerke. Multiple children; family survived to at least 1592. Note: diagram position shows him alongside Johan I's children for compact layout; biologically one generation lower.",
         src: 'FMG MedLands [881,882]; Buylaert',
         color: C.blue, ev: 'direct', w: NODE_W, h: 74,
       },
@@ -135,19 +135,20 @@ const diagram: DiagramDef = {
   connections: [
     { from: 'lm',  to: 'fri', color: C.praet },
     { from: 'fri', to: 'j1',  color: C.praet },
-    // Johan I to all siblings in the row
-    { from: 'j1',  to: 'jean',  color: C.blue },
-    { from: 'j1',  to: 'josse', color: C.blue },
+    // Johan I to his five documented children
     { from: 'j1',  to: 'l2',    color: C.praet },
     { from: 'j1',  to: 'jeanne', color: C.blue },
     { from: 'j1',  to: 'oth',   color: C.blue },
-    // Descent from Lodewijk II
+    // Lodewijk II to his children (Jean and Josse positioned in Gen 3 row for compact layout)
+    { from: 'l2',  to: 'jean',  color: C.blue },
+    { from: 'l2',  to: 'josse', color: C.blue },
+    // Descent from Lodewijk II (main line)
     { from: 'l2',  to: 'l3',  color: C.praet },
     { from: 'l3',  to: 'l4',  color: C.praet },
     { from: 'l4',  to: 'j2',  color: C.red },
   ],
   labels: [
-    { x: X3, y: 350, text: "CHILDREN OF JOHAN I (SIBLINGS)", color: '#f0e8d0' },
+    { x: X3, y: 350, text: "JOHAN I\u2019S CHILDREN (+ GEN 4 JEAN & JOSSE FOR LAYOUT)", color: '#f0e8d0' },
   ],
   annotations: [
     { x: X3 + 220, y: 680, text: '\u2190 1517: 6 fiefs at Knesselare (Meetjesland)', color: C.focus },

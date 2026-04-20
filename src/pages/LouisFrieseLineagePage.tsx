@@ -73,15 +73,15 @@ export default function LouisFrieseLineagePage() {
           <PraetDiagram />
           <div className="sr-only">
             <h3>Praet line lineage — text summary</h3>
-            <p>This diagram shows the descent from Louis II de Male, Count of Flanders (1330&ndash;1384), through his natural son Louis Friese van Vlaenderen (c.1350 &ndash; 28 September 1396), Lord of Praet and Woestine, killed at Nicopolis. Louis Friese's son Johan I van Vlaenderen (died after 10 September 1439), Lord of Praet, had seven documented children: Jean de Flandre (died 6 September 1523, Grand Bailiff of Bruges); Josse de Flandre (died after 1526, line survived to at least 1592); Lodewijk II van Vlaenderen (died 1488; two primary sources disagree on the day &mdash; the Aalter tomb inscription records St.&nbsp;Bavo&rsquo;s day, 1&nbsp;October, while de l&rsquo;Espinoy records St.&nbsp;Bartholomew, 24&nbsp;August); Jeanne de Flandre (died after 1446); and three further daughters Marguerite, Isabelle, and Landrade. Lodewijk II's son was Lodewijk III van Vlaenderen (died 1488 per Grimarez or 1490 per the Aalter tomb &mdash; sources disagree by two years), whose son was Lodewijk IV van Vlaenderen (died 1555), Knight of the Golden Fleece (1531), Grand Bailiff of Ghent and Bruges, Stadtholder of Holland and Zeeland, and advisor to Charles V. Lodewijk IV&rsquo;s wife Jossine van Praet predeceased him on 10 December 1546. Lodewijk IV&rsquo;s only son Jan II van Vlaenderen (died 10 December 1545) predeceased his father by ten years, dying without issue and ending the legitimate Praet male line a decade before Lodewijk IV himself died in 1555. The Praet line functions as a documented research control: men styled van Vlaenderen in 16th-century records cannot be assigned to Victor's descendants without first eliminating a possible Praet connection.</p>
+            <p>This diagram shows the descent from Louis II de Male, Count of Flanders (1330&ndash;1384), through his natural son Louis Friese van Vlaenderen (c.1350 &ndash; 28 September 1396), Lord of Praet and Woestine, killed at Nicopolis. Louis Friese's son Johan I van Vlaenderen (died after 10 September 1439), Lord of Praet, had five documented children: Lodewijk II van Vlaenderen (the heir); Ioanna de Flandre, married Jean of Pouques in 1446; Margareta de Flandre, married Louis de Bailleul (attribution structurally inferential); Lisbette de Flandre, married Waleran of Landas; and Landrada de Flandre, canoness at St. Waudru in Mons. Lodewijk II van Vlaenderen (died 1488 &mdash; two primary sources disagree on the day, the Aalter tomb inscription recording St.&nbsp;Bavo&rsquo;s day, 1&nbsp;October, while de l&rsquo;Espinoy records St.&nbsp;Bartholomew, 24&nbsp;August) in turn had six children by Louise de Bruges per Damhouder's extract on Vredius p. 278: Loys (Lodewijk III, the heir), Jean de Flandre (d. 6 September 1523, Heer van Onlede en Beveren, Grand Bailiff of Bruges), Jacques, Josse de Flandre (d. after 1526, line survived to at least 1592 per Buylaert), Louise, and Iehenne. Lodewijk III van Vlaenderen (died 1488 per Grimarez or 1490 per the Aalter tomb &mdash; sources disagree by two years) in turn produced Lodewijk IV van Vlaenderen (died 1555 or 1556), Knight of the Golden Fleece (1531), Grand Bailiff of Ghent and Bruges, Stadtholder of Holland and Zeeland, and advisor to Charles V. Lodewijk IV&rsquo;s wife Jossine van Praet predeceased him on 10 December 1546. Lodewijk IV&rsquo;s only son Jan II van Vlaenderen (died 10 December 1545) predeceased his father by ten years, dying without issue and ending the legitimate Praet male line a decade before Lodewijk IV himself died. The Praet line functions as a documented research control: men styled van Vlaenderen in 16th-century records cannot be assigned to Victor's descendants without first eliminating a possible Praet connection.</p>
           </div>
         </div>
 
-        {/* ── Johan I's Seven Children ────────────────────────────── */}
+        {/* ── Johan I's Five Children ────────────────────────────── */}
         <section className={styles.section}>
-          <h2>Johan I's Seven Documented Children <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
+          <h2>Johan I's Five Documented Children <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            Johan I van Vlaenderen (d. after 10 Sep 1439), lord of Praet and Woestine, issued his own charter as lord of Praet on 10 September 1439 [FMG 873]. He married Johanna van Reygersvliet [875]. Seven children are documented from primary sources:
+            Johan I van Vlaenderen (d. after 10 Sep 1439), lord of Praet and Woestine, issued his own charter as lord of Praet on 10 September 1439 [FMG 873]. He married Johanna van Reygersvliet [875]. Five children are documented from primary sources:
           </p>
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '1rem', fontSize: '0.88rem' }}>
@@ -97,48 +97,39 @@ export default function LouisFrieseLineagePage() {
                 <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)' }}>
                   <td style={{ padding: '10px', fontWeight: 'bold' }}>Lodewijk II</td>
                   <td style={{ padding: '10px' }}>d. 1488</td>
-                  <td style={{ padding: '10px' }}>Lord of Praet; married Louise de Bruges</td>
-                  <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Epitaph [876]</td>
+                  <td style={{ padding: '10px' }}>The heir; Lord of Praet; married Louise de Bruges</td>
+                  <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Aalter epitaph [876]</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)', backgroundColor: 'rgba(255,255,255,0.02)' }}>
-                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Jean de Flandre</td>
-                  <td style={{ padding: '10px' }}>d. 6 Sep 1523</td>
-                  <td style={{ padding: '10px' }}>Heer van Onlede; Grand Bailiff of Bruges</td>
-                  <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Epitaph [879]</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)' }}>
-                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Josse de Flandre</td>
-                  <td style={{ padding: '10px' }}>d. after 1526</td>
-                  <td style={{ padding: '10px' }}>Inherited Onlede, Bevere, Wijchuize; married Martina van Moerkerke; line survived to 1592</td>
-                  <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Buylaert [881,882]</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)', backgroundColor: 'rgba(255,255,255,0.02)' }}>
-                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Jeanne de Flandre</td>
-                  <td style={{ padding: '10px' }}>d. after 1446</td>
-                  <td style={{ padding: '10px' }}>Married Jean Seigneur de Poucques, Vicomte d'Ypres</td>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Ioanna (Jeanne) de Flandre</td>
+                  <td style={{ padding: '10px' }}>m. 1446</td>
+                  <td style={{ padding: '10px' }}>Married Jean, Lord of Pouques, Vicomte d&rsquo;Ypres</td>
                   <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Charter [884,885]</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)' }}>
-                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Marguerite de Flandre</td>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Margareta (Marguerite) de Flandre</td>
                   <td style={{ padding: '10px' }}>fl. c.1440s</td>
-                  <td style={{ padding: '10px' }}>Married Louis de Bailleul</td>
+                  <td style={{ padding: '10px' }}>Married Louis de Bailleul. Attribution structurally inferential (see note below).</td>
                   <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Vredius MS [886]</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)', backgroundColor: 'rgba(255,255,255,0.02)' }}>
-                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Isabelle de Flandre</td>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Lisbette (Isabelle) de Flandre</td>
                   <td style={{ padding: '10px' }}>fl. c.1440s</td>
-                  <td style={{ padding: '10px' }}>Married Waleran de Landas</td>
+                  <td style={{ padding: '10px' }}>Married Waleran, Lord of Landas and Warlain</td>
                   <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Vredius MS [887]</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid rgba(232, 184, 48, 0.1)' }}>
-                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Landrade de Flandre</td>
+                  <td style={{ padding: '10px', fontWeight: 'bold' }}>Landrada (Landrade) de Flandre</td>
                   <td style={{ padding: '10px' }}>fl. c.1460s</td>
-                  <td style={{ padding: '10px' }}>Canoness at Mons Sainte-Waudru</td>
+                  <td style={{ padding: '10px' }}>Canoness at St. Waudru, Mons; never married</td>
                   <td style={{ padding: '10px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Vredius MS [888]</td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <p style={{ fontSize: '0.85rem', lineHeight: '1.7', color: 'var(--text-muted)', marginTop: '1rem', fontStyle: 'italic' }}>
+            <strong>Correction noted.</strong> An earlier version of this page attributed seven children to Johan I, including Jean de Flandre (d. 1523, Heer van Onlede en Beveren, Grand Bailiff of Bruges) and Josse de Flandre (d. after 1526). Direct reading of Vredius in April 2026 resolves these two figures as sons of Lodewijk II, not of Johan I: the Beveren tomb inscription on Vredius p. 280 explicitly identifies Jean&rsquo;s father as &lsquo;Messire <strong>Loys</strong> de Flandres, Chevalier, Saigneur de Praet&rsquo; (i.e., Lodewijk II, d. 1488). Damhouder&rsquo;s list of Lodewijk II&rsquo;s six children by Louise de Bruges on Vredius p. 278 confirms both Jean and Josse as Lodewijk II&rsquo;s sons. Margareta de Flandre&rsquo;s attribution to Johan I is structurally inferential (from the &lsquo;sorores Ludovici Patris&rsquo; heading on Vredius p. 278) rather than directly textual. A March 1442 Ghent partition places the three minor children (Lodewijk II, Lisbette, and Landrada) under guardianship after Johan I&rsquo;s death; Ioanna and Margareta were by then already married. See the Praet Lineage Detail dossier for the Lodewijk II six-children enumeration. Buylaert 2011 (not yet consulted directly) is the definitive arbiter on these attributions.
+          </p>
         </section>
 
         {/* ── 1517 Knesselare Charter ─────────────────────────────── */}
@@ -206,7 +197,7 @@ export default function LouisFrieseLineagePage() {
               aria-label="House of Praet: Lineage Dossier"
             >
               <h3>House of Praet: Lineage Dossier</h3>
-              <p>Six generations with primary-source confirmed data. Includes Johan I's seven children, Josse de Flandre cadet branch, and the 1517 Knesselare charter.</p>
+              <p>Six generations with primary-source confirmed data. Includes Johan I's five children, Lodewijk II's six children (including Jean de Flandre and the Josse de Flandre cadet branch), and the 1517 Knesselare charter.</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
                 View Lineage Evidence &rarr;
               </span>
