@@ -582,38 +582,45 @@ Six documented generations from Louis Friese (d. 1396, §1.3.2) through Jan II v
 
 ---
 
-### 3.2 Johan I's seven documented children
+### 3.2 Johan I's five documented children
 
-**Vredius reference:** Tabula XVI, pp. 277–279, and the Damhouder extract for Lodewijk II on p. 278 which names the six children "Loys, Iean, Iaques, Ioffe, Loyfe, & Iehenne de Flandre" — plus Landrada from the 1442 Ghent partition at p. 279.
+**Vredius reference:** Tabula XVI, pp. 278–279. The 1442 Ghent partition at p. 279 names the three minor children under guardianship; two additional adult daughters are identified through the *sorores Ludovici Patris* structural grouping at p. 278 and through Gaillard's explicit attribution of Ioanna's parentage.
 
-**Identification:** The Damhouder list of Lodewijk II's own children includes a Louise and a Jehenne who are Lodewijk II's siblings, not his own daughters — the passage gives Johan I's full issue via his wife Louise de Bruges. Combining Damhouder with subsequent Vredius entries, Johan I's children are:
+**Identification:** Johan I van Vlaenderen (d. 1439–1442) and his wife Johanna van Reygersvliet had five documented children, per Vredius:
 
-1. **Lodewijk II van Vlaenderen** (Heer van Praet, d. 1488) — eldest son and heir. See §3.3.
-2. **Jean de Flandre** (d. 6 September 1523, Heer van Onlede, Beveren bij Roeselare; Grand Bailiff of Bruges) — see §3.6 below for tomb text.
-3. **Josse de Flandre** (d. after 1526) — married Martina van Moerkerke; inherited Onlede, Beveren, Wijchuize from his brother Jean; line continued to at least 1592 per Buylaert [FMG 881, 882]. See §3.6.
-4. **Jeanne de Flandre** — marriage reference in Ghent partition records 1446 to Jean, Lord of Pouckes, Viscount of Ypres (son of Eulard + Anastasia d'Oultre). Children Roland and Anastasia de Pouckes.
-5. **Marguerite de Flandre** — married Louis de Bailleul, Maréchal héritier de Flandre.
-6. **Isabelle de Flandre** — married Waleran, Lord of Landas. See §1.3.7 (same name, different person as Isabella the Louis II direct bastard).
-7. **Landrada de Flandre** — canoness at St. Waudru, Mons; never married. Her parentage is fixed by the 1442 Ghent partition quoted on p. 279 which names her guardian alongside her siblings Lodewijk II and Isabella.
+1. **Lodewijk II van Vlaenderen** (Heer van Praet, d. 1488) — heir and eldest son. See §3.3.
+2. **Isabella/Lisbette de Flandria** (m. Waleran, Lord of Landas and Warlain, son of Mathieu). Minor in 1442 partition as "Joncf. Lisbette"; adult marriage to Waleran de Landas is documented via Grimarez and Van Hecke on p. 279. See §1.3.7 (same name, different person as Isabella the Louis II direct bastard, who was her great-aunt).
+3. **Landrada de Flandria** — canoness at St. Waudru, Mons; never married. Minor in 1442 partition as "Joncf. LANDRADA." See §1.3.8 for the correction placing her here (Johan I's daughter) rather than as a Louis II direct bastard.
+4. **Ioanna/Jeanne de Flandria** — married 1446 to Jean, Lord of Pouckes, Viscount of Ypres (son of Eulard and Anastasia d'Oultre). Two children: Roland and Anastasia de Pouckes.
+5. **Margareta de Flandria** — married Louis de Bailleul, Mareschal héritier de Flandre, Lord of Donlieu.
 
-**Original text — Dutch partition 1442 (p. 279), confirming Landrada's parentage:**
+**Original text — 1442 Ghent partition (p. 279), listing the three minor children:**
 
 > *Acta Curiæ partitionum Gandensium anni 1442, recensent tutores Ludovici, Isabellæ, & Landradæ, liberorum Ioannis de Flandria, Domini de Praet, hoc modo: Joncheer Pieter van Boeleer wiert Vooght van Lodewijc/ Joncf. Lisbette/ ende Joncf. LANDRADA van Vlaendren/ fil. M'her Janen van Vlaendren/ Heere van Praet/ in Martio.*
 
 **Translation:** *The acts of the Ghent partition court of the year 1442 record the guardians of Ludovicus, Isabella, and Landrada, children of Johan of Flanders, Lord of Praet, in this manner: "Joncheer Peter van Boeleer became guardian of Lodewijk, Lady Lisbette, and Lady Landrada van Vlaendren, daughter of Sir Jan van Vlaendren, Lord of Praet, in March."*
 
+**Original text — Gaillard on Ioanna, p. 278:**
+
+> *Collectanea Gaillardi: Meßire IEAN, Seigneur de Pouques, espousa IEANNE de Flandres, fille de Meßire Iean de Praet & de la Woestine.*
+
+**Translation:** *Gaillard's notes: Sir Jean, Lord of Pouques, married Jeanne de Flandres, daughter of Sir Jean of Praet and Woestine.*
+
 **Evidentiary notes:**
 
-- **Landrada is great-granddaughter of Louis II de Male**, not his direct bastard daughter. The 1442 Ghent partition fixes her as child of Johan I (Praet) — therefore grandchild of Louis Friese and great-grandchild of Louis II. The project supplement had initially, following one reading of Vredius, treated Landrada as a direct Louis II bastard; direct reading of the 1442 partition resolves this definitively. Cross-reference §1.3.8.
-- **Jean de Flandre's Onlede line and Josse's cadet branch** are attested via Buylaert; see §3.6 for their separate entries.
-- **Guardianship date:** The 1442 partition places Johan I as deceased by March 1442 (his minor children are under guardianship). Taken with the 10 September 1439 diploma, Johan I's death falls within the ~30 months between September 1439 and March 1442.
+- **Correction from Batch 2 initial reading.** An earlier draft of this section attributed seven children to Johan I — including Jean de Flandre d. 6 September 1523 (Heer van Onlede en Beveren, Grand Bailiff of Bruges) and Josse de Flandre d. after 1526. Re-audit against the Beveren tomb text on Vredius p. 280 resolves these figures as children of **Lodewijk II**, not Johan I: the tomb explicitly identifies Jean's father as "Meßire **Loys** de Flandres, Chevalier, Saigneur de Praet" (i.e., Lodewijk II, d. 1488). Damhouder's list of Lodewijk II's six children by Louise de Bruges on p. 278 includes "Iean" and "Iosse," confirming them as Lodewijk II's sons. See §3.3 for the full six-children list.
+- **Landrada is great-granddaughter of Louis II de Male**, not his direct bastard daughter. The 1442 Ghent partition fixes her parentage definitively; she is child of Johan I, grandchild of Louis Friese, great-grandchild of Louis II. Cross-reference §1.3.8.
+- **Guardianship date:** The 1442 partition places Johan I as deceased by March 1442 (his minor children are under guardianship). Taken with his 10 September 1439 diploma, Johan I's death falls within the ~30 months between September 1439 and March 1442.
+- **Margareta's attribution is inferential, not directly textual.** Vredius's Grimarez and Van Hecke extracts for Margareta (m. Louis de Bailleul) on p. 278 do not explicitly name her father. Her placement here derives from the structural header *"sorores Ludovici Patris"* on p. 278 — "sisters of Ludovicus the father" (= sisters of Lodewijk II = daughters of Johan I) — combined with the adjacent Gaillard attribution of Ioanna to "Meßire Iean de Praet & de la Woestine." Margareta's direct-textual parentage has not been located; the attribution is structurally consistent but less firm than the other four children.
+- **Attribution disagreement with FMG MedLands.** FMG MedLands footnotes [879] (for Jean de Flandre d. 1523) and [881, 882] (for Josse de Flandre d. after 1526) appear to place these figures under Johan I rather than under Lodewijk II. This is also the current framing on the public `PraetLineageDossierPage` and `LouisFrieseLineagePage`. Resolution depends on consulting Buylaert 2011 *Repertorium van de Vlaamse adel* pp. 881–882 directly, which has not yet been possible (the volume is not digitised). Pending verification, the Vredius primary text ("fils de Meßire Loys de Flandres" on the Beveren tomb) is treated as the authoritative reading here.
 
-**Site placement:** Summarised on `PraetLineageDossierPage` ("Johan I's Seven Documented Children" subsection). `LouisFrieseLineagePage` has a dedicated table listing all seven.
+**Site placement:** Publicly documented on `PraetLineageDossierPage` ("Johan I's Seven Documented Children" subsection — currently framed with the pre-correction seven-children list) and on `LouisFrieseLineagePage`. Site corrections deferred to a consolidated site-correction patch after Buylaert verification; see `docs/pass-2-site-corrections-backlog.md` for the specific items identified.
 
 **Research leads:**
 
-- **RAG Jaarregisters van de Keure, 1442 volume** — direct access to the partition of Johan I's estate would yield full guardianship terms, property descriptions, and potentially witnesses.
-- **Buylaert (2011)** *Repertorium van de Vlaamse adel* — full entries on Jean de Flandre and Josse de Flandre; worth separate documentation beyond what reaches Vredius via footnote.
+- **Buylaert 2011** *Repertorium van de Vlaamse adel* pp. 881–882 — direct reading required to verify the Jean / Josse parentage question against this authoritative modern source
+- **RAG Jaarregisters van de Keure, 1442 volume** — direct access to the partition of Johan I's estate would yield full guardianship terms, property descriptions, and potentially witnesses, plus may clarify whether Ioanna and Margareta (adult daughters) also appear in the partition in any adult capacity
+- **Margareta de Flandria's direct parentage** — a tomb or marriage contract explicitly naming her father would resolve the structural-inference attribution
 
 ---
 
@@ -648,7 +655,7 @@ The year (1488) is firm in both. The day is genuinely in dispute within Vredius 
 
 **Evidentiary notes — general:**
 
-- **Six children listed** (per Damhouder): Loys (Lodewijk III, heir), Iean (Jean de Flandre of Beveren bij Roeselare), Iaques, Iossе, Loyfe, and Iehenne (Jeanne de Flandre who married Jean of Pouckes) — nota bene that Damhouder's list of Lodewijk II's children overlaps with the siblings of Lodewijk II himself (also named Iean, Iossе, Iehenne). These are distinct persons across two generations.
+- **Six children listed by Damhouder** (p. 278): Loys (= Lodewijk III, heir — see §3.4), **Iean (= Jean de Flandre d. 6 September 1523, Heer van Onlede en Beveren bij Roeselare, Grand Bailiff of Bruges — see §3.3a)**, Iaques, **Ioffe (= Josse de Flandre d. after 1526, Heer van Onlede en Beveren en Wijchuize after his brother's death, line continued to at least 1592 per Buylaert — see §3.3a)**, Loyfe (Louise), and Iehenne. **Note on possible name confusion:** Lodewijk II's daughter "Iehenne" here is a *different* person from Ioanna/Jeanne de Flandria who married Jean of Pouckes in 1446 (who is Johan I's daughter per Gaillard's explicit attribution — see §3.2). The two Jeannes are in adjacent generations and must not be conflated. Similarly, Lodewijk II's "Iean" here is a different person from his own father's brother "Iean" (if any existed in Johan I's cohort). Damhouder's list does not provide spouse/death/lordship details beyond the naming; such details for Iean and Ioffe (where known) are covered in §3.3a below.
 - **The Gruuthuse connection.** Louise de Bruges was daughter of the celebrated Jean V de Bruges, Lord of Gruuthuse (d. 1492), a Burgundian courtier and librarian. The marriage tied the Praet branch to the most culturally prestigious lordship in late-15th-century Bruges.
 
 **Site placement:** Quoted in the `PraetLineageDossierPage` Generation 3 prose section after the April 2026 Pass 1 patch; the public page now presents both dates as primary-source disagreements rather than picking one.
@@ -657,6 +664,48 @@ The year (1488) is firm in both. The day is genuinely in dispute within Vredius 
 
 - **Aalter church tomb physical survival** — the 1488 tomb is a large blue-stone monument per Gaillard's description ("*in medio chori de Altere, in tumba è lapide cæruleo*" on p. 387). Parts may survive despite iconoclasm damage. St. Corneliuskerk Aalter is the current building; any surviving heraldic stones would be in the choir or in the local heritage collection (Heemkring Aalter).
 - **Damhouder's underlying source** — Damhouder was Joos de Damhouder (1507–1581), Bruges jurist. His MS notes were later printed. Direct consultation of his *Praxis rerum civilium* (1567) and associated MS apparatus might indicate whether he had the St. Bartholomew reading from the tomb directly or from an intermediary source.
+
+---
+
+### 3.3a Jean de Flandre (d. 1523) and Josse de Flandre (d. after 1526) — the Onlede cadet branch
+
+**Vredius reference:** Tabula XVI, p. 280 (the Beveren tomb inscription for Jean de Flandre and his wife Margaretha Boulengier). Cross-reference p. 278 Damhouder for the "Iean" and "Iosse" children of Lodewijk II.
+
+**Identification:** Two sons of Lodewijk II van Vlaenderen (d. 1488) and Louise de Bruges, per Damhouder's six-child list (§3.3 above). Jean de Flandre (d. 6 September 1523) held the cadet lordships of **Onlede and Beveren bij Roeselare**; he was **Grand Bailiff of Bruges and the Brugse Vrije**. His brother Josse de Flandre (d. after 1526) inherited these lordships after Jean's death and added Wijchuize, and carried the cadet line forward to at least 1592 per Buylaert.
+
+**Original text — Beveren tomb inscription for Jean de Flandre (Vredius p. 280, Middle Dutch via Gaillard):**
+
+> *Monumentum ipsorum designatur in templo Beverensi, prope Rollarium; hoc epitaphio: Cy gist noble homme IEAN de Flandres, Escuier, Seig. de Onlede & de Bevere, en son temps Bailly de la ville de Bruges & du Franc, fils de Meßire Loys de Flandres, Chevalier, Saigneur de Praet, & du pays de la Woestine, trespassa 1523, le 6 de Septembre. Et Dame MARGVERITE Boulengier, son espouse, laquelle trespassa 1526, le 24 de Ianvier.*
+
+> *Hæc ipsi assignantur quadruplæ nobilitatis membra: Flandres, Reyghersvliet, Gruisbuyse, & Steenhuyse.*
+
+**Translation:** *Their monument is recorded in the church of Beveren, near Roeselare; with this epitaph: Here lies the noble man Jean de Flandres, Esquire, Lord of Onlede and of Beveren, in his time Bailiff of the city of Bruges and of the Franc, son of Sir Louis de Flandres, Knight, Lord of Praet and of the land of Woestine, died 6 September 1523. And Lady Marguerite Boulengier, his wife, who died 24 January 1526.*
+
+*These four-part nobility quarters are assigned to him: Flandres, Reyghersvliet, Gruuthuse, and Steenhuise.*
+
+**Evidentiary notes:**
+
+- **Parentage unambiguous from the tomb text itself.** The Beveren tomb explicitly states "**fils de Meßire Loys de Flandres, Chevalier, Saigneur de Praet, & du pays de la Woestine**." The "Meßire Loys de Flandres, Lord of Praet & Woestine" is Lodewijk II van Vlaenderen (d. 1488), whose lordships were Praet, Woestine, Bevere, and Ornlede per the Aalter tomb (see §3.3). The "fils de Meßire Loys" formulation is direct primary-source evidence.
+- **Earlier attribution error corrected.** The public `PraetLineageDossierPage` and `LouisFrieseLineagePage` (as of April 2026, pre-correction) list Jean and Josse as Johan I's children rather than as Lodewijk II's children. The Beveren tomb text corrects this: they are Lodewijk II's sons. See also `docs/pass-2-site-corrections-backlog.md` for the specific site-side corrections required.
+- **Quadruple nobility quartering.** The tomb also gives the four-part heraldic quartering: Flandres (paternal), Reyghersvliet (paternal grandmother, per Johanna van Reygersvliet), Gruuthuse (maternal, per Louise de Bruges), and Steenhuise (maternal grandmother, per Marguerite Princesse de Steenhuise). This confirms the genealogical structure four generations back and also confirms that the Gruuthuse / Steenhuise connection was active enough in contemporary memory to be quartered on Jean's monument in 1523.
+- **Inventaris Onroerend Erfgoed attestation.** The Flemish heritage register (Inventaris Onroerend Erfgoed, municipality of Beveren) records that the Van Vlaenderen family tombstone stood at Beveren cemetery until 1882, when it was transferred to the Bruges Stone Museum (likely the Gruuthusemuseum). If the physical stone survives there, a modern epigraphic verification of the Vredius transcription would be possible.
+- **Josse de Flandre — Vredius on p. 280 and subsequent.** Vredius's Gaillard-based extract indicates Josse inherited Onlede, Bevere, and Wijchuize after Jean's 1523 death, and married Martina van Moerkerke. The "Moerkerke" surname here is the same territorial name as Jossine van Praet's Moerkercke but a different person/line — Martina is from the collateral Praet-Moerkercke cadet, related but distinct.
+- **FMG / Buylaert attribution dispute.** FMG MedLands footnotes [879, 881, 882] apparently place Jean and Josse under Johan I rather than under Lodewijk II. This creates a direct attribution disagreement between FMG's framing and the Beveren tomb text. Given the tomb text is primary evidence and FMG is a tertiary compilation, the tomb reading is accepted here. Buylaert 2011 (the authoritative modern prosopography) is the definitive arbiter and needs direct consultation; see `docs/research-threads/post-1545-van-vlaenderen-praet.md` Priority 1.
+
+**Site placement:**
+
+- `PraetLineageDossierPage` currently lists Jean and Josse under Johan I (incorrect). Correction pending per backlog.
+- `LouisFrieseLineagePage` currently lists them the same way; same correction pending.
+- The post-1545 generation through Jacob van Vlaanderen (m. 1552 Catharina van Boetzelaer) may be connected to this Jean / Josse generation — see handoff document.
+
+**Research leads:**
+
+- **Buylaert 2011 pp. 881–882** — definitive source on Jean / Josse parentage and Josse's cadet branch continuation to 1592
+- **Beveren Van Vlaenderen tombstone** — physical survival at Gruuthusemuseum Bruges
+- **Martina van Moerkerke** — Josse's wife; line and death date need documentation
+- **Continuation of Josse's line to 1592** — Buylaert reference suggests at least three generations of Onlede / Beveren / Wijchuize cadet descendants between c. 1530 and 1592. Do any of them appear in later sources?
+
+**Cross-reference to post-1545 research thread:** The Jacob van Vlaanderen documented in Huygens as vrijheer van Praet + Heer van Beveren en Onlede (m. 1552 Catharina van Boetzelaer, d. before 1566) is plausibly a son of this Jean d. 1523 or of Josse d. after 1526 — i.e., a grandson of Lodewijk II. This connection is the central parentage question of the post-1545 research thread; see `docs/research-threads/post-1545-van-vlaenderen-praet.md`.
 
 ---
 
@@ -925,12 +974,28 @@ See §1.2. The full cohort (Guido of Wedelghem, Baudouin + sons, Robert of Ghent
 
 Retained in this document for completeness. Not given dedicated site real estate on the "probability of living surname-bearing descent" filter that governs site emphasis.
 
+### 7.6 Post-1545 Van Vlaenderen-Praet generation — research in progress
+
+Vredius's Grimarez extract reports the legitimate Van Vlaenderen-Praet male line as extinct at Jan II's death 10 December 1545 (see §3.7). A Huygens Vrouwenlexicon entry on Catharina van Boetzelaer, discovered 19 April 2026 during cross-reference work for Batch 3, establishes a previously-unrecognised post-Vredius generation:
+
+- **Jacob van Vlaanderen**, vrijheer van Praet, heer van Beveren en Onlede (m. 1552 Catharina van Boetzelaer, d. before 1566)
+- **A son Lodewijk van Vlaanderen**, minor in 1567, taken into exile with his mother following her Reformation-era conviction
+
+Jacob's parentage is not resolved; candidates include a grandson of Lodewijk II (via Jean de Flandre d. 1523 — see §3.3a — or via Josse de Flandre d. after 1526), or a previously-undocumented son of Lodewijk IV (per Jacobus Meyerus's Wikipedia biography which names "Jacob and Philips van Praet" as Lodewijk IV's students). The son Lodewijk's fate after 1567 is unknown; if he survived and reproduced, he is a direct-line Van Vlaenderen bridge-candidate of high project interest.
+
+This research thread has been handed off for separate pursuit. Full evidence inventory, hypotheses, and research targets are in the dedicated document:
+
+**`docs/research-threads/post-1545-van-vlaenderen-praet.md`**
+
+Buylaert 2011 *Repertorium van de Vlaamse adel* is the priority source for resolution (both on Jacob's parentage and on the Onlede cadet branch continuation to 1592).
+
 ---
 
 ## Document history
 
 - **2026-04-19** — Initial skeleton created by Claude (Opus 4.7) following the direct-reading validation of Vredius (1643) conducted April 2026. Two to three representative entries per cohort filled in for format review; remaining entries to be completed in subsequent passes.
 - **2026-04-19** — Batch 1 filled in: Section 2 (Charter Nucleus for Victor's line, Tabula XVI Probationes pp. 283–289). Seven entries completed: 1420 Gavre marriage contract; 1427 Haelshuuts donation charter; 1430 testament; 1441 charter (Victor *wijlen*); 1446/1447 Adam transaction; Oostburg tomb of Jacqueline de Wilde + Joos van Vlaendren; Margareta van Vlaendren and the d'Erpe/Schoutheeten marriages. Each with verbatim Middle Dutch / Latin / French transcription, project-created translation, evidentiary notes, site cross-reference, and outstanding research leads.
-- **2026-04-19** — Batch 2 filled in: Section 3 (Praet line continuation). Seven generation entries completed: Johan I with the 10 September 1439 Bruges Franc diploma; Johan I's seven documented children with the 1442 Ghent partition fixing Landrada as Johan's daughter; Lodewijk II with the St. Bavo / St. Bartholomew day-of-death conflict within Vredius; Lodewijk III with the 1488 / 1490 date conflict (Grimarez vs Aalter tomb); Lodewijk IV with the full Aalter tomb Middle Dutch titulature and the Golden Fleece 1531 attestation; Jossine van Praet d. 10 December 1546 (Paschijne + Anna two-daughter structure); Jan II d. 10 December 1545 *avant son pere* (predeceased father by ten years, extinguishing the legitimate Praet male line a decade before Lodewijk IV himself died). Covers Tabula XVI pp. 275–279 plus Vol 2 Tabula XIX pp. 387–388.
+- **2026-04-19** — Batch 2 filled in: Section 3 (Praet line continuation). Seven generation entries completed: Johan I with the 10 September 1439 Bruges Franc diploma; Johan I's children with the 1442 Ghent partition fixing Landrada as Johan's daughter (count later corrected from seven to five — see correction below); Lodewijk II with the St. Bavo / St. Bartholomew day-of-death conflict within Vredius; Lodewijk III with the 1488 / 1490 date conflict (Grimarez vs Aalter tomb); Lodewijk IV with the full Aalter tomb Middle Dutch titulature and the Golden Fleece 1531 attestation; Jossine van Praet d. 10 December 1546 (Paschijne + Anna two-daughter structure); Jan II d. 10 December 1545 *avant son pere* (predeceased father by ten years, extinguishing the legitimate Praet male line a decade before Lodewijk IV himself died). Covers Tabula XVI pp. 275–279 plus Vol 2 Tabula XIX pp. 387–388.
+- **2026-04-19** — Batch 2 corrections + post-1545 research thread handoff. (1) Corrected §3.2 from "seven documented children" to "five documented children" of Johan I, based on re-audit of Vredius p. 280 Beveren tomb text for Jean de Flandre d. 1523 which explicitly identifies him as "fils de Meßire **Loys** de Flandres" (Lodewijk II), not as son of Johan I. Jean de Flandre d. 1523 and his brother Josse de Flandre d. after 1526 are therefore Lodewijk II's children, not Johan I's. (2) Added new §3.3a covering Jean and Josse as the Onlede cadet branch. (3) Fixed §3.3 note on Damhouder's six-child list to clarify that Lodewijk II's daughter "Iehenne" is distinct from Ioanna-m-Pouckes (Johan I's daughter). (4) Added §7.6 flagging the post-1545 Van Vlaenderen-Praet generation research thread. (5) Created companion handoff document `docs/research-threads/post-1545-van-vlaenderen-praet.md` consolidating evidence for the Jacob van Vlaanderen + Catharina van Boetzelaer + son Lodewijk generation discovered via the Huygens Vrouwenlexicon during the Batch 3 cross-reference re-audit. (6) Started site-corrections backlog at `docs/pass-2-site-corrections-backlog.md` — site-side corrections deferred pending Buylaert 2011 verification and bundled with other site changes accumulated during remaining batches.
 
 ---
