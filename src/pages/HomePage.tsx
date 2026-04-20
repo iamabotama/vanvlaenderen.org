@@ -55,10 +55,10 @@ export default function HomePage() {
     <div className={styles.page}>
       <Helmet>
         <title>Van Vlaenderen — Flemish Heritage &amp; Family History Research</title>
-        <meta name="description" content="Genealogical research tracing the Van Vlaenderen surname to Louis II de Male, Count of Flanders (1330–1384). Fourteen generations documented from Meetjesland to America." />
+        <meta name="description" content="Genealogical research tracing the Van Vlaenderen surname to the comital network of fourteenth-century Flanders, and testing whether its origin lies in the comital household, the comital bloodline, or a mix of both. Fourteen generations documented from the Meetjesland to America." />
         <link rel="canonical" href="https://vanvlaenderen.org/" />
         <meta property="og:title" content="Van Vlaenderen — Flemish Heritage Research" />
-        <meta property="og:description" content="Tracing the Van Vlaenderen surname to Louis II de Male, Count of Flanders. Fourteen generations, archival evidence, Y-DNA research." />
+        <meta property="og:description" content="Genealogical research tracing the Van Vlaenderen surname to the comital network of fourteenth-century Flanders, and testing whether its origin lies in the comital household, the comital bloodline, or a mix of both. Fourteen generations documented from the Meetjesland to America." />
         <meta property="og:url" content="https://vanvlaenderen.org/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://vanvlaenderen.org/assets/hero-background-rVYnRAiM.jpg" />

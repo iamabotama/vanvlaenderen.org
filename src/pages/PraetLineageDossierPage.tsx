@@ -19,10 +19,10 @@ export default function PraetLineageDossierPage() {
     <div className={styles.page}>
       <Helmet>
         <title>Praet Lineage Detail — Van Vlaenderen Research | vanvlaenderen.org</title>
-        <meta name="description" content="Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Jean I, Louis II, Jacob, and Lodewijk IV — the research control for Van Vlaenderen surname attribution." />
+        <meta name="description" content="Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Johan I, Lodewijk II (whose son Jean d. 1523 founded the Onlede cadet branch), Lodewijk III, and Lodewijk IV — the research control for Van Vlaenderen surname attribution." />
         <link rel="canonical" href="https://vanvlaenderen.org/research/praet-lineage-dossier" />
         <meta property="og:title" content="Praet Lineage Detail — Van Vlaenderen Research" />
-        <meta property="og:description" content="Generational evidence for the Praet descent. Functions as a documented research control for Van Vlaenderen surname attribution." />
+        <meta property="og:description" content="Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Johan I, Lodewijk II (whose son Jean d. 1523 founded the Onlede cadet branch), Lodewijk III, and Lodewijk IV — the research control for Van Vlaenderen surname attribution." />
         <meta property="og:url" content="https://vanvlaenderen.org/research/praet-lineage-dossier" />
         <meta property="og:type" content="article" />
 

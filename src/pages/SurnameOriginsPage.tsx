@@ -358,7 +358,7 @@ export default function SurnameOriginsPage() {
                   <td style={tdStyle}>None documented. No wife named.</td>
                   <td style={{ ...tdStyle, whiteSpace: 'nowrap' as const, color: 'var(--text-muted)' }}>1427–1447 N.S.</td>
                   <td style={{ ...tdStyle, borderLeft: '2px solid var(--gold)', paddingLeft: '1rem' }}>
-                    <strong>Meetjesland / Ghent — strongest candidate for Belgian cluster.</strong> Geographically closest to Sleidinge and Oostwinkel. Last attested 1447, three to four undocumented generations before Franciscus (1568). Record scarcity in the intervening period is the expected explanation for the gap, not a late founding event. See also:{' '}
+                    <strong>Meetjesland / Ghent — closest documented individual bridge candidate for the Belgian cluster, alongside the parallel Praet-at-Aalter possibility.</strong> Geographically closest to Sleidinge and Oostwinkel. Last attested 1447, three to four undocumented generations before Franciscus (1568). Record scarcity in the intervening period is the expected explanation for the gap, not a late founding event. See also:{' '}
                     <button onClick={() => nav('/research/victor-dossier')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>Victor Archival Dossier →</button>
                   </td>
                 </tr>
@@ -381,7 +381,7 @@ export default function SurnameOriginsPage() {
                   <td style={{ ...tdStyle, color: 'var(--text-muted)' }}>Praet & Woestijne, Franc de Bruges. Active 1431–1439 in Ghent Keure records.</td>
                   <td style={tdStyle}>Lodewijc Heer van Praet (d. 1488) + daughters. Six-generation titled line. Lodewijc's epitaph is at Aalter.</td>
                   <td style={{ ...tdStyle, whiteSpace: 'nowrap' as const, color: 'var(--text-muted)' }}>1431–1442</td>
-                  <td style={tdStyle}><strong>Franc de Bruges / Brabant.</strong> Lodewijc Heer van Praet's epitaph at Aalter — which appears in the 1500 distribution data with 11 individuals — merits attention. Later marriages into Gruithuyse and Bourgogne families are consistent with the Wambeek/Brussels cluster.</td>
+                  <td style={tdStyle}><strong>Franc de Bruges / Aalter (Meetjesland) / Brabant.</strong> The Praet patrimony acquired the Vrijhof at Aalter by 1516, anchoring the senior line in the Meetjesland through to c. 1590. Lodewijc Heer van Praet's epitaph is at Aalter — which appears in the 1500 distribution data with 11 individuals. Later marriages into Gruithuyse and Bourgogne families are also consistent with a Wambeek/Brussels footprint.</td>
                 </tr>
                 <tr>
                   <td style={{ ...tdStyle, fontWeight: 500 }}>Jan van Vlaenderen<br /><span style={{ fontWeight: 400, color: 'var(--text-muted)', fontSize: '0.82rem' }}>son of Jan sans terre; Heer van Drincham</span></td>
@@ -395,7 +395,7 @@ export default function SurnameOriginsPage() {
                   <td style={{ ...tdStyle, color: 'var(--text-muted)' }}>Praet, Woestijne, Bevere, Ommele.</td>
                   <td style={tdStyle}>Loys, Jan (→ Jan van Onlede d. 1523), Jacques, Josse, Loyse, Jehenne de Flandre.</td>
                   <td style={{ ...tdStyle, whiteSpace: 'nowrap' as const, color: 'var(--text-muted)' }}>c. 1440–1488</td>
-                  <td style={tdStyle}><strong>Brabant / Brussels cluster (Wambeek).</strong> Marriages into Gruithuyse and Bourgogne families draw descendants toward Brabant. Son Loys was Grand Bailiff of Ghent from 1515.</td>
+                  <td style={tdStyle}><strong>Aalter (Meetjesland) and Brabant / Brussels cluster (Wambeek).</strong> His son Lodewijk IV's 1516 marriage to Jossine van Praet anchored the senior line at the Aalter Vrijhof through to c. 1590. Marriages into Gruithuyse and Bourgogne families also draw descendants toward Brabant. Son Loys was Grand Bailiff of Ghent from 1515.</td>
                 </tr>
               </tbody>
             </table>

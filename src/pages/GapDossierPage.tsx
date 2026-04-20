@@ -10,10 +10,10 @@ export default function GapDossierPage() {
     <div className={styles.page}>
       <Helmet>
         <title>The Documentary Gap, 1447–1580 | vanvlaenderen.org</title>
-        <meta name="description" content="The 130-year gap between Adam van Vlaendren (last attested 1447) and the Meetjesland parish cluster (fl. 1547–). Archival evidence in hand, searches completed, active targets, and working hypotheses." />
+        <meta name="description" content="The 1447–1580 documentary gap between the comital bastard lines and the first parish-register Van Vlaenderen families of the Meetjesland. Archival evidence in hand, active targets, and four working hypotheses including a parallel West Flanders origin question." />
         <link rel="canonical" href="https://vanvlaenderen.org/research/gap-dossier" />
         <meta property="og:title" content="The Documentary Gap, 1447–1580 — Van Vlaenderen Research" />
-        <meta property="og:description" content="Named gap between the comital bastard lines and the Meetjesland parish cluster. Evidence in hand, active archival targets, and three working hypotheses." />
+        <meta property="og:description" content="The 1447–1580 documentary gap between the comital bastard lines and the first parish-register Van Vlaenderen families of the Meetjesland. Archival evidence in hand, active targets, and four working hypotheses including a parallel West Flanders origin question." />
         <meta property="og:url" content="https://vanvlaenderen.org/research/gap-dossier" />
         <meta property="og:type" content="article" />
 
@@ -275,8 +275,12 @@ export default function GapDossierPage() {
         <section className={styles.section}>
           <h2>Working Hypotheses</h2>
           <p>
-            Three hypotheses are currently viable. They are not mutually exclusive &mdash; the 1547
-            TBO 184 cluster could represent a mixed population drawing from more than one origin.
+            Four hypotheses are currently viable. The first three address the Meetjesland
+            documentary gap directly; the fourth is a parallel question about a separate
+            West Flanders surname presence that overlaps with but is distinct from this
+            dossier&apos;s primary question. None of the four is mutually exclusive
+            with the others &mdash; the 1547 TBO 184 cluster could represent a mixed population
+            drawing from more than one origin.
           </p>
 
           <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '1.5rem' }}>
@@ -297,19 +301,32 @@ export default function GapDossierPage() {
             Hypothesis B &mdash; Descent from the Praet line <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`}>Hypothesis</span>
           </h3>
           <p>
-            The Josse de Flandre cadet branch, documented to at least 1592, represents a Praet-line
-            van Vlaenderen population that survived into the parish-record period. The 1517 Knesselare
-            charter places Lodewijk IV in direct territorial contact with the research zone. Under this
-            hypothesis the TBO 184 individuals and/or Jeremiah's generation descend from Josse's branch.
-            The gap would be closed by tracing Josse's descendants through Buylaert's sources and into
-            Meetjesland records.
+            The Praet line, founded by Louis Friese, continued for at least six attested generations
+            and was anchored at the Vrijhof at Aalter &mdash; squarely within the Meetjesland &mdash;
+            from the 1516 marriage of Lodewijk IV van Vlaenderen to Jossine van Praet through to
+            the Vrijhof's destruction by Geuzen forces around 1590. Lodewijk IV's tomb is at Aalter;
+            his successor Jacob van Vlaanderen and his wife Catharina van Boetzelaer held the Vrijhof
+            from 1552, and Catharina's exile in 1567 marks the point at which the senior line's
+            residence at Aalter ended. The Josse de Flandre cadet branch, documented to at least
+            1592 (Buylaert), represents an additional Praet-line van Vlaenderen population that
+            may have survived into the parish-record period. Under this hypothesis the TBO 184
+            individuals and/or Jeremiah's generation descend either from Josse's branch or from
+            a less-documented Aalter-area Praet cadet. The gap would be closed by tracing Josse's
+            descendants through Buylaert's sources, and by searching Aalter-area parish and
+            leenhof records 1580&ndash;1620 for surname continuations after the Vrijhof's destruction.
           </p>
           <p style={{ fontSize: '0.85rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
-            Current status: plausible. Josse's branch is the shortest documentary path. Surname form
-            in his descendants not yet confirmed in sources reviewed. Note: in late medieval and early
-            modern records, the alternation between <em>de Flandre</em> and <em>van Vlaenderen</em> often
-            reflects the scribe's working language (Latin/French vs. Dutch) rather than the family's
-            chosen identity — the same individual can appear under both forms in different documents.
+            Current status: substantially strengthened by the April 2026 Vredius direct-reading.
+            Aalter is now an attested Praet residence for the period 1516&ndash;1590, eliminating
+            the previous &ldquo;Brabant-only&rdquo; framing of the Praet line. The post-1545
+            generation (Jacob, Catharina, son Lodewijk V) is documented but the parentage of Jacob
+            and the fate of any Lodewijk V descendants remain open research questions pending
+            consultation of Buylaert 2011 (<em>Repertorium van de Vlaamse adel</em>, pp. 740&ndash;746)
+            and Decavele 2004. Josse's branch continuation post-1592 not yet established. Note:
+            in late medieval and early modern records, the alternation between <em>de Flandre</em>
+            and <em>van Vlaenderen</em> often reflects the scribe's working language (Latin/French
+            vs. Dutch) rather than the family's chosen identity &mdash; the same individual can appear
+            under both forms in different documents.
           </p>
 
           <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '2rem' }}>
@@ -326,18 +343,51 @@ export default function GapDossierPage() {
             Current status: cannot be excluded. Y-DNA testing is the primary tool for distinguishing
             Hypothesis C from Hypotheses A and B.
           </p>
+
+          <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '2rem' }}>
+            Hypothesis D &mdash; A separate West Flanders origin <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`}>Hypothesis</span>
+          </h3>
+          <p>
+            This hypothesis addresses a question parallel to the Meetjesland gap rather than
+            competing with Hypotheses A&ndash;C. The historical West Flanders / Ypres&ndash;Cassel
+            surname presence may be the product of its own founding event, distinct from the
+            Meetjesland question this dossier primarily addresses. Two specific Vredius-attested
+            Maleanus figures provide West Flanders bridge candidates:{' '}
+            <strong>Robert van Vlaendren of Elverdinghe</strong> (d. 21 January 1434), Counsellor
+            and Chamberlain to Jean the Fearless and Philip the Good, whose natural son Jean was
+            legitimised by Philip the Good at Hesdin on the last day of July 1448 (mother
+            Marie de le Voerde); and <strong>Karle van Vlaendren of Gruterssale</strong>
+            (d. 15 September 1491, tomb at Langemark), whose Vredius-attested tombstone reads
+            <em> filius M&apos;her Robzecht</em> &mdash; son of Sir Robert &mdash; though whether
+            this refers to Robert of Elverdinghe or to a different Robert remains unresolved.
+            Karle's line exits the surname through his daughter's marriage into the de Crane
+            family; the 1448 Jean legitimisation has no traced subsequent descent in the
+            records examined. The Drincham line (Jan sans terre) remains the strongest progenitor
+            candidate for the broader French Flanders / Volckerinckhove cluster; Robert and Karle
+            would account for a distinct, smaller West Flanders / Ypres-area presence.
+          </p>
+          <p style={{ fontSize: '0.85rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
+            Current status: documentary basis established by the April 2026 Vredius direct-reading;
+            downstream descent for both Jean (1448 legitimation) and Karle (d. 1491) remains
+            untraced. Hypothesis D does not directly address the Meetjesland gap but is recorded
+            here for completeness, as the West Flanders bridge candidates are part of the same
+            Maleanus bastard cohort and the questions are parallel.
+          </p>
         </section>
 
         {/* ── Y-DNA ─────────────────────────────────────────────────── */}
         <section className={styles.section}>
           <h2>Y-DNA as a Parallel Verification Strategy</h2>
           <p>
-            Documentary research alone cannot currently distinguish between the three working hypotheses.
-            Y-DNA testing offers a complementary path: if additional male-line Van Vlaenderen descendants
-            can be recruited for comparison, a shared haplogroup across geographically separated lines
-            would support a common patrilineal ancestor (Hypotheses A or B), while divergent haplogroups
-            between branches would support independent emergence (Hypothesis C). The American line has
-            been tested (haplogroup R-FT1573, Big Y-700); no close database matches have been found to date.
+            Documentary research alone cannot currently distinguish between the three Meetjesland-gap
+            hypotheses (A, B, and C). Y-DNA testing offers a complementary path: if additional
+            male-line Van Vlaenderen descendants can be recruited for comparison, a shared haplogroup
+            across geographically separated lines would support a common patrilineal ancestor
+            (Hypotheses A or B), while divergent haplogroups between branches would support independent
+            emergence (Hypothesis C). Hypothesis D &mdash; the parallel West Flanders question &mdash;
+            would similarly be informed by recruiting testers from any surviving lines descended from
+            Robert van Vlaendren of Elverdinghe or Karle of Gruterssale. The American line has been
+            tested (haplogroup R-FT1573, Big Y-700); no close database matches have been found to date.
           </p>
           <p>
             The full genetic genealogy project &mdash; including haplogroup details, methodology, and

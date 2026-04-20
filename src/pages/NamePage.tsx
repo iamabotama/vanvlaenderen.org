@@ -60,10 +60,10 @@ export default function NamePage() {
     <div className={styles.page}>
       <Helmet>
         <title>The Name — Where "Van Vlaenderen" Comes From | vanvlaenderen.org</title>
-        <meta name="description" content="Analysis of the Van Vlaenderen surname: why it is comital identity, not a common toponym. Evidence from Victor van Vlaenderen's 1441 charter and the bastard children of Louis II de Male." />
+        <meta name="description" content="Investigating the origins of the Van Vlaenderen surname. Why distributional mapping and the Toponymic Paradox rule out a generic toponymic reading at the cluster level, and how the comital household and bloodline mechanisms explain what remains." />
         <link rel="canonical" href="https://vanvlaenderen.org/name" />
         <meta property="og:title" content="The Name — Where Van Vlaenderen Comes From" />
-        <meta property="og:description" content="Comital identity, not a toponym. Evidence from the 1441 charter of Victor van Vlaenderen." />
+        <meta property="og:description" content="Investigating the origins of the Van Vlaenderen surname. Why distributional mapping and the Toponymic Paradox rule out a generic toponymic reading at the cluster level, and how the comital household and bloodline mechanisms explain what remains." />
         <meta property="og:url" content="https://vanvlaenderen.org/name" />
         <meta property="og:type" content="article" />
       </Helmet>

@@ -12,10 +12,10 @@ export default function VictorDossierPage() {
     <div className={styles.page}>
       <Helmet>
         <title>Victor van Vlaenderen — Archival Dossier | vanvlaenderen.org</title>
-        <meta name="description" content="Primary source dossier for Victor van Vlaenderen: 1427 and 1441/42 charter evidence, FMG MedLands documentation, Hof van Wessegem heritage record, and the Alix van Boyeghem connection." />
+        <meta name="description" content="Primary source dossier for Victor van Vlaenderen. Fifteenth-century Ghent charter evidence (1427, 1441, 1446) for his natural sons — Lodewyc, Janne, and Adam — and his lordship of Ursel and Wessegem in the Meetjesland." />
         <link rel="canonical" href="https://vanvlaenderen.org/research/victor-dossier" />
         <meta property="og:title" content="Victor van Vlaenderen — Archival Dossier" />
-        <meta property="og:description" content="Primary source evidence: the 1427 and 1441/42 charters, Wessegem heritage, and Victor's three natural sons." />
+        <meta property="og:description" content="Primary source dossier for Victor van Vlaenderen. Fifteenth-century Ghent charter evidence (1427, 1441, 1446) for his natural sons — Lodewyc, Janne, and Adam — and his lordship of Ursel and Wessegem in the Meetjesland." />
         <meta property="og:url" content="https://vanvlaenderen.org/research/victor-dossier" />
         <meta property="og:type" content="article" />
 

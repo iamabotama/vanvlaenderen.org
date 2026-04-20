@@ -11,10 +11,10 @@ export default function PraetDossierPage() {
     <div className={styles.page}>
       <Helmet>
         <title>The Praet Line — Archival Dossier | vanvlaenderen.org</title>
-        <meta name="description" content="Archival dossier for the Praet line: Louis Friese van Vlaenderen through Lodewijk IV (Louis of Praet, Knight of the Golden Fleece, d. 1555). Sources, evidence levels, and open research questions." />
+        <meta name="description" content="Archival dossier for the House of Flanders-Praet. Descent from Louis Friese to Lodewijk IV (d. 1556), the Aalter Vrijhof as the line's Meetjesland anchor (1516–c. 1590), the post-1545 generation under active research, and late-16th-century cadet branches." />
         <link rel="canonical" href="https://vanvlaenderen.org/research/praet-dossier" />
         <meta property="og:title" content="The Praet Line — Archival Dossier" />
-        <meta property="og:description" content="From Louis Friese van Vlaenderen to Lodewijk IV, Knight of the Golden Fleece. Primary and secondary sources for the Praet bastard line." />
+        <meta property="og:description" content="Archival dossier for the House of Flanders-Praet. Descent from Louis Friese to Lodewijk IV (d. 1556), the Aalter Vrijhof as the line's Meetjesland anchor (1516–c. 1590), the post-1545 generation under active research, and late-16th-century cadet branches." />
         <meta property="og:url" content="https://vanvlaenderen.org/research/praet-dossier" />
         <meta property="og:type" content="article" />
 

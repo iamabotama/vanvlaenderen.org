@@ -20,10 +20,10 @@ export default function ResearchPage() {
     <div className={styles.page}>
       <Helmet>
         <title>Research Overview — Van Vlaenderen Archival Dossiers | vanvlaenderen.org</title>
-        <meta name="description" content="Archival research into the Van Vlaenderen surname: three documented bastard lines of Louis II de Male — Victor (Belgian cluster), Jan sans terre / Drincham (French Flanders), and Louis Friese / Praet (Brabant) — and the distributional evidence connecting each to a distinct geographic population." />
+        <meta name="description" content="Archival research into the Van Vlaenderen surname: three documented comital bastard lines of Louis II de Male — Victor (Meetjesland), Louis Friese / Praet (Meetjesland and Brabant, anchored at the Aalter Vrijhof to c. 1590), and Jan sans terre / Drincham (French Flanders) — and the geographic clusters they left in the modern record." />
         <link rel="canonical" href="https://vanvlaenderen.org/research" />
         <meta property="og:title" content="Research Overview — Van Vlaenderen Archival Dossiers" />
-        <meta property="og:description" content="Three documented bastard lines of Louis II de Male: Victor, Jan sans terre, and Louis Friese — each anchored to a distinct lordship, each leaving a distinct geographic surname cluster." />
+        <meta property="og:description" content="Archival research into the Van Vlaenderen surname: three documented comital bastard lines of Louis II de Male — Victor (Meetjesland), Louis Friese / Praet (Meetjesland and Brabant, anchored at the Aalter Vrijhof to c. 1590), and Jan sans terre / Drincham (French Flanders) — and the geographic clusters they left in the modern record." />
         <meta property="og:url" content="https://vanvlaenderen.org/research" />
         <meta property="og:type" content="article" />
       </Helmet>
