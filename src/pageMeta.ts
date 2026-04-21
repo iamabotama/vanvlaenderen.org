@@ -155,4 +155,12 @@ export const PAGE_META: Record<string, PageMeta> = {
     ogTitle: 'Contact — Van Vlaenderen Research',
     ogType: 'website',
   },
+  '/license': {
+    title: 'License & Attribution — Van Vlaenderen Research | vanvlaenderen.org',
+    description: 'License and attribution terms for the Lions of Flanders research project: CC BY 4.0 for research content, MIT for site code, and guidance on citing primary source transcriptions.',
+    canonical: 'https://vanvlaenderen.org/license/',
+    ogTitle: 'License & Attribution — Van Vlaenderen Research',
+    ogDescription: 'Open licensing for academic citation, translation, and scholarly reuse: CC BY 4.0 for research content, MIT for site code.',
+    ogType: 'website',
+  },
 }

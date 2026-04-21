@@ -89,6 +89,15 @@ export default function Footer() {
           <h2 className={styles.colHeading}>{t('footer.attribution_heading')}</h2>
           <p className={styles.attributionLine}>{t('footer.copyright')}</p>
           <p className={styles.attributionLine}>{t('footer.collaboration')}</p>
+          <p className={styles.attributionLine}>
+            <button
+              className={styles.licenseLink}
+              onClick={() => go('/license')}
+              aria-label={t('footer.license_link_aria')}
+            >
+              {t('footer.license')}
+            </button>
+          </p>
           <p className={styles.attributionDim}>
             {t('footer.last_updated_prefix')} {formattedDate}
           </p>

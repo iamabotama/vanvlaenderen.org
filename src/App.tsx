@@ -21,6 +21,7 @@ import BibliographyPage from './pages/BibliographyPage';
 import SurnameOriginsPage from './pages/SurnameOriginsPage';
 import NieusSealPage from './pages/NieusSealPage';
 import DrinchamDossierPage from './pages/DrinchamDossierPage';
+import LicensePage from './pages/LicensePage';
 import Footer from './components/Footer/Footer';
 import './App.css';
 
@@ -55,6 +56,7 @@ export default function App() {
           <Route path="/about"                         element={<AboutPage />} />
           <Route path="/contact"                       element={<ContactPage />} />
           <Route path="/docs"                          element={<DocsPage />} />
+          <Route path="/license"                       element={<LicensePage />} />
           {/* Catch-all */}
           <Route path="*"                              element={<Navigate to="/" replace />} />
         </Routes>

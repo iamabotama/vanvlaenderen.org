@@ -44,6 +44,7 @@ const ROUTES = [
   '/name/surname-origins',
   '/research/nieus-seals',
   '/research/drincham-dossier',
+  '/license',
 ]
 
 // ── Head tag builder ───────────────────────────────────────────────────────
@@ -209,6 +210,7 @@ function writeSitemap(PAGE_META) {
     '/name/surname-origins':           { priority: '0.9', changefreq: 'monthly' },
     '/research/nieus-seals':           { priority: '0.8', changefreq: 'monthly' },
     '/research/drincham-dossier':      { priority: '0.9', changefreq: 'monthly' },
+    '/license':                        { priority: '0.3', changefreq: 'yearly'  },
   }
 
   const urls = ROUTES.filter(route => route !== '/docs').map(route => {
