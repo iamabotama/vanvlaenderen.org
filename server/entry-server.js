@@ -3782,6 +3782,7 @@ function VictorDiagram() {
   );
 }
 const ROW_Y = 370;
+const CADET_ROW_Y = 510;
 const NODE_W = 180;
 const GAP = 25;
 const START_X = 40;
@@ -3789,9 +3790,8 @@ const X1 = START_X;
 const X2 = X1 + NODE_W + GAP;
 const X3 = X2 + NODE_W + GAP;
 const X4 = X3 + NODE_W + GAP;
-const X5 = X4 + NODE_W + GAP;
 const diagram = {
-  viewBox: "0 0 1100 1000",
+  viewBox: "0 0 1100 1140",
   nodes: [
     {
       id: "lm",
@@ -3840,15 +3840,15 @@ const diagram = {
         h: 82
       }
     },
-    // ── The Sibling Row (Generation 3) ───────────────────────────────────
+    // ── Gen 4 Cadet Row: Lodewijk II's sons Jean & Josse (cadet branches) ──
     {
       id: "jean",
-      x: X1,
-      y: ROW_Y,
+      x: X2,
+      y: CADET_ROW_Y,
       cfg: {
         name: "Jean de Flandre",
         dates: "d. 6 Sep 1523",
-        body: "Son of Lodewijk II (grandson of Johan I). Heer van Onlede en Beveren. Grand Bailiff of Bruges. Married Marguerite Boulengier. Note: diagram position shows him alongside Johan I's children for compact layout; biologically one generation lower.",
+        body: "Son of Lodewijk II (grandson of Johan I). Heer van Onlede en Beveren. Grand Bailiff of Bruges. Married Marguerite Boulengier.",
         src: "FMG MedLands [879,880]",
         color: C.blue,
         ev: "direct",
@@ -3858,13 +3858,13 @@ const diagram = {
     },
     {
       id: "josse",
-      x: X2,
-      y: ROW_Y,
+      x: X4,
+      y: CADET_ROW_Y,
       cfg: {
         name: "Josse de Flandre",
         dates: "d. after 1526",
         tag: "LINE TO 1592",
-        body: "Son of Lodewijk II (grandson of Johan I). Inherited lordships of Onlede, Bevere and Wijchuize from his brother Jean in 1523. Married Martina van Moerkerke. Multiple children; family survived to at least 1592. Note: diagram position shows him alongside Johan I's children for compact layout; biologically one generation lower.",
+        body: "Son of Lodewijk II (grandson of Johan I). Inherited lordships of Onlede, Bevere and Wijchuize from his brother Jean in 1523. Married Martina van Moerkerke. Multiple children; family survived to at least 1592.",
         src: "FMG MedLands [881,882]; Buylaert",
         color: C.blue,
         ev: "direct",
@@ -3872,6 +3872,7 @@ const diagram = {
         h: 74
       }
     },
+    // ── The Gen 3 Sibling Row: Johan I's five children (Lodewijk II + four others) ──
     {
       id: "l2",
       x: X3,
@@ -3890,7 +3891,7 @@ const diagram = {
     },
     {
       id: "jeanne",
-      x: X4,
+      x: X2,
       y: ROW_Y,
       cfg: {
         name: "Jeanne de Flandre",
@@ -3905,7 +3906,7 @@ const diagram = {
     },
     {
       id: "oth",
-      x: X5,
+      x: X4,
       y: ROW_Y,
       cfg: {
         name: "Marguerite · Isabelle\nLandrade de Flandre",
@@ -3922,7 +3923,7 @@ const diagram = {
     {
       id: "l3",
       x: X3,
-      y: 510,
+      y: 650,
       cfg: {
         name: "Lodewijk III van Vlaenderen",
         dates: "d. 1 Jan 1490",
@@ -3938,13 +3939,13 @@ const diagram = {
     {
       id: "l4",
       x: X3 - 6,
-      y: 630,
+      y: 770,
       cfg: {
         name: "Lodewijk IV van Vlaenderen",
-        dates: "d. 1555",
+        dates: "d. 1556",
         tag: "KNIGHT OF THE GOLDEN FLEECE 1531",
         body: "Grand Bailiff of Ghent and Bruges. Stadtholder Holland & Zeeland 1544–46. Advisor to Charles V. 1517 charter: holds 6 fiefs at Knesselare from the Wessegem seigneurie — direct Meetjesland territorial connection.",
-        src: "FMG MedLands [891–893]; Wikipedia",
+        src: "FMG MedLands [891–893]; Valkeneers & Soen (2015); Wikipedia",
         color: C.focus,
         ev: "focus",
         focus: true,
@@ -3955,7 +3956,7 @@ const diagram = {
     {
       id: "j2",
       x: X3,
-      y: 760,
+      y: 900,
       cfg: {
         name: "Jan II van Vlaenderen",
         dates: "d. 10 Dec 1545",
@@ -3976,7 +3977,7 @@ const diagram = {
     { from: "j1", to: "l2", color: C.praet },
     { from: "j1", to: "jeanne", color: C.blue },
     { from: "j1", to: "oth", color: C.blue },
-    // Lodewijk II to his children (Jean and Josse positioned in Gen 3 row for compact layout)
+    // Lodewijk II to his children Jean and Josse (Gen 4 cadet row)
     { from: "l2", to: "jean", color: C.blue },
     { from: "l2", to: "josse", color: C.blue },
     // Descent from Lodewijk II (main line)
@@ -3985,10 +3986,11 @@ const diagram = {
     { from: "l4", to: "j2", color: C.red }
   ],
   labels: [
-    { x: X3, y: 350, text: "JOHAN I’S CHILDREN (+ GEN 4 JEAN & JOSSE FOR LAYOUT)", color: "#f0e8d0" }
+    { x: X3, y: 350, text: "CHILDREN OF JOHAN I (SIBLINGS)", color: "#f0e8d0" },
+    { x: X3, y: 490, text: "CADET BRANCHES OF LODEWIJK II", color: "#f0e8d0" }
   ],
   annotations: [
-    { x: X3 + 220, y: 680, text: "← 1517: 6 fiefs at Knesselare (Meetjesland)", color: C.focus }
+    { x: X3 + 220, y: 820, text: "← 1517: 6 fiefs at Knesselare (Meetjesland)", color: C.focus }
   ],
   legendItems: [
     { color: "#4ade80", label: "Directly attested (charter or epitaph)" },
