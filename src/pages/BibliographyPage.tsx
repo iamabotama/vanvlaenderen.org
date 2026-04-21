@@ -5,6 +5,9 @@ import researchStyles from './ResearchPage.module.css';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface BibEntry {
+  id?: string;
+  source_type?: string;
+  status?: 'consulted' | 'acquired_pending_review' | 'acquisition_pending' | 'cited_via_intermediary';
   type: string;
   author: string;
   year: string;
@@ -60,12 +63,21 @@ function typeBadge(type: string) {
   );
 }
 
+// ── Status labels (shown only for non-default statuses) ──────────────────
+const STATUS_LABELS: Record<string, string> = {
+  acquisition_pending:     'Acquisition in progress — not yet consulted directly.',
+  acquired_pending_review: 'Acquired; detailed review in progress.',
+  cited_via_intermediary:  'Consulted through a later intermediary source (see note).',
+};
+
 // ── Entry card ─────────────────────────────────────────────────────────────
 function EntryCard({ e }: { e: BibEntry }) {
+  const statusLabel = e.status && e.status !== 'consulted' ? STATUS_LABELS[e.status] : null;
   return (
-    <div style={{
+    <div id={e.id} style={{
       borderLeft: '2px solid rgba(232,184,48,0.25)',
       paddingLeft: '1rem', marginBottom: '1.5rem',
+      scrollMarginTop: '5rem',
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '0.3rem' }}>
         {typeBadge(e.type)}
@@ -85,6 +97,14 @@ function EntryCard({ e }: { e: BibEntry }) {
       <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem', lineHeight: 1.6 }}>
         {e.note}
       </div>
+      {statusLabel && (
+        <div style={{
+          color: 'rgba(232,184,48,0.6)', fontSize: '0.75rem', fontStyle: 'italic',
+          marginTop: '0.4rem', fontFamily: 'var(--font-ui)', letterSpacing: '0.02em',
+        }}>
+          {statusLabel}
+        </div>
+      )}
       {e.url && (
         <a href={e.url} target="_blank" rel="noopener noreferrer" className={researchStyles.refLink}
           style={{ display: 'inline-block', marginTop: '0.4rem', fontSize: '0.8rem' }}>
