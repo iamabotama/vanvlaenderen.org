@@ -1,6 +1,7 @@
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
+import { JanDrinchamDiagram } from '../components/Diagrams';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
@@ -121,6 +122,15 @@ export default function DrinchamDossierPage() {
             Jan is also documented in Vredius's French-language summary from Grimarezius: <em>"IEAN, b. de Flandres, dict sans terre, Chevalier, espousa GVILEMETTE de Nevele, fille de Messire Guillaume, Chevalier, & de Dame Guilemette de Halewijn, heritiere de Lichtervelde. Il mourut à la bataille devant la ville de Nicopoli..."</em> — confirming his wife <strong>Guillemette de Nevele</strong> (daughter of Willem de Nevele, Knight, and Guillemette de Halewijn, heiress of Lichtervelde) and his death at Nicopolis.
           </p>
         </section>
+
+        {/* ── Interactive Diagram ─────────────────────────────────── */}
+        <div className={researchStyles.treeContainer}>
+          <JanDrinchamDiagram />
+          <div className="sr-only">
+            <h3>Drincham line lineage &mdash; text summary</h3>
+            <p>This diagram shows five generations of the Drincham line descending from Louis II de Male, Count of Flanders (1330&ndash;1384). Generation 2: Jan sans terre van Vlaenderen (died 28 September 1396 at Nicopolis), natural son of Louis de Male by Ive de Luu; granted the castle and lordship of Drincham near Cassel on 22 November 1383; married Guillemette de Nevele. Generation 3: Jan van Vlaenderen, Lord of Drincham, married Isabella de Ghistelles Dame de Vissaert. Generation 4: four documented sons &mdash; Jan (Lord of Drincham, married Isabella de Vernieulles), Jacques de Drincham (died 10 April 1459, Bailiff of Veurne, his church epitaph preserved in Gaillard via Vredius is the line's most concrete physical evidence), Loys de Drincham, and Francq de Drincham. Generation 5: Jan III's documented children &mdash; Philippe de Flandres (died unmarried, line terminates), Jan de Flandres (legitimated at Arras, last documented member of the Drincham line in Vredius), and three unnamed daughters. After circa 1473 the Drincham line is no longer documented in Vredius. For the 15th-to-16th-century evidentiary gap and the French Flanders cluster hypothesis, see the Gap Dossier.</p>
+          </div>
+        </div>
 
         {/* ── The 1383 Land Grant ──────────────────────────────────── */}
         <section className={styles.section}>

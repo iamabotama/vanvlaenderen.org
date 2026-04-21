@@ -1,33 +1,172 @@
 import LineageDiagram, { C, type DiagramDef } from './DiagramEngine';
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Victor van Vlaenderen — Documented Line
+//
+// Four generations, medieval scope only. Adam's last attestation (1447) ends
+// the diagram. Gap to Joos 1547 removed — we don't know the line is connected,
+// and rendering it as "Adam → Gap → Joos" implied a continuity we cannot
+// defend. The gap argument lives in the Gap Dossier (separate diagram/page).
+//
+// Locked visual rules: see PraetDiagram.tsx header for full rationale.
+//   Color = record confidence.
+//   Glyph below card = descendant status (†, ?, or none).
+//   Star badge = research focus (on Adam).
+// ─────────────────────────────────────────────────────────────────────────────
+
+const LINE = '#5a6378';
+
 const diagram: DiagramDef = {
-  viewBox: '0 0 920 560',
+  viewBox: '0 0 920 640',
+
   nodes: [
-    { id: 'lm', x: 360, y: 18, cfg: { name: 'Louis II de Male', dates: 'Count of Flanders \u00b7 1330\u20131384', body: "Father of Victor van Vlaenderen by his mistress Margaretha Haelshuuts \u2014 the only named mistress in the primary sources.", src: 'FMG MedLands [817,841]', color: C.root, ev: 'direct', w: 200, h: 55 } },
-    { id: 'vic', x: 330, y: 118, cfg: { name: 'Victor van Vlaenderen', dates: 'd. before 10 Mar 1442', tag: "SEIGNEUR D'URSELE ET WESSEGHEM", body: "Natural son of Louis de Male. Burgundian admiral; captain of Biervliet. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420.", src: 'FMG MedLands [841\u2013845]', color: C.victor, ev: 'direct', w: 260, h: 90 } },
-    { id: 'lod', x: 30, y: 260, cfg: { name: 'Lodewyc van Vlaendren', dates: 'fl. 1427\u20131442', tag: 'BY ALIX VAN BOYEGHEM', body: "Natural son. Named in charters of 1427 and 1441. Married Jacqueline de Wilde (-Apr 1482, bur Oostborch).", src: 'FMG MedLands [846,847]', color: C.victor, ev: 'direct', w: 200, h: 90 } },
-    { id: 'jan_s', x: 350, y: 260, cfg: { name: 'Janne van Vlaendren', dates: 'fl. 1427\u20131442', tag: 'BY ALIX VAN BOYEGHEM', body: "Natural son. Named in charters of 1427 and 1441. No further records identified.", src: 'FMG MedLands [851,852]', color: C.victor, ev: 'direct', w: 200, h: 90 } },
-    { id: 'adam', x: 640, y: 254, cfg: { name: 'Adam van Vlaendren', dates: 'fl. 1427 \u2013 18 Mar 1447 N.S.', tag: 'RESEARCH FOCUS', body: "Natural son by Gertrud Lindekens. Named in all three charters. Active donor in 1446 charter: \u2018Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem.\u2019 Margriete Aelfhuuts still active patroness in 1446.", src: 'FMG MedLands [853\u2013855]; Vredius (1643) pp.285\u2013287', color: C.focus, ev: 'focus', focus: true, w: 210, h: 96 } },
-    { id: 'josse_l', x: 18, y: 372, cfg: { name: 'Josse van Vlaenderen', dates: 'died young, bur Oostborch', body: "Son of Lodewyc. Died young. Cannot be the 1547 Brugse Vrije testator. Confirms the name Josse was in use in Victor\u2019s direct line in the mid-to-late 15th century.", src: 'FMG MedLands [849]; Bethune (1900) p.356', color: C.victor, ev: 'direct', w: 158, h: 50 } },
-    { id: 'marg', x: 196, y: 372, cfg: { name: 'Margareta van Vlaenderen', dates: 'fl. 1478\u20131486', body: "Daughter of Lodewyc. Married firstly Lodewijk van Baenst Heer van Santvelde; secondly Adriaan van Schouteten Heer van Erpe. Documented in charters 1478 and 1486.", src: 'FMG MedLands [850]; Vredius (1643) p.287', color: C.victor, ev: 'direct', w: 162, h: 50 } },
-    { id: 'gap', x: 660, y: 376, cfg: { name: 'EVIDENTIARY GAP', dates: 'c.1447 \u2013 1547  (~100 years)', body: "No documented generational link found. Archival targets: cijnsboeken and leenboeken (Ambacht Ursel / Maldegem), Staten van Goed, Raad van Vlaanderen (Rijksarchief Gent).", src: 'Research hypothesis', color: C.red, ev: 'hypo', w: 185, h: 50 } },
-    { id: 'joos', x: 660, y: 462, cfg: { name: 'Joos van Vlaenderen', dates: 'fl. 1547', body: "Testator, Brugse Vrije 1548. First confirmed early modern bearer. Chronologically consistent with Adam\u2019s descent but no direct link demonstrated.", src: 'Staten van Goed, Brugse Vrije 1548 (TBO 184, bundle 21300)', color: C.blue, ev: 'parish', w: 185, h: 50 } },
+    // ── Gen 1: Louis II de Male ──────────────────────────────────────────
+    {
+      id: 'lm',
+      x: 384,
+      y: 40,
+      cfg: {
+        name: 'Louis II de Male',
+        dates: 'Count of Flanders · 1330–1384',
+        body: "Father of Victor van Vlaenderen by his mistress Margaretha Haelshuuts — the only named mistress in the primary sources.",
+        src: 'FMG MedLands [817, 841]',
+        color: C.root,
+        ev: 'direct',
+        w: 152,
+        h: 56,
+      },
+    },
+
+    // ── Gen 2: Victor van Vlaenderen ─────────────────────────────────────
+    {
+      id: 'vic',
+      x: 334,
+      y: 140,
+      cfg: {
+        name: 'Victor van Vlaenderen',
+        dates: 'd. before 10 Mar 1442',
+        tag: "SEIGNEUR D'URSELE ET WESSEGHEM",
+        body: "Natural son of Louis de Male. Burgundian admiral; captain of Biervliet. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420. Three natural sons documented across three primary charters (1427, 1441, 1446) by two mistresses: Lodewyc and Janne by Alix van Boyeghem; Adam by Gertrud Lindekens.",
+        src: 'FMG MedLands [841–845]; Vredius (1643) pp.285–287',
+        color: '#4ade80',
+        ev: 'direct',
+        w: 252,
+        h: 96,
+      },
+    },
+
+    // ── Gen 3: Three sons of Victor ──────────────────────────────────────
+    {
+      id: 'lod',
+      x: 86,
+      y: 288,
+      cfg: {
+        name: 'Lodewyc\nvan Vlaendren',
+        dates: 'fl. 1427–1442 · by Alix van Boyeghem',
+        tag: 'CHARTERS 1427 · 1441',
+        body: "Natural son of Victor. Named in charters of 1427 and 1441. Married Jacqueline de Wilde (-Apr 1482, bur Oostborch). Two documented children shown in Gen 4.",
+        src: 'FMG MedLands [846, 847]',
+        color: '#4ade80',
+        ev: 'direct',
+        w: 188,
+        h: 112,
+      },
+    },
+    {
+      id: 'jan_s',
+      x: 366,
+      y: 288,
+      cfg: {
+        name: 'Janne\nvan Vlaendren',
+        dates: 'fl. 1427–1442 · by Alix van Boyeghem',
+        tag: 'CHARTERS 1427 · 1441',
+        body: "Natural son of Victor. Named in charters of 1427 and 1441. No further records identified — source silent on marriage, children, or death date.",
+        src: 'FMG MedLands [851, 852]',
+        color: '#4ade80',
+        ev: 'unknown',
+        w: 188,
+        h: 112,
+      },
+    },
+    {
+      id: 'adam',
+      x: 642,
+      y: 288,
+      cfg: {
+        name: 'Adam\nvan Vlaendren',
+        dates: 'fl. 1427 – 18 Mar 1447 N.S. · by Gertrud Lindekens',
+        tag: 'LAST ATTESTATION 1447',
+        body: "Natural son of Victor. Named in all three charters; active donor in the 1446 charter: 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem.' Margriete Aelfhuuts still active patroness in 1446. No further records after 1447 — source silent on whether he had descendants. The central research question of this project.",
+        src: 'FMG MedLands [853–855]; Vredius (1643) pp.285–287',
+        color: '#4ade80',
+        ev: 'unknown',
+        focus: true,
+        w: 196,
+        h: 112,
+      },
+    },
+
+    // ── Gen 4: Lodewyc's two documented children ─────────────────────────
+    {
+      id: 'josse_l',
+      x: 50,
+      y: 458,
+      cfg: {
+        name: 'Josse\nvan Vlaenderen',
+        dates: 'died young, bur Oostborch',
+        body: "Son of Lodewyc. Died young and is buried at Oostborch near his mother Jacqueline de Wilde. Line terminates. Cannot be the 1547 Brugse Vrije testator. His existence confirms the name Josse/Joos was in active use in Victor's direct line in the mid-to-late 15th century.",
+        src: 'FMG MedLands [849]; Bethune (1900) p.356',
+        color: '#4ade80',
+        ev: 'ends',
+        w: 120,
+        h: 86,
+      },
+    },
+    {
+      id: 'marg',
+      x: 190,
+      y: 458,
+      cfg: {
+        name: 'Margareta\nvan Vlaenderen',
+        dates: 'fl. 1478–1486',
+        body: "Daughter of Lodewyc. Married firstly Lodewijk van Baenst Heer van Santvelde; secondly Adriaan van Schouteten Heer van Erpe. Documented in charters of 1478 and 1486. Sources do not record whether she had children by either marriage.",
+        src: 'FMG MedLands [850]; Vredius (1643) p.287',
+        color: '#4ade80',
+        ev: 'unknown',
+        w: 120,
+        h: 86,
+      },
+    },
   ],
+
   connections: [
-    { from: 'lm', to: 'vic', color: C.victor },
-    { from: 'vic', to: 'lod', color: C.victor },
-    { from: 'vic', to: 'jan_s', color: C.victor },
-    { from: 'vic', to: 'adam', color: C.focus },
-    { from: 'lod', to: 'josse_l', color: C.victor },
-    { from: 'lod', to: 'marg', color: C.victor },
-    { from: 'adam', to: 'gap', color: C.red, dashed: true },
-    { from: 'gap', to: 'joos', color: C.blue, dashed: true },
+    { from: 'lm', to: 'vic', color: LINE },
+    { from: 'vic', to: 'lod', color: LINE },
+    { from: 'vic', to: 'jan_s', color: LINE },
+    { from: 'vic', to: 'adam', color: LINE },
+    { from: 'lod', to: 'josse_l', color: LINE },
+    { from: 'lod', to: 'marg', color: LINE },
   ],
+
+  labels: [
+    { x: 180, y: 450, text: "LODEWYC'S TWO DOCUMENTED CHILDREN", color: '#8a8f9e', size: 10 },
+  ],
+
+  annotations: [
+    {
+      x: 180,
+      y: 610,
+      text: "After 1486, Victor's line is no longer documented. For the 15th → 16th century evidentiary gap, see the Gap Dossier.",
+      color: '#8a8f9e',
+    },
+  ],
+
   legendItems: [
-    { color: '#4ade80', label: 'Directly attested (charter)' },
-    { color: C.focus, label: 'Research focus \u2014 bridge candidate' },
-    { color: '#f87171', label: 'Evidentiary gap (c.1447\u20131547)' },
-    { color: C.blue, label: 'Early modern \u2014 parish records' },
+    { color: C.root,    label: 'Comital source' },
+    { color: '#4ade80', label: 'Directly Attested' },
+    { color: C.blue,    label: 'Strongly Corroborated' },
+    { color: '#fbbf24', label: 'Probable' },
+    { color: '#f87171', label: 'Hypothesis' },
   ],
 };
 
@@ -35,7 +174,7 @@ export default function VictorDiagram() {
   return (
     <LineageDiagram
       diagram={diagram}
-      title="Victor van Vlaenderen — Documented Line and Evidentiary Gap"
+      title="Victor van Vlaenderen — Documented Line"
       subtitle="Victor van Vlaenderen Page"
     />
   );

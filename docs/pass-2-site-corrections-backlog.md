@@ -141,6 +141,55 @@ The bibliography-page anchor IDs needed for inline source links are now in place
 
 **Source of finding:** Pass 3 Phase D shipped 2026-04-20 with `/license` page copy in both English (en.json) and Dutch (nl.json). The English copy has been through project-lead review; the Dutch parallel has not. A Dutch-speaker review pass on the `footer` and `license` nl.json sections is appropriate before considering Phase D fully complete. Low urgency; no errors identified yet, but content-QA should close the loop.
 
+### Research-section IA consolidation (the "one dossier per figure" question)
+
+**Source of finding:** 2026-04-21, during the Phase 1 diagrams deploy. Project lead asked: *"why do we have multiple dossiers for any of these figures instead of 1 each that include their lineage?"*
+
+The research section currently has an inconsistent pattern across the three principal founding figures:
+
+- **Victor van Vlaenderen** — two pages: `VictorLineagePage` (`/research/victor`, hub + diagram + headline content) and `VictorDossierPage` (`/research/victor-dossier`, deeper archival treatment). No explicit "Victor Lineage Detail" page; the gen-by-gen information lives in scattered sections of the two.
+- **Louis Friese / Praet line** — three pages: `LouisFrieseLineagePage` (`/research/louis-friese`, hub + diagram + headline content), `PraetDossierPage` (`/research/praet-dossier`, confusingly named — its content is entirely Louis Friese's personal biography, not the Praet lineage), and `PraetLineageDossierPage` (`/research/praet-lineage-dossier`, gen-by-gen table + generation notes + cadet connections + extinction). The current `PraetDossierPage` is effectively a "Louis Friese archival dossier" that duplicates material from `LouisFrieseLineagePage`.
+- **Jan sans terre van Vlaenderen** — one page: `DrinchamDossierPage` (`/research/drincham-dossier`), covers identity + 1383 grant + four generations + descent all in one.
+
+The Drincham page is the cleanest reader experience of the three. It names the principal figure in the page title and hero, puts his biographical identification up front, anchors the lineage diagram directly under that identification, and walks through the dynastic events and descendants in a single continuous document. A visiting peer learns everything the site has on the Drincham line without clicking through multiple pages that partially repeat each other.
+
+Victor and Louis Friese/Praet should likely be restructured to match this pattern:
+
+- **One page per principal figure**, named for the figure, containing: (1) hero + identity, (2) interactive lineage diagram, (3) dynastic/biographical narrative, (4) generation-by-generation detail where warranted, (5) archival dossier / evidence tables / bibliography references.
+- Consolidate `PraetDossierPage` into `LouisFrieseLineagePage` (move Louis Friese's biographical content up into the hub, keep it all under the name "Louis Friese van Vlaenderen" which is who the page is actually about).
+- Optionally absorb `PraetLineageDossierPage` into the same page as a lower section, OR keep it as a deliberate "deep-detail" link-off for readers who want the generation-by-generation table view.
+- Audit the Victor line similarly: if `VictorDossierPage` duplicates material already present on `VictorLineagePage`, merge; if it carries genuinely distinct archival-dossier content (charter transcriptions, evidence tables), decide whether that belongs in the hub page or on a lower-detail sub-page.
+
+**Caveats worth thinking about before execution:**
+
+1. **Route redirects.** Collapsing `/research/praet-dossier` into `/research/louis-friese` means external links to the old URL will 404 unless a redirect (at the router level) or a content stub (a page that links to the new canonical) is shipped. Low-risk but needs doing.
+2. **JSON-LD canonical attribution.** Each page currently ships its own `ScholarlyArticle` block with its own `headline`, `description`, `url`. Consolidation means fewer distinct ScholarlyArticle entries, which changes what Google Scholar and rich-results parsers see.
+3. **Sitemap and Footer nav.** The Footer's bibliography link and the Sources nav tab are independent; they don't anchor to individual dossier pages. The Research overview page's card grid does link to specific dossiers — those cards will need updating.
+4. **i18n key parity.** Moving content between pages often means moving `t()` keys between sections of en.json/nl.json. Parity must be preserved through the move.
+
+**Scope:** medium-to-large. Probably a multi-patch consolidation rather than a single cleanup — likely (a) first merge `PraetDossierPage` into `LouisFrieseLineagePage`, (b) then decide about `PraetLineageDossierPage` retention, (c) then audit Victor for similar consolidation.
+
+**Not blocking.** The site reads fine today. This is a quality-of-reading improvement, not a correctness fix.
+
+### Louis II de Male dossier (new page)
+
+**Source of finding:** 2026-04-21, same conversation. Louis II de Male (1330–1384), Count of Flanders, is the named common ancestor of all three surname-carrying lines (Victor, Louis Friese/Praet, Jan sans terre) and is referenced in passing prose across HomePage, NamePage, ResearchPage, VictorDossier, DrinchamDossier, GapDossier, LouisFrieseLineage, and the Overview and Praet and Drincham diagrams. He currently has no dedicated page.
+
+A **Louis II de Male dossier** would:
+
+- anchor the "bastard-line hypothesis" by naming its shared source
+- consolidate the Vredius Tabula XVI Cohort 3 material currently scattered across three line-dossiers
+- treat the natural-children cohort as a group (Ive de Luu's children, the daughter-of-Monsieur-de-Borre's children, the various mothers), which the site presently has to handle repetitively on each line page
+- give the Research section its natural root node — readers currently work upward to Louis de Male from whichever specific line they landed on; a dedicated page would let them work downward from him as the branching point
+
+**Scope decisions to make before building:**
+
+- Is this a *biographical* dossier of Louis de Male himself (reign, marriage to Margaret of Brabant, conflict with Ghent, Nicopolis-grandchildren), or a *progenitor* dossier focused on his natural children and the surname-carrying lines that descend from them? The site's existing needs point more toward progenitor-scoped content; biographical depth can be left to Wikipedia / FMG references.
+- Slot in the research-section IA: top of the card grid on the Research overview? Linked from the bastard-line reference in the Home page's two-mechanism hypothesis?
+- Same five-section template as Drincham/Victor/Friese (identity + diagram + dynastic narrative + detail + references)? Or a different template reflecting the progenitor framing?
+
+**Not blocking.** Best done after the IA consolidation above so the site has settled on its one-page-per-figure pattern before a new figure page is added.
+
 ---
 
 ## Deferred — pending external research inputs

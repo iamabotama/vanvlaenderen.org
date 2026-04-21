@@ -82,7 +82,8 @@ const EV: Record<string, { label: string; bg: string; c: string }> = {
   focus: { label: 'Research Focus', bg: 'rgba(212,168,48,0.18)', c: '#d4a830' },
   hypo: { label: 'Evidentiary Gap', bg: 'rgba(248,113,113,0.18)', c: '#f87171' },
   parish: { label: 'Parish Records', bg: 'rgba(96,165,250,0.18)', c: '#60a5fa' },
-  ends: { label: 'Line Ends Here', bg: 'rgba(248,113,113,0.18)', c: '#f87171' },
+  ends: { label: 'Line Ends Here', bg: 'rgba(156,163,175,0.18)', c: '#9ca3af' },
+  unknown: { label: 'Silent On Descendants', bg: 'rgba(156,163,175,0.18)', c: '#9ca3af' },
 };
 
 // ── Connection path helper ─────────────────────────────────────────────────
@@ -252,6 +253,76 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }: NodePro
           </span>
         )}
       </div>
+
+      {/* Descendant-status glyph — below the card in muted grey */}
+      {(cfg.ev === 'ends' || cfg.ev === 'unknown') && (
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: '100%',
+            marginTop: 8,
+            textAlign: 'center',
+            pointerEvents: 'none',
+          }}
+        >
+          {cfg.ev === 'ends' ? (
+            <span
+              style={{
+                fontFamily: 'EB Garamond, Georgia, serif',
+                fontSize: 16,
+                color: '#8a8f9e',
+                lineHeight: 1,
+              }}
+            >
+              †
+            </span>
+          ) : (
+            <span
+              style={{
+                display: 'inline-block',
+                width: 16,
+                height: 16,
+                lineHeight: '14px',
+                borderRadius: '50%',
+                border: '1px solid #8a8f9e',
+                color: '#8a8f9e',
+                fontFamily: 'EB Garamond, Georgia, serif',
+                fontSize: 11,
+                fontWeight: 500,
+                textAlign: 'center',
+              }}
+            >
+              ?
+            </span>
+          )}
+        </div>
+      )}
+
+      {/* Research-focus star badge — top-right corner */}
+      {cfg.focus && (
+        <div
+          style={{
+            position: 'absolute',
+            top: -10,
+            right: -10,
+            width: 20,
+            height: 20,
+            borderRadius: '50%',
+            background: C.surf,
+            border: '1.25px solid #d4a830',
+            color: '#d4a830',
+            fontFamily: 'EB Garamond, Georgia, serif',
+            fontSize: 13,
+            lineHeight: '17px',
+            textAlign: 'center',
+            pointerEvents: 'none',
+          }}
+        >
+          ★
+        </div>
+      )}
     </div>
   );
 }
