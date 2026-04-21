@@ -1143,14 +1143,15 @@ var Helmet = class extends Component {
     return helmetData ? /* @__PURE__ */ React4.createElement(HelmetDispatcher, { ...newProps, context: helmetData.value }) : /* @__PURE__ */ React4.createElement(Context.Consumer, null, (context) => /* @__PURE__ */ React4.createElement(HelmetDispatcher, { ...newProps, context }));
   }
 };
-const nav$2 = { "home": "Home", "about": "About", "history": "Research", "mill": "The Mill", "name": "The Name", "dna": "DNA", "contact": "Get in Touch", "language_toggle_label": "Language" };
+const nav$2 = { "home": "Home", "about": "About", "history": "Research", "mill": "The Mill", "name": "The Name", "dna": "DNA", "sources": "Sources", "contact": "Get in Touch", "language_toggle_label": "Language" };
 const home$1 = { "mystery_question": "A surname. A region. An open question.", "mystery_intro_p1": "This site is a genealogical research project dedicated to the surname", "mystery_intro_p1_cont": "— a name borne by families who lived for centuries in the villages of the Meetjesland in East Flanders: Ursel, Bassevelde, Boekhoute, Kaprijke, Evergem, and their neighbours.", "mystery_visitor_note": "If you arrived here looking for information about the Flanders region itself, you are warmly welcome — and we hope the history woven through this research is of interest to you. This project is about one family name, not the region as a whole.", "mystery_toponymic_p1": "The conventional reading of the surname is", "mystery_toponymic_p1_cont": "simply means 'from Flanders,' a label that could have attached to any family that migrated from the broader region into a more local community. Many Flemish surnames share this pattern, and for most bearers of the name, this explanation may well be the complete story.", "mystery_emerging": "But the documentary record raises questions that a purely toponymic explanation does not easily answer — and this project exists to investigate them.", "hypothesis_one_label": "Working hypothesis one", "hypothesis_one_title": "A surname from the comital household", "hypothesis_one_body": 'When the earliest traceable Van Vlaenderen lines across the Meetjesland parishes are mapped together, why does the name cluster into a small number of founding families rather than scattering randomly across the region, as a generic toponym would? One possible explanation is that the surname was originally an office or household identifier — servants and officials of the Count of Flanders carried administrative titles such as "messenger of my lord of Flanders" in their working lives, and in later generations those titles could harden into inherited family names. Under this hypothesis, different founding families emerged independently, each descending from a different comital office-holder, and the clusters would share no recent common ancestor.', "hypothesis_two_label": "Working hypothesis two", "hypothesis_two_title": "A surname from the comital bloodline", "hypothesis_two_body": 'The heaviest and oldest clusters of the Van Vlaenderen surname appear inside the historic County of Flanders itself — in the Meetjesland and the Cassel region — where a "from Flanders" label would have been geographically meaningless to neighbours. This is the paradox at the heart of the research: why is a toponymic surname densest precisely where the toponym would have carried no information? One possible answer lies in the family of the Counts themselves. Louis II, the last Count of Flanders from the House of Dampierre, recognised at least thirteen illegitimate children before his death in 1384, and at least three of his acknowledged natural sons founded documented surname-bearing lines, each anchored to a lordship he had granted them. Under this hypothesis, the Van Vlaenderen surname in the Meetjesland and French Flanders parish registers traces back to one of these comital bastard lines — carried forward not as a description of geographic origin, but as a guarded, inherited identity marking descent from the Counts themselves at the point when their title itself was extinguished.', "hypotheses_bridge": "These two hypotheses are not mutually exclusive — an office-holder founder and a bastard-line founder could both have seeded Van Vlaenderen families — but they make testably different predictions about how the modern clusters are related to one another, and the Y-DNA project is designed in part to distinguish between them. The archival and genetic evidence is inconclusive at present, and the project remains collaborative and open.", "pull_quote": "One name. One region. The question is whether it was ever truly one family.", "cta_research": "View the Research Dossier", "cta_collaborative_p1": "This project is collaborative by design. If you carry the name", "cta_collaborative_p1_cont": "— in any historical spelling — or if you descend from a Van Vlaenderen woman whose line continued under a different name, your family records and DNA results may hold a piece of the answer. We invite you to explore what has been gathered here, compare it against your own research, and get in touch.", "research_note": "No claim is made here that any living person descends from the Counts of Flanders. We are researchers, not storytellers. The evidence will go where it goes.", "explore_archive": "Explore the Archive", "card_mill_title": "The Mill", "card_mill_subtitle": "A family's livelihood", "card_mill_quote": "The miller families of Meetjesland — their lives, their land, their legacy.", "card_name_title": "The Name", "card_name_subtitle": "Origins & variants", "card_name_quote": "Where did the name begin — and how many families share a single root?", "card_research_title": "Research", "card_research_subtitle": "Medieval & Collateral Lines", "card_research_quote": "Exploring the lineages of Louis II 'de Male,' Count of Flanders, including Victor and the Praet line.", "card_dna_title": "Are We Connected?", "card_dna_subtitle": "The DNA project", "card_dna_quote": "Y-DNA and autosomal testing are being used to test whether all Van Vlaenderen lines share a common ancestor.", "cta_explore": "Explore the Origins", "cta_contribute": "Contribute Your Research", "footer_project": "An independent genealogical research project", "footer_permission": "No publication without permission", "hero_subtitle_narrative": "From Flanders, to the World", "hero_subtitle_locations": "Meetjesland · Ghent · East Flanders" };
 const about$1 = { "lineage_cta_heading": "Explore the Documented Line", "lineage_cta_body": "We have traced 14 generations of the Van Vlaenderen family through East Flanders parish records, civil archives, and DNA analysis. Click below to see the interactive family tree.", "lineage_cta_link": "View the Lineage", "hero_eyebrow": "Van Vlaenderen · About This Project", "hero_title": "The Van Vlaenderen Research Initiative", "hero_lead": "A genealogical and historical project dedicated to documenting the origins, migration patterns, and familial connections of the Van Vlaenderen surname.", "scope_heading": "Research Scope and Methodology", "scope_intro": "Our work focuses on the Meetjesland region of East Flanders, specifically the parishes and villages of Bassevelde, Boekhoute, Waarschoot, Oostwinkel, and their surrounding areas. We employ a multi-disciplinary approach that integrates traditional archival research with modern genetic genealogy.", "scope_sources": "Our primary source material includes:", "source_parish": "Parish Registers and Civil Records", "source_parish_desc": "Systematic indexing of births, marriages, and deaths from the 17th century forward.", "source_estate": "Estate Inventories (Staten van Goed)", "source_estate_desc": "Analysis of inheritance and property records to reconstruct family structures.", "source_land": "Land Registers and Notarial Archives", "source_land_desc": "Mapping land ownership and legal transactions to trace geographic movement.", "source_dna": "Y-DNA Analysis", "source_dna_desc": "Utilizing paternal-line genetic testing to investigate shared origins between geographically distinct branches.", "methodology_note": "We maintain a strict distinction between documented evidence and working hypotheses. Our findings are subject to ongoing revision as new archival material and DNA results become available.", "origins_heading": "Project Origins", "origins_body": "The initiative was established by siblings Michael and Constance Van Flandern. The project's initial impetus was a personal effort to reconstruct our own family history, which had been obscured by the early loss of family members in our father's generation. This absence of inherited records necessitated a rigorous, source-based approach that eventually expanded into a broader study of the Van Vlaenderen surname across time and region.", "photo_caption": "Michael and Constance Van Flandern conducting field research in East Flanders.", "goals_heading": "Collaborative Goals", "goals_intro": "This website serves as a platform for organizing findings, referencing primary sources, and facilitating collaboration with the broader research community. We are committed to an open-exchange model and welcome contact from researchers, historians, and family historians across disciplines and geographies.", "goals_seeking": "We are actively seeking:", "collab_historians": "Historians and Genealogists", "collab_historians_desc": "Particularly those specializing in the Meetjesland or Flemish migratory patterns.", "collab_dna": "DNA Participants", "collab_dna_desc": "Individuals bearing the Van Vlaenderen surname (in any historical spelling) interested in Y-DNA testing.", "collab_family": "Family Researchers", "collab_family_desc": "Descendants with relevant primary source documents, such as family bibles or 19th-century correspondence.", "closing": "By bridging the gap between 15th-century comital records and early modern parish registers, we aim to provide a comprehensive account of the Van Vlaenderen heritage.", "contact_cta_body": "Are you a researcher, historian, or descendant interested in contributing?", "contact_cta_note": "We welcome collaboration and look forward to hearing from you." };
 const history$1 = {};
 const mill$1 = { "hero_eyebrow": "Van Vlaenderen · Vinderhoute · Meetjesland", "hero_title": "The Van Vlaenderensmolen", "hero_lead": "A windmill was more than a machine. For the Van Vlaenderen family, it was a livelihood, an identity, and a beacon in the East Flanders landscape.", "proverb_source": "Flemish miller's proverb", "history_p1": "In the village of Vinderhoute, within the municipality of Lovendegem in East Flanders, stands a historic windmill that has long been known as the Van Vlaenderensmolen. This wooden post mill, mounted on a central pivot so the entire structure could be turned into the wind, is one of the most tangible connections between the Van Vlaenderen family and the landscape of the Meetjesland.", "history_p2": "The mill took its name from the family that owned and operated it. In 1886, the property was purchased by Eduardus Van Vlaenderen (1832–1886), a farmer and miller who established the family's presence at the site. This acquisition made the Van Vlaenderen household part of the network of millers who played an essential role in the region's agricultural economy.", "history_p3": "Following Eduardus's death later that same year, the mill remained within the family, continuing its association with the Van Vlaenderen name into the next generation. His son, Frans Eduard Van Vlaenderen (1879–1954), grew up in the miller's household and continued the family's agricultural and milling traditions.", "photo_caption": "The Van Vlaenderensmolen, Vinderhoute — the mill that bears the family name.", "photo_attribution": "Photo by", "social_title": "The Miller's Place in Flemish Society", "social_p1": "In rural Flanders during the nineteenth century, the miller occupied a position of considerable importance. Farmers from the surrounding countryside brought their grain to the mill to be ground into flour, and the mill stood at the center of village economic life. Ownership of a working windmill required capital, land, and technical knowledge, and millers were often among the more established families of their communities.", "social_p2": "Wind power was the renewable energy of its age — patient, unpredictable, and essential. The miller's skill lay in reading the weather, adjusting the sails, and coaxing work from the wind. It was a craft passed from father to son, bound up in the rhythms of the seasons and the needs of the surrounding farms.", "region_title": "The Meetjesland Region", "region_p1": "The Meetjesland is a historic region in the province of East Flanders, Belgium, lying between the cities of Ghent and Bruges. It is a flat, green landscape of polders, canals, and small villages — a world shaped by water management, farming, and the rhythms of the seasons. The Van Vlaenderen family appears in the records of several Meetjesland villages, including Bassevelde, Ursel, Evergem, Boekhoute, and Merendree.", "location_coords": "51°06′N 3°36′E", "location_link": "View on Google Maps →", "cta_text": "Do you have family records or photos related to the Van Vlaenderensmolen?", "cta_note": "We are always looking to expand our archive of the family's milling history.", "proverb_text": "Heaven gives; whoever catches has it.", "history_title": "The Van Vlaenderensmolen", "lineage_gen_1": "I", "lineage_name_1": "Gerardus", "lineage_dates_1": "Van Vlaenderen", "lineage_role_1": "Farmer · Meetjesland", "lineage_gen_2": "II", "lineage_name_2": "Eduardus", "lineage_dates_2": "1832 – 1886", "lineage_role_2": "Farmer & Miller", "lineage_gen_3": "III", "lineage_name_3": "Frans Eduard", "lineage_dates_3": "1879 – 1954", "lineage_role_3": "Miller's household", "photo_alt": "The Van Vlaenderensmolen in Vinderhoute, East Flanders", "social_p3": "The history of the Van Vlaenderensmolen also reflects the vulnerability of these wooden structures to the forces of nature. In 1905, a powerful storm severely damaged the mill. The family rebuilt and restored the structure, ensuring that the mill continued to serve the surrounding farms and remained a visible landmark in the landscape of Vinderhoute.", "social_p4": "Today, the Van Vlaenderensmolen stands as a rare physical reminder of the family's historical presence in the Meetjesland — a point where landscape, livelihood, and surname intersect.", "location_name": "Van Vlaenderensmolen", "location_address": "Vinderhoute, Lovendegem, East Flanders, Belgium" };
 const dna$1 = /* @__PURE__ */ JSON.parse(`{"privacy_heading":"About Participation and Privacy","hero_eyebrow":"Van Vlaenderen · Genetic Genealogy","hero_title":"The DNA Project","hero_lead":"Where the paper trail ends, the genetic record begins. We are using DNA analysis to bridge the gaps in the archival record and test our hypotheses of shared origin.","origin_heading":"The Question of Common Origin","origin_p1":"Genealogical research into the Van Vlaenderen name has identified several documented family lines rooted in the Meetjesland and surrounding regions of East Flanders. At first glance, these lines appear in different parishes and at different moments in the historical record.","origin_p2":"The traditional assumption has been that families bearing the surname Van Vlaenderen — meaning \\"from Flanders\\" — may have adopted it independently as a locative designation. Yet closer examination of parish registers, land records, and patterns of proximity reveals a striking geographic concentration and recurring associations between families carrying the name.","origin_p3":"Rather than suggesting fragmentation, the documentation raises the possibility that many, perhaps even all, Van Vlaenderen families of the region may descend from a shared ancestor whose identity predates surviving parish records.","origin_p4":"Traditional genealogical research — relying on parish registers, civil records, and land documents — allows us to reconstruct much of this story, but gaps remain in the medieval period. DNA testing offers a complementary avenue of inquiry, helping to determine whether present-day Van Vlaenderens share a common paternal lineage.","origin_p5":"This question remains open — and it is one that can only be answered collectively.","origin_p6":"If you bear the name Van Vlaenderen, your family history may hold an essential piece of the puzzle.","pullquote":"Genealogy without genetics is like a map without a compass. Both are useful; together, they are powerful.","family_photo_caption":"Every Van Vlaenderen family carries a story. Photographs like this one — passed down through generations — are part of the evidence that connects us across time.","dna_heading":"How DNA Genealogy Works","dna_intro":"Modern genetic genealogy uses several types of DNA testing to trace family connections across generations:","dna_ydna":"Y-DNA","dna_ydna_desc":"Passed from father to son, Y-DNA testing traces the direct paternal line. It is particularly useful for surname research, as the Y chromosome and the surname are often inherited together. Two men who share the surname and closely matching Y-DNA results — particularly at the terminal SNP level — may share a relatively recent common paternal ancestor.","dna_autosomal":"Autosomal DNA","dna_autosomal_desc":"Autosomal DNA is inherited from both parents and can identify cousins across all family lines within approximately five to seven generations. Services such as AncestryDNA, 23andMe, and FamilyTreeDNA use autosomal testing to match you with living relatives who have also tested.","dna_mtdna":"mtDNA","dna_mtdna_desc":"Mitochondrial DNA is passed from mother to child and traces the direct maternal line. While less commonly used in surname research, it can confirm or challenge assumptions about maternal ancestry.","project_heading":"The Van Vlaenderen Genetic Genealogy Project","project_p1":"The project brings together men bearing the Van Vlaenderen surname — in any historical spelling — from as many documented family lines as possible, with the aim of resolving the question of shared origin through Y-DNA evidence.","project_p2":"A meaningful first answer requires roughly five to ten unrelated paternal lines tested at the Y-37 level or higher, with at least one or two willing to upgrade to Big Y-700 for high-resolution comparison against the existing reference result. Roughly fifteen to twenty participants would begin to resolve regional substructure — distinguishing, for example, an East Flanders cluster from a West Flanders or Zeeland cluster.","project_p3":"For now, participants are encouraged to join two existing FamilyTreeDNA group projects, both of which provide expert administration and community context for Flemish paternal-line research: the Flanders-Flemish DNA Project and the Benelux DNA Project.","project_p4":"Once a sufficient number of Van Vlaenderen testers have joined, we plan to establish a dedicated Van Vlaenderen subgroup within FamilyTreeDNA to coordinate analysis directly across our lines.","project_p5":"Descendants of Van Vlaenderen women whose family lines continued under different names are also welcome to participate. Autosomal results can contribute to broader cousin matching even where Y-DNA cannot.","cta_body":"Are you a Van Vlaenderen by paternal line — or have you tested with any DNA service?","cta_note":"Michael and Constance respond within 48 hours. We'll start a dialogue about your connection to the Van Vlaenderen surname and guide you toward the best way to contribute.","research_stands_heading":"Where the Research Stands","research_stands_p1":"To date, the project has one completed Big Y-700 result — a high-resolution paternal-line test drawn from the documented American line descending from Charles Louis Van Vlaenderen of Bassevelde, who emigrated to the United States in 1875.","research_stands_p2":"That result places this branch of the family on a paternal lineage designated R-FT1573, a Y-chromosome haplogroup formed roughly three thousand years ago. R-FT1573 is found today in small numbers in Germany, the Netherlands, England, and the United States. None of the closest known matches share the Van Vlaenderen surname, and the most recent shared ancestor with any of them lived long before surnames existed in Flanders.","research_stands_p3":"This is precisely where the project begins.","research_stands_p4":"A single test can establish a paternal signature. It cannot, on its own, answer whether other Van Vlaenderen families share that signature. To do that, we need more men carrying the name to test — ideally from documented but distinct family lines.","testing_heading":"What We're Testing","testing_hyp1_label":"Shared comital origin with regional substructure.","testing_hyp1_body":"All three clusters descend from Louis II de Male through his three documented natural sons — Victor (Meetjesland), Jan sans terre (French Flanders), and Louis Friese (Brabant). Under this hypothesis, Louis de Male is the shared paternal ancestor of all three regional clusters, though descent to any specific modern family within a cluster remains a working hypothesis with known evidentiary gaps.","testing_hyp2_label":"Multiple unrelated comital origins.","testing_hyp2_body":"Each cluster arose from a separate event within the comital network — most plausibly through men associated with the office of the Count of Flanders whose sons inherited the name as a surname (what the Four Functions analysis identifies as Function 3). Under this hypothesis the three clusters share no recent paternal ancestor, though documented historical ties to the comital household may still appear in individual lines.","testing_predictions_intro":"Each hypothesis predicts a distinct Y-DNA pattern:","testing_p_mixed":"Mixed patterns are also informative. A dominant cluster with a few outliers is in fact the expected result even under a shared-origin scenario, since small numbers of non-paternity events accumulate naturally over the centuries — at roughly one percent per generation in historical Flemish populations, according to published genealogical-genetics research.","testing_close":"In other words, the goal is not perfect uniformity. The goal is a signal clear enough to distinguish between the two.","privacy_intro":"DNA testing raises legitimate questions about privacy. A few clarifications that may help:","privacy_ydna_label":"Y-DNA testing examines only non-coding regions of the Y chromosome.","privacy_ydna_body":"It returns no medical information, no disease markers, and no information about the rest of your genome. The Y chromosome is passed essentially intact from father to son, which is what makes it useful for surname research — but it carries none of the medical content people often associate with DNA testing.","privacy_control_label":"You control your own data.","privacy_control_body":"Results remain in your own FamilyTreeDNA account, under your own settings. You decide who can see your matches, whether to join group projects, and what genealogical information to share. Joining the Flanders-Flemish or Benelux project does not make your results public; it makes them comparable to other project members at levels you authorize.","privacy_publish_label":"The project will never publish individual results without explicit permission.","privacy_publish_body":"Any future statements about specific lines, matches, or family connections will be coordinated with the participants involved.","privacy_aggregate_label":"Aggregate findings may be shared.","privacy_aggregate_body":"As the project grows, we may publish anonymized summaries — for example, \\"X of Y tested lines cluster on a shared branch\\" — but always in a form that does not identify individual testers or families without their consent.","privacy_close":"If you have questions about what testing involves, what data is generated, or how it is handled, we are happy to discuss before you commit. There is no obligation to test, and no pressure to share more than you choose.","testing_p_mixed_source_label":"Source: ","testing_p_mixed_source_text":"Larmuseau et al. (2013), Proceedings of the Royal Society B 280: 20132400.","testing_hypotheses_intro":"Two hypotheses cover the live possibilities the Y-DNA evidence is positioned to discriminate between:","testing_pred1_label":"Under the first hypothesis,","testing_pred1_body":"men drawn from each of the three regional clusters should share a deep paternal signature — the same broad haplogroup and SNP path — while their surname-period branches diverge within the expected window of roughly 1300–1500 CE, consistent with descent from Louis de Male's three natural sons.","testing_pred2_label":"Under the second,","testing_pred2_body":"testers from different clusters should fall onto unrelated haplogroups with no recent shared ancestor, though individual lines may show documentary connections back to the comital household.","zeeland_heading":"A Related Question: The Zeeland Thread","zeeland_p1":"A separate cluster of Van Vlaenderen families appears in Zeeland, in the southern Netherlands, from the later sixteenth century onward. Our documentary research suggests this cluster likely derives not from an independent founding line but from migration out of the Ghent hinterland in the later 1500s or early 1600s — most plausibly through the line of Laureys Arentsz van Vlaenderen (b. ~1529/30, d. 1601, schoolmaster in Ritthem) or an immediate predecessor.","zeeland_p2":"This migration hypothesis makes its own testable prediction. Living male-line Zeeland descendants should share a recent common paternal ancestor with the Meetjesland line — with a TMRCA falling somewhere in the late fifteenth to mid-sixteenth century window, before the migration itself. If Zeeland testers show that pattern, the migration hypothesis is confirmed. If they share a much deeper common ancestor with the Meetjesland line, or share no common ancestor at all, the hypothesis is wrong and the Zeeland thread becomes a fourth founding question in its own right.","zeeland_p3":"Either outcome is informative. Participation from Zeeland Van Vlaenderens is particularly valuable precisely because this branch of the research is the one most directly dependent on Y-DNA evidence to settle.","testing_toponymy_pre":"A third possibility — that each cluster arose independently as a generic toponymic label, without a comital origin — has been effectively ruled out at the cluster level by the distributional evidence. The dense, stable concentrations inside the historic County of Flanders are not what a \\"from Flanders\\" label produces; that label attaches to people who have moved away from the place the name describes. Individual outlier bearers — for example, emigrants to England or Germany whose families acquired the label in a non-Flemish community — may still have toponymic origins, but that is a question about specific lines rather than about the three main clusters. The full argument is set out in our","testing_toponymy_linktext":"Four Functions, Three Clusters","testing_toponymy_post":"analysis.","testing_intro_pre":"Three documented bastard lines of Louis II de Male —","testing_intro_victor_text":"Victor van Vlaenderen","testing_intro_mid1":"(Belgian/Meetjesland cluster),","testing_intro_drincham_text":"Jan sans terre van Vlaenderen","testing_intro_mid2":"(French Flanders cluster), and","testing_intro_praet_text":"Louis Friese van Vlaenderen","testing_intro_post":"(Brabant cluster) — each established distinct regional surnames that survive in the modern record. The central question the Y-DNA project is designed to test is not whether these clusters exist, but how they relate to one another.","cta_button":"Join the Team","notes_heading":"Notes and Sources","notes_intro":"The DNA research on this page rests on primary-source attestation of the three documented bastard lines, on the distributional analysis set out in the Four Functions article, and on published genealogical-genetics research. Fuller documentation is maintained on the linked dossier pages.","notes_source_1_label":"[1]","notes_source_1_text":"The paternity of Victor, Jan sans terre, and Louis Friese as documented natural sons of Louis II de Male is attested in Olivarius Vredius (Olivier de Wrée), Genealogia Comitum Flandriae, Bruges 1642–43, Tabula XVI, and in Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut (v5.0, January 2025). Full primary-source transcriptions are in the Victor, Drincham, and Praet archival dossiers linked above.","notes_source_2_label":"[2]","notes_source_2_text":"The Four Functions, Three Clusters analysis sets out the distributional evidence for three regional surname clusters and the argument that pure toponymy is effectively ruled out at the cluster level while remaining possible for individual outlier bearers.","notes_source_2_linktext":"Read the Four Functions analysis →","notes_source_3_label":"[3]","notes_source_3_text":"Larmuseau et al. (2013), Low historical rates of cuckoldry in a Western European human population traced by Y-chromosome and genealogical data, Proceedings of the Royal Society B 280: 20132400. This Flemish population study underpins the roughly 1%-per-generation non-paternity event rate referenced above.","notes_source_4_label":"[4]","notes_source_4_text":"R-FT1573 haplogroup data, including block tree, match time tree, and paternal-countries-of-origin distribution, is public via FamilyTreeDNA's Discover platform.","notes_source_4_linktext":"View the R-FT1573 time tree →","participate_heading":"How to Participate","participate_intro":"Male-line Van Vlaenderens — men carrying the surname in any historical spelling through unbroken father-to-son descent — are the project's highest-value contributors. Participation takes three steps:","participate_step1_label":"1. Order a Y-DNA test.","participate_step1_body":"FamilyTreeDNA's Y-37 is the recommended starting point; it compares 37 Y-chromosome markers and will identify close matches among other Van Vlaenderens. A Big Y-700 upgrade — providing high-resolution SNP comparison against the project's R-FT1573 reference — may be worth pursuing if your Y-37 matches warrant deeper analysis.","participate_step2_label":"2. Join a group project.","participate_step2_body":"Results matter most in context. The Flanders-Flemish DNA Project and the Benelux DNA Project on FamilyTreeDNA are both administered by experienced Flemish genealogists. A dedicated Van Vlaenderen subgroup will follow once enough participants have joined.","participate_step3_label":"3. Get in touch.","participate_step3_body":"Michael and Constance respond within 48 hours. We'll help with test selection, group project setup, and any questions before you commit.","participate_alternative_label":"Already tested elsewhere?","participate_alternative_body":"Results from AncestryDNA, 23andMe, MyHeritage, or FamilyTreeDNA Family Finder are also valuable — autosomal data can contribute to cousin matching across the documented Van Vlaenderen lines. Get in touch either way.","participate_button":"Join the Team","dna_ydna_already_label":"Already tested?","dna_ydna_already_body":"If you've done Y-37 or higher with FamilyTreeDNA, check whether your terminal haplogroup matches R-FT1573 or any descendant branch, and look for Van Vlaenderen matches in your list. Get in touch — we'll help interpret your results against the project reference.","dna_ydna_considering_label":"Considering testing?","dna_ydna_considering_body":"The FamilyTreeDNA Y-37 is the recommended entry point. A Big Y-700 upgrade is worth pursuing if your Y-37 shows close matches to other Van Vlaenderens.","dna_autosomal_already_label":"Already tested?","dna_autosomal_already_body":"Results from AncestryDNA, 23andMe, MyHeritage, or FamilyTreeDNA Family Finder can contribute to the project's broader cousin-matching research even without Y-DNA. Get in touch — we'll help look for Van Vlaenderen connections in your match list.","dna_autosomal_considering_label":"Considering testing?","dna_autosomal_considering_body":"Autosomal testing is valuable for cousin discovery and broader family-network context, but Y-DNA remains the primary tool for paternal-line surname research.","dna_mtdna_already_label":"Already tested?","dna_mtdna_already_body":"If you're descended from a Van Vlaenderen woman whose line continued under a different name, your mtDNA may help reconstruct maternal lines branching off the documented families. Get in touch to discuss how your results fit.","dna_mtdna_considering_label":"Considering testing?","dna_mtdna_considering_body":"mtDNA is a specialised tool for specific research questions rather than general surname work. Most project participants will benefit more from Y-DNA or autosomal testing."}`);
 const contact$1 = { "hero_eyebrow": "Van Vlaenderen · Collaboration", "hero_title": "Connect With the Project", "hero_lead": "Genealogy is a collaborative journey. Whether you have a question, a correction, or a piece of the puzzle to share, we look forward to hearing from you.", "reasons_title": "Why Reach Out?", "reason_name_title": "You carry the name", "reason_name_text": "If your surname is Van Vlaenderen — in any spelling — we want to know your story. Every branch of the family matters.", "reason_docs_title": "You have documents or photographs", "reason_docs_text": "Old letters, birth certificates, photographs, land records — any document connected to the Van Vlaenderen family is valuable.", "reason_dna_title": "You have taken a DNA test", "reason_dna_text": "If you have tested with AncestryDNA, 23andMe, or FamilyTreeDNA and have Van Vlaenderen ancestry, your results could connect the branches.", "reason_local_title": "You have local knowledge", "reason_local_text": "If you live in or near the Meetjesland and know stories about the Van Vlaenderen family or the mill at Vinderhoute, please share them.", "reason_question_title": "You have a question", "reason_question_text": "Genealogical research can be confusing. If you have a question about the Van Vlaenderen family or how to research your own roots, ask away.", "privacy_text": "Your personal information is never shared, sold, or published without your explicit consent. This is a private family research project.", "form_title": "Send a Message", "form_name": "Name", "form_name_placeholder": "e.g. Jan Van Vlaenderen", "form_email": "Email", "form_email_placeholder": "your@email.com", "form_subject": "Subject", "form_subject_placeholder": "Select a topic…", "form_subject_research": "Family Research", "form_subject_dna": "DNA Project", "form_subject_docs": "Documents or Photographs", "form_subject_mill": "The Mill", "form_subject_general": "General Enquiry", "form_message": "Message", "form_message_placeholder": "Tell us about your connection to the Van Vlaenderen family…", "form_submit": "Send Message", "form_sending": "Sending...", "form_success": "Thank you for reaching out! We have received your message and will respond as soon as possible.", "form_error": "There was an issue sending your message. Please try again.", "pull_quote": "Family history is not just about the past. It is about understanding who we are and where we come from — and perhaps finding others who share that journey.", "collage_caption": "Every family has photographs. Every photograph tells part of the story. Share yours with the Van Vlaenderen archive." };
-const footer$1 = {};
+const footer$2 = { "nav_heading": "Navigate", "project_heading": "The Project", "attribution_heading": "Attribution", "tagline": "A genealogical research project tracing the Van Vlaenderen surname from medieval Flanders to a modern American family branch.", "bibliography_link_label": "Sources & Bibliography", "sources_callout": "View the sources", "sources_callout_aria": "Go to the Sources and Bibliography page", "copyright": "© 2026 Michael Van Flandern and Constance Van Flandern", "collaboration": "A collaborative project of Michael Van Flandern and Constance Van Flandern.", "license": "Licensed under CC BY 4.0", "license_link_aria": "Read the full license and attribution terms", "last_updated_prefix": "Last updated:" };
+const license$1 = { "page_title": "License & Attribution", "meta_description": "License and attribution terms for the Lions of Flanders / Van Vlaenderen research project: CC BY 4.0 for research content, MIT for site code, and notes on citing primary source transcriptions.", "heading": "License & Attribution", "intro": "The Lions of Flanders research project is openly licensed to support academic citation, translation, and scholarly reuse. The terms below explain how the license applies to the different kinds of material on the site — project-authored analysis, primary source transcriptions, website code, and third-party material.", "research_heading": "Research content — CC BY 4.0", "research_body1": "The narrative prose, analytical commentary, diagrams, dossiers, and bibliography annotations authored by Michael Van Flandern and Constance Van Flandern for this project are shared under the Creative Commons Attribution 4.0 International license (CC BY 4.0). You may cite, quote, translate, adapt, and build upon this work — including for commercial purposes — provided you credit the project and link back to the original page.", "research_body2": "A suggested citation format for academic use: Van Flandern, M. & Van Flandern, C. (2026). [Page title]. Lions of Flanders / Van Vlaenderen Research Project. https://vanvlaenderen.org/[path]. Retrieved [date].", "cc_by_link_label": "Read the full CC BY 4.0 license at creativecommons.org →", "transcriptions_heading": "Primary source transcriptions", "transcriptions_body1": "The project reproduces verbatim passages from primary sources — charters, tomb inscriptions, schepenbank records, parish registers — in the research dossiers. The underlying texts are long out of copyright and are in the public domain. The transcriptions themselves represent scholarly labour: locating the source, reading the hand, resolving contractions, collating variant readings against other editions.", "transcriptions_body2": "When citing a specific transcription from this site, please cite both the underlying primary source (with its full archival signature where given) and this project as the transcribing intermediary. That way the chain of custody from original document → project transcription → your work remains legible to the next reader who wants to verify.", "code_heading": "Website code — MIT", "code_body": "The website's React + TypeScript source code, build scripts, and component library are separately licensed under the MIT license, not CC BY 4.0. The two licenses cover different kinds of work: CC BY for scholarly content, MIT for software. The MIT license is standard for open-source web projects and permits reuse of the code with attribution.", "mit_link_label": "View the MIT LICENSE file on GitHub →", "third_party_heading": "Third-party material", "third_party_body": "Collaborator-compiled family registers (such as Pieter Antheunisz van Vlaenderen's Stamreeks in the bibliography), published third-party works cited throughout the site, and any images or heraldic material reproduced from external sources remain the property of their respective authors and rights-holders. The project's CC BY 4.0 license does not extend to these materials — consult the original source for its own terms.", "contact_heading": "Questions", "contact_body": "For questions about reuse that don't fit cleanly into these categories — or for collaborations, translations, or citations in peer-reviewed publications where a more specific permission statement would be helpful — please get in touch via the Contact page.", "last_reviewed": "License terms last reviewed: April 2026." };
 const common$1 = {};
 const lineage$1 = { "page_title": "Family Lineage", "page_intro": "The documented Van Vlaenderen line from Jeremiah (~1575) to the present — traced through East Flanders parish records, civil archives, and DNA. Click any ancestor to see the archival details.", "legend_label": "Evidence status key", "tree_label": "Van Vlaenderen ancestor tree", "click_hint": "Click any card for details", "generation": "Generation", "born_prefix": "b.", "records_available": "Records available", "status_documented": "Fully documented", "status_partial": "Partial records", "status_inferred": "Inferred / approximate", "status_modern": "Modern family", "record_birth": "Birth", "record_marriage": "Marriage", "record_death": "Death", "view_archive": "View in archive", "detail_born": "Born", "detail_parish": "Parish", "detail_birth": "Birth record", "detail_marriage": "Marriage record", "detail_death": "Death record", "detail_status": "Evidence status", "source_note": "Parish and civil records sourced from", "source_note_2": " and Rijksarchief Brugge. Research ongoing." };
 const research$1 = /* @__PURE__ */ JSON.parse(`{"hero_eyebrow":"Van Vlaenderen · Medieval Research","hero_title":"Medieval & Collateral Lines","hero_lead":"Louis II de Male, Count of Flanders (1330–1384), fathered at least thirteen illegitimate children. Three of his natural sons founded documented surname-bearing lines that used van Vlaenderen as a hereditary identifier — each anchored to a distinct lordship, each leaving a distinct geographic footprint in the historical record.","dossier_title":"Research Overview","dossier_updated":"Updated April 2026","methodology_title":"Methodology & Evidence Levels","method_attested_label":"Directly Attested","method_attested_text":"Statements resting on quoted charter language or explicit documentary summaries in published authorities.","method_corroborated_label":"Strongly Corroborated","method_corroborated_text":"Statements supported by concordant published historical or heritage authorities.","method_probable_label":"Probable","method_probable_text":"Source-based statements that require fuller inspection of the underlying editions before being treated as settled.","method_hypothesis_label":"Hypothesis","method_hypothesis_text":"Genealogical inferences proposed for further testing, not yet proven as fact.","conclusion_title":"Ongoing Work","conclusion_p1":"Research priorities centre on closing the documentary gap between Adam van Vlaendren's last attestation (1447) and the first parish-record Van Vlaenderens in the Meetjesland (c. 1568), and on testing the bastard-line hypothesis through Y-DNA comparison across the three clusters. Active archival targets include the Ghent Staten van Goed series (Ambacht Assenede I & II), the Landboek and Leenhof records covering the Meetjesland, and the Cassel castellany administrative record series at the Archives Départementales du Nord in Lille.","cta_text":"Are you a researcher specializing in 15th-century Flemish archives?","cta_note":"We welcome collaboration on the archival search for the 'missing generations' of the Van Vlaenderen line.","tldr_heading":"Why the Name Matters","tldr_body":"Most people first meeting van Vlaenderen assume it simply means \\"from Flanders.\\" The documentary evidence tells a more specific story: the earliest recurring uses of the name as a hereditary surname trace to the illegitimate branches of the House of Flanders. The families carrying it clustered inside the historic County rather than scattering as migrants. The argument is laid out below.","three_lines_heading":"Three Lines, Three Clusters","three_lines_p1":"The research is structured around three documented lines descending from Louis de Male. All three used van Vlaenderen (and its variants: van Vlaendren, de Flandre, de Flandres) as a hereditary surname — not a geographic descriptor, but a marker of comital illegitimate descent that crystallised at the precise moment the Dampierre line's hold on Flanders ended with Louis de Male's death in 1384. Each line is anchored to a specific lordship granted in the 1373–1399 period, and each corresponds to a distinct geographic cluster in the later distributional record.","three_lines_p2":"There is a further dimension worth noting. Louis II de Male was the last Count of Flanders from the House of Dampierre. On his death in 1384, the county passed to his daughter Margaret and her husband Philip the Bold of Burgundy, and the Dampierre hold on Flanders ended permanently. The evidence suggests that van Vlaenderen crystallised as a heritable surname among Louis's bastard children at precisely this moment — not as a geographic descriptor meaning \\"from Flanders,\\" but as an inherited identity marking comital blood at the point when the title itself was extinguished. This pattern is documented independently in all three lines, and it is one of the strongest arguments that the surname functions as inherited comital identity rather than as a common toponym.","paradox_eyebrow":"The Toponymic Paradox","paradox_title":"Four Functions, Three Clusters","paradox_body":"A surname meaning \\"from Flanders\\" only makes sense when applied far from Flanders. Yet the heaviest and oldest clusters of the Van Vlaenderen surname appear inside the historic County — in the Meetjesland and the Cassel region — where the label would have been geographically meaningless to neighbours. This paradox, together with the phrase's four distinct documentary functions, is the evidential foundation for the three-line argument on this page.","paradox_button":"Read the Full Analysis →","diagram_sr_text":"This diagram presents the surname-bearing bastard lines descending from Louis II de Male, Count of Flanders (1330–1384), the last Count from the House of Dampierre. Victor's line: Victor van Vlaenderen (died before 1442), Lord of Ursel and Wessegem in the Meetjesland, had three documented natural sons — Lodewyc, Janne, and Adam van Vlaendren — all named in primary charters 1427–1447. Adam, last attested in Ghent on 18 March 1447, is the closest documented individual bridge candidate to the modern East Flanders clusters. Praet line: Louis Friese van Vlaenderen (c.1350–1396), Lord of Praet and Woestine, founded the House of Flanders-Praet through his son Johan I van Vlaenderen. The line descends through six attested generations to Lodewijk IV van Vlaenderen (died 1556); the patrimony acquired the Vrijhof at Aalter by 1516, anchoring this branch in the Meetjesland alongside Victor's. Cadet branches (notably Josse de Flandre's line, documented to at least 1592) and the post-1545 Praet research thread remain under active investigation. Drincham line: Jan sans terre van Vlaenderen, granted Drincham castle near Cassel in 1383, killed at Nicopolis 1396. Four documented generations through the 1470s in French Flanders, often using the de Flandres form of the surname — the primary founding line for the French Flanders / Volckerinckhove cluster.","branches_heading":"Research Branches","branch_victor_name":"Victor van Vlaenderen","branch_victor_desc":"Natural son of Louis de Male. Lord of Ursel and Wessegem in the Meetjesland. Three natural sons documented across three primary charters (1427, 1441, 1446). His son Adam, last attested in Ghent on 18 March 1447, is the closest documented individual bridge candidate to the modern East Flanders clusters.","branch_victor_link":"Explore Victor's Line →","branch_louis_name":"Louis Friese van Vlaenderen","branch_louis_desc":"Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis 1396. Founded the House of Flanders-Praet — six attested generations using van Vlaenderen as a hereditary surname. The Praet patrimony acquired the Vrijhof at Aalter by 1516, anchoring this branch in the Meetjesland alongside Victor's; cadet continuations remain under research.","branch_louis_link":"Explore the Praet Line →","branch_drincham_name":"Jan \\"sans terre\\" van Vlaenderen","branch_drincham_desc":"Natural son of Louis de Male. Granted Drincham castle near Cassel, 1383. Killed at Nicopolis 1396. Four documented generations in French Flanders through the 1470s — the primary founding line for the Volckerinckhove/French Flanders cluster.","branch_drincham_link":"View Archival Dossier →","reference_heading":"Reference","ref_gap_title":"The Documentary Gap, 1447–1580","ref_gap_desc":"The 130-year span between the last confirmed comital-line bearer and the first Meetjesland parish generation. Evidence in hand, searches completed, active archival targets, and three working hypotheses for how the gap closes.","ref_gap_link":"Explore the Gap →","ref_methodology_title":"Methodology & Sources","ref_methodology_desc":"How archival documents are transcribed and translated, and the curated reading list of primary and secondary works that underpin the research.","ref_methodology_link":"Methodology & Sources →","ref_bibliography_title":"Sources & Scholarship","ref_bibliography_desc":"Primary sources, archival finding aids, and scholarly literature cited in the dossiers — the evidentiary basis of the project in one place.","ref_bibliography_link":"Sources & Scholarship →","dossiers_heading":"Archival Dossiers","dossiers_intro":"For researchers seeking the underlying documentary evidence, we maintain detailed archival dossiers with full charter transcriptions, epitaph data, and source analysis.","dossier_victor_title":"Victor van Vlaenderen Dossier","dossier_victor_desc":"Three-charter nucleus (1427, 1441, 1446), Victor's 1430 testament, Lodewyc's descendants, and the Oostborch epitaph evidence.","dossier_victor_link":"View Archival Evidence →","dossier_praet_title":"Louis Friese: Archival Dossier","dossier_praet_desc":"Primary source extracts and territorial history of the House of Flanders-Praet.","dossier_praet_link":"View Archival Evidence →","dossier_praet_lineage_title":"House of Praet: Lineage Dossier","dossier_praet_lineage_desc":"Six generations with primary-source confirmed data. Johan I's five children, Lodewijk II's six children (including the Josse de Flandre cadet branch), and the 1517 Knesselare charter.","dossier_praet_lineage_link":"View Lineage Evidence →","dossier_drincham_title":"Jan sans terre — Drincham Dossier","dossier_drincham_desc":"The 1383 Drincham land grant, four documented generations in the Cassel area, the Veurne epitaph of Jacques de Drincham, and the geographic-documentary case for the French Flanders Van Vlaenderen cluster.","dossier_drincham_link":"View Archival Evidence →","articles_heading":"Research Articles","articles_intro":"Analytical and contextual writing that sits alongside the archival evidence — distributional analysis, historical interpretation, and speculative threads with clearly marked evidentiary status.","article_four_functions_title":"Four Functions, Three Clusters","article_four_functions_desc":"A primary source and distributional analysis of the Van Vlaenderen surname across four documentary functions and three geographic clusters spanning three centuries. Tests the toponymic and bastard-line hypotheses against Geneanet heat-map data and the onomastic record.","article_four_functions_link":"Read Analysis →","article_nieus_title":"Seals, Lions, and the Politics of a Surname","article_nieus_desc":"How twelfth-century Flemish noble seal culture — the lion, the Dover Recognitio, and the political weight of territorial identity — provides historical depth for the Van Vlaenderen hypothesis. Based on Nieus (2021).","article_nieus_link":"Read Article →","notes_heading":"Notes and Sources","notes_intro":"The research overview on this page rests on primary-source attestation of the three documented bastard lines, on the distributional evidence set out in the Four Functions article, and on supporting scholarship in Flemish seal culture and medieval genealogy. Full documentation is maintained on the linked dossier and article pages.","notes_source_1_label":"[1]","notes_source_1_text":"Primary-source attestation for Victor, Jan sans terre, and Louis Friese as natural sons of Louis II de Male: Olivarius Vredius (Olivier de Wrée), Genealogia Comitum Flandriae, Bruges 1642–43, Tabula XVI, fol. 275–288. Full primary-source transcriptions with commentary are maintained in each of the three archival dossiers linked above.","notes_source_2_label":"[2]","notes_source_2_text":"Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut (v5.0, January 2025). Secondary synthesis of Louis de Male's documented illegitimate children with primary-source footnotes.","notes_source_3_label":"[3]","notes_source_3_text":"The distributional analysis across three surname clusters (c. 1500, 1600, 1700) and the toponymic-paradox argument are set out in full in the Four Functions, Three Clusters article.","notes_source_3_linktext":"Read the Four Functions analysis →","notes_source_4_label":"[4]","notes_source_4_text":"Jean-François Nieus, \\"Aristocratic seal ownership in twelfth-century Flanders: A world in between\\" (preprint, Academia.edu, 2021; University of Namur; forthcoming in peer-reviewed publication). Provides historical depth for how Flemish elite identity and territorial names functioned in the comital network. Discussed in full on the Seals, Lions, and the Politics of a Surname page.","notes_source_4_linktext":"Read the Seals article →","diagram_sr_heading":"Research overview diagram — text summary"}`);
@@ -1165,7 +1166,8 @@ const en = {
   mill: mill$1,
   dna: dna$1,
   contact: contact$1,
-  footer: footer$1,
+  footer: footer$2,
+  license: license$1,
   common: common$1,
   lineage: lineage$1,
   research: research$1,
@@ -1173,14 +1175,15 @@ const en = {
   victor: victor$1,
   louis_friese: louis_friese$1
 };
-const nav$1 = { "home": "Home", "about": "Over dit project", "history": "Onderzoek", "mill": "De molen", "name": "De naam", "dna": "DNA", "contact": "Contact", "language_toggle_label": "Taal" };
+const nav$1 = { "home": "Home", "about": "Over dit project", "history": "Onderzoek", "mill": "De molen", "name": "De naam", "dna": "DNA", "sources": "Bronnen", "contact": "Contact", "language_toggle_label": "Taal" };
 const home = { "hero_subtitle_narrative": "Van Vlaanderen, naar de wereld", "hero_subtitle_locations": "Meetjesland · Gent · Oost-Vlaanderen", "mystery_question": "Een achternaam. Een regio. Een open vraag.", "mystery_intro_p1": "Deze site is een genealogisch onderzoeksproject gewijd aan de achternaam", "mystery_intro_p1_cont": "— een naam gedragen door families die eeuwenlang in de dorpen van het Meetjesland in Oost-Vlaanderen woonden: Ursel, Bassevelde, Boekhoute, Kaprijke, Evergem en hun buren.", "mystery_visitor_note": "Als u hier bent gekomen op zoek naar informatie over de regio Vlaanderen zelf, bent u van harte welkom — en we hopen dat de geschiedenis die in dit onderzoek verweven is, u interesseert. Dit project gaat over één familienaam, niet over de regio als geheel.", "mystery_toponymic_p1": "De conventionele lezing van de achternaam is", "mystery_toponymic_p1_cont": "betekent simpelweg 'uit Vlaanderen', een label dat verbonden had kunnen zijn aan elke familie die vanuit de bredere regio naar een meer lokale gemeenschap migreerde. Veel Vlaamse achternamen delen dit patroon, en voor de meeste dragers van de naam is deze uitleg wellicht het volledige verhaal.", "mystery_emerging": "Maar het documentaire archief roept vragen op die een puur toponymische verklaring niet gemakkelijk beantwoordt — en dit project bestaat om deze te onderzoeken.", "hypothesis_one_label": "Werkhypothese één", "hypothesis_one_title": "Een achternaam uit het grafelijke huishouden", "hypothesis_one_body": 'Wanneer de vroegst traceerbare Van Vlaenderen-lijnen in de parochies van het Meetjesland samen in kaart worden gebracht, waarom groepeert de naam zich rond een klein aantal stichtende families in plaats van zich willekeurig over de regio te verspreiden, zoals een algemeen toponiem zou doen? Eén mogelijke verklaring is dat de achternaam oorspronkelijk een ambts- of huishoudelijk onderscheidingsteken was — bedienden en ambtenaren van de graaf van Vlaanderen droegen in hun werkzaamheden administratieve titels als "bode van mijn heer van Vlaanderen", en in latere generaties konden zulke titels tot erfelijke familienamen verharden. Onder deze hypothese ontstonden verschillende stichtende families onafhankelijk van elkaar, elk afstammend van een andere grafelijke ambtsdrager, en delen de clusters geen recente gemeenschappelijke voorouder.', "hypothesis_two_label": "Werkhypothese twee", "hypothesis_two_title": "Een achternaam uit de grafelijke bloedlijn", "hypothesis_two_body": 'De zwaarste en oudste clusters van de achternaam Van Vlaenderen verschijnen binnen het historische graafschap Vlaanderen zelf — in het Meetjesland en de streek rond Kassel — waar een label zoals "uit Vlaanderen" voor buren geografisch betekenisloos zou zijn geweest. Dit is de paradox in het hart van het onderzoek: waarom is een toponymische achternaam juist daar het dichtst geconcentreerd waar het toponiem geen informatie zou hebben overgebracht? Een mogelijk antwoord ligt in de familie van de graven zelf. Lodewijk II, de laatste graaf van Vlaanderen uit het huis Dampierre, erkende ten minste dertien onwettige kinderen voor zijn dood in 1384, en ten minste drie van zijn erkende natuurlijke zonen stichtten gedocumenteerde lijnen die de naam als achternaam voerden, elk verbonden aan een heerlijkheid die hij hun had toegekend. Onder deze hypothese voert de achternaam Van Vlaenderen in de parochieregisters van het Meetjesland en Frans-Vlaanderen terug op één van deze grafelijke bastaardlijnen — voortgedragen niet als een beschrijving van geografische herkomst, maar als een bewaarde, geërfde identiteit die afstamming van de graven zelf markeerde op het moment dat hun titel zelf uitdoofde.', "hypotheses_bridge": "Deze twee hypothesen sluiten elkaar niet uit — een ambtsdrager-stamvader en een bastaardlijn-stamvader zouden beiden Van Vlaenderen-families gezaaid kunnen hebben — maar ze doen toetsbaar verschillende voorspellingen over hoe de moderne clusters met elkaar verwant zijn, en het Y-DNA-project is mede opgezet om daartussen te onderscheiden. Het archivalisch en genetisch bewijs is op dit moment niet sluitend, en het project blijft collaboratief en open.", "pull_quote": "Eén naam. Eén regio. De vraag is of het ooit echt één familie was.", "cta_research": "Bekijk het onderzoeksdossier", "cta_collaborative_p1": "Dit project is door opzet collaboratief. Als u de naam draagt", "cta_collaborative_p1_cont": "— in welke historische spelling dan ook — of als u afstamt van een Van Vlaenderen-vrouw wiens lijn onder een andere naam werd voortgezet, kunnen uw familieregisters en DNA-resultaten een stukje van het antwoord bevatten. We nodigen u uit om te verkennen wat hier is verzameld, het te vergelijken met uw eigen onderzoek en contact op te nemen.", "research_note": "Er wordt hier geen claim gemaakt dat een levend persoon afstamt van de graven van Vlaanderen. Wij zijn onderzoekers, geen verhalenvertellers. Het bewijs zal gaan waar het gaat.", "explore_archive": "Verken het archief", "card_mill_title": "De molen", "card_mill_subtitle": "Het levensonderhoud van een familie", "card_mill_quote": "De molenaarsfamilies van het Meetjesland — hun leven, hun land, hun nalatenschap.", "card_name_title": "De naam", "card_name_subtitle": "Oorsprong & varianten", "card_name_quote": "Waar begon de naam — en hoeveel families sharen één enkele wortel?", "card_research_title": "Onderzoek", "card_research_subtitle": "Middeleeuwse & collaterale lijnen", "card_research_quote": "Verkenning van de linies van Lodewijk II 'van Male', graaf van Vlaanderen, inclusief Victor en de Praet-lijn.", "card_dna_title": "Zijn we verbonden?", "card_dna_subtitle": "Het DNA-project", "card_dna_quote": "Y-DNA en autosomaal testen worden gebruikt om te onderzoeken of alle Van Vlaenderen-lijnen een gemeenschappelijke voorouder delen.", "cta_explore": "Verken de oorsprong", "cta_contribute": "Draag bij aan uw onderzoek", "footer_project": "Een onafhankelijk genealogisch onderzoeksproject", "footer_permission": "Geen publicatie zonder toestemming" };
 const about = { "lineage_cta_heading": "Verken de gedocumenteerde lijn", "lineage_cta_body": "We have traced 14 generations of the Van Vlaenderen family through East Flanders parish records, civil archives, and DNA analysis. Click below to see the interactive family tree.", "lineage_cta_link": "Bekijk de familielijn", "closing": "Door de kloof te overbruggen tussen 15e-eeuwse grafelijke records en vroegmoderne parochieregisters, streven we ernaar een omvattend verslag te bieden van het Van Vlaenderen erfgoed.", "collab_dna": "DNA-deelnemers", "collab_dna_desc": "Personen die de familienaam Van Vlaenderen dragen (in enige historische spelling) en interesse hebben in Y-DNA-testen.", "collab_family": "Familiegenealogen", "collab_family_desc": "Nakomelingen met relevante primaire-brondocumenten, zoals familiebijbels of 19e-eeuwse correspondentie.", "collab_historians": "Historici en genealogen", "collab_historians_desc": "Met name degenen die gespecialiseerd zijn in het Meetjesland of Vlaamse migratiepatronen.", "contact_cta_body": "Bent u een onderzoeker, historicus of nakomeling die wil bijdragen?", "contact_cta_note": "We verwelkomen samenwerking en kijken ernaar uit van u te horen.", "goals_heading": "Samenwerkingsdoelen", "goals_intro": "Deze website dient als platform voor het organiseren van bevindingen, het verwijzen naar primaire bronnen en het faciliteren van samenwerking met de bredere onderzoeksgemeenschap. Wij zijn toegewijd aan een model van open uitwisseling en verwelkomen contact van onderzoekers, historici en familiehistorici over disciplines en geografieën heen.", "goals_seeking": "Wij zijn actief op zoek naar:", "hero_eyebrow": "Van Vlaenderen · Over dit project", "hero_lead": "Een genealogisch en historisch project gewijd aan het documenteren van de oorsprong, migratiepatronen en familiale verbanden van de familienaam Van Vlaenderen.", "hero_title": "Het Van Vlaenderen onderzoeksinitiatief", "methodology_note": "Wij handhaven een strikt onderscheid tussen gedocumenteerd bewijs en werkhypothesen. Onze bevindingen zijn onderhevig aan voortdurende herziening naarmate nieuw archiefmateriaal en DNA-resultaten beschikbaar komen.", "origins_body": "Het initiatief werd opgericht door broer en zus Michael en Constance Van Flandern. De aanvankelijke impuls voor het project was een persoonlijke inspanning om onze eigen familiegeschiedenis te reconstrueren, die was verduisterd door het vroege verlies van familieleden in de generatie van onze vader. Deze afwezigheid van overgeërfde records noodzaakte een rigoureuze, op bronnen gebaseerde benadering die uiteindelijk uitgroeide tot een bredere studie van de familienaam Van Vlaenderen door tijd en regio heen.", "origins_heading": "Projectoorsprong", "photo_caption": "Michael en Constance Van Flandern tijdens veldonderzoek in Oost-Vlaanderen.", "scope_heading": "Onderzoeksomvang en methodologie", "scope_intro": "Ons werk richt zich op de regio Meetjesland in Oost-Vlaanderen, specifiek de parochies en dorpen Bassevelde, Boekhoute, Waarschoot, Oostwinkel en omliggende gebieden. We hanteren een multidisciplinaire benadering die traditioneel archiefonderzoek integreert met moderne genetische genealogie.", "scope_sources": "Ons primaire bronmateriaal omvat:", "source_dna": "Y-DNA-analyse", "source_dna_desc": "Gebruik van paternale-lijn genetische tests om gedeelde oorsprong tussen geografisch onderscheiden takken te onderzoeken.", "source_estate": "Boedelinventarissen (Staten van Goed)", "source_estate_desc": "Analyse van erfenis- en eigendomsrecords om familiestructuren te reconstrueren.", "source_land": "Landboeken en notariële archieven", "source_land_desc": "In kaart brengen van grondbezit en rechtshandelingen om geografische verplaatsing te traceren.", "source_parish": "Parochieregisters en burgerlijke stand", "source_parish_desc": "Systematische indexering van geboorten, huwelijken en overlijdens vanaf de 17e eeuw." };
 const history = {};
 const mill = { "hero_eyebrow": "Van Vlaenderen · Vinderhoute · Meetjesland", "hero_title": "De Van Vlaenderensmolen", "hero_lead": "Een windmolen was meer dan een machine. Voor de familie Van Vlaenderen was het een bron van inkomsten, een identiteit en een baken in het Oost-Vlaamse landschap.", "proverb_source": "Vlaams molenaarsspreekwoord", "history_p1": "In het dorp Vinderhoute, in de gemeente Lovendegem in Oost-Vlaanderen, staat een historische windmolen die al lang bekend staat als de Van Vlaenderensmolen. Deze houten staakmolen, gemonteerd op een centrale spil zodat de hele structuur in de wind gedraaid kon worden, is een van de meest tastbare verbindingen tussen de familie Van Vlaenderen en het landschap van het Meetjesland.", "history_p2": "De molen ontleende zijn naam aan de familie die hem bezat en exploiteerde. In 1886 werd het eigendom gekocht door Eduardus Van Vlaenderen (1832–1886), een landbouwer en molenaar die de aanwezigheid van de familie op de site vestigde. Door deze aankoop werd het huishouden Van Vlaenderen deel van het netwerk van molenaars die een essentiële rol speelden in de landbouweconomie van de regio.", "history_p3": "Na de dood van Eduardus later datzelfde jaar bleef de molen binnen de familie en bleef hij verbonden met de naam Van Vlaenderen tot in de volgende generatie. Zijn zoon, Frans Eduard Van Vlaenderen (1879–1954), groeide op in het molenaarsgezin en zette de landbouw- en molenaarstradities van de familie voort.", "photo_caption": "De Van Vlaenderensmolen, Vinderhoute — de molen die de familienaam draagt.", "photo_attribution": "Foto door", "social_title": "De plaats van de molenaar in de Vlaamse samenleving", "social_p1": "Op het Vlaamse platteland van de negentiende eeuw nam de molenaar een positie van aanzienlijk belang in. Boeren uit de omliggende streek brachten hun graan naar de molen om tot meel te worden gemalen, en de molen stond centraal in het economische leven van het dorp. Het bezit van een werkende windmolen vereiste kapitaal, land en technische kennis, en molenaars behoorden vaak tot de meer gevestigde families van hun gemeenschap.", "social_p2": "Windkracht was de hernieuwbare energie van die tijd — geduldig, onvoorspelbaar en essentieel. De vaardigheid van de molenaar lag in het lezen van het weer, het aanpassen van de wieken en het werk uit de wind halen. Het was een ambacht dat van vader op zoon werd doorgegeven, verbonden met de ritmes van de seizoenen en de behoeften van de omliggende boerderijen.", "region_title": "De regio Meetjesland", "region_p1": "Het Meetjesland is een historische regio in de provincie Oost-Vlaanderen, België, gelegen tussen de steden Gent en Brugge. Het is een vlak, groen landschap van polders, kanalen en kleine dorpjes — een wereld gevormd door waterbeheer, landbouw en de ritmes van de seizoenen. De familie Van Vlaenderen komt voor in de registers van verschillende Meetjeslandse dorpen, waaronder Bassevelde, Ursel, Evergem, Boekhoute en Merendree.", "location_coords": "51°06′N 3°36′O", "location_link": "Bekijk op Google Maps →", "cta_text": "Heeft u familiegegevens of foto's gerelateerd aan de Van Vlaenderensmolen?", "cta_note": "We zijn altijd op zoek naar uitbreiding van ons archief over de molengeschiedenis van de familie.", "proverb_text": "De hemel geeft; wie vangt, die heeft.", "history_title": "De Van Vlaenderensmolen", "lineage_gen_1": "I", "lineage_name_1": "Gerardus", "lineage_dates_1": "Van Vlaenderen", "lineage_role_1": "Landbouwer · Meetjesland", "lineage_gen_2": "II", "lineage_name_2": "Eduardus", "lineage_dates_2": "1832 – 1886", "lineage_role_2": "Landbouwer & Molenaar", "lineage_gen_3": "III", "lineage_name_3": "Frans Eduard", "lineage_dates_3": "1879 – 1954", "lineage_role_3": "Molenaarsgezin", "photo_alt": "De Van Vlaenderensmolen in Vinderhoute, Oost-Vlaanderen", "social_p3": "De geschiedenis van de Van Vlaenderensmolen weerspiegelt ook de kwetsbaarheid van deze houten structuren voor de natuurkrachten. In 1905 werd de molen zwaar beschadigd door een krachtige storm. De familie herbouwde en restaureerde de structuur, zodat de molen de omliggende boerderijen kon blijven bedienen en een zichtbaar baken bleef in het landschap van Vinderhoute.", "social_p4": "Vandaag de dag staat de Van Vlaenderensmolen als een zeldzame fysieke herinnering aan de historische aanwezigheid van de familie in het Meetjesland — een punt waar landschap, levensonderhoud en achternaam samenkomen.", "location_name": "Van Vlaenderensmolen", "location_address": "Vinderhoute, Lovendegem, Oost-Vlaanderen, België" };
 const dna = /* @__PURE__ */ JSON.parse(`{"privacy_heading":"Over deelname en privacy","hero_eyebrow":"Van Vlaenderen · Genetische genealogie","hero_title":"Het DNA-project","hero_lead":"Waar het papieren spoor eindigt, begint het genetische archief. We gebruiken DNA-analyse om de gaten in het archief te overbruggen en onze hypothesen over een gedeelde oorsprong te testen.","cta_note":"Michael en Constance reageren binnen 48 uur. We beginnen een dialoog over uw band met de familienaam Van Vlaenderen en begeleiden u naar de beste manier om bij te dragen.","origin_heading":"De vraag naar een gemeenschappelijke oorsprong","origin_p1":"Genealogisch onderzoek naar de naam Van Vlaenderen heeft verschillende gedocumenteerde familielijnen blootgelegd, geworteld in het Meetjesland en omliggende streken van Oost-Vlaanderen. Op het eerste gezicht verschijnen deze lijnen in verschillende parochies en op verschillende momenten in de historische bronnen.","origin_p2":"Traditioneel werd aangenomen dat families met de naam Van Vlaenderen — wat \\"uit Vlaanderen\\" betekent — die naam onafhankelijk van elkaar als plaatsaanduiding kunnen hebben aangenomen. Maar nadere bestudering van parochieregisters, landboeken en patronen van geografische nabijheid onthult een opvallende geografische concentratie en terugkerende verbanden tussen families die de naam dragen.","origin_p3":"Eerder dan op fragmentatie te wijzen, doet de documentatie de mogelijkheid rijzen dat veel — misschien zelfs alle — Van Vlaenderen-families uit de regio afstammen van een gedeelde voorouder wiens identiteit ouder is dan de bewaard gebleven parochieregisters.","origin_p4":"Traditioneel genealogisch onderzoek — gebaseerd op parochieregisters, burgerlijke akten en landdocumenten — laat ons toe een groot deel van dit verhaal te reconstrueren, maar er blijven hiaten in de middeleeuwse periode. DNA-onderzoek biedt een aanvullende onderzoeksweg om te bepalen of de hedendaagse Van Vlaenderens een gemeenschappelijke paternale lijn delen.","origin_p5":"Deze vraag blijft open — en ze kan alleen collectief worden beantwoord.","origin_p6":"Als u de naam Van Vlaenderen draagt, zou uw familiegeschiedenis een essentieel stukje van de puzzel kunnen bevatten.","pullquote":"Genealogie zonder genetica is als een kaart zonder kompas. Beide zijn nuttig; samen zijn ze krachtig.","family_photo_caption":"Elke Van Vlaenderen-familie draagt een verhaal. Foto's zoals deze — generaties lang doorgegeven — maken deel uit van de bewijzen die ons door de tijd heen verbinden.","dna_heading":"Hoe DNA-genealogie werkt","dna_intro":"Moderne genetische genealogie maakt gebruik van verschillende soorten DNA-testen om familieverbanden over generaties heen te traceren:","dna_ydna":"Y-DNA","dna_ydna_desc":"Y-DNA wordt van vader op zoon doorgegeven en traceert de directe paternale lijn. Het is bijzonder nuttig voor familienaam-onderzoek, omdat het Y-chromosoom en de familienaam vaak samen worden geërfd. Twee mannen die dezelfde familienaam dragen en een nauw overeenkomend Y-DNA-resultaat hebben — vooral op het niveau van de eind-SNP — kunnen een relatief recente gemeenschappelijke paternale voorouder delen.","dna_autosomal":"Autosomaal DNA","dna_autosomal_desc":"Autosomaal DNA wordt van beide ouders geërfd en kan neven en nichten over alle familielijnen heen identificeren binnen ongeveer vijf tot zeven generaties. Diensten zoals AncestryDNA, 23andMe en FamilyTreeDNA gebruiken autosomale tests om u te koppelen aan levende familieleden die ook getest zijn.","dna_mtdna":"mtDNA","dna_mtdna_desc":"Mitochondriaal DNA wordt van moeder op kind doorgegeven en traceert de directe maternale lijn. Hoewel het minder vaak wordt gebruikt in familienaam-onderzoek, kan het aannames over maternale afstamming bevestigen of in twijfel trekken.","project_heading":"Het Van Vlaenderen Genetische Genealogie Project","project_p1":"Het project brengt mannen samen die de familienaam Van Vlaenderen dragen — in welke historische spelling dan ook — afkomstig uit zoveel mogelijk gedocumenteerde familietakken, met als doel de vraag naar een gedeelde oorsprong te beantwoorden via Y-DNA-bewijs.","project_p2":"Een betekenisvol eerste antwoord vereist ongeveer vijf tot tien niet-verwante paternale lijnen, getest op het Y-37-niveau of hoger, waarbij ten minste één of twee bereid zijn te upgraden naar Big Y-700 voor een vergelijking op hoge resolutie met het bestaande referentieresultaat. Ongeveer vijftien tot twintig deelnemers zouden regionale substructuur kunnen onderscheiden — bijvoorbeeld een Oost-Vlaamse cluster van een West-Vlaamse of Zeeuwse cluster.","project_p3":"Voorlopig worden deelnemers aangemoedigd zich aan te sluiten bij twee bestaande FamilyTreeDNA-groepsprojecten, die beide gespecialiseerde administratie en gemeenschapscontext bieden voor Vlaams paternaal lijnonderzoek: het Flanders-Flemish DNA Project en het Benelux DNA Project.","project_p4":"Zodra een voldoende aantal Van Vlaenderen-testers zich heeft aangesloten, zijn we van plan een eigen Van Vlaenderen-subgroep binnen FamilyTreeDNA op te richten om de analyse rechtstreeks tussen onze lijnen te coördineren.","project_p5":"Afstammelingen van Van Vlaenderen-vrouwen wier familielijnen onder andere namen zijn voortgezet, zijn ook welkom om deel te nemen. Autosomale resultaten kunnen bijdragen aan bredere verwantschapsmatching, ook waar Y-DNA dat niet kan.","cta_body":"Bent u een Van Vlaenderen via paternale lijn — of hebt u bij enige DNA-dienst laten testen?","research_stands_heading":"De stand van het onderzoek","research_stands_p1":"Tot op heden heeft het project één voltooid Big Y-700-resultaat — een test van de paternale lijn op hoge resolutie, afgenomen van de gedocumenteerde Amerikaanse tak die afstamt van Charles Louis Van Vlaenderen van Bassevelde, die in 1875 naar de Verenigde Staten emigreerde.","research_stands_p2":"Dat resultaat plaatst deze tak van de familie op een paternale lijn aangeduid als R-FT1573, een Y-chromosoom-haplogroep die ongeveer drieduizend jaar geleden is ontstaan. R-FT1573 wordt vandaag in kleine aantallen aangetroffen in Duitsland, Nederland, Engeland en de Verenigde Staten. Geen van de naast bekende matches deelt de familienaam Van Vlaenderen, en de meest recente gedeelde voorouder met deze matches leefde lang voordat familienamen in Vlaanderen bestonden.","research_stands_p3":"Precies hier begint het project.","research_stands_p4":"Eén test kan een paternale signatuur vaststellen. Maar één test kan op zichzelf niet beantwoorden of andere Van Vlaenderen-families diezelfde signatuur delen. Daarvoor moeten meer mannen met de naam zich laten testen — bij voorkeur uit gedocumenteerde maar onderling onderscheiden familietakken.","testing_heading":"Wat we toetsen","testing_hyp1_label":"Gedeelde grafelijke oorsprong met regionale substructuur.","testing_hyp1_body":"Alle drie de clusters stammen af van Lodewijk II van Male via zijn drie gedocumenteerde natuurlijke zonen — Victor (Meetjesland), Jan sans terre (Frans-Vlaanderen), en Louis Friese (Brabant). Onder deze hypothese is Lodewijk van Male de gedeelde paternale voorouder van alle drie de regionale clusters, al blijft de afstamming naar een specifieke moderne familie binnen een cluster een werkhypothese met bekende bewijslacunes.","testing_hyp2_label":"Meerdere niet-verwante grafelijke oorsprongen.","testing_hyp2_body":"Elke cluster is ontstaan uit een afzonderlijke gebeurtenis binnen het grafelijke netwerk — het meest aannemelijk via mannen verbonden aan het ambt van de graaf van Vlaanderen, van wie de zonen de naam als familienaam erfden (wat de Vier functies-analyse aanduidt als Functie 3). Onder deze hypothese delen de drie clusters geen recente paternale voorouder, al kunnen gedocumenteerde historische banden met de grafelijke hofhouding in afzonderlijke lijnen nog voorkomen.","testing_predictions_intro":"Elke hypothese voorspelt een onderscheiden Y-DNA-patroon:","testing_p_mixed":"Gemengde patronen zijn ook informatief. Een dominante cluster met een paar uitschieters is in feite het verwachte resultaat, zelfs onder een scenario van gedeelde oorsprong, aangezien kleine aantallen niet-paterniteitsgebeurtenissen zich op natuurlijke wijze door de eeuwen heen ophopen — bij ongeveer één procent per generatie in historische Vlaamse populaties, volgens gepubliceerd genealogisch-genetisch onderzoek.","testing_close":"Met andere woorden: het doel is geen perfecte uniformiteit. Het doel is een signaal dat duidelijk genoeg is om tussen beide te onderscheiden.","privacy_intro":"DNA-testen roepen terechte vragen op over privacy. Enkele verduidelijkingen die kunnen helpen:","privacy_ydna_label":"Y-DNA-tests onderzoeken alleen niet-coderende regio's van het Y-chromosoom.","privacy_ydna_body":"Ze leveren geen medische informatie op, geen ziektemerkers, en geen informatie over de rest van uw genoom. Het Y-chromosoom wordt vrijwel ongewijzigd doorgegeven van vader op zoon, en daarom is het bruikbaar voor familienaam-onderzoek — maar het bevat geen van de medische inhoud die mensen vaak met DNA-testen associëren.","privacy_control_label":"U houdt zelf de controle over uw gegevens.","privacy_control_body":"Resultaten blijven in uw eigen FamilyTreeDNA-account, onder uw eigen instellingen. U beslist wie uw matches kan zien, of u zich aansluit bij groepsprojecten, en welke genealogische informatie u deelt. Aansluiting bij het Flanders-Flemish- of Benelux-project maakt uw resultaten niet openbaar; het maakt ze vergelijkbaar met andere projectleden op niveaus die u zelf autoriseert.","privacy_publish_label":"Het project zal nooit individuele resultaten publiceren zonder uitdrukkelijke toestemming.","privacy_publish_body":"Toekomstige uitspraken over specifieke lijnen, matches of familieverbanden worden altijd afgestemd met de betrokken deelnemers.","privacy_aggregate_label":"Geaggregeerde bevindingen kunnen worden gedeeld.","privacy_aggregate_body":"Naarmate het project groeit, kunnen we geanonimiseerde samenvattingen publiceren — bijvoorbeeld \\"X van Y geteste lijnen vallen samen op een gedeelde tak\\" — maar altijd in een vorm die individuele testers of families niet identificeert zonder hun toestemming.","privacy_close":"Als u vragen hebt over wat een test inhoudt, welke gegevens worden gegenereerd of hoe ze worden behandeld, bespreken we dat graag voordat u zich vastlegt. Er is geen verplichting om te testen, en geen druk om meer te delen dan u zelf wilt.","testing_p_mixed_source_label":"Bron: ","testing_p_mixed_source_text":"Larmuseau et al. (2013), Proceedings of the Royal Society B 280: 20132400.","testing_hypotheses_intro":"Twee hypothesen dekken de aannemelijke mogelijkheden die het Y-DNA-bewijs kan onderscheiden:","testing_pred1_label":"Onder de eerste hypothese","testing_pred1_body":"zouden mannen getrokken uit elk van de drie regionale clusters een diepe paternale signatuur moeten delen — dezelfde brede haplogroep en SNP-weg — terwijl hun familienaam-periodetakken divergeren binnen het verwachte venster van ongeveer 1300–1500 n.Chr., in overeenstemming met afstamming van de drie natuurlijke zonen van Lodewijk van Male.","testing_pred2_label":"Onder de tweede","testing_pred2_body":"zouden testers uit verschillende clusters op niet-verwante haplogroepen moeten vallen zonder recente gedeelde voorouder, al kunnen afzonderlijke lijnen gedocumenteerde banden met de grafelijke hofhouding tonen.","zeeland_heading":"Een verwante vraag: de Zeeuwse lijn","zeeland_p1":"Een afzonderlijke cluster van Van Vlaenderen-families verschijnt vanaf de late zestiende eeuw in Zeeland, in Zuid-Nederland. Ons documentair onderzoek suggereert dat deze cluster waarschijnlijk niet van een onafhankelijke stichtingslijn afstamt, maar van migratie uit het Gentse hinterland in de late 1500s of vroege 1600s — het meest aannemelijk via de lijn van Laureys Arentsz van Vlaenderen (geb. ~1529/30, gest. 1601, schoolmeester in Ritthem) of een directe voorganger.","zeeland_p2":"Deze migratiehypothese maakt haar eigen toetsbare voorspelling. Levende mannelijke Zeeuwse afstammelingen zouden een recente gemeenschappelijke paternale voorouder moeten delen met de Meetjeslandse lijn — met een TMRCA die ergens in de periode van late vijftiende tot midden-zestiende eeuw valt, vóór de migratie zelf. Als Zeeuwse testers dat patroon tonen, wordt de migratiehypothese bevestigd. Als ze een veel diepere gemeenschappelijke voorouder met de Meetjeslandse lijn delen, of helemaal geen gemeenschappelijke voorouder, dan is de hypothese onjuist en wordt de Zeeuwse lijn een vierde stichtingsvraag op zichzelf.","zeeland_p3":"Beide uitkomsten zijn informatief. Deelname van Zeeuwse Van Vlaenderens is bijzonder waardevol, juist omdat deze tak van het onderzoek het meest direct afhankelijk is van Y-DNA-bewijs om de kwestie te beslechten.","testing_toponymy_pre":"Een derde mogelijkheid — dat elke cluster onafhankelijk is ontstaan als een algemene plaatsaanduiding, zonder grafelijke oorsprong — is op clusterniveau effectief uitgesloten door het distributionele bewijs. De dichte, stabiele concentraties binnen het historische graafschap Vlaanderen zijn niet wat een \\"uit Vlaanderen\\"-label voortbrengt; dat label wordt toegekend aan mensen die zijn weggetrokken van de plaats die de naam beschrijft. Individuele uitzonderlijke naamdragers — bijvoorbeeld emigranten naar Engeland of Duitsland wier families het label in een niet-Vlaamse gemeenschap hebben verworven — kunnen nog steeds een toponymische oorsprong hebben, maar dat is een vraag over specifieke lijnen in plaats van over de drie hoofdclusters. Het volledige argument wordt uiteengezet in ons artikel","testing_toponymy_linktext":"Vier functies, drie clusters","testing_toponymy_post":".","testing_intro_pre":"Drie gedocumenteerde bastaardzonen van Lodewijk II van Male —","testing_intro_victor_text":"Victor van Vlaenderen","testing_intro_mid1":"(Belgische/Meetjeslandse cluster),","testing_intro_drincham_text":"Jan sans terre van Vlaenderen","testing_intro_mid2":"(Frans-Vlaamse cluster), en","testing_intro_praet_text":"Louis Friese van Vlaenderen","testing_intro_post":"(Brabantse cluster) — elk vestigde onderscheiden regionale familienamen die in het moderne record voortleven. De centrale vraag die het Y-DNA-project wil beantwoorden is niet of deze clusters bestaan, maar hoe ze zich tot elkaar verhouden.","cta_button":"Sluit u aan bij het team","notes_heading":"Bronnen en verwijzingen","notes_intro":"Het DNA-onderzoek op deze pagina berust op primaire-bronattestatie van de drie gedocumenteerde bastaardlijnen, op de distributionele analyse uiteengezet in het Vier functies-artikel, en op gepubliceerd genealogisch-genetisch onderzoek. Uitgebreidere documentatie wordt onderhouden op de gelinkte dossierpagina's.","notes_source_1_label":"[1]","notes_source_1_text":"Het vaderschap van Victor, Jan sans terre en Louis Friese als gedocumenteerde natuurlijke zonen van Lodewijk II van Male is geattesteerd in Olivarius Vredius (Olivier de Wrée), Genealogia Comitum Flandriae, Brugge 1642–43, Tabula XVI, en in Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut (v5.0, januari 2025). Volledige primaire-brontranscripties zijn te vinden in de Victor-, Drincham- en Praet-dossiers waarnaar hierboven is verwezen.","notes_source_2_label":"[2]","notes_source_2_text":"De analyse Vier functies, drie clusters zet het distributionele bewijs uiteen voor drie regionale familienaam-clusters en het argument dat zuivere toponymie op clusterniveau effectief is uitgesloten, terwijl het mogelijk blijft voor individuele uitzonderlijke naamdragers.","notes_source_2_linktext":"Lees de Vier functies-analyse →","notes_source_3_label":"[3]","notes_source_3_text":"Larmuseau et al. (2013), Low historical rates of cuckoldry in a Western European human population traced by Y-chromosome and genealogical data, Proceedings of the Royal Society B 280: 20132400. Deze Vlaamse populatiestudie onderbouwt het geschatte percentage van ongeveer één procent per generatie voor niet-paterniteitsgebeurtenissen waarnaar hierboven wordt verwezen.","notes_source_4_label":"[4]","notes_source_4_text":"R-FT1573 haplogroep-gegevens, inclusief blokstamboom, match-tijdboom en paternale-landen-van-oorsprong-verdeling, zijn openbaar beschikbaar via FamilyTreeDNA's Discover-platform.","notes_source_4_linktext":"Bekijk de R-FT1573 tijdboom →","participate_heading":"Hoe deel te nemen","participate_intro":"Mannelijke Van Vlaenderens — mannen die de naam in enige historische spelling dragen via ononderbroken vader-op-zoon-afstamming — zijn de meest waardevolle bijdragers aan het project. Deelname gebeurt in drie stappen:","participate_step1_label":"1. Bestel een Y-DNA-test.","participate_step1_body":"De Y-37 van FamilyTreeDNA is het aanbevolen beginpunt; de test vergelijkt 37 Y-chromosoom-markers en identificeert nauwe overeenkomsten met andere Van Vlaenderens. Een Big Y-700-upgrade — met hoge-resolutie SNP-vergelijking tegen het R-FT1573-referentieresultaat van het project — kan nuttig zijn als uw Y-37-matches verdere analyse rechtvaardigen.","participate_step2_label":"2. Sluit u aan bij een groepsproject.","participate_step2_body":"Resultaten komen het meest tot hun recht in context. Het Flanders-Flemish DNA Project en het Benelux DNA Project op FamilyTreeDNA worden beide beheerd door ervaren Vlaamse genealogen. Een aparte Van Vlaenderen-subgroep volgt zodra er voldoende deelnemers zijn.","participate_step3_label":"3. Neem contact op.","participate_step3_body":"Michael en Constance reageren binnen 48 uur. We helpen u met testkeuze, aanmelding bij een groepsproject en alle vragen die u heeft voordat u zich vastlegt.","participate_alternative_label":"Elders al getest?","participate_alternative_body":"Resultaten van AncestryDNA, 23andMe, MyHeritage of FamilyTreeDNA Family Finder zijn ook waardevol — autosomale gegevens kunnen bijdragen aan verwantschapsmatching over de gedocumenteerde Van Vlaenderen-lijnen heen. Neem in beide gevallen contact op.","participate_button":"Sluit u aan bij het team","dna_ydna_already_label":"Al getest?","dna_ydna_already_body":"Als u Y-37 of hoger bij FamilyTreeDNA heeft gedaan, controleer of uw eind-haplogroep overeenkomt met R-FT1573 of een afstammende tak, en zoek naar Van Vlaenderen-matches in uw lijst. Neem contact op — we helpen uw resultaten te interpreteren tegen de projectreferentie.","dna_ydna_considering_label":"Overweegt u een test?","dna_ydna_considering_body":"De FamilyTreeDNA Y-37 is het aanbevolen beginpunt. Een Big Y-700-upgrade is de moeite waard als uw Y-37 nauwe overeenkomsten met andere Van Vlaenderens toont.","dna_autosomal_already_label":"Al getest?","dna_autosomal_already_body":"Resultaten van AncestryDNA, 23andMe, MyHeritage of FamilyTreeDNA Family Finder kunnen bijdragen aan het bredere verwantschapsonderzoek van het project, ook zonder Y-DNA. Neem contact op — we helpen u op zoek naar Van Vlaenderen-verbindingen in uw matchlijst.","dna_autosomal_considering_label":"Overweegt u een test?","dna_autosomal_considering_body":"Autosomaal testen is waardevol voor het ontdekken van neven en nichten en voor een bredere familiecontext, maar Y-DNA blijft het primaire instrument voor paternale-lijn-familienaam-onderzoek.","dna_mtdna_already_label":"Al getest?","dna_mtdna_already_body":"Als u afstamt van een Van Vlaenderen-vrouw wier lijn onder een andere naam werd voortgezet, kan uw mtDNA helpen bij het reconstrueren van maternale lijnen die aftakken van de gedocumenteerde families. Neem contact op om te bespreken hoe uw resultaten passen.","dna_mtdna_considering_label":"Overweegt u een test?","dna_mtdna_considering_body":"mtDNA is een gespecialiseerd instrument voor specifieke onderzoeksvragen en niet voor algemeen familienaam-werk. De meeste projectdeelnemers zullen meer baat hebben bij Y-DNA- of autosomaal testen."}`);
 const contact = { "hero_eyebrow": "Van Vlaenderen · Samenwerking", "hero_title": "Verbind u met het project", "hero_lead": "Genealogie is een gezamenlijke reis. Of u nu een vraag, een correctie of een puzzelstukje heeft om te delen, we kijken ernaar uit van u te horen.", "reasons_title": "Waarom contact opnemen?", "reason_name_title": "U draagt de naam", "reason_name_text": "Als uw achternaam Van Vlaenderen is — in welke spelling dan ook — willen we uw verhaal kennen. Elke tak van de familie telt.", "reason_docs_title": "U heeft documenten of foto's", "reason_docs_text": "Oude brieven, geboorteakten, foto's, landregisters — elk document dat verbonden is met de familie Van Vlaenderen is waardevol.", "reason_dna_title": "U heeft een DNA-test gedaan", "reason_dna_text": "Als u getest heeft bij AncestryDNA, 23andMe of FamilyTreeDNA en Van Vlaenderen-voorouders heeft, kunnen uw resultaten de takken verbinden.", "reason_local_title": "U heeft lokale kennis", "reason_local_text": "Als u in of nabij het Meetjesland woont en verhalen kent over de familie Van Vlaenderen of de molen in Vinderhoute, deel ze dan met ons.", "reason_question_title": "U heeft een vraag", "reason_question_text": "Genealogisch onderzoek kan verwarrend zijn. Als u een vraag heeft over de familie Van Vlaenderen of hoe u uw eigen roots kunt onderzoeken, stel ze gerust.", "privacy_text": "Uw persoonlijke gegevens worden nooit gedeeld, verkocht of gepubliceerd zonder uw uitdrukkelijke toestemming. Dit is een privaat familieonderzoeksproject.", "form_title": "Stuur een bericht", "form_name": "Naam", "form_name_placeholder": "bijv. Jan Van Vlaenderen", "form_email": "E-mail", "form_email_placeholder": "uw@email.com", "form_subject": "Onderwerp", "form_subject_placeholder": "Selecteer een onderwerp…", "form_subject_research": "Familieonderzoek", "form_subject_dna": "DNA-project", "form_subject_docs": "Documenten of foto's", "form_subject_mill": "De molen", "form_subject_general": "Algemene vraag", "form_message": "Bericht", "form_message_placeholder": "Vertel ons over uw band met de familie Van Vlaenderen…", "form_submit": "Bericht versturen", "form_sending": "Verzenden...", "form_success": "Bedankt voor uw bericht! We hebben het ontvangen en zullen zo snel mogelijk reageren.", "form_error": "Er was een probleem bij het verzenden van uw bericht. Probeer het opnieuw.", "pull_quote": "Familiegeschiedenis gaat niet alleen over het verleden. Het gaat over begrijpen wie we zijn en waar we vandaan komen — en misschien anderen vinden die die reis delen.", "collage_caption": "Elke familie heeft foto's. Elke foto vertelt een deel van het verhaal. Deel de uwe met het Van Vlaenderen-archief." };
-const footer = {};
+const footer$1 = { "nav_heading": "Navigatie", "project_heading": "Het project", "attribution_heading": "Vermelding", "tagline": "Een genealogisch onderzoeksproject dat de achternaam Van Vlaenderen volgt van het middeleeuwse Vlaanderen tot een moderne Amerikaanse familietak.", "bibliography_link_label": "Bronnen & Bibliografie", "sources_callout": "Bekijk de bronnen", "sources_callout_aria": "Ga naar de pagina Bronnen & Bibliografie", "copyright": "© 2026 Michael Van Flandern en Constance Van Flandern", "collaboration": "Een samenwerkingsproject van Michael Van Flandern en Constance Van Flandern.", "license": "Gelicentieerd onder CC BY 4.0", "license_link_aria": "Lees de volledige licentie- en vermeldingsvoorwaarden", "last_updated_prefix": "Laatst bijgewerkt:" };
+const license = { "page_title": "Licentie & Vermelding", "meta_description": "Licentie- en vermeldingsvoorwaarden voor het onderzoeksproject Lions of Flanders / Van Vlaenderen: CC BY 4.0 voor onderzoeksinhoud, MIT voor websitecode, en aantekeningen over het citeren van transcripties van primaire bronnen.", "heading": "Licentie & Vermelding", "intro": "Het onderzoeksproject Lions of Flanders is openlijk gelicentieerd om academische citaties, vertalingen en wetenschappelijk hergebruik te ondersteunen. De onderstaande voorwaarden leggen uit hoe de licentie van toepassing is op de verschillende soorten materiaal op de site — door het project geschreven analyse, transcripties van primaire bronnen, websitecode en materiaal van derden.", "research_heading": "Onderzoeksinhoud — CC BY 4.0", "research_body1": "De lopende tekst, analytische commentaar, diagrammen, dossiers en bibliografische annotaties geschreven door Michael Van Flandern en Constance Van Flandern voor dit project worden gedeeld onder de Creative Commons Naamsvermelding 4.0 Internationale licentie (CC BY 4.0). U mag dit werk citeren, vertalen, aanpassen en verder bouwen op dit werk — ook voor commerciële doeleinden — mits u het project vermeldt en terugkoppelt naar de oorspronkelijke pagina.", "research_body2": "Voorgesteld citatieformaat voor academisch gebruik: Van Flandern, M. & Van Flandern, C. (2026). [Paginatitel]. Lions of Flanders / Van Vlaenderen Research Project. https://vanvlaenderen.org/[pad]. Geraadpleegd op [datum].", "cc_by_link_label": "Lees de volledige CC BY 4.0 licentie op creativecommons.org →", "transcriptions_heading": "Transcripties van primaire bronnen", "transcriptions_body1": "Het project neemt letterlijke passages uit primaire bronnen over — oorkonden, grafinscripties, schepenbankregisters, parochieregisters — in de onderzoeksdossiers. De onderliggende teksten zijn sinds lang auteursrechtvrij en behoren tot het publieke domein. De transcripties zelf vertegenwoordigen wetenschappelijke arbeid: het lokaliseren van de bron, het lezen van het handschrift, het oplossen van afkortingen, en het vergelijken van varianten met andere edities.", "transcriptions_body2": "Gelieve bij het citeren van een specifieke transcriptie van deze site zowel de onderliggende primaire bron (met volledige archiefsignatuur waar gegeven) als dit project als bemiddelende transcribent te vermelden. Op die manier blijft de keten van oorspronkelijk document → projecttranscriptie → uw werk leesbaar voor de volgende lezer die wil verifiëren.", "code_heading": "Websitecode — MIT", "code_body": "De broncode van de website (React + TypeScript), de buildscripts en de componentbibliotheek zijn afzonderlijk gelicentieerd onder de MIT-licentie, niet onder CC BY 4.0. De twee licenties dekken verschillende soorten werk: CC BY voor wetenschappelijke inhoud, MIT voor software. De MIT-licentie is standaard voor open-source webprojecten en staat hergebruik van de code met vermelding toe.", "mit_link_label": "Bekijk het MIT LICENSE-bestand op GitHub →", "third_party_heading": "Materiaal van derden", "third_party_body": "Door medewerkers samengestelde familieregisters (zoals de Stamreeks van Pieter Antheunisz van Vlaanderen in de bibliografie), gepubliceerde werken van derden die elders op de site worden geciteerd, en beelden of heraldisch materiaal dat uit externe bronnen is overgenomen, blijven eigendom van hun respectieve auteurs en rechthebbenden. De CC BY 4.0-licentie van het project strekt zich niet uit tot dit materiaal — raadpleeg de oorspronkelijke bron voor de eigen voorwaarden.", "contact_heading": "Vragen", "contact_body": "Voor vragen over hergebruik die niet netjes in deze categorieën passen — of voor samenwerkingen, vertalingen of citaties in peer-reviewed publicaties waarbij een meer specifieke toestemmingsverklaring nuttig zou zijn — neem gerust contact op via de Contactpagina.", "last_reviewed": "Licentievoorwaarden laatst herzien: april 2026." };
 const common = {};
 const lineage = { "page_title": "Familielijn", "page_intro": "De gedocumenteerde Van Vlaenderen-lijn van Jeremiah (~1575) tot heden — opgespoord via Oost-Vlaamse parochieregisters, burgerlijke archieven en DNA. Klik op een voorouder voor de archiefdetails.", "legend_label": "Verklaring bewijsstatus", "tree_label": "Voorouderboom Van Vlaenderen", "click_hint": "Klik op een kaart voor details", "generation": "Generatie", "born_prefix": "geb.", "records_available": "Beschikbare documenten", "status_documented": "Volledig gedocumenteerd", "status_partial": "Gedeeltelijke documenten", "status_inferred": "Afgeleid / bij benadering", "status_modern": "Moderne familie", "record_birth": "Geboorte", "record_marriage": "Huwelijk", "record_death": "Overlijden", "view_archive": "Bekijk in archief", "detail_born": "Geboren", "detail_parish": "Parochie", "detail_birth": "Geboorteakte", "detail_marriage": "Huwelijksakte", "detail_death": "Overlijdensakte", "detail_status": "Bewijsstatus", "source_note": "Parochie- en burgerlijke akten afkomstig van", "source_note_2": " en Rijksarchief Brugge. Onderzoek lopende." };
 const research = /* @__PURE__ */ JSON.parse(`{"hero_eyebrow":"Van Vlaenderen · Middeleeuws onderzoek","hero_title":"Middeleeuwse & collaterale lijnen","hero_lead":"Lodewijk II van Male, graaf van Vlaanderen (1330–1384), verwekte ten minste dertien onwettige kinderen. Drie van zijn natuurlijke zonen stichtten gedocumenteerde familienaam-dragende lijnen die van Vlaenderen als erfelijke identificatie gebruikten — elk verankerd aan een specifieke heerlijkheid, elk met een onderscheiden geografische voetafdruk in het historisch bestand.","dossier_title":"Onderzoeksoverzicht","dossier_updated":"Bijgewerkt april 2026","methodology_title":"Methodologie & bewijsniveaus","method_attested_label":"Direct geattesteerd","method_attested_text":"Verklaringen die steunen op geciteerde oorkondetaal of expliciete documentaire samenvattingen in gepubliceerde autoriteiten.","method_corroborated_label":"Sterk gecorroboreerd","method_corroborated_text":"Verklaringen die worden ondersteund door overeenstemmende gepubliceerde historische of erfgoedautoriteiten.","method_probable_label":"Waarschijnlijk","method_probable_text":"Op bronnen gebaseerde verklaringen die een volledige inspectie van de onderliggende edities vereisen voordat ze als vaststaand worden beschouwd.","method_hypothesis_label":"Hypothese","method_hypothesis_text":"Genealogische gevolgtrekkingen voorgesteld voor verdere toetsing, nog niet bewezen als feit.","conclusion_title":"Lopend werk","conclusion_p1":"Onderzoeksprioriteiten richten zich op het dichten van de documentaire leemte tussen Adam van Vlaendren's laatste attestatie (1447) en de eerste parochieregister-Van Vlaenderens in het Meetjesland (ca. 1568), en op het testen van de bastaardlijn-hypothese via Y-DNA-vergelijking over de drie clusters. Actieve archivalische doelwitten omvatten de Gentse Staten van Goed-reeks (Ambacht Assenede I & II), de Landboek- en Leenhof-bestanden voor het Meetjesland, en de administratieve-bestandenreeks van de kasselrij Cassel bij de Archives Départementales du Nord in Rijsel.","cta_text":"Bent u een onderzoeker gespecialiseerd in 15de-eeuwse Vlaamse archieven?","cta_note":"We verwelkomen samenwerking bij het archiefonderzoek naar de 'ontbrekende generaties' van de Van Vlaenderen-lijn.","tldr_heading":"Waarom de naam ertoe doet","tldr_body":"Wie voor het eerst met van Vlaenderen in aanraking komt, neemt vaak aan dat het simpelweg \\"uit Vlaanderen\\" betekent. De documentaire bewijsvoering vertelt een specifieker verhaal: de vroegste terugkerende gebruikspatronen van de naam als erfelijke familienaam gaan terug op de onwettige takken van het Huis Vlaanderen. De families die de naam droegen, clusterden binnen het historische graafschap in plaats van zich als migranten te verspreiden. Het argument wordt hieronder uiteengezet.","three_lines_heading":"Drie lijnen, drie clusters","three_lines_p1":"Het onderzoek is gestructureerd rond drie gedocumenteerde lijnen die afstammen van Lodewijk van Male. Alle drie gebruikten van Vlaenderen (en de varianten: van Vlaendren, de Flandre, de Flandres) als erfelijke familienaam — niet als geografische aanduiding, maar als merkteken van grafelijke onwettige afstamming die zich kristalliseerde op het precieze moment waarop de greep van het Huis Dampierre op Vlaanderen eindigde met Lodewijk van Males dood in 1384. Elke lijn is verankerd aan een specifieke heerlijkheid verleend in de periode 1373–1399, en elke lijn komt overeen met een onderscheiden geografisch cluster in het latere distributionele bestand.","three_lines_p2":"Er is nog een dimensie die vermelding verdient. Lodewijk II van Male was de laatste graaf van Vlaanderen uit het Huis Dampierre. Bij zijn dood in 1384 ging het graafschap over op zijn dochter Margaretha en haar echtgenoot Filips de Stoute van Bourgondië, en de Dampierre-greep op Vlaanderen eindigde permanent. Het bewijsmateriaal suggereert dat van Vlaenderen als erfelijke familienaam kristalliseerde onder de bastaardkinderen van Lodewijk precies op dit moment — niet als geografische aanduiding betekenende \\"uit Vlaanderen,\\" maar als een geërfde identiteit die grafelijk bloed markeerde op het punt waarop de titel zelf werd beëindigd. Dit patroon is onafhankelijk gedocumenteerd in alle drie de lijnen, en het is een van de sterkste argumenten dat de familienaam functioneert als geërfde grafelijke identiteit in plaats van als een gewone plaatsaanduiding.","paradox_eyebrow":"De toponymische paradox","paradox_title":"Vier functies, drie clusters","paradox_body":"Een familienaam die \\"uit Vlaanderen\\" betekent, heeft alleen zin wanneer hij ver van Vlaanderen wordt toegepast. Toch verschijnen de zwaarste en oudste clusters van de familienaam Van Vlaenderen binnen het historische graafschap — in het Meetjesland en de regio Cassel — waar het label voor buren geografisch zinloos zou zijn geweest. Deze paradox, samen met de vier onderscheiden documentaire functies van de uitdrukking, vormt de bewijsgrondslag voor het drie-lijnen-argument op deze pagina.","paradox_button":"Lees de volledige analyse →","diagram_sr_text":"Dit diagram toont de familienaam-dragende bastaardlijnen afstammend van Lodewijk II van Male, graaf van Vlaanderen (1330–1384), de laatste graaf uit het Huis Dampierre. Victors lijn: Victor van Vlaenderen (overleden vóór 1442), heer van Ursel en Wessegem in het Meetjesland, had drie gedocumenteerde natuurlijke zonen — Lodewyc, Janne en Adam van Vlaendren — allen genoemd in primaire oorkonden 1427–1447. Adam, laatst geattesteerd te Gent op 18 maart 1447, is de naast gedocumenteerde individuele brugkandidaat naar de moderne Oost-Vlaamse clusters. Praet-lijn: Louis Friese van Vlaenderen (c.1350–1396), heer van Praet en Woestine, stichtte het Huis Vlaanderen-Praet via zijn zoon Johan I van Vlaenderen. De lijn loopt via zes geattesteerde generaties tot Lodewijk IV van Vlaenderen (overleden 1556); het patrimonium verwierf het Vrijhof te Aalter tegen 1516, wat deze tak naast Victors lijn in het Meetjesland verankert. Cadettakken (met name de lijn van Josse de Flandre, gedocumenteerd tot ten minste 1592) en de post-1545 Praet-onderzoekslijn blijven in actief onderzoek. Drincham-lijn: Jan sans terre van Vlaenderen, kreeg kasteel Drincham bij Kassel in 1383, gedood bij Nicopolis 1396. Vier gedocumenteerde generaties tot de jaren 1470 in Frans-Vlaanderen, vaak gebruikmakend van de vorm de Flandres als achternaam — de primaire stichtende lijn voor het Frans-Vlaamse / Volckerinckhove-cluster.","branches_heading":"Onderzoekslijnen","branch_victor_name":"Victor van Vlaenderen","branch_victor_desc":"Natuurlijke zoon van Lodewijk van Male. Heer van Ursel en Wessegem in het Meetjesland. Drie natuurlijke zonen gedocumenteerd in drie primaire oorkonden (1427, 1441, 1446). Zijn zoon Adam, laatst geattesteerd te Gent op 18 maart 1447, is de naast gedocumenteerde individuele brugkandidaat naar de moderne Oost-Vlaamse clusters.","branch_victor_link":"Verken Victor's lijn →","branch_louis_name":"Louis Friese van Vlaenderen","branch_louis_desc":"Natuurlijke zoon van Lodewijk van Male. Heer van Praet en Woestine. Gedood bij Nicopolis 1396. Stichtte het Huis Vlaanderen-Praet — zes geattesteerde generaties die van Vlaenderen gebruikten als erfelijke familienaam. Het Praet-patrimonium verwierf het Vrijhof te Aalter tegen 1516, wat deze tak naast Victor's lijn in het Meetjesland verankert; voortzettingen via cadettakken zijn nog in onderzoek.","branch_louis_link":"Verken de Praet-lijn →","branch_drincham_name":"Jan \\"sans terre\\" van Vlaenderen","branch_drincham_desc":"Natuurlijke zoon van Lodewijk van Male. Kreeg kasteel Drincham bij Cassel in 1383. Gedood bij Nicopolis 1396. Vier gedocumenteerde generaties in Frans-Vlaanderen tot de jaren 1470 — de primaire stichtende lijn voor het Volckerinckhove/Frans-Vlaamse cluster.","branch_drincham_link":"Bekijk het archiefdossier →","reference_heading":"Naslag","ref_gap_title":"De documentaire leemte, 1447–1580","ref_gap_desc":"De periode van 130 jaar tussen de laatste bevestigde grafelijke-lijn-drager en de eerste Meetjeslandse parochiegeneratie. Bewijsmateriaal, uitgevoerde zoekacties, actieve archivalische doelwitten, en drie werkhypothesen voor hoe de leemte wordt gedicht.","ref_gap_link":"Verken de leemte →","ref_methodology_title":"Methodologie & bronnen","ref_methodology_desc":"Hoe archiefdocumenten worden getranscribeerd en vertaald, en de samengestelde leeslijst van primaire en secundaire werken die het onderzoek onderbouwen.","ref_methodology_link":"Methodologie & bronnen →","ref_bibliography_title":"Bronnen & wetenschap","ref_bibliography_desc":"Primaire bronnen, archivalische vindhulpmiddelen en wetenschappelijke literatuur geciteerd in de dossiers — de bewijsbasis van het project op één plaats.","ref_bibliography_link":"Bronnen & wetenschap →","dossiers_heading":"Archiefdossiers","dossiers_intro":"Voor onderzoekers die op zoek zijn naar de onderliggende documentaire bewijsvoering, onderhouden wij gedetailleerde archiefdossiers met volledige oorkondetranscripties, grafschriftgegevens en bronnenanalyse.","dossier_victor_title":"Victor van Vlaenderen dossier","dossier_victor_desc":"Drie-oorkonden-kern (1427, 1441, 1446), Victor's testament van 1430, Lodewyc's nakomelingen, en het Oostborch-grafschriftbewijs.","dossier_victor_link":"Bekijk archiefbewijs →","dossier_praet_title":"Louis Friese: archiefdossier","dossier_praet_desc":"Primaire-bronfragmenten en territoriale geschiedenis van het Huis Vlaanderen-Praet.","dossier_praet_link":"Bekijk archiefbewijs →","dossier_praet_lineage_title":"Huis Praet: afstammingsdossier","dossier_praet_lineage_desc":"Zes generaties met primaire-bron-bevestigde gegevens. De vijf kinderen van Johan I, de zes kinderen van Lodewijk II (inclusief de Josse de Flandre-zijtak), en de oorkonde van Knesselare uit 1517.","dossier_praet_lineage_link":"Bekijk afstammingsbewijs →","dossier_drincham_title":"Jan sans terre — Drincham-dossier","dossier_drincham_desc":"De Drincham-landtoewijzing van 1383, vier gedocumenteerde generaties in het gebied Cassel, het grafschrift van Jacques de Drincham in Veurne, en de geografisch-documentaire argumentatie voor het Frans-Vlaamse Van Vlaenderen-cluster.","dossier_drincham_link":"Bekijk archiefbewijs →","articles_heading":"Onderzoeksartikelen","articles_intro":"Analytisch en contextueel schrijfwerk dat naast het archiefbewijs staat — distributionele analyse, historische interpretatie en speculatieve draden met duidelijk gemarkeerd bewijsstatus.","article_four_functions_title":"Vier functies, drie clusters","article_four_functions_desc":"Een primaire-bron- en distributionele analyse van de familienaam Van Vlaenderen over vier documentaire functies en drie geografische clusters, over drie eeuwen verspreid. Test de toponymische en bastaardlijn-hypothesen tegen Geneanet-heat-map-gegevens en het onomastische bestand.","article_four_functions_link":"Lees de analyse →","article_nieus_title":"Zegels, leeuwen en de politiek van een familienaam","article_nieus_desc":"Hoe de twaalfde-eeuwse Vlaamse adellijke zegelcultuur — de leeuw, de Dover Recognitio en het politieke gewicht van territoriale identiteit — historische diepgang biedt voor de Van Vlaenderen-hypothese. Gebaseerd op Nieus (2021).","article_nieus_link":"Lees het artikel →","notes_heading":"Bronnen en verwijzingen","notes_intro":"Het onderzoeksoverzicht op deze pagina berust op primaire-bronattestatie van de drie gedocumenteerde bastaardlijnen, op het distributionele bewijs uiteengezet in het Vier functies-artikel, en op ondersteunend onderzoek in Vlaamse zegelcultuur en middeleeuwse genealogie. Volledige documentatie wordt onderhouden op de gelinkte dossier- en artikelpagina's.","notes_source_1_label":"[1]","notes_source_1_text":"Primaire-bronattestatie voor Victor, Jan sans terre en Louis Friese als natuurlijke zonen van Lodewijk II van Male: Olivarius Vredius (Olivier de Wrée), Genealogia Comitum Flandriae, Brugge 1642–43, Tabula XVI, fol. 275–288. Volledige primaire-brontranscripties met commentaar worden onderhouden in elk van de drie hierboven gelinkte archiefdossiers.","notes_source_2_label":"[2]","notes_source_2_text":"Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut (v5.0, januari 2025). Secundaire synthese van de gedocumenteerde onwettige kinderen van Lodewijk van Male met primaire-bronverwijzingen.","notes_source_3_label":"[3]","notes_source_3_text":"De distributionele analyse over drie familienaam-clusters (c. 1500, 1600, 1700) en het toponymische-paradox-argument worden volledig uiteengezet in het artikel Vier functies, drie clusters.","notes_source_3_linktext":"Lees de Vier functies-analyse →","notes_source_4_label":"[4]","notes_source_4_text":"Jean-François Nieus, \\"Aristocratic seal ownership in twelfth-century Flanders: A world in between\\" (preprint, Academia.edu, 2021; Université de Namur; binnenkort in peer-reviewed publicatie). Biedt historische diepgang voor hoe Vlaamse elite-identiteit en territoriale namen functioneerden in het grafelijke netwerk. Volledig besproken op de pagina Zegels, leeuwen en de politiek van een familienaam.","notes_source_4_linktext":"Lees het Zegels-artikel →","diagram_sr_heading":"Onderzoeksoverzichtsdiagram — tekstuele samenvatting"}`);
@@ -1195,7 +1198,8 @@ const nl = {
   mill,
   dna,
   contact,
-  footer,
+  footer: footer$1,
+  license,
   common,
   lineage,
   research,
@@ -1207,7 +1211,7 @@ const lionShield = "/assets/lion-shield-CCv7FaFa.png";
 const container = "_container_14ab3_1";
 const button = "_button_14ab3_10";
 const active$1 = "_active_14ab3_24";
-const styles$4 = {
+const styles$5 = {
   container,
   button,
   active: active$1
@@ -1219,11 +1223,11 @@ function LanguageToggle() {
     i18n2.changeLanguage(lang);
     document.documentElement.lang = lang;
   };
-  return /* @__PURE__ */ jsxs("div", { className: styles$4.container, "aria-label": i18n2.t("nav.language_toggle_label"), children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$5.container, "aria-label": i18n2.t("nav.language_toggle_label"), children: [
     /* @__PURE__ */ jsx(
       "button",
       {
-        className: `${styles$4.button} ${current === "nl" ? styles$4.active : ""}`,
+        className: `${styles$5.button} ${current === "nl" ? styles$5.active : ""}`,
         onClick: () => toggle("nl"),
         "aria-pressed": current === "nl",
         "aria-label": "Switch to Dutch",
@@ -1233,7 +1237,7 @@ function LanguageToggle() {
     /* @__PURE__ */ jsx(
       "button",
       {
-        className: `${styles$4.button} ${current === "en" ? styles$4.active : ""}`,
+        className: `${styles$5.button} ${current === "en" ? styles$5.active : ""}`,
         onClick: () => toggle("en"),
         "aria-pressed": current === "en",
         "aria-label": "Switch to English",
@@ -1249,7 +1253,7 @@ const logoText = "_logoText_ezmhu_36";
 const tabs = "_tabs_ezmhu_45";
 const tab = "_tab_ezmhu_45";
 const active = "_active_ezmhu_73";
-const styles$3 = {
+const styles$4 = {
   nav,
   logo,
   logoImg,
@@ -1263,6 +1267,7 @@ const TAB_PATHS = [
   { id: "mill", path: "/mill" },
   { id: "name", path: "/name" },
   { id: "research", path: "/research" },
+  { id: "sources", path: "/research/bibliography" },
   { id: "dna", path: "/dna" },
   { id: "about", path: "/about" },
   { id: "contact", path: "/contact" }
@@ -1272,33 +1277,33 @@ function Nav(_props) {
   const navigate = useNavigate();
   const location = useLocation();
   const activePath = location.pathname;
-  const activeTab = TAB_PATHS.find(
-    (t2) => t2.path === "/" ? activePath === "/" : activePath.startsWith(t2.path)
+  const activeTab = [...TAB_PATHS].sort((a, b) => b.path.length - a.path.length).find(
+    (t2) => t2.path === "/" ? activePath === "/" : activePath === t2.path || activePath.startsWith(t2.path + "/")
   )?.id ?? "home";
   const handleNav = (path) => {
     navigate(path);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  return /* @__PURE__ */ jsxs("nav", { className: styles$3.nav, children: [
+  return /* @__PURE__ */ jsxs("nav", { className: styles$4.nav, children: [
     /* @__PURE__ */ jsxs(
       "button",
       {
-        className: styles$3.logo,
+        className: styles$4.logo,
         onClick: () => handleNav("/"),
         "aria-label": "Van Vlaenderen — Home",
         children: [
-          /* @__PURE__ */ jsx("img", { src: lionShield, alt: "Lion of Flanders heraldic shield", className: styles$3.logoImg }),
-          /* @__PURE__ */ jsx("span", { className: styles$3.logoText, children: "Van Vlaenderen" })
+          /* @__PURE__ */ jsx("img", { src: lionShield, alt: "Lion of Flanders heraldic shield", className: styles$4.logoImg }),
+          /* @__PURE__ */ jsx("span", { className: styles$4.logoText, children: "Van Vlaenderen" })
         ]
       }
     ),
-    /* @__PURE__ */ jsx("ul", { className: styles$3.tabs, role: "menubar", children: TAB_PATHS.map(({ id, path }) => {
+    /* @__PURE__ */ jsx("ul", { className: styles$4.tabs, role: "menubar", children: TAB_PATHS.map(({ id, path }) => {
       const labelKey = id === "dna" ? "nav.dna" : id === "research" ? "nav.history" : `nav.${id}`;
       return /* @__PURE__ */ jsx("li", { role: "none", children: /* @__PURE__ */ jsx(
         "button",
         {
           role: "menuitem",
-          className: `${styles$3.tab} ${activeTab === id ? styles$3.active : ""}`,
+          className: `${styles$4.tab} ${activeTab === id ? styles$4.active : ""}`,
           onClick: () => handleNav(path),
           "aria-current": activeTab === id ? "page" : void 0,
           children: t(labelKey)
@@ -1572,7 +1577,7 @@ const cardQuote = "_cardQuote_dkfc0_472";
 const cardArrow = "_cardArrow_dkfc0_482";
 const footerStrip = "_footerStrip_dkfc0_492";
 const footerDivider = "_footerDivider_dkfc0_508";
-const styles$2 = {
+const styles$3 = {
   page: page$3,
   hero,
   heroOverlay,
@@ -1711,7 +1716,7 @@ function HomePage() {
       img: cronikeShields
     }
   ];
-  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Van Vlaenderen — Flemish Heritage & Family History Research" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Genealogical research tracing the Van Vlaenderen surname to the comital network of fourteenth-century Flanders, and testing whether its origin lies in the comital household, the comital bloodline, or a mix of both. Fourteen generations documented from the Meetjesland to America." }),
@@ -1723,28 +1728,28 @@ function HomePage() {
       /* @__PURE__ */ jsx("meta", { property: "og:image", content: "https://vanvlaenderen.org/assets/hero-background-rVYnRAiM.jpg" }),
       /* @__PURE__ */ jsx("meta", { name: "twitter:card", content: "summary_large_image" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$2.hero, style: { backgroundImage: `url(${heroBg})` }, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$2.heroOverlay }),
-      /* @__PURE__ */ jsxs("div", { className: styles$2.heroContent, children: [
-        /* @__PURE__ */ jsx("img", { src: lionShield, alt: "Lion of Flanders", className: styles$2.shield }),
-        /* @__PURE__ */ jsx("h1", { className: styles$2.title, children: "Van Vlaenderen" }),
-        /* @__PURE__ */ jsxs("div", { className: styles$2.subtitle, children: [
-          /* @__PURE__ */ jsx("div", { className: styles$2.heroSubtitleNarrative, children: t("home.hero_subtitle_narrative") }),
-          /* @__PURE__ */ jsxs("div", { className: styles$2.heroSubtitleLocations, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$3.hero, style: { backgroundImage: `url(${heroBg})` }, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$3.heroOverlay }),
+      /* @__PURE__ */ jsxs("div", { className: styles$3.heroContent, children: [
+        /* @__PURE__ */ jsx("img", { src: lionShield, alt: "Lion of Flanders", className: styles$3.shield }),
+        /* @__PURE__ */ jsx("h1", { className: styles$3.title, children: "Van Vlaenderen" }),
+        /* @__PURE__ */ jsxs("div", { className: styles$3.subtitle, children: [
+          /* @__PURE__ */ jsx("div", { className: styles$3.heroSubtitleNarrative, children: t("home.hero_subtitle_narrative") }),
+          /* @__PURE__ */ jsxs("div", { className: styles$3.heroSubtitleLocations, children: [
             "· ",
             t("home.hero_subtitle_locations")
           ] })
         ] }),
-        /* @__PURE__ */ jsx("div", { className: styles$2.heroScrollHint, children: "↓" })
+        /* @__PURE__ */ jsx("div", { className: styles$3.heroScrollHint, children: "↓" })
       ] })
     ] }),
-    /* @__PURE__ */ jsx("div", { className: styles$2.villageStrip, children: /* @__PURE__ */ jsx("div", { className: styles$2.villageScroll, children: [...villages, ...villages].map((v, i) => /* @__PURE__ */ jsxs("span", { className: styles$2.villageItem, children: [
+    /* @__PURE__ */ jsx("div", { className: styles$3.villageStrip, children: /* @__PURE__ */ jsx("div", { className: styles$3.villageScroll, children: [...villages, ...villages].map((v, i) => /* @__PURE__ */ jsxs("span", { className: styles$3.villageItem, children: [
       v,
-      /* @__PURE__ */ jsx("span", { className: styles$2.villageDot, children: "✦" })
+      /* @__PURE__ */ jsx("span", { className: styles$3.villageDot, children: "✦" })
     ] }, i)) }) }),
-    /* @__PURE__ */ jsx("div", { className: styles$2.mysterySection, children: /* @__PURE__ */ jsxs("div", { className: styles$2.mysteryInner, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$2.mysteryQuestion, children: t("home.mystery_question") }),
-      /* @__PURE__ */ jsxs("div", { className: styles$2.mysteryBody, children: [
+    /* @__PURE__ */ jsx("div", { className: styles$3.mysterySection, children: /* @__PURE__ */ jsxs("div", { className: styles$3.mysteryInner, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$3.mysteryQuestion, children: t("home.mystery_question") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$3.mysteryBody, children: [
         /* @__PURE__ */ jsxs("p", { children: [
           t("home.mystery_intro_p1"),
           " ",
@@ -1752,8 +1757,8 @@ function HomePage() {
           " ",
           t("home.mystery_intro_p1_cont")
         ] }),
-        /* @__PURE__ */ jsx("p", { className: styles$2.visitorNote, children: /* @__PURE__ */ jsx("em", { children: t("home.mystery_visitor_note") }) }),
-        /* @__PURE__ */ jsx("div", { className: styles$2.dividerLine }),
+        /* @__PURE__ */ jsx("p", { className: styles$3.visitorNote, children: /* @__PURE__ */ jsx("em", { children: t("home.mystery_visitor_note") }) }),
+        /* @__PURE__ */ jsx("div", { className: styles$3.dividerLine }),
         /* @__PURE__ */ jsxs("p", { children: [
           t("home.mystery_toponymic_p1"),
           " ",
@@ -1763,76 +1768,76 @@ function HomePage() {
           " ",
           t("home.mystery_toponymic_p1_cont")
         ] }),
-        /* @__PURE__ */ jsx("p", { className: styles$2.emergingTheory, children: t("home.mystery_emerging") }),
-        /* @__PURE__ */ jsxs("div", { className: styles$2.hypothesisBlock, children: [
-          /* @__PURE__ */ jsx("div", { className: styles$2.hypothesisLabel, children: t("home.hypothesis_one_label") }),
-          /* @__PURE__ */ jsx("div", { className: styles$2.hypothesisTitle, children: t("home.hypothesis_one_title") }),
+        /* @__PURE__ */ jsx("p", { className: styles$3.emergingTheory, children: t("home.mystery_emerging") }),
+        /* @__PURE__ */ jsxs("div", { className: styles$3.hypothesisBlock, children: [
+          /* @__PURE__ */ jsx("div", { className: styles$3.hypothesisLabel, children: t("home.hypothesis_one_label") }),
+          /* @__PURE__ */ jsx("div", { className: styles$3.hypothesisTitle, children: t("home.hypothesis_one_title") }),
           /* @__PURE__ */ jsx("p", { children: t("home.hypothesis_one_body") })
         ] }),
-        /* @__PURE__ */ jsxs("div", { className: styles$2.hypothesisBlock, children: [
-          /* @__PURE__ */ jsx("div", { className: styles$2.hypothesisLabel, children: t("home.hypothesis_two_label") }),
-          /* @__PURE__ */ jsx("div", { className: styles$2.hypothesisTitle, children: t("home.hypothesis_two_title") }),
+        /* @__PURE__ */ jsxs("div", { className: styles$3.hypothesisBlock, children: [
+          /* @__PURE__ */ jsx("div", { className: styles$3.hypothesisLabel, children: t("home.hypothesis_two_label") }),
+          /* @__PURE__ */ jsx("div", { className: styles$3.hypothesisTitle, children: t("home.hypothesis_two_title") }),
           /* @__PURE__ */ jsx("p", { children: t("home.hypothesis_two_body") })
         ] }),
-        /* @__PURE__ */ jsx("p", { className: styles$2.hypothesesBridge, children: /* @__PURE__ */ jsx("em", { children: t("home.hypotheses_bridge") }) }),
-        /* @__PURE__ */ jsx("div", { className: styles$2.hypothesesCta, children: /* @__PURE__ */ jsxs("button", { className: styles$2.primaryBtn, onClick: () => goTo("research"), children: [
+        /* @__PURE__ */ jsx("p", { className: styles$3.hypothesesBridge, children: /* @__PURE__ */ jsx("em", { children: t("home.hypotheses_bridge") }) }),
+        /* @__PURE__ */ jsx("div", { className: styles$3.hypothesesCta, children: /* @__PURE__ */ jsxs("button", { className: styles$3.primaryBtn, onClick: () => goTo("research"), children: [
           t("home.cta_research"),
           " →"
         ] }) }),
-        /* @__PURE__ */ jsxs("div", { className: styles$2.pullQuote, children: [
-          /* @__PURE__ */ jsx("span", { className: styles$2.pullQuoteMark, children: '"' }),
+        /* @__PURE__ */ jsxs("div", { className: styles$3.pullQuote, children: [
+          /* @__PURE__ */ jsx("span", { className: styles$3.pullQuoteMark, children: '"' }),
           t("home.pull_quote"),
-          /* @__PURE__ */ jsx("span", { className: styles$2.pullQuoteMark, children: '"' })
+          /* @__PURE__ */ jsx("span", { className: styles$3.pullQuoteMark, children: '"' })
         ] }),
-        /* @__PURE__ */ jsxs("p", { className: styles$2.callToAction, children: [
+        /* @__PURE__ */ jsxs("p", { className: styles$3.callToAction, children: [
           t("home.cta_collaborative_p1"),
           " ",
           /* @__PURE__ */ jsx("strong", { children: "Van Vlaenderen" }),
           " ",
           t("home.cta_collaborative_p1_cont")
         ] }),
-        /* @__PURE__ */ jsx("p", { className: styles$2.researchNote, children: t("home.research_note") })
+        /* @__PURE__ */ jsx("p", { className: styles$3.researchNote, children: t("home.research_note") })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$2.mysteryActions, children: [
-        /* @__PURE__ */ jsx("button", { className: styles$2.primaryBtn, onClick: () => goTo("name"), children: t("home.cta_explore") }),
-        /* @__PURE__ */ jsx("button", { className: styles$2.secondaryBtn, onClick: () => goTo("contact"), children: t("home.cta_contribute") })
+      /* @__PURE__ */ jsxs("div", { className: styles$3.mysteryActions, children: [
+        /* @__PURE__ */ jsx("button", { className: styles$3.primaryBtn, onClick: () => goTo("name"), children: t("home.cta_explore") }),
+        /* @__PURE__ */ jsx("button", { className: styles$3.secondaryBtn, onClick: () => goTo("contact"), children: t("home.cta_contribute") })
       ] })
     ] }) }),
-    /* @__PURE__ */ jsxs("div", { className: styles$2.heraldicDivider, children: [
-      /* @__PURE__ */ jsx("span", { className: styles$2.heraldicLine }),
-      /* @__PURE__ */ jsx("span", { className: styles$2.heraldicSymbol, children: "✦" }),
-      /* @__PURE__ */ jsx("span", { className: styles$2.heraldicLine })
+    /* @__PURE__ */ jsxs("div", { className: styles$3.heraldicDivider, children: [
+      /* @__PURE__ */ jsx("span", { className: styles$3.heraldicLine }),
+      /* @__PURE__ */ jsx("span", { className: styles$3.heraldicSymbol, children: "✦" }),
+      /* @__PURE__ */ jsx("span", { className: styles$3.heraldicLine })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$2.cardsSection, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$2.cardsHeading, children: t("home.explore_archive") }),
-      /* @__PURE__ */ jsx("div", { className: styles$2.cards, children: cards2.map((card2) => /* @__PURE__ */ jsxs(
+    /* @__PURE__ */ jsxs("div", { className: styles$3.cardsSection, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$3.cardsHeading, children: t("home.explore_archive") }),
+      /* @__PURE__ */ jsx("div", { className: styles$3.cards, children: cards2.map((card2) => /* @__PURE__ */ jsxs(
         "button",
         {
-          className: styles$2.card,
+          className: styles$3.card,
           onClick: () => goTo(card2.id),
           children: [
-            /* @__PURE__ */ jsxs("div", { className: styles$2.cardImg, children: [
+            /* @__PURE__ */ jsxs("div", { className: styles$3.cardImg, children: [
               /* @__PURE__ */ jsx("img", { src: card2.img, alt: t(card2.titleKey) }),
-              /* @__PURE__ */ jsx("div", { className: styles$2.cardImgOverlay })
+              /* @__PURE__ */ jsx("div", { className: styles$3.cardImgOverlay })
             ] }),
-            /* @__PURE__ */ jsxs("div", { className: styles$2.cardBody, children: [
-              /* @__PURE__ */ jsx("div", { className: styles$2.cardTitle, children: t(card2.titleKey) }),
-              /* @__PURE__ */ jsx("div", { className: styles$2.cardSub, children: t(card2.subtitleKey) }),
-              /* @__PURE__ */ jsx("div", { className: styles$2.cardQuote, children: t(card2.quoteKey) }),
-              /* @__PURE__ */ jsx("div", { className: styles$2.cardArrow, children: "→" })
+            /* @__PURE__ */ jsxs("div", { className: styles$3.cardBody, children: [
+              /* @__PURE__ */ jsx("div", { className: styles$3.cardTitle, children: t(card2.titleKey) }),
+              /* @__PURE__ */ jsx("div", { className: styles$3.cardSub, children: t(card2.subtitleKey) }),
+              /* @__PURE__ */ jsx("div", { className: styles$3.cardQuote, children: t(card2.quoteKey) }),
+              /* @__PURE__ */ jsx("div", { className: styles$3.cardArrow, children: "→" })
             ] })
           ]
         },
         card2.id
       )) })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$2.footerStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$3.footerStrip, children: [
       /* @__PURE__ */ jsx("span", { children: "© 2026 VanVlaenderen.org" }),
-      /* @__PURE__ */ jsx("span", { className: styles$2.footerDivider, children: "·" }),
+      /* @__PURE__ */ jsx("span", { className: styles$3.footerDivider, children: "·" }),
       /* @__PURE__ */ jsx("span", { children: "East Flanders, Belgium" }),
-      /* @__PURE__ */ jsx("span", { className: styles$2.footerDivider, children: "·" }),
+      /* @__PURE__ */ jsx("span", { className: styles$3.footerDivider, children: "·" }),
       /* @__PURE__ */ jsx("span", { children: t("home.footer_project") }),
-      /* @__PURE__ */ jsx("span", { className: styles$2.footerDivider, children: "·" }),
+      /* @__PURE__ */ jsx("span", { className: styles$3.footerDivider, children: "·" }),
       /* @__PURE__ */ jsx("span", { children: t("home.footer_permission") })
     ] })
   ] });
@@ -1856,7 +1861,7 @@ const mapNoteCoords = "_mapNoteCoords_5rbee_173";
 const ctaBox = "_ctaBox_5rbee_180";
 const ctaText = "_ctaText_5rbee_195";
 const ctaNote = "_ctaNote_5rbee_204";
-const styles$1 = {
+const styles$2 = {
   page: page$2,
   heroStrip,
   heroImg,
@@ -1919,7 +1924,7 @@ const millStyles = {
 function MillPage() {
   const { goTo } = useNav();
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "The Mill — Van Vlaenderen Family Origins | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "The documented miller lineage of the Van Vlaenderen family from 1568 Ghent through East Flanders — Wassegem, Oostwinkel, Waarschoot, Boekhoute, and Bassevelde." }),
@@ -1929,23 +1934,23 @@ function MillPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/mill" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$1.heroImg,
+          className: styles$2.heroImg,
           style: { backgroundImage: `url(${millVinderhoute})`, backgroundPosition: "center center" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: t("mill.hero_eyebrow") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: t("mill.hero_eyebrow") }),
         /* @__PURE__ */ jsx("h1", { children: t("mill.hero_title") }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: t("mill.hero_lead") })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: t("mill.hero_lead") })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: millStyles.proverbBox, children: [
         /* @__PURE__ */ jsx("div", { className: millStyles.proverbDecor, children: "✦" }),
         /* @__PURE__ */ jsxs("div", { className: millStyles.proverbText, children: [
@@ -1956,7 +1961,7 @@ function MillPage() {
         /* @__PURE__ */ jsx("div", { className: millStyles.proverbSource, children: t("mill.proverb_source") }),
         /* @__PURE__ */ jsx("div", { className: millStyles.proverbDecor, children: "✦" })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("mill.history_title") }),
         /* @__PURE__ */ jsx("p", { children: t("mill.history_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("mill.history_p2") }),
@@ -2005,7 +2010,7 @@ function MillPage() {
           ] })
         ] })
       ] }) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("mill.social_title") }),
         /* @__PURE__ */ jsx("p", { children: t("mill.social_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("mill.social_p2") }),
@@ -2025,14 +2030,14 @@ function MillPage() {
           /* @__PURE__ */ jsx("p", { children: t("mill.region_p1") })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: styles$1.mapNote, children: /* @__PURE__ */ jsxs("div", { className: styles$1.mapNoteInner, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.mapNoteIcon, children: "📍" }),
+      /* @__PURE__ */ jsx("div", { className: styles$2.mapNote, children: /* @__PURE__ */ jsxs("div", { className: styles$2.mapNoteInner, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.mapNoteIcon, children: "📍" }),
         /* @__PURE__ */ jsxs("div", { children: [
           /* @__PURE__ */ jsx("strong", { children: t("mill.location_name") }),
           /* @__PURE__ */ jsx("br", {}),
           /* @__PURE__ */ jsx("span", { children: t("mill.location_address") }),
           /* @__PURE__ */ jsx("br", {}),
-          /* @__PURE__ */ jsx("span", { className: styles$1.mapNoteCoords, children: t("mill.location_coords") }),
+          /* @__PURE__ */ jsx("span", { className: styles$2.mapNoteCoords, children: t("mill.location_coords") }),
           /* @__PURE__ */ jsx("br", {}),
           /* @__PURE__ */ jsx(
             "a",
@@ -2046,9 +2051,9 @@ function MillPage() {
           )
         ] })
       ] }) }),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.ctaBox, onClick: () => goTo("contact"), style: { cursor: "pointer" }, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.ctaText, children: t("mill.cta_text") }),
-        /* @__PURE__ */ jsx("div", { className: styles$1.ctaNote, children: t("mill.cta_note") })
+      /* @__PURE__ */ jsxs("div", { className: styles$2.ctaBox, onClick: () => goTo("contact"), style: { cursor: "pointer" }, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.ctaText, children: t("mill.cta_text") }),
+        /* @__PURE__ */ jsx("div", { className: styles$2.ctaNote, children: t("mill.cta_note") })
       ] })
     ] })
   ] });
@@ -2182,7 +2187,7 @@ function NamePage() {
     { src: knightPhilip, alt: t("name.manuscript_2_alt"), caption: t("name.manuscript_2_caption") },
     { src: lionWoodcut, alt: t("name.manuscript_3_alt"), caption: t("name.manuscript_3_caption") }
   ];
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: 'The Name — Where "Van Vlaenderen" Comes From | vanvlaenderen.org' }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Investigating the origins of the Van Vlaenderen surname. Why distributional mapping and the Toponymic Paradox rule out a generic toponymic reading at the cluster level, and how the comital household and bloodline mechanisms explain what remains." }),
@@ -2192,24 +2197,24 @@ function NamePage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/name" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$1.heroImg,
+          className: styles$2.heroImg,
           style: { backgroundImage: `url(${knightPhilip})`, backgroundPosition: "top center" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: t("name.hero_eyebrow") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: t("name.hero_eyebrow") }),
         /* @__PURE__ */ jsx("h1", { children: t("name.hero_title") }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: t("name.hero_lead") })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: t("name.hero_lead") })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("name.history_title"),
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: t("research.method_corroborated_label") })
@@ -2218,7 +2223,7 @@ function NamePage() {
         /* @__PURE__ */ jsx("p", { children: t("name.history_p2") }),
         /* @__PURE__ */ jsx("p", { children: t("name.history_p3") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("name.four_bucket_title"),
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: t("research.method_attested_label") })
@@ -2320,12 +2325,12 @@ function NamePage() {
         /* @__PURE__ */ jsx("div", { className: nameStyles.mapCaption, children: t("name.map_caption") }),
         /* @__PURE__ */ jsx("div", { style: { fontSize: "0.8rem", color: "var(--text-muted)", fontStyle: "italic", marginTop: "0.5rem", padding: "0 0.5rem" }, children: t("name.map_caption_bucket_note") })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: styles$1.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
+      /* @__PURE__ */ jsx("div", { className: styles$2.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
         '"',
         t("name.pull_quote"),
         '"'
       ] }) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("name.villages_title") }),
         /* @__PURE__ */ jsx("p", { children: t("name.villages_intro") }),
         /* @__PURE__ */ jsx("div", { className: nameStyles.villageGrid, children: villages2.map((v) => /* @__PURE__ */ jsxs("div", { className: nameStyles.villageCard, children: [
@@ -2333,13 +2338,13 @@ function NamePage() {
           /* @__PURE__ */ jsx("div", { className: nameStyles.villageNote, children: v.note })
         ] }, v.name)) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("name.variations_title") }),
         /* @__PURE__ */ jsx("p", { children: t("name.variations_intro") }),
         /* @__PURE__ */ jsx("div", { className: nameStyles.spellingList, children: variations.map((s) => /* @__PURE__ */ jsx("span", { className: nameStyles.spellingTag, children: s }, s)) }),
         /* @__PURE__ */ jsx("p", { children: t("name.variations_footer") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("name.cronike_title") }),
         /* @__PURE__ */ jsx("p", { children: t("name.cronike_p1") }),
         /* @__PURE__ */ jsxs("div", { className: nameStyles.documentContainer, children: [
@@ -2376,7 +2381,7 @@ function NamePage() {
         },
         i
       )) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("name.notes_heading") }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", fontStyle: "italic", marginBottom: "1.5rem" }, children: t("name.notes_intro") }),
         /* @__PURE__ */ jsxs("div", { style: { fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.75 }, children: [
@@ -2426,9 +2431,9 @@ function NamePage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.ctaBox, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.ctaText, children: t("name.cta_text") }),
-        /* @__PURE__ */ jsx("div", { className: styles$1.ctaNote, children: t("name.cta_note") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.ctaBox, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.ctaText, children: t("name.cta_text") }),
+        /* @__PURE__ */ jsx("div", { className: styles$2.ctaNote, children: t("name.cta_note") }),
         /* @__PURE__ */ jsx(
           "button",
           {
@@ -2519,7 +2524,7 @@ function DnaPage() {
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState({});
   const toggle = (id) => setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "DNA Project — Y-DNA Research | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "A collaborative Y-DNA research project investigating whether Van Vlaenderen families share a common medieval paternal ancestor. Reference Big Y-700 result on haplogroup R-FT1573." }),
@@ -2529,24 +2534,24 @@ function DnaPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/dna" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$1.heroImg,
+          className: styles$2.heroImg,
           style: { backgroundImage: `url(${cronikeShields})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: t("dna.hero_eyebrow") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: t("dna.hero_eyebrow") }),
         /* @__PURE__ */ jsx("h1", { children: t("dna.hero_title") }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: t("dna.hero_lead") })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: t("dna.hero_lead") })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("dna.origin_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.origin_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.origin_p2") }),
@@ -2555,7 +2560,7 @@ function DnaPage() {
         /* @__PURE__ */ jsx("p", { children: t("dna.origin_p5") }),
         /* @__PURE__ */ jsx("p", { children: /* @__PURE__ */ jsx("strong", { children: t("dna.origin_p6") }) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("dna.research_stands_heading"),
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: t("research.method_attested_label") })
@@ -2597,7 +2602,7 @@ function DnaPage() {
           t("dna.participate_alternative_body")
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("dna.testing_heading"),
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: t("research.method_hypothesis_label") })
@@ -2681,7 +2686,7 @@ function DnaPage() {
         ] }) }),
         /* @__PURE__ */ jsx("p", { children: /* @__PURE__ */ jsx("em", { children: t("dna.testing_close") }) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("dna.zeeland_heading"),
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: t("research.method_hypothesis_label") })
@@ -2690,7 +2695,7 @@ function DnaPage() {
         /* @__PURE__ */ jsx("p", { children: t("dna.zeeland_p2") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.zeeland_p3") })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: styles$1.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
+      /* @__PURE__ */ jsx("div", { className: styles$2.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
         '"',
         t("dna.pullquote"),
         '"'
@@ -2706,7 +2711,7 @@ function DnaPage() {
         ),
         /* @__PURE__ */ jsx("div", { className: dnaStyles.familyPhotoCaption, children: t("dna.family_photo_caption") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("dna.dna_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.dna_intro") }),
         /* @__PURE__ */ jsxs("div", { className: dnaStyles.dnaGrid, children: [
@@ -2796,7 +2801,7 @@ function DnaPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("dna.project_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.project_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.project_p2") }),
@@ -2804,7 +2809,7 @@ function DnaPage() {
         /* @__PURE__ */ jsx("p", { children: t("dna.project_p4") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.project_p5") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("dna.privacy_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.privacy_intro") }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -2829,7 +2834,7 @@ function DnaPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { children: t("dna.privacy_close") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("dna.notes_heading") }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", fontStyle: "italic", marginBottom: "1.5rem" }, children: t("dna.notes_intro") }),
         /* @__PURE__ */ jsxs("div", { style: { fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.75 }, children: [
@@ -2871,9 +2876,9 @@ function DnaPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.ctaBox, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.ctaText, children: t("dna.cta_body") }),
-        /* @__PURE__ */ jsx("div", { className: styles$1.ctaNote, children: t("dna.cta_note") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.ctaBox, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.ctaText, children: t("dna.cta_body") }),
+        /* @__PURE__ */ jsx("div", { className: styles$2.ctaNote, children: t("dna.cta_note") }),
         /* @__PURE__ */ jsx(
           "button",
           {
@@ -4014,7 +4019,7 @@ function ResearchPage() {
   const { goToResearch } = useNav();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Research Overview — Van Vlaenderen Archival Dossiers | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Archival research into the Van Vlaenderen surname: three documented comital bastard lines of Louis II de Male — Victor (Meetjesland), Louis Friese / Praet (Meetjesland and Brabant, anchored at the Aalter Vrijhof to c. 1590), and Jan sans terre / Drincham (French Flanders) — and the geographic clusters they left in the modern record." }),
@@ -4024,23 +4029,23 @@ function ResearchPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$1.heroImg,
+          className: styles$2.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: t("research.hero_eyebrow") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: t("research.hero_eyebrow") }),
         /* @__PURE__ */ jsx("h1", { children: t("research.hero_title") }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: t("research.hero_lead") })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: t("research.hero_lead") })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: t("research.dossier_title") }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: t("research.dossier_updated") })
@@ -4062,7 +4067,7 @@ function ResearchPage() {
         }, children: t("research.tldr_heading") }),
         /* @__PURE__ */ jsx("p", { style: { margin: 0, lineHeight: 1.7, color: "var(--text-primary)" }, children: t("research.tldr_body") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("research.three_lines_heading"),
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: t("research.method_corroborated_label") })
@@ -4109,7 +4114,7 @@ function ResearchPage() {
           /* @__PURE__ */ jsx("p", { children: t("research.diagram_sr_text") })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("section", { className: styles$1.section, children: /* @__PURE__ */ jsx("h2", { children: t("research.branches_heading") }) }),
+      /* @__PURE__ */ jsx("section", { className: styles$2.section, children: /* @__PURE__ */ jsx("h2", { children: t("research.branches_heading") }) }),
       /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
         /* @__PURE__ */ jsxs(
           "div",
@@ -4178,7 +4183,7 @@ function ResearchPage() {
           }
         )
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("research.reference_heading") }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
           /* @__PURE__ */ jsxs(
@@ -4268,7 +4273,7 @@ function ResearchPage() {
         ] })
       ] }),
       /* @__PURE__ */ jsx(Suspense, { fallback: /* @__PURE__ */ jsx("div", { style: { height: "400px" } }), children: /* @__PURE__ */ jsx(ResearchMap, {}) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, style: { marginTop: "3rem" }, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, style: { marginTop: "3rem" }, children: [
         /* @__PURE__ */ jsx("h2", { children: t("research.dossiers_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("research.dossiers_intro") }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
@@ -4362,7 +4367,7 @@ function ResearchPage() {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, style: { marginTop: "3rem" }, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, style: { marginTop: "3rem" }, children: [
         /* @__PURE__ */ jsx("h2", { children: t("research.articles_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("research.articles_intro") }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
@@ -4416,7 +4421,7 @@ function ResearchPage() {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("research.notes_heading") }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", fontStyle: "italic", marginBottom: "1.5rem" }, children: t("research.notes_intro") }),
         /* @__PURE__ */ jsxs("div", { style: { fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.75 }, children: [
@@ -4466,13 +4471,13 @@ function ResearchPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("research.conclusion_title") }),
         /* @__PURE__ */ jsx("p", { children: t("research.conclusion_p1") })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.ctaBox, onClick: () => goToResearch("contact"), style: { cursor: "pointer" }, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.ctaText, children: t("research.cta_text") }),
-        /* @__PURE__ */ jsx("div", { className: styles$1.ctaNote, children: t("research.cta_note") })
+      /* @__PURE__ */ jsxs("div", { className: styles$2.ctaBox, onClick: () => goToResearch("contact"), style: { cursor: "pointer" }, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.ctaText, children: t("research.cta_text") }),
+        /* @__PURE__ */ jsx("div", { className: styles$2.ctaNote, children: t("research.cta_note") })
       ] })
     ] })
   ] });
@@ -4480,7 +4485,7 @@ function ResearchPage() {
 function VictorLineagePage() {
   const { goToResearch } = useNav();
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Victor van Vlaenderen — Lord of Wessegem | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Victor van Vlaenderen: bastard son of Louis II de Male, Lord of Ursel and Wessegem, father of Lodewyc, Janne, and Adam van Vlaendren per the 1441/42 charter." }),
@@ -4490,42 +4495,42 @@ function VictorLineagePage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/victor" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$1.heroImg,
+          className: styles$2.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: t("victor.hero_eyebrow") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: t("victor.hero_eyebrow") }),
         /* @__PURE__ */ jsx("h1", { children: t("victor.hero_title") }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "Natural son of Louis II de Male, Count of Flanders. Lord of Ursel and Wessegem. Burgundian admiral; captain of Biervliet. Father of Lodewyc, Janne, and Adam van Vlaendren — documented across three primary charters (1427, 1441, 1446)." })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: "Natural son of Louis II de Male, Count of Flanders. Lord of Ursel and Wessegem. Burgundian admiral; captain of Biervliet. Father of Lodewyc, Janne, and Adam van Vlaendren — documented across three primary charters (1427, 1441, 1446)." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: t("victor.dossier_title") }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Identity and Parentage ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
         /* @__PURE__ */ jsx("p", { children: "Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders (1330–1384). FMG MedLands lists him as illegitimate child 9 of Louis II, noting that Espinoy records his parentage [841]. His mother is identified in the 12 May 1427 charter as Mergriete Haelfhuuts (Heinricx Mayen…wijf). Victor is styled Seigneur d'Ursele et de Wesseghem and is documented as a Burgundian admiral and captain of Biervliet." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Territorial Setting: Wessegem and Ursel ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsx("p", { children: "The Flemish heritage inventory for the Hof van Wessegem states that by the end of the fourteenth century 'Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male,' were lords of Wessegem, and that the property reverted to the comital domain in 1431. A local Ursel history states that in 1399 Wessegem passed to Victor van Vlaanderen, 'another bastard son of Louis van Male,' and that he often resided there. The lordship sits in the heart of the Meetjesland — the same region where the later parish-record Van Vlaenderens cluster." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The Three-Charter Nucleus ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -4551,7 +4556,7 @@ function VictorLineagePage() {
           /* @__PURE__ */ jsx("p", { children: "This diagram shows the descent from Louis II de Male, Count of Flanders (1330–1384), through his natural son Victor van Vlaenderen (died before 1442), Lord of Ursel and Wessegem. Victor had three documented natural sons by Alix van Boyeghem: Lodewyc van Vlaendren (fl. 1427–1442), Janne van Vlaendren (fl. 1427–1442), and Adam van Vlaendren (fl. 1427 – 18 March 1447), the closest documented individual bridge candidate to the modern East Flanders clusters. Lodewyc married Jacqueline de Wilde and had two children: Josse van Vlaenderen (died young, buried Oostborch) and Margareta van Vlaenderen (fl. 1478–1486, married into noble families). An evidentiary gap of approximately 100 years separates Adam (last confirmed 1447) from Joos van Vlaenderen (fl. 1547), the first confirmed early modern bearer as testator in the Brugse Vrije probate records (TBO 184, bundle 21300). No direct genealogical link between Adam and Joos has yet been demonstrated. Key archival targets for bridging this gap: cijnsboeken and leenboeken (Ambacht Ursel / Maldegem), Staten van Goed, and Raad van Vlaanderen records at Rijksarchief Gent." })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Adam van Vlaendren (fl. 1427 – 18 Mar 1447 N.S.) ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -4559,7 +4564,7 @@ function VictorLineagePage() {
         /* @__PURE__ */ jsx("p", { children: "Adam is named in all three charters but is only the active donor in the third (1446/1447). His corrected date range — fl. 1427 to 18 March 1447 N.S. — extends his documented life five years beyond the previous terminus of 1442. He is the last confirmed 15th-century bearer of the van Vlaendren surname in Victor's line." }),
         /* @__PURE__ */ jsx("p", { children: "The 1446 charter is significant because Adam explicitly identifies Victor as 'Rudder, Heer van Orsele en van Wesseghem' — Knight, Lord of Ursel and Wessegem — and because Margriete Aelfhuuts is still active as his patroness four years after the previous donation." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Lodewyc's Descendants ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -4567,7 +4572,7 @@ function VictorLineagePage() {
         /* @__PURE__ */ jsx("p", { children: "Lodewyc van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch records the burial of Jacqueline and nearby 'haer Joos van Vlaenderen fs Lodewijcx' [FMG 848,849]. Josse died young and cannot be the 1547 Brugse Vrije testator — but his existence confirms the name Josse/Joos was in active use in Victor's direct line." }),
         /* @__PURE__ */ jsx("p", { children: "Lodewyc's daughter Margareta van Vlaenderen (fl. 1478–1486) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe [FMG 850]." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Bridging the Gap: Adam to Joos ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: "Hypothesis" })
@@ -4579,14 +4584,14 @@ function VictorLineagePage() {
         /* @__PURE__ */ jsx("p", { children: t("victor.gap_p5") }),
         /* @__PURE__ */ jsx("p", { children: t("victor.gap_p6") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Naval and Military Activity ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
         /* @__PURE__ */ jsx("p", { children: t("victor.military_p1") })
       ] }),
-      /* @__PURE__ */ jsx("section", { className: styles$1.section, style: { marginTop: "3rem", borderTop: "1px solid rgba(232, 184, 48, 0.2)", paddingTop: "2rem" }, children: /* @__PURE__ */ jsxs(
+      /* @__PURE__ */ jsx("section", { className: styles$2.section, style: { marginTop: "3rem", borderTop: "1px solid rgba(232, 184, 48, 0.2)", paddingTop: "2rem" }, children: /* @__PURE__ */ jsxs(
         "div",
         {
           className: researchStyles.branchCard,
@@ -4608,7 +4613,7 @@ function VictorLineagePage() {
           ]
         }
       ) }),
-      /* @__PURE__ */ jsx("div", { className: styles$1.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
+      /* @__PURE__ */ jsx("div", { className: styles$2.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
         '"',
         t("victor.pull_quote"),
         '"'
@@ -4652,9 +4657,9 @@ function VictorLineagePage() {
           /* @__PURE__ */ jsx("a", { href: "https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library, Thesis RUG01-001786522 (2012)" })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.ctaBox, onClick: () => goToResearch("contact"), style: { cursor: "pointer" }, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.ctaText, children: t("victor.cta_text") }),
-        /* @__PURE__ */ jsx("div", { className: styles$1.ctaNote, children: t("victor.cta_note") })
+      /* @__PURE__ */ jsxs("div", { className: styles$2.ctaBox, onClick: () => goToResearch("contact"), style: { cursor: "pointer" }, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.ctaText, children: t("victor.cta_text") }),
+        /* @__PURE__ */ jsx("div", { className: styles$2.ctaNote, children: t("victor.cta_note") })
       ] }),
       /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
         "button",
@@ -4680,7 +4685,7 @@ function VictorLineagePage() {
 function LouisFrieseLineagePage() {
   const { goToResearch } = useNav();
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Louis Friese van Vlaenderen — The Praet Line | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Louis Friese van Vlaenderen, Lord of Praet and Woestine: the second bastard line of Louis II de Male using the Van Vlaenderen surname. Ancestor of Lodewijk IV (Louis of Praet)." }),
@@ -4690,28 +4695,28 @@ function LouisFrieseLineagePage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/louis-friese" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$1.heroImg,
+          className: styles$2.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: t("louis_friese.hero_eyebrow") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: t("louis_friese.hero_eyebrow") }),
         /* @__PURE__ */ jsx("h1", { children: t("louis_friese.hero_title") }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "Natural son of Louis II de Male, Count of Flanders. Lord of Praet and Woestine. Killed at the Battle of Nicopolis, 28 September 1396. Founder of the House of Flanders-Praet — six generations using van Vlaenderen as a hereditary surname." })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: "Natural son of Louis II de Male, Count of Flanders. Lord of Praet and Woestine. Killed at the Battle of Nicopolis, 28 September 1396. Founder of the House of Flanders-Praet — six generations using van Vlaenderen as a hereditary surname." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: t("louis_friese.dossier_title") }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("louis_friese.praet_title"),
           " ",
@@ -4731,7 +4736,7 @@ function LouisFrieseLineagePage() {
           /* @__PURE__ */ jsx("p", { children: "This diagram shows the descent from Louis II de Male, Count of Flanders (1330–1384), through his natural son Louis Friese van Vlaenderen (c.1350 – 28 September 1396), Lord of Praet and Woestine, killed at Nicopolis. Louis Friese's son Johan I van Vlaenderen (died after 10 September 1439), Lord of Praet, had five documented children: Lodewijk II van Vlaenderen (the heir); Ioanna de Flandre, married Jean of Pouques in 1446; Margareta de Flandre, married Louis de Bailleul (attribution structurally inferential); Lisbette de Flandre, married Waleran of Landas; and Landrada de Flandre, canoness at St. Waudru in Mons. Lodewijk II van Vlaenderen (died 1488 — two primary sources disagree on the day, the Aalter tomb inscription recording St. Bavo’s day, 1 October, while de l’Espinoy records St. Bartholomew, 24 August) in turn had six children by Louise de Bruges per Damhouder's extract on Vredius p. 278: Loys (Lodewijk III, the heir), Jean de Flandre (d. 6 September 1523, Heer van Onlede en Beveren, Grand Bailiff of Bruges), Jacques, Josse de Flandre (d. after 1526, line survived to at least 1592 per Buylaert), Louise, and Iehenne. Lodewijk III van Vlaenderen (died 1488 per Grimarez or 1490 per the Aalter tomb — sources disagree by two years) in turn produced Lodewijk IV van Vlaenderen (died 1555 or 1556), Knight of the Golden Fleece (1531), Grand Bailiff of Ghent and Bruges, Stadtholder of Holland and Zeeland, and advisor to Charles V. Lodewijk IV’s wife Jossine van Praet predeceased him on 10 December 1546. Lodewijk IV’s only son Jan II van Vlaenderen (died 10 December 1545) predeceased his father by ten years, dying without issue and ending the legitimate Praet male line a decade before Lodewijk IV himself died. The Praet line functions as a documented research control: men styled van Vlaenderen in 16th-century records cannot be assigned to Victor's descendants without first eliminating a possible Praet connection." })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Johan I's Five Documented Children ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -4784,7 +4789,7 @@ function LouisFrieseLineagePage() {
           " de Flandres, Chevalier, Saigneur de Praet’ (i.e., Lodewijk II, d. 1488). Damhouder’s list of Lodewijk II’s six children by Louise de Bruges on Vredius p. 278 confirms both Jean and Josse as Lodewijk II’s sons. Margareta de Flandre’s attribution to Johan I is structurally inferential (from the ‘sorores Ludovici Patris’ heading on Vredius p. 278) rather than directly textual. A March 1442 Ghent partition places the three minor children (Lodewijk II, Lisbette, and Landrada) under guardianship after Johan I’s death; Ioanna and Margareta were by then already married. See the Praet Lineage Detail dossier for the Lodewijk II six-children enumeration. Buylaert 2011 (not yet consulted directly) is the definitive arbiter on these attributions."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The 1517 Knesselare Charter ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -4792,7 +4797,7 @@ function LouisFrieseLineagePage() {
         /* @__PURE__ */ jsx("p", { children: "A charter [FMG 891] records Lodewijk IV van Vlaenderen holding six fiefs at Knesselare from the seigneurie of Wessegem in 1517. Knesselare is one of the parishes in the active research coverage, and it sits geographically between the Praet lordship (Oedelem/Beernem) and the core Van Vlaenderen cluster in the Meetjesland." }),
         /* @__PURE__ */ jsx("p", { children: "This charter does not establish a family connection between the Praet van Vlaenderens and the commoner Van Vlaenderens who later appear in Knesselare parish records. But it confirms that the Praet branch had territorial interests in the precise geographic area where the later parish-record bearers lived — which is relevant to the branch-control problem identified in the research design." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("louis_friese.survival_title"),
           " ",
@@ -4801,7 +4806,7 @@ function LouisFrieseLineagePage() {
         /* @__PURE__ */ jsx("p", { children: t("louis_friese.survival_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("louis_friese.survival_p2") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("louis_friese.figures_title") }),
         /* @__PURE__ */ jsx("p", { children: t("louis_friese.figures_intro") }),
         /* @__PURE__ */ jsxs("ul", { children: [
@@ -4812,7 +4817,7 @@ function LouisFrieseLineagePage() {
           /* @__PURE__ */ jsx("li", { children: t("louis_friese.figure_5") })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("section", { className: styles$1.section, style: { marginTop: "3rem", borderTop: "1px solid rgba(232, 184, 48, 0.2)", paddingTop: "2rem" }, children: /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
+      /* @__PURE__ */ jsx("section", { className: styles$2.section, style: { marginTop: "3rem", borderTop: "1px solid rgba(232, 184, 48, 0.2)", paddingTop: "2rem" }, children: /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
         /* @__PURE__ */ jsxs(
           "div",
           {
@@ -4901,9 +4906,9 @@ function LouisFrieseLineagePage() {
           "Buylaert, Frederik. Published genealogical and prosopographical research on Flemish nobility. Cited via FMG MedLands [881,882] for Josse de Flandre."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.ctaBox, onClick: () => goToResearch("contact"), style: { cursor: "pointer" }, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.ctaText, children: t("louis_friese.cta_text") }),
-        /* @__PURE__ */ jsx("div", { className: styles$1.ctaNote, children: t("louis_friese.cta_note") })
+      /* @__PURE__ */ jsxs("div", { className: styles$2.ctaBox, onClick: () => goToResearch("contact"), style: { cursor: "pointer" }, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.ctaText, children: t("louis_friese.cta_text") }),
+        /* @__PURE__ */ jsx("div", { className: styles$2.ctaNote, children: t("louis_friese.cta_note") })
       ] }),
       /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
         "button",
@@ -4929,7 +4934,7 @@ function LouisFrieseLineagePage() {
 function VictorDossierPage() {
   const { goToResearch } = useNav();
   const navigate = useNavigate();
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Victor van Vlaenderen — Archival Dossier | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Primary source dossier for Victor van Vlaenderen. Fifteenth-century Ghent charter evidence (1427, 1441, 1446) for his natural sons — Lodewyc, Janne, and Adam — and his lordship of Ursel and Wessegem in the Meetjesland." }),
@@ -4938,26 +4943,26 @@ function VictorDossierPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:description", content: "Primary source dossier for Victor van Vlaenderen. Fifteenth-century Ghent charter evidence (1427, 1441, 1446) for his natural sons — Lodewyc, Janne, and Adam — and his lordship of Ursel and Wessegem in the Meetjesland." }),
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/victor-dossier" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
-      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Victor van Vlaenderen \\u2014 Archival Dossier","description":"Primary source dossier for Victor van Vlaenderen: 1427 and 1441/42 charter evidence, FMG MedLands documentation, Hof van Wessegem heritage record, and the Alix van Boyeghem connection.","url":"https://vanvlaenderen.org/research/victor-dossier","inLanguage":"en","dateModified":"2026-04-19","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}` } }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Victor van Vlaenderen \\u2014 Archival Dossier","description":"Primary source dossier for Victor van Vlaenderen: 1427 and 1441/42 charter evidence, FMG MedLands documentation, Hof van Wessegem heritage record, and the Alix van Boyeghem connection.","url":"https://vanvlaenderen.org/research/victor-dossier","inLanguage":"en","dateModified":"2026-04-19","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } }),
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Victor van Vlaenderen","item":"https://vanvlaenderen.org/research/victor"},{"@type":"ListItem","position":4,"name":"Archival Dossier","item":"https://vanvlaenderen.org/research/victor-dossier"}]}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$1.heroImg,
+          className: styles$2.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: "Van Vlaenderen · Archival Evidence" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: "Van Vlaenderen · Archival Evidence" }),
         /* @__PURE__ */ jsx("h1", { children: "Victor van Vlaenderen" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "Bastard son of Louis II de Male, Count of Flanders; lord of Wessegem in Ursel; attested father of Lodewyc, Janne, and Adam van Vlaendren. Updated April 2026 with FMG MedLands primary charter data." })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: "Bastard son of Louis II de Male, Count of Flanders; lord of Wessegem in Ursel; attested father of Lodewyc, Janne, and Adam van Vlaendren. Updated April 2026 with FMG MedLands primary charter data." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Archival Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
@@ -4998,14 +5003,14 @@ function VictorDossierPage() {
           " FMG footnote numbers in square brackets refer to the Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut document (v5.0, January 2025)."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Identity and Parentage ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
         /* @__PURE__ */ jsx("p", { children: "Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders. FMG MedLands lists him as illegitimate child 9 of Louis II, noting that Espinoy records his parentage (no source cited) [841], and that his mother is named in her 12 May 1427 charter. He is identified as Seigneur d'Ursele et de Wesseghem and as a Burgundian admiral." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Territorial Setting: Wessegem and Ursel ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -5014,7 +5019,7 @@ function VictorDossierPage() {
         /* @__PURE__ */ jsx("p", { children: "A local Ursel history states that in 1399 Wessegem passed to Victor van Vlaanderen, 'another bastard son of Louis van Male,' and that he often resided there." }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", fontStyle: "italic", color: "var(--text-muted)" }, children: "Note on spelling: the Vredius print (1643, p. 286) renders the 1441 charter’s lordship designation as ‘Orsele ende van Wesseghem’ — an alternative spelling of ‘Ursele.’ The 1446 charter on the following page uses ‘Orsele en van Wesseghem’ again. The form ‘Desele’ sometimes appearing in secondary OCR transcriptions of the charter is an artifact: the Middle Dutch blackletter capital ‘U’/‘V’ is easily misread as ‘D.’ All references in Vredius point consistently to Ursel (the parish) and Wessegem (the seigneurie within it)." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Victor's Testament (1430) ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -5025,7 +5030,7 @@ function VictorDossierPage() {
           " p.285, citing the Vander Strate manuscript. It confirms Victor was alive in 1430 and had at least two brothers — Robert [Roeland] and Karel van Vlaenderen."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Direct Charter Nucleus ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -5050,7 +5055,7 @@ function VictorDossierPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { children: "This charter directly attests: (1) Adam is alive as late as 18 March 1447 N.S. — his death terminus, previously set at 1442, is now extended five years; (2) Adam explicitly names Victor as 'Rudder, Heer van Orsele en van Wesseghem' — Knight, Lord of Ursel and Wessegem; (3) Margriete Aelfhuuts remains Adam's active patroness in 1446, four years after the previous donation; (4) the lordship now spelled 'Orsele' — confirming Ursel and Wessegem as a paired designation." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Chronology ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -5108,7 +5113,7 @@ function VictorDossierPage() {
           ] })
         ] }) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Lodewyc van Vlaenderen — Documented Descendants ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -5129,14 +5134,14 @@ function VictorDossierPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", fontStyle: "italic", color: "var(--text-muted)" }, children: "Note on Oostborch: this is an older spelling of Oostburg, in Zeeuws-Vlaanderen (south of Sluis, now the Netherlands). It sits roughly 12 km north of the Meetjesland border and was part of the medieval Franc de Bruges. The Oostburg church burial places Lodewyc’s wife Jacqueline de Wilde and their son Joos firmly in the coastal Zeeuws-Vlaanderen orbit — not in the inland Meetjesland parishes where the later Van Vlaenderen surname cluster concentrates. A systematic onomastic sweep of Gysseling’s Vier Ambachten corpus (c. 1240–1500) returned no Bucket 4 attestations of the surname in Zeeuws-Vlaanderen, confirming it arrived there from elsewhere." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Naval and Military Activity ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
         /* @__PURE__ */ jsx("p", { children: "A DBNL article states: 'Victor was, en dit is belangrijk, kapitein van de vesting Biervliet.' A UGent-hosted study on Flemish corsair warfare notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.' These sources support Victor's coastal and naval command role." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Genealogical Significance ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: "Hypothesis" })
@@ -5262,7 +5267,7 @@ function VictorDossierPage() {
 }
 function PraetDossierPage() {
   const { goToResearch } = useNav();
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "The Praet Line — Archival Dossier | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Archival dossier for the House of Flanders-Praet. Descent from Louis Friese to Lodewijk IV (d. 1556), the Aalter Vrijhof as the line's Meetjesland anchor (1516–c. 1590), the post-1545 generation under active research, and late-16th-century cadet branches." }),
@@ -5271,26 +5276,26 @@ function PraetDossierPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:description", content: "Archival dossier for the House of Flanders-Praet. Descent from Louis Friese to Lodewijk IV (d. 1556), the Aalter Vrijhof as the line's Meetjesland anchor (1516–c. 1590), the post-1545 generation under active research, and late-16th-century cadet branches." }),
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/praet-dossier" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
-      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"The Praet Line \\u2014 Archival Dossier","description":"Archival dossier for the Praet line: Louis Friese van Vlaenderen through Lodewijk IV (Louis of Praet, Knight of the Golden Fleece, d. 1555).","url":"https://vanvlaenderen.org/research/praet-dossier","inLanguage":"en","dateModified":"2026-04-19","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}` } }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"The Praet Line \\u2014 Archival Dossier","description":"Archival dossier for the Praet line: Louis Friese van Vlaenderen through Lodewijk IV (Louis of Praet, Knight of the Golden Fleece, d. 1555).","url":"https://vanvlaenderen.org/research/praet-dossier","inLanguage":"en","dateModified":"2026-04-19","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } }),
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Louis Friese van Vlaenderen","item":"https://vanvlaenderen.org/research/louis-friese"},{"@type":"ListItem","position":4,"name":"Archival Dossier","item":"https://vanvlaenderen.org/research/praet-dossier"}]}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$1.heroImg,
+          className: styles$2.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: "Van Vlaenderen · Archival Dossier" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: "Van Vlaenderen · Archival Dossier" }),
         /* @__PURE__ */ jsx("h1", { children: "Louis Friese van Vlaenderen" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "Bastard son of Louis II de Male, Count of Flanders; lord of Praet and Woestine; founder of the Praet branch of the van Vlaenderen surname." })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: "Bastard son of Louis II de Male, Count of Flanders; lord of Praet and Woestine; founder of the Praet branch of the van Vlaenderen surname." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Archival Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
@@ -5331,7 +5336,7 @@ function PraetDossierPage() {
           "."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Identity and Parentage ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -5357,7 +5362,7 @@ function PraetDossierPage() {
           /* @__PURE__ */ jsx("sup", { children: "[5]" })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Battle of Nicopolis and Death ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -5367,7 +5372,7 @@ function PraetDossierPage() {
           /* @__PURE__ */ jsx("sup", { children: "[2][5]" })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Territorial Holdings: Praet and Woestine ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
@@ -5381,7 +5386,7 @@ function PraetDossierPage() {
           /* @__PURE__ */ jsx("sup", { children: "[5]" })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Marriage and Descent ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
@@ -5391,7 +5396,7 @@ function PraetDossierPage() {
           /* @__PURE__ */ jsx("sup", { children: "[5][7]" })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The Surname van Vlaenderen ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
@@ -5497,7 +5502,7 @@ function PraetLineageDossierPage() {
     { gen: 5, name: "Lodewijk IV van Vlaenderen", dates: "d. 1555", role: "Knight of the Golden Fleece (1531); Grand Bailiff Ghent & Bruges; Stadtholder Holland & Zeeland; Advisor to Emperor Charles V", spouse: "Jossine van Praet (d. 10 Dec 1546, bur Aeltere)", sources: "Aalter tomb inscription via Vredius p. 387; FMG [891–893]; Wikipedia", level: "Directly attested", levelClass: researchStyles.levelAttested },
     { gen: 6, name: "Jan II van Vlaenderen", dates: "d. 10 Dec 1545", role: "Lord of Woestine, Elverdinghe, Vlamertinghe; predeceased father without issue", spouse: "Jacqueline de Bourgogne (remarried; d. 1556 in childbirth)", sources: "Epitaph Aeltere via FMG [894,895]", level: "Directly attested", levelClass: researchStyles.levelAttested }
   ];
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Praet Lineage Detail — Van Vlaenderen Research | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Johan I, Lodewijk II (whose son Jean d. 1523 founded the Onlede cadet branch), Lodewijk III, and Lodewijk IV — the research control for Van Vlaenderen surname attribution." }),
@@ -5506,26 +5511,26 @@ function PraetLineageDossierPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:description", content: "Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Johan I, Lodewijk II (whose son Jean d. 1523 founded the Onlede cadet branch), Lodewijk III, and Lodewijk IV — the research control for Van Vlaenderen surname attribution." }),
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/praet-lineage-dossier" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
-      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Praet Lineage Detail \\u2014 Van Vlaenderen Research","description":"Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Jean I, Louis II, Jacob, and Lodewijk IV.","url":"https://vanvlaenderen.org/research/praet-lineage-dossier","inLanguage":"en","dateModified":"2026-04-19","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}` } }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Praet Lineage Detail \\u2014 Van Vlaenderen Research","description":"Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Jean I, Louis II, Jacob, and Lodewijk IV.","url":"https://vanvlaenderen.org/research/praet-lineage-dossier","inLanguage":"en","dateModified":"2026-04-19","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } }),
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Louis Friese van Vlaenderen","item":"https://vanvlaenderen.org/research/louis-friese"},{"@type":"ListItem","position":4,"name":"Lineage Detail","item":"https://vanvlaenderen.org/research/praet-lineage-dossier"}]}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$1.heroImg,
+          className: styles$2.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: "Van Vlaenderen · Lineage Dossier" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: "Van Vlaenderen · Lineage Dossier" }),
         /* @__PURE__ */ jsx("h1", { children: "The House of Flanders-Praet" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "Documented lineage from Louis Friese van Vlaenderen (d. 1396) to the extinction of the legitimate male line (1545), with primary-source confirmed generation data. Updated April 2026 with FMG MedLands primary charter and epitaph data." })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: "Documented lineage from Louis Friese van Vlaenderen (d. 1396) to the extinction of the legitimate male line (1545), with primary-source confirmed generation data. Updated April 2026 with FMG MedLands primary charter and epitaph data." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Lineage Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
@@ -5538,7 +5543,7 @@ function PraetLineageDossierPage() {
           " Espinoy (1631) and Vredius (1643) are the principal 17th-century authorities. Both are cited through FMG MedLands summaries with footnote numbers, which are preserved below for traceability. The FMG footnote numbers in square brackets refer to the Flanders, Hainaut document, section B: Heeren van Praet."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Lineage Summary Table" }),
         /* @__PURE__ */ jsx("div", { style: { overflowX: "auto" }, children: /* @__PURE__ */ jsxs("table", { style: { width: "100%", borderCollapse: "collapse", marginTop: "1rem", fontSize: "0.85rem" }, children: [
           /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { style: { borderBottom: "2px solid var(--gold)", textAlign: "left" }, children: [
@@ -5563,7 +5568,7 @@ function PraetLineageDossierPage() {
           ] }, i)) })
         ] }) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Generation Notes" }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2.5rem" }, children: [
           /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.5rem" }, children: [
@@ -5653,7 +5658,7 @@ function PraetLineageDossierPage() {
           /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "The Aalter tomb inscription, quoted in Vredius p. 388, reads: ‘Inde selve tombe light Jo. IAN van Vlaendren/ Heere van Woestine/ Elverdinghe/ ende Vlamertinghe/ fil. mijns Heeren Lodewijc/ Heere van Praet/ ende van Vrauw’ Josijne voorseyt/ die starf 1545. den 10. December; hy hadde ghetrauwt Vrauw’ IAQVELINE van Bourgongnen/ fil. M’her Adolf/ Heere van Bevere/ starf sonder generatie.’ Grimarez on the same page adds that he ‘mourut, sans generation, avant son pere, en l’an 1545’ — he predeceased his father Lodewijk IV by exactly ten years, leaving the legitimate Praet male line extinct a decade before Lodewijk IV himself died in 1555. A separate epitaph at Veere [FMG 895] records that his widow Jacqueline de Bourgogne remarried Jan Heer van Cruijningen and died ‘van haer laetste kint’ at Beveren in 1556 — in childbirth with her last child by her second husband — and that she was childless by Jan van Vlaenderen." })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Documented Cadet Connections" }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", marginBottom: "1.5rem" }, children: "The following are now documented from primary sources, replacing the previous Geni-only entries." }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2rem" }, children: [
@@ -5678,11 +5683,11 @@ function PraetLineageDossierPage() {
           /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "Charters dated 1478 and 1486 [FMG 850] record that 'Marguerite de Flandres' (daughter of Lodewyc van Vlaenderen, Victor's son) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe. This is from Victor's line, not the Praet line — noted here to distinguish the two Margaretha van Vlaenderens documented in the 15th century." })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Extinction and Open Questions" }),
         /* @__PURE__ */ jsx("p", { children: "The legitimate Praet male line ended 10 December 1545 with Jan II's death. Josse de Flandre (son of Lodewijk II, grandson of Johan I) represents a documented cadet branch surviving until at least 1592, but his line does not carry the primary ‘van Vlaenderen’ surname styling in the sources reviewed. Whether any branch of the Praet network continued to use ‘van Vlaenderen’ as a surname into the commoner population remains unproven. The Raad van Vlaanderen records at Rijksarchief Gent are the recommended next archival target." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Research Significance" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "The Praet branch provides independent corroboration that ",
@@ -5892,7 +5897,7 @@ function ContactPage() {
       text: t("contact.reason_question_text")
     }
   ];
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Contact — Van Vlaenderen Research | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Get in touch with the Van Vlaenderen research project. Share family connections, Y-DNA results, or archival findings related to the Van Vlaenderen / Van Flandern surname." }),
@@ -5901,13 +5906,13 @@ function ContactPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/contact" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "website" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.textHero, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: t("contact.hero_eyebrow") }),
+    /* @__PURE__ */ jsxs("div", { className: styles$2.textHero, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: t("contact.hero_eyebrow") }),
       /* @__PURE__ */ jsx("h1", { children: t("contact.hero_title") }),
       /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-      /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: t("contact.hero_lead") })
+      /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: t("contact.hero_lead") })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: contactStyles.twoCol, children: [
         /* @__PURE__ */ jsxs("div", { className: contactStyles.reasons, children: [
           /* @__PURE__ */ jsx("h2", { children: t("contact.reasons_title") }),
@@ -5990,7 +5995,7 @@ function ContactPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: styles$1.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
+      /* @__PURE__ */ jsx("div", { className: styles$2.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
         '"',
         t("contact.pull_quote"),
         '"'
@@ -6037,7 +6042,7 @@ const michaelConstanceCanal = "/assets/michael-constance-canal-CzKbZRok.jpg";
 function AboutPage() {
   const { goTo, goToResearch } = useNav();
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "About — Lions of Flanders Project | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "About the Lions of Flanders project: Michael and Constance Van Flandern's 15-year research into Flemish heritage, archival fieldwork in Belgium, and the path from Bassevelde to America." }),
@@ -6047,14 +6052,14 @@ function AboutPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/about" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "website" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.textHero, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: t("about.hero_eyebrow") }),
+    /* @__PURE__ */ jsxs("div", { className: styles$2.textHero, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: t("about.hero_eyebrow") }),
       /* @__PURE__ */ jsx("h1", { children: t("about.hero_title") }),
       /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-      /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: t("about.hero_lead") })
+      /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: t("about.hero_lead") })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("about.scope_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("about.scope_intro") }),
         /* @__PURE__ */ jsx("p", { children: t("about.scope_sources") })
@@ -6077,7 +6082,7 @@ function AboutPage() {
           /* @__PURE__ */ jsx("div", { className: aboutStyles.sourceDesc, children: t("about.source_dna_desc") })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("p", { children: t("about.methodology_note") }),
         /* @__PURE__ */ jsxs("p", { style: { marginTop: "1rem", fontSize: "0.975rem", color: "var(--text-primary)", lineHeight: 1.85 }, children: [
           "In medieval Flanders, territorial designations were rarely neutral. Scholarly research on twelfth-century noble sigillography has shown that aristocratic families in Imperial Flanders — the eastern zone including Ghent, Aalst, and Dendermonde — used visual and symbolic culture tied to territory as political language, sometimes as an explicit assertion of dynastic identity against comital authority. By the fourteenth and fifteenth centuries, when our documented ancestors first appear in the record, this tradition of territorial self-identification was already centuries old. A name styled ",
@@ -6127,7 +6132,7 @@ function AboutPage() {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("about.origins_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("about.origins_body") })
       ] }),
@@ -6142,7 +6147,7 @@ function AboutPage() {
         ),
         /* @__PURE__ */ jsx("div", { className: aboutStyles.photoCaption, children: t("about.photo_caption") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("about.goals_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("about.goals_intro") }),
         /* @__PURE__ */ jsx("p", { children: t("about.goals_seeking") })
@@ -6161,29 +6166,29 @@ function AboutPage() {
           /* @__PURE__ */ jsx("div", { className: aboutStyles.collaborationDesc, children: t("about.collab_family_desc") })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("section", { className: styles$1.section, children: /* @__PURE__ */ jsx("p", { children: t("about.closing") }) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsx("section", { className: styles$2.section, children: /* @__PURE__ */ jsx("p", { children: t("about.closing") }) }),
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("about.lineage_cta_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("about.lineage_cta_body") }),
         /* @__PURE__ */ jsx(
           "button",
           {
-            className: styles$1.ctaBox,
+            className: styles$2.ctaBox,
             onClick: () => goTo("lineage"),
             style: { background: "none", border: "none", cursor: "pointer", padding: 0, width: "100%", textAlign: "center" },
-            children: /* @__PURE__ */ jsx("div", { className: styles$1.ctaText, children: t("about.lineage_cta_link") })
+            children: /* @__PURE__ */ jsx("div", { className: styles$2.ctaText, children: t("about.lineage_cta_link") })
           }
         )
       ] }),
       /* @__PURE__ */ jsxs(
         "button",
         {
-          className: styles$1.ctaBox,
+          className: styles$2.ctaBox,
           onClick: () => goTo("contact"),
           style: { background: "none", border: "none", cursor: "pointer", padding: 0, width: "100%", textAlign: "center" },
           children: [
-            /* @__PURE__ */ jsx("div", { className: styles$1.ctaText, children: t("about.contact_cta_body") }),
-            /* @__PURE__ */ jsx("div", { className: styles$1.ctaNote, children: t("about.contact_cta_note") })
+            /* @__PURE__ */ jsx("div", { className: styles$2.ctaText, children: t("about.contact_cta_body") }),
+            /* @__PURE__ */ jsx("div", { className: styles$2.ctaNote, children: t("about.contact_cta_note") })
           ]
         }
       )
@@ -6382,7 +6387,7 @@ const detailValue = "_detailValue_6h410_312";
 const detailComment = "_detailComment_6h410_316";
 const archiveLink = "_archiveLink_6h410_328";
 const sourceNote = "_sourceNote_6h410_339";
-const styles = {
+const styles$1 = {
   page: page$1,
   header: header$1,
   title,
@@ -6431,7 +6436,7 @@ function RecordBadge({
   const { t } = useTranslation();
   if (!record) return null;
   const label = t(`lineage.record_${type}`);
-  const content2 = /* @__PURE__ */ jsx("span", { className: `${styles.badge} ${styles[`badge_${type}`]}`, children: label });
+  const content2 = /* @__PURE__ */ jsx("span", { className: `${styles$1.badge} ${styles$1[`badge_${type}`]}`, children: label });
   if (record.url) {
     return /* @__PURE__ */ jsxs(
       "a",
@@ -6439,12 +6444,12 @@ function RecordBadge({
         href: record.url,
         target: "_blank",
         rel: "noopener noreferrer",
-        className: styles.badgeLink,
+        className: styles$1.badgeLink,
         title: `${t("lineage.view_archive")}: ${record.label}`,
         "aria-label": `${label}: ${record.label} — ${t("lineage.view_archive")}`,
         children: [
           content2,
-          /* @__PURE__ */ jsx("span", { className: styles.badgeLinkIcon, "aria-hidden": "true", children: "↗" })
+          /* @__PURE__ */ jsx("span", { className: styles$1.badgeLinkIcon, "aria-hidden": "true", children: "↗" })
         ]
       }
     );
@@ -6461,17 +6466,17 @@ function DetailPanel({ ancestor }) {
     { label: t("lineage.detail_death"), value: ancestor.deathRecord?.label },
     { label: t("lineage.detail_status"), value: t(`lineage.status_${ancestor.status}`) }
   ].filter((r) => r.value);
-  return /* @__PURE__ */ jsxs("div", { className: styles.detail, role: "region", "aria-label": ancestor.name, children: [
-    /* @__PURE__ */ jsx("h3", { className: styles.detailName, children: ancestor.name }),
-    /* @__PURE__ */ jsx("dl", { className: styles.detailGrid, children: rows.map((row2) => /* @__PURE__ */ jsxs("div", { className: styles.detailRow, children: [
-      /* @__PURE__ */ jsx("dt", { className: styles.detailLabel, children: row2.label }),
-      /* @__PURE__ */ jsx("dd", { className: styles.detailValue, children: row2.url ? /* @__PURE__ */ jsxs(
+  return /* @__PURE__ */ jsxs("div", { className: styles$1.detail, role: "region", "aria-label": ancestor.name, children: [
+    /* @__PURE__ */ jsx("h3", { className: styles$1.detailName, children: ancestor.name }),
+    /* @__PURE__ */ jsx("dl", { className: styles$1.detailGrid, children: rows.map((row2) => /* @__PURE__ */ jsxs("div", { className: styles$1.detailRow, children: [
+      /* @__PURE__ */ jsx("dt", { className: styles$1.detailLabel, children: row2.label }),
+      /* @__PURE__ */ jsx("dd", { className: styles$1.detailValue, children: row2.url ? /* @__PURE__ */ jsxs(
         "a",
         {
           href: row2.url,
           target: "_blank",
           rel: "noopener noreferrer",
-          className: styles.archiveLink,
+          className: styles$1.archiveLink,
           children: [
             row2.value,
             /* @__PURE__ */ jsx("span", { "aria-hidden": "true", children: " ↗" })
@@ -6479,7 +6484,7 @@ function DetailPanel({ ancestor }) {
         }
       ) : row2.value })
     ] }, row2.label)) }),
-    ancestor.comment && /* @__PURE__ */ jsx("p", { className: styles.detailComment, children: ancestor.comment })
+    ancestor.comment && /* @__PURE__ */ jsx("p", { className: styles$1.detailComment, children: ancestor.comment })
   ] });
 }
 function LineagePage() {
@@ -6489,10 +6494,10 @@ function LineagePage() {
   const handleSelect = (id) => {
     setActiveId((prev) => prev === id ? null : id);
   };
-  return /* @__PURE__ */ jsxs("main", { className: styles.page, children: [
-    /* @__PURE__ */ jsxs("header", { className: styles.header, children: [
-      /* @__PURE__ */ jsx("h1", { className: styles.title, children: t("lineage.page_title") }),
-      /* @__PURE__ */ jsx("p", { className: styles.intro, children: t("lineage.page_intro") })
+  return /* @__PURE__ */ jsxs("main", { className: styles$1.page, children: [
+    /* @__PURE__ */ jsxs("header", { className: styles$1.header, children: [
+      /* @__PURE__ */ jsx("h1", { className: styles$1.title, children: t("lineage.page_title") }),
+      /* @__PURE__ */ jsx("p", { className: styles$1.intro, children: t("lineage.page_intro") })
     ] }),
     /* @__PURE__ */ jsxs("div", { style: {
       maxWidth: "780px",
@@ -6513,30 +6518,30 @@ function LineagePage() {
       " ",
       /* @__PURE__ */ jsx("span", { style: { fontStyle: "italic", opacity: 0.75 }, children: 'Nieus, "Aristocratic seal ownership in twelfth-century Flanders," 2021, pp. 23–26.' })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles.legend, role: "list", "aria-label": t("lineage.legend_label"), children: [
-      ["documented", "partial", "inferred", "modern"].map((s) => /* @__PURE__ */ jsxs("div", { className: styles.legendItem, role: "listitem", children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$1.legend, role: "list", "aria-label": t("lineage.legend_label"), children: [
+      ["documented", "partial", "inferred", "modern"].map((s) => /* @__PURE__ */ jsxs("div", { className: styles$1.legendItem, role: "listitem", children: [
         /* @__PURE__ */ jsx(
           "span",
           {
-            className: styles.legendDot,
+            className: styles$1.legendDot,
             style: { background: STATUS_COLOR[s] },
             "aria-hidden": "true"
           }
         ),
         /* @__PURE__ */ jsx("span", { children: t(`lineage.status_${s}`) })
       ] }, s)),
-      /* @__PURE__ */ jsx("span", { className: styles.legendHint, children: t("lineage.click_hint") })
+      /* @__PURE__ */ jsx("span", { className: styles$1.legendHint, children: t("lineage.click_hint") })
     ] }),
-    /* @__PURE__ */ jsx("div", { className: styles.tree, role: "list", "aria-label": t("lineage.tree_label"), children: vanVlaenderenLineage.map((ancestor, index) => {
+    /* @__PURE__ */ jsx("div", { className: styles$1.tree, role: "list", "aria-label": t("lineage.tree_label"), children: vanVlaenderenLineage.map((ancestor, index) => {
       const isActive = activeId === ancestor.id;
       const isFirst = index === 0;
       const isLast = index === vanVlaenderenLineage.length - 1;
-      return /* @__PURE__ */ jsxs("div", { className: styles.row, role: "listitem", children: [
-        /* @__PURE__ */ jsx("span", { className: styles.genLabel, "aria-label": `${t("lineage.generation")} ${ancestor.generation}`, children: ancestor.generation }),
+      return /* @__PURE__ */ jsxs("div", { className: styles$1.row, role: "listitem", children: [
+        /* @__PURE__ */ jsx("span", { className: styles$1.genLabel, "aria-label": `${t("lineage.generation")} ${ancestor.generation}`, children: ancestor.generation }),
         /* @__PURE__ */ jsx(
           "div",
           {
-            className: styles.connector,
+            className: styles$1.connector,
             "aria-hidden": "true",
             "data-first": isFirst || void 0,
             "data-last": isLast || void 0
@@ -6545,21 +6550,21 @@ function LineagePage() {
         /* @__PURE__ */ jsxs(
           "button",
           {
-            className: `${styles.card} ${isActive ? styles.cardActive : ""}`,
+            className: `${styles$1.card} ${isActive ? styles$1.cardActive : ""}`,
             style: { "--status-color": STATUS_COLOR[ancestor.status] },
             onClick: () => handleSelect(ancestor.id),
             "aria-pressed": isActive,
             "aria-expanded": isActive,
             "aria-controls": isActive ? `detail-${ancestor.id}` : void 0,
             children: [
-              /* @__PURE__ */ jsx("span", { className: styles.cardName, children: ancestor.name }),
-              ancestor.born && /* @__PURE__ */ jsxs("span", { className: styles.cardDate, children: [
+              /* @__PURE__ */ jsx("span", { className: styles$1.cardName, children: ancestor.name }),
+              ancestor.born && /* @__PURE__ */ jsxs("span", { className: styles$1.cardDate, children: [
                 t("lineage.born_prefix"),
                 " ",
                 ancestor.born
               ] }),
-              /* @__PURE__ */ jsx("span", { className: styles.cardParish, children: ancestor.parish }),
-              /* @__PURE__ */ jsxs("span", { className: styles.badgeRow, "aria-label": t("lineage.records_available"), children: [
+              /* @__PURE__ */ jsx("span", { className: styles$1.cardParish, children: ancestor.parish }),
+              /* @__PURE__ */ jsxs("span", { className: styles$1.badgeRow, "aria-label": t("lineage.records_available"), children: [
                 /* @__PURE__ */ jsx(RecordBadge, { type: "birth", record: ancestor.birthRecord }),
                 /* @__PURE__ */ jsx(RecordBadge, { type: "marriage", record: ancestor.marriageRecord }),
                 /* @__PURE__ */ jsx(RecordBadge, { type: "death", record: ancestor.deathRecord })
@@ -6570,7 +6575,7 @@ function LineagePage() {
       ] }, ancestor.id);
     }) }),
     activeAncestor && /* @__PURE__ */ jsx("div", { id: `detail-${activeAncestor.id}`, children: /* @__PURE__ */ jsx(DetailPanel, { ancestor: activeAncestor }) }),
-    /* @__PURE__ */ jsxs("p", { className: styles.sourceNote, children: [
+    /* @__PURE__ */ jsxs("p", { className: styles$1.sourceNote, children: [
       t("lineage.source_note"),
       " ",
       /* @__PURE__ */ jsx(
@@ -6579,7 +6584,7 @@ function LineagePage() {
           href: "https://agatha.arch.be",
           target: "_blank",
           rel: "noopener noreferrer",
-          className: styles.archiveLink,
+          className: styles$1.archiveLink,
           children: "Rijksarchief Gent (AGATHA)"
         }
       ),
@@ -6726,7 +6731,7 @@ const READING_LIST = [
 ];
 function MethodologyPage() {
   const { goToResearch } = useNav();
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Methodology & Sources — Van Vlaenderen Research | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Transcription and translation methodology for the Van Vlaenderen archival research project, plus a curated reading list of primary and secondary sources." }),
@@ -6736,28 +6741,28 @@ function MethodologyPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/methodology" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$1.heroImg,
+          className: styles$2.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: "Van Vlaenderen · Research Foundations" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: "Van Vlaenderen · Research Foundations" }),
         /* @__PURE__ */ jsx("h1", { children: "Methodology & Sources" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "How archival documents are read, transcribed, and translated — and the published works that form the historiographical foundation for this research." })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: "How archival documents are read, transcribed, and translated — and the published works that form the historiographical foundation for this research." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Research Foundations" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Transcription and Translation Methodology" }),
         /* @__PURE__ */ jsx("p", { children: "Archival documents in this project are transcribed using an iterative, multi-system approach. Gemini (Google) serves as the primary real-time reading tool: integrated directly into the browser, it can analyse document images without a separate upload step, allowing the researcher to ask questions about specific characters, words, or passages while actively zooming and navigating the original scan. This ambient availability makes it the natural first pass for difficult passages." }),
         /* @__PURE__ */ jsx("p", { children: "Outputs from Gemini are then cross-checked against independent readings from Claude (Anthropic), GPT-4 (OpenAI), Transkribus, and Tryleo. Where readings converge across systems, confidence is high. Where they diverge, the researcher returns to the original image, zooming to individual characters and applying knowledge of the letter forms, abbreviations, and spelling conventions of the period." }),
@@ -6765,7 +6770,7 @@ function MethodologyPage() {
         /* @__PURE__ */ jsx("p", { children: "Each AI system is given learning samples from the same document hand before being asked to transcribe difficult passages, allowing the system to calibrate to individual scribal idiosyncrasies. This is the same principle professional palaeographers apply when learning a new hand." }),
         /* @__PURE__ */ jsx("p", { children: "AI tools in this project are research instruments, not citation sources. Every claim on this site traces to a named primary or secondary authority. Tool outputs that cannot be verified against a named source are flagged as provisional." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Recommended Reading" }),
         /* @__PURE__ */ jsx("p", { children: "The following works form the historiographical foundation for this project. They are the sources against which our findings are tested and the authorities whose frameworks we apply. Entries are grouped by theme. Acquisition links are provided where available." }),
         READING_LIST.map((group) => /* @__PURE__ */ jsxs("div", { style: { marginTop: "2.5rem" }, children: [
@@ -6838,7 +6843,7 @@ function MethodologyPage() {
 const meetjeslandMap = "/assets/meetjesland-map-D7thb5CK.jpg";
 function GapDossierPage() {
   const { goTo } = useNav();
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "The Documentary Gap, 1447–1580 | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "The 1447–1580 documentary gap between the comital bastard lines and the first parish-register Van Vlaenderen families of the Meetjesland. Archival evidence in hand, active targets, and four working hypotheses including a parallel West Flanders origin question." }),
@@ -6847,26 +6852,26 @@ function GapDossierPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:description", content: "The 1447–1580 documentary gap between the comital bastard lines and the first parish-register Van Vlaenderen families of the Meetjesland. Archival evidence in hand, active targets, and four working hypotheses including a parallel West Flanders origin question." }),
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/gap-dossier" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
-      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"The Documentary Gap, 1447–1580","description":"The evidentiary gap between the last confirmed comital-line van Vlaenderen bearer (1447) and the Meetjesland parish cluster (fl. 1547–). Archival evidence, search record, active targets, and working hypotheses.","url":"https://vanvlaenderen.org/research/gap-dossier","inLanguage":"en","dateModified":"2026-04-12","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}` } }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"The Documentary Gap, 1447–1580","description":"The evidentiary gap between the last confirmed comital-line van Vlaenderen bearer (1447) and the Meetjesland parish cluster (fl. 1547–). Archival evidence, search record, active targets, and working hypotheses.","url":"https://vanvlaenderen.org/research/gap-dossier","inLanguage":"en","dateModified":"2026-04-12","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } }),
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"The Gap (1447–1580)","item":"https://vanvlaenderen.org/research/gap-dossier"}]}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$1.heroImg,
+          className: styles$2.heroImg,
           style: { backgroundImage: `url(${meetjeslandMap})`, backgroundPosition: "center center" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: "Van Vlaenderen · Research Dossier" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: "Van Vlaenderen · Research Dossier" }),
         /* @__PURE__ */ jsx("h1", { children: "The Documentary Gap" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "1447–1580. The span between the last confirmed comital-line bearer and the first Meetjesland parish generation. This dossier names the gap, records what has been searched, and tracks the archival work required to close it." })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: "1447–1580. The span between the last confirmed comital-line bearer and the first Meetjesland parish generation. This dossier names the gap, records what has been searched, and tracks the archival work required to close it." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Research Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
@@ -6887,7 +6892,7 @@ function GapDossierPage() {
           " (inference proposed for archival testing)."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Problem" }),
         /* @__PURE__ */ jsx("p", { children: "The Van Vlaenderen research has two well-documented clusters separated by a substantial chronological gap." }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -6910,7 +6915,7 @@ function GapDossierPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { children: "The gap, precisely stated, is not a single span but a structural problem: two comital lines bearing the surname are documented above 1545; a commoner cluster bearing the surname is documented below 1547; and no record has yet been located connecting either upper line to the lower cluster." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The 1517 Knesselare Charter — Closest Known Bridge ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -6923,7 +6928,7 @@ function GapDossierPage() {
           " cited in FMG MedLands [891] via Vredius (1643). Underlying archive not yet directly consulted."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Evidence from the Gap Period" }),
         /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "1.5rem" }, children: [
           "Bruges State Archives, TBO 184, bundle 21300 (1547) ",
@@ -6944,7 +6949,7 @@ function GapDossierPage() {
           " Rijksarchief Brugge, Brugse Vrije, TBO 184, nr. 21302. Consulted April 2026. Reference: case 2026/0451."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Search Record — Negative and Partial Results" }),
         /* @__PURE__ */ jsx("p", { children: "The following sources have been searched without producing a bridging record:" }),
         /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: [
@@ -6966,7 +6971,7 @@ function GapDossierPage() {
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "Rijksarchief Gent — Goal 1 and Goal 2 threads (appointment March 31, 2026)" }),
         /* @__PURE__ */ jsx("p", { children: "Twenty documents requested across two research threads. Results being processed. Any record naming a Van Vlaenderen individual between 1447 and 1580 in the Meetjesland zone would be significant." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Active Archival Targets" }),
         /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: [
           "1. Gysseling & Debrabandere, ",
@@ -7006,7 +7011,7 @@ function GapDossierPage() {
           ". Most direct route to additional 14th-century charter evidence for either comital line."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Working Hypotheses" }),
         /* @__PURE__ */ jsx("p", { children: "Four hypotheses are currently viable. The first three address the Meetjesland documentary gap directly; the fourth is a parallel question about a separate West Flanders surname presence that overlaps with but is distinct from this dossier's primary question. None of the four is mutually exclusive with the others — the 1547 TBO 184 cluster could represent a mixed population drawing from more than one origin." }),
         /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "1.5rem" }, children: [
@@ -7051,7 +7056,7 @@ function GapDossierPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }, children: "Current status: documentary basis established by the April 2026 Vredius direct-reading; downstream descent for both Jean (1448 legitimation) and Karle (d. 1491) remains untraced. Hypothesis D does not directly address the Meetjesland gap but is recorded here for completeness, as the West Flanders bridge candidates are part of the same Maleanus bastard cohort and the questions are parallel." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Y-DNA as a Parallel Verification Strategy" }),
         /* @__PURE__ */ jsx("p", { children: "Documentary research alone cannot currently distinguish between the three Meetjesland-gap hypotheses (A, B, and C). Y-DNA testing offers a complementary path: if additional male-line Van Vlaenderen descendants can be recruited for comparison, a shared haplogroup across geographically separated lines would support a common patrilineal ancestor (Hypotheses A or B), while divergent haplogroups between branches would support independent emergence (Hypothesis C). Hypothesis D — the parallel West Flanders question — would similarly be informed by recruiting testers from any surviving lines descended from Robert van Vlaendren of Elverdinghe or Karle of Gruterssale. The American line has been tested (haplogroup R-FT1573, Big Y-700); no close database matches have been found to date." }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -7858,11 +7863,18 @@ function typeBadge(type) {
     whiteSpace: "nowrap"
   }, children: type });
 }
+const STATUS_LABELS = {
+  acquisition_pending: "Acquisition in progress — not yet consulted directly.",
+  acquired_pending_review: "Acquired; detailed review in progress.",
+  cited_via_intermediary: "Consulted through a later intermediary source (see note)."
+};
 function EntryCard({ e }) {
-  return /* @__PURE__ */ jsxs("div", { style: {
+  const statusLabel = e.status && e.status !== "consulted" ? STATUS_LABELS[e.status] : null;
+  return /* @__PURE__ */ jsxs("div", { id: e.id, style: {
     borderLeft: "2px solid rgba(232,184,48,0.25)",
     paddingLeft: "1rem",
-    marginBottom: "1.5rem"
+    marginBottom: "1.5rem",
+    scrollMarginTop: "5rem"
   }, children: [
     /* @__PURE__ */ jsxs("div", { style: { display: "flex", alignItems: "center", gap: "0.6rem", flexWrap: "wrap", marginBottom: "0.3rem" }, children: [
       typeBadge(e.type),
@@ -7876,6 +7888,14 @@ function EntryCard({ e }) {
     /* @__PURE__ */ jsx("div", { style: { color: "rgba(255,255,255,0.9)", fontStyle: "italic", marginBottom: "0.25rem", fontSize: "0.95rem" }, children: e.title }),
     e.publisher && /* @__PURE__ */ jsx("div", { style: { color: "rgba(255,255,255,0.5)", fontSize: "0.8rem", marginBottom: "0.25rem" }, children: e.publisher }),
     /* @__PURE__ */ jsx("div", { style: { color: "rgba(255,255,255,0.7)", fontSize: "0.875rem", lineHeight: 1.6 }, children: e.note }),
+    statusLabel && /* @__PURE__ */ jsx("div", { style: {
+      color: "rgba(232,184,48,0.6)",
+      fontSize: "0.75rem",
+      fontStyle: "italic",
+      marginTop: "0.4rem",
+      fontFamily: "var(--font-ui)",
+      letterSpacing: "0.02em"
+    }, children: statusLabel }),
     e.url && /* @__PURE__ */ jsx(
       "a",
       {
@@ -7898,18 +7918,18 @@ function BibliographyPage() {
       return r.json();
     }).then(setData).catch(() => setError(true));
   }, []);
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Sources & Scholarship — Van Vlaenderen" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Primary sources, archival finding aids, and scholarly literature cited in the Van Vlaenderen research dossiers." }),
       /* @__PURE__ */ jsx("link", { rel: "canonical", href: "https://vanvlaenderen.org/research/bibliography" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.inner, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.inner, children: [
       /* @__PURE__ */ jsx("h1", { children: "Sources & Scholarship" }),
       /* @__PURE__ */ jsx("p", { style: { color: "rgba(255,255,255,0.65)", marginBottom: "2rem", maxWidth: "680px", lineHeight: 1.7 }, children: "The primary sources, archival finding aids, and scholarly literature that underpin the research presented in the dossiers. Entries in the first section are directly quoted or cited. Entries in the second section are recommended reading for researchers interested in the broader historiographical context." }),
       error && /* @__PURE__ */ jsx("p", { style: { color: "#f87171" }, children: "Bibliography data could not be loaded." }),
       data && /* @__PURE__ */ jsxs(Fragment, { children: [
-        /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
           /* @__PURE__ */ jsx("h2", { children: data.sections.primarySources.label }),
           Object.values(data.sections.primarySources.subsections).map((sub) => /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2rem" }, children: [
             /* @__PURE__ */ jsx("h3", { style: {
@@ -7923,7 +7943,7 @@ function BibliographyPage() {
             sub.entries.map((e, i) => /* @__PURE__ */ jsx(EntryCard, { e }, i))
           ] }, sub.label))
         ] }),
-        /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+        /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
           /* @__PURE__ */ jsx("h2", { children: data.sections.scholarlyLiterature.label }),
           data.sections.scholarlyLiterature.groups.map((group) => /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2.5rem" }, children: [
             /* @__PURE__ */ jsx("h3", { style: {
@@ -7986,7 +8006,7 @@ function SurnameOriginsPage() {
     navigate(path);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Four Functions, Three Clusters — The Van Vlaenderen Surname | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "A primary source and distributional analysis of the Van Vlaenderen surname: four documentary functions, three geographic clusters across three centuries, and competing hypotheses for the name's origin." }),
@@ -7995,23 +8015,23 @@ function SurnameOriginsPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:description", content: "Distributional and documentary analysis testing the toponymic and bastard-line hypotheses for the Van Vlaenderen surname origin." }),
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/name/surname-origins" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
-      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Four Functions, Three Clusters — The Van Vlaenderen Surname in the Documentary Record","description":"A primary source and distributional analysis of the Van Vlaenderen surname across four documentary functions and three geographic clusters.","url":"https://vanvlaenderen.org/name/surname-origins","inLanguage":"en","dateModified":"2026-04-15","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}` } })
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Four Functions, Three Clusters — The Van Vlaenderen Surname in the Documentary Record","description":"A primary source and distributional analysis of the Van Vlaenderen surname across four documentary functions and three geographic clusters.","url":"https://vanvlaenderen.org/name/surname-origins","inLanguage":"en","dateModified":"2026-04-15","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$1.heroImg, style: { backgroundImage: `url(${knightPhilip})`, backgroundPosition: "top center" }, children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay }) }),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: "Van Vlaenderen · The Name" }),
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$2.heroImg, style: { backgroundImage: `url(${knightPhilip})`, backgroundPosition: "top center" }, children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay }) }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: "Van Vlaenderen · The Name" }),
         /* @__PURE__ */ jsx("h1", { children: "Four Functions, Three Clusters" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "A primary source and distributional analysis of the Van Vlaenderen surname: what the phrase was doing in medieval documents, where surname-bearing families actually lived, and what that tells us about the name's origin." })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: "A primary source and distributional analysis of the Van Vlaenderen surname: what the phrase was doing in medieval documents, where surname-bearing families actually lived, and what that tells us about the name's origin." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Research Article" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Analytical Challenge" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "The surname Van Vlaenderen presents a problem that genealogical research alone cannot resolve. The name means, literally, ",
@@ -8020,7 +8040,7 @@ function SurnameOriginsPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { children: "This project does not accept that reading as sufficient. The documentary and distributional evidence raises questions that pure toponymy does not answer. This article sets out what that evidence is, what it supports, and what it leaves unresolved." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Four Functions of the Phrase" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "Before any surname-bearing individual can be identified in a historical source, the phrase ",
@@ -8071,7 +8091,7 @@ function SurnameOriginsPage() {
           ] })
         ] }, num))
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Distribution Data" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "Geneanet's surname frequency data, drawn from user-contributed genealogical records, provides a broad distributional picture of where and when the surname Van Vlaenderen appears in the record by century. [",
@@ -8189,7 +8209,7 @@ function SurnameOriginsPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Progenitor Candidates" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "The following tables set out the documented individuals who carried the Van Vlaenderen surname before the distributional clusters are established, together with their descendants in the surname-carrying line. All documentary evidence derives from a direct reading of Olivarius Vredius (",
@@ -8358,7 +8378,7 @@ function SurnameOriginsPage() {
           ] })
         ] }) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Testing the Bastard-Line Hypothesis" }),
         /* @__PURE__ */ jsx("p", { children: "The hypothesis is that the documented surname clusters each descend from one or more of the natural sons of Louis de Male who carried the Van Vlaenderen name as a hereditary identifier. Once the record-survival caveat is applied, the distributional evidence provides stronger support than a raw reading of the data suggests." }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -8385,7 +8405,7 @@ function SurnameOriginsPage() {
           ", visible in the 1700 heat map, is geographically consistent with descent through Lodewijc van Vlaenderen's line at Oostburg. However, a systematic onomastic sweep of Gysseling's Vier Ambachten index — covering 3,000+ individual mentions in the Zeeuws-Vlaanderen documentary record from roughly 1240 to 1500 — yielded no Bucket 4 hits. The surname does not appear as a hereditary identifier anywhere in that region's medieval record. This confirms the surname is not an indigenous Zeeuws-Vlaanderen formation; it arrives from elsewhere. The Zeeland thread therefore requires not only an undocumented descendant of Lodewijc but an explanation for how that descendant crossed into a region where the name had no prior documentary presence."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Testing the Pure Toponymy Hypothesis" }),
         /* @__PURE__ */ jsx("p", { children: 'The hypothesis that Van Vlaenderen is simply a geographic label — "from Flanders," attaching to migrants and hardening into a surname — fails to account for the distributional data on three grounds, none of which are affected by the record-survival caveat.' }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -8404,7 +8424,7 @@ function SurnameOriginsPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { children: "The purely toponymic hypothesis is not falsified for individual outlier bearers of the name — a Flemish emigrant to England, Germany, or France acquiring the label in a non-Flemish community is entirely plausible. But it cannot explain the clustered, geographically concentrated, internally-Flemish distribution that the data shows." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Volckerinckhove Question" }),
         /* @__PURE__ */ jsx("p", { children: "Earlier versions of this analysis treated the French Flanders cluster as an anomaly requiring a separate explanation, because the scale of 551 Geneanet entries before 1500 seemed too large to be accounted for by a single bastard line. That framing was wrong in its premises. The raw count almost certainly represents a small number of real historical individuals — the documented Drincham line and their descendants — replicated many times across user-contributed noble genealogical trees. Once the count is set aside, the argument simplifies considerably." }),
         /* @__PURE__ */ jsx("p", { children: `The core observation is this: the earliest recurring documentary association of the hereditary Van Vlaenderen surname in French Flanders falls in the Cassel/Drincham zone — precisely where a documented natural son of Louis de Male, Jan "sans terre" van Vlaenderen, was granted land by charter in 1383 and where his descendants are attested through the 1470s. That is a documentary-geographic coincidence that does not require an inflated count to be meaningful. The bastard-line hypothesis provides the most parsimonious explanation: Jan's documented descendants seeded the French Flanders surname population, which the Geneanet data subsequently echoes — multiply and noisily — across three centuries.` }),
@@ -8441,13 +8461,13 @@ function SurnameOriginsPage() {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Conclusions and Open Questions" }),
         /* @__PURE__ */ jsx("p", { children: "The surname Van Vlaenderen cannot be adequately explained by a single mechanism. The distributional and documentary evidence together support a model of multiple documented bastard-line foundations: Victor's branch in the Meetjesland, Jan sans terre's Drincham branch in French Flanders, and the Praet line's later Brabantine trajectory. Pure toponymy is inadequate as a complete explanation and is effectively falsified as a universal account of the name's distribution. The key insight is that the Geneanet distribution evidence is most useful as a geographic clustering signal — pointing to where surname-bearing families persisted — rather than as a demographic count." }),
         /* @__PURE__ */ jsx("p", { children: "The strongest specific conclusions the evidence currently supports: the Belgian cluster is most plausibly founded through Victor's son Adam van Vlaenderen, with the documentary gap explained by record loss rather than a late founding event. The Brabant/Brussels cluster is most plausibly connected to the later Praet line. The French Flanders cluster is most plausibly the Drincham bastard line persisting in its founding geography, with the geographic-documentary coincidence — not the count — as the substantive argument. The Zeeland cluster, visible by 1700, is complicated by the onomastic silence in the Zeeuws-Vlaanderen medieval record: the surname was not indigenous to that region, so any Zeeland thread requires a family that carried the name in from elsewhere — most likely from the Ghent hinterland rather than from Lodewijc's Oostburg line directly." }),
         /* @__PURE__ */ jsx("p", { children: "Three specific research priorities follow. First, the archival gap between Adam's last attestation (1447) and Franciscus in Ghent (1568): the Staten van Goed series at RAG (Ambacht Assenede I & II) and the Landboek/Leenhof records are the primary remaining bridge candidates — Gysseling did not index these, and they have not yet been searched. Second, the Cassel castellany records at the Archives Départementales du Nord for any Van Vlaenderen before 1383 — which would establish whether an independent Function 3 origin preceded the bastard-line settlement at Drincham. Third, Y-DNA comparison between the Belgian and Dutch Van Vlaenderen lines, which would provide a direct test of whether any Zeeland thread shares a common male-line ancestor with the Meetjesland families." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Notes and Sources" }),
         /* @__PURE__ */ jsxs("div", { style: { fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.75 }, children: [
           /* @__PURE__ */ jsxs("p", { children: [
@@ -8489,7 +8509,7 @@ function NieusSealPage() {
     navigate(path);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Seals, Lions, and the Politics of a Surname | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "How twelfth-century Flemish sigillography illuminates the political and dynastic weight of territorial designations — and what that means for the Van Vlaenderen surname." }),
@@ -8498,18 +8518,18 @@ function NieusSealPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:description", content: "Twelfth-century Flemish noble seal culture and the political meaning of territorial identity in the comital milieu." }),
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/nieus-seals" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
-      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Seals, Lions, and the Politics of a Surname","description":"How twelfth-century Flemish sigillography illuminates the political and dynastic weight of territorial designations.","url":"https://vanvlaenderen.org/research/nieus-seals","inLanguage":"en","dateModified":"2026-04-15","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}` } })
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Seals, Lions, and the Politics of a Surname","description":"How twelfth-century Flemish sigillography illuminates the political and dynastic weight of territorial designations.","url":"https://vanvlaenderen.org/research/nieus-seals","inLanguage":"en","dateModified":"2026-04-15","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$1.heroImg, style: { backgroundImage: `url(${lionShield})`, backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundColor: "rgba(10,8,4,0.85)" }, children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay }) }),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: "Van Vlaenderen · Research Articles" }),
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$2.heroImg, style: { backgroundImage: `url(${lionShield})`, backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundColor: "rgba(10,8,4,0.85)" }, children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay }) }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: "Van Vlaenderen · Research Articles" }),
         /* @__PURE__ */ jsx("h1", { children: "Seals, Lions, and the Politics of a Surname" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "How twelfth-century Flemish noble seal culture illuminates the political and dynastic weight of territorial designations — and what that means for a surname that claims to come from Flanders itself." })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: "How twelfth-century Flemish noble seal culture illuminates the political and dynastic weight of territorial designations — and what that means for a surname that claims to come from Flanders itself." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Research Article" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "April 2026" })
@@ -8518,7 +8538,7 @@ function NieusSealPage() {
         /* @__PURE__ */ jsx("span", { className: researchStyles.methodologyTitle, style: { fontSize: "0.9rem" }, children: "Scope and Evidentiary Status" }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", marginBottom: 0 }, children: 'This article draws on Jean-François Nieus, "Aristocratic seal ownership in twelfth-century Flanders: A world in between" (preprint, Academia.edu, 2021; University of Namur; forthcoming in peer-reviewed publication), which covers the period 1071–1200. The Van Vlaenderen bastard lines documented in this project date from the fourteenth and fifteenth centuries — two hundred years later. This article does not argue direct evidential continuity between the two periods. It argues contextual depth: the political and symbolic culture of territorial identity that Nieus documents was the inherited framework within which the later comital bastard lines operated. The argument is interpretive scaffolding, not proof of descent.' })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Lion on the Seal" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "The black lion on gold that names this project — and that defines Flemish heraldic identity to this day — entered the documentary record in 1163. In that year, Count Philip of Alsace placed the lion device on his seal matrix, and it became, in Nieus's formulation, the dominant heraldic reference point for the Flemish nobility through ",
@@ -8531,7 +8551,7 @@ function NieusSealPage() {
           ", from Flanders — is the verbal equivalent of the lion on the seal. Both are territorial identifiers that, in an elite milieu, carry political and dynastic weight far beyond their literal geographic meaning."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Imperial Flanders and the Politics of Territorial Identity" }),
         /* @__PURE__ */ jsx("p", { children: "Nieus's central argument concerns what he calls Imperial Flanders — the eastern zone of the County, including Aalst, Dendermonde, Gavere, and Grammene, which remained part of the Holy Roman Empire and sat in a zone of contested authority between Flemish comital power and the Empire. Noble dynasties in this zone, Nieus shows, deliberately adopted non-comital seal iconography — Brabantine ducal styles rather than Flemish comital ones — as a symbolic assertion of local autonomy and political positioning. As Nieus concludes: in certain circumstances, aristocratic seals assumed a truly political dimension." }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -8545,7 +8565,7 @@ function NieusSealPage() {
           " to them through the grant of lordships and the formal recognition of their parentage, he was operating within a centuries-old tradition of territorial identity as dynastic claim. The name was not incidental; it was constitutive."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Dover Recognitio, 1163" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "Among the signatories to the 1163 Dover Recognitio — a document recording the political relationships of the Flemish nobility at the moment Philip of Alsace was establishing his comital authority — Nieus identifies ",
@@ -8555,7 +8575,7 @@ function NieusSealPage() {
         /* @__PURE__ */ jsx("p", { children: "Michael II of Harnes appears here as a named figure from exactly the noble circles and exactly the geographic zone — the Cassel castellany — that our research identifies as the likely locus of the French Flanders Van Vlaenderen cluster. His presence in this document does not establish a connection to the later Van Vlaenderen lines; the dates are two centuries apart. But it grounds the Cassel area in the politically aware Flemish seal culture that Nieus documents, and it confirms that the castellany of Cassel was, from at least 1163, embedded in the network of comital power and identity from which the Van Vlaenderen surname later emerges." }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.875rem", color: "var(--text-muted)", fontStyle: "italic" }, children: "Note: the connection between Michael II of Harnes and any Van Vlaenderen bastard line is a project hypothesis, not derived from Nieus." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Praet Lordship in the Twelfth Century" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "Nieus's appendix confirms ",
@@ -8564,7 +8584,7 @@ function NieusSealPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { children: "This does not establish genealogical continuity between the twelfth-century lords of Praet and the fourteenth-century Van Vlaenderen line. Lordships changed hands, were consolidated, divided, and reassigned constantly in the medieval Flemish context. What it does establish is that the Praet lordship was a real territorial entity with documented noble standing from at least the 1190s — which makes the 1373 grant to Loys le Frison a grant of something with genuine territorial weight, not a nominal title." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "What This Means for the Van Vlaenderen Hypothesis" }),
         /* @__PURE__ */ jsx("p", { children: "Nieus's research does three things for this project, none of them constituting direct proof of anything in our genealogical argument, but all of them providing genuine historical depth." }),
         /* @__PURE__ */ jsx("p", { children: "First, it grounds the lion symbolism of this project in documented heraldic history. The lion that names Lions of Flanders is not a romantic appropriation — it is the specific device that Count Philip of Alsace placed on his seal in 1163 and that became the definitive visual identity of the County of Flanders. The project's name is historically grounded." }),
@@ -8575,7 +8595,7 @@ function NieusSealPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { children: "Third, it confirms the Cassel and Praet territories as documented nodes in the network of Flemish noble power from the twelfth century — providing two centuries of historical depth behind the fourteenth-century grants that are the first documentary evidence for the Van Vlaenderen surname." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Citation" }),
         /* @__PURE__ */ jsxs("div", { style: { fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.8 }, children: [
           /* @__PURE__ */ jsx("p", { children: 'Nieus, Jean-François. "Aristocratic seal ownership in twelfth-century Flanders: A world in between." Preprint. Academia.edu, 2021. University of Namur. Forthcoming in peer-reviewed publication. Full text on file with project.' }),
@@ -8615,7 +8635,7 @@ function DrinchamDossierPage() {
     navigate(path);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Jan sans terre van Vlaenderen — Archival Dossier | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Primary source dossier for Jan 'sans terre' van Vlaenderen and the Drincham line: the 1383 land grant, four documented generations in the Cassel area, the Veurne epitaph of Jacques de Drincham, and the geographic-documentary case for French Flanders surname origin." }),
@@ -8624,26 +8644,26 @@ function DrinchamDossierPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:description", content: "The 1383 Drincham land grant, four documented generations in French Flanders, and the geographic-documentary case for the Volckerinckhove cluster." }),
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/drincham-dossier" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
-      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Jan sans terre van Vlaenderen \\u2014 Archival Dossier","description":"Primary source dossier for Jan sans terre van Vlaenderen and the Drincham line.","url":"https://vanvlaenderen.org/research/drincham-dossier","inLanguage":"en","dateModified":"2026-04-16","author":{"@type":"Person","name":"Michael Van Flandern"},"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"}}` } }),
+      /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Jan sans terre van Vlaenderen \\u2014 Archival Dossier","description":"Primary source dossier for Jan sans terre van Vlaenderen and the Drincham line.","url":"https://vanvlaenderen.org/research/drincham-dossier","inLanguage":"en","dateModified":"2026-04-16","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } }),
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Drincham Dossier","item":"https://vanvlaenderen.org/research/drincham-dossier"}]}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$1.heroImg,
+          className: styles$2.heroImg,
           style: { backgroundImage: `url(${knightPhilip})`, backgroundPosition: "top center" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$1.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$2.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$1.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$1.eyebrow, children: "Van Vlaenderen · Archival Dossier" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$2.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$2.eyebrow, children: "Van Vlaenderen · Archival Dossier" }),
         /* @__PURE__ */ jsx("h1", { children: 'Jan "sans terre" van Vlaenderen' }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$1.heroLead, children: "Natural son of Louis II de Male, Count of Flanders; lord of Drincham near Cassel, French Flanders; progenitor of the most plausible documented founding line for the French Flanders Van Vlaenderen surname cluster. Updated April 2026 from direct reading of Vredius." })
+        /* @__PURE__ */ jsx("p", { className: styles$2.heroLead, children: "Natural son of Louis II de Male, Count of Flanders; lord of Drincham near Cassel, French Flanders; progenitor of the most plausible documented founding line for the French Flanders Van Vlaenderen surname cluster. Updated April 2026 from direct reading of Vredius." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Archival Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
@@ -8688,7 +8708,7 @@ function DrinchamDossierPage() {
           " (Douai, 1631)."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Identity and Parentage ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -8727,7 +8747,7 @@ function DrinchamDossierPage() {
           " (daughter of Willem de Nevele, Knight, and Guillemette de Halewijn, heiress of Lichtervelde) and his death at Nicopolis."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The 1383 Land Grant ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -8758,7 +8778,7 @@ function DrinchamDossierPage() {
           " this date would establish a pre-bastard Function 3 origin for the French Flanders cluster; anything after 1383 is more plausibly a branch or continuation of this documented line."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The Four Documented Generations ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -8865,7 +8885,7 @@ function DrinchamDossierPage() {
           ] })
         ] }) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The Veurne Epitaph of Jacques de Drincham ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -8897,7 +8917,7 @@ function DrinchamDossierPage() {
           " — are directly derived from his mother Isabella de Ghistelles (Gen 2 wife) and confirm the dynastic lineage visually. The Flanders canton explicitly asserts comital bastard descent."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Geographic Significance and the French Flanders Hypothesis ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: "Hypothesis" })
@@ -8919,7 +8939,7 @@ function DrinchamDossierPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Relationship to the Other Bastard Lines" }),
         /* @__PURE__ */ jsx("p", { children: "Jan sans terre, Loys le Frison (Praet line), and Loys le Hase were all killed together at Nicopolis on 28 September 1396. The Gaillard text names all three in a single passage under the Van Vlaenderen surname, confirming the name was used by multiple natural sons simultaneously as a shared marker of comital bastard identity — not unique to any one branch." }),
         /* @__PURE__ */ jsx("p", { children: "The Drincham line is geographically and genealogically distinct from the Victor line (Meetjesland/Belgian cluster) and the Praet line (Franc de Bruges/Brabant cluster). The three lines represent parallel surname-carrying foundations in different regions of Flanders, each anchored to a specific lordship granted by Louis de Male in the 1373–1399 period." }),
@@ -8931,7 +8951,7 @@ function DrinchamDossierPage() {
           "."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$1.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Notes and Sources" }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.referenceList, children: [
           /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
@@ -8975,6 +8995,173 @@ function DrinchamDossierPage() {
     ] })
   ] });
 }
+function LicensePage() {
+  const { t } = useTranslation();
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.page, children: [
+    /* @__PURE__ */ jsxs(Helmet, { children: [
+      /* @__PURE__ */ jsx("title", { children: `${t("license.page_title")} — Van Vlaenderen` }),
+      /* @__PURE__ */ jsx("meta", { name: "description", content: t("license.meta_description") }),
+      /* @__PURE__ */ jsx("link", { rel: "canonical", href: "https://vanvlaenderen.org/license" })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: styles$2.inner, children: [
+      /* @__PURE__ */ jsx("h1", { children: t("license.heading") }),
+      /* @__PURE__ */ jsx("p", { style: { color: "rgba(255,255,255,0.75)", marginBottom: "2.5rem", maxWidth: "680px", lineHeight: 1.7 }, children: t("license.intro") }),
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: t("license.research_heading") }),
+        /* @__PURE__ */ jsx("p", { children: t("license.research_body1") }),
+        /* @__PURE__ */ jsx("p", { children: t("license.research_body2") }),
+        /* @__PURE__ */ jsx("p", { style: { fontFamily: "var(--font-ui)", fontSize: "0.85rem", color: "var(--text-muted)" }, children: /* @__PURE__ */ jsx(
+          "a",
+          {
+            href: "https://creativecommons.org/licenses/by/4.0/",
+            target: "_blank",
+            rel: "noopener noreferrer",
+            style: { color: "var(--gold)" },
+            children: t("license.cc_by_link_label")
+          }
+        ) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: t("license.transcriptions_heading") }),
+        /* @__PURE__ */ jsx("p", { children: t("license.transcriptions_body1") }),
+        /* @__PURE__ */ jsx("p", { children: t("license.transcriptions_body2") })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: t("license.code_heading") }),
+        /* @__PURE__ */ jsx("p", { children: t("license.code_body") }),
+        /* @__PURE__ */ jsx("p", { style: { fontFamily: "var(--font-ui)", fontSize: "0.85rem", color: "var(--text-muted)" }, children: /* @__PURE__ */ jsx(
+          "a",
+          {
+            href: "https://github.com/iamabotama/vanvlaenderen.org/blob/main/LICENSE",
+            target: "_blank",
+            rel: "noopener noreferrer",
+            style: { color: "var(--gold)" },
+            children: t("license.mit_link_label")
+          }
+        ) })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: t("license.third_party_heading") }),
+        /* @__PURE__ */ jsx("p", { children: t("license.third_party_body") })
+      ] }),
+      /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
+        /* @__PURE__ */ jsx("h2", { children: t("license.contact_heading") }),
+        /* @__PURE__ */ jsx("p", { children: t("license.contact_body") })
+      ] }),
+      /* @__PURE__ */ jsx("p", { style: { color: "rgba(255,255,255,0.3)", fontSize: "0.75rem", marginTop: "3rem" }, children: t("license.last_reviewed") })
+    ] })
+  ] });
+}
+const footer = "_footer_1y7qt_7";
+const inner = "_inner_1y7qt_20";
+const colHeading = "_colHeading_1y7qt_30";
+const navList = "_navList_1y7qt_41";
+const navLink = "_navLink_1y7qt_50";
+const navLinkEmphasised = "_navLinkEmphasised_1y7qt_69";
+const centre = "_centre_1y7qt_80";
+const tagline = "_tagline_1y7qt_86";
+const sourcesCallout = "_sourcesCallout_1y7qt_95";
+const sourcesCalloutArrow = "_sourcesCalloutArrow_1y7qt_122";
+const attribution = "_attribution_1y7qt_129";
+const attributionLine = "_attributionLine_1y7qt_137";
+const attributionDim = "_attributionDim_1y7qt_141";
+const licenseLink = "_licenseLink_1y7qt_148";
+const styles = {
+  footer,
+  inner,
+  colHeading,
+  navList,
+  navLink,
+  navLinkEmphasised,
+  centre,
+  tagline,
+  sourcesCallout,
+  sourcesCalloutArrow,
+  attribution,
+  attributionLine,
+  attributionDim,
+  licenseLink
+};
+const buildDate = "2026-04-21";
+function formatBuildDate(iso, locale) {
+  try {
+    const d = /* @__PURE__ */ new Date(iso + "T00:00:00Z");
+    if (Number.isNaN(d.getTime())) return iso;
+    return new Intl.DateTimeFormat(locale === "nl" ? "nl-BE" : "en-GB", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "UTC"
+    }).format(d);
+  } catch {
+    return iso;
+  }
+}
+function Footer() {
+  const { t, i18n: i18n2 } = useTranslation();
+  const navigate = useNavigate();
+  const go = (path) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const currentLang = i18n2.language?.startsWith("nl") ? "nl" : "en";
+  const formattedDate = formatBuildDate(buildDate, currentLang);
+  return /* @__PURE__ */ jsx("footer", { className: styles.footer, role: "contentinfo", children: /* @__PURE__ */ jsxs("div", { className: styles.inner, children: [
+    /* @__PURE__ */ jsxs("nav", { "aria-label": t("footer.nav_heading"), children: [
+      /* @__PURE__ */ jsx("h2", { className: styles.colHeading, children: t("footer.nav_heading") }),
+      /* @__PURE__ */ jsxs("ul", { className: styles.navList, children: [
+        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("button", { className: styles.navLink, onClick: () => go("/"), children: t("nav.home") }) }),
+        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("button", { className: styles.navLink, onClick: () => go("/research"), children: t("nav.history") }) }),
+        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(
+          "button",
+          {
+            className: `${styles.navLink} ${styles.navLinkEmphasised}`,
+            onClick: () => go("/research/bibliography"),
+            children: t("footer.bibliography_link_label")
+          }
+        ) }),
+        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("button", { className: styles.navLink, onClick: () => go("/dna"), children: t("nav.dna") }) }),
+        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("button", { className: styles.navLink, onClick: () => go("/about"), children: t("nav.about") }) }),
+        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("button", { className: styles.navLink, onClick: () => go("/contact"), children: t("nav.contact") }) })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: styles.centre, children: [
+      /* @__PURE__ */ jsx("h2", { className: styles.colHeading, children: t("footer.project_heading") }),
+      /* @__PURE__ */ jsx("p", { className: styles.tagline, children: t("footer.tagline") }),
+      /* @__PURE__ */ jsxs(
+        "button",
+        {
+          className: styles.sourcesCallout,
+          onClick: () => go("/research/bibliography"),
+          "aria-label": t("footer.sources_callout_aria"),
+          children: [
+            /* @__PURE__ */ jsx("span", { children: t("footer.sources_callout") }),
+            /* @__PURE__ */ jsx("span", { className: styles.sourcesCalloutArrow, "aria-hidden": "true", children: "→" })
+          ]
+        }
+      )
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: styles.attribution, children: [
+      /* @__PURE__ */ jsx("h2", { className: styles.colHeading, children: t("footer.attribution_heading") }),
+      /* @__PURE__ */ jsx("p", { className: styles.attributionLine, children: t("footer.copyright") }),
+      /* @__PURE__ */ jsx("p", { className: styles.attributionLine, children: t("footer.collaboration") }),
+      /* @__PURE__ */ jsx("p", { className: styles.attributionLine, children: /* @__PURE__ */ jsx(
+        "button",
+        {
+          className: styles.licenseLink,
+          onClick: () => go("/license"),
+          "aria-label": t("footer.license_link_aria"),
+          children: t("footer.license")
+        }
+      ) }),
+      /* @__PURE__ */ jsxs("p", { className: styles.attributionDim, children: [
+        t("footer.last_updated_prefix"),
+        " ",
+        formattedDate
+      ] })
+    ] })
+  ] }) });
+}
 function App() {
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx(FamilyTreeCanvas, {}),
@@ -9000,8 +9187,10 @@ function App() {
       /* @__PURE__ */ jsx(Route, { path: "/about", element: /* @__PURE__ */ jsx(AboutPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/contact", element: /* @__PURE__ */ jsx(ContactPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/docs", element: /* @__PURE__ */ jsx(DocsPage, {}) }),
+      /* @__PURE__ */ jsx(Route, { path: "/license", element: /* @__PURE__ */ jsx(LicensePage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "*", element: /* @__PURE__ */ jsx(Navigate, { to: "/", replace: true }) })
-    ] }) })
+    ] }) }),
+    /* @__PURE__ */ jsx(Footer, {})
   ] });
 }
 const DEFAULT_IMAGE = "https://vanvlaenderen.org/assets/hero-background-rVYnRAiM.jpg";
@@ -9140,6 +9329,14 @@ const PAGE_META = {
     description: "Get in touch with the Van Vlaenderen research project. Share family connections, Y-DNA results, or archival findings related to the Van Vlaenderen / Van Flandern surname.",
     canonical: "https://vanvlaenderen.org/contact/",
     ogTitle: "Contact — Van Vlaenderen Research",
+    ogType: "website"
+  },
+  "/license": {
+    title: "License & Attribution — Van Vlaenderen Research | vanvlaenderen.org",
+    description: "License and attribution terms for the Lions of Flanders research project: CC BY 4.0 for research content, MIT for site code, and guidance on citing primary source transcriptions.",
+    canonical: "https://vanvlaenderen.org/license/",
+    ogTitle: "License & Attribution — Van Vlaenderen Research",
+    ogDescription: "Open licensing for academic citation, translation, and scholarly reuse: CC BY 4.0 for research content, MIT for site code.",
     ogType: "website"
   }
 };
