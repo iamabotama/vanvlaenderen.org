@@ -32,6 +32,17 @@
               "status": "consulted"
             },
             {
+              "id": "vredius-1639-sigilla",
+              "source_type": "primary_print",
+              "type": "Primary Source",
+              "author": "Vredius, Olivarius (Olivier de Wree)",
+              "year": "1639",
+              "title": "Sigilla Comitum Flandriae et Inscriptiones Diplomatum ab iis editorum, cum Expositione Historica",
+              "publisher": "Bruges: Joannes Baptista Kerchovius, via alta, sub signo Bibliorum, 1639.",
+              "note": "The sigillographic companion to Vredius's Genealogia (1642-43). Reproduces the seals and diplomatic inscriptions of the Counts of Flanders from the comital archives, with Vredius's historical exposition. Together with the Genealogia Pars Prima and Pars Secunda, this volume completes Vredius's three-volume corpus on the Counts of Flanders. Relevant to the Nieus-Seal discussion and to any claim about the heraldic and sigillographic language of the comital milieu in which the Van Vlaenderen surname first emerges.",
+              "status": "consulted"
+            },
+            {
               "id": "espinoy-1631",
               "source_type": "primary_print",
               "type": "Primary Source",
@@ -124,6 +135,28 @@
               "note": "A comprehensive illustrated gazetteer of Flemish towns, abbeys, and noble houses. Useful for identifying the geographic context of the parishes in the research area and for understanding the visual culture of 17th-century Flemish heraldry.",
               "url": "https://digi.ub.uni-heidelberg.de/diglit/sanderus1641",
               "urlLabel": "Free access (Heidelberg University Library)",
+              "status": "consulted"
+            },
+            {
+              "id": "sanderus-hcf-pars-prima-1735",
+              "source_type": "chronicle",
+              "type": "Primary Source",
+              "author": "Sanderus, Antonius",
+              "year": "1735",
+              "title": "Historia Comitum Flandriae, Pars Prima: Flandria Ethnica — a primo consulatu Caj. Jul. Caesaris usque ad Clodovaeum primum Francorum regem Christianum, per DLIV annos",
+              "publisher": "In: Flandria illustrata, sive Provinciae ac Comitatus hujus descriptio, Tomus Tertius (1735 edition). Hagae-Comitum [The Hague] / Brussels: Carolus & Joannes-Baptista De Vos Fratres, MDCCXXXV.",
+              "note": "Sanderus's narrative history of the territory that became the County of Flanders, from Caesar's first consulate (59 BC) through the reign of Clovis I (d. 511). A distinct work from his better-known Flandria Illustrata (see sanderus-1641), though the two were bundled together in the 1735 Hague/Brussels expanded reissue, which is the edition consulted here. Pairs with Pars Secunda (Flandria Christiana) below. Useful for the pre-comital geographic and political framing of Flanders, and for Sanderus's handling of the legendary first-forester figure Liederic de Buc.",
+              "status": "consulted"
+            },
+            {
+              "id": "sanderus-hcf-pars-secunda-1735",
+              "source_type": "chronicle",
+              "type": "Primary Source",
+              "author": "Sanderus, Antonius",
+              "year": "1735",
+              "title": "Historia Comitum Flandriae, Pars Secunda: Flandria Christiana — a Clodoveo primo Francorum rege Christiano, usque ad annum DCCLXVII, Pipini Francorum Regis XVI",
+              "publisher": "In: Flandria illustrata, sive Provinciae ac Comitatus hujus descriptio, Tomus Tertius (1735 edition). Hagae-Comitum [The Hague] / Brussels: Carolus & Joannes-Baptista De Vos Fratres, MDCCXXXV.",
+              "note": "The continuation of Sanderus's narrative history of Flanders, running from Clovis I through the sixteenth regnal year of Pippin (767 AD). Covers the Merovingian and early Carolingian period of Flemish prehistory, ending just before the formal establishment of the hereditary county under Baldwin Iron-Arm in the 860s. Bundled with Pars Prima and with Flandria Illustrata in the 1735 Hague/Brussels Tomus Tertius.",
               "status": "consulted"
             }
           ]
@@ -221,6 +254,41 @@
               "note": "The authoritative dictionary of Belgian family names. The Van Vlaenderen entry classifies the surname as a herkomstnaam (origin name) with PlN designation. Three attestations cited: 1280 Catharina de Flandria, 1376 Jacop van Vlaendre (Ypres, via BEELE), 1426 Jaquemaerde van Vlaendren (Kortrijk, via DEBR. 1958). CBG version is based on author's post-2003 manuscript with improvements — more current than the printed edition.",
               "url": "https://www.cbgfamilienamen.nl/nfb/aanhangsels/wfb-voorwerk.pdf",
               "urlLabel": "Foreword/apparatus (CBG); full entries at cbgfamilienamen.nl",
+              "status": "consulted"
+            },
+            {
+              "id": "debrabandere-1999-hulster",
+              "source_type": "scholarly_article",
+              "type": "Finding Aid",
+              "author": "Debrabandere, Frans",
+              "year": "1999",
+              "title": "Persoonsnamen in Hulster Ambacht 1300-1400",
+              "publisher": "Handelingen van de Koninklijke Commissie voor Toponymie en Dialectologie (KCTD / HCTD), vol. 71 (1999). Based on Debrabandere's 1956-1960 excerpts of the Kortrijk-archive documents relating to the Onze-Lieve-Vrouwekapittel holdings in Hulster Ambacht.",
+              "note": "A systematic register of personal names attested in the Hulster Ambacht jurisdiction (modern East Zeeuws-Vlaanderen) during the 14th century, derived from the Kortrijk Onze-Lieve-Vrouwekapittel archives. Together with the Gysseling-Debrabandere 1999 Vier Ambachten register and Debrabandere's Woordenboek van de Familienamen, this is one of the primary Dutch-language prosopographical finding aids for tracking personal-name attestations in the Assenede-Boekhoute-Axel-Hulst arc during exactly the period when the project hypothesises hereditary surname use was crystallising in the region.",
+              "status": "consulted"
+            },
+            {
+              "id": "gysseling-debrabandere-1999-vier-ambachten",
+              "source_type": "scholarly_article",
+              "type": "Finding Aid",
+              "author": "Gysseling, Maurits (†) & Debrabandere, Frans",
+              "year": "1999",
+              "title": "Persoonsnamen in de Vier Ambachten, 14e en 15e eeuw",
+              "publisher": "Handelingen van de Koninklijke Commissie voor Toponymie en Dialectologie (KCTD / HCTD), vol. 71 (1999), pp. 491-588.",
+              "note": "Posthumous edition, prepared by Debrabandere, of Gysseling's (1919-1997) note-card corpus of personal names attested in the Vier Ambachten (Assenede, Boekhoute, Axel, Hulst) during the 14th and 15th centuries. The corpus was compiled chronologically from schepenbank and related records; Gysseling's original 600 note cards yielded approximately 3000 attestations of around 1000 distinct individuals (983 men, 13 women). This is the single most directly project-relevant name register in print: the Vier Ambachten geography is precisely where the Meetjesland Van Vlaenderen attestations cluster, and the time window (14th-15th c.) covers the period between the Victor cohort and the first Joos van Vlaenderen records of the 1540s.",
+              "status": "consulted"
+            },
+            {
+              "id": "debrabandere-corrigenda-addenda",
+              "source_type": "scholarly_article",
+              "type": "Finding Aid",
+              "author": "Debrabandere, Frans",
+              "year": "2013",
+              "title": "Het Woordenboek van de Familienamen in België en Noord-Frankrijk: Nog Corrigenda en Addenda",
+              "publisher": "Naamkunde. doi:10.2143/TD.91.0.3286977.",
+              "note": "A supplementary corrigenda-and-addenda note extending the 2003 Woordenboek van de Familienamen in België en Noord-Frankrijk (see debrabandere-wfb2). Debrabandere treats the main dictionary as a 'work in progress' and has issued periodic corrections; this note is the continuation of the 2007-2010 corrigenda series. Consulted alongside the main dictionary for up-to-date etymological and attestation information on Flemish-Dutch family names.",
+              "url": "https://doi.org/10.2143/TD.91.0.3286977",
+              "urlLabel": "DOI link",
               "status": "consulted"
             }
           ]
