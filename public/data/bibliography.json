@@ -198,6 +198,30 @@
               "url": "https://search.arch.be/",
               "urlLabel": "AGATHA (Belgian State Archives)",
               "status": "consulted"
+            },
+            {
+              "id": "feys-nelis-1880-ypres-cartularies",
+              "source_type": "edited_collection",
+              "type": "Primary Source",
+              "author": "Feys, Eusèbe & Nelis, Alois (eds.)",
+              "year": "1880–1884",
+              "title": "Les cartulaires de la prévôté de Saint-Martin à Ypres, précédés d'une esquisse historique sur la prévôté",
+              "publisher": "Bruges: Imprimerie A. de Zuttere-Van Kersschaver, 1880–1884. 2 tomes (Tome I: charters 1102–1364, published 1880; Tome II: charters 1396–1543 plus historical esquisse and indices, published 1884).",
+              "note": "A 19th-century scholarly edition of the cartularies of the prévôté of Saint-Martin at Ypres, preserving the charter tradition of the institution from 1102 to 1543. Useful for the West Flanders side of the project: Ypres is the attestation locus of the 1376 Jacop van Vlaendre reference cited in Debrabandere's WFB2, and the cartulary indices contain numerous references to Ypres échevins and bourgeois whose names might feed the broader early-attestation picture.",
+              "url": "https://archive.org/details/lescartulairesd01belgoog",
+              "urlLabel": "Free access (Internet Archive)",
+              "status": "consulted"
+            },
+            {
+              "id": "american-line-primary-documents-1854-1913",
+              "source_type": "primary_charter",
+              "type": "Primary Source",
+              "author": "Van Vlaenderen American-line primary documents (1854–1913)",
+              "year": "1854–1913",
+              "title": "Primary records for Charles Louis Van Vlaenderen (b. Bassevelde 1854, d. Covington KY 1913), emigrant ancestor of the American branch",
+              "publisher": "Belgian civil registers (Bassevelde, Oost-Vlaanderen) and American civil, court, and ecclesiastical records (Indiana, Ohio, Kentucky). Specific records consulted include: Bassevelde geboorteakte no. 52, 14 June 1854 (son of Engelbertus van Vlaenderen and Marie Catherine De Clerck); Allen County (Indiana) naturalization declaration, 5 October 1880; Lucas County (Ohio) Probate Court naturalization affidavit, 5 April 1884; Kenton County (Kentucky) death certificate no. 2793 and probate file, October 1913.",
+              "note": "The documentary chain anchoring the project's direct American line to the Bassevelde civil register. Charles Louis was born in Bassevelde (Oost-Vlaanderen) on 13 June 1854 and emigrated via Antwerp–New York in 1875 (per 1880 naturalization declaration; a later 1900 census entry gives 1877). The Bassevelde 1854 geboorteakte is the critical primary-source join between the European parish-record dossier and the American branch that prompted the Lions of Flanders project; all subsequent American records cohere with the Belgian origin despite orthographic drift (Van Vlaenderen, Van Vlanderen, Van Flandern, Van Vanderen, Van Flanderen) across U.S. records. Full evidence trail compiled in the project research record.",
+              "status": "consulted"
             }
           ]
         },
@@ -289,6 +313,17 @@
               "note": "A supplementary corrigenda-and-addenda note extending the 2003 Woordenboek van de Familienamen in België en Noord-Frankrijk (see debrabandere-wfb2). Debrabandere treats the main dictionary as a 'work in progress' and has issued periodic corrections; this note is the continuation of the 2007-2010 corrigenda series. Consulted alongside the main dictionary for up-to-date etymological and attestation information on Flemish-Dutch family names.",
               "url": "https://doi.org/10.2143/TD.91.0.3286977",
               "urlLabel": "DOI link",
+              "status": "consulted"
+            },
+            {
+              "id": "stadsarchief-gent-sint-martinus-huwelijken",
+              "source_type": "tertiary_compilation",
+              "type": "Finding Aid",
+              "author": "De Zwarte Doos — Stadsarchief Gent (volunteer transcription project)",
+              "year": "undated",
+              "title": "Huwelijken Sint-Martinusparochie Gent, 1584–1796, gesorteerd op familienaam en voornaam van de echtgenoot",
+              "publisher": "Stadsarchief Gent (De Zwarte Doos). Available via the volunteer transcription project.",
+              "note": "Indexed transcription of marriage registers from the Sint-Martinus parish in Ghent, 1584–1796, sorted alphabetically by the groom's family and given name. Useful for targeted lookup of Van Vlaenderen / Vlaendren marriage records in Ghent during the period between the 1547 Brugse Vrije TBO 184 documents and the 18th-century parish registers already incorporated into the project's parish-record database. Not a substitute for the primary registers but an efficient finding aid for name-targeted queries.",
               "status": "consulted"
             }
           ]
@@ -461,6 +496,32 @@
               "url": "https://doi.org/10.1038/ejhg.2013.211",
               "urlLabel": "DOI link",
               "status": "consulted"
+            },
+            {
+              "id": "larmuseau-2012-migrant-father",
+              "source_type": "scientific_article",
+              "type": "Genetic Genealogy",
+              "author": "Larmuseau, M.H.D., Vanoverbeke, J., Gielis, G., Vanderheyden, N., Larmuseau, H.F.M., & Decorte, R.",
+              "year": "2012",
+              "title": "In the name of the migrant father — Analysis of surname origins identifies genetic admixture events undetectable from genealogical records",
+              "publisher": "Heredity 109 (2012), 90–95. doi:10.1038/hdy.2012.17.",
+              "note": "Demonstrates that surname origin (as a proxy for ancestral geography) can resolve genetic admixture events invisible to in-depth pedigree genealogy alone. The case study is the 16th-century French-to-Flemish demic migration from Northern France into Dutch-speaking Flanders, which left a detectable genetic signal across the border region despite being largely undocumented in surviving civil and parish records. Method-relevant for any analysis of Van Vlaenderen cluster geography: concrete precedent for how a toponymic surname can carry genetic signal of historical migration events that genealogy alone cannot recover.",
+              "url": "https://doi.org/10.1038/hdy.2012.17",
+              "urlLabel": "DOI link",
+              "status": "consulted"
+            },
+            {
+              "id": "larmuseau-2015-communal",
+              "source_type": "scientific_article",
+              "type": "Genetic Genealogy",
+              "author": "Larmuseau, M.H.D., Boon, N., Vanderheyden, N., Van Geystelen, A., Larmuseau, H.F.M., Matthys, K., De Clercq, W., & Decorte, R.",
+              "year": "2015",
+              "title": "High Y-chromosomal diversity and low relatedness between paternal lineages on a communal scale in the Western European Low Countries during the surname establishment",
+              "publisher": "Heredity 115 (2015), 3–12. doi:10.1038/hdy.2015.5.",
+              "note": "A Flanders-scale study of Y-chromosomal diversity across six Flemish communities at the time of surname establishment (13th–17th c.), finding high Y-chromosomal diversity and low within-community relatedness among citizens carrying distinct surnames. Directly relevant to the project's founder-count question: the baseline expectation for a generic toponymic surname in the Low Countries is that bearers within a single community should NOT share a recent common paternal ancestor. If a Flemish Y-DNA project of Van Vlaenderen bearers were to find substantially more within-name relatedness than Larmuseau's communal-scale baseline predicts, that would be positive evidence for a bastard-line or office-holder-founder model over a generic toponymic one.",
+              "url": "https://doi.org/10.1038/hdy.2015.5",
+              "urlLabel": "DOI link",
+              "status": "consulted"
             }
           ]
         },
@@ -493,8 +554,10 @@
               "author": "De Vos, Tom",
               "year": "2007–2008",
               "title": "Het overlevingsvermogen of bilevinghe als pasmunt bij scheiding en/of hertrouwen in het laatmiddeleeuwse Gent",
-              "publisher": "UGent Master's thesis, 2007–2008.",
+              "publisher": "UGent Master's thesis, Faculteit Letteren en Wijsbegeerte, Vakgroep Middeleeuwen, Academiejaar 2007–2008. Promotor: Monique Vleeschouwers-Van Melkebeek; commissarissen: Thérèse de Hemptinne, Erik Thoen.",
               "note": "The source that corrected the project's earlier 'Adam in Maldegem' misattribution. De Vos locates the 1447 Ghent partition case of Adam and Agnes sKokers (annulled marriage) in the Ghent schepenbank records, clarifying that the Adam figure belongs to the Ghent bilevinghe dossier rather than to a Maldegem context.",
+              "url": "https://lib.ugent.be/catalog/rug01:001282057",
+              "urlLabel": "Free access (UGent institutional repository)",
               "status": "consulted"
             },
             {
@@ -552,6 +615,22 @@
               "note": "The Huygens Institute's authoritative biographical entry for Catharina van Boetzelaer, identified in April 2026 as the key source resolving the post-1545 Van Vlaenderen-Praet generation. Read in conjunction with Decavele (2004) and Valkeneers & Soen (2015) for the full post-1545 prosopographical context.",
               "url": "https://resources.huygens.knaw.nl/vrouwenlexicon",
               "urlLabel": "Free access (Huygens ING)",
+              "status": "consulted"
+            }
+          ]
+        },
+        {
+          "heading": "G. Collaborator-Compiled Family Registers",
+          "entries": [
+            {
+              "id": "stamreeks-zeeuwse-tak-2-2020",
+              "source_type": "secondary_genealogical",
+              "type": "Meetjesland",
+              "author": "Van Vlaanderen, Pieter Antheunisz",
+              "year": "2020",
+              "title": "Stamreeks van Vlaanderen — De Zeeuwse Tak-2, ~1500 tot 2020",
+              "publisher": "Privately compiled family register. Author resident in Schoorl, The Netherlands.",
+              "note": "A private, collaborator-compiled register of the 'Zeeuwse Tak' (Zeeland branch) of the Van Vlaenderen family from approximately 1500 through 2020, prepared by Pieter Antheunisz van Vlaanderen in Schoorl. The register documents the Zeeland line descending from Laureys Arentsz van Vlaenderen, schoolmaster at Ritthem (attested 1588, d. late 1601), whose signature appears on the cover alongside the compiler's own. This compilation is the documentary basis for the ongoing Big Y-700 testing collaboration between Pieter and this project: the reconstructed Zeeland lineage serves as the reference pedigree against which Y-chromosomal results can be interpreted. Cited here to declare the provenance of the DNA collaboration transparently; as a privately-compiled family register, it is treated as a collaborator-provided secondary source rather than a peer-reviewed scholarly publication.",
               "status": "consulted"
             }
           ]
