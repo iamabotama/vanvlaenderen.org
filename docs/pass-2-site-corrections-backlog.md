@@ -1,9 +1,9 @@
 # Pass 2 Site Corrections Backlog
 
-*Running list of site-side corrections identified during Pass 2 (Vredius direct-reading and narrative calibration work). Accumulated here as they surface during the research-record work in `docs/primary-source-notes/vredius-1643-genealogia.md`, to be tackled as a single consolidated site-correction patch after the research record is complete.*
+*Running list of site-side corrections identified during Pass 2 (Vredius direct-reading and narrative calibration work) plus the residue of Pass 3 (source visibility). Most items have been closed in shipping patches; the remaining open items are tracked below.*
 
-**Status:** Open, accumulating
-**Last updated:** 2026-04-20
+**Status:** Pass 2 substantively closed; Pass 3 phases A/B/D shipped, Phase C deferred. Backlog now tracks residual items.
+**Last updated:** 2026-04-21
 
 ---
 
@@ -105,46 +105,46 @@ Original analysis below, retained for reference:
 
 ---
 
-## Correction 4 — Lodewijk IV death-year consistency (1555 vs 1556)
+## Correction 4 — Lodewijk IV death-year consistency (1555 vs 1556) ✅ CLOSED
 
-**Source of finding:** Post-1545 Praet research thread, April 2026. Valkeneers & Soen 2015 give Lodewijk IV's death as 20 December 1556, which differs from the Vredius/Aalter-tomb reading of 1555 that the site has used to date.
+Closed in two shipping patches: the Correction 4 + SSR alignment patch (deployed 2026-04-20) addressed ten site locations, and the Correction 5 diagram-layout patch (deployed 2026-04-20, commit `52bdb18`) carried the `1555 → 1556` fix in the Lodewijk IV PraetDiagram card as part of the restructure. Verbatim primary-source quotations (notably the Aalter tomb inscription *"die starf 1555"* on PraetLineageDossier) preserved unchanged; a scholarly-note paragraph immediately below the tomb quote explains the 1555-vs-1556 discrepancy and cites Valkeneers & Soen 2015 plus the Flemish Easter-style year convention.
 
-**The nuance:** The Vredius tomb inscription literally reads *"die starf 1555"* and must be quoted verbatim wherever it appears as a primary-source transcription. But the site's *framing prose* around the tomb quote, and site-wide metadata where no direct quotation is involved, should reflect the modern-scholarship date 1556 (with the 1555 tomb reading noted as a documented alternative).
-
-The last deploy corrected PraetDossier metadata to 1556. Other spots still say 1555:
-
-- `src/components/Diagrams/PraetDiagram.tsx` line 117 — Lodewijk IV card `dates: 'd. 1555'`
-- `src/i18n/locales/en.json` and `nl.json` line 502 — `figure_5` caption (d. 1555)
-- `src/pageMeta.ts` line 113 — PraetDossier description (secondary, probably superseded by direct Helmet meta)
-- `src/pages/LouisFrieseLineagePage.tsx` line 76 — sr-only already says "died 1555 or 1556" (corrected 2026-04-20 in the Correction 1 expanded patch)
-- `src/pages/PraetLineageDossierPage.tsx` line 14 (lineage table) and line 150 (section heading) — still 1555
-- `src/pages/PraetLineageDossierPage.tsx` line 152 — *verbatim tomb quote ending "die starf 1555"* — MUST remain 1555 as this is direct Middle Dutch transcription
-- `src/pages/PraetLineageDossierPage.tsx` line 169 — framing prose "before Lodewijk IV himself died in 1555" — should update to 1556 with Valkeneers & Soen citation
-
-**Recommended treatment:** Go through each site instance individually. Verbatim primary-source quotes stay 1555 (with a footnote or parenthetical noting the 1556 alternative). Framing prose and metadata update to 1556 with citation. Figure captions: "d. 1555/1556" or "d. 1556 (tomb inscription: 1555)".
-
-**Status:** Tackle as a focused follow-on patch. Low urgency. Not blocking any other work.
+Collateral fix shipped with Correction 4: `src/pageMeta.ts` alignment with the Pass 2 Helmet metadata. Audit discovered that the Pass 2 metadata refresh had updated only per-page `<Helmet>` content but not the SSR source-of-truth in `pageMeta.ts`, meaning search crawlers and social-media card readers had been seeing the pre-Pass-2 metadata. All 7 affected pages now have aligned pageMeta.ts entries matching the Helmet strings. JSON-LD ScholarlyArticle blocks on 7+ pages also brought into alignment.
 
 ---
 
-## Correction 5 — PraetDiagram layout (Jean and Josse visually in wrong generation)
+## Correction 5 — PraetDiagram layout (Jean and Josse visually in wrong generation) ✅ CLOSED
 
-**Source of finding:** Correction 1 expanded patch, 2026-04-20. The PraetDiagram component now correctly identifies Jean de Flandre and Josse de Flandre as sons of Lodewijk II (not Johan I) in the card body text, and the connection-line edges are now correctly drawn from Lodewijk II rather than from Johan I. But the **visual position** of the Jean and Josse cards remains in the Gen 3 sibling row (y=ROW_Y) alongside Lodewijk II, which makes them look like Lodewijk II's siblings rather than his children. Card labels now include the text "Note: diagram position shows him alongside Johan I's children for compact layout; biologically one generation lower." — but a reader glancing at the diagram will still read Jean and Josse as peers of Lodewijk II.
-
-**Proper fix:** Restructure the diagram so Jean and Josse appear in a new Gen 4 row below Lodewijk II. This requires:
-
-- Adding a new y-coordinate for the Gen 4 Praet cadet row (below y=510 Lodewijk III, perhaps alongside or above)
-- Moving Jean (id 'jean') and Josse (id 'josse') nodes to that new row with new x-coordinates
-- Removing the "diagram position..." hedging text from both card bodies once the layout is accurate
-- Updating the label "JOHAN I'S CHILDREN (+ GEN 4 JEAN & JOSSE FOR LAYOUT)" back to "CHILDREN OF JOHAN I (SIBLINGS)"
-- Potentially collapsing the daughter cards (Jeanne, and Marguerite/Isabelle/Landrade combined) into a wider cluster now that the sibling row has only three nodes: the heir Lodewijk II and the two daughter-cards
-
-**Alternative (less ambitious):** Accept the current compact layout as a deliberate space-saving choice, rewrite the card-body notes to say "Positioned here in Gen 3 for visual compactness; see dossier for full Gen 3/Gen 4 structure" in cleaner language, and move on.
-
-**Status:** Choose-and-implement decision. Not blocking; diagram is technically accurate now (text and parent-child edges both correct), just visually compact in a way that requires the reader to read the card body to understand the generational relationship.
+Closed by the Correction 5 diagram-layout patch, deployed 2026-04-20, commit `52bdb18`. Jean and Josse nodes moved from the Gen 3 sibling row to a new Gen 4 cadet row below Lodewijk II (new `CADET_ROW_Y = 510` constant); Jeanne and the Marguerite/Isabelle/Landrade card rebalanced to fill the Gen 3 row; Lodewijk III/IV/Jan II shifted down to make vertical room; viewBox height bumped 1000 → 1140; hedging notes ("diagram position shows him alongside...") removed from Jean and Josse card bodies now that the visual position is structurally correct; label reverted to clean "CHILDREN OF JOHAN I (SIBLINGS)" with new "CADET BRANCHES OF LODEWIJK II" label below. Also folded in Correction 4 for this file (Lodewijk IV d. 1555 → 1556 with Valkeneers & Soen citation).
 
 ---
 
 ## Instructions for closing this backlog
 
-When the Vredius research record is complete (all batches of `docs/primary-source-notes/vredius-1643-genealogia.md` filled in) and the above corrections are agreed to, draft a single consolidated site-correction patch covering all accumulated items. Validate JSX structure, JSON integrity, and i18n key parity for Dutch and English before submitting.
+This backlog is now substantively closed for the Pass 2 corrections identified through the Vredius direct-reading exercise. Corrections 1, 4, and 5 have shipped; Corrections 2 and 3 are deferred pending external research inputs.
+
+---
+
+## Post-Pass-3 residual items
+
+These surfaced during Pass 3 source-visibility deployment (phases A, B, and D shipped 2026-04-20; Phase C deferred) or were newly identified as collateral fixes needed after those deployments.
+
+### Pass 3 Phase C — inline source links across dossiers
+
+The bibliography-page anchor IDs needed for inline source links are now in place (Phase A shipped with stable IDs for every entry), so Phase C is unblocked and can start whenever. Scope: pepper the existing prose across dossier pages with `<a href="/research/bibliography#vredius-1643">Vredius (1643)</a>`-style links where the site currently cites a source in prose without a link. Largest-surface item on the remaining backlog; probably split into two or three smaller per-page-cluster patches for reviewable chunks. Not blocking anything.
+
+### HomePage footer-strip harmonisation (the doubling fix)
+
+**Source of finding:** Pass 3 Phase B Footer deployment, 2026-04-20. The new sitewide Footer component, when rendered on the HomePage, creates visual duplication with an existing footer-like element already in the home-page layout. Needs either (a) suppression of the HomePage's existing element when the new Footer is active, or (b) restyling one of them so they read as complementary rather than duplicative. Low priority but user-visible on the site's most-visited page — worth an early fix in the next patch cycle.
+
+### Dutch review of the new license page copy
+
+**Source of finding:** Pass 3 Phase D shipped 2026-04-20 with `/license` page copy in both English (en.json) and Dutch (nl.json). The English copy has been through project-lead review; the Dutch parallel has not. A Dutch-speaker review pass on the `footer` and `license` nl.json sections is appropriate before considering Phase D fully complete. Low urgency; no errors identified yet, but content-QA should close the loop.
+
+---
+
+## Deferred — pending external research inputs
+
+- **Correction 2** (Françoise van Praet van Moerkerken reframe) — pending Buylaert 2011 verification
+- **Correction 3** (post-1545 Praet generation page-level coverage) — pending Decavele 2004 + Buylaert 2011 scans from Pascal van Vlaenderen
+- **V/v capital audit** on `docs/primary-source-notes/vredius-1643-genealogia.md` — low priority; doesn't affect the live site
