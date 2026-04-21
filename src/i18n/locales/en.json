@@ -6,6 +6,7 @@
     "mill": "The Mill",
     "name": "The Name",
     "dna": "DNA",
+    "sources": "Sources",
     "contact": "Get in Touch",
     "language_toggle_label": "Language"
   },
@@ -272,7 +273,18 @@
     "pull_quote": "Family history is not just about the past. It is about understanding who we are and where we come from — and perhaps finding others who share that journey.",
     "collage_caption": "Every family has photographs. Every photograph tells part of the story. Share yours with the Van Vlaenderen archive."
   },
-  "footer": {},
+  "footer": {
+    "nav_heading": "Navigate",
+    "project_heading": "The Project",
+    "attribution_heading": "Attribution",
+    "tagline": "A genealogical research project tracing the Van Vlaenderen surname from medieval Flanders to a modern American family branch.",
+    "bibliography_link_label": "Sources & Bibliography",
+    "sources_callout": "View the sources",
+    "sources_callout_aria": "Go to the Sources and Bibliography page",
+    "copyright": "© 2026 VanVlaenderen.org",
+    "collaboration": "A collaborative project of Michael Van Flandern and Constance Van Flandern.",
+    "last_updated_prefix": "Last updated:"
+  },
   "common": {},
   "lineage": {
     "page_title": "Family Lineage",

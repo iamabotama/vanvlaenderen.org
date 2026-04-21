@@ -6,6 +6,7 @@
     "mill": "De molen",
     "name": "De naam",
     "dna": "DNA",
+    "sources": "Bronnen",
     "contact": "Contact",
     "language_toggle_label": "Taal"
   },
@@ -272,7 +273,18 @@
     "pull_quote": "Familiegeschiedenis gaat niet alleen over het verleden. Het gaat over begrijpen wie we zijn en waar we vandaan komen — en misschien anderen vinden die die reis delen.",
     "collage_caption": "Elke familie heeft foto's. Elke foto vertelt een deel van het verhaal. Deel de uwe met het Van Vlaenderen-archief."
   },
-  "footer": {},
+  "footer": {
+    "nav_heading": "Navigatie",
+    "project_heading": "Het project",
+    "attribution_heading": "Vermelding",
+    "tagline": "Een genealogisch onderzoeksproject dat de achternaam Van Vlaenderen volgt van het middeleeuwse Vlaanderen tot een moderne Amerikaanse familietak.",
+    "bibliography_link_label": "Bronnen & Bibliografie",
+    "sources_callout": "Bekijk de bronnen",
+    "sources_callout_aria": "Ga naar de pagina Bronnen & Bibliografie",
+    "copyright": "© 2026 VanVlaenderen.org",
+    "collaboration": "Een samenwerkingsproject van Michael Van Flandern en Constance Van Flandern.",
+    "last_updated_prefix": "Laatst bijgewerkt:"
+  },
   "common": {},
   "lineage": {
     "page_title": "Familielijn",

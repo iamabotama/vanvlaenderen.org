@@ -21,6 +21,7 @@ import BibliographyPage from './pages/BibliographyPage';
 import SurnameOriginsPage from './pages/SurnameOriginsPage';
 import NieusSealPage from './pages/NieusSealPage';
 import DrinchamDossierPage from './pages/DrinchamDossierPage';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 export default function App() {
@@ -58,6 +59,8 @@ export default function App() {
           <Route path="*"                              element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+
+      <Footer />
     </>
   );
 }

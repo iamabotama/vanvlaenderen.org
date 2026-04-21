@@ -5,7 +5,7 @@ import { LanguageToggle } from './LanguageToggle';
 import styles from './Nav.module.css';
 
 // Keep Tab type exported — some legacy prop signatures still reference it
-export type Tab = 'home' | 'mill' | 'name' | 'dna' | 'research' | 'lineage' | 'about' | 'contact';
+export type Tab = 'home' | 'mill' | 'name' | 'dna' | 'research' | 'sources' | 'lineage' | 'about' | 'contact';
 
 interface NavProps {
   // active and onNav are now derived internally from the router,
@@ -14,14 +14,18 @@ interface NavProps {
   onNav?: (tab: Tab | string) => void;
 }
 
+// Tabs listed in display order. Order also matters for active-tab matching:
+// the longest matching path wins, so /research/bibliography lights up
+// `sources`, not `research`. See `activeTab` below.
 const TAB_PATHS: { id: Tab; path: string }[] = [
-  { id: 'home',     path: '/'        },
-  { id: 'mill',     path: '/mill'    },
-  { id: 'name',     path: '/name'    },
-  { id: 'research', path: '/research'},
-  { id: 'dna',      path: '/dna'     },
-  { id: 'about',    path: '/about'   },
-  { id: 'contact',  path: '/contact' },
+  { id: 'home',     path: '/'                        },
+  { id: 'mill',     path: '/mill'                    },
+  { id: 'name',     path: '/name'                    },
+  { id: 'research', path: '/research'                },
+  { id: 'sources',  path: '/research/bibliography'   },
+  { id: 'dna',      path: '/dna'                     },
+  { id: 'about',    path: '/about'                   },
+  { id: 'contact',  path: '/contact'                 },
 ];
 
 export default function Nav(_props: NavProps) {
@@ -29,11 +33,14 @@ export default function Nav(_props: NavProps) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Derive active tab from current path — no prop needed
+  // Derive active tab from current path. Pick the TAB with the longest matching path,
+  // so nested routes (e.g. /research/bibliography) resolve to the more specific tab.
   const activePath = location.pathname;
-  const activeTab = TAB_PATHS.find(t =>
-    t.path === '/' ? activePath === '/' : activePath.startsWith(t.path)
-  )?.id ?? 'home';
+  const activeTab = [...TAB_PATHS]
+    .sort((a, b) => b.path.length - a.path.length)
+    .find(t =>
+      t.path === '/' ? activePath === '/' : activePath === t.path || activePath.startsWith(t.path + '/')
+    )?.id ?? 'home';
 
   const handleNav = (path: string) => {
     navigate(path);
