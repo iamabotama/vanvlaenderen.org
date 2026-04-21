@@ -2893,10 +2893,6 @@ function DnaPage() {
 }
 const C = {
   root: "#e8812a",
-  victor: "#9b7fd4",
-  praet: "#4aaed4",
-  focus: "#d4a830",
-  red: "#e06060",
   blue: "#60a5fa",
   text: "#f0e8d0",
   sub: "#d0d4dc",
@@ -2909,7 +2905,8 @@ const EV = {
   focus: { label: "Research Focus", bg: "rgba(212,168,48,0.18)", c: "#d4a830" },
   hypo: { label: "Evidentiary Gap", bg: "rgba(248,113,113,0.18)", c: "#f87171" },
   parish: { label: "Parish Records", bg: "rgba(96,165,250,0.18)", c: "#60a5fa" },
-  ends: { label: "Line Ends Here", bg: "rgba(248,113,113,0.18)", c: "#f87171" }
+  ends: { label: "Line Ends Here", bg: "rgba(156,163,175,0.18)", c: "#9ca3af" },
+  unknown: { label: "Silent On Descendants", bg: "rgba(156,163,175,0.18)", c: "#9ca3af" }
 };
 function connectionPath(a, b) {
   const my = (a.bot + b.top) / 2;
@@ -3058,6 +3055,72 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }) {
                 }
               )
             ]
+          }
+        ),
+        (cfg.ev === "ends" || cfg.ev === "unknown") && /* @__PURE__ */ jsx(
+          "div",
+          {
+            style: {
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: "100%",
+              marginTop: 8,
+              textAlign: "center",
+              pointerEvents: "none"
+            },
+            children: cfg.ev === "ends" ? /* @__PURE__ */ jsx(
+              "span",
+              {
+                style: {
+                  fontFamily: "EB Garamond, Georgia, serif",
+                  fontSize: 16,
+                  color: "#8a8f9e",
+                  lineHeight: 1
+                },
+                children: "†"
+              }
+            ) : /* @__PURE__ */ jsx(
+              "span",
+              {
+                style: {
+                  display: "inline-block",
+                  width: 16,
+                  height: 16,
+                  lineHeight: "14px",
+                  borderRadius: "50%",
+                  border: "1px solid #8a8f9e",
+                  color: "#8a8f9e",
+                  fontFamily: "EB Garamond, Georgia, serif",
+                  fontSize: 11,
+                  fontWeight: 500,
+                  textAlign: "center"
+                },
+                children: "?"
+              }
+            )
+          }
+        ),
+        cfg.focus && /* @__PURE__ */ jsx(
+          "div",
+          {
+            style: {
+              position: "absolute",
+              top: -10,
+              right: -10,
+              width: 20,
+              height: 20,
+              borderRadius: "50%",
+              background: C.surf,
+              border: "1.25px solid #d4a830",
+              color: "#d4a830",
+              fontFamily: "EB Garamond, Georgia, serif",
+              fontSize: 13,
+              lineHeight: "17px",
+              textAlign: "center",
+              pointerEvents: "none"
+            },
+            children: "★"
           }
         )
       ]
@@ -3599,8 +3662,8 @@ const EVIDENCE = {
   hypothesis: "#f87171",
   lineEnds: "#9ca3af"
 };
-const LINE = "#5a6378";
-const diagram$2 = {
+const LINE$3 = "#5a6378";
+const diagram$3 = {
   viewBox: "0 0 960 440",
   nodes: [
     // ── Row 1 — Louis II de Male ───────────────────────────────────────────
@@ -3687,11 +3750,11 @@ const diagram$2 = {
   ],
   connections: [
     // Louis de Male → three progenitor sons (solid, neutral)
-    { from: "lm", to: "vic", color: LINE },
-    { from: "lm", to: "jst", color: LINE },
-    { from: "lm", to: "fri", color: LINE },
+    { from: "lm", to: "vic", color: LINE$3 },
+    { from: "lm", to: "jst", color: LINE$3 },
+    { from: "lm", to: "fri", color: LINE$3 },
     // Louis de Male → stacked "Other Documented Lines" card (dashed — subordinates)
-    { from: "lm", to: "others", color: LINE, dashed: true }
+    { from: "lm", to: "others", color: LINE$3, dashed: true }
   ],
   labels: [],
   annotations: [
@@ -3741,276 +3804,724 @@ function OverviewDiagram() {
   return /* @__PURE__ */ jsx(
     LineageDiagram,
     {
-      diagram: diagram$2,
+      diagram: diagram$3,
       subtitle: "Research Overview"
     }
   );
 }
-const diagram$1 = {
-  viewBox: "0 0 920 560",
+const LINE$2 = "#5a6378";
+const diagram$2 = {
+  viewBox: "0 0 920 640",
   nodes: [
-    { id: "lm", x: 360, y: 18, cfg: { name: "Louis II de Male", dates: "Count of Flanders · 1330–1384", body: "Father of Victor van Vlaenderen by his mistress Margaretha Haelshuuts — the only named mistress in the primary sources.", src: "FMG MedLands [817,841]", color: C.root, ev: "direct", w: 200, h: 55 } },
-    { id: "vic", x: 330, y: 118, cfg: { name: "Victor van Vlaenderen", dates: "d. before 10 Mar 1442", tag: "SEIGNEUR D'URSELE ET WESSEGHEM", body: "Natural son of Louis de Male. Burgundian admiral; captain of Biervliet. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420.", src: "FMG MedLands [841–845]", color: C.victor, ev: "direct", w: 260, h: 90 } },
-    { id: "lod", x: 30, y: 260, cfg: { name: "Lodewyc van Vlaendren", dates: "fl. 1427–1442", tag: "BY ALIX VAN BOYEGHEM", body: "Natural son. Named in charters of 1427 and 1441. Married Jacqueline de Wilde (-Apr 1482, bur Oostborch).", src: "FMG MedLands [846,847]", color: C.victor, ev: "direct", w: 200, h: 90 } },
-    { id: "jan_s", x: 350, y: 260, cfg: { name: "Janne van Vlaendren", dates: "fl. 1427–1442", tag: "BY ALIX VAN BOYEGHEM", body: "Natural son. Named in charters of 1427 and 1441. No further records identified.", src: "FMG MedLands [851,852]", color: C.victor, ev: "direct", w: 200, h: 90 } },
-    { id: "adam", x: 640, y: 254, cfg: { name: "Adam van Vlaendren", dates: "fl. 1427 – 18 Mar 1447 N.S.", tag: "RESEARCH FOCUS", body: "Natural son by Gertrud Lindekens. Named in all three charters. Active donor in 1446 charter: ‘Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem.’ Margriete Aelfhuuts still active patroness in 1446.", src: "FMG MedLands [853–855]; Vredius (1643) pp.285–287", color: C.focus, ev: "focus", focus: true, w: 210, h: 96 } },
-    { id: "josse_l", x: 18, y: 372, cfg: { name: "Josse van Vlaenderen", dates: "died young, bur Oostborch", body: "Son of Lodewyc. Died young. Cannot be the 1547 Brugse Vrije testator. Confirms the name Josse was in use in Victor’s direct line in the mid-to-late 15th century.", src: "FMG MedLands [849]; Bethune (1900) p.356", color: C.victor, ev: "direct", w: 158, h: 50 } },
-    { id: "marg", x: 196, y: 372, cfg: { name: "Margareta van Vlaenderen", dates: "fl. 1478–1486", body: "Daughter of Lodewyc. Married firstly Lodewijk van Baenst Heer van Santvelde; secondly Adriaan van Schouteten Heer van Erpe. Documented in charters 1478 and 1486.", src: "FMG MedLands [850]; Vredius (1643) p.287", color: C.victor, ev: "direct", w: 162, h: 50 } },
-    { id: "gap", x: 660, y: 376, cfg: { name: "EVIDENTIARY GAP", dates: "c.1447 – 1547  (~100 years)", body: "No documented generational link found. Archival targets: cijnsboeken and leenboeken (Ambacht Ursel / Maldegem), Staten van Goed, Raad van Vlaanderen (Rijksarchief Gent).", src: "Research hypothesis", color: C.red, ev: "hypo", w: 185, h: 50 } },
-    { id: "joos", x: 660, y: 462, cfg: { name: "Joos van Vlaenderen", dates: "fl. 1547", body: "Testator, Brugse Vrije 1548. First confirmed early modern bearer. Chronologically consistent with Adam’s descent but no direct link demonstrated.", src: "Staten van Goed, Brugse Vrije 1548 (TBO 184, bundle 21300)", color: C.blue, ev: "parish", w: 185, h: 50 } }
+    // ── Gen 1: Louis II de Male ──────────────────────────────────────────
+    {
+      id: "lm",
+      x: 384,
+      y: 40,
+      cfg: {
+        name: "Louis II de Male",
+        dates: "Count of Flanders · 1330–1384",
+        body: "Father of Victor van Vlaenderen by his mistress Margaretha Haelshuuts — the only named mistress in the primary sources.",
+        src: "FMG MedLands [817, 841]",
+        color: C.root,
+        ev: "direct",
+        w: 152,
+        h: 56
+      }
+    },
+    // ── Gen 2: Victor van Vlaenderen ─────────────────────────────────────
+    {
+      id: "vic",
+      x: 334,
+      y: 140,
+      cfg: {
+        name: "Victor van Vlaenderen",
+        dates: "d. before 10 Mar 1442",
+        tag: "SEIGNEUR D'URSELE ET WESSEGHEM",
+        body: "Natural son of Louis de Male. Burgundian admiral; captain of Biervliet. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420. Three natural sons documented across three primary charters (1427, 1441, 1446) by two mistresses: Lodewyc and Janne by Alix van Boyeghem; Adam by Gertrud Lindekens.",
+        src: "FMG MedLands [841–845]; Vredius (1643) pp.285–287",
+        color: "#4ade80",
+        ev: "direct",
+        w: 252,
+        h: 96
+      }
+    },
+    // ── Gen 3: Three sons of Victor ──────────────────────────────────────
+    {
+      id: "lod",
+      x: 86,
+      y: 288,
+      cfg: {
+        name: "Lodewyc\nvan Vlaendren",
+        dates: "fl. 1427–1442 · by Alix van Boyeghem",
+        tag: "CHARTERS 1427 · 1441",
+        body: "Natural son of Victor. Named in charters of 1427 and 1441. Married Jacqueline de Wilde (-Apr 1482, bur Oostborch). Two documented children shown in Gen 4.",
+        src: "FMG MedLands [846, 847]",
+        color: "#4ade80",
+        ev: "direct",
+        w: 188,
+        h: 112
+      }
+    },
+    {
+      id: "jan_s",
+      x: 366,
+      y: 288,
+      cfg: {
+        name: "Janne\nvan Vlaendren",
+        dates: "fl. 1427–1442 · by Alix van Boyeghem",
+        tag: "CHARTERS 1427 · 1441",
+        body: "Natural son of Victor. Named in charters of 1427 and 1441. No further records identified — source silent on marriage, children, or death date.",
+        src: "FMG MedLands [851, 852]",
+        color: "#4ade80",
+        ev: "unknown",
+        w: 188,
+        h: 112
+      }
+    },
+    {
+      id: "adam",
+      x: 642,
+      y: 288,
+      cfg: {
+        name: "Adam\nvan Vlaendren",
+        dates: "fl. 1427 – 18 Mar 1447 N.S. · by Gertrud Lindekens",
+        tag: "LAST ATTESTATION 1447",
+        body: "Natural son of Victor. Named in all three charters; active donor in the 1446 charter: 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem.' Margriete Aelfhuuts still active patroness in 1446. No further records after 1447 — source silent on whether he had descendants. The central research question of this project.",
+        src: "FMG MedLands [853–855]; Vredius (1643) pp.285–287",
+        color: "#4ade80",
+        ev: "unknown",
+        focus: true,
+        w: 196,
+        h: 112
+      }
+    },
+    // ── Gen 4: Lodewyc's two documented children ─────────────────────────
+    {
+      id: "josse_l",
+      x: 50,
+      y: 458,
+      cfg: {
+        name: "Josse\nvan Vlaenderen",
+        dates: "died young, bur Oostborch",
+        body: "Son of Lodewyc. Died young and is buried at Oostborch near his mother Jacqueline de Wilde. Line terminates. Cannot be the 1547 Brugse Vrije testator. His existence confirms the name Josse/Joos was in active use in Victor's direct line in the mid-to-late 15th century.",
+        src: "FMG MedLands [849]; Bethune (1900) p.356",
+        color: "#4ade80",
+        ev: "ends",
+        w: 120,
+        h: 86
+      }
+    },
+    {
+      id: "marg",
+      x: 190,
+      y: 458,
+      cfg: {
+        name: "Margareta\nvan Vlaenderen",
+        dates: "fl. 1478–1486",
+        body: "Daughter of Lodewyc. Married firstly Lodewijk van Baenst Heer van Santvelde; secondly Adriaan van Schouteten Heer van Erpe. Documented in charters of 1478 and 1486. Sources do not record whether she had children by either marriage.",
+        src: "FMG MedLands [850]; Vredius (1643) p.287",
+        color: "#4ade80",
+        ev: "unknown",
+        w: 120,
+        h: 86
+      }
+    }
   ],
   connections: [
-    { from: "lm", to: "vic", color: C.victor },
-    { from: "vic", to: "lod", color: C.victor },
-    { from: "vic", to: "jan_s", color: C.victor },
-    { from: "vic", to: "adam", color: C.focus },
-    { from: "lod", to: "josse_l", color: C.victor },
-    { from: "lod", to: "marg", color: C.victor },
-    { from: "adam", to: "gap", color: C.red, dashed: true },
-    { from: "gap", to: "joos", color: C.blue, dashed: true }
+    { from: "lm", to: "vic", color: LINE$2 },
+    { from: "vic", to: "lod", color: LINE$2 },
+    { from: "vic", to: "jan_s", color: LINE$2 },
+    { from: "vic", to: "adam", color: LINE$2 },
+    { from: "lod", to: "josse_l", color: LINE$2 },
+    { from: "lod", to: "marg", color: LINE$2 }
+  ],
+  labels: [
+    { x: 180, y: 450, text: "LODEWYC'S TWO DOCUMENTED CHILDREN", color: "#8a8f9e", size: 10 }
+  ],
+  annotations: [
+    {
+      x: 180,
+      y: 610,
+      text: "After 1486, Victor's line is no longer documented. For the 15th → 16th century evidentiary gap, see the Gap Dossier.",
+      color: "#8a8f9e"
+    }
   ],
   legendItems: [
-    { color: "#4ade80", label: "Directly attested (charter)" },
-    { color: C.focus, label: "Research focus — bridge candidate" },
-    { color: "#f87171", label: "Evidentiary gap (c.1447–1547)" },
-    { color: C.blue, label: "Early modern — parish records" }
+    { color: C.root, label: "Comital source" },
+    { color: "#4ade80", label: "Directly Attested" },
+    { color: C.blue, label: "Strongly Corroborated" },
+    { color: "#fbbf24", label: "Probable" },
+    { color: "#f87171", label: "Hypothesis" }
   ]
 };
 function VictorDiagram() {
   return /* @__PURE__ */ jsx(
     LineageDiagram,
     {
-      diagram: diagram$1,
-      title: "Victor van Vlaenderen — Documented Line and Evidentiary Gap",
+      diagram: diagram$2,
+      title: "Victor van Vlaenderen — Documented Line",
       subtitle: "Victor van Vlaenderen Page"
     }
   );
 }
-const ROW_Y = 370;
-const CADET_ROW_Y = 510;
-const NODE_W = 180;
-const GAP = 25;
-const START_X = 40;
-const X1 = START_X;
-const X2 = X1 + NODE_W + GAP;
-const X3 = X2 + NODE_W + GAP;
-const X4 = X3 + NODE_W + GAP;
-const diagram = {
-  viewBox: "0 0 1100 1140",
+const LINE$1 = "#5a6378";
+const Y_GEN1$1 = 30;
+const Y_GEN2$1 = 130;
+const Y_GEN3$1 = 230;
+const Y_GEN4$1 = 348;
+const Y_GEN5$1 = 478;
+const Y_GEN6 = 628;
+const Y_GEN7 = 760;
+const G4_C1$1 = 170;
+const G4_C2$1 = 330;
+const G4_C3$1 = 500;
+const G4_C4$1 = 720;
+const G4_C5 = 880;
+const G5_C1$1 = 120;
+const G5_C2$1 = 280;
+const G5_C3$1 = 440;
+const G5_C4 = 600;
+const G5_C5 = 760;
+const G5_C6 = 920;
+const NODE_W = 120;
+const NODE_H_STD = 76;
+const NODE_H_HEIR = 86;
+const nx = (cx, w = NODE_W) => cx - w / 2;
+const diagram$1 = {
+  viewBox: "0 0 1120 860",
   nodes: [
+    // ── Gen 1 ────────────────────────────────────────────────────────────
     {
       id: "lm",
-      x: X3,
-      y: 18,
+      x: 484,
+      y: Y_GEN1$1,
       cfg: {
         name: "Louis II de Male",
         dates: "Count of Flanders · 1330–1384",
-        body: "In 1373 purchased the leengoed of Praet in Oedelem from the van Praet family, then granted it to his natural son Louis Friese.",
-        src: "FMG MedLands [817]; Lauwens (2010)",
+        tag: "HOUSE OF DAMPIERRE",
+        body: "In 1373 purchased the leengoed of Praet in Oedelem from the van Praet family, then granted it to his natural son Louis Friese. His death in 1384 marks the generation in which van Vlaenderen crystallises as a heritable surname among his bastard descendants.",
+        src: "Vredius, Tab. XVI; FMG MedLands [817]; Lauwens (2010)",
         color: C.root,
         ev: "direct",
-        w: 200,
-        h: 65
+        w: 152,
+        h: 76
       }
     },
+    // ── Gen 2 ────────────────────────────────────────────────────────────
     {
       id: "fri",
-      x: X3 - 5,
-      y: 125,
+      x: 464,
+      y: Y_GEN2$1,
       cfg: {
         name: "Louis Friese van Vlaenderen",
-        dates: "c.1350 – 28 Sep 1396",
+        dates: "c.1350 – 28 Sep 1396 · Nicopolis",
         tag: "LORD OF PRAET & WOESTINE",
-        body: "Natural son of Louis de Male by a daughter of Monsieur de Borre. Praet granted c.1373. Married (2nd) Marie van Gistel. Killed at Nicopolis.",
-        src: "FMG MedLands [864–869]; Vredius (1643); Espinoy (1631)",
-        color: C.praet,
+        body: "Natural son of Louis de Male by a daughter of Monsieur de Borre. Granted Praet c.1373. Twice married: first wife (unnamed, connected with La Woestine), then Marie van Gistel. Killed at Nicopolis alongside his brothers Louis le Haeze and Jean sans terre.",
+        src: "Vredius, Tab. XVI; FMG MedLands [864–869]; Espinoy (1631)",
+        color: "#4ade80",
         ev: "direct",
-        w: 210,
+        w: 192,
         h: 84
       }
     },
+    // ── Gen 3 ────────────────────────────────────────────────────────────
     {
       id: "j1",
-      x: X3,
-      y: 250,
+      x: 474,
+      y: Y_GEN3$1,
       cfg: {
         name: "Johan I van Vlaenderen",
         dates: "d. after 10 Sep 1439",
         tag: "LORD OF PRAET",
-        body: "Son of Louis Friese. Issued own charter as Lord of Praet 10 Sep 1439. Married Johanna van Reygersvliet. Had five documented children (see sibling row below).",
-        src: "FMG MedLands [872,873,875]",
-        color: C.praet,
+        body: "Son of Louis Friese. Issued own charter as Lord of Praet 10 Sep 1439. Married Johanna van Reygersvliet. Five documented children, named individually in the Gen 4 row below.",
+        src: "FMG MedLands [872, 873, 875]",
+        color: "#4ade80",
         ev: "direct",
-        w: 200,
-        h: 82
+        w: 172,
+        h: 76
       }
     },
-    // ── Gen 4 Cadet Row: Lodewijk II's sons Jean & Josse (cadet branches) ──
+    // ── Gen 4 — Johan I's five children ──────────────────────────────────
     {
-      id: "jean",
-      x: X2,
-      y: CADET_ROW_Y,
+      id: "ioanna",
+      x: nx(G4_C1$1),
+      y: Y_GEN4$1,
       cfg: {
-        name: "Jean de Flandre",
-        dates: "d. 6 Sep 1523",
-        body: "Son of Lodewijk II (grandson of Johan I). Heer van Onlede en Beveren. Grand Bailiff of Bruges. Married Marguerite Boulengier.",
-        src: "FMG MedLands [879,880]",
+        name: "Ioanna\nde Flandre",
+        dates: "m. 1446",
+        body: "Daughter of Johan I. Married Jean Seigneur de Pouckes, Vicomte d'Ypres. Documented in charters of 24 January 1441 and a further document of 1446. Not to be confused with her niece Iehenne (Gen 5, daughter of Lodewijk II).",
+        src: "FMG MedLands [883–885]",
+        color: "#4ade80",
+        ev: "unknown",
+        w: NODE_W,
+        h: NODE_H_STD
+      }
+    },
+    {
+      id: "margareta",
+      x: nx(G4_C2$1),
+      y: Y_GEN4$1,
+      cfg: {
+        name: "Margareta\nde Flandre",
+        dates: "m. Louis de Bailleul",
+        body: "Daughter of Johan I — attribution structurally inferential from the 'sorores Ludovici Patris' heading on Vredius p. 278 rather than directly textual. Treated here as Strongly Corroborated pending direct consultation of Buylaert (2011).",
+        src: "Vredius MS via FMG MedLands [886]; Grimarez",
         color: C.blue,
+        ev: "unknown",
+        w: NODE_W,
+        h: NODE_H_STD
+      }
+    },
+    {
+      id: "l2",
+      x: nx(G4_C3$1),
+      y: Y_GEN4$1,
+      cfg: {
+        name: "Lodewijk II\nvan Vlaenderen",
+        dates: "d. 24 Aug / 1 Oct 1488",
+        tag: "LORD OF PRAET",
+        body: "Son of Johan I. Married Louise de Bruges, daughter of Jan van de Aa Heer van Gruuthuse. Death in 1488 confirmed by the Aalter tomb epitaph; two primary sources disagree on the day — de l'Espinoy records St. Bartholomew (24 Aug), the Aalter tomb itself records St. Bavo (1 Oct). Six documented children, named individually in the Gen 5 row below.",
+        src: "Vredius p. 277–278; FMG MedLands [876, 878]; Bethune (1900)",
+        color: "#4ade80",
         ev: "direct",
         w: NODE_W,
-        h: 60
+        h: NODE_H_HEIR
+      }
+    },
+    {
+      id: "lisbette",
+      x: nx(G4_C4$1),
+      y: Y_GEN4$1,
+      cfg: {
+        name: "Lisbette\nde Flandre",
+        dates: "m. Waleran de Landas",
+        body: "Daughter of Johan I. Married Waleran, Lord of Landas and Warlain. Named under guardianship with Lodewijk II and Landrada in the March 1442 Ghent partition following Johan I's death.",
+        src: "FMG MedLands [887]",
+        color: "#4ade80",
+        ev: "unknown",
+        w: NODE_W,
+        h: NODE_H_STD
+      }
+    },
+    {
+      id: "landrada",
+      x: nx(G4_C5),
+      y: Y_GEN4$1,
+      cfg: {
+        name: "Landrada\nde Flandre",
+        dates: "canoness, Mons Ste-Waudru",
+        body: "Daughter of Johan I. Canoness at the collegiate chapter of Saint-Waudru in Mons; never married. Line terminates by vocation.",
+        src: "FMG MedLands [888]",
+        color: "#4ade80",
+        ev: "ends",
+        w: NODE_W,
+        h: NODE_H_STD
+      }
+    },
+    // ── Gen 5 — Lodewijk II's six children ───────────────────────────────
+    {
+      id: "louise",
+      x: nx(G5_C1$1),
+      y: Y_GEN5$1,
+      cfg: {
+        name: "Louise\nde Flandre",
+        dates: "fl. 15th c.",
+        body: "Daughter of Lodewijk II by Louise de Bruges. Named in Damhouder's list of the six children (Vredius p. 278) but with no further biographical detail in the sources reviewed.",
+        src: "Damhouder via Vredius p. 278",
+        color: "#4ade80",
+        ev: "unknown",
+        w: NODE_W,
+        h: NODE_H_STD
+      }
+    },
+    {
+      id: "jaques",
+      x: nx(G5_C2$1),
+      y: Y_GEN5$1,
+      cfg: {
+        name: "Jaques\nde Flandre",
+        dates: "fl. 15th c.",
+        body: "Son of Lodewijk II by Louise de Bruges. Named in Damhouder's list of the six children (Vredius p. 278) but with no further biographical detail in the sources reviewed.",
+        src: "Damhouder via Vredius p. 278",
+        color: "#4ade80",
+        ev: "unknown",
+        w: NODE_W,
+        h: NODE_H_STD
+      }
+    },
+    {
+      id: "l3",
+      x: nx(G5_C3$1),
+      y: Y_GEN5$1,
+      cfg: {
+        name: "Lodewijk III\nvan Vlaenderen",
+        dates: "d. 1488 / 1490",
+        tag: "LORD OF PRAET",
+        body: "Son of Lodewijk II. Married Isabelle de Bourgogne (d. 12 Nov 1504, bur Gent). Two primary sources disagree by two years — Grimarez records 1 January 1488, the Aalter tomb inscription records a Monday in 1490. The discrepancy may reflect Easter-style year-change conventions.",
+        src: "Vredius p. 279; FMG MedLands [889, 890]; Bethune (1900)",
+        color: "#4ade80",
+        ev: "direct",
+        w: NODE_W,
+        h: NODE_H_HEIR
+      }
+    },
+    {
+      id: "jean",
+      x: nx(G5_C4),
+      y: Y_GEN5$1,
+      cfg: {
+        name: "Jean\nde Flandre",
+        dates: "d. 6 Sep 1523",
+        body: "Son of Lodewijk II. Heer van Onlede en Beveren bij Roeselare; Grand Bailiff of Bruges and the Brugse Vrije. Died without surviving male issue; lordships passed to brother Josse in 1523.",
+        src: "Beveren tomb via Vredius p. 280; FMG MedLands [879]",
+        color: "#4ade80",
+        ev: "ends",
+        w: NODE_W,
+        h: NODE_H_STD
       }
     },
     {
       id: "josse",
-      x: X4,
-      y: CADET_ROW_Y,
+      x: nx(G5_C5),
+      y: Y_GEN5$1,
       cfg: {
-        name: "Josse de Flandre",
+        name: "Josse\nde Flandre",
         dates: "d. after 1526",
         tag: "LINE TO 1592",
-        body: "Son of Lodewijk II (grandson of Johan I). Inherited lordships of Onlede, Bevere and Wijchuize from his brother Jean in 1523. Married Martina van Moerkerke. Multiple children; family survived to at least 1592.",
-        src: "FMG MedLands [881,882]; Buylaert",
-        color: C.blue,
+        body: "Son of Lodewijk II. Inherited Onlede, Beveren, and Wijchuize after his brother Jean's death in 1523. Married Martina van Moerkerke; his cadet branch survived to at least 1592 per Buylaert. The most significant documented cadet branch of the Praet line.",
+        src: "Damhouder via Vredius p. 278; Buylaert via FMG MedLands [881, 882]",
+        color: "#4ade80",
         ev: "direct",
         w: NODE_W,
-        h: 74
-      }
-    },
-    // ── The Gen 3 Sibling Row: Johan I's five children (Lodewijk II + four others) ──
-    {
-      id: "l2",
-      x: X3,
-      y: ROW_Y,
-      cfg: {
-        name: "Lodewijk II van Vlaenderen",
-        dates: "d. 24 Aug 1488",
-        tag: "LORD OF PRAET, WOESTINE, BEVERE",
-        body: "Son of Johan I. Married Louise de Bruges, daughter of Jan van de Aa Heer van Gruuthuse. Death confirmed by epitaph at Aeltere.",
-        src: "FMG MedLands [876,878]; Bethune (1900)",
-        color: C.praet,
-        ev: "direct",
-        w: 200,
-        h: 82
+        h: NODE_H_STD
       }
     },
     {
-      id: "jeanne",
-      x: X2,
-      y: ROW_Y,
+      id: "iehenne",
+      x: nx(G5_C6),
+      y: Y_GEN5$1,
       cfg: {
-        name: "Jeanne de Flandre",
-        dates: "d. after 1446",
-        body: "Daughter of Johan I. Married Jean Seigneur de Poucques, Vicomte d'Ypres. Documented in charter 24 Jan 1441 and document 1446.",
-        src: "FMG MedLands [883–885]",
-        color: C.blue,
-        ev: "direct",
+        name: "Iehenne\nde Flandre",
+        dates: "fl. 15th c.",
+        body: "Daughter of Lodewijk II by Louise de Bruges. Named in Damhouder's list (Vredius p. 278). Distinct from her aunt Ioanna (Johan I's daughter, m. Pouckes) — the two Jeannes are in adjacent generations and must not be conflated.",
+        src: "Damhouder via Vredius p. 278",
+        color: "#4ade80",
+        ev: "unknown",
         w: NODE_W,
-        h: 60
+        h: NODE_H_STD
       }
     },
-    {
-      id: "oth",
-      x: X4,
-      y: ROW_Y,
-      cfg: {
-        name: "Marguerite · Isabelle\nLandrade de Flandre",
-        dates: "fl. c.1440s–60s",
-        body: "Three further daughters of Johan I. Marguerite married Louis de Bailleul; Isabelle married Waleran de Landas; Landrade became Canoness at Mons Sainte-Waudru.",
-        src: "FMG MedLands [886,887,888]; Vredius (1643)",
-        color: C.blue,
-        ev: "strong",
-        w: NODE_W,
-        h: 72
-      }
-    },
-    // ── Continuation of Main Line ────────────────────────────────────────
-    {
-      id: "l3",
-      x: X3,
-      y: 650,
-      cfg: {
-        name: "Lodewijk III van Vlaenderen",
-        dates: "d. 1 Jan 1490",
-        tag: "LORD OF PRAET",
-        body: "Son of Lodewijk II. Married Isabelle de Bourgogne (d. 12 Nov 1504, bur Gent). Death 1 January 1490 confirmed by epitaph at Aeltere.",
-        src: "FMG MedLands [889,890]; Bethune (1900)",
-        color: C.praet,
-        ev: "direct",
-        w: 200,
-        h: 82
-      }
-    },
+    // ── Gen 6 — Lodewijk IV (research focus — star badge) ────────────────
     {
       id: "l4",
-      x: X3 - 6,
-      y: 770,
+      x: nx(G5_C3$1, 136),
+      y: Y_GEN6,
       cfg: {
-        name: "Lodewijk IV van Vlaenderen",
-        dates: "d. 1556",
-        tag: "KNIGHT OF THE GOLDEN FLEECE 1531",
-        body: "Grand Bailiff of Ghent and Bruges. Stadtholder Holland & Zeeland 1544–46. Advisor to Charles V. 1517 charter: holds 6 fiefs at Knesselare from the Wessegem seigneurie — direct Meetjesland territorial connection.",
-        src: "FMG MedLands [891–893]; Valkeneers & Soen (2015); Wikipedia",
-        color: C.focus,
-        ev: "focus",
+        name: "Lodewijk IV\nvan Vlaenderen",
+        dates: "d. 1556 · m. Jossine van Praet",
+        tag: "GOLDEN FLEECE 1531",
+        body: "Grand Bailiff of Ghent and Bruges. Stadtholder of Holland and Zeeland 1544–46. Advisor to Emperor Charles V. The Aalter tomb preserves his full titulature. 1517 charter: holds 6 fiefs at Knesselare from the Wessegem seigneurie — direct territorial link to the Meetjesland.",
+        src: "Vredius p. 387; FMG MedLands [891–893]; Valkeneers & Soen (2015)",
+        color: "#4ade80",
+        ev: "direct",
         focus: true,
-        w: 212,
-        h: 88
+        w: 136,
+        h: 94
       }
     },
+    // ── Gen 7 — Jan II (legitimate line ends) ────────────────────────────
     {
       id: "j2",
-      x: X3,
-      y: 900,
+      x: nx(G5_C3$1, 136),
+      y: Y_GEN7,
       cfg: {
-        name: "Jan II van Vlaenderen",
+        name: "Jan II\nvan Vlaenderen",
         dates: "d. 10 Dec 1545",
-        tag: "LEGITIMATE LINE ENDS",
-        body: "Only son of Lodewijk IV. Predeceased father without issue. Widow Jacqueline de Bourgogne remarried and died in childbirth 1556.",
-        src: "FMG MedLands [894,895]; epitaph Aeltere",
-        color: C.red,
+        body: "Only son of Lodewijk IV. Heer van Woestine, Elverdinghe, and Vlamertinghe. Predeceased his father by approximately a decade, dying without issue. Widow Jacqueline de Bourgogne remarried and died in childbirth 1556. Legitimate Praet male line extinct 1545.",
+        src: "Vredius p. 388; FMG MedLands [894, 895]",
+        color: "#4ade80",
         ev: "ends",
-        w: 200,
-        h: 76
+        w: 136,
+        h: 82
       }
     }
   ],
   connections: [
-    { from: "lm", to: "fri", color: C.praet },
-    { from: "fri", to: "j1", color: C.praet },
-    // Johan I to his five documented children
-    { from: "j1", to: "l2", color: C.praet },
-    { from: "j1", to: "jeanne", color: C.blue },
-    { from: "j1", to: "oth", color: C.blue },
-    // Lodewijk II to his children Jean and Josse (Gen 4 cadet row)
-    { from: "l2", to: "jean", color: C.blue },
-    { from: "l2", to: "josse", color: C.blue },
-    // Descent from Lodewijk II (main line)
-    { from: "l2", to: "l3", color: C.praet },
-    { from: "l3", to: "l4", color: C.praet },
-    { from: "l4", to: "j2", color: C.red }
+    { from: "lm", to: "fri", color: LINE$1 },
+    { from: "fri", to: "j1", color: LINE$1 },
+    { from: "j1", to: "ioanna", color: LINE$1 },
+    { from: "j1", to: "margareta", color: LINE$1 },
+    { from: "j1", to: "l2", color: LINE$1 },
+    { from: "j1", to: "lisbette", color: LINE$1 },
+    { from: "j1", to: "landrada", color: LINE$1 },
+    { from: "l2", to: "louise", color: LINE$1 },
+    { from: "l2", to: "jaques", color: LINE$1 },
+    { from: "l2", to: "l3", color: LINE$1 },
+    { from: "l2", to: "jean", color: LINE$1 },
+    { from: "l2", to: "josse", color: LINE$1 },
+    { from: "l2", to: "iehenne", color: LINE$1 },
+    { from: "l3", to: "l4", color: LINE$1 },
+    { from: "l4", to: "j2", color: LINE$1 }
   ],
   labels: [
-    { x: X3, y: 350, text: "CHILDREN OF JOHAN I (SIBLINGS)", color: "#f0e8d0" },
-    { x: X3, y: 490, text: "CADET BRANCHES OF LODEWIJK II", color: "#f0e8d0" }
+    { x: 560, y: 340, text: "JOHAN I'S FIVE CHILDREN", color: "#8a8f9e", size: 10 },
+    { x: 500, y: 470, text: "LODEWIJK II'S SIX CHILDREN", color: "#8a8f9e", size: 10 }
   ],
   annotations: [
-    { x: X3 + 220, y: 820, text: "← 1517: 6 fiefs at Knesselare (Meetjesland)", color: C.focus }
+    {
+      x: G5_C3$1 + 80,
+      y: Y_GEN6 + 40,
+      text: "← 1517: 6 fiefs at Knesselare (Meetjesland)",
+      color: "#d4a830"
+    }
   ],
   legendItems: [
-    { color: "#4ade80", label: "Directly attested (charter or epitaph)" },
-    { color: "#fbbf24", label: "Strongly corroborated" },
-    { color: C.blue, label: "Documented cadet branch" },
-    { color: "#f87171", label: "Legitimate line ends" }
+    { color: C.root, label: "Comital source" },
+    { color: "#4ade80", label: "Directly Attested" },
+    { color: C.blue, label: "Strongly Corroborated" },
+    { color: "#fbbf24", label: "Probable" },
+    { color: "#f87171", label: "Hypothesis" }
   ]
 };
 function PraetDiagram() {
   return /* @__PURE__ */ jsx(
     LineageDiagram,
     {
-      diagram,
-      title: "The House of Flanders-Praet — Six Generations",
+      diagram: diagram$1,
+      title: "The House of Flanders-Praet — Seven Generations",
       subtitle: "Louis Friese / Praet Line"
+    }
+  );
+}
+const LINE = "#5a6378";
+const Y_GEN1 = 40;
+const Y_GEN2 = 140;
+const Y_GEN3 = 280;
+const Y_GEN4 = 446;
+const Y_GEN5 = 620;
+const G4_C1 = 170;
+const G4_C2 = 430;
+const G4_C3 = 680;
+const G4_C4 = 940;
+const G5_C1 = 80;
+const G5_C2 = 218;
+const G5_C3 = 380;
+const diagram = {
+  viewBox: "0 0 1120 920",
+  nodes: [
+    // ── Gen 1: Louis II de Male ──────────────────────────────────────────
+    {
+      id: "lm",
+      x: 484,
+      y: Y_GEN1,
+      cfg: {
+        name: "Louis II de Male",
+        dates: "Count of Flanders · 1330–1384",
+        tag: "HOUSE OF DAMPIERRE",
+        body: "Last Count of Flanders from the House of Dampierre. Father of Jan sans terre by Ive de Luu. De l'Espinoy identifies Jan as the fifth natural son of Louis de Male.",
+        src: "Vredius, Tab. XVI; FMG MedLands [817, 836]",
+        color: C.root,
+        ev: "direct",
+        w: 152,
+        h: 76
+      }
+    },
+    // ── Gen 2: Jan sans terre ────────────────────────────────────────────
+    {
+      id: "jst",
+      x: 434,
+      y: Y_GEN2,
+      cfg: {
+        name: 'Jan "sans terre" van Vlaenderen',
+        dates: "d. 28 Sep 1396 · Nicopolis",
+        tag: "LORD OF DRINCHAM · GRANT 1383",
+        body: "Natural son of Louis de Male by Ive de Luu. On 22 November 1383 Louis de Male granted him the castle and lordship of Drincham near Cassel, confiscated from Jean de Scheurvelde. Married Guillemette de Nevele (daughter of Willem de Nevele and Guillemette de Halewijn, heiress of Lichtervelde). Killed at the Battle of Nicopolis alongside his brothers Loys le Hase and Louis le Frison. The Gaillard text quoted in Vredius names all three explicitly under the van Vlaenderen surname.",
+        src: "Vredius, Tab. XVI (fol. 281); de l'Espinoy (1631); FMG MedLands [836–840]",
+        color: "#4ade80",
+        ev: "direct",
+        w: 252,
+        h: 98
+      }
+    },
+    // ── Gen 3: Jan II of Drincham (single heir) ──────────────────────────
+    {
+      id: "j2",
+      x: 434,
+      y: Y_GEN3,
+      cfg: {
+        name: "Jan van Vlaenderen",
+        dates: "Lord of Drincham · m. Isabella de Ghistelles",
+        tag: "LORD OF DRINCHAM",
+        body: "Son of Jan sans terre. Married Isabella de Ghistelles, Dame de Vissaert. No dates recorded in Vredius. His heraldic arms — quartered with Ghistelles, bearing a canton of Flanders and Luxembourg — pass through him to his son Jacques de Drincham, where they appear on the Veurne epitaph.",
+        src: "Vredius, Tab. XVI",
+        color: "#4ade80",
+        ev: "direct",
+        w: 252,
+        h: 116
+      }
+    },
+    // ── Gen 4: Four sons ─────────────────────────────────────────────────
+    {
+      id: "j3",
+      x: G4_C1 - 72,
+      y: Y_GEN4,
+      cfg: {
+        name: "Jan\nvan Vlaenderen",
+        dates: "Lord of Drincham",
+        tag: "LORD OF DRINCHAM",
+        body: "Son of Jan II of Drincham. Married Isabella de Vernieulles. Two sons (Philippe, who died unmarried, and Jan, who was legitimated at Arras) plus three unnamed daughters — all named in Vredius.",
+        src: "Vredius, Tab. XVI",
+        color: "#4ade80",
+        ev: "direct",
+        w: 144,
+        h: 126
+      }
+    },
+    {
+      id: "jacques",
+      x: G4_C2 - 72,
+      y: Y_GEN4,
+      cfg: {
+        name: "Jacques\nde Drincham",
+        dates: "d. 10 Apr 1459 · m. Guillemette de Bambeke (d. 19 Apr 1473)",
+        tag: "BAILIFF OF VEURNE",
+        body: "Son of Jan II of Drincham. Chamberlain and Counsellor to Philip the Good, Duke of Burgundy. Bailiff of Veurne at his death 10 April 1459. The Veurne church epitaph (preserved in Gaillard, quoted in Vredius) is the most concrete physical evidence for the entire Drincham line. His heraldic arms (de Ghistelles with a canton of Flanders and Luxembourg) visually confirm the dynastic lineage. Sources do not record whether he had children.",
+        src: "Vredius, Tab. XVI (Veurne epitaph via Gaillard)",
+        color: "#4ade80",
+        ev: "unknown",
+        focus: true,
+        w: 144,
+        h: 126
+      }
+    },
+    {
+      id: "loys",
+      x: G4_C3 - 72,
+      y: Y_GEN4,
+      cfg: {
+        name: "Loys\nde Drincham",
+        dates: "fl. 15th c. · line not traced beyond Vredius",
+        body: "Son of Jan II of Drincham. Named by Vredius as a further son but with no further biographical detail recorded. Line not traced beyond this generation in the source.",
+        src: "Vredius, Tab. XVI",
+        color: "#4ade80",
+        ev: "unknown",
+        w: 144,
+        h: 126
+      }
+    },
+    {
+      id: "francq",
+      x: G4_C4 - 72,
+      y: Y_GEN4,
+      cfg: {
+        name: "Francq\nde Drincham",
+        dates: "fl. 15th c. · line not traced beyond Vredius",
+        body: "Son of Jan II of Drincham. Named by Vredius as a further son but with no further biographical detail recorded. Line not traced beyond this generation in the source.",
+        src: "Vredius, Tab. XVI",
+        color: "#4ade80",
+        ev: "unknown",
+        w: 144,
+        h: 126
+      }
+    },
+    // ── Gen 5: Jan III's children ────────────────────────────────────────
+    {
+      id: "philippe",
+      x: G5_C1 - 48,
+      y: Y_GEN5,
+      cfg: {
+        name: "Philippe\nde Flandres",
+        dates: "died unmarried",
+        body: "Son of Jan III. Died unmarried per Vredius. Line terminates.",
+        src: "Vredius, Tab. XVI",
+        color: "#4ade80",
+        ev: "ends",
+        w: 96,
+        h: 86
+      }
+    },
+    {
+      id: "jan_leg",
+      x: G5_C2 - 48,
+      y: Y_GEN5,
+      cfg: {
+        name: "Jan\nde Flandres",
+        dates: "legitimated at Arras",
+        body: "Son of Jan III × Isabella de Vernieulles. Received a letter of legitimation from the Duke of Burgundy at Arras. Last documented member of the Drincham line in Vredius. No further descendants recorded — source silent rather than source-stated-none. Last attestation c.1473 (inferred from his mother's death date).",
+        src: "Vredius, Tab. XVI",
+        color: "#4ade80",
+        ev: "unknown",
+        w: 96,
+        h: 86
+      }
+    },
+    {
+      id: "daughters",
+      x: G5_C3 - 48,
+      y: Y_GEN5,
+      cfg: {
+        name: "3 unnamed\ndaughters",
+        dates: "fl. 15th c. per Vredius",
+        body: "Three unnamed daughters of Jan III × Isabella de Vernieulles. Named as a count only — no individual biographies, no marriages recorded. Source silent on descendants.",
+        src: "Vredius, Tab. XVI",
+        color: "#4ade80",
+        ev: "unknown",
+        w: 96,
+        h: 86
+      }
+    }
+  ],
+  connections: [
+    { from: "lm", to: "jst", color: LINE },
+    { from: "jst", to: "j2", color: LINE },
+    { from: "j2", to: "j3", color: LINE },
+    { from: "j2", to: "jacques", color: LINE },
+    { from: "j2", to: "loys", color: LINE },
+    { from: "j2", to: "francq", color: LINE },
+    { from: "j3", to: "philippe", color: LINE },
+    { from: "j3", to: "jan_leg", color: LINE },
+    { from: "j3", to: "daughters", color: LINE }
+  ],
+  labels: [
+    { x: 560, y: 432, text: "JAN II OF DRINCHAM'S FOUR DOCUMENTED SONS", color: "#8a8f9e", size: 10 },
+    { x: 230, y: 606, text: "JAN III'S DOCUMENTED CHILDREN", color: "#8a8f9e", size: 10 }
+  ],
+  annotations: [
+    {
+      x: 742,
+      y: 188,
+      text: "← 22 Nov 1383: castle & lordship of Drincham, near Cassel (Scheurvelde confiscation)",
+      color: "#8a8f9e"
+    },
+    {
+      x: 560,
+      y: 790,
+      text: "After c.1473, the Drincham line is no longer documented in de Wrée. For the 15th → 16th century",
+      color: "#8a8f9e"
+    },
+    {
+      x: 560,
+      y: 810,
+      text: "evidentiary gap and the French Flanders cluster hypothesis, see the Gap Dossier.",
+      color: "#8a8f9e"
+    }
+  ],
+  legendItems: [
+    { color: C.root, label: "Comital source" },
+    { color: "#4ade80", label: "Directly Attested" },
+    { color: C.blue, label: "Strongly Corroborated" },
+    { color: "#fbbf24", label: "Probable" },
+    { color: "#f87171", label: "Hypothesis" }
+  ]
+};
+function JanDrinchamDiagram() {
+  return /* @__PURE__ */ jsx(
+    LineageDiagram,
+    {
+      diagram,
+      title: "The Drincham Line — Five Generations",
+      subtitle: 'Jan "sans terre" van Vlaenderen Page'
     }
   );
 }
@@ -8745,6 +9256,13 @@ function DrinchamDossierPage() {
           " — confirming his wife ",
           /* @__PURE__ */ jsx("strong", { children: "Guillemette de Nevele" }),
           " (daughter of Willem de Nevele, Knight, and Guillemette de Halewijn, heiress of Lichtervelde) and his death at Nicopolis."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs("div", { className: researchStyles.treeContainer, children: [
+        /* @__PURE__ */ jsx(JanDrinchamDiagram, {}),
+        /* @__PURE__ */ jsxs("div", { className: "sr-only", children: [
+          /* @__PURE__ */ jsx("h3", { children: "Drincham line lineage — text summary" }),
+          /* @__PURE__ */ jsx("p", { children: "This diagram shows five generations of the Drincham line descending from Louis II de Male, Count of Flanders (1330–1384). Generation 2: Jan sans terre van Vlaenderen (died 28 September 1396 at Nicopolis), natural son of Louis de Male by Ive de Luu; granted the castle and lordship of Drincham near Cassel on 22 November 1383; married Guillemette de Nevele. Generation 3: Jan van Vlaenderen, Lord of Drincham, married Isabella de Ghistelles Dame de Vissaert. Generation 4: four documented sons — Jan (Lord of Drincham, married Isabella de Vernieulles), Jacques de Drincham (died 10 April 1459, Bailiff of Veurne, his church epitaph preserved in Gaillard via Vredius is the line's most concrete physical evidence), Loys de Drincham, and Francq de Drincham. Generation 5: Jan III's documented children — Philippe de Flandres (died unmarried, line terminates), Jan de Flandres (legitimated at Arras, last documented member of the Drincham line in Vredius), and three unnamed daughters. After circa 1473 the Drincham line is no longer documented in Vredius. For the 15th-to-16th-century evidentiary gap and the French Flanders cluster hypothesis, see the Gap Dossier." })
         ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
