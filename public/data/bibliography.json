@@ -369,14 +369,29 @@
               "status": "consulted"
             },
             {
-              "id": "larmuseau-2013",
+              "id": "larmuseau-2013-flanders",
               "source_type": "scientific_article",
               "type": "Genetic Genealogy",
-              "author": "Larmuseau, Maarten H.D. et al.",
+              "author": "Larmuseau, M.H.D., Vanderheyden, N., Van Geystelen, A., van Oven, M., Kayser, M., & Decorte, R.",
               "year": "2013",
-              "title": "Towards a Consensus Y-Chromosomal Phylogeny and Y-Haplogroup Nomenclature through the Work of the ISOGG",
-              "publisher": "Forensic Science International: Genetics, 7(6), 650-657.",
-              "note": "A study of Y-DNA haplogroup classification with particular relevance to Belgian and Flemish populations. Larmuseau's group at KU Leuven has published extensively on Y-DNA and surname origins in the Low Countries.",
+              "title": "Increasing phylogenetic resolution still informative for Y chromosomal studies on West-European populations",
+              "publisher": "Forensic Science International: Genetics, 9, 179–185. doi:10.1016/j.fsigen.2013.04.002.",
+              "note": "The Flanders-specific study underlying the KU Leuven Y-chromosomal reference database for the Low Countries. More than 1000 Flemish Y chromosomes were genotyped at the finest resolution of the then-current AMY-tree, establishing the regional sub-haplogroup frequency profile that later studies (including Larmuseau 2014) compare against. The most directly relevant reference for situating R-U106 / R-FT1573 results from Pieter van Vlaanderen's Big Y-700 testing within the Flemish population frame. (Epub 2013-05-14; print citation 2014 but DOI and epub year are 2013.)",
+              "url": "https://doi.org/10.1016/j.fsigen.2013.04.002",
+              "urlLabel": "DOI link",
+              "status": "consulted"
+            },
+            {
+              "id": "larmuseau-2014-bourbon",
+              "source_type": "scientific_article",
+              "type": "Genetic Genealogy",
+              "author": "Larmuseau, M.H.D., Delorme, P., Germain, P., Vanderheyden, N., Gilissen, A., Van Geystelen, A., Cassiman, J.-J., & Decorte, R.",
+              "year": "2014",
+              "title": "Genetic genealogy reveals true Y haplogroup of House of Bourbon contradicting recent identification of the presumed remains of two French Kings",
+              "publisher": "European Journal of Human Genetics, 22(6), 681–687. doi:10.1038/ejhg.2013.211.",
+              "note": "The methodological touchstone for this project's Y-DNA work. Larmuseau and co-authors collected samples from three living documented Bourbon paternal descendants and demonstrated that the reconstructed 'true' Bourbon Y-chromosomal variant (R-Z381*, a subclade of R-U106) is incompatible with the published Y-STR profiles of the alleged 'Louis XVI blood' and 'Henri IV head' samples — inverting the earlier identifications of those relics. The paper is the canonical demonstration of why living-descendant Y-chromosomal data, not isolated historical samples, are the necessary anchor for any claim of identification across many generations. This is the exact logic underpinning the collaboration with Pieter van Vlaanderen: the question is not whether any single historical sample can be recovered, but whether the Y-profiles of multiple independently-documented living descendants of the project's hypothesised founders converge on a single ancestral signature.",
+              "url": "https://doi.org/10.1038/ejhg.2013.211",
+              "urlLabel": "DOI link",
               "status": "consulted"
             }
           ]
