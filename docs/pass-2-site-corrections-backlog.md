@@ -115,7 +115,13 @@ Collateral fix shipped with Correction 4: `src/pageMeta.ts` alignment with the P
 
 ## Correction 5 — PraetDiagram layout (Jean and Josse visually in wrong generation) ✅ CLOSED
 
-Closed by the Correction 5 diagram-layout patch, deployed 2026-04-20, commit `52bdb18`. Jean and Josse nodes moved from the Gen 3 sibling row to a new Gen 4 cadet row below Lodewijk II (new `CADET_ROW_Y = 510` constant); Jeanne and the Marguerite/Isabelle/Landrade card rebalanced to fill the Gen 3 row; Lodewijk III/IV/Jan II shifted down to make vertical room; viewBox height bumped 1000 → 1140; hedging notes ("diagram position shows him alongside...") removed from Jean and Josse card bodies now that the visual position is structurally correct; label reverted to clean "CHILDREN OF JOHAN I (SIBLINGS)" with new "CADET BRANCHES OF LODEWIJK II" label below. Also folded in Correction 4 for this file (Lodewijk IV d. 1555 → 1556 with Valkeneers & Soen citation).
+Closed in two stages.
+
+**First stage** (2026-04-20, commit `52bdb18`): introduced a dedicated Gen 4 cadet row beneath Lodewijk II using a new `CADET_ROW_Y = 510` constant; viewBox grown to 1000 → 1140; row labels "CHILDREN OF JOHAN I (SIBLINGS)" and "CADET BRANCHES OF LODEWIJK II"; Correction 4 folded in (Lodewijk IV d. 1555 → 1556 with Valkeneers & Soen citation). This fixed the parentage misreading within the existing 6-generation layout but used a compact "cadet row" workaround because there was only room for one mid-tier row.
+
+**Second stage** (2026-04-21, commit `27a5f70`, the Phase 1 diagrams overhaul): superseded the cadet-row approach with a full 7-generation layout where each generation has its own row. Now: Gen 4 is Johan I's five children (Ioanna, Margareta, Lodewijk II as heir, Lisbette, Landrada); Gen 5 is Lodewijk II's six children (Louise, Jaques, Lodewijk III as heir, Jean, Josse, Iehenne); Gen 6 is Lodewijk IV; Gen 7 is Jan II. Connection edges confirm Lodewijk II → Jean and Lodewijk II → Josse. Row labels are "JOHAN I'S FIVE CHILDREN" and "LODEWIJK II'S SIX CHILDREN" — both factually honest about parentage. This is a cleaner solution than the first-stage workaround and also brings the diagram into the project-wide colour-as-confidence palette with glyph-based descendant-status indicators (†, ?) and focus-star badge for research-focus nodes.
+
+Correction 4's Lodewijk IV date (1556) was momentarily regressed during the Phase 1 file replacement and caught by the build thread's pre-commit grep gating; fixed in the same patch before ship. Correction 5's `CADET_ROW_Y` constant and `viewBox 1140` tokens are gone, replaced by the `Y_GEN[1–7]` per-generation constants and `viewBox 1120 × 860`. The *intent* of Correction 5 (Jean and Josse no longer visually placed as Lodewijk II's siblings) is preserved and improved.
 
 ---
 
