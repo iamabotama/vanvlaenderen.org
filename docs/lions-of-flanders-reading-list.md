@@ -97,6 +97,23 @@ Sigillographic study of noble seal usage in the County of Flanders, 1071–1200.
 
 *These sources are identified through active research but are not yet on the website reading list. They are tracked here for acquisition and consultation.*
 
+### Meetjeslandse Toponiemen tot 1600 — Stichting Achiel De Vos series
+
+Major regional toponymic corpus comprising 20 parish monographs and 12 standalone glossaria, freely downloadable as searchable OCR PDFs from meetjeslandseplaatsnamen.org. Single most relevant published corpus for Van Vlaenderen surname research in the Meetjesland and adjacent Ambachten. Comprehensive scan of five parishes (Eeklo, Bassevelde, Assenede, Boekhoute, Oosteeklo) completed April 2026; canonical findings: `Workflow/Findings/findings-meetjesland-toponiemen-corpus-scan-2026-04-21.md`.
+
+Priority volumes for acquisition (in order):
+
+- [ ] **Waarschoot (2017)** — De Wispelaere, Andries & Devos. 337 pp. Home parish of the documented 1568–1780 line. **Highest value.**
+- [ ] **Oostwinkel-Ronsele (2006)** — Magda Devos. 142 pp. Petrus Van Vlaenderen (1634).
+- [ ] **Ursel (2008)** — Jozef Vandeveire. 344 pp. Victor van Vlaenderen's Heerlijkheid; tests landholder-derived toponyms.
+- [ ] **Vinderhoute (2001)** — Jan Luyssaert. 92 pp. Van Vlaenderensmolen + Gerardus VV (1759–1800) miller line.
+- [ ] **Zomergem (1997)** — Mattheeuws & Devos. 300 pp. Ambacht-level context.
+- [x] **Eeklo (1994)** — Van de Woestijne. 244 pp. Adjacent parish; scanned April 2026 (zero hits, see findings).
+
+Additional scanned parishes (standalone glossaria): Bassevelde, Assenede, Oosteeklo — all scanned April 2026 as part of the same corpus pass. Zero Van Vlaenderen surname hits across all five scanned parishes; one suggestive positive (Victors Bunder, Assenede 1457) flagged for RAG-RG follow-up.
+
+**Bibliography:** Nine entries added to `/research/bibliography` Section B on 2026-04-22 (series umbrella + Eeklo monograph + five priority-volume monographs + three standalone glossaria). See Build handoff `build-isabella-memo-v5-unification-2026-04-22.md`.
+
 ### Essential — Obtain and Read First
 
 **Debrabandere, Frans**

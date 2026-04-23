@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-20",
+  "lastUpdated": "2026-04-22",
   "sections": {
     "primarySources": {
       "label": "I. Primary Sources and Finding Aids",
@@ -132,7 +132,7 @@
               "year": "1641",
               "title": "Flandria Illustrata",
               "publisher": "Cologne: C. ab Egmond et socios. 3 vols.",
-              "note": "A comprehensive illustrated gazetteer of Flemish towns, abbeys, and noble houses. Useful for identifying the geographic context of the parishes in the research area and for understanding the visual culture of 17th-century Flemish heraldry.",
+              "note": "A comprehensive illustrated gazetteer of Flemish towns, abbeys, and noble houses. Useful for identifying the geographic context of the parishes in the research area and for understanding the visual culture of 17th-century Flemish heraldry. This project consulted the 1735 Hague reprint of Tomus III (Carolus & Joannes-Baptista De Vos, 677 pp.), which bundles Flandria Illustrata with the Historia Comitum Flandriae Pars Prima and Pars Secunda; the methodology trail for the Oosteeklo-passage full-text search is documented in the project's research findings (Sanderus revalidation, April 2026).",
               "url": "https://digi.ub.uni-heidelberg.de/diglit/sanderus1641",
               "urlLabel": "Free access (Heidelberg University Library)",
               "status": "consulted"
@@ -422,6 +422,109 @@
               "note": "A genealogical narrative of the Van Praet family from its origins in the 11th century through the van Vlaenderen period. Documents the 1373 sale of the Praet leengoed to Louis de Male. Authoritative for the Praet-Moerkerken line (distinct from the Van Vlaenderen-Praet line). Directly cited in the Praet dossiers.",
               "url": "https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf",
               "urlLabel": "Free download",
+              "status": "consulted"
+            },
+            {
+              "id": "stichting-achiel-de-vos-series",
+              "source_type": "tertiary_compilation",
+              "type": "Meetjesland",
+              "author": "Stichting Achiel De Vos (ed. J. Taeldeman, later M. Devos)",
+              "year": "1989–present",
+              "title": "Meetjeslandse Toponiemen tot 1600 (series)",
+              "publisher": "Aalter / Landegem: Stichting Achiel De Vos. Twenty parish monographs to date under the successive scientific editorship of Prof. Johan Taeldeman and subsequently Prof. Magda Devos (UGent).",
+              "note": "A regional toponymic corpus comprising approximately 18,000 pre-1600 place-name attestations from RAG, ARA, SAG, and local archives across the Meetjesland and adjacent Ambachten. The series is freely downloadable as searchable OCR PDFs from meetjeslandseplaatsnamen.org/digitale-bronnen. The single most relevant published corpus for cadastral and landholder-derived toponymic evidence bearing on the Van Vlaenderen surname's Meetjesland footprint.",
+              "url": "https://meetjeslandseplaatsnamen.org/digitale-bronnen",
+              "urlLabel": "Free access (Stichting Achiel De Vos)",
+              "status": "consulted"
+            },
+            {
+              "id": "van-de-woestijne-1994-eeklo",
+              "source_type": "scholarly_monograph",
+              "type": "Meetjesland",
+              "author": "Van de Woestijne, Paul (ed.); comp. Achiel De Vos & Luc Stockman",
+              "year": "1994",
+              "title": "Meetjeslandse Toponiemen tot 1600. Deel IV: De Keuren van Eeklo-Lembeke en Kaprijke. Band 1: Eeklo",
+              "publisher": "Landegem: Stichting Achiel De Vos. 244 pp.",
+              "note": "Scholarly toponymic monograph for Eeklo, the adjacent parish to Bassevelde and Boekhoute. Full corpus scan of the chronological glossarium (13th c.–1626) conducted April 2026: zero Van Vlaenderen surname attestations at landholder or notable level. Consulted as part of the five-parish scan reported in the project's research findings.",
+              "status": "consulted"
+            },
+            {
+              "id": "devos-2006-oostwinkel-ronsele",
+              "source_type": "scholarly_monograph",
+              "type": "Meetjesland",
+              "author": "Devos, Magda",
+              "year": "2006",
+              "title": "Meetjeslandse Toponiemen tot 1600. Oostwinkel en Ronsele",
+              "publisher": "Landegem: Stichting Achiel De Vos. 142 pp.",
+              "note": "Parish monograph for Oostwinkel-Ronsele by the series' chief editor. Oostwinkel is a core documented parish of the Van Vlaenderen line (Petrus Van Vlaenderen, 1634). Highest-priority acquisition target after Waarschoot.",
+              "status": "acquisition_pending"
+            },
+            {
+              "id": "vandeveire-2008-ursel",
+              "source_type": "scholarly_monograph",
+              "type": "Meetjesland",
+              "author": "Vandeveire, Jozef",
+              "year": "2008",
+              "title": "Meetjeslandse Toponiemen tot 1600. Ursel",
+              "publisher": "Landegem: Stichting Achiel De Vos. 344 pp.",
+              "note": "Parish monograph for Ursel — Victor van Vlaenderen's documented Heerlijkheid of Wessegem-Ursel. Acquisition-priority target: tests whether Victor's own name or his sons' names survive as landholder-derived parcel toponyms in the parish he actually held.",
+              "status": "acquisition_pending"
+            },
+            {
+              "id": "luyssaert-2001-vinderhoute",
+              "source_type": "scholarly_monograph",
+              "type": "Meetjesland",
+              "author": "Luyssaert, Jan",
+              "year": "2001",
+              "title": "Meetjeslandse Toponiemen tot 1600. Vinderhoute",
+              "publisher": "Landegem: Stichting Achiel De Vos. 92 pp.",
+              "note": "Parish monograph for Vinderhoute, home of the Van Vlaenderensmolen and the Gerardus Van Vlaenderen (1759–1800) miller line. Acquisition-priority target to confirm or date the mill's naming relative to the 18th-century miller.",
+              "status": "acquisition_pending"
+            },
+            {
+              "id": "dewispelaere-andries-devos-2017-waarschoot",
+              "source_type": "scholarly_monograph",
+              "type": "Meetjesland",
+              "author": "De Wispelaere, Arno; Andries, Geert; Devos, Magda",
+              "year": "2017",
+              "title": "Meetjeslandse Toponiemen tot 1600. Waarschoot",
+              "publisher": "Landegem: Stichting Achiel De Vos. 337 pp.",
+              "note": "Parish monograph for Waarschoot, home parish of the documented 1568–1780 line (Jeremiah → Noe → Livinus → Petrus Raphael). The largest volume in the series and by a wide margin the highest-value acquisition target for Van Vlaenderen surname research. Most likely of all five priority volumes to contain direct surname attestations in the toponymic record.",
+              "status": "acquisition_pending"
+            },
+            {
+              "id": "glossarium-bassevelde",
+              "source_type": "tertiary_compilation",
+              "type": "Meetjesland",
+              "author": "Stichting Achiel De Vos",
+              "year": "n.d.",
+              "title": "Bassevelde — pre-1600 toponymic glossarium",
+              "publisher": "Aalter: Stichting Achiel De Vos. Standalone chronological glossarium.",
+              "note": "Standalone pre-1600 chronological toponymic glossarium for Bassevelde (Ambacht Boekhoute), birthplace of Charles Louis Van Vlaenderen (1854) and terminal parish of the documented European line. Full scan April 2026: zero Van Vlaenderen surname attestations; no Vlaminc attestations either. Covers 1171–1630.",
+              "url": "https://meetjeslandseplaatsnamen.org/pdf/GLOSSARIA/Bassevelde_toponymie_glossarium_OCR.pdf",
+              "urlLabel": "Free access (PDF)",
+              "status": "consulted"
+            },
+            {
+              "id": "glossarium-assenede",
+              "source_type": "tertiary_compilation",
+              "type": "Meetjesland",
+              "author": "Stichting Achiel De Vos",
+              "year": "n.d.",
+              "title": "Assenede — pre-1600 toponymic glossarium",
+              "publisher": "Aalter: Stichting Achiel De Vos. Standalone chronological glossarium.",
+              "note": "Standalone pre-1600 chronological toponymic glossarium for Assenede (Ambacht Assenede), site of the 1610 Jan van Vlaenderen of Belhoute schepenbank document. Full scan April 2026 yielded one suggestive positive: a \"Victors Bunder\" parcel (\"moers gheheeten fictoors bundre\", 1457, RAG-RG) fifteen years after Victor van Vlaenderen's documented death — flagged for RAG-RG follow-up.",
+              "status": "consulted"
+            },
+            {
+              "id": "glossarium-oosteeklo",
+              "source_type": "tertiary_compilation",
+              "type": "Meetjesland",
+              "author": "Stichting Achiel De Vos",
+              "year": "n.d.",
+              "title": "Oosteeklo — pre-1600 toponymic glossarium",
+              "publisher": "Aalter: Stichting Achiel De Vos. Standalone chronological glossarium.",
+              "note": "Standalone pre-1600 chronological toponymic glossarium for Oosteeklo (Ambacht Assenede), compiled principally from the RAG-AOE (Abbey of Oosteeklo) archive. Full scan April 2026: zero Van Vlaenderen surname attestations and no parcel-name derived from any \"Isabella\" figure — independent confirmation of the Oosteeklo foundress-claim finding. Covers 1228–1628.",
               "status": "consulted"
             }
           ]

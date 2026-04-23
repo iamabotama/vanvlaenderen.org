@@ -277,6 +277,10 @@ export default function NamePage() {
           </p>
         </section>
 
+        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontStyle: 'italic', marginTop: '-0.5rem', marginBottom: '1.5rem', paddingLeft: '0.25rem' }}>
+          {t('name.notable_forthcoming')}
+        </p>
+
         <section className={styles.section}>
           <h2>{t('name.cronike_title')}</h2>
           <p>

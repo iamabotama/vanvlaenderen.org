@@ -76,6 +76,15 @@ const READING_LIST: { group: string; entries: ReadingEntry[] }[] = [
         note: 'The key article on the landscape history of the northern Flemish Meetjesland from the 12th to the 19th century — covering precisely the geographic area of our research. Documents the transition from peat extraction to the sandy-loam landscape that characterises the area in the parish-record period. In Dutch. Published in Historisch-Geografisch Tijdschrift.',
         availability: 'Not widely available outside Belgian library systems. Can be requested through interlibrary loan or directly from the authors\' institutional repositories at Ghent University.',
       },
+      {
+        author: 'Stichting Achiel De Vos (ed. J. Taeldeman; subsequently M. Devos)',
+        year: '1989–present',
+        title: 'Meetjeslandse Toponiemen tot 1600 (series)',
+        note: 'Twenty parish monographs and twelve standalone glossaria compiled under the successive scientific editorship of Profs. Johan Taeldeman and Magda Devos at UGent. Approximately 18,000 pre-1600 place-name attestations across the Meetjesland and adjacent Ambachten, drawn from RAG, ARA, SAG, and local archives. The single most relevant corpus for surname-evidence work in the project\'s home region; priority volumes for Van Vlaenderen research are Waarschoot (2017), Oostwinkel-Ronsele (2006), Ursel (2008), Vinderhoute (2001), and Zomergem (1997). Eeklo (1994) and the standalone Bassevelde / Assenede / Oosteeklo glossaria are consulted; the five priority volumes are acquisition pending.',
+        links: [
+          { label: 'Free access (Stichting Achiel De Vos)', url: 'https://meetjeslandseplaatsnamen.org/digitale-bronnen' },
+        ],
+      },
     ],
   },
   {
