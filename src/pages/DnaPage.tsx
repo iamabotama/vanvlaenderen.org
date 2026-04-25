@@ -155,9 +155,12 @@ export default function DnaPage() {
           <p style={{ fontSize: '0.85em', opacity: 0.75, marginTop: '-0.5em' }}>
             <em>
               {t('dna.testing_p_mixed_source_label')}
-              <a href="https://doi.org/10.1098/rspb.2013.2400" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
+              <button
+                onClick={() => nav('/research/bibliography#larmuseau-2013-cuckoldry')}
+                style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit', fontStyle: 'inherit', fontFamily: 'inherit' }}
+              >
                 {t('dna.testing_p_mixed_source_text')}
-              </a>
+              </button>
             </em>
           </p>
           <p>
@@ -334,9 +337,12 @@ export default function DnaPage() {
             </p>
             <p>
               {t('dna.notes_source_3_label')} {t('dna.notes_source_3_text')}{' '}
-              <a href="https://doi.org/10.1098/rspb.2013.2400" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)' }}>
-                DOI: 10.1098/rspb.2013.2400
-              </a>
+              <button
+                onClick={() => nav('/research/bibliography#larmuseau-2013-cuckoldry')}
+                style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+              >
+                {t('dna.notes_source_3_linktext')}
+              </button>
             </p>
             <p>
               {t('dna.notes_source_4_label')} {t('dna.notes_source_4_text')}{' '}

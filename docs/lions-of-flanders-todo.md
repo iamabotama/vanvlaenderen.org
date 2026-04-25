@@ -1,5 +1,5 @@
 # Lions of Flanders — Research To-Do List
-*Last updated: April 18, 2026*
+*Last updated: April 25, 2026*
 
 ---
 
@@ -95,6 +95,11 @@ The family's standing across centuries constitutes a distinct argument strand:
 - [ ] Process Goal 2 thread results (Constance's comital connection research)
 - [ ] Follow up on any documents not yet received / needing copies
 
+### Research Database — Staten van Goed Integration
+- [ ] Integrate Staten van Goed findings into the research database, covering Ambacht Assenede I & II, Boekhoute I–III, Waarschoot/Oostwinkel/Ronsele, and Heerlijkheid Praet met Oedelem.
+- [ ] For each Van Vlaenderen entry: create or link person record, cross-reference to `estate_records` with full RAG source signature (fonds, bundle, item, year), assign evidence level, and link to any related land-record or schepenbank document already in the DB.
+- [ ] Flag entries falling within or bridging the 1447–1568 gap for priority review against the Geneanet deduplication leads (Arnoldus × De Jaeghere c.1490; Catherine van Staederen disambiguation).
+
 ### Familiekunde Vlaanderen / Aalter
 - [ ] Send follow-up letter to archief@aalter.be (archivist was absent during visit)
 
@@ -137,6 +142,11 @@ The family's standing across centuries constitutes a distinct argument strand:
 **April 17–18, 2026** — Editorial calibration pass across top-level pages: Name page Four-Bucket realignment, DNA page two-hypothesis reframe with recruitment restructure (top CTA, accordion cards, "Join the Team"), Research page full i18n migration (Dutch visitors were seeing English on the three-lines thesis), Toponymic Paradox reframe, site-wide Notes and Sources additions, reliability badges on Name/DNA/Research, i18n cleanup (183 orphaned keys removed, 30 Dutch About translations added). See website todo for full detail.
 
 **April 13, 2026** — Citation corrections (Corvers author, Cronike URL) + selective scholarly tone pass from ChatGPT/Dr. Larmuseau review. Central interpretive arguments preserved. See website todo for full detail.
+
+### Research Infrastructure
+- [ ] Migrate the research database from SQLite to a hosted SQL backend (Postgres preferred). Define schema migration from the existing nine-table SQLite design (sources, persons, events, relationships, estate_records, land_records, review_queue, surname_variants, municipalities). Decide on managed hosting. The protected query frontend on vanvlaenderen.org (see `vanvlaenderen.org-todo.md` → Research database query frontend) is downstream of this migration.
+- [ ] Build read-only API layer with strict query allow-listing, per-IP rate limits, opaque pagination tokens, and attestation-level access only — to support the public query frontend without exposing the DB to bulk scraping.
+- [ ] Set up the `vanvlaenderen-tools` repository (per prior planning) to host DB migration scripts, ETL pipelines, and the API layer, separately from the website repo.
 
 ### Next session agenda
 - [ ] Verify Gemini can crawl prerendered pages with trailing slash URLs

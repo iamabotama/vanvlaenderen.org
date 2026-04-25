@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
@@ -119,6 +120,7 @@ function EntryCard({ e }: { e: BibEntry }) {
 export default function BibliographyPage() {
   const [data, setData] = useState<BibData | null>(null);
   const [error, setError] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     fetch('/data/bibliography.json')
@@ -126,6 +128,19 @@ export default function BibliographyPage() {
       .then(setData)
       .catch(() => setError(true));
   }, []);
+
+  // Scroll to hash anchor once data has loaded and entries are in the DOM.
+  // Required because react-router-dom v6 nav() does not auto-scroll to hash,
+  // and a direct page load with hash fires before async data arrives.
+  useEffect(() => {
+    if (data && location.hash) {
+      const id = location.hash.slice(1);
+      requestAnimationFrame(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  }, [data, location.hash]);
 
   return (
     <div className={styles.page}>

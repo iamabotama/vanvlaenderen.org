@@ -1,5 +1,5 @@
 # vanvlaenderen.org — Website To-Do & Changelog
-*Last updated: April 18, 2026*
+*Last updated: April 25, 2026*
 *Repository: github.com/iamabotama/vanvlaenderen.org · Branch: main*
 
 ---
@@ -35,10 +35,6 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 
 ### New Content Pages
 - [ ] `/research/methodology` — add Warlop *Flemish Nobility Before 1300* entry once acquisition confirmed (currently reading list only; no direct citation)
-- [ ] `/research/bibliography` — add WFB2 entry now that CBG access is confirmed:
-  - Author: Debrabandere, Frans
-  - Full entry via: cbgfamilienamen.nl (search Van Vlaenderen, WFB2 documentation tab) — **Note: CBG version is based on author's post-2003 manuscript with improvements; more current than the printed edition**
-  - Foreword/apparatus PDF: https://www.cbgfamilienamen.nl/nfb/aanhangsels/wfb-voorwerk.pdf
 - [ ] `/research/bibliography` — add CLM entry once obtained
 - [ ] Consider `/research/attestations` — a dedicated page mapping all known Van Vlaenderen attestations chronologically with bucket classifications and source links (longer term)
 
@@ -56,7 +52,6 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 - [ ] **DNA page** — Geneanet heat maps integration. Embed the 1600–present and 1900–present surname heat maps alongside "Where the Research Stands" to visually ground the three-cluster claim. Resolve Geneanet licensing/attribution first. Higher priority than other DNA-page visuals.
 - [ ] **Site-wide language pass** — full Dutch review by a Flemish native speaker (Connie, Pieter, or Rik). Particular attention to DNA-page technical terminology (*niet-paterniteitsgebeurtenissen*, *private varianten*, *niet-coderende regio's*, *haplogroep* usage), new About-page translations (April 18 pass), and the Research-page three-lines / Toponymic Paradox content.
 - [ ] **ResearchMap update** — add Louis de Male as progenitor point plus the three son lordships (Ursel/Wessegem for Victor, Drincham/Cassel for Jan sans terre, Praet for Louis Friese). The Drincham pin is currently missing entirely.
-- [ ] **OverviewDiagram component** — SVG still shows only two branches (Victor + Praet); third branch (Drincham) update pending. The Research-page sr-only text already notes this.
 - [ ] **Four Functions article (`/name/surname-origins`)** — optional clarity pass. Article is intellectually sound but long (540 lines) with structural redundancy: the French Flanders / Volckerinckhove cluster is discussed across four separate sections (Distribution Data observations, Testing Bastard-Line, Testing Pure Toponymy, Volckerinckhove Question). The individual-vs-distributional distinction (line 442) deserves more prominent placement. Optional tightening to reduce length by ~20% without changing substance.
 - [ ] **"Last updated" tags on dossier pages** — only the Research page currently surfaces a user-visible date (via `research.dossier_updated`). Dossier pages (Victor, Praet, Drincham) have `dateModified` in schema.org JSON-LD but nothing rendered. Add visible date strip. Design decision needed: manual i18n dates vs. git-derived.
 
@@ -81,10 +76,26 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 - [ ] **Image alt text audit** — all manuscript and heraldic images should have specific descriptive alt text (e.g. "Heraldic shields from the Cronike Van Vlaenderen, 15th century manuscript, BnF" not "heraldic image").
 - [ ] **`/research/zeeland`** — possible future page if Zeeland thread develops (Laureys Arentsz, Arent van Vlaenderen). Skeleton only until primary sources are in hand.
 - [ ] **Constance's research** — Goal 2 thread (comital connection) may generate new dossier content once Rijksarchief Gent results are processed.
+- [ ] **Research database query frontend** — once the research DB is migrated to a hosted SQL backend (see `lions-of-flanders-todo.md` → Research Infrastructure), build a protected vanvlaenderen.org query interface that exposes parameterised queries to the public while blocking bulk scraping. Requirements: per-IP rate limits, query allow-listing (no arbitrary SQL), no raw table dumps, opaque pagination tokens, attestation-level access only. Endpoint name and IA placement TBD; downstream of the DB migration.
 
 ---
 
 ## 📋 CHANGELOG
+
+### April 25, 2026 — DNA page citation cleanup: Larmuseau name removed, bibliography deep-link wired
+Following the project's authorial policy that genealogical-genetics researchers are to be referenced via citation links rather than named in article prose, the two surviving "Larmuseau et al. (2013)" mentions on the DNA page have been removed and replaced with internal links to the bibliography. The cuckoldry paper (Proc. R. Soc. B 280: 20132400, doi:10.1098/rspb.2013.2400) was previously cited inline on the DNA page but absent from the bibliography itself; it has now been added to Section D as `larmuseau-2013-cuckoldry` (status `consulted`, full DOI URL).
+
+File-level changes:
+- `public/data/bibliography.json` — new entry `larmuseau-2013-cuckoldry` in Section D (Genetic Genealogy and Y-DNA Methodology), placed alongside the existing `larmuseau-2013-flanders` entry.
+- `src/pages/BibliographyPage.tsx` — added hash-anchor scroll-into-view useEffect using `useLocation`, gated on `data` availability via `requestAnimationFrame`. Required because react-router-dom v6 `nav()` does not auto-scroll to hash, and a direct page load with hash fires before the async bibliography fetch completes. All `EntryCard` ids are now reachable via `/research/bibliography#<id>` deep-links.
+- `src/pages/DnaPage.tsx` — replaced two external DOI `<a href>` blocks (testing predictions "Source:" line and notes section [3]) with `<button onClick={() => nav('/research/bibliography#larmuseau-2013-cuckoldry')}>` styled to match existing internal-nav patterns (matches `notes_source_2` button styling).
+- `src/i18n/locales/en.json` — rewrote `dna.testing_p_mixed_source_text` and `dna.notes_source_3_text` to drop the "Larmuseau et al. (2013)," prefix; added new `dna.notes_source_3_linktext` ("Full citation in bibliography →") matching the established pattern of source 2 and source 4 linktexts.
+- `src/i18n/locales/nl.json` — Dutch parity for the same three keys (`testing_p_mixed_source_text`, `notes_source_3_text`, new `notes_source_3_linktext` rendered as "Volledige citatie in bibliografie →").
+
+The bibliography is now the single canonical surface for citation attribution. Reader experience: clicking the citation in either prose location lands on the highlighted entry in the bibliography, where the full author list, journal, DOI, and analytic note are visible in context.
+
+### April 25, 2026 — Bibliography refresh + housekeeping pass
+Added WFZ entry to bibliography Section C (`debrabandere-wfz-2009`, full PDF via naamkunde.net, status consulted). Refreshed GYSS. 1999 (`gysseling-debrabandere-1999-vier-ambachten`) note to incorporate the April 2026 search finding: zero Bucket 4 hits across V-section entries 407–408 and the broader 3,000+ mention corpus, supporting the conclusion that Van Vlaenderen is not an indigenous Zeeuws-Vlaanderen surname formation. Removed two stale backlog entries: the WFB2 "add entry" item (already shipped April 11) and the "OverviewDiagram still shows only two branches" item (Phase 1 diagrams overhaul shipped April 21, commit `27a5f70`). Added longer-term backlog item for the protected research-database query frontend, downstream of the DB SQL migration tracked in `lions-of-flanders-todo.md`. Two big structural questions (research-section IA consolidation; Louis II de Male dossier) remain tracked in `pass-2-site-corrections-backlog.md` rather than duplicated here. `bibliography.json` `lastUpdated` bumped to 2026-04-25.
 
 ### April 17–18, 2026 — Editorial calibration pass: Name/DNA/Research realignment + reliability badges + i18n cleanup
 Six-commit block addressing internal editorial contradictions across the three top-level pages, closing Dutch translation gaps, migrating hardcoded English to i18n, adding structured citations, and making evidence-level classifications visible.

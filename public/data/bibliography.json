@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-22",
+  "lastUpdated": "2026-04-25",
   "sections": {
     "primarySources": {
       "label": "I. Primary Sources and Finding Aids",
@@ -281,6 +281,19 @@
               "status": "consulted"
             },
             {
+              "id": "debrabandere-wfz-2009",
+              "source_type": "modern_prosopography",
+              "type": "Finding Aid",
+              "author": "Debrabandere, Frans",
+              "year": "2009",
+              "title": "Woordenboek van de Familienamen in Zeeland (WFZ)",
+              "publisher": "Naamkunde / Familiekunde Vlaanderen. Available as full PDF via naamkunde.net.",
+              "note": "Debrabandere's regional dictionary of family names in Zeeland. The (van) Vlaanderen entry yields a single Zeeland attestation: 1309-10 mijn here Robrecht van Vlaendren, Aardenburg (HAES. 169), identified by Debrabandere as Robert of Béthune, Count of Flanders (1305-1322), and therefore not a hereditary surname bearer. WFZ documents no hereditary van Vlaenderen surname bearers in Zeeland. This finding strengthens East Flanders as the surname's geographic core and constrains the Zeeland thread (Laureys Arentsz, Arent van Vlaenderen) to rest on other documentary sources. Searched and downloaded April 10, 2026.",
+              "url": "https://www.naamkunde.net/wp-content/uploads/2010/01/WZF-Debrabandere.pdf",
+              "urlLabel": "Full PDF",
+              "status": "consulted"
+            },
+            {
               "id": "debrabandere-1999-hulster",
               "source_type": "scholarly_article",
               "type": "Finding Aid",
@@ -299,7 +312,7 @@
               "year": "1999",
               "title": "Persoonsnamen in de Vier Ambachten, 14e en 15e eeuw",
               "publisher": "Handelingen van de Koninklijke Commissie voor Toponymie en Dialectologie (KCTD / HCTD), vol. 71 (1999), pp. 491-588.",
-              "note": "Posthumous edition, prepared by Debrabandere, of Gysseling's (1919-1997) note-card corpus of personal names attested in the Vier Ambachten (Assenede, Boekhoute, Axel, Hulst) during the 14th and 15th centuries. The corpus was compiled chronologically from schepenbank and related records; Gysseling's original 600 note cards yielded approximately 3000 attestations of around 1000 distinct individuals (983 men, 13 women). This is the single most directly project-relevant name register in print: the Vier Ambachten geography is precisely where the Meetjesland Van Vlaenderen attestations cluster, and the time window (14th-15th c.) covers the period between the Victor cohort and the first Joos van Vlaenderen records of the 1540s.",
+              "note": "Posthumous edition, prepared by Debrabandere, of Gysseling's (1919-1997) note-card corpus of personal names attested in the Vier Ambachten (Assenede, Boekhoute, Axel, Hulst) during the 14th and 15th centuries. The corpus was compiled chronologically from schepenbank and related records; Gysseling's original 600 note cards yielded approximately 3000 attestations of around 1000 distinct individuals (983 men, 13 women). This is the single most directly project-relevant name register in print: the Vier Ambachten geography is precisely where the Meetjesland Van Vlaenderen attestations cluster, and the time window (14th-15th c.) covers the period between the Victor cohort and the first Joos van Vlaenderen records of the 1540s. Searched April 2026: V-section entries 407 (Vlaminc) and 408 (Vlascopere, de) confirm no Van Vlaenderen entry at the critical alphabetical juncture, and zero Bucket 4 (hereditary surname-bearer) hits across all 3,000+ individual mentions covering Sint-Baafsabdij, Sint-Pietersabdij, Rijke Gasthuis, Nieuwenbosse, Sint-Janskerk, and Karthuizers Gent fonds for Zeeuws-Vlaanderen, c.1240-1500. Conclusion: Van Vlaenderen is not an indigenous Zeeuws-Vlaanderen surname formation; it arrives into Bassevelde/Assenede from elsewhere, most likely the Ghent hinterland, consistent with the 1568 Franciscus attestation.",
               "status": "consulted"
             },
             {
@@ -584,6 +597,19 @@
               "publisher": "Forensic Science International: Genetics, 9, 179–185. doi:10.1016/j.fsigen.2013.04.002.",
               "note": "The Flanders-specific study underlying the KU Leuven Y-chromosomal reference database for the Low Countries. More than 1000 Flemish Y chromosomes were genotyped at the finest resolution of the then-current AMY-tree, establishing the regional sub-haplogroup frequency profile that later studies (including Larmuseau 2014) compare against. The most directly relevant reference for situating R-U106 / R-FT1573 results from Pieter van Vlaanderen's Big Y-700 testing within the Flemish population frame. (Epub 2013-05-14; print citation 2014 but DOI and epub year are 2013.)",
               "url": "https://doi.org/10.1016/j.fsigen.2013.04.002",
+              "urlLabel": "DOI link",
+              "status": "consulted"
+            },
+            {
+              "id": "larmuseau-2013-cuckoldry",
+              "source_type": "scientific_article",
+              "type": "Genetic Genealogy",
+              "author": "Larmuseau, M.H.D., Vanoverbeke, J., Van Geystelen, A., Defraene, G., Vanderheyden, N., Matthys, K., Wenseleers, T., & Decorte, R.",
+              "year": "2013",
+              "title": "Low historical rates of cuckoldry in a Western European human population traced by Y-chromosome and genealogical data",
+              "publisher": "Proceedings of the Royal Society B: Biological Sciences, 280(1772), 20132400. doi:10.1098/rspb.2013.2400.",
+              "note": "The first large-scale, unbiased genetic study of historical extra-pair paternity (EPP) rates in a Western European population, combining Y-chromosomal data from contemporary Flemish men with genealogical and surname records to estimate the historical non-paternity event rate. The study finds an EPP rate of approximately one percent per generation across roughly four centuries in Flanders, substantially lower than the eight to thirty percent per generation reported in some behavioural studies. Methodologically and geographically the most directly relevant prior work for the Van Vlaenderen project: it establishes the empirical baseline against which any apparent surname-paternity discrepancy in the Flemish Y-DNA record must be assessed. The roughly 1%-per-generation NPE rate cited on the project's DNA page derives from this study.",
+              "url": "https://doi.org/10.1098/rspb.2013.2400",
               "urlLabel": "DOI link",
               "status": "consulted"
             },
