@@ -21,8 +21,9 @@ const LINE = '#5a6378';
 
 // ── Layout ─────────────────────────────────────────────────────────────────
 //   Row 1 (y = 30):   Louis II de Male, centered
-//   Row 2 (y = 195):  Victor · Jan sans terre · Louis Friese · Other Lines
-//                     (four siblings of Louis de Male — not a generation)
+//   Row 2 (y = 195):  Victor · Jan sans terre · Louis Friese · Robrecht · Others
+//                     (four surname-bearing bastard sons + one stacked card
+//                      for the remaining terminated bearer Loys "le Hase")
 //
 //   Canvas 960 × 440 at 1:1. Designed to fit the Research page content
 //   column (max-width ~820px) with minimal scaling. Below MIN_SCALE (0.65)
@@ -43,8 +44,8 @@ const diagram: DiagramDef = {
         name: 'Louis II de Male',
         dates: 'Count of Flanders · 1330–1384',
         tag: 'HOUSE OF DAMPIERRE',
-        body: 'Last Count of Flanders from the House of Dampierre. Fathered at least 13 illegitimate children. His death in 1384 marks the generation in which van Vlaenderen crystallises as a heritable surname among his bastard descendants — at the precise moment the Dampierre comital title itself was extinguished.',
-        src: 'Vredius, Tab. XVI; FMG MedLands [817]',
+        body: 'Last Count of Flanders from the House of Dampierre. De Lichtervelde (1935) documents at least eighteen of his natural children. Four of his natural sons founded surname-bearing lines; his daughters bore the name in marriage but did not transmit it forward. His death in 1384 marks the generation in which van Vlaenderen crystallises as a heritable surname — at the precise moment the Dampierre comital title itself was extinguished.',
+        src: 'Vredius, Tab. XVI; de Lichtervelde (1935) pp. 49–58; FMG MedLands [817]',
         color: C.root,
         ev: 'direct',
         w: 220,
@@ -52,7 +53,7 @@ const diagram: DiagramDef = {
       },
     },
 
-    // ── Row 2 — Three progenitor sons (featured) + stacked card ────────────
+    // ── Row 2 — Four progenitor sons (featured) + stacked card ─────────────
     {
       id: 'vic',
       x: 20,
@@ -65,13 +66,13 @@ const diagram: DiagramDef = {
         src: 'Vredius, Tab. XVI; FMG MedLands [841–855]',
         color: EVIDENCE.attested,
         ev: 'direct',
-        w: 200,
+        w: 180,
         h: 130,
       },
     },
     {
       id: 'jst',
-      x: 260,
+      x: 215,
       y: 195,
       cfg: {
         name: 'Jan "sans terre"\nvan Vlaenderen',
@@ -81,13 +82,13 @@ const diagram: DiagramDef = {
         src: 'Vredius, Tab. XVI (fol. 281); de l\'Espinoy (1631); FMG MedLands [836–840]',
         color: EVIDENCE.attested,
         ev: 'direct',
-        w: 200,
+        w: 180,
         h: 130,
       },
     },
     {
       id: 'fri',
-      x: 500,
+      x: 410,
       y: 195,
       cfg: {
         name: 'Louis "Friese"\nvan Vlaenderen',
@@ -97,32 +98,49 @@ const diagram: DiagramDef = {
         src: 'Vredius, Tab. XVI; FMG MedLands [864–869]',
         color: EVIDENCE.attested,
         ev: 'direct',
-        w: 200,
+        w: 180,
+        h: 130,
+      },
+    },
+    {
+      id: 'rob',
+      x: 605,
+      y: 195,
+      cfg: {
+        name: 'Robrecht\nvan Vlaenderen',
+        dates: 'd. 21 Jan 1434',
+        tag: 'ELVERDINGHE &\nVLAMERTINGHE',
+        body: 'Natural son of Louis de Male. Lord of Elverdinghe and Vlamertinghe just outside Ypres; Viscount of Ypres jure uxoris through his 1419 marriage to Anastasie d\'Oultre. Three documented natural sons — Jean (legitimized 1448), Caspar (active 1453–1464 as bailiff), and Karel (d. 1491) — carried the surname through the Ypres quarter until Karel\'s daughter, the last documented bearer.',
+        src: 'Vredius, Tab. XVI; Buylaert (2011) pp. 752–753; Tamboryn, Geschiedenis van Elverdinghe',
+        color: EVIDENCE.attested,
+        ev: 'direct',
+        w: 180,
         h: 130,
       },
     },
     {
       id: 'others',
-      x: 740,
+      x: 810,
       y: 195,
       cfg: {
         name: 'Other Documented\nLines',
-        dates: '3 bearers · lines terminated',
+        dates: '1 bearer · line terminated',
         tag: 'CLICK TO EXPAND',
         color: EVIDENCE.lineEnds,
         variant: 'stacked',
         expandsTo: 'terminated-lines',
-        w: 200,
+        w: 130,
         h: 130,
       },
     },
   ],
 
   connections: [
-    // Louis de Male → three progenitor sons (solid, neutral)
+    // Louis de Male → four progenitor sons (solid, neutral)
     { from: 'lm', to: 'vic', color: LINE },
     { from: 'lm', to: 'jst', color: LINE },
     { from: 'lm', to: 'fri', color: LINE },
+    { from: 'lm', to: 'rob', color: LINE },
     // Louis de Male → stacked "Other Documented Lines" card (dashed — subordinates)
     { from: 'lm', to: 'others', color: LINE, dashed: true },
   ],
@@ -131,9 +149,15 @@ const diagram: DiagramDef = {
 
   annotations: [
     {
-      x: 60,
-      y: 392,
-      text: 'Six of Louis de Male\u2019s natural sons are documented as bearing the van Vlaenderen surname. Three founded surname lines; three did not.',
+      x: 30,
+      y: 378,
+      text: "At least eighteen of Louis de Male\u2019s natural children are documented (de Lichtervelde, 1935). At least four of his natural sons",
+      color: '#d0d4dc',
+    },
+    {
+      x: 30,
+      y: 406,
+      text: "propagated van Vlaenderen as a hereditary surname; his daughters bore the name in marriage but did not transmit it forward.",
       color: '#d0d4dc',
     },
   ],
@@ -150,25 +174,13 @@ const diagram: DiagramDef = {
   expansions: [
     {
       id: 'terminated-lines',
-      heading: 'Other documented lines — three terminated bearers',
+      heading: 'Other documented lines — terminated bearer',
       entries: [
         {
           name: 'Loys "le Hase" van Vlaenderen',
           dates: 'd. 28 Sep 1396 · Nicopolis',
           body: 'One son (Renaud, 1397); no further record.',
           src: 'Vredius, Tab. XVI; de l\'Espinoy (1631)',
-        },
-        {
-          name: 'Robert van Vlaenderen',
-          dates: 'd. 21 Jan 1434',
-          body: 'Died without issue (per de Wrée).',
-          src: 'Vredius, Tab. XVI',
-        },
-        {
-          name: 'Karel van Vlaenderen',
-          dates: 'd. 15 Sep 1491',
-          body: 'One daughter; surname lost through marriage to de Crane family.',
-          src: 'Vredius, Tab. XVI; tombstone inscription',
         },
       ],
     },

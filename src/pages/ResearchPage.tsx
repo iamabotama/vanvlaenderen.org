@@ -39,9 +39,11 @@ export default function ResearchPage() {
           <div className={styles.eyebrow}>{t('research.hero_eyebrow')}</div>
           <h1>{t('research.hero_title')}</h1>
           <div className="gold-rule" />
-          <p className={styles.heroLead}>
-            {t('research.hero_lead')}
+          <p className={styles.heroLead} style={{ fontStyle: 'italic', marginBottom: '0.75em' }}>
+            {t('research.hero_subhead')}
           </p>
+          <p className={styles.heroLead} dangerouslySetInnerHTML={{ __html: t('research.hero_lead_p1') }} />
+          <p className={styles.heroLead} dangerouslySetInnerHTML={{ __html: t('research.hero_lead_p2') }} />
         </div>
       </div>
 
@@ -69,21 +71,20 @@ export default function ResearchPage() {
           }}>
             {t('research.tldr_heading')}
           </div>
-          <p style={{ margin: 0, lineHeight: 1.7, color: 'var(--text-primary)' }}>
-            {t('research.tldr_body')}
-          </p>
+          <p style={{ margin: 0, lineHeight: 1.7, color: 'var(--text-primary)' }} dangerouslySetInnerHTML={{ __html: t('research.tldr_body_p1') }} />
+          <p style={{ margin: '1em 0 0', lineHeight: 1.7, color: 'var(--text-primary)' }} dangerouslySetInnerHTML={{ __html: t('research.tldr_body_p2') }} />
         </div>
 
         {/* ── Three-Line Structure ──────────────────────────────── */}
         <section className={styles.section}>
           <h2>
-            {t('research.three_lines_heading')}
+            {t('research.four_lines_heading')}
             <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>
               {t('research.method_corroborated_label')}
             </span>
           </h2>
-          <p>{t('research.three_lines_p1')}</p>
-          <p>{t('research.three_lines_p2')}</p>
+          <p dangerouslySetInnerHTML={{ __html: t('research.four_lines_p1') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('research.four_lines_p2') }} />
 
           {/* Toponymic Paradox teaser (reframed Four Functions teaser) */}
           <div style={{
@@ -99,9 +100,7 @@ export default function ResearchPage() {
             <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', color: 'var(--gold)', marginBottom: '0.5rem' }}>
               {t('research.paradox_title')}
             </div>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '0.9rem', fontStyle: 'normal' }}>
-              {t('research.paradox_body')}
-            </p>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '0.9rem', fontStyle: 'normal' }} dangerouslySetInnerHTML={{ __html: t('research.paradox_body') }} />
             <button
               onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               style={{
@@ -181,6 +180,22 @@ export default function ResearchPage() {
             <p>{t('research.branch_drincham_desc')}</p>
             <span className={researchStyles.branchLink} aria-hidden="true">
               {t('research.branch_drincham_link')}
+            </span>
+          </div>
+
+          <div
+            className={researchStyles.branchCard}
+            role="button"
+            tabIndex={0}
+            style={{ cursor: 'pointer' }}
+            onClick={() => goToResearch('robrecht')}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('robrecht'); } }}
+            aria-label={t('research.branch_robrecht_name')}
+          >
+            <h3>{t('research.branch_robrecht_name')}</h3>
+            <p dangerouslySetInnerHTML={{ __html: t('research.branch_robrecht_desc') }} />
+            <span className={researchStyles.branchLink} aria-hidden="true">
+              {t('research.branch_robrecht_link')}
             </span>
           </div>
         </div>
@@ -376,10 +391,10 @@ export default function ResearchPage() {
           </p>
           <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.75 }}>
             <p>
-              {t('research.notes_source_1_label')} {t('research.notes_source_1_text')}
+              {t('research.notes_source_1_label')} <span dangerouslySetInnerHTML={{ __html: t('research.notes_source_1_text') }} />
             </p>
             <p>
-              {t('research.notes_source_2_label')} {t('research.notes_source_2_text')}
+              {t('research.notes_source_2_label')} <span dangerouslySetInnerHTML={{ __html: t('research.notes_source_2_text') }} />
             </p>
             <p>
               {t('research.notes_source_3_label')} {t('research.notes_source_3_text')}{' '}
@@ -405,9 +420,8 @@ export default function ResearchPage() {
         {/* ── Conclusion ──────────────────────────────────────────── */}
         <section className={styles.section}>
           <h2>{t('research.conclusion_title')}</h2>
-          <p>
-            {t('research.conclusion_p1')}
-          </p>
+          <p dangerouslySetInnerHTML={{ __html: t('research.conclusion_p1') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('research.conclusion_p2') }} />
         </section>
 
         <div className={styles.ctaBox} onClick={() => goToResearch('contact')} style={{ cursor: 'pointer' }}>

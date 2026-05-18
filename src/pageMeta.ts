@@ -100,6 +100,14 @@ export const PAGE_META: Record<string, PageMeta> = {
     ogDescription: 'The Praet bastard line: Louis Friese van Vlaenderen to Lodewijk IV, Knight of the Golden Fleece — extinct 1556.',
     ogType: 'article',
   },
+  '/research/robrecht': {
+    title: 'Robrecht van Vlaenderen — Lord of Elverdinghe and Vlamertinghe | vanvlaenderen.org',
+    description: 'The fourth surname-bearing bastard line of Louis II de Male: Robrecht van Vlaenderen, Lord of Elverdinghe and Vlamertinghe and Viscount of Ypres. Documented through three sons in the Ypres quarter, 1448–1491, to Karel\'s daughter and the de Crane marriage.',
+    canonical: 'https://vanvlaenderen.org/research/robrecht/',
+    ogTitle: 'Robrecht van Vlaenderen — Lord of Elverdinghe and Vlamertinghe',
+    ogDescription: 'The fourth surname-bearing bastard line of Louis II de Male. Three documented sons in the Ypres quarter; line ends with Karel\'s daughter, c. 1491–1505.',
+    ogType: 'article',
+  },
   '/research/victor-dossier': {
     title: 'Victor van Vlaenderen — Archival Dossier | vanvlaenderen.org',
     description: 'Primary source dossier for Victor van Vlaenderen: 1427 and 1441/42 charter evidence, FMG MedLands documentation, Hof van Wessegem heritage record, and the Alix van Boyeghem connection.',

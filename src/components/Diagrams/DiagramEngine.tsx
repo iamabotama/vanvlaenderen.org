@@ -15,6 +15,11 @@ export interface NodeConfig {
   // Optional visual variant. 'stacked' renders a stacked-paper metaphor
   // (3 offset rectangles) used for collapsed groups of related nodes.
   variant?: 'stacked';
+  // Optional tag-pill variant. 'diploma' renders the pill with dark
+  // background + bronze border, used for nodes whose surname identity
+  // rests on a state-issued legitimization diploma rather than the
+  // usual color-coded record confidence.
+  tagVariant?: 'diploma';
   // Node ids that are expanded by the expansion panel when this node is
   // clicked. Only meaningful for stacked-variant nodes; supersedes the
   // default hover tooltip behavior.
@@ -57,7 +62,7 @@ export interface DiagramDef {
   connections: ConnectionDef[];
   labels?: LabelDef[];
   annotations?: AnnotationDef[];
-  legendItems: { color: string; label: string }[];
+  legendItems: { color?: string; label: string; glyph?: string; glyphStyle?: 'plain' | 'circle' }[];
   expansions?: ExpansionPanelDef[];
 }
 
@@ -84,6 +89,7 @@ const EV: Record<string, { label: string; bg: string; c: string }> = {
   parish: { label: 'Parish Records', bg: 'rgba(96,165,250,0.18)', c: '#60a5fa' },
   ends: { label: 'Line Ends Here', bg: 'rgba(156,163,175,0.18)', c: '#9ca3af' },
   unknown: { label: 'Silent On Descendants', bg: 'rgba(156,163,175,0.18)', c: '#9ca3af' },
+  'married-out': { label: 'Female Bearer · Surname Not Transmitted', bg: 'rgba(156,163,175,0.18)', c: '#9ca3af' },
 };
 
 // ── Connection path helper ─────────────────────────────────────────────────
@@ -237,16 +243,16 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }: NodePro
               marginTop: 6,
               padding: '3px 8px',
               borderRadius: 3,
-              background: color + '44',
-              border: `0.5px solid ${color}66`,
+              background: cfg.tagVariant === 'diploma' ? '#2a2418' : color + '44',
+              border: cfg.tagVariant === 'diploma' ? '0.5px solid #c4a55a' : `0.5px solid ${color}66`,
               fontFamily: 'Cinzel, serif',
               fontSize: 11,
               fontWeight: 600,
               letterSpacing: '0.55px',
-              color: color,
+              color: cfg.tagVariant === 'diploma' ? '#c4a55a' : color,
               textAlign: 'center',
               lineHeight: '15px',
-              whiteSpace: 'nowrap',
+              whiteSpace: 'pre-line',
             }}
           >
             {cfg.tag}
@@ -255,7 +261,7 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }: NodePro
       </div>
 
       {/* Descendant-status glyph — below the card in muted grey */}
-      {(cfg.ev === 'ends' || cfg.ev === 'unknown') && (
+      {(cfg.ev === 'ends' || cfg.ev === 'unknown' || cfg.ev === 'married-out') && (
         <div
           style={{
             position: 'absolute',
@@ -277,6 +283,24 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }: NodePro
               }}
             >
               †
+            </span>
+          ) : cfg.ev === 'married-out' ? (
+            <span
+              style={{
+                display: 'inline-block',
+                width: 16,
+                height: 16,
+                lineHeight: '14px',
+                borderRadius: '50%',
+                border: '1px solid #8a8f9e',
+                color: '#8a8f9e',
+                fontFamily: 'EB Garamond, Georgia, serif',
+                fontSize: 11,
+                fontWeight: 500,
+                textAlign: 'center',
+              }}
+            >
+              ×
             </span>
           ) : (
             <span
@@ -846,15 +870,53 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
                 color: '#d0d4dc',
               }}
             >
-              <div
-                style={{
-                  width: 11,
-                  height: 11,
-                  borderRadius: 2,
-                  flexShrink: 0,
-                  background: item.color,
-                }}
-              />
+              {item.glyph ? (
+                item.glyphStyle === 'circle' ? (
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      width: 14,
+                      height: 14,
+                      lineHeight: '12px',
+                      borderRadius: '50%',
+                      border: '1px solid #8a8f9e',
+                      color: '#8a8f9e',
+                      fontFamily: 'EB Garamond, Georgia, serif',
+                      fontSize: 10,
+                      fontWeight: 500,
+                      textAlign: 'center',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {item.glyph}
+                  </span>
+                ) : (
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      width: 14,
+                      textAlign: 'center',
+                      color: '#8a8f9e',
+                      fontFamily: 'EB Garamond, Georgia, serif',
+                      fontSize: 14,
+                      lineHeight: 1,
+                      flexShrink: 0,
+                    }}
+                  >
+                    {item.glyph}
+                  </span>
+                )
+              ) : (
+                <div
+                  style={{
+                    width: 11,
+                    height: 11,
+                    borderRadius: 2,
+                    flexShrink: 0,
+                    background: item.color,
+                  }}
+                />
+              )}
               {item.label}
             </div>
           ))}

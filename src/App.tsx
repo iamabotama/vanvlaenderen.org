@@ -8,6 +8,7 @@ import DnaPage from './pages/DnaPage';
 import ResearchPage from './pages/ResearchPage';
 import VictorLineagePage from './pages/VictorLineagePage';
 import LouisFrieseLineagePage from './pages/LouisFrieseLineagePage';
+import RobrechtLineagePage from './pages/RobrechtLineagePage';
 import VictorDossierPage from './pages/VictorDossierPage';
 import PraetDossierPage from './pages/PraetDossierPage';
 import PraetLineageDossierPage from './pages/PraetLineageDossierPage';
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="/research"                      element={<ResearchPage />} />
           <Route path="/research/victor"               element={<VictorLineagePage />} />
           <Route path="/research/louis-friese"         element={<LouisFrieseLineagePage />} />
+          <Route path="/research/robrecht"              element={<RobrechtLineagePage />} />
           <Route path="/research/victor-dossier"       element={<VictorDossierPage />} />
           <Route path="/research/praet-dossier"        element={<PraetDossierPage />} />
           <Route path="/research/praet-lineage-dossier" element={<PraetLineageDossierPage />} />
