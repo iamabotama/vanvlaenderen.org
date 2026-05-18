@@ -34,7 +34,15 @@ export default function App() {
 
       {/* Nav derives its own active state from the router */}
       <Nav />
-
+{/* ────────────────────────────────────────────────────────────
+    Adding a new route? You must ALSO add it to:
+      scripts/prerender.mjs
+        1. The ROUTES array (top of file)
+        2. The routeMeta map inside writeSitemap()
+    Otherwise the page won't be in the static build and will be
+    invisible to search engines and link previews. Vite preview
+    will still serve it correctly, which is misleading.
+    ──────────────────────────────────────────────────────────── */}
       <main style={{ position: 'relative', zIndex: 1 }}>
         <Routes>
           <Route path="/"                              element={<HomePage />} />
