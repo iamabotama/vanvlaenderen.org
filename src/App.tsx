@@ -9,6 +9,9 @@ import ResearchPage from './pages/ResearchPage';
 import VictorLineagePage from './pages/VictorLineagePage';
 import LouisFrieseLineagePage from './pages/LouisFrieseLineagePage';
 import RobrechtLineagePage from './pages/RobrechtLineagePage';
+import LoysDeHazeLineagePage from './pages/LoysDeHazeLineagePage';
+import JanSansTerreLineagePage from './pages/JanSansTerreLineagePage';
+import DesparsCompendiumPage from './pages/DesparsCompendiumPage';
 import VictorDossierPage from './pages/VictorDossierPage';
 import PraetDossierPage from './pages/PraetDossierPage';
 import PraetLineageDossierPage from './pages/PraetLineageDossierPage';
@@ -53,6 +56,9 @@ export default function App() {
           <Route path="/research/victor"               element={<VictorLineagePage />} />
           <Route path="/research/louis-friese"         element={<LouisFrieseLineagePage />} />
           <Route path="/research/robrecht"              element={<RobrechtLineagePage />} />
+          <Route path="/research/loys-le-hase"         element={<LoysDeHazeLineagePage />} />
+          <Route path="/research/jan-sans-terre"       element={<JanSansTerreLineagePage />} />
+          <Route path="/research/despars-compendium"   element={<DesparsCompendiumPage />} />
           <Route path="/research/victor-dossier"       element={<VictorDossierPage />} />
           <Route path="/research/praet-dossier"        element={<PraetDossierPage />} />
           <Route path="/research/praet-lineage-dossier" element={<PraetLineageDossierPage />} />

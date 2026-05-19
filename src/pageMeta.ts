@@ -78,10 +78,10 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   '/research': {
     title: 'Research Overview — Van Vlaenderen Archival Dossiers | vanvlaenderen.org',
-    description: 'Overview of Van Vlaenderen archival research: the Victor line (Lord of Wessegem) and the Louis Friese / Praet line, both descending from Louis II de Male, Count of Flanders.',
+    description: 'Overview of Van Vlaenderen archival research: five direct-bastard lines of Louis II de Male (Loys "le Hase", Victor, Louis Friese, Jan sans terre, Robrecht) and their documented descendants. The earliest hereditary use of van Vlaenderen as a surname, traced from at least 1275.',
     canonical: 'https://vanvlaenderen.org/research/',
     ogTitle: 'Research Overview — Van Vlaenderen Archival Dossiers',
-    ogDescription: 'Two surname-bearing bastard lines of Louis II de Male: Victor van Vlaenderen and Louis Friese van Vlaenderen.',
+    ogDescription: 'Five surname-bearing bastard lines of Louis II de Male: Loys "le Hase", Victor, Louis Friese, Jan sans terre, and Robrecht.',
     ogType: 'article',
   },
   '/research/victor': {
@@ -106,6 +106,30 @@ export const PAGE_META: Record<string, PageMeta> = {
     canonical: 'https://vanvlaenderen.org/research/robrecht/',
     ogTitle: 'Robrecht van Vlaenderen — Lord of Elverdinghe and Vlamertinghe',
     ogDescription: 'The fourth surname-bearing bastard line of Louis II de Male. Three documented sons in the Ypres quarter; line ends with Karel\'s daughter, c. 1491–1505.',
+    ogType: 'article',
+  },
+  '/research/loys-le-hase': {
+    title: 'Loys "le Hase" van Vlaenderen — Lord of Wessegem and Elverdinghe-Vlamertinghe | vanvlaenderen.org',
+    description: 'The senior direct-bastard line of Louis II de Male: Loys "le Hase" van Vlaenderen (Lodewijk de Haze), Lord of Wessegem and Elverdinghe-Vlamertinghe by grant of 1372. Six dated chronicle attestations in Despars (1380–1396). Killed at Nicopolis 25 September 1396 alongside half-brothers Louis Friese and Jan sans terre. Four documented natural children.',
+    canonical: 'https://vanvlaenderen.org/research/loys-le-hase/',
+    ogTitle: 'Loys "le Hase" van Vlaenderen — Lord of Wessegem',
+    ogDescription: 'The earliest-endowed direct bastard of Louis II de Male. Killed at Nicopolis 1396. Four documented natural children; line ends in the second generation.',
+    ogType: 'article',
+  },
+  '/research/jan-sans-terre': {
+    title: 'Jan "sans terre" van Vlaenderen — The Drincham Line | vanvlaenderen.org',
+    description: 'Jan "sans terre" van Vlaenderen, natural son of Louis II de Male, granted Drincham castle near Cassel in 1383. Killed at Nicopolis 25 September 1396. The Drincham line continues through widow Wilhelmine de Nevele and at least one documented son active 1419 — anchoring the French Flanders / Cassel surname cluster.',
+    canonical: 'https://vanvlaenderen.org/research/jan-sans-terre/',
+    ogTitle: 'Jan "sans terre" van Vlaenderen — The Drincham Line',
+    ogDescription: 'Granted Drincham 1383; killed at Nicopolis 1396. Line continues through widow Wilhelmine de Nevele and a documented son active 1419.',
+    ogType: 'article',
+  },
+  '/research/despars-compendium': {
+    title: 'Despars Cronijcke — Cross-Reference Compendium | vanvlaenderen.org',
+    description: 'A systematic cross-reference of the four-volume Cronijcke van den Lande ende Graefscepe van Vlaenderen by Nicolaes Despars (compiled c. 1562–1592; published 1840 De Jonghe edition). Master enumerations, dated narrative attestations, and cross-source bridges to Vredius\'s Genealogia Comitum Flandriae and Lichtervelde 1935. Published as a downloadable PDF and rendered HTML.',
+    canonical: 'https://vanvlaenderen.org/research/despars-compendium/',
+    ogTitle: 'Despars Cronijcke — Cross-Reference Compendium',
+    ogDescription: 'Systematic compendium of the Despars Cronijcke (1840 De Jonghe edition) — master enumerations, dated attestations, and cross-source bridges.',
     ogType: 'article',
   },
   '/research/victor-dossier': {

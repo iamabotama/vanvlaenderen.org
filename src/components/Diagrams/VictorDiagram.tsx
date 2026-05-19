@@ -3,21 +3,23 @@ import LineageDiagram, { C, type DiagramDef } from './DiagramEngine';
 // ─────────────────────────────────────────────────────────────────────────────
 // Victor van Vlaenderen — Documented Line
 //
-// Four generations, medieval scope only. Adam's last attestation (1447) ends
-// the diagram. Gap to Joos 1547 removed — we don't know the line is connected,
-// and rendering it as "Adam → Gap → Joos" implied a continuity we cannot
-// defend. The gap argument lives in the Gap Dossier (separate diagram/page).
+// Four generations of direct natural descent, medieval scope only. Adam's
+// last attestation (1447) ends the direct documentary line. Phase 2 adds
+// Isabelle van Vlaenderen as a fourth gen-3 sibling on the matrilineal
+// side — the chronicle-attested bridge to Nicolaes Despars's wife Anne
+// Avesoete (m. 1549). The full six-generation matrilineal chain lives in
+// the Despars Compendium; Isabelle anchors the bridge on this diagram.
 //
 // Locked visual rules: see PraetDiagram.tsx header for full rationale.
 //   Color = record confidence.
-//   Glyph below card = descendant status (†, ?, or none).
+//   Glyph below card = descendant status (†, ?, ×).
 //   Star badge = research focus (on Adam).
 // ─────────────────────────────────────────────────────────────────────────────
 
 const LINE = '#5a6378';
 
 const diagram: DiagramDef = {
-  viewBox: '0 0 920 640',
+  viewBox: '0 0 1100 660',
 
   nodes: [
     // ── Gen 1: Louis II de Male ──────────────────────────────────────────
@@ -44,10 +46,10 @@ const diagram: DiagramDef = {
       y: 140,
       cfg: {
         name: 'Victor van Vlaenderen',
-        dates: 'd. before 10 Mar 1442',
+        dates: 'd. 1431, Saint-Omer',
         tag: "SEIGNEUR D'URSELE ET WESSEGHEM",
-        body: "Natural son of Louis de Male. Burgundian admiral; captain of Biervliet. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420. Three natural sons documented across three primary charters (1427, 1441, 1446) by two mistresses: Lodewyc and Janne by Alix van Boyeghem; Adam by Gertrud Lindekens.",
-        src: 'FMG MedLands [841–845]; Vredius (1643) pp.285–287',
+        body: "Natural son of Louis de Male. Burgundian admiral; captain of Biervliet. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420. Three natural sons documented across three primary charters (1427, 1441, 1446) by two mistresses: Lodewyc and Janne by Alix van Boyeghem; Adam by Gertrud Lindekens. Nicolaes Despars's Cronijcke (Vol. III pp. 114–115) names a fourth child, Isabelle, the matrilineal ancestress of the chronicler's wife — see her node and the Despars Compendium for the descent chain.",
+        src: 'FMG MedLands [841–845]; Vredius (1643) pp.285–287; Despars Cronijcke Vol. III pp. 114–115',
         color: '#4ade80',
         ev: 'direct',
         w: 252,
@@ -55,7 +57,7 @@ const diagram: DiagramDef = {
       },
     },
 
-    // ── Gen 3: Three sons of Victor ──────────────────────────────────────
+    // ── Gen 3: Three documented natural sons + Isabelle (matrilineal) ────
     {
       id: 'lod',
       x: 86,
@@ -105,8 +107,25 @@ const diagram: DiagramDef = {
         h: 112,
       },
     },
+    {
+      // Phase 2 NEW: matrilineal bridge to Despars (chronicle attestation only)
+      id: 'isabelle',
+      x: 870,
+      y: 288,
+      cfg: {
+        name: 'Isabelle\nvan Vlaenderen',
+        dates: 'fl. 15th c. · m. Symoen de Wijndt',
+        tag: 'DESPARS CHRONICLE',
+        body: "Daughter of Victor named in Nicolaes Despars's Cronijcke Vol. III pp. 114–115. Despars (chronicler, c. 1562–1592) traces a six-generation matrilineal descent from Isabelle to his own wife Anne Avesoete (m. 1549). Not named in Vredius or in the charter cohort of 1427/1441/1446 — sourced only through Despars's family-anchored chronicle account. Probable tier pending direct read of Vol. III pp. 114–115 in the 1840 De Jonghe edition.",
+        src: 'Despars, Cronijcke van den Lande ende Graefscepe van Vlaenderen, Vol. III pp. 114–115 (De Jonghe ed., 1840)',
+        color: '#fbbf24',
+        ev: 'direct',
+        w: 200,
+        h: 112,
+      },
+    },
 
-    // ── Gen 4: Lodewyc's two documented children ─────────────────────────
+    // ── Gen 4 — Lodewyc's two documented children ────────────────────────
     {
       id: 'josse_l',
       x: 50,
@@ -114,7 +133,7 @@ const diagram: DiagramDef = {
       cfg: {
         name: 'Josse\nvan Vlaenderen',
         dates: 'died young, bur Oostborch',
-        body: "Son of Lodewyc. Died young and is buried at Oostborch near his mother Jacqueline de Wilde. Line terminates. Cannot be the 1547 Brugse Vrije testator. His existence confirms the name Josse/Joos was in active use in Victor's direct line in the mid-to-late 15th century.",
+        body: "Son of Lodewyc. Died young and is buried at Oostborch near his mother Jacqueline de Wilde. Line terminates.",
         src: 'FMG MedLands [849]; Bethune (1900) p.356',
         color: '#4ade80',
         ev: 'ends',
@@ -129,10 +148,10 @@ const diagram: DiagramDef = {
       cfg: {
         name: 'Margareta\nvan Vlaenderen',
         dates: 'fl. 1478–1486',
-        body: "Daughter of Lodewyc. Married firstly Lodewijk van Baenst Heer van Santvelde; secondly Adriaan van Schouteten Heer van Erpe. Documented in charters of 1478 and 1486. Sources do not record whether she had children by either marriage.",
+        body: "Daughter of Lodewyc. Married firstly Lodewijk van Baenst Heer van Santvelde; secondly Adriaan van Schouteten Heer van Erpe.",
         src: 'FMG MedLands [850]; Vredius (1643) p.287',
         color: '#4ade80',
-        ev: 'unknown',
+        ev: 'married-out',
         w: 120,
         h: 86,
       },
@@ -140,12 +159,13 @@ const diagram: DiagramDef = {
   ],
 
   connections: [
-    { from: 'lm', to: 'vic', color: LINE },
-    { from: 'vic', to: 'lod', color: LINE },
-    { from: 'vic', to: 'jan_s', color: LINE },
-    { from: 'vic', to: 'adam', color: LINE },
+    { from: 'lm', to: 'vic',      color: LINE },
+    { from: 'vic', to: 'lod',     color: LINE },
+    { from: 'vic', to: 'jan_s',   color: LINE },
+    { from: 'vic', to: 'adam',    color: LINE },
+    { from: 'vic', to: 'isabelle', color: LINE },
     { from: 'lod', to: 'josse_l', color: LINE },
-    { from: 'lod', to: 'marg', color: LINE },
+    { from: 'lod', to: 'marg',    color: LINE },
   ],
 
   labels: [
@@ -153,10 +173,29 @@ const diagram: DiagramDef = {
   ],
 
   annotations: [
+    // NEW Phase 2: Wessegem regrant context — wrapped, right of Victor's node
     {
-      x: 180,
-      y: 610,
-      text: "After 1486, Victor's line is no longer documented. For the 15th → 16th century evidentiary gap, see the Gap Dossier.",
+      x: 600,
+      y: 188,
+      maxWidth: 480,
+      text: 'Wessegem & Ursel acquired 11 April 1398 by ducal regrant from half-brother Loys "le Hase" (d. Nicopolis 1396) — ADN B 1604 fol. 184. Not a direct paternal grant from Louis de Male.',
+      color: '#d4a830',
+    },
+    // NEW Phase 2: Despars descent bridge — wrapped, below Isabelle
+    {
+      x: 870,
+      y: 425,
+      maxWidth: 210,
+      text: "Despars's wife Anne Avesoete (m. 1549) descends through six generations from Isabelle. Full chain in the Despars Compendium.",
+      color: '#8a8f9e',
+    },
+    // Existing bottom annotation — wrapped + centred
+    {
+      x: 550,
+      y: 620,
+      align: 'center',
+      maxWidth: 800,
+      text: "After 1486, Victor's documented line is no longer attested in surviving primary sources. For the 15th → 16th century evidentiary gap and the candidate bridges to the modern Meetjesland cluster, see the Gap Dossier.",
       color: '#8a8f9e',
     },
   ],
@@ -164,9 +203,12 @@ const diagram: DiagramDef = {
   legendItems: [
     { color: C.root,    label: 'Comital source' },
     { color: '#4ade80', label: 'Directly Attested' },
-    { color: C.blue,    label: 'Strongly Corroborated' },
+    { color: '#60a5fa', label: 'Strongly Corroborated' },
     { color: '#fbbf24', label: 'Probable' },
     { color: '#f87171', label: 'Hypothesis' },
+    { glyph: '†',                       label: 'No issue documented',          forceBreakBefore: true },
+    { glyph: '?', glyphStyle: 'circle', label: 'Source silent on descendants' },
+    { glyph: '×', glyphStyle: 'circle', label: 'Surname not transmitted' },
   ],
 };
 

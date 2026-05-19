@@ -14,14 +14,18 @@ import LineageDiagram, { C, type DiagramDef } from './DiagramEngine';
 //   • Line status is conveyed by glyph below the card:
 //       †    confirmed terminal (source states no issue)
 //       ?    source silent on descendants
-//       none person has descendants in the diagram, or descendants documented
-//     Glyphs are implemented engine-side via the ev prop:
-//       ev: 'ends'     → †   (grey tooltip badge post-patch)
-//       ev: 'unknown'  → ?
-//   • Research focus is signalled by a gold ★ badge top-right of the card,
-//     NOT a color. Used for nodes of outsized research value. Engine-side
-//     via `focus: true` — see DiagramEngine patch for the star render.
+//       ×    surname not transmitted (line may continue under another surname)
+//   • Research focus is signalled by a gold ★ badge top-right of the card.
 //   • No stacking in this diagram. Horizontal row for every sibling group.
+//
+// Phase 2 changes (May 2026):
+//   • Le Frison Nicopolis date 28 Sep → 25 Sep 1396.
+//   • Marie van Ghistelle absorbed into Le Frison's body copy (no separate
+//     node). Widow-continuation rendered as wrapped annotation right of card.
+//   • Daughters who married out (Ioanna, Margareta, Lisbette) reclassified
+//     from ev:'unknown' (?) → ev:'married-out' (×).
+//   • Node heights bumped to fix text overflow; viewBox height extended.
+//   • Legend split into two rows: confidence keys + glyph keys.
 //
 // Source of record:
 //   Vredius (Olivier de Wree), Genealogia Comitum Flandriae, Tabula XVI &
@@ -30,38 +34,42 @@ import LineageDiagram, { C, type DiagramDef } from './DiagramEngine';
 
 const LINE = '#5a6378';
 
-// Row y-coordinates (one per generation)
+// Row y-coordinates (one per generation) — Phase 2 expanded for breathing room.
+// Iteration 2: Louis II h bumped 76→92 (dates were wrapping under tag pill);
+// gens 2–7 shifted down to maintain ≥32px gaps for bezier curve clearance;
+// Lodewijk IV h bumped 108→120 to clear GOLDEN FLEECE 1531 tag; viewBox h
+// bumped 960→1000 so Jan II's † glyph isn't pressed against the legend.
 const Y_GEN1 = 30;
-const Y_GEN2 = 130;
-const Y_GEN3 = 230;
-const Y_GEN4 = 348;
-const Y_GEN5 = 478;
-const Y_GEN6 = 628;
-const Y_GEN7 = 760;
+const Y_GEN2 = 156;
+const Y_GEN3 = 304;
+const Y_GEN4 = 430;
+const Y_GEN5 = 566;
+const Y_GEN6 = 702;
+const Y_GEN7 = 856;
 
 // Gen 4 column centres (5 children of Johan I)
-const G4_C1 = 170;   // Ioanna
-const G4_C2 = 330;   // Margareta — inferential, blue stroke
-const G4_C3 = 500;   // Lodewijk II — heir
-const G4_C4 = 720;   // Lisbette
-const G4_C5 = 880;   // Landrada — canoness, †
+const G4_C1 = 170;
+const G4_C2 = 330;
+const G4_C3 = 500;
+const G4_C4 = 720;
+const G4_C5 = 880;
 
 // Gen 5 column centres (6 children of Lodewijk II)
-const G5_C1 = 120;   // Louise
-const G5_C2 = 280;   // Jaques
-const G5_C3 = 440;   // Lodewijk III — heir
-const G5_C4 = 600;   // Jean — †
-const G5_C5 = 760;   // Josse — line survives
-const G5_C6 = 920;   // Iehenne
+const G5_C1 = 120;
+const G5_C2 = 280;
+const G5_C3 = 440;
+const G5_C4 = 600;
+const G5_C5 = 760;
+const G5_C6 = 920;
 
 const NODE_W = 120;
-const NODE_H_STD = 76;
-const NODE_H_HEIR = 86;
+const NODE_H_STD = 90;
+const NODE_H_HEIR = 102;
 
 const nx = (cx: number, w: number = NODE_W) => cx - w / 2;
 
 const diagram: DiagramDef = {
-  viewBox: '0 0 1120 860',
+  viewBox: '0 0 1120 1000',
 
   nodes: [
     // ── Gen 1 ────────────────────────────────────────────────────────────
@@ -78,7 +86,7 @@ const diagram: DiagramDef = {
         color: C.root,
         ev: 'direct',
         w: 152,
-        h: 76,
+        h: 92,
       },
     },
 
@@ -89,14 +97,14 @@ const diagram: DiagramDef = {
       y: Y_GEN2,
       cfg: {
         name: 'Louis Friese van Vlaenderen',
-        dates: 'c.1350 – 28 Sep 1396 · Nicopolis',
+        dates: 'c.1350 – 25 Sep 1396 · Nicopolis',
         tag: 'LORD OF PRAET & WOESTINE',
-        body: "Natural son of Louis de Male by a daughter of Monsieur de Borre. Granted Praet c.1373. Twice married: first wife (unnamed, connected with La Woestine), then Marie van Gistel. Killed at Nicopolis alongside his brothers Louis le Haeze and Jean sans terre.",
-        src: 'Vredius, Tab. XVI; FMG MedLands [864–869]; Espinoy (1631)',
+        body: "Natural son of Louis de Male by a daughter of Monsieur de Borre. Granted Praet c.1373. Twice married: first wife (unnamed, connected with La Woestine), then Marie van Ghistelle, Dame de Roosbeke et Sweveghem. Killed at Nicopolis 25 September 1396 alongside half-brothers Loys 'le Hase' and Jan sans terre.",
+        src: 'Vredius, Tab. XVI; FMG MedLands [864–869]; Espinoy (1631); Gailliard, Bruges et le Franc T. I p. 257',
         color: '#4ade80',
         ev: 'direct',
         w: 192,
-        h: 84,
+        h: 116,
       },
     },
 
@@ -109,12 +117,12 @@ const diagram: DiagramDef = {
         name: 'Johan I van Vlaenderen',
         dates: 'd. after 10 Sep 1439',
         tag: 'LORD OF PRAET',
-        body: "Son of Louis Friese. Issued own charter as Lord of Praet 10 Sep 1439. Married Johanna van Reygersvliet. Five documented children, named individually in the Gen 4 row below.",
-        src: 'FMG MedLands [872, 873, 875]',
+        body: "Son of Louis Friese and Marie van Ghistelle. Échevin du Franc 1393; knighted at Brouwershaven January 1426. Issued own charter as Lord of Praet 10 Sep 1439. Married Johanna van Reygersvliet. Five documented children named individually in the Gen 4 row below.",
+        src: 'FMG MedLands [872, 873, 875]; Gailliard T. I p. 257',
         color: '#4ade80',
         ev: 'direct',
         w: 172,
-        h: 76,
+        h: 92,
       },
     },
 
@@ -129,7 +137,7 @@ const diagram: DiagramDef = {
         body: "Daughter of Johan I. Married Jean Seigneur de Pouckes, Vicomte d'Ypres. Documented in charters of 24 January 1441 and a further document of 1446. Not to be confused with her niece Iehenne (Gen 5, daughter of Lodewijk II).",
         src: 'FMG MedLands [883–885]',
         color: '#4ade80',
-        ev: 'unknown',
+        ev: 'married-out',
         w: NODE_W,
         h: NODE_H_STD,
       },
@@ -144,7 +152,7 @@ const diagram: DiagramDef = {
         body: "Daughter of Johan I — attribution structurally inferential from the 'sorores Ludovici Patris' heading on Vredius p. 278 rather than directly textual. Treated here as Strongly Corroborated pending direct consultation of Buylaert (2011).",
         src: 'Vredius MS via FMG MedLands [886]; Grimarez',
         color: C.blue,
-        ev: 'unknown',
+        ev: 'married-out',
         w: NODE_W,
         h: NODE_H_STD,
       },
@@ -175,7 +183,7 @@ const diagram: DiagramDef = {
         body: "Daughter of Johan I. Married Waleran, Lord of Landas and Warlain. Named under guardianship with Lodewijk II and Landrada in the March 1442 Ghent partition following Johan I's death.",
         src: 'FMG MedLands [887]',
         color: '#4ade80',
-        ev: 'unknown',
+        ev: 'married-out',
         w: NODE_W,
         h: NODE_H_STD,
       },
@@ -204,7 +212,7 @@ const diagram: DiagramDef = {
       cfg: {
         name: 'Louise\nde Flandre',
         dates: 'fl. 15th c.',
-        body: "Daughter of Lodewijk II by Louise de Bruges. Named in Damhouder's list of the six children (Vredius p. 278) but with no further biographical detail in the sources reviewed.",
+        body: "Daughter of Lodewijk II by Louise de Bruges. Named in Damhouder's list of the six children (Vredius p. 278) but with no further biographical detail.",
         src: 'Damhouder via Vredius p. 278',
         color: '#4ade80',
         ev: 'unknown',
@@ -219,7 +227,7 @@ const diagram: DiagramDef = {
       cfg: {
         name: 'Jaques\nde Flandre',
         dates: 'fl. 15th c.',
-        body: "Son of Lodewijk II by Louise de Bruges. Named in Damhouder's list of the six children (Vredius p. 278) but with no further biographical detail in the sources reviewed.",
+        body: "Son of Lodewijk II by Louise de Bruges. Named in Damhouder's list of the six children (Vredius p. 278) but with no further biographical detail.",
         src: 'Damhouder via Vredius p. 278',
         color: '#4ade80',
         ev: 'unknown',
@@ -266,7 +274,7 @@ const diagram: DiagramDef = {
         name: 'Josse\nde Flandre',
         dates: 'd. after 1526',
         tag: 'LINE TO 1592',
-        body: "Son of Lodewijk II. Inherited Onlede, Beveren, and Wijchuize after his brother Jean's death in 1523. Married Martina van Moerkerke; his cadet branch survived to at least 1592 per Buylaert. The most significant documented cadet branch of the Praet line.",
+        body: "Son of Lodewijk II. Inherited Onlede, Beveren, and Wijchuize after his brother Jean's death in 1523. Married Martina van Moerkerke; his cadet branch survived to at least 1592 per Buylaert.",
         src: 'Damhouder via Vredius p. 278; Buylaert via FMG MedLands [881, 882]',
         color: '#4ade80',
         ev: 'direct',
@@ -305,7 +313,7 @@ const diagram: DiagramDef = {
         ev: 'direct',
         focus: true,
         w: 136,
-        h: 94,
+        h: 120,
       },
     },
 
@@ -317,40 +325,48 @@ const diagram: DiagramDef = {
       cfg: {
         name: 'Jan II\nvan Vlaenderen',
         dates: 'd. 10 Dec 1545',
-        body: "Only son of Lodewijk IV. Heer van Woestine, Elverdinghe, and Vlamertinghe. Predeceased his father by approximately a decade, dying without issue. Widow Jacqueline de Bourgogne remarried and died in childbirth 1556. Legitimate Praet male line extinct 1545.",
+        body: "Only son of Lodewijk IV. Heer van Woestine, Elverdinghe, and Vlamertinghe. Predeceased his father, dying without issue. Widow Jacqueline de Bourgogne remarried and died in childbirth 1556. Legitimate Praet male line extinct 1545.",
         src: 'Vredius p. 388; FMG MedLands [894, 895]',
         color: '#4ade80',
         ev: 'ends',
         w: 136,
-        h: 82,
+        h: 96,
       },
     },
   ],
 
   connections: [
-    { from: 'lm', to: 'fri', color: LINE },
-    { from: 'fri', to: 'j1', color: LINE },
-    { from: 'j1', to: 'ioanna', color: LINE },
+    { from: 'lm', to: 'fri',       color: LINE },
+    { from: 'fri', to: 'j1',       color: LINE },
+    { from: 'j1', to: 'ioanna',    color: LINE },
     { from: 'j1', to: 'margareta', color: LINE },
-    { from: 'j1', to: 'l2', color: LINE },
-    { from: 'j1', to: 'lisbette', color: LINE },
-    { from: 'j1', to: 'landrada', color: LINE },
-    { from: 'l2', to: 'louise', color: LINE },
-    { from: 'l2', to: 'jaques', color: LINE },
-    { from: 'l2', to: 'l3', color: LINE },
-    { from: 'l2', to: 'jean', color: LINE },
-    { from: 'l2', to: 'josse', color: LINE },
-    { from: 'l2', to: 'iehenne', color: LINE },
-    { from: 'l3', to: 'l4', color: LINE },
-    { from: 'l4', to: 'j2', color: LINE },
+    { from: 'j1', to: 'l2',        color: LINE },
+    { from: 'j1', to: 'lisbette',  color: LINE },
+    { from: 'j1', to: 'landrada',  color: LINE },
+    { from: 'l2', to: 'louise',    color: LINE },
+    { from: 'l2', to: 'jaques',    color: LINE },
+    { from: 'l2', to: 'l3',        color: LINE },
+    { from: 'l2', to: 'jean',      color: LINE },
+    { from: 'l2', to: 'josse',     color: LINE },
+    { from: 'l2', to: 'iehenne',   color: LINE },
+    { from: 'l3', to: 'l4',        color: LINE },
+    { from: 'l4', to: 'j2',        color: LINE },
   ],
 
   labels: [
-    { x: 560, y: 340, text: "JOHAN I'S FIVE CHILDREN", color: '#8a8f9e', size: 10 },
-    { x: 500, y: 470, text: "LODEWIJK II'S SIX CHILDREN", color: '#8a8f9e', size: 10 },
+    { x: 560, y: 413, text: "JOHAN I'S FIVE CHILDREN",   color: '#8a8f9e', size: 10 },
+    { x: 500, y: 549, text: "LODEWIJK II'S SIX CHILDREN", color: '#8a8f9e', size: 10 },
   ],
 
   annotations: [
+    // NEW Phase 2: widow-continuation annotation right of Le Frison, wrapped
+    {
+      x: 670,
+      y: 214,
+      maxWidth: 430,
+      text: "← Line continues through widow Marie van Ghistelle (Dame de Roosbeke et Sweveghem) and son Johan I — échevin du Franc 1393, knighted at Brouwershaven 1426.",
+      color: '#d4a830',
+    },
     {
       x: G5_C3 + 80,
       y: Y_GEN6 + 40,
@@ -365,6 +381,9 @@ const diagram: DiagramDef = {
     { color: C.blue,    label: 'Strongly Corroborated' },
     { color: '#fbbf24', label: 'Probable' },
     { color: '#f87171', label: 'Hypothesis' },
+    { glyph: '†',                       label: 'No issue documented',          forceBreakBefore: true },
+    { glyph: '?', glyphStyle: 'circle', label: 'Source silent on descendants' },
+    { glyph: '×', glyphStyle: 'circle', label: 'Surname not transmitted' },
   ],
 };
 

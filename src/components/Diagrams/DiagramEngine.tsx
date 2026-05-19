@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef, useMemo } from 'react';
+import { useState, useCallback, useEffect, useRef, useMemo, Fragment } from 'react';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 export interface NodeConfig {
@@ -24,6 +24,11 @@ export interface NodeConfig {
   // clicked. Only meaningful for stacked-variant nodes; supersedes the
   // default hover tooltip behavior.
   expandsTo?: string;
+  // When true, renders a muted ↓ glyph below the card. Used on overview
+  // cards to signal "this line is documented on its own page" without
+  // implying the line ends here. The arrow is explained via a legend
+  // entry rather than per-card text to keep the diagram clean.
+  continuation?: boolean;
 }
 
 export interface ConnectionDef {
@@ -39,6 +44,14 @@ export interface LabelDef {
 
 export interface AnnotationDef {
   x: number; y: number; text: string; color?: string;
+  // When set, the annotation wraps to fit within maxWidth (px) instead
+  // of rendering as a single nowrap line. Use for long annotations placed
+  // beside a node where horizontal space is constrained.
+  maxWidth?: number;
+  // Text alignment within the annotation block. Default 'left'.
+  // When 'center', x is the centre of the block (transform translate(-50%, -50%)).
+  // When 'right', x is the right edge (transform translate(-100%, -50%)).
+  align?: 'left' | 'center' | 'right';
 }
 
 // An expansion panel renders below the canvas (above the legend) when
@@ -62,7 +75,7 @@ export interface DiagramDef {
   connections: ConnectionDef[];
   labels?: LabelDef[];
   annotations?: AnnotationDef[];
-  legendItems: { color?: string; label: string; glyph?: string; glyphStyle?: 'plain' | 'circle' }[];
+  legendItems: { color?: string; label: string; glyph?: string; glyphStyle?: 'plain' | 'circle'; forceBreakBefore?: boolean }[];
   expansions?: ExpansionPanelDef[];
 }
 
@@ -321,6 +334,28 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }: NodePro
               ?
             </span>
           )}
+        </div>
+      )}
+
+      {/* Continuation cue — below the card, signals "this line is
+         documented on its own page". Arrow only; explained via legend. */}
+      {cfg.continuation && (
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: '100%',
+            marginTop: 8,
+            textAlign: 'center',
+            pointerEvents: 'none',
+            fontFamily: 'EB Garamond, Georgia, serif',
+            fontSize: 16,
+            color: '#8a8f9e',
+            lineHeight: 1,
+          }}
+        >
+          ↓
         </div>
       )}
 
@@ -609,25 +644,35 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
             ))}
 
             {/* Annotations */}
-            {diagram.annotations?.map((ann, i) => (
-              <div
-                key={`ann-${i}`}
-                style={{
-                  position: 'absolute',
-                  left: ann.x,
-                  top: ann.y,
-                  transform: 'translateY(-50%)',
-                  fontFamily: 'EB Garamond, Georgia, serif',
-                  fontSize: 15,
-                  fontStyle: 'italic',
-                  color: ann.color || C.muted,
-                  whiteSpace: 'nowrap',
-                  pointerEvents: 'none',
-                }}
-              >
-                {ann.text}
-              </div>
-            ))}
+            {diagram.annotations?.map((ann, i) => {
+              const align = ann.align || 'left';
+              const tx =
+                align === 'center' ? 'translate(-50%, -50%)' :
+                align === 'right'  ? 'translate(-100%, -50%)' :
+                                     'translateY(-50%)';
+              return (
+                <div
+                  key={`ann-${i}`}
+                  style={{
+                    position: 'absolute',
+                    left: ann.x,
+                    top: ann.y,
+                    transform: tx,
+                    fontFamily: 'EB Garamond, Georgia, serif',
+                    fontSize: 15,
+                    fontStyle: 'italic',
+                    color: ann.color || C.muted,
+                    whiteSpace: ann.maxWidth ? 'normal' : 'nowrap',
+                    maxWidth: ann.maxWidth,
+                    textAlign: align,
+                    lineHeight: 1.4,
+                    pointerEvents: 'none',
+                  }}
+                >
+                  {ann.text}
+                </div>
+              );
+            })}
 
             {/* Nodes — HTML divs with CSS styling */}
             {diagram.nodes.map((n) => (
@@ -860,16 +905,19 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
           }}
         >
           {diagram.legendItems.map((item, i) => (
-            <div
-              key={i}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 7,
-                fontSize: 14,
-                color: '#d0d4dc',
-              }}
-            >
+            <Fragment key={i}>
+              {item.forceBreakBefore && (
+                <div style={{ flexBasis: '100%', height: 0 }} aria-hidden="true" />
+              )}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 7,
+                  fontSize: 14,
+                  color: '#d0d4dc',
+                }}
+              >
               {item.glyph ? (
                 item.glyphStyle === 'circle' ? (
                   <span
@@ -918,7 +966,8 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
                 />
               )}
               {item.label}
-            </div>
+              </div>
+            </Fragment>
           ))}
         </div>
       </div>
