@@ -14,7 +14,7 @@ const COMPENDIUM_VERSION = '3.2';
 const PDF_PATH = `/downloads/despars-compendium-v${COMPENDIUM_VERSION}.pdf`;
 
 // Toggle to true once the PDF artifact lands in public/downloads/.
-const PDF_AVAILABLE = false;
+const PDF_AVAILABLE = true;
 
 /**
  * Extract a heading's plain-text content from a React-Markdown children tree.
