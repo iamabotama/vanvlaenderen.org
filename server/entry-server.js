@@ -1,5 +1,5 @@
-import { jsxs, jsx, Fragment as Fragment$1 } from "react/jsx-runtime";
-import React4, { Component, useRef, useEffect, lazy, useState, useCallback, Suspense, useMemo, Fragment, StrictMode } from "react";
+import { jsxs, jsx, Fragment } from "react/jsx-runtime";
+import React4, { Component, useRef, useEffect, useState, lazy, useCallback, Suspense, useMemo, Fragment as Fragment$1, StrictMode } from "react";
 import { renderToString } from "react-dom/server";
 import { useNavigate, useLocation, Routes, Route, Navigate, StaticRouter } from "react-router-dom";
 import i18n from "i18next";
@@ -2163,6 +2163,13 @@ const researchStyles = {
   branchCard,
   branchLink
 };
+function ClientOnly({ children, fallback = null }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  return /* @__PURE__ */ jsx(Fragment, { children: mounted ? children : fallback });
+}
 const manuscriptNoblewoman = "/assets/cronike-van-vlaenderen-countess-of-flanders-FFuOL0Qw.jpg";
 const knightPhilip = "/assets/cronike-van-vlaenderen-philip-of-alsace-knight-DGQauyu8.jpg";
 const lionWoodcut = "/assets/lion-woodcut-BatZURmx.jpg";
@@ -2331,7 +2338,7 @@ function NamePage() {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsx(Suspense, { fallback: /* @__PURE__ */ jsx("div", { style: { height: "400px" } }), children: /* @__PURE__ */ jsx(ResearchMap$1, {}) }),
+      /* @__PURE__ */ jsx(ClientOnly, { fallback: /* @__PURE__ */ jsx("div", { style: { width: "100%", height: "clamp(400px, 60vw, 520px)" } }), children: /* @__PURE__ */ jsx(Suspense, { fallback: /* @__PURE__ */ jsx("div", { style: { width: "100%", height: "clamp(400px, 60vw, 520px)" } }), children: /* @__PURE__ */ jsx(ResearchMap$1, {}) }) }),
       /* @__PURE__ */ jsxs("div", { className: nameStyles.mapContainer, children: [
         /* @__PURE__ */ jsx(
           "img",
@@ -2969,7 +2976,7 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }) {
         cursor: "pointer"
       },
       children: [
-        isStacked && /* @__PURE__ */ jsxs(Fragment$1, { children: [
+        isStacked && /* @__PURE__ */ jsxs(Fragment, { children: [
           /* @__PURE__ */ jsx(
             "div",
             {
@@ -3699,7 +3706,7 @@ function LineageDiagram({ diagram: diagram2, title: title2, subtitle: subtitle2 
                 borderTop: "1px solid #1e2230",
                 background: "rgba(255,255,255,0.015)"
               },
-              children: diagram2.legendItems.map((item, i) => /* @__PURE__ */ jsxs(Fragment, { children: [
+              children: diagram2.legendItems.map((item, i) => /* @__PURE__ */ jsxs(Fragment$1, { children: [
                 item.forceBreakBefore && /* @__PURE__ */ jsx("div", { style: { flexBasis: "100%", height: 0 }, "aria-hidden": "true" }),
                 /* @__PURE__ */ jsxs(
                   "div",
@@ -5534,7 +5541,7 @@ function ResearchPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsx(Suspense, { fallback: /* @__PURE__ */ jsx("div", { style: { height: "400px" } }), children: /* @__PURE__ */ jsx(ResearchMap, {}) }),
+      /* @__PURE__ */ jsx(ClientOnly, { fallback: /* @__PURE__ */ jsx("div", { style: { width: "100%", height: "clamp(400px, 60vw, 520px)" } }), children: /* @__PURE__ */ jsx(Suspense, { fallback: /* @__PURE__ */ jsx("div", { style: { width: "100%", height: "clamp(400px, 60vw, 520px)" } }), children: /* @__PURE__ */ jsx(ResearchMap, {}) }) }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, style: { marginTop: "3rem" }, children: [
         /* @__PURE__ */ jsx("h2", { children: t("research.dossiers_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("research.dossiers_intro") }),
@@ -11406,7 +11413,7 @@ function BibliographyPage() {
       /* @__PURE__ */ jsx("h1", { children: "Sources & Scholarship" }),
       /* @__PURE__ */ jsx("p", { style: { color: "rgba(255,255,255,0.65)", marginBottom: "2rem", maxWidth: "680px", lineHeight: 1.7 }, children: "The primary sources, archival finding aids, and scholarly literature that underpin the research presented in the dossiers. Entries in the first section are directly quoted or cited. Entries in the second section are recommended reading for researchers interested in the broader historiographical context." }),
       error && /* @__PURE__ */ jsx("p", { style: { color: "#f87171" }, children: "Bibliography data could not be loaded." }),
-      data && /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      data && /* @__PURE__ */ jsxs(Fragment, { children: [
         /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
           /* @__PURE__ */ jsx("h2", { children: data.sections.primarySources.label }),
           Object.values(data.sections.primarySources.subsections).map((sub) => /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2rem" }, children: [
@@ -12658,7 +12665,7 @@ function Footer() {
   ] }) });
 }
 function App() {
-  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
+  return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx(FamilyTreeCanvas, {}),
     /* @__PURE__ */ jsx(Nav, {}),
     /* @__PURE__ */ jsx("main", { style: { position: "relative", zIndex: 1 }, children: /* @__PURE__ */ jsxs(Routes, { children: [
