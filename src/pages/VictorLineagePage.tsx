@@ -55,10 +55,9 @@ export default function VictorLineagePage() {
 
         {/* ── Territorial Setting ─────────────────────────────────── */}
         <section className={styles.section}>
-          <h2>Territorial Setting: Wessegem and Ursel <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
-          <p>
-            The Flemish heritage inventory for the Hof van Wessegem states that by the end of the fourteenth century 'Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male,' were lords of Wessegem, and that the property reverted to the comital domain in 1431. A local Ursel history states that in 1399 Wessegem passed to Victor van Vlaanderen, 'another bastard son of Louis van Male,' and that he often resided there. The lordship sits in the heart of the Meetjesland &mdash; the same region where the later parish-record Van Vlaenderens cluster.
-          </p>
+          <h2>{t('victor.territorial_heading')} <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
+          <p dangerouslySetInnerHTML={{ __html: t('victor.territorial_p1') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('victor.territorial_p2') }} />
         </section>
 
         {/* ── Three-Charter Nucleus ───────────────────────────────── */}

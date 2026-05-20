@@ -129,6 +129,10 @@ export default function RobrechtLineagePage() {
           </h2>
           <p>{t('robrecht.karel_intro')}</p>
 
+          <h3>{t('robrecht.karel_disambig_heading')}</h3>
+          <p dangerouslySetInnerHTML={{ __html: t('robrecht.karel_disambig_body') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('robrecht.karel_disambig_falsifiability') }} />
+
           <h3>{t('robrecht.karel_subheading_buylaert')}</h3>
           <p>{t('robrecht.karel_buylaert_intro')}</p>
           <ul>
