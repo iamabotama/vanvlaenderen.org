@@ -429,7 +429,27 @@
     "notes_source_4_label": "[4]",
     "notes_source_4_text": "Jean-François Nieus, \"Aristocratic seal ownership in twelfth-century Flanders: A world in between\" (preprint, Academia.edu, 2021; Université de Namur; binnenkort in peer-reviewed publicatie). Biedt historische diepgang voor hoe Vlaamse elite-identiteit en territoriale namen functioneerden in het grafelijke netwerk. Volledig besproken op de pagina Zegels, leeuwen en de politiek van een familienaam.",
     "notes_source_4_linktext": "Lees het Zegels-artikel →",
-    "diagram_sr_heading": "Onderzoeksoverzichtsdiagram — tekstuele samenvatting"
+    "diagram_sr_heading": "Onderzoeksoverzichtsdiagram — tekstuele samenvatting",
+    "cohort_heading": "De volledige cohorte — Despars's opsomming van 1383",
+    "cohort_intro_p1": "Bij de dood van Lodewijk II van Male in 1383 somt Despars in zijn <em>Cronijcke</em> negen bastaardzonen en twee natuurlijke dochters op. Ten minste vijf van de zonen stichtten de naamdragende lijnen die hierboven gedocumenteerd zijn. De overige zes leden van de cohorte — vier zonen wier lijnen uitdoofden, ongedocumenteerd blijven, of na één geattesteerde generatie wegvallen, en twee dochters die de naam enkel in huwelijk droegen — vervolledigen het beeld.",
+    "cohort_intro_p2": "De studie van Lichtervelde (1935) documenteert &ldquo;ten minste achttien&rdquo; natuurlijke kinderen van Lodewijk II uit alle beschikbare bronnen samen, met inbegrip van een kinderkamer van elf te Gosnay rond 1384. De twee cijfers zijn op verschillende resoluties opgemaakt: Despars geeft een gesloten zestiende-eeuwse lijst; Lichtervelde telt elk documenteerbaar hoofd over meerdere bronnen heen. Ze zijn niet in tegenspraak — ze beantwoorden verschillende vragen.",
+    "cohort_legend_aria": "Legende cohorte-status",
+    "cohort_legend_lineage": "Gedocumenteerde lijn — zie gekoppelde pagina",
+    "cohort_legend_undocumented": "Lijn ongedocumenteerd",
+    "cohort_legend_no_issue": "Gedocumenteerd zonder nakomelingschap",
+    "cohort_legend_married_out": "Naam enkel in huwelijk gedragen",
+    "cohort_daughters_subheading": "Dochters",
+    "cohort_entry_dhase_caption": "Gesneuveld te Nicopolis 1396. Vier gedocumenteerde kinderen; territoriale opvolging naar Robrecht en Victor.",
+    "cohort_entry_rodolf_caption": "Dicht geattesteerd in Vol. II (vóór 1383), Aerdenburg (1385), raadsrollen (1408), de verlieslijst van Azincourt (1415). Geen nakomelingen gedocumenteerd in enige bron.",
+    "cohort_entry_colaert_caption": "Verschijnt enkel in de hoofdlijst en een getuigenlijst in Vol. II (p. 507). Geen verdere attestatie.",
+    "cohort_entry_devriese_caption": "Gesneuveld te Nicopolis 1396. Lijn loopt voort via Marie van Ghistele en Jan van Praet; vijf generaties tot 1545.",
+    "cohort_entry_sansterre_caption": "Heer van Drincham (verleend ca. 1383). Gesneuveld te Nicopolis 1396. Lijn loopt voort via Wilhelmine van Nevele tot een gedocumenteerde zoon, heer van Drincham 1419.",
+    "cohort_entry_hector_caption": "Loopbaan 1382–1436. Één gedocumenteerde nakomeling: zoon Adriaen, geattesteerd in 1453 als &ldquo;heer van Voorhoute, zoon van wijlen Hector&rdquo;. Eigen nakomelingen van Adriaen ongedocumenteerd.",
+    "cohort_entry_robrecht_caption": "Heer van Elverdinghe en Vlamertinghe; burggraaf van Ieper. Overl. 1434. Natuurlijke zoon Karel II te Langemark 1491; lijn loopt voort via Karels dochter.",
+    "cohort_entry_karel_caption": "Enkel in de hoofdlijst (1383) en de uitvoerderslijst van het testament van 1430. Geen biografische attestatie tussen beide; geen nakomelingen gedocumenteerd. Te onderscheiden van Karel II (zoon van Robrecht).",
+    "cohort_entry_victor_caption": "Overl. 1431; kapitein van Sint-Omaars. Drie natuurlijke zonen in primaire oorkonden (1427, 1441, 1446). De voorgestelde stamvader van de Meetjeslandse familienaamcluster.",
+    "cohort_entry_johanne_caption": "Huwde Mer Diederijck van Hontschote. Nakomelingschap onder de familienaam Hontschote.",
+    "cohort_entry_margriete_caption": "Huwde Mer Robrecht van Vaveringny, maarschalk van Vlaanderen. Overl. maart 1388. Nakomelingschap onder de familienaam Vaveringny."
   },
   "robrecht": {
     "page_title": "Robrecht van Vlaenderen — Heer van Elverdinghe en Vlamertinghe",
@@ -785,5 +805,14 @@
     "gap_p4": "Ten eerste, cijnsboeken en leenboeken voor de ambachten Ursel en Maldegem, over de periode 1440-1540. Als land dat in de jaren 1420 en 1430 in het bezit was van Victors familie een of twee generaties later verschijnt onder de naam van Vlaenderen, vormt dat eigendomscontinuïteit -- het sterkst beschikbare niet-genealogische bewijs van afstamming.",
     "gap_p5": "Ten tweede, Staten van Goed (boedelbeschrijvingen) voor dezelfde regio. Als Adam stierf en erfgenamen naliet, zou een boedelverdeling waarin zijn kinderen worden genoemd transformatief zijn. De relevante collecties in het Rijksarchief Gent omvatten het Ambacht Ursel, Ambacht Maldegem en de omliggende heerlijkheden.",
     "gap_p6": "Ten derde, de procesdossiers van de Raad van Vlaanderen. Erfenisgeschillen, voogdijzaken en verwantschapsverklaringen in gerechtelijke procedures bewaren soms genealogische relaties die nooit in parochieregisters verschijnen. Deze registers worden bewaard in het Rijksarchief Gent en zijn nog niet systematisch doorzocht op partijen met de naam van Vlaenderen."
+  },
+  "despars_compendium": {
+    "page_title": "Despars Cronijcke — Kruisverwijzingscompendium",
+    "meta_description": "Een systematische kruisverwijzing van het vierdelige Cronijcke van den Lande ende Graefscepe van Vlaenderen van Nicolaes Despars. Hoofdopsommingen, gedateerde narratieve attestaties, en kruisverwijzingen naar Vredius en Lichtervelde 1935.",
+    "heading": "Despars Cronijcke — Kruisverwijzingscompendium",
+    "intro": "Een systematische kruisverwijzing van het vierdelige <em>Cronijcke van den Lande ende Graefscepe van Vlaenderen</em> van Nicolaes Despars (samengesteld ca. 1562–1592; uitgegeven 1840, editie De Jonghe). Hoofdopsommingen, gedateerde narratieve attestaties, en kruisverwijzingen naar Vredius's <em>Genealogia Comitum Flandriae</em> en Lichtervelde 1935. Inline geciteerd vanuit de lijnpagina's als &ldquo;Despars compendium A.1,&rdquo; &ldquo;B.7,&rdquo; enz.; de identificatoren in dit document komen overeen met die citatiecodes voor directe ankernavigatie.",
+    "version_line": "Versie {{version}} · laatst bijgewerkt mei 2026",
+    "download_button": "Download PDF (v{{version}})",
+    "pdf_pending": "De downloadbare PDF wordt hier gepubliceerd zodra de markdown-inhoud is afgerond en gerenderd via WeasyPrint."
   }
 }

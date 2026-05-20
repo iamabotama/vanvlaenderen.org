@@ -429,7 +429,27 @@
     "notes_source_4_label": "[4]",
     "notes_source_4_text": "Jean-François Nieus, \"Aristocratic seal ownership in twelfth-century Flanders: A world in between\" (preprint, Academia.edu, 2021; University of Namur; forthcoming in peer-reviewed publication). Provides historical depth for how Flemish elite identity and territorial names functioned in the comital network. Discussed in full on the Seals, Lions, and the Politics of a Surname page.",
     "notes_source_4_linktext": "Read the Seals article →",
-    "diagram_sr_heading": "Research overview diagram — text summary"
+    "diagram_sr_heading": "Research overview diagram — text summary",
+    "cohort_heading": "The full cohort — Despars's 1383 enumeration",
+    "cohort_intro_p1": "When Louis II de Male died in 1383, Despars's <em>Cronijcke</em> enumerates nine bastard sons and two natural daughters. At least five of the sons founded the surname-bearing lines documented above. The remaining six members of the cohort — four sons whose lines ended, remain undocumented, or trail off after a single attested generation, and two daughters who carried the name only in marriage — complete the picture.",
+    "cohort_intro_p2": "Lichtervelde's 1935 study documents &ldquo;at least eighteen&rdquo; natural children of Louis II across all available sources, including a nursery of eleven resident at Gosnay c. 1384. The two figures sit at different resolutions: Despars names a closed sixteenth-century list; Lichtervelde counts every documentable head across multiple sources. They aren't in conflict — they answer different questions.",
+    "cohort_legend_aria": "Cohort state legend",
+    "cohort_legend_lineage": "Documented lineage — see linked page",
+    "cohort_legend_undocumented": "Lineage undocumented",
+    "cohort_legend_no_issue": "Documented no issue",
+    "cohort_legend_married_out": "Surname carried in marriage only",
+    "cohort_daughters_subheading": "Daughters",
+    "cohort_entry_dhase_caption": "Killed at Nicopolis 1396. Four documented children; territorial succession to Robrecht and Victor.",
+    "cohort_entry_rodolf_caption": "Densely attested across Vol II (pre-1383), Aerdenburg (1385), council rolls (1408), Agincourt casualty list (1415). No descendants documented in any source.",
+    "cohort_entry_colaert_caption": "Appears only in the master list and a Vol II witness list (p. 507). No further attestation.",
+    "cohort_entry_devriese_caption": "Killed at Nicopolis 1396. Line continues through Marie van Ghistele and Jean de Praet; five-generation extent to 1545.",
+    "cohort_entry_sansterre_caption": "Lord of Drincham (granted c. 1383). Killed at Nicopolis 1396. Line continues through Wilhelmine de Nevele to a documented son lord of Drincham 1419.",
+    "cohort_entry_hector_caption": "Career 1382–1436. One documented descendant: son Adriaen, attested 1453 as &ldquo;lord of Voorhoute, son of the late Hector.&rdquo; Adriaen's own descendants undocumented.",
+    "cohort_entry_robrecht_caption": "Lord of Elverdinghe and Vlamertinghe; burgrave of Ypres. D. 1434. Natural son Karel II at Langemark 1491; line continues through Karel's daughter.",
+    "cohort_entry_karel_caption": "Master list (1383) and the 1430 testament executor list only. No biographical attestation between the two; no descendants documented. Distinct from Karel II (Robrecht's son).",
+    "cohort_entry_victor_caption": "D. 1431; captain of Saint-Omer. Three natural sons in primary charters (1427, 1441, 1446). The proposed progenitor of the Meetjesland surname cluster.",
+    "cohort_entry_johanne_caption": "Married Sir Diederijck van Hontschote. Issue under the Hontschote surname.",
+    "cohort_entry_margriete_caption": "Married Sir Robrecht van Vaveringny, marshal of Flanders. D. March 1388. Issue under the Vaveringny surname."
   },
   "robrecht": {
     "page_title": "Robrecht van Vlaenderen — Lord of Elverdinghe and Vlamertinghe",
@@ -785,5 +805,14 @@
     "gap_p4": "First, cijnsboeken (rent rolls) and leenboeken (feudal registers) for the ambachten of Ursel and Maldegem, covering the period 1440-1540. If land that was held by Victor's family in the 1420s and 1430s appears in the name van Vlaenderen one or two generations later, that constitutes property continuity — one of the strongest available forms of indirect evidence for continuity of descent.",
     "gap_p5": "Second, Staten van Goed (probate inventories) for the same region. If Adam died leaving heirs, an estate division record naming his children would be transformative. The relevant collections at Rijksarchief Gent include the Ambacht Ursel, Ambacht Maldegem, and the surrounding heerlijkheden.",
     "gap_p6": "Third, Raad van Vlaanderen court records. Inheritance disputes, guardianship cases, and kinship statements in court proceedings sometimes preserve genealogical relationships that never appear in parish registers. These records are held at Rijksarchief Gent and have not yet been systematically searched for van Vlaenderen parties."
+  },
+  "despars_compendium": {
+    "page_title": "Despars Cronijcke — Cross-Reference Compendium",
+    "meta_description": "A systematic cross-reference of the four-volume Cronijcke van den Lande ende Graefscepe van Vlaenderen by Nicolaes Despars. Master enumerations, dated narrative attestations, and cross-source bridges to Vredius and Lichtervelde 1935.",
+    "heading": "Despars Cronijcke — Cross-Reference Compendium",
+    "intro": "A systematic cross-reference of the four-volume <em>Cronijcke van den Lande ende Graefscepe van Vlaenderen</em> by Nicolaes Despars (compiled c. 1562–1592; published 1840, De Jonghe edition). Master enumerations, dated narrative attestations, and cross-source bridges to Vredius's <em>Genealogia Comitum Flandriae</em> and Lichtervelde 1935. Cited inline from the line pages as &ldquo;Despars compendium A.1,&rdquo; &ldquo;B.7,&rdquo; etc.; the IDs in this document match those citation codes for direct anchor navigation.",
+    "version_line": "Version {{version}} · last updated May 2026",
+    "download_button": "Download PDF (v{{version}})",
+    "pdf_pending": "The downloadable PDF will be published here once the markdown content is finalised and rendered via WeasyPrint."
   }
 }

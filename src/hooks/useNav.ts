@@ -11,7 +11,7 @@
 import { useNavigate } from 'react-router-dom';
 
 export type TopTab = 'home' | 'mill' | 'name' | 'dna' | 'research' | 'lineage' | 'about' | 'contact';
-export type ResearchSubpage = 'main' | 'victor' | 'louis-friese' | 'robrecht' | 'loys-le-hase' | 'victor-dossier' | 'praet-dossier' | 'praet-lineage-dossier' | 'methodology' | 'bibliography' | 'gap-dossier' | 'nieus-seals' | 'drincham-dossier';
+export type ResearchSubpage = 'main' | 'victor' | 'louis-friese' | 'robrecht' | 'loys-le-hase' | 'victor-dossier' | 'praet-dossier' | 'praet-lineage-dossier' | 'methodology' | 'bibliography' | 'gap-dossier' | 'nieus-seals' | 'drincham-dossier' | 'despars-compendium';
 
 const TOP_PATHS: Record<TopTab, string> = {
   home:     '/',
@@ -38,6 +38,7 @@ const RESEARCH_PATHS: Record<ResearchSubpage, string> = {
   'gap-dossier':           '/research/gap-dossier',
   'nieus-seals':           '/research/nieus-seals',
   'drincham-dossier':      '/research/drincham-dossier',
+  'despars-compendium':    '/research/despars-compendium',
 };
 
 export function useNav() {
