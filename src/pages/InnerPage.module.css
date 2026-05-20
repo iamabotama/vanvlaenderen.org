@@ -28,8 +28,8 @@
 .heroImgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 45%, var(--dark) 100%),
-              linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.68) 100%);
+  background: linear-gradient(90deg, transparent 55%, var(--dark) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
 }
 
 .heroText {
