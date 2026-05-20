@@ -188,6 +188,22 @@ export default function ResearchPage() {
             role="button"
             tabIndex={0}
             style={{ cursor: 'pointer' }}
+            onClick={() => goToResearch('loys-le-hase')}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('loys-le-hase'); } }}
+            aria-label={t('research.branch_loys_name')}
+          >
+            <h3>{t('research.branch_loys_name')}</h3>
+            <p>{t('research.branch_loys_desc')}</p>
+            <span className={researchStyles.branchLink} aria-hidden="true">
+              {t('research.branch_loys_link')}
+            </span>
+          </div>
+
+          <div
+            className={researchStyles.branchCard}
+            role="button"
+            tabIndex={0}
+            style={{ cursor: 'pointer' }}
             onClick={() => goToResearch('robrecht')}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('robrecht'); } }}
             aria-label={t('research.branch_robrecht_name')}
