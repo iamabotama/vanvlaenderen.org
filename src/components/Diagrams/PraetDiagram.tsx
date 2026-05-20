@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import LineageDiagram, { C, type DiagramDef } from './DiagramEngine';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -388,11 +389,12 @@ const diagram: DiagramDef = {
 };
 
 export default function PraetDiagram() {
+  const { t } = useTranslation();
   return (
     <LineageDiagram
       diagram={diagram}
-      title="The House of Flanders-Praet — Seven Generations"
-      subtitle="Louis Friese / Praet Line"
+      title={t('louis_friese.diagram_title')}
+      subtitle={t('louis_friese.diagram_subtitle')}
     />
   );
 }

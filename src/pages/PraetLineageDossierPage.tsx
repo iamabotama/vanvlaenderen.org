@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet-async';
 export default function PraetLineageDossierPage() {
   const { goToResearch } = useNav();
   const lineageData = [
-    { gen: 1, name: 'Louis Friese van Vlaenderen', dates: 'c.1350 \u2013 28 Sep 1396', role: 'Bastard of Flanders; Lord of Praet & Woestine', spouse: '1) Unknown (La Woestine) 2) Marie van Gistel', sources: 'Vredius MS via FMG [864\u2013869]; Wikipedia', level: 'Directly attested', levelClass: researchStyles.levelAttested },
+    { gen: 1, name: 'Louis Friese van Vlaenderen', dates: 'c.1350 \u2013 25 Sep 1396', role: 'Bastard of Flanders; Lord of Praet & Woestine', spouse: '1) Unknown (La Woestine) 2) Marie van Gistel', sources: 'Vredius MS via FMG [864\u2013869]; Wikipedia', level: 'Directly attested', levelClass: researchStyles.levelAttested },
     { gen: 2, name: 'Johan I van Vlaenderen', dates: 'd. after 10 Sep 1439', role: 'Lord of Praet & Woestine; Burgher of Praet', spouse: 'Johanna van Reygersvliet', sources: 'Charter 10 Sep 1439 via FMG [873]; Vredius MS [875]', level: 'Directly attested', levelClass: researchStyles.levelAttested },
     { gen: 3, name: 'Lodewijk II van Vlaenderen', dates: 'd. 1488', role: 'Lord of Praet, Woestine, Bevere, Onnele', spouse: 'Louise de Bruges dau. of Jan van Gruuthuse', sources: 'Aalter tomb inscription and de l\u2019Espinoy via Vredius pp. 277\u2013278; FMG [876,878]', level: 'Directly attested', levelClass: researchStyles.levelAttested },
     { gen: 4, name: 'Lodewijk III van Vlaenderen', dates: 'd. 1488 (Grimarez) / 1490 (tomb)', role: 'Lord of Praet', spouse: 'Isabelle de Bourgogne (d. 12 Nov 1504, bur Gent)', sources: 'Aalter tomb inscription and Grimarez via Vredius p. 279; FMG [889,890]', level: 'Directly attested', levelClass: researchStyles.levelAttested },
@@ -101,9 +101,9 @@ export default function PraetLineageDossierPage() {
           <h2>Generation Notes</h2>
 
           <div style={{ marginBottom: '2.5rem' }}>
-            <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Louis Friese van Vlaenderen (c.1350 &ndash; 28 Sep 1396) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h3>
+            <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Louis Friese van Vlaenderen (c.1350 &ndash; 25 Sep 1396) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h3>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              FMG MedLands [864] summarises Vredius quoting a manuscript: 'messire Loys de Frise fils bastard de...Loys de Male conte de Flandre, lequel il eut dune fille de Monsieur de Borre.' His grant of Praet is recorded from Espinoy [865]: Louis de Male 'en avancement de son mariage avec Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke' granted 'les terres et Baronies de Praet et de la Woestine' to his illegitimate son 'Messire Louys de Flandres dit le Frizon' (no source cited). Vredius [866] records that Louis 'eut en partage [la Wostine] par acte du 25 de septembre 1373' and died at Nikopolis 28 Sep 1396.
+              FMG MedLands [864] summarises Vredius quoting a manuscript: 'messire Loys de Frise fils bastard de...Loys de Male conte de Flandre, lequel il eut dune fille de Monsieur de Borre.' His grant of Praet is recorded from Espinoy [865]: Louis de Male 'en avancement de son mariage avec Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke' granted 'les terres et Baronies de Praet et de la Woestine' to his illegitimate son 'Messire Louys de Flandres dit le Frizon' (no source cited). Vredius [866] records that Louis 'eut en partage [la Wostine] par acte du 25 de septembre 1373' and died at Nicopolis 25 Sep 1396.
             </p>
           </div>
 
