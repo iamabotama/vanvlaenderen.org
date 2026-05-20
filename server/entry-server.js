@@ -1,5 +1,5 @@
-import { jsxs, jsx, Fragment } from "react/jsx-runtime";
-import React4, { Component, useRef, useEffect, lazy, useState, useCallback, Suspense, useMemo, StrictMode } from "react";
+import { jsxs, jsx, Fragment as Fragment$1 } from "react/jsx-runtime";
+import React4, { Component, useRef, useEffect, lazy, useState, useCallback, Suspense, useMemo, Fragment, StrictMode } from "react";
 import { renderToString } from "react-dom/server";
 import { useNavigate, useLocation, Routes, Route, Navigate, StaticRouter } from "react-router-dom";
 import i18n from "i18next";
@@ -1154,11 +1154,11 @@ const footer$2 = { "nav_heading": "Navigate", "project_heading": "The Project", 
 const license$1 = { "page_title": "License & Attribution", "meta_description": "License and attribution terms for the Lions of Flanders / Van Vlaenderen research project: CC BY 4.0 for research content, MIT for site code, and notes on citing primary source transcriptions.", "heading": "License & Attribution", "intro": "The Lions of Flanders research project is openly licensed to support academic citation, translation, and scholarly reuse. The terms below explain how the license applies to the different kinds of material on the site — project-authored analysis, primary source transcriptions, website code, and third-party material.", "research_heading": "Research content — CC BY 4.0", "research_body1": "The narrative prose, analytical commentary, diagrams, dossiers, and bibliography annotations authored by Michael Van Flandern and Constance Van Flandern for this project are shared under the Creative Commons Attribution 4.0 International license (CC BY 4.0). You may cite, quote, translate, adapt, and build upon this work — including for commercial purposes — provided you credit the project and link back to the original page.", "research_body2": "A suggested citation format for academic use: Van Flandern, M. & Van Flandern, C. (2026). [Page title]. Lions of Flanders / Van Vlaenderen Research Project. https://vanvlaenderen.org/[path]. Retrieved [date].", "cc_by_link_label": "Read the full CC BY 4.0 license at creativecommons.org →", "transcriptions_heading": "Primary source transcriptions", "transcriptions_body1": "The project reproduces verbatim passages from primary sources — charters, tomb inscriptions, schepenbank records, parish registers — in the research dossiers. The underlying texts are long out of copyright and are in the public domain. The transcriptions themselves represent scholarly labour: locating the source, reading the hand, resolving contractions, collating variant readings against other editions.", "transcriptions_body2": "When citing a specific transcription from this site, please cite both the underlying primary source (with its full archival signature where given) and this project as the transcribing intermediary. That way the chain of custody from original document → project transcription → your work remains legible to the next reader who wants to verify.", "code_heading": "Website code — MIT", "code_body": "The website's React + TypeScript source code, build scripts, and component library are separately licensed under the MIT license, not CC BY 4.0. The two licenses cover different kinds of work: CC BY for scholarly content, MIT for software. The MIT license is standard for open-source web projects and permits reuse of the code with attribution.", "mit_link_label": "View the MIT LICENSE file on GitHub →", "third_party_heading": "Third-party material", "third_party_body": "Collaborator-compiled family registers (such as Pieter Antheunisz van Vlaenderen's Stamreeks in the bibliography), published third-party works cited throughout the site, and any images or heraldic material reproduced from external sources remain the property of their respective authors and rights-holders. The project's CC BY 4.0 license does not extend to these materials — consult the original source for its own terms.", "contact_heading": "Questions", "contact_body": "For questions about reuse that don't fit cleanly into these categories — or for collaborations, translations, or citations in peer-reviewed publications where a more specific permission statement would be helpful — please get in touch via the Contact page.", "last_reviewed": "License terms last reviewed: April 2026." };
 const common$1 = {};
 const lineage$1 = { "page_title": "Family Lineage", "page_intro": "The documented Van Vlaenderen line from Jeremiah (~1575) to the present — traced through East Flanders parish records, civil archives, and DNA. Click any ancestor to see the archival details.", "legend_label": "Evidence status key", "tree_label": "Van Vlaenderen ancestor tree", "click_hint": "Click any card for details", "generation": "Generation", "born_prefix": "b.", "records_available": "Records available", "status_documented": "Fully documented", "status_partial": "Partial records", "status_inferred": "Inferred / approximate", "status_modern": "Modern family", "record_birth": "Birth", "record_marriage": "Marriage", "record_death": "Death", "view_archive": "View in archive", "detail_born": "Born", "detail_parish": "Parish", "detail_birth": "Birth record", "detail_marriage": "Marriage record", "detail_death": "Death record", "detail_status": "Evidence status", "source_note": "Parish and civil records sourced from", "source_note_2": " and Rijksarchief Brugge. Research ongoing." };
-const research$1 = /* @__PURE__ */ JSON.parse(`{"hero_eyebrow":"Van Vlaenderen · Medieval Research","hero_title":"Medieval & Collateral Lines","hero_subhead":"A heritable surname carried by cadet branches of the Flemish comital house from at least 1275 forward.","hero_lead_p1":"The earliest documented patterns of use of <em>van Vlaenderen</em> as a hereditary surname are not toponymic. They cluster within the historic County of Flanders, inside the comital network, and descend — in unbroken documentary use from at least 1275 — from cadet branches of the House of Flanders. Some of these branches are legitimate junior lines; some are acknowledged illegitimate sons and daughters; some are female bearers whose lines ended with them. The pattern is the same across cases: an inherited identity marking comital blood, used as a personal surname when no specific seigniorial title carried more weight.","hero_lead_p2":"The largest documented cluster of bearers is the bastard cohort of Louis II de Male (1330–1384), the last Count of Flanders of the House of Dampierre. De Lichtervelde's 1935 census documents at least eighteen of Louis's natural children. Four of his direct natural sons founded surname-bearing lines, and a substantial number of his daughters carried the name in marriages out of the comital house. This page traces the four bastard lines, the broader cadet-branch context, and the descendants who carried the surname forward.","dossier_title":"Research Overview","dossier_updated":"Updated April 2026","methodology_title":"Methodology & Evidence Levels","method_attested_label":"Directly Attested","method_attested_text":"Statements resting on quoted charter language or explicit documentary summaries in published authorities.","method_corroborated_label":"Strongly Corroborated","method_corroborated_text":"Statements supported by concordant published historical or heritage authorities.","method_probable_label":"Probable","method_probable_text":"Source-based statements that require fuller inspection of the underlying editions before being treated as settled.","method_hypothesis_label":"Hypothesis","method_hypothesis_text":"Genealogical inferences proposed for further testing, not yet proven as fact.","conclusion_title":"Ongoing Work","conclusion_p1":"The documentary evidence above establishes that bastards and cadet branches of the Counts of Flanders bore <em>van Vlaenderen</em> as a hereditary surname from at least 1275 forward across multiple lines. Whether the modern Van Vlaenderen families of the Meetjesland, French Flanders, and Brabant clusters descend genealogically from those specific comital lines is a distinct question that the Y-DNA project is designed to answer.","conclusion_p2":"Research priorities centre on bridging the documented medieval bearers to the first parish-register Van Vlaenderens in the Meetjesland (c. 1568) and the French Flanders cluster around Volckerinckhove. Several lines remain open as candidate bridges: Victor's line ends at Adam in Ghent in 1447; the Praet-line cadet branches — including the Josse de Flandre line documented to at least 1592 and the Onlede younger-sons branch — extend well into the early-modern era; and the Drincham line is traceable in French Flanders through the 1470s. The April 2026 identification of a 1610 Belhoute schepenbank record naming Jan van Vlaenderen and his son Aert Janse adds a closer bridge point on the early-modern side of the gap. Active archival targets include the Ghent Staten van Goed series (Ambacht Assenede I & II), the Landboek and Leenhof records covering the Meetjesland, and the Cassel castellany administrative record series at the Archives Départementales du Nord in Lille.","cta_text":"Are you a researcher specializing in 15th-century Flemish archives?","cta_note":"We welcome collaboration on the archival search for the 'missing generations' of the Van Vlaenderen line.","tldr_heading":"Why the Name Matters","tldr_body_p1":"Encountered without context, <em>van Vlaenderen</em> appears to mean simply &ldquo;from Flanders.&rdquo; The documentary record tells a more specific story. The earliest systematic hereditary bearer in Buylaert's <em>Repertorium</em> is documented in 1331 — Guy van Vlaenderen, lord of Richebourg, a bastard half-brother of Louis de Nevers. This is the moment of the convention shift: under Louis de Nevers, <em>van Vlaenderen / de Flandres</em> takes on the function of dynastic marker, on the French royal model in which <em>de France</em> identified the king's bastard children. Louis de Nevers spent much of his career at the Valois court; the convention travelled with him. From Guy of Richebourg forward, the surname is used systematically as inherited identity rather than place-of-origin label.","tldr_body_p2":"The function intensifies sharply under Louis de Male, whose substantial bastard cohort — and whose daughters' marriages — produce most of the documentary record we have. After 1384, the Dampierre title was extinguished; the bastard descendants kept the name. The 1522 epitaph of Joncheer Antheunis van Vlaenderen, gheseyt van Praet (Gailliard p. 260) shows a Praet-line individual still carrying both surnames a century and a half after the extinction. But the convention itself is older than the de Male cohort, and the families carrying it cluster inside the historic County rather than scattering as migrants. The argument is laid out below.","four_lines_heading":"Four Lines, Three Clusters","four_lines_p1":"Four of Louis de Male's natural sons founded surname-bearing lines: Victor (Ursel and Wessegem), Louis Friese (Praet and Woestine), Jan sans Terre (Drincham), and Robrecht (Elverdinghe and Vlamertinghe). All four used <em>van Vlaenderen</em> — and the variants <em>van Vlaendren, de Flandre, de Flandres</em> — as a hereditary surname. Three of the four lines correspond to distinct modern surname clusters in the later distributional record: the Meetjesland (Victor and Le Frison-Praet anchored here), French Flanders / Cassel (Drincham), and the Ypres quarter as a documented but extinguished cluster (Robrecht's line, traced through Caspar and Karel to Karel's daughter, c. 1491–1505).","four_lines_p2":"Beyond Louis de Male: the same hereditary pattern is documented one comital generation earlier through Guy van Vlaenderen lord of Richebourg (active 1331, line continuing to 1503), through Hendrik van Vlaanderen's bastards Gosewijn van Reinerstede and Jan van Houtem, and across legitimate Dampierre cadet branches including the lords of Cassel (from 1275), the lords of Dendermonde (1313), and the counts of Namur (1331). The pattern recurs across multiple generations and multiple descent lines within the same comital house — which the dynastic-marker reading predicts and which a toponymic reading does not.","paradox_eyebrow":"The Toponymic Paradox","paradox_title":"Four Functions, Three Clusters","paradox_body":"If <em>van Vlaenderen</em> were primarily a toponym, we would expect the heaviest historic clusters to appear outside the area the toponym describes. The opposite is documented. The heaviest and oldest clusters appear within the historic County of Flanders — in the inland Meetjesland, the Cassel region of French Flanders, and the now-extinguished Ypres-quarter cluster of Robrecht's line. Even granting the medieval reading of <em>Vlaenderen</em> as a smaller subregion (particularly the coastal area), that reading predicts neither the inland Meetjesland concentration nor the multi-generational hereditary transmission within stably-rooted families. This paradox, together with the four distinct documentary functions of the phrase, forms the evidentiary ground for the four-line argument on this page.","paradox_button":"Read the Full Analysis →","diagram_sr_text":"This diagram shows the four surname-bearing bastard lines descending from Louis II de Male, Count of Flanders (1330–1384), the last count of the House of Dampierre. Victor's line: Lord of Ursel and Wessegem in the Meetjesland, died before 1442. Three documented natural sons — Lodewyc, Janne, and Adam — named in primary charters 1427–1447. Le Frison-Praet line: Lord of Praet and Woestine; killed at Nicopolis 1396. Six attested generations through Lodewijk IV (d. 1558) and Jan zonder generatie (d. 1545); cadet branches include the Josse de Flandre line and the Onlede younger-sons branch. Drincham line: Granted Drincham castle near Cassel in 1383; killed at Nicopolis 1396. Documented across five generations in French Flanders. Robrecht's line: Lord of Elverdinghe and Vlamertinghe just outside Ypres; Viscount of Ypres jure uxoris through his 1419 marriage to Anastasie d'Oultre. Died 21 January 1434. Three documented natural sons — Jean de Flandres (legitimized 1448), Caspar (active 1453–1464 as bailiff of Elverdinghe-Vlamertinghe and then of Ypres), and Karel van Vlaenderen (d. 1491; the Langemark epitaph names him filius M'her Robrecht). Karel's daughter, married to Omarus de Crane and buried at Langemark, is the last documented bearer of the line.","branches_heading":"Research Branches","branch_victor_name":"Victor van Vlaenderen","branch_victor_desc":"Natural son of Louis de Male. Lord of Ursel and Wessegem in the Meetjesland. Three natural sons documented across three primary charters (1427, 1441, 1446). His son Adam, last attested in Ghent on 18 March 1447, is the closest documented individual bridge candidate to the modern East Flanders clusters.","branch_victor_link":"Explore Victor's Line →","branch_louis_name":"Louis Friese van Vlaenderen","branch_louis_desc":"Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis 1396. Founded the House of Flanders-Praet — six attested generations using van Vlaenderen as a hereditary surname. The Praet patrimony acquired the Vrijhof at Aalter by 1516, anchoring this branch in the Meetjesland alongside Victor's; cadet continuations remain under research.","branch_louis_link":"Explore the Praet Line →","branch_drincham_name":"Jan \\"sans terre\\" van Vlaenderen","branch_drincham_desc":"Natural son of Louis de Male. Granted Drincham castle near Cassel, 1383. Killed at Nicopolis 1396. Four documented generations in French Flanders through the 1470s — the primary founding line for the Volckerinckhove/French Flanders cluster.","branch_drincham_link":"View Archival Dossier →","branch_robrecht_name":"Robrecht van Vlaenderen","branch_robrecht_desc":"Natural son of Louis de Male. Lord of Elverdinghe and Vlamertinghe just outside Ypres; Viscount of Ypres <em>jure uxoris</em> through his 1419 marriage to Anastasie d'Oultre. Died 21 January 1434. Three documented natural sons — Jean (legitimized 1448), Caspar (active 1453–1464), and Karel (d. 1491) — carried the surname through the second half of the fifteenth century in the Ypres quarter. Karel's daughter, married to Omarus de Crane and buried beside her father at Langemark, is the last documented bearer of the line.","branch_robrecht_link":"Explore Robrecht's line →","reference_heading":"Reference","ref_gap_title":"The Documentary Gap, 1447–1580","ref_gap_desc":"The 130-year span between the last confirmed comital-line bearer and the first Meetjesland parish generation. Evidence in hand, searches completed, active archival targets, and three working hypotheses for how the gap closes.","ref_gap_link":"Explore the Gap →","ref_methodology_title":"Methodology & Sources","ref_methodology_desc":"How archival documents are transcribed and translated, and the curated reading list of primary and secondary works that underpin the research.","ref_methodology_link":"Methodology & Sources →","ref_bibliography_title":"Sources & Scholarship","ref_bibliography_desc":"Primary sources, archival finding aids, and scholarly literature cited in the dossiers — the evidentiary basis of the project in one place.","ref_bibliography_link":"Sources & Scholarship →","dossiers_heading":"Archival Dossiers","dossiers_intro":"For researchers seeking the underlying documentary evidence, we maintain detailed archival dossiers with full charter transcriptions, epitaph data, and source analysis.","dossier_victor_title":"Victor van Vlaenderen Dossier","dossier_victor_desc":"Three-charter nucleus (1427, 1441, 1446), Victor's 1430 testament, Lodewyc's descendants, and the Oostborch epitaph evidence.","dossier_victor_link":"View Archival Evidence →","dossier_praet_title":"Louis Friese: Archival Dossier","dossier_praet_desc":"Primary source extracts and territorial history of the House of Flanders-Praet.","dossier_praet_link":"View Archival Evidence →","dossier_praet_lineage_title":"House of Praet: Lineage Dossier","dossier_praet_lineage_desc":"Six generations with primary-source confirmed data. Johan I's five children, Lodewijk II's six children (including the Josse de Flandre cadet branch), and the 1517 Knesselare charter.","dossier_praet_lineage_link":"View Lineage Evidence →","dossier_drincham_title":"Jan sans terre — Drincham Dossier","dossier_drincham_desc":"The 1383 Drincham land grant, four documented generations in the Cassel area, the Veurne epitaph of Jacques de Drincham, and the geographic-documentary case for the French Flanders Van Vlaenderen cluster.","dossier_drincham_link":"View Archival Evidence →","articles_heading":"Research Articles","articles_intro":"Analytical and contextual writing that sits alongside the archival evidence — distributional analysis, historical interpretation, and speculative threads with clearly marked evidentiary status.","article_four_functions_title":"Four Functions, Three Clusters","article_four_functions_desc":"A primary source and distributional analysis of the Van Vlaenderen surname across four documentary functions and three geographic clusters spanning three centuries. Tests the toponymic and bastard-line hypotheses against Geneanet heat-map data and the onomastic record.","article_four_functions_link":"Read Analysis →","article_nieus_title":"Seals, Lions, and the Politics of a Surname","article_nieus_desc":"How twelfth-century Flemish noble seal culture — the lion, the Dover Recognitio, and the political weight of territorial identity — provides historical depth for the Van Vlaenderen hypothesis. Based on Nieus (2021).","article_nieus_link":"Read Article →","notes_heading":"Notes and Sources","notes_intro":"The research overview on this page rests on primary-source attestation of the three documented bastard lines, on the distributional evidence set out in the Four Functions article, and on supporting scholarship in Flemish seal culture and medieval genealogy. Full documentation is maintained on the linked dossier and article pages.","notes_source_1_label":"[1]","notes_source_1_text":"Primary-source attestation for the four bastard lines (Victor, Jan sans terre, Louis Friese, Robrecht) and the broader cohort: Olivarius Vredius (Olivier de Wrée), <em>Genealogia Comitum Flandriae</em>, Bruges 1642–43, Tabula XVI: <em>Nothi Ludovici Maleani Comitis Flandriae</em>, fol. 275–297. Read in full at Sterling Library, Yale, May 2026. The Tabula identifies eleven of Louis de Male's natural children plus the Gosnay establishment cohort, with the Gaillard MS rendering of two primary witnesses for Karel van Vlaenderen — the Langemark epitaph of Karel himself and the adjacent epitaph of his wife Catharine de Verdeghem.","notes_source_2_label":"[2]","notes_source_2_text":"The primary modern critical works on Louis de Male's bastard cohort are de Lichtervelde, &ldquo;Les Bâtards de Louis de Male,&rdquo; <em>Handelingen van het Genootschap voor Geschiedenis te Brugge</em>, 1935, pp. 49–58, which provides the fullest cohort census (18-minimum, framed as a floor) with archival citations to Brussels A.G.R., Lille A.D.N., and Dijon Côte d'Or; and Buylaert, <em>Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500)</em>, Ghent: Academia Press, 2011, Van Vlaanderen entries pp. 736–759, which cites primary archival folios (ARA Rekenkamer, SAG Reeks 301/330, RAB blauwe nummers, KBR Fonds Merghelynck, SAB politieke oorkonden) for nearly every claim. Together these are the load-bearing modern scholarship for the lineages traced here. The Foundation for Medieval Genealogy (MedLands), v5.0 January 2025, is a useful tertiary-source finding aid synthesizing similar material with primary-source footnotes.","notes_source_3_label":"[3]","notes_source_3_text":"The distributional analysis across three surname clusters (c. 1500, 1600, 1700) and the toponymic-paradox argument are set out in full in the Four Functions, Three Clusters article.","notes_source_3_linktext":"Read the Four Functions analysis →","notes_source_4_label":"[4]","notes_source_4_text":"Jean-François Nieus, \\"Aristocratic seal ownership in twelfth-century Flanders: A world in between\\" (preprint, Academia.edu, 2021; University of Namur; forthcoming in peer-reviewed publication). Provides historical depth for how Flemish elite identity and territorial names functioned in the comital network. Discussed in full on the Seals, Lions, and the Politics of a Surname page.","notes_source_4_linktext":"Read the Seals article →","diagram_sr_heading":"Research overview diagram — text summary"}`);
+const research$1 = /* @__PURE__ */ JSON.parse(`{"hero_eyebrow":"Van Vlaenderen · Medieval Research","hero_title":"Medieval & Collateral Lines","hero_subhead":"A heritable surname carried by cadet branches of the Flemish comital house from at least 1275 forward.","hero_lead_p1":"The earliest documented patterns of use of <em>van Vlaenderen</em> as a hereditary surname are not toponymic. They cluster within the historic County of Flanders, inside the comital network, and descend — in unbroken documentary use from at least 1275 — from cadet branches of the House of Flanders. Some of these branches are legitimate junior lines; some are acknowledged illegitimate sons and daughters; some are female bearers whose lines ended with them. The pattern is the same across cases: an inherited identity marking comital blood, used as a personal surname when no specific seigniorial title carried more weight.","hero_lead_p2":"The largest documented cluster of bearers is the bastard cohort of Louis II de Male (1330–1384), the last Count of Flanders of the House of Dampierre. De Lichtervelde's 1935 census documents at least eighteen of Louis's natural children. Four of his direct natural sons founded surname-bearing lines, and a substantial number of his daughters carried the name in marriages out of the comital house. This page traces the four bastard lines, the broader cadet-branch context, and the descendants who carried the surname forward.","dossier_title":"Research Overview","dossier_updated":"Updated April 2026","methodology_title":"Methodology & Evidence Levels","method_attested_label":"Directly Attested","method_attested_text":"Statements resting on quoted charter language or explicit documentary summaries in published authorities.","method_corroborated_label":"Strongly Corroborated","method_corroborated_text":"Statements supported by concordant published historical or heritage authorities.","method_probable_label":"Probable","method_probable_text":"Source-based statements that require fuller inspection of the underlying editions before being treated as settled.","method_hypothesis_label":"Hypothesis","method_hypothesis_text":"Genealogical inferences proposed for further testing, not yet proven as fact.","conclusion_title":"Ongoing Work","conclusion_p1":"The documentary evidence above establishes that bastards and cadet branches of the Counts of Flanders bore <em>van Vlaenderen</em> as a hereditary surname from at least 1275 forward across multiple lines. Whether the modern Van Vlaenderen families of the Meetjesland, French Flanders, and Brabant clusters descend genealogically from those specific comital lines is a distinct question that the Y-DNA project is designed to answer.","conclusion_p2":"Research priorities centre on bridging the documented medieval bearers to the first parish-register Van Vlaenderens in the Meetjesland (c. 1568) and the French Flanders cluster around Volckerinckhove. Several lines remain open as candidate bridges: Victor's line ends at Adam in Ghent in 1447; the Praet-line cadet branches — including the Josse de Flandre line documented to at least 1592 and the Onlede younger-sons branch — extend well into the early-modern era; and the Drincham line is traceable in French Flanders through the 1470s. The April 2026 identification of a 1610 Belhoute schepenbank record naming Jan van Vlaenderen and his son Aert Janse adds a closer bridge point on the early-modern side of the gap. Active archival targets include the Ghent Staten van Goed series (Ambacht Assenede I & II), the Landboek and Leenhof records covering the Meetjesland, and the Cassel castellany administrative record series at the Archives Départementales du Nord in Lille.","cta_text":"Are you a researcher specializing in 15th-century Flemish archives?","cta_note":"We welcome collaboration on the archival search for the 'missing generations' of the Van Vlaenderen line.","tldr_heading":"Why the Name Matters","tldr_body_p1":"Encountered without context, <em>van Vlaenderen</em> appears to mean simply &ldquo;from Flanders.&rdquo; The documentary record tells a more specific story. The earliest systematic hereditary bearer in Buylaert's <em>Repertorium</em> is documented in 1331 — Guy van Vlaenderen, lord of Richebourg, a bastard half-brother of Louis de Nevers. This is the moment of the convention shift: under Louis de Nevers, <em>van Vlaenderen / de Flandres</em> takes on the function of dynastic marker, on the French royal model in which <em>de France</em> identified the king's bastard children. Louis de Nevers spent much of his career at the Valois court; the convention travelled with him. From Guy of Richebourg forward, the surname is used systematically as inherited identity rather than place-of-origin label.","tldr_body_p2":"The function intensifies sharply under Louis de Male, whose substantial bastard cohort — and whose daughters' marriages — produce most of the documentary record we have. After 1384, the Dampierre title was extinguished; the bastard descendants kept the name. The 1522 epitaph of Joncheer Antheunis van Vlaenderen, gheseyt van Praet (Gailliard p. 260) shows a Praet-line individual still carrying both surnames a century and a half after the extinction. But the convention itself is older than the de Male cohort, and the families carrying it cluster inside the historic County rather than scattering as migrants. The argument is laid out below.","four_lines_heading":"Four Lines, Three Clusters","four_lines_p1":"Four of Louis de Male's natural sons founded surname-bearing lines: Victor (Ursel and Wessegem), Louis Friese (Praet and Woestine), Jan sans Terre (Drincham), and Robrecht (Elverdinghe and Vlamertinghe). All four used <em>van Vlaenderen</em> — and the variants <em>van Vlaendren, de Flandre, de Flandres</em> — as a hereditary surname. Three of the four lines correspond to distinct modern surname clusters in the later distributional record: the Meetjesland (Victor and Le Frison-Praet anchored here), French Flanders / Cassel (Drincham), and the Ypres quarter as a documented but extinguished cluster (Robrecht's line, traced through Caspar and Karel to Karel's daughter, c. 1491–1505).","four_lines_p2":"Beyond Louis de Male: the same hereditary pattern is documented one comital generation earlier through Guy van Vlaenderen lord of Richebourg (active 1331, line continuing to 1503), through Hendrik van Vlaanderen's bastards Gosewijn van Reinerstede and Jan van Houtem, and across legitimate Dampierre cadet branches including the lords of Cassel (from 1275), the lords of Dendermonde (1313), and the counts of Namur (1331). The pattern recurs across multiple generations and multiple descent lines within the same comital house — which the dynastic-marker reading predicts and which a toponymic reading does not.","paradox_eyebrow":"The Toponymic Paradox","paradox_title":"Four Functions, Three Clusters","paradox_body":"If <em>van Vlaenderen</em> were primarily a toponym, we would expect the heaviest historic clusters to appear outside the area the toponym describes. The opposite is documented. The heaviest and oldest clusters appear within the historic County of Flanders — in the inland Meetjesland, the Cassel region of French Flanders, and the now-extinguished Ypres-quarter cluster of Robrecht's line. Even granting the medieval reading of <em>Vlaenderen</em> as a smaller subregion (particularly the coastal area), that reading predicts neither the inland Meetjesland concentration nor the multi-generational hereditary transmission within stably-rooted families. This paradox, together with the four distinct documentary functions of the phrase, forms the evidentiary ground for the four-line argument on this page.","paradox_button":"Read the Full Analysis →","diagram_sr_text":"This diagram shows the four surname-bearing bastard lines descending from Louis II de Male, Count of Flanders (1330–1384), the last count of the House of Dampierre. Victor's line: Lord of Ursel and Wessegem in the Meetjesland, died before 1442. Three documented natural sons — Lodewyc, Janne, and Adam — named in primary charters 1427–1447. Le Frison-Praet line: Lord of Praet and Woestine; killed at Nicopolis 1396. Six attested generations through Lodewijk IV (d. 1558) and Jan zonder generatie (d. 1545); cadet branches include the Josse de Flandre line and the Onlede younger-sons branch. Drincham line: Granted Drincham castle near Cassel in 1383; killed at Nicopolis 1396. Documented across five generations in French Flanders. Robrecht's line: Lord of Elverdinghe and Vlamertinghe just outside Ypres; Viscount of Ypres jure uxoris through his 1419 marriage to Anastasie d'Oultre. Died 21 January 1434. Three documented natural sons — Jean de Flandres (legitimized 1448), Caspar (active 1453–1464 as bailiff of Elverdinghe-Vlamertinghe and then of Ypres), and Karel van Vlaenderen (d. 1491; the Langemark epitaph names him filius M'her Robrecht). Karel's daughter, married to Omarus de Crane and buried at Langemark, is the last documented bearer of the line.","branches_heading":"Research Branches","branch_victor_name":"Victor van Vlaenderen","branch_victor_desc":"Natural son of Louis de Male. Lord of Ursel and Wessegem in the Meetjesland. Three natural sons documented across three primary charters (1427, 1441, 1446). His son Adam, last attested in Ghent on 18 March 1447, is the closest documented individual bridge candidate to the modern East Flanders clusters.","branch_victor_link":"Explore Victor's Line →","branch_louis_name":"Louis Friese van Vlaenderen","branch_louis_desc":"Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis 1396. Founded the House of Flanders-Praet — six attested generations using van Vlaenderen as a hereditary surname. The Praet patrimony acquired the Vrijhof at Aalter by 1516, anchoring this branch in the Meetjesland alongside Victor's; cadet continuations remain under research.","branch_louis_link":"Explore the Praet Line →","branch_drincham_name":"Jan \\"sans terre\\" van Vlaenderen","branch_drincham_desc":"Natural son of Louis de Male. Granted Drincham castle near Cassel, 1383. Killed at Nicopolis 1396. Four documented generations in French Flanders through the 1470s — the primary founding line for the Volckerinckhove/French Flanders cluster.","branch_drincham_link":"View Archival Dossier →","branch_robrecht_name":"Robrecht van Vlaenderen","branch_robrecht_desc":"Natural son of Louis de Male. Lord of Elverdinghe and Vlamertinghe just outside Ypres; Viscount of Ypres <em>jure uxoris</em> through his 1419 marriage to Anastasie d'Oultre. Died 21 January 1434. Three documented natural sons — Jean (legitimized 1448), Caspar (active 1453–1464), and Karel (d. 1491) — carried the surname through the second half of the fifteenth century in the Ypres quarter. Karel's daughter, married to Omarus de Crane and buried beside her father at Langemark, is the last documented bearer of the line.","branch_robrecht_link":"Explore Robrecht's line →","reference_heading":"Reference","ref_gap_title":"The Documentary Gap, 1447–1580","ref_gap_desc":"The 130-year span between the last confirmed comital-line bearer and the first Meetjesland parish generation. Evidence in hand, searches completed, active archival targets, and three working hypotheses for how the gap closes.","ref_gap_link":"Explore the Gap →","ref_methodology_title":"Methodology & Sources","ref_methodology_desc":"How archival documents are transcribed and translated, and the curated reading list of primary and secondary works that underpin the research.","ref_methodology_link":"Methodology & Sources →","ref_bibliography_title":"Sources & Scholarship","ref_bibliography_desc":"Primary sources, archival finding aids, and scholarly literature cited in the dossiers — the evidentiary basis of the project in one place.","ref_bibliography_link":"Sources & Scholarship →","dossiers_heading":"Archival Dossiers","dossiers_intro":"For researchers seeking the underlying documentary evidence, we maintain detailed archival dossiers with full charter transcriptions, epitaph data, and source analysis.","dossier_victor_title":"Victor van Vlaenderen Dossier","dossier_victor_desc":"Three-charter nucleus (1427, 1441, 1446), Victor's 1430 testament, Lodewyc's descendants, and the Oostborch epitaph evidence.","dossier_victor_link":"View Archival Evidence →","dossier_praet_title":"Louis Friese: Archival Dossier","dossier_praet_desc":"Primary source extracts and territorial history of the House of Flanders-Praet.","dossier_praet_link":"View Archival Evidence →","dossier_praet_lineage_title":"House of Praet: Lineage Dossier","dossier_praet_lineage_desc":"Six generations with primary-source confirmed data. Johan I's five children, Lodewijk II's six children (including the Josse de Flandre cadet branch), and the 1517 Knesselare charter.","dossier_praet_lineage_link":"View Lineage Evidence →","dossier_drincham_title":"Jan sans terre — Drincham Dossier","dossier_drincham_desc":"The 1383 Drincham land grant, four documented generations in the Cassel area, the Veurne epitaph of Jacques de Drincham, and the geographic-documentary case for the French Flanders Van Vlaenderen cluster.","dossier_drincham_link":"View Archival Evidence →","articles_heading":"Research Articles","articles_intro":"Analytical and contextual writing that sits alongside the archival evidence — distributional analysis, historical interpretation, and speculative threads with clearly marked evidentiary status.","article_four_functions_title":"Four Functions, Three Clusters","article_four_functions_desc":"A primary source and distributional analysis of the Van Vlaenderen surname across four documentary functions and three geographic clusters spanning three centuries. Tests the toponymic and bastard-line hypotheses against Geneanet heat-map data and the onomastic record.","article_four_functions_link":"Read Analysis →","article_nieus_title":"Seals, Lions, and the Politics of a Surname","article_nieus_desc":"How twelfth-century Flemish noble seal culture — the lion, the Dover Recognitio, and the political weight of territorial identity — provides historical depth for the Van Vlaenderen hypothesis. Based on Nieus (2021).","article_nieus_link":"Read Article →","notes_heading":"Notes and Sources","notes_intro":"The research overview on this page rests on primary-source attestation of the three documented bastard lines, on the distributional evidence set out in the Four Functions article, and on supporting scholarship in Flemish seal culture and medieval genealogy. Full documentation is maintained on the linked dossier and article pages.","notes_source_1_label":"[1]","notes_source_1_text":"Primary-source attestation for the four bastard lines (Victor, Jan sans terre, Louis Friese, Robrecht) and the broader cohort: Olivarius Vredius (Olivier de Wrée), <em>Genealogia Comitum Flandriae</em>, Bruges 1642–43, Tabula XVI: <em>Nothi Ludovici Maleani Comitis Flandriae</em>, fol. 275–297. Read in full at Sterling Library, Yale, May 2026. The Tabula identifies eleven of Louis de Male's natural children plus the Gosnay establishment cohort, with the Gaillard MS rendering of two primary witnesses for Karel van Vlaenderen — the Langemark epitaph of Karel himself and the adjacent epitaph of his wife Catharine de Verdeghem.","notes_source_2_label":"[2]","notes_source_2_text":"The primary modern critical works on Louis de Male's bastard cohort are P. de Lichtervelde, &ldquo;Les Bâtards de Louis de Male,&rdquo; <em>Handelingen van het Genootschap voor Geschiedenis</em> 78(1-2) (1935), pp. 48–58, DOI 10.21825/gvg.92141, which provides the fullest cohort census (18-minimum, framed as a floor) with archival citations to Brussels A.G.R., Lille A.D.N., and Dijon Côte d'Or; and Buylaert, <em>Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500)</em>, Ghent: Academia Press, 2011, Van Vlaanderen entries pp. 736–759, which cites primary archival folios (ARA Rekenkamer, SAG Reeks 301/330, RAB blauwe nummers, KBR Fonds Merghelynck, SAB politieke oorkonden) for nearly every claim. Together these are the load-bearing modern scholarship for the lineages traced here. The Foundation for Medieval Genealogy (MedLands), v5.0 January 2025, is a useful tertiary-source finding aid synthesizing similar material with primary-source footnotes.","notes_source_3_label":"[3]","notes_source_3_text":"The distributional analysis across three surname clusters (c. 1500, 1600, 1700) and the toponymic-paradox argument are set out in full in the Four Functions, Three Clusters article.","notes_source_3_linktext":"Read the Four Functions analysis →","notes_source_4_label":"[4]","notes_source_4_text":"Jean-François Nieus, \\"Aristocratic seal ownership in twelfth-century Flanders: A world in between\\" (preprint, Academia.edu, 2021; University of Namur; forthcoming in peer-reviewed publication). Provides historical depth for how Flemish elite identity and territorial names functioned in the comital network. Discussed in full on the Seals, Lions, and the Politics of a Surname page.","notes_source_4_linktext":"Read the Seals article →","diagram_sr_heading":"Research overview diagram — text summary"}`);
 const robrecht$1 = /* @__PURE__ */ JSON.parse(`{"page_title":"Robrecht van Vlaenderen — Lord of Elverdinghe and Vlamertinghe","intro_heading":"Robrecht van Vlaenderen — Lord of Elverdinghe and Vlamertinghe","intro_p1":"Robrecht van Vlaenderen, natural son of Louis II de Male, held the seigniories of Elverdinghe and Vlamertinghe — adjoining villages just outside Ypres — as a grant from his father. He served as Burgundian councillor and chamberlain (<em>raed ende camerlinck</em>) to both Duke John the Fearless and Duke Philip the Good, married Anastasie d'Oultre at Ypres on 12 September 1419 in the presence of the future Philip the Good, and acquired the title Viscount of Ypres through his marriage. He died on 21 January 1434 and was buried in the parish church of Elverdinge. His marriage to Anastasie produced no legitimate children, but three documented natural sons — Jean (legitimized in 1448 by Burgundian ducal diploma), Caspar (active 1453–1464 as bailiff of Elverdinghe-Vlamertinghe and then of Ypres), and Karel (active 1464–1491, buried at Langemark) — carried the surname forward through the Ypres quarter.","marriage_heading":"Marriage and Territorial Holdings","marriage_p1":"Robrecht was already active in Elverdinge in 1412, predating his 1419 marriage. He held Elverdinge and Vlamertinghe as a direct grant from his father Louis de Male, not through his wife — the territorial connection is a direct paternal endowment, not a marital acquisition.","marriage_p2":"His marriage to Anastasie d'Oultre took place at Ypres on 12 September 1419 — two days after the assassination of John the Fearless at Montereau, in the presence of the Count of Charolais (the future Philip the Good) who was not yet aware of his father's murder. Buylaert reproduces the documentation from ARA Chambre des Comptes N° 38644, fol. 41v°. Through Anastasie, Robrecht acquired the title Vicomte d'Ypres <em>jure uxoris</em>.","marriage_p3":"Alongside his seigniorial holdings, Robrecht served as Burgundian <em>raed ende camerlinck</em> — councillor and chamberlain — to Dukes John the Fearless and Philip the Good for roughly two decades. The role placed him in the highest echelons of Burgundian comital administration.","tomb_heading":"Death and the Elverdinge Tomb","tomb_p1":"Robrecht died on Saint Vincent's Eve — 21 January 1434. His wooden tomb stood on the north side of the choir of the Elverdinge parish church, bearing this Middle Dutch inscription:","tomb_quote_inscription":"Hier licht edele ende moghende heere mijnheer Roelandt van Vlaenderen, ruddere, heere van Elverdinghe ende Vlamertinghe, raed ende camerlinck ons gheduchts heeren Jan en Philips, hertoghen Bourgoingnen, graeven van Vlaenderen, hertoghe van Brabant. Obiit 1434, up Sint Vincents avent.","tomb_inscription_gloss":"Here lies the noble and mighty lord Robrecht van Vlaenderen — Tamboryn observes the inscription's &ldquo;Roelandt&rdquo; was likely Robrecht, the form attested elsewhere across the documentary record — knight, lord of Elverdinghe and Vlamertinghe, councillor and chamberlain to our gracious lords John and Philip, Dukes of Burgundy, Counts of Flanders, Dukes of Brabant. He died in 1434, on Saint Vincent's eve.","tomb_p2":"Anastasie survived him by several years. The describer of her own epitaph, preserved in Vredius p. 283, noted that of her two husbands she had several sons by her first husband Eylard van Pouke and <em>ex Roberto verò nullos</em> — none from Robert. The Gaillard MS gives the same line in Dutch vernacular:","tomb_quote_anastasie_dutch":"Vrauw ANASTASIA van Oultre en hadde gheen kinderen by M'her ROBERT van Vlaenderen / haeren tweeden man.","tomb_p3":"On Robrecht's death the seigniories of Elverdinghe and Vlamertinghe reverted to the duke and were gifted in May 1435 to Cornelis van Bourgondië, the Burgundian grand-bâtard of Philip the Good. They re-entered the Van Vlaenderen line half a century later, in 1487, when Lodewijk III van Vlaenderen of the Praet line married Isabella van Bourgogne — <em>dame héritière</em> and granddaughter of Cornelis — bringing both seigniories back into the family until the 1545 death of Jan zonder generatie.","jean_heading":"Jean de Flandres (legitimized 1448)","jean_p1":"Robrecht's acknowledged natural son by Marie de le Voerde was formally legitimized by Burgundian ducal diploma at Hesdin on 31 July 1448. Vredius pp. 283–284 reproduces the diploma's phrasing:","jean_quote_diploma":"Jean de Flandres, filz naturel & illegitime de feu Robert, bastard de Flandres, procreé & engendré du corps de Damoiselle Marie de le Voerde.","jean_p2":"The document is cited from the Archives de la Chambre des Comptes. It establishes the chain Louis de Male → Robert (bastard) → Jean (natural and illegitimate) at primary-source level, with all three carrying the name <em>de Flandres</em> and Jean obtaining formal legitimization through a state-recognized ducal mechanism. No further career track; the diploma is the only primary attestation but is on its own a definitive document.","jean_evidence":"<strong>Evidence level:</strong> Directly Attested.","caspar_heading":"Caspar (Jaspar) van Vlaenderen","caspar_intro":"Caspar van Vlaenderen is documented by Buylaert p. 758 through an active career from 1453 to 1464:","caspar_bullet_1":"<strong>Bailiff of Elverdinghe and Vlamertinghe</strong>, 2 January 1453 to 16 September 1457 (ARA Rekenkamer nrs. 13928–43; Van Rompaey, <em>Het grafelijk baljuwsambt in Vlaanderen</em>, p. 625). The same seigniories Robrecht had held until his death in 1434.","caspar_bullet_2":"<strong>Attended the Feast of the Pheasant</strong> at Lille (Rijsel), 18 March 1454, as <em>&ldquo;messire Gaspard de Flandres&rdquo;</em> alongside <em>&ldquo;Loys de Flandres&rdquo;</em> — the latter is Lodewyc II of the legitimate Praet line (Buylaert p. 757; Caron ed., <em>Les voeux du Faisan</em>, pp. 163–167).","caspar_bullet_3":"<strong>Councillor of the city of Ypres</strong> in 1458, 1460, and 1461 (KBR Fonds Merghelynck nr. 102–3).","caspar_bullet_4":"<strong>Bailiff of Ypres</strong>, 2 January 1462 to 6 May 1464 (ARA Rekenkamer nrs. 14540–50).","caspar_p1":"Caspar's descent is not recorded in Buylaert. The brothers hypothesis — that Caspar is Karel's brother and a natural son of Robrecht — rests primarily on geographic evidence. Caspar's bailiwick of Elverdinghe and Vlamertinghe in 1453–1457 covers the exact territories Robrecht had held until his death in 1434. The territory had reverted to the duke and passed in May 1435 to Cornelis van Bourgondië, so by 1453 Caspar was administering for the new ducal holder, not for the preceding Van Vlaenderen administration. But the territorial-administrative continuity is itself the signal: an appointment as bailiff of two specific adjoining seigniories nineteen years after the death of the lord whose surname the appointee carried is a pattern difficult to read as coincidence.","caspar_evidence":"<strong>Evidence level:</strong> Career and identity Directly Attested. Descent as son of Robrecht Hypothesis.","caspar_falsifiability":"<strong>Falsifiability:</strong> The brothers reading fails if any primary archival source names Caspar's patronymic with a descent outside Robrecht's line. The most likely place for resolution are the ARA Rekenkamer folios themselves — the bailiwick accounts nrs. 13928–43 (Elverdinghe-Vlamertinghe) and 14540–50 (Ypres), or the KBR Fonds Merghelynck acts for the Ypres councillor years.","karel_heading":"Karel van Vlaenderen ★","karel_intro":"Karel van Vlaenderen is documented in two independent source streams that converge on the same person.","karel_subheading_buylaert":"Buylaert's career profile","karel_buylaert_intro":"Buylaert's career profile (p. 758) draws from primary archival records:","karel_buylaert_bullet_1":"At the Estates General of the Low Countries in 1464 as <em>&ldquo;messire Charles de Flandres&rdquo;</em> (Buylaert et al. eds., 'De adel ingelijst', text edition no. 6).","karel_buylaert_bullet_2":"Fief-holder of the Burg of Veurne, September 1472 (ARA Rekenkamer nr. 1086, fol. 96r, 115r).","karel_buylaert_bullet_3":"<em>Knight</em> and fief-holder of the Ypres feudal court, 1474 (ARA RK nr. 1111, p. 104).","karel_buylaert_bullet_4":"Letters from the Council of Flanders concerning Abbéville, October 1476 (ARA RK Rekeningen & registers nr. 21845, fol. 28r).","karel_buylaert_bullet_5":"Listed on the nobility roll <em>&ldquo;tYpre ende int Yperssche&rdquo;</em>, February 1481 (Buylaert et al. eds., 'De adel ingelijst', text edition no. 7).","karel_subheading_vredius":"Vredius's Tabula XVI entry","karel_vredius_intro":"Vredius's Tabula XVI entry (p. 288, transmitting the Langemark epitaph via the Gaillard MS) gives the descent and territorial holdings:","karel_quote_epitaph":"Sepulture van M'her KAERLE van Vlaendren / Heere van Sgrutersale / filius M'her Robrecht / die starf anno 1491. den 15. Septembre","karel_epitaph_gloss":"Tomb of M'her Karel van Vlaendren, lord of Grutersale, son of M'her Robrecht, who died in the year 1491, on the 15th of September.","karel_p1":"The convergence — Buylaert's career profile and Vredius's monumental epitaph — places Karel firmly within the Ypres quarter (Veurne, Ypres, Grutersale, Langemark, all within roughly 10 km of Ypres), at knightly status, active 1464–1491, with descent unambiguously stated in the Langemark epitaph as son of Robrecht.","karel_p2":"An additional bridge: Marguerite van Vlaenderen, <em>fille de messire Charles</em>, married Georges Belle, lord of Boezinge, on 29 November 1460 (Tablettes des Flandres Tome 9 p. 66). The designation &ldquo;messire Charles&rdquo; matches Karel. Whether Marguerite is the same daughter named below — or a different daughter — is an open prosopographical question.","karel_evidence":"<strong>Evidence level:</strong> Career and identity Directly Attested. Descent as son of Robrecht Strongly Corroborated (upper). The case falls under Directly Attested because the epitaph is read through two transcription layers (Gaillard MS → Vredius printed) and because Buylaert's career profile connects to Vredius's epitaph through convergent prosopographical inference rather than through a single document linking the two profiles.","karel_falsifiability":"<strong>Falsifiability:</strong> The identification of Karel as son of Robrecht fails if (a) the Langemark church or original tomb records, if recoverable, name Karel's descent differently than <em>filius M'her Robrecht</em>; (b) the Gaillard MS, traced beyond Vredius's transcription, gives a different descent in either the Langemark epitaph or the 1430 testament; (c) primary archival records for the Ypres-quarter Karel from the career profile name him with a different patronymic; (d) a second, distinct Karel van Vlaenderen from the same region and period is documented, separating the Langemark figure from the Buylaert career figure.","daughter_heading":"Karel's Daughter and the de Crane Marriage","daughter_p1":"Vredius p. 288 records:","daughter_quote_vredius":"Hp hadde ghetrauwt een dochter van M'her Charles van Vlaendren / Rudder / Heere van Grutersale","daughter_quote_gloss":"He had married a daughter of M'her Charles van Vlaendren, knight, lord of Grutersale.","daughter_p2":"The &ldquo;he&rdquo; is Omarus de Crane, <em>Eques</em>, who died 16 August 1485 and was buried at Langemark beside Karel's tomb. A second Omarus de Crane (presumably grandson) was placed at Nieuwpoort with death date 1505.","daughter_p3":"The daughter's first name is not preserved in the source. Whether she is the same as the Marguerite van Vlaenderen who married Georges Belle in 1460 (Tablettes Tome 9 p. 66), or a different daughter, is an open prosopographical question — the 1460 Belle marriage and the de Crane marriage could represent the same woman in a second marriage, or two different daughters of Karel.","daughter_p4":"Karel's daughter is the last documented bearer of the surname in Robrecht's line. After her marriage into the de Crane family, the surname is not carried forward in this branch.","daughter_evidence":"<strong>Evidence level:</strong> Directly Attested.","evidence_heading":"Archival Evidence Summary","evidence_intro":"Primary attestations supporting the architecture above:","evidence_bullet_1":"<strong>ARA, Chambre des Comptes N° 38644, fol. 41v°</strong> — Robrecht's marriage to Anastasie d'Oultre at Ypres in 1419 (cited via de Lichtervelde p. 51)","evidence_bullet_2":"<strong>ARA, Archives de la Chambre des Comptes</strong> — Hesdin diploma legitimizing Jean de Flandres, 31 July 1448 (cited via Vredius pp. 283–284)","evidence_bullet_3":"<strong>Elverdinge parish church</strong> — Robrecht's wooden tomb with Middle Dutch inscription (cited via Buylaert p. 753, citing in turn Tamboryn, <em>Geschiedenis van Elverdinghe</em>, pp. 23–24)","evidence_bullet_4":"<strong>Langemark parish church</strong> — Karel's tomb with epitaph; adjacent tomb of Catharine de Verdeghem; Omarus de Crane buried in proximity (all via Vredius p. 288, with Gaillard MS transmission)","evidence_bullet_5":"<strong>ARA Rekenkamer nrs. 13928–43</strong> — Caspar's bailiwick accounts for Elverdinghe-Vlamertinghe, 1453–1457","evidence_bullet_6":"<strong>ARA Rekenkamer nrs. 14540–50</strong> — Caspar's bailiwick accounts for Ypres, 1462–1464","evidence_bullet_7":"<strong>ARA Rekenkamer nr. 1086, fol. 96r, 115r</strong> — Karel as fief-holder of the Burg of Veurne, 1472","evidence_bullet_8":"<strong>ARA Rekenkamer nr. 1111, p. 104</strong> — Karel as fief-holder of the Ypres feudal court, 1474","evidence_bullet_9":"<strong>ARA Rekenkamer nr. 21845, fol. 28r</strong> — Letters from the Council of Flanders concerning Abbéville, 1476","evidence_bullet_10":"<strong>KBR Fonds Merghelynck nr. 102–3</strong> — Caspar as Ypres councillor, 1458, 1460, 1461","questions_heading":"Open Research Questions","questions_intro":"Three research lines remain open in this branch:","questions_caspar_heading":"Caspar's descent at primary-source level","questions_caspar_body":"The brothers hypothesis (Caspar and Karel both sons of Robrecht) is the load-bearing reading on this page, but primary-source attestation of Caspar's patronymic does not yet exist. The ARA Rekenkamer folios 13928–43 and 14540–50 are the most likely place for resolution.","questions_prosopography_heading":"The prosopography of Verdeghem and de Crane","questions_prosopography_body":"Karel's wife Catharine de Verdeghem (Lady of Dadizele) and his son-in-law Omarus de Crane (d. 1485) are testable anchor points into the Ypres-quarter noble network. Buylaert almost certainly documents the Verdeghem and de Crane families somewhere; cross-reference would strengthen Karel's identification and potentially surface additional Robrecht-line descendants.","questions_gaillard_heading":"The provenance of the Gaillard MS","questions_gaillard_body":"Vredius's transcriptions of the Langemark epitaph and (separately) of Victor's 1430 testament both pass through the Gaillard MS. The Gaillard manuscript is the next layer of source provenance — both for strengthening Karel's identification and for assessing the actual phrasing of the testament regarding the <em>broeders</em> designation Vredius reports.","diagram_sr_text":"This diagram traces the line of Robrecht van Vlaenderen. Robrecht (d. 1434), natural son of Louis II de Male, held the seigniories of Elverdinghe and Vlamertinghe — adjoining villages just outside Ypres — as a direct grant from his father. He married Anastasie d'Oultre at Ypres on 12 September 1419 in the presence of the future Philip the Good, acquiring the title Viscount of Ypres through his wife. The marriage produced no legitimate children. Three documented natural sons carried the surname: Jean de Flandres (by Marie de le Voerde) was legitimized by Burgundian ducal diploma at Hesdin in 1448; Caspar served as bailiff of Elverdinghe-Vlamertinghe 1453–1457 and of Ypres 1462–1464 — the same territories his presumed father Robrecht had held — though Caspar's descent is not directly stated in any primary source; and Karel (lord of Grutersale, died 15 September 1491) was identified in his Langemark epitaph, transmitted by the Gaillard MS via Vredius, as Robrecht's son. Karel's daughter married Omarus de Crane, an Ypres-quarter knight buried beside her father at Langemark; she is the last documented bearer of the surname in this line."}`);
 const name$1 = /* @__PURE__ */ JSON.parse(`{"hero_eyebrow":"Van Vlaenderen · Etymology · History","hero_title":"The Van Vlaenderen Name","hero_lead":"A name is a vessel for history. To understand the Van Vlaenderen surname is to trace the movement of people across the landscape of Flanders.","map_alt":"Map of the Meetjesland region in East Flanders showing Bassevelde and Ursel","map_caption":"The Meetjesland region of East Flanders — the villages of Bassevelde and Ursel represent the documented heartland of the Van Vlaenderen surname, situated between Bruges and Ghent.","pull_quote":"The name Van Vlaenderen is, in itself, a piece of history — a record of movement, identity, and belonging written into the family's very title.","villages_title":"Where the Name Appears","village_bassevelde":"Bassevelde","village_bassevelde_note":"Parish records from the 17th century","village_ursel":"Ursel","village_ursel_note":"Land and mill ownership records","village_boekhoute":"Boekhoute","village_boekhoute_note":"Early civic and land records","variations_title":"Spelling Variations","cronike_title":"The Cronike Van Vlaenderen","cronike_p1":"One of the most important medieval chronicles of Flanders is the Cronike Van Vlaenderen — the Chronicle of Flanders. This 15th-century manuscript documents the history of the Counts of Flanders and the great events of the region from its earliest recorded history. It is a remarkable work of medieval historiography, richly illustrated with heraldic shields and portraits of the Flemish nobility.","cronike_p2":"The chronicle is not a genealogical record of the Van Vlaenderen family, but it provides essential context for understanding the world in which the family lived. The Counts of Flanders — whose heraldic lion, the Leeuw van Vlaanderen, became the symbol of the entire region — shaped the political, economic, and cultural landscape that the Van Vlaenderen family inhabited for generations.","cta_text":"Is your family name a variant of Van Vlaenderen?","cta_note":"We are documenting all historical spellings and regional variations of the name.","history_title":"History of a Surname","history_p1":"Early parish and civic records show the name concentrated within a relatively small area of the Meetjesland in East Flanders, particularly in Bassevelde, Boekhoute, Evergem, Lovendegem, Sleidinge, Ursel, and Wessegem. The continuity of the surname in this region across multiple generations invites closer historical examination.","history_p2":"A first reading treats van Vlaenderen as a simple locative — an identifier attached to people who had moved out of Flanders. That reading appears natural in isolation but does not survive close examination of the documentary record. The phrase performs at least four distinct functions in medieval Flemish documents, only one of which is a hereditary surname. Once those functions are distinguished, what emerges is not a scatter of unrelated migrants but a small number of documented family lines that took the name precisely within Flanders — and did so in the generation when the comital title itself was extinguished. The analysis below sets out what the record actually shows.","history_p3":"This site gathers available documentation and invites Van Vlaenderens around the world to explore the records, contribute family narratives, connect family trees, and participate in the Van Vlaenderen Family Genealogy Project.","villages_intro":"The Van Vlaenderen name appears in the historical records of several East Flemish communities, concentrated in the Meetjesland region. The villages where the name is most frequently documented include:","village_evergem":"Evergem","village_evergem_note":"Civil registration from 1796","village_lovendegem":"Lovendegem","village_lovendegem_note":"Municipal records, 19th century","village_sleidinge":"Sleidinge","village_sleidinge_note":"Parish and notarial records","village_wessegem":"Wessegem","village_wessegem_note":"Medieval territorial and seigneurial references associated with the Ursel area","village_vinderhoute":"Vinderhoute","village_vinderhoute_note":"Home of the Van Vlaenderensmolen","variations_intro":"Before standardised spelling was enforced through civil registration in the Napoleonic period (after 1796 in Belgium), surnames were recorded phonetically by parish priests and local officials. The Van Vlaenderen name appears in historical documents in a wide variety of forms:","variations_footer":"If you are researching the Van Vlaenderen family in historical archives, it is worth searching for all of these variants, particularly in records predating 1800.","notable_forthcoming":"Notable bearers of the surname through the centuries are profiled on a forthcoming page (in preparation).","document_alt":"Pages from the Cronike Van Vlaenderen showing heraldic shields with medieval Flemish labels referring to the Counts and noble houses of Flanders","document_caption":"Pages from the Cronike van Vlaenderen showing heraldic shields labeled with medieval forms referring to the Counts and noble houses of Flanders. These are not genealogical attestations of the later hereditary surname, but important contextual evidence for the linguistic and political use of 'van Vlaenderen' in medieval documentary culture.","manuscript_1_alt":"Countess of Flanders on horseback surrounded by heraldic shields — illuminated manuscript","manuscript_1_caption":"Countess of Flanders — from the Cronike Van Vlaenderen, surrounded by the heraldic shields of the great Flemish houses","manuscript_2_alt":"Philip of Alsace, Count of Flanders — illuminated manuscript illustration","manuscript_2_caption":"Philip of Alsace, Count of Flanders — bearing the black lion banner, from a 15th-century illuminated manuscript","manuscript_3_alt":"The Lion of Flanders — woodcut engraving","manuscript_3_caption":"The Lion of Flanders — the enduring symbol of the region the Van Vlaenderen family called home for centuries","cta_button":"Share your story →","four_bucket_title":"What \\"Van Vlaenderen\\" Was Doing in Medieval Documents","four_bucket_intro":"The automatic response to any surname beginning with a place-name is to classify it as toponymic — meaning the family simply came from that place. For \\"van Vlaenderen,\\" that response runs: it just means \\"from Flanders.\\" Debrabandere's authoritative dictionary of Belgian family names gives a PlN (place-name) classification. Case closed.","four_bucket_rebuttal":"The problem is that \\"van Vlaenderen\\" — and its French equivalents de Flandre and de Flandres — was doing at least four different jobs in medieval Flemish and Burgundian documents simultaneously, and only one of them is the hereditary surname. Before any record can be counted as evidence for our family, it must be assigned to the right category. Debrabandere's classification is an etymological statement about word origin, not a genealogical statement about family continuity. The two questions are separate.","four_bucket_table_heading":"Four Functions of \\"Van Vlaenderen\\" in the Documentary Record","four_bucket_b1_label":"Governmental phrase","four_bucket_b1_desc":"The phrase appears routinely in institutional headings with no surname function: Souvereyne Kamer van Redeninge van Vlaenderen, De Gedeputeerde van de Staeden van Vlaenderen. These tell us where an institution operated, not who someone's family was.","four_bucket_b2_label":"Feudal titulature","four_bucket_b2_desc":"Dienstman Mijnsheeren van Vlaenderen — \\"vassal of my lord of Flanders.\\" This denotes a relationship to the Count, not a family name. Robert de Béthune, Count of Flanders, appears in a 1309–10 Aardenburg record as \\"mijn here Robrecht van Vlaendren\\" — the Count himself, not a surname bearer.","four_bucket_b3_label":"Official staff designation","four_bucket_b3_desc":"Mijns heeren van Vlaenderen messagier — \\"messenger of my lord of Flanders.\\" Staff attached to the comital court carried an office-title that included the phrase. Finding \\"van Vlaenderen\\" in a civic account book does not automatically mean a hereditary surname. However, this bucket is also the most common progenitor of Bucket 4: the son of an office-holder often inherited the name long after the office itself had passed.","four_bucket_b4_label":"Hereditary surname","four_bucket_b4_desc":"Identifiable individuals and multi-generational family clusters using the name as a transmitted family identifier: Victor van Vlaenderen and his documented natural sons Lodewyc, Janne, and Adam (1441/42 charter); the Brugse Vrije testator Joos van Vlaenderen (1547); the East Flanders parish-record families across Bassevelde, Boekhoute, Ursel, and Waarschoot. This is the genealogical evidence. Buckets 1–3 must be excluded before Bucket 4 can be counted.","four_bucket_conclusion":"The genealogical case for the Van Vlaenderen family rests entirely on Bucket 4. But Buckets 1–3 are not irrelevant — they explain why a hereditary surname based on this phrase could emerge and stabilise in the first place. The phrase was prestigious, administratively embedded, and culturally significant in Flemish documentary life for two centuries before our earliest hereditary surname bearers appear. Bucket 3 in particular is often the progenitor of Bucket 4: when an office-holder's son inherits not the office but the name attached to it, a hereditary surname is born. That is the soil in which the surname took root — it does not make the name generic; it makes its persistence meaningful.","map_caption_bucket_note":"The map plots the geographic research cluster — parishes where the Van Vlaenderen surname appears in documented records. Individual map points represent locations, not pre-classified surname attestations; the four-bucket analysis above must be applied to each source before a record can be treated as hereditary surname evidence.","notes_heading":"Notes and Sources","notes_intro":"The analysis on this page is introductory. Fuller documentation, primary-source transcriptions, and evidence-level classifications are maintained on the research and dossier pages linked throughout.","notes_source_1_label":"[1]","notes_source_1_text":"For the three documented bastard lines descending from Louis II de Male, Count of Flanders (1330–1384), see the Research page and its supporting dossiers. Primary charter data for Victor's natural sons derives from Olivarius Vredius (Olivier de Wrée), Genealogia Comitum Flandriae, Bruges 1642–43, Tabula XVI.","notes_source_2_label":"[2]","notes_source_2_text":"For the four-function analysis in full, including primary source examples for each function and the distributional evidence across three centuries, see the Four Functions, Three Clusters article.","notes_source_3_label":"[3]","notes_source_3_text":"Frans Debrabandere, Woordenboek van de familienamen in België en Noord-Frankrijk (WFB2), entry for Van Vlaenderen. The authoritative etymological dictionary classifies the name as a place-name (PlN). The CBG Familienamenbank version at cbgfamilienamen.nl incorporates the author's post-2003 manuscript revisions.","notes_source_4_label":"[4]","notes_source_4_text":"Geneanet surname frequency data for Van Vlaenderen, accessed April 2026. The distributional patterns and heat-map evidence referenced above are analysed in full in the Four Functions article.","notes_research_link":"See the Research page →","notes_analysis_link":"Read the Four Functions analysis →"}`);
 const victor$1 = { "hero_eyebrow": "Van Vlaenderen · Genealogical Research", "hero_title": "Victor van Vlaenderen", "dossier_title": "Victor van Vlaenderen Dossier", "pull_quote": "Victor van Vlaenderen represents the most direct documented link between the Comital House of Flanders and the Meetjesland region.", "sources_title": "Notes & Bibliography", "back_button": "Back to Research Overview", "military_p1": 'Victor also appears in published military-maritime literature. A DBNL article states: "Victor was, en dit is belangrijk, kapitein van de vesting Biervliet." A UGent-hosted study on Flemish corsair warfare likewise notes the appointment of "een nieuwe admiraal: Victor van Vlaenderen." These sources support the conclusion that Victor held an important coastal or naval command role.', "cta_text": "Do you have research that connects to the line of Victor van Vlaenderen?", "cta_note": "We are actively seeking to bridge the gap between the 15th-century records and the early modern parish registers.", "gap_p1": "The single most important unresolved question in this research is the generational bridge between the last documented fifteenth-century van Vlaendren (Adam, last confirmed 1447) and the first confirmed early modern bearer (Joos, fl. 1547). This gap of approximately a century spans the transition from feudal record-keeping to consistent parish registration, and it is where the hypothesis of continuous descent either stands or falls.", "gap_p3": "Three archival paths offer the most realistic prospect of closing the gap:", "gap_p4": "First, cijnsboeken (rent rolls) and leenboeken (feudal registers) for the ambachten of Ursel and Maldegem, covering the period 1440-1540. If land that was held by Victor's family in the 1420s and 1430s appears in the name van Vlaenderen one or two generations later, that constitutes property continuity — one of the strongest available forms of indirect evidence for continuity of descent.", "gap_p5": "Second, Staten van Goed (probate inventories) for the same region. If Adam died leaving heirs, an estate division record naming his children would be transformative. The relevant collections at Rijksarchief Gent include the Ambacht Ursel, Ambacht Maldegem, and the surrounding heerlijkheden.", "gap_p6": "Third, Raad van Vlaanderen court records. Inheritance disputes, guardianship cases, and kinship statements in court proceedings sometimes preserve genealogical relationships that never appear in parish registers. These records are held at Rijksarchief Gent and have not yet been systematically searched for van Vlaenderen parties." };
-const louis_friese$1 = { "hero_eyebrow": "Van Vlaenderen · Genealogical Research", "hero_title": 'Louis "Friese" van Vlaenderen', "dossier_title": "Louis Friese van Vlaenderen Dossier", "praet_title": "The House of Flanders-Praet", "praet_p1": "Louis Friese van Vlaenderen — also styled Lodewijk de Fries or Louis le Frison — was an illegitimate son of Louis II de Male, Count of Flanders. He was granted the lordship of Praet (Oedelem) and the lordship of Woestine, establishing a significant noble branch that bore the van Vlaenderen surname for several generations.", "praet_p2": "The House of Flanders-Praet is one of the most well-documented illegitimate branches of the comital house. Its members held high offices, including the Golden Fleece, and served as advisors to the Dukes of Burgundy and the Habsburg sovereigns.", "figures_title": "Key Figures of the Praet Line", "figure_1": "Louis Friese van Vlaenderen (d. 1396) — Founder; Lord of Praet and Woestine.", "figure_2": "Johan I van Vlaenderen (d. c.1440) — Lord of Praet; Knighted by the Duke of Burgundy.", "figure_3": "Lodewijk II van Vlaenderen — Lord of Praet and Woestine.", "figure_4": "Lodewijk III van Vlaenderen (d. 1490) — Lord of Praet.", "sources_title": "Notes & Bibliography", "source_1": "Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut.", "source_2": "Foundation for Medieval Genealogy, MedLands: Flemish Nobility.", "source_3": "Wappenwiki: House of Flanders-Praet.", "back_button": "Back to Research Overview", "praet_p3": "Louis Friese was born approximately 1350. He was a prominent military figure and was killed at the Battle of Nicopolis on 28 September 1396, alongside his brothers Louis le Haeze and Jean Sans Terre.", "praet_p4": "The lordship of Praet was acquired by Louis de Male in 1373 and subsequently granted to Louis Friese. This established the family's seat in West Flanders, though their influence and holdings extended across the county.", "praet_p5": "The consistent use of 'van Vlaenderen' by this branch is a key focus of our research. It demonstrates how the name functioned as a hereditary marker of comital descent during the transition from the Dampierre dynasty to the House of Burgundy.", "praet_p6": "The legitimate male line of the House of Flanders-Praet ended with the death of Lodewijk IV in 1556. His only documented son, Jan II, predeceased him without issue, and the lordship of Praet passed to other families.", "survival_title": "Survival of the Surname", "survival_p1": "While the legitimate male line of the Praet lordship ended in 1556, the question of whether cadet or illegitimate branches of this house survived and integrated into the broader Van Vlaenderen population of the Meetjesland remains a subject of investigation.", "survival_p2": "The Praet line serves as a critical 'research control' for our project. By documenting the known members of this high-status branch, we can better distinguish them from the contemporary Van Vlaenderen families appearing in the parish registers of Ursel, Bassevelde, and the surrounding villages.", "figures_intro": "The following individuals represent the primary descent of the House of Flanders-Praet:", "figure_5": "Lodewijk IV van Vlaenderen (d. 1555) — Knight of the Golden Fleece; Stadtholder of Holland.", "source_4": "GenealogieOnline: West-Europese Adel (Lodewijk van Vlaanderen).", "source_5": "GenealogieOnline: West-Europese Adel (Johan van Vlaanderen).", "source_6": "DBNL: Correspondence of Erasmus (referencing Louis of Praet).", "cta_text": "Do you have research on the cadet branches of the House of Praet?", "cta_note": "We are investigating the potential survival of the van Vlaenderen name through non-seigneurial lines of this house.", "badge_hypothesis": "Hypothesis" };
+const louis_friese$1 = { "hero_eyebrow": "Van Vlaenderen · Genealogical Research", "hero_title": 'Louis "Friese" van Vlaenderen', "dossier_title": "Louis Friese van Vlaenderen Dossier", "praet_title": "The House of Flanders-Praet", "praet_p1": "Louis Friese van Vlaenderen — also styled Lodewijk de Fries or Louis le Frison — was an illegitimate son of Louis II de Male, Count of Flanders. He was granted the lordship of Praet (Oedelem) and the lordship of Woestine, establishing a significant noble branch that bore the van Vlaenderen surname for several generations.", "praet_p2": "The House of Flanders-Praet is one of the most well-documented illegitimate branches of the comital house. Its members held high offices, including the Golden Fleece, and served as advisors to the Dukes of Burgundy and the Habsburg sovereigns.", "figures_title": "Key Figures of the Praet Line", "figure_1": "Louis Friese van Vlaenderen (d. 1396) — Founder; Lord of Praet and Woestine.", "figure_2": "Johan I van Vlaenderen (d. c.1440) — Lord of Praet; Knighted by the Duke of Burgundy.", "figure_3": "Lodewijk II van Vlaenderen — Lord of Praet and Woestine.", "figure_4": "Lodewijk III van Vlaenderen (d. 1490) — Lord of Praet.", "sources_title": "Notes & Bibliography", "source_1": "Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut.", "source_2": "Foundation for Medieval Genealogy, MedLands: Flemish Nobility.", "source_3": "Wappenwiki: House of Flanders-Praet.", "back_button": "Back to Research Overview", "praet_p3": "Louis Friese was born approximately 1350. He was a prominent military figure and was killed at the Battle of Nicopolis on 25 September 1396, alongside his brothers Louis le Haeze and Jean Sans Terre.", "praet_p4": "The lordship of Praet was acquired by Louis de Male in 1373 and subsequently granted to Louis Friese. This established the family's seat in West Flanders, though their influence and holdings extended across the county.", "praet_p5": "The consistent use of 'van Vlaenderen' by this branch is a key focus of our research. It demonstrates how the name functioned as a hereditary marker of comital descent during the transition from the Dampierre dynasty to the House of Burgundy.", "praet_p6": "The legitimate male line of the House of Flanders-Praet ended with the death of Lodewijk IV in 1556. His only documented son, Jan II, predeceased him without issue, and the lordship of Praet passed to other families.", "survival_title": "Survival of the Surname", "survival_p1": "While the legitimate male line of the Praet lordship ended in 1556, the question of whether cadet or illegitimate branches of this house survived and integrated into the broader Van Vlaenderen population of the Meetjesland remains a subject of investigation.", "survival_p2": "The Praet line serves as a critical 'research control' for our project. By documenting the known members of this high-status branch, we can better distinguish them from the contemporary Van Vlaenderen families appearing in the parish registers of Ursel, Bassevelde, and the surrounding villages.", "figures_intro": "The following individuals represent the primary descent of the House of Flanders-Praet:", "figure_5": "Lodewijk IV van Vlaenderen (d. 1555) — Knight of the Golden Fleece; Stadtholder of Holland.", "source_4": "GenealogieOnline: West-Europese Adel (Lodewijk van Vlaanderen).", "source_5": "GenealogieOnline: West-Europese Adel (Johan van Vlaanderen).", "source_6": "DBNL: Correspondence of Erasmus (referencing Louis of Praet).", "cta_text": "Do you have research on the cadet branches of the House of Praet?", "cta_note": "We are investigating the potential survival of the van Vlaenderen name through non-seigneurial lines of this house.", "badge_hypothesis": "Hypothesis" };
 const en = {
   nav: nav$2,
   home: home$1,
@@ -1188,11 +1188,11 @@ const footer$1 = { "nav_heading": "Navigatie", "project_heading": "Het project",
 const license = { "page_title": "Licentie & Vermelding", "meta_description": "Licentie- en vermeldingsvoorwaarden voor het onderzoeksproject Lions of Flanders / Van Vlaenderen: CC BY 4.0 voor onderzoeksinhoud, MIT voor websitecode, en aantekeningen over het citeren van transcripties van primaire bronnen.", "heading": "Licentie & Vermelding", "intro": "Het onderzoeksproject Lions of Flanders is openlijk gelicentieerd om academische citaties, vertalingen en wetenschappelijk hergebruik te ondersteunen. De onderstaande voorwaarden leggen uit hoe de licentie van toepassing is op de verschillende soorten materiaal op de site — door het project geschreven analyse, transcripties van primaire bronnen, websitecode en materiaal van derden.", "research_heading": "Onderzoeksinhoud — CC BY 4.0", "research_body1": "De lopende tekst, analytische commentaar, diagrammen, dossiers en bibliografische annotaties geschreven door Michael Van Flandern en Constance Van Flandern voor dit project worden gedeeld onder de Creative Commons Naamsvermelding 4.0 Internationale licentie (CC BY 4.0). U mag dit werk citeren, vertalen, aanpassen en verder bouwen op dit werk — ook voor commerciële doeleinden — mits u het project vermeldt en terugkoppelt naar de oorspronkelijke pagina.", "research_body2": "Voorgesteld citatieformaat voor academisch gebruik: Van Flandern, M. & Van Flandern, C. (2026). [Paginatitel]. Lions of Flanders / Van Vlaenderen Research Project. https://vanvlaenderen.org/[pad]. Geraadpleegd op [datum].", "cc_by_link_label": "Lees de volledige CC BY 4.0 licentie op creativecommons.org →", "transcriptions_heading": "Transcripties van primaire bronnen", "transcriptions_body1": "Het project neemt letterlijke passages uit primaire bronnen over — oorkonden, grafinscripties, schepenbankregisters, parochieregisters — in de onderzoeksdossiers. De onderliggende teksten zijn sinds lang auteursrechtvrij en behoren tot het publieke domein. De transcripties zelf vertegenwoordigen wetenschappelijke arbeid: het lokaliseren van de bron, het lezen van het handschrift, het oplossen van afkortingen, en het vergelijken van varianten met andere edities.", "transcriptions_body2": "Gelieve bij het citeren van een specifieke transcriptie van deze site zowel de onderliggende primaire bron (met volledige archiefsignatuur waar gegeven) als dit project als bemiddelende transcribent te vermelden. Op die manier blijft de keten van oorspronkelijk document → projecttranscriptie → uw werk leesbaar voor de volgende lezer die wil verifiëren.", "code_heading": "Websitecode — MIT", "code_body": "De broncode van de website (React + TypeScript), de buildscripts en de componentbibliotheek zijn afzonderlijk gelicentieerd onder de MIT-licentie, niet onder CC BY 4.0. De twee licenties dekken verschillende soorten werk: CC BY voor wetenschappelijke inhoud, MIT voor software. De MIT-licentie is standaard voor open-source webprojecten en staat hergebruik van de code met vermelding toe.", "mit_link_label": "Bekijk het MIT LICENSE-bestand op GitHub →", "third_party_heading": "Materiaal van derden", "third_party_body": "Door medewerkers samengestelde familieregisters (zoals de Stamreeks van Pieter Antheunisz van Vlaanderen in de bibliografie), gepubliceerde werken van derden die elders op de site worden geciteerd, en beelden of heraldisch materiaal dat uit externe bronnen is overgenomen, blijven eigendom van hun respectieve auteurs en rechthebbenden. De CC BY 4.0-licentie van het project strekt zich niet uit tot dit materiaal — raadpleeg de oorspronkelijke bron voor de eigen voorwaarden.", "contact_heading": "Vragen", "contact_body": "Voor vragen over hergebruik die niet netjes in deze categorieën passen — of voor samenwerkingen, vertalingen of citaties in peer-reviewed publicaties waarbij een meer specifieke toestemmingsverklaring nuttig zou zijn — neem gerust contact op via de Contactpagina.", "last_reviewed": "Licentievoorwaarden laatst herzien: april 2026." };
 const common = {};
 const lineage = { "page_title": "Familielijn", "page_intro": "De gedocumenteerde Van Vlaenderen-lijn van Jeremiah (~1575) tot heden — opgespoord via Oost-Vlaamse parochieregisters, burgerlijke archieven en DNA. Klik op een voorouder voor de archiefdetails.", "legend_label": "Verklaring bewijsstatus", "tree_label": "Voorouderboom Van Vlaenderen", "click_hint": "Klik op een kaart voor details", "generation": "Generatie", "born_prefix": "geb.", "records_available": "Beschikbare documenten", "status_documented": "Volledig gedocumenteerd", "status_partial": "Gedeeltelijke documenten", "status_inferred": "Afgeleid / bij benadering", "status_modern": "Moderne familie", "record_birth": "Geboorte", "record_marriage": "Huwelijk", "record_death": "Overlijden", "view_archive": "Bekijk in archief", "detail_born": "Geboren", "detail_parish": "Parochie", "detail_birth": "Geboorteakte", "detail_marriage": "Huwelijksakte", "detail_death": "Overlijdensakte", "detail_status": "Bewijsstatus", "source_note": "Parochie- en burgerlijke akten afkomstig van", "source_note_2": " en Rijksarchief Brugge. Onderzoek lopende." };
-const research = /* @__PURE__ */ JSON.parse(`{"hero_eyebrow":"Van Vlaenderen · Middeleeuws onderzoek","hero_title":"Middeleeuwse & collaterale lijnen","hero_subhead":"Een erfelijke familienaam gedragen door zijtakken van het Vlaamse grafelijk huis vanaf ten minste 1275.","hero_lead_p1":"De vroegst gedocumenteerde gebruikspatronen van <em>van Vlaenderen</em> als erfelijke familienaam zijn niet toponymisch. Ze clusteren binnen het historische graafschap Vlaanderen, in het grafelijke netwerk, en stammen — in ononderbroken documentair gebruik vanaf ten minste 1275 — uit zijtakken van het Huis Vlaanderen. Sommige van deze takken zijn wettige jongere lijnen; sommige zijn erkende onwettige zonen en dochters; sommige zijn vrouwelijke draagsters wier lijnen met henzelf eindigden. Het patroon is in alle gevallen hetzelfde: een geërfde identiteit die grafelijk bloed markeert, gebruikt als persoonlijke familienaam wanneer geen specifieke heerlijkheidstitel meer gewicht droeg.","hero_lead_p2":"Het grootste gedocumenteerde cluster van dragers is de bastaardcohort van Lodewijk II van Male (1330–1384), de laatste graaf van Vlaanderen uit het Huis Dampierre. De volkstelling van de Lichtervelde uit 1935 documenteert ten minste achttien van Lodewijks natuurlijke kinderen. Vier van zijn directe natuurlijke zonen stichtten familienaam-dragende lijnen, en een aanzienlijk aantal van zijn dochters droeg de naam in huwelijken buiten het grafelijk huis. Deze pagina volgt de vier bastaardlijnen, de bredere zijtakcontext, en de afstammelingen die de familienaam voortdroegen.","dossier_title":"Onderzoeksoverzicht","dossier_updated":"Bijgewerkt april 2026","methodology_title":"Methodologie & bewijsniveaus","method_attested_label":"Direct geattesteerd","method_attested_text":"Verklaringen die steunen op geciteerde oorkondetaal of expliciete documentaire samenvattingen in gepubliceerde autoriteiten.","method_corroborated_label":"Sterk gecorroboreerd","method_corroborated_text":"Verklaringen die worden ondersteund door overeenstemmende gepubliceerde historische of erfgoedautoriteiten.","method_probable_label":"Waarschijnlijk","method_probable_text":"Op bronnen gebaseerde verklaringen die een volledige inspectie van de onderliggende edities vereisen voordat ze als vaststaand worden beschouwd.","method_hypothesis_label":"Hypothese","method_hypothesis_text":"Genealogische gevolgtrekkingen voorgesteld voor verdere toetsing, nog niet bewezen als feit.","conclusion_title":"Lopend werk","conclusion_p1":"De documentaire bewijsvoering hierboven toont aan dat bastaarden en zijtakken van de graven van Vlaanderen <em>van Vlaenderen</em> als erfelijke familienaam droegen vanaf ten minste 1275 over meerdere lijnen. Of de moderne Van Vlaenderen-families in de clusters Meetjesland, Frans-Vlaanderen en Brabant genealogisch afstammen van die specifieke grafelijke lijnen, is een afzonderlijke vraag die het Y-DNA-project moet beantwoorden.","conclusion_p2":"Onderzoeksprioriteiten richten zich op het overbruggen van de gedocumenteerde middeleeuwse dragers naar de eerste parochieregister-Van Vlaenderens in het Meetjesland (ca. 1568) en het Frans-Vlaamse cluster rond Volckerinckhove. Verschillende lijnen blijven open als brughypothesen: Victors lijn eindigt bij Adam te Gent in 1447; de Praet-zijtakken — waaronder de Josse de Flandre-lijn gedocumenteerd tot ten minste 1592 en de Onlede jongerezonen-tak — strekken zich uit tot ver in de vroegmoderne periode; en de Drincham-lijn is traceerbaar in Frans-Vlaanderen tot in de jaren 1470. De identificatie in april 2026 van een Belhoute-schepenbankakte uit 1610 waarin Jan van Vlaenderen en zijn zoon Aert Janse genoemd worden, voegt een nauwere brughypothese toe aan de vroegmoderne kant van de leemte. Actieve archivalische doelwitten omvatten de Gentse Staten van Goed-reeks (Ambacht Assenede I & II), de Landboek- en Leenhof-bestanden voor het Meetjesland, en de administratieve-bestandenreeks van de kasselrij Cassel bij de Archives Départementales du Nord in Rijsel.","cta_text":"Bent u een onderzoeker gespecialiseerd in 15de-eeuwse Vlaamse archieven?","cta_note":"We verwelkomen samenwerking bij het archiefonderzoek naar de 'ontbrekende generaties' van de Van Vlaenderen-lijn.","tldr_heading":"Waarom de naam ertoe doet","tldr_body_p1":"Wie voor het eerst met van Vlaenderen in aanraking komt, neemt vaak aan dat het simpelweg &ldquo;uit Vlaanderen&rdquo; betekent. De documentaire bewijsvoering vertelt een specifieker verhaal. De vroegst systematische erfelijke drager in Buylaerts <em>Repertorium</em> is gedocumenteerd in 1331 — Guy van Vlaenderen, heer van Richebourg, een bastaard-halfbroer van Lodewijk van Nevers. Dit is het moment van de conventiewisseling: onder Lodewijk van Nevers neemt <em>van Vlaenderen / de Flandres</em> de functie aan van dynastiek merkteken, naar het Franse koninklijke model waarin <em>de France</em> de bastaardkinderen van de koning aanduidde. Lodewijk van Nevers bracht een groot deel van zijn loopbaan door aan het Valois-hof; de conventie reisde met hem mee. Vanaf Guy van Richebourg wordt de familienaam systematisch gebruikt als geërfde identiteit in plaats van als plaatsaanduiding.","tldr_body_p2":"De functie intensifieert sterk onder Lodewijk van Male, wiens omvangrijke bastaardcohort — en wiens dochterhuwelijken — het grootste deel van het documentaire bestand voortbrengen dat we hebben. Na 1384 was de Dampierre-titel uitgedoofd; de bastaardafstammelingen behielden de naam. Het grafschrift uit 1522 voor Joncheer Antheunis van Vlaenderen, gheseyt van Praet (Gailliard p. 260) toont een individu uit de Praet-lijn dat anderhalve eeuw na de uitdoving beide familienamen nog droeg. Maar de conventie zelf is ouder dan de cohort van Van Male, en de families die haar dragen clusteren binnen het historische graafschap in plaats van zich als migranten te verspreiden. Het argument wordt hieronder uiteengezet.","four_lines_heading":"Vier lijnen, drie clusters","four_lines_p1":"Vier van Lodewijk van Males natuurlijke zonen stichtten familienaam-dragende lijnen: Victor (Ursel en Wessegem), Louis Friese (Praet en Woestine), Jan sans Terre (Drincham), en Robrecht (Elverdinghe en Vlamertinghe). Alle vier gebruikten <em>van Vlaenderen</em> — en de varianten <em>van Vlaendren, de Flandre, de Flandres</em> — als erfelijke familienaam. Drie van de vier lijnen komen overeen met onderscheiden moderne familienaam-clusters in het latere distributionele bestand: het Meetjesland (Victor en Le Frison-Praet hier verankerd), Frans-Vlaanderen / Kassel (Drincham), en het Iepers kwartier als gedocumenteerd maar uitgedoofd cluster (Robrechts lijn, getraceerd via Caspar en Karel tot Karels dochter, ca. 1491–1505).","four_lines_p2":"Voorbij Lodewijk van Male: hetzelfde erfelijke patroon is één grafelijke generatie eerder gedocumenteerd via Guy van Vlaenderen heer van Richebourg (actief 1331, lijn voortlopend tot 1503), via Hendrik van Vlaanderens bastaarden Gosewijn van Reinerstede en Jan van Houtem, en in wettige Dampierre-zijtakken waaronder de heren van Kassel (vanaf 1275), de heren van Dendermonde (1313), en de graven van Namen (1331). Het patroon herhaalt zich over meerdere generaties en meerdere afstammingslijnen binnen hetzelfde grafelijke huis — wat de lezing van dynastiek merkteken voorspelt en wat een toponymische lezing niet doet.","paradox_eyebrow":"De toponymische paradox","paradox_title":"Vier functies, drie clusters","paradox_body":"Als <em>van Vlaenderen</em> primair een toponiem zou zijn, zou je verwachten de zwaarste historische clusters buiten het gebied te vinden dat het toponiem beschrijft. Het tegenovergestelde is gedocumenteerd. De zwaarste en oudste clusters verschijnen binnen het historische graafschap Vlaanderen — in het binnenlandse Meetjesland, de regio Kassel in Frans-Vlaanderen, en het inmiddels uitgedoofde Iepers-kwartier-cluster van Robrechts lijn. Zelfs als men de middeleeuwse lezing van <em>Vlaenderen</em> als kleinere subregio (met name het kustgebied) aanvaardt, voorspelt die lezing noch de binnenlandse Meetjeslandse concentratie noch de meergenerationele erfelijke overdracht binnen stabiel gewortelde families. Deze paradox, samen met de vier onderscheiden documentaire functies van de uitdrukking, vormt de bewijsgrondslag voor het vier-lijnen-argument op deze pagina.","paradox_button":"Lees de volledige analyse →","diagram_sr_text":"Dit diagram toont de vier familienaam-dragende bastaardlijnen die afstammen van Lodewijk II van Male, graaf van Vlaanderen (1330–1384), de laatste graaf uit het Huis Dampierre. Victors lijn: Heer van Ursel en Wessegem in het Meetjesland, overleden vóór 1442. Drie gedocumenteerde natuurlijke zonen — Lodewyc, Janne en Adam — vermeld in primaire oorkonden 1427–1447. Le Frison-Praet-lijn: Heer van Praet en Woestine; gesneuveld bij Nicopolis 1396. Zes geattesteerde generaties via Lodewijk IV (overl. 1558) en Jan zonder generatie (overl. 1545); zijtakken omvatten de Josse de Flandre-lijn en de Onlede jongerezonen-tak. Drincham-lijn: Kreeg kasteel Drincham bij Kassel in 1383; gesneuveld bij Nicopolis 1396. Gedocumenteerd door vijf generaties in Frans-Vlaanderen. Robrechts lijn: Heer van Elverdinghe en Vlamertinghe vlak buiten Ieper; burggraaf van Ieper jure uxoris via zijn huwelijk in 1419 met Anastasie d'Oultre. Overleden op 21 januari 1434. Drie gedocumenteerde natuurlijke zonen — Jean de Flandres (gelegitimeerd 1448), Caspar (actief 1453–1464 als baljuw van Elverdinghe-Vlamertinghe en daarna van Ieper), en Karel van Vlaenderen (overl. 1491; het grafschrift te Langemark noemt hem filius M'her Robrecht). Karels dochter, getrouwd met Omarus de Crane en begraven te Langemark, is de laatst gedocumenteerde drager van de familienaam in deze lijn.","branches_heading":"Onderzoekslijnen","branch_victor_name":"Victor van Vlaenderen","branch_victor_desc":"Natuurlijke zoon van Lodewijk van Male. Heer van Ursel en Wessegem in het Meetjesland. Drie natuurlijke zonen gedocumenteerd in drie primaire oorkonden (1427, 1441, 1446). Zijn zoon Adam, laatst geattesteerd te Gent op 18 maart 1447, is de naast gedocumenteerde individuele brugkandidaat naar de moderne Oost-Vlaamse clusters.","branch_victor_link":"Verken Victor's lijn →","branch_louis_name":"Louis Friese van Vlaenderen","branch_louis_desc":"Natuurlijke zoon van Lodewijk van Male. Heer van Praet en Woestine. Gedood bij Nicopolis 1396. Stichtte het Huis Vlaanderen-Praet — zes geattesteerde generaties die van Vlaenderen gebruikten als erfelijke familienaam. Het Praet-patrimonium verwierf het Vrijhof te Aalter tegen 1516, wat deze tak naast Victor's lijn in het Meetjesland verankert; voortzettingen via cadettakken zijn nog in onderzoek.","branch_louis_link":"Verken de Praet-lijn →","branch_drincham_name":"Jan \\"sans terre\\" van Vlaenderen","branch_drincham_desc":"Natuurlijke zoon van Lodewijk van Male. Kreeg kasteel Drincham bij Cassel in 1383. Gedood bij Nicopolis 1396. Vier gedocumenteerde generaties in Frans-Vlaanderen tot de jaren 1470 — de primaire stichtende lijn voor het Volckerinckhove/Frans-Vlaamse cluster.","branch_drincham_link":"Bekijk het archiefdossier →","branch_robrecht_name":"Robrecht van Vlaenderen","branch_robrecht_desc":"Natuurlijke zoon van Lodewijk van Male. Heer van Elverdinghe en Vlamertinghe vlak buiten Ieper; burggraaf van Ieper <em>jure uxoris</em> via zijn huwelijk in 1419 met Anastasie d'Oultre. Overleden op 21 januari 1434. Drie gedocumenteerde natuurlijke zonen — Jean (gelegitimeerd 1448), Caspar (actief 1453–1464), en Karel (overl. 1491) — droegen de familienaam door de tweede helft van de vijftiende eeuw in het Iepers kwartier. Karels dochter, getrouwd met Omarus de Crane en begraven naast haar vader te Langemark, is de laatst gedocumenteerde drager van de lijn.","branch_robrecht_link":"Verken Robrechts lijn →","reference_heading":"Naslag","ref_gap_title":"De documentaire leemte, 1447–1580","ref_gap_desc":"De periode van 130 jaar tussen de laatste bevestigde grafelijke-lijn-drager en de eerste Meetjeslandse parochiegeneratie. Bewijsmateriaal, uitgevoerde zoekacties, actieve archivalische doelwitten, en drie werkhypothesen voor hoe de leemte wordt gedicht.","ref_gap_link":"Verken de leemte →","ref_methodology_title":"Methodologie & bronnen","ref_methodology_desc":"Hoe archiefdocumenten worden getranscribeerd en vertaald, en de samengestelde leeslijst van primaire en secundaire werken die het onderzoek onderbouwen.","ref_methodology_link":"Methodologie & bronnen →","ref_bibliography_title":"Bronnen & wetenschap","ref_bibliography_desc":"Primaire bronnen, archivalische vindhulpmiddelen en wetenschappelijke literatuur geciteerd in de dossiers — de bewijsbasis van het project op één plaats.","ref_bibliography_link":"Bronnen & wetenschap →","dossiers_heading":"Archiefdossiers","dossiers_intro":"Voor onderzoekers die op zoek zijn naar de onderliggende documentaire bewijsvoering, onderhouden wij gedetailleerde archiefdossiers met volledige oorkondetranscripties, grafschriftgegevens en bronnenanalyse.","dossier_victor_title":"Victor van Vlaenderen dossier","dossier_victor_desc":"Drie-oorkonden-kern (1427, 1441, 1446), Victor's testament van 1430, Lodewyc's nakomelingen, en het Oostborch-grafschriftbewijs.","dossier_victor_link":"Bekijk archiefbewijs →","dossier_praet_title":"Louis Friese: archiefdossier","dossier_praet_desc":"Primaire-bronfragmenten en territoriale geschiedenis van het Huis Vlaanderen-Praet.","dossier_praet_link":"Bekijk archiefbewijs →","dossier_praet_lineage_title":"Huis Praet: afstammingsdossier","dossier_praet_lineage_desc":"Zes generaties met primaire-bron-bevestigde gegevens. De vijf kinderen van Johan I, de zes kinderen van Lodewijk II (inclusief de Josse de Flandre-zijtak), en de oorkonde van Knesselare uit 1517.","dossier_praet_lineage_link":"Bekijk afstammingsbewijs →","dossier_drincham_title":"Jan sans terre — Drincham-dossier","dossier_drincham_desc":"De Drincham-landtoewijzing van 1383, vier gedocumenteerde generaties in het gebied Cassel, het grafschrift van Jacques de Drincham in Veurne, en de geografisch-documentaire argumentatie voor het Frans-Vlaamse Van Vlaenderen-cluster.","dossier_drincham_link":"Bekijk archiefbewijs →","articles_heading":"Onderzoeksartikelen","articles_intro":"Analytisch en contextueel schrijfwerk dat naast het archiefbewijs staat — distributionele analyse, historische interpretatie en speculatieve draden met duidelijk gemarkeerd bewijsstatus.","article_four_functions_title":"Vier functies, drie clusters","article_four_functions_desc":"Een primaire-bron- en distributionele analyse van de familienaam Van Vlaenderen over vier documentaire functies en drie geografische clusters, over drie eeuwen verspreid. Test de toponymische en bastaardlijn-hypothesen tegen Geneanet-heat-map-gegevens en het onomastische bestand.","article_four_functions_link":"Lees de analyse →","article_nieus_title":"Zegels, leeuwen en de politiek van een familienaam","article_nieus_desc":"Hoe de twaalfde-eeuwse Vlaamse adellijke zegelcultuur — de leeuw, de Dover Recognitio en het politieke gewicht van territoriale identiteit — historische diepgang biedt voor de Van Vlaenderen-hypothese. Gebaseerd op Nieus (2021).","article_nieus_link":"Lees het artikel →","notes_heading":"Bronnen en verwijzingen","notes_intro":"Het onderzoeksoverzicht op deze pagina berust op primaire-bronattestatie van de drie gedocumenteerde bastaardlijnen, op het distributionele bewijs uiteengezet in het Vier functies-artikel, en op ondersteunend onderzoek in Vlaamse zegelcultuur en middeleeuwse genealogie. Volledige documentatie wordt onderhouden op de gelinkte dossier- en artikelpagina's.","notes_source_1_label":"[1]","notes_source_1_text":"Primaire-bronattestatie voor de vier bastaardlijnen (Victor, Jan sans terre, Louis Friese, Robrecht) en de bredere cohort: Olivarius Vredius (Olivier de Wrée), <em>Genealogia Comitum Flandriae</em>, Brugge 1642–43, Tabula XVI: <em>Nothi Ludovici Maleani Comitis Flandriae</em>, fol. 275–297. Volledig gelezen in de Sterling Library, Yale, mei 2026. De Tabula identificeert elf van Lodewijk van Males natuurlijke kinderen plus de Gosnay-vestigingsgroep, met de Gaillard MS-overlevering van twee primaire getuigenissen voor Karel van Vlaenderen — het grafschrift van Karel zelf te Langemark en het aangrenzende grafschrift van zijn echtgenote Catharine de Verdeghem.","notes_source_2_label":"[2]","notes_source_2_text":"De voornaamste moderne kritische werken over de bastaardcohort van Lodewijk van Male zijn de Lichtervelde, &ldquo;Les Bâtards de Louis de Male,&rdquo; <em>Handelingen van het Genootschap voor Geschiedenis te Brugge</em>, 1935, pp. 49–58, dat de volledigste cohortvolkstelling biedt (minimum achttien, geframed als ondergrens) met archivalische verwijzingen naar Brussel A.R.A., Rijsel A.D.N., en Dijon Côte d'Or; en Buylaert, <em>Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500)</em>, Gent: Academia Press, 2011, Van Vlaanderen-lemma's pp. 736–759, dat primaire archivalische folio's citeert (ARA Rekenkamer, SAG Reeks 301/330, RAB blauwe nummers, KBR Fonds Merghelynck, SAB politieke oorkonden) voor vrijwel elke uitspraak. Samen vormen zij de dragende moderne wetenschap voor de afstammingslijnen die hier worden gevolgd. De Foundation for Medieval Genealogy (MedLands), v5.0 januari 2025, is een nuttig tertiair vindhulpmiddel dat vergelijkbaar materiaal synthetiseert met primaire-bronverwijzingen.","notes_source_3_label":"[3]","notes_source_3_text":"De distributionele analyse over drie familienaam-clusters (c. 1500, 1600, 1700) en het toponymische-paradox-argument worden volledig uiteengezet in het artikel Vier functies, drie clusters.","notes_source_3_linktext":"Lees de Vier functies-analyse →","notes_source_4_label":"[4]","notes_source_4_text":"Jean-François Nieus, \\"Aristocratic seal ownership in twelfth-century Flanders: A world in between\\" (preprint, Academia.edu, 2021; Université de Namur; binnenkort in peer-reviewed publicatie). Biedt historische diepgang voor hoe Vlaamse elite-identiteit en territoriale namen functioneerden in het grafelijke netwerk. Volledig besproken op de pagina Zegels, leeuwen en de politiek van een familienaam.","notes_source_4_linktext":"Lees het Zegels-artikel →","diagram_sr_heading":"Onderzoeksoverzichtsdiagram — tekstuele samenvatting"}`);
+const research = /* @__PURE__ */ JSON.parse(`{"hero_eyebrow":"Van Vlaenderen · Middeleeuws onderzoek","hero_title":"Middeleeuwse & collaterale lijnen","hero_subhead":"Een erfelijke familienaam gedragen door zijtakken van het Vlaamse grafelijk huis vanaf ten minste 1275.","hero_lead_p1":"De vroegst gedocumenteerde gebruikspatronen van <em>van Vlaenderen</em> als erfelijke familienaam zijn niet toponymisch. Ze clusteren binnen het historische graafschap Vlaanderen, in het grafelijke netwerk, en stammen — in ononderbroken documentair gebruik vanaf ten minste 1275 — uit zijtakken van het Huis Vlaanderen. Sommige van deze takken zijn wettige jongere lijnen; sommige zijn erkende onwettige zonen en dochters; sommige zijn vrouwelijke draagsters wier lijnen met henzelf eindigden. Het patroon is in alle gevallen hetzelfde: een geërfde identiteit die grafelijk bloed markeert, gebruikt als persoonlijke familienaam wanneer geen specifieke heerlijkheidstitel meer gewicht droeg.","hero_lead_p2":"Het grootste gedocumenteerde cluster van dragers is de bastaardcohort van Lodewijk II van Male (1330–1384), de laatste graaf van Vlaanderen uit het Huis Dampierre. De volkstelling van de Lichtervelde uit 1935 documenteert ten minste achttien van Lodewijks natuurlijke kinderen. Vier van zijn directe natuurlijke zonen stichtten familienaam-dragende lijnen, en een aanzienlijk aantal van zijn dochters droeg de naam in huwelijken buiten het grafelijk huis. Deze pagina volgt de vier bastaardlijnen, de bredere zijtakcontext, en de afstammelingen die de familienaam voortdroegen.","dossier_title":"Onderzoeksoverzicht","dossier_updated":"Bijgewerkt april 2026","methodology_title":"Methodologie & bewijsniveaus","method_attested_label":"Direct geattesteerd","method_attested_text":"Verklaringen die steunen op geciteerde oorkondetaal of expliciete documentaire samenvattingen in gepubliceerde autoriteiten.","method_corroborated_label":"Sterk gecorroboreerd","method_corroborated_text":"Verklaringen die worden ondersteund door overeenstemmende gepubliceerde historische of erfgoedautoriteiten.","method_probable_label":"Waarschijnlijk","method_probable_text":"Op bronnen gebaseerde verklaringen die een volledige inspectie van de onderliggende edities vereisen voordat ze als vaststaand worden beschouwd.","method_hypothesis_label":"Hypothese","method_hypothesis_text":"Genealogische gevolgtrekkingen voorgesteld voor verdere toetsing, nog niet bewezen als feit.","conclusion_title":"Lopend werk","conclusion_p1":"De documentaire bewijsvoering hierboven toont aan dat bastaarden en zijtakken van de graven van Vlaanderen <em>van Vlaenderen</em> als erfelijke familienaam droegen vanaf ten minste 1275 over meerdere lijnen. Of de moderne Van Vlaenderen-families in de clusters Meetjesland, Frans-Vlaanderen en Brabant genealogisch afstammen van die specifieke grafelijke lijnen, is een afzonderlijke vraag die het Y-DNA-project moet beantwoorden.","conclusion_p2":"Onderzoeksprioriteiten richten zich op het overbruggen van de gedocumenteerde middeleeuwse dragers naar de eerste parochieregister-Van Vlaenderens in het Meetjesland (ca. 1568) en het Frans-Vlaamse cluster rond Volckerinckhove. Verschillende lijnen blijven open als brughypothesen: Victors lijn eindigt bij Adam te Gent in 1447; de Praet-zijtakken — waaronder de Josse de Flandre-lijn gedocumenteerd tot ten minste 1592 en de Onlede jongerezonen-tak — strekken zich uit tot ver in de vroegmoderne periode; en de Drincham-lijn is traceerbaar in Frans-Vlaanderen tot in de jaren 1470. De identificatie in april 2026 van een Belhoute-schepenbankakte uit 1610 waarin Jan van Vlaenderen en zijn zoon Aert Janse genoemd worden, voegt een nauwere brughypothese toe aan de vroegmoderne kant van de leemte. Actieve archivalische doelwitten omvatten de Gentse Staten van Goed-reeks (Ambacht Assenede I & II), de Landboek- en Leenhof-bestanden voor het Meetjesland, en de administratieve-bestandenreeks van de kasselrij Cassel bij de Archives Départementales du Nord in Rijsel.","cta_text":"Bent u een onderzoeker gespecialiseerd in 15de-eeuwse Vlaamse archieven?","cta_note":"We verwelkomen samenwerking bij het archiefonderzoek naar de 'ontbrekende generaties' van de Van Vlaenderen-lijn.","tldr_heading":"Waarom de naam ertoe doet","tldr_body_p1":"Wie voor het eerst met van Vlaenderen in aanraking komt, neemt vaak aan dat het simpelweg &ldquo;uit Vlaanderen&rdquo; betekent. De documentaire bewijsvoering vertelt een specifieker verhaal. De vroegst systematische erfelijke drager in Buylaerts <em>Repertorium</em> is gedocumenteerd in 1331 — Guy van Vlaenderen, heer van Richebourg, een bastaard-halfbroer van Lodewijk van Nevers. Dit is het moment van de conventiewisseling: onder Lodewijk van Nevers neemt <em>van Vlaenderen / de Flandres</em> de functie aan van dynastiek merkteken, naar het Franse koninklijke model waarin <em>de France</em> de bastaardkinderen van de koning aanduidde. Lodewijk van Nevers bracht een groot deel van zijn loopbaan door aan het Valois-hof; de conventie reisde met hem mee. Vanaf Guy van Richebourg wordt de familienaam systematisch gebruikt als geërfde identiteit in plaats van als plaatsaanduiding.","tldr_body_p2":"De functie intensifieert sterk onder Lodewijk van Male, wiens omvangrijke bastaardcohort — en wiens dochterhuwelijken — het grootste deel van het documentaire bestand voortbrengen dat we hebben. Na 1384 was de Dampierre-titel uitgedoofd; de bastaardafstammelingen behielden de naam. Het grafschrift uit 1522 voor Joncheer Antheunis van Vlaenderen, gheseyt van Praet (Gailliard p. 260) toont een individu uit de Praet-lijn dat anderhalve eeuw na de uitdoving beide familienamen nog droeg. Maar de conventie zelf is ouder dan de cohort van Van Male, en de families die haar dragen clusteren binnen het historische graafschap in plaats van zich als migranten te verspreiden. Het argument wordt hieronder uiteengezet.","four_lines_heading":"Vier lijnen, drie clusters","four_lines_p1":"Vier van Lodewijk van Males natuurlijke zonen stichtten familienaam-dragende lijnen: Victor (Ursel en Wessegem), Louis Friese (Praet en Woestine), Jan sans Terre (Drincham), en Robrecht (Elverdinghe en Vlamertinghe). Alle vier gebruikten <em>van Vlaenderen</em> — en de varianten <em>van Vlaendren, de Flandre, de Flandres</em> — als erfelijke familienaam. Drie van de vier lijnen komen overeen met onderscheiden moderne familienaam-clusters in het latere distributionele bestand: het Meetjesland (Victor en Le Frison-Praet hier verankerd), Frans-Vlaanderen / Kassel (Drincham), en het Iepers kwartier als gedocumenteerd maar uitgedoofd cluster (Robrechts lijn, getraceerd via Caspar en Karel tot Karels dochter, ca. 1491–1505).","four_lines_p2":"Voorbij Lodewijk van Male: hetzelfde erfelijke patroon is één grafelijke generatie eerder gedocumenteerd via Guy van Vlaenderen heer van Richebourg (actief 1331, lijn voortlopend tot 1503), via Hendrik van Vlaanderens bastaarden Gosewijn van Reinerstede en Jan van Houtem, en in wettige Dampierre-zijtakken waaronder de heren van Kassel (vanaf 1275), de heren van Dendermonde (1313), en de graven van Namen (1331). Het patroon herhaalt zich over meerdere generaties en meerdere afstammingslijnen binnen hetzelfde grafelijke huis — wat de lezing van dynastiek merkteken voorspelt en wat een toponymische lezing niet doet.","paradox_eyebrow":"De toponymische paradox","paradox_title":"Vier functies, drie clusters","paradox_body":"Als <em>van Vlaenderen</em> primair een toponiem zou zijn, zou je verwachten de zwaarste historische clusters buiten het gebied te vinden dat het toponiem beschrijft. Het tegenovergestelde is gedocumenteerd. De zwaarste en oudste clusters verschijnen binnen het historische graafschap Vlaanderen — in het binnenlandse Meetjesland, de regio Kassel in Frans-Vlaanderen, en het inmiddels uitgedoofde Iepers-kwartier-cluster van Robrechts lijn. Zelfs als men de middeleeuwse lezing van <em>Vlaenderen</em> als kleinere subregio (met name het kustgebied) aanvaardt, voorspelt die lezing noch de binnenlandse Meetjeslandse concentratie noch de meergenerationele erfelijke overdracht binnen stabiel gewortelde families. Deze paradox, samen met de vier onderscheiden documentaire functies van de uitdrukking, vormt de bewijsgrondslag voor het vier-lijnen-argument op deze pagina.","paradox_button":"Lees de volledige analyse →","diagram_sr_text":"Dit diagram toont de vier familienaam-dragende bastaardlijnen die afstammen van Lodewijk II van Male, graaf van Vlaanderen (1330–1384), de laatste graaf uit het Huis Dampierre. Victors lijn: Heer van Ursel en Wessegem in het Meetjesland, overleden vóór 1442. Drie gedocumenteerde natuurlijke zonen — Lodewyc, Janne en Adam — vermeld in primaire oorkonden 1427–1447. Le Frison-Praet-lijn: Heer van Praet en Woestine; gesneuveld bij Nicopolis 1396. Zes geattesteerde generaties via Lodewijk IV (overl. 1558) en Jan zonder generatie (overl. 1545); zijtakken omvatten de Josse de Flandre-lijn en de Onlede jongerezonen-tak. Drincham-lijn: Kreeg kasteel Drincham bij Kassel in 1383; gesneuveld bij Nicopolis 1396. Gedocumenteerd door vijf generaties in Frans-Vlaanderen. Robrechts lijn: Heer van Elverdinghe en Vlamertinghe vlak buiten Ieper; burggraaf van Ieper jure uxoris via zijn huwelijk in 1419 met Anastasie d'Oultre. Overleden op 21 januari 1434. Drie gedocumenteerde natuurlijke zonen — Jean de Flandres (gelegitimeerd 1448), Caspar (actief 1453–1464 als baljuw van Elverdinghe-Vlamertinghe en daarna van Ieper), en Karel van Vlaenderen (overl. 1491; het grafschrift te Langemark noemt hem filius M'her Robrecht). Karels dochter, getrouwd met Omarus de Crane en begraven te Langemark, is de laatst gedocumenteerde drager van de familienaam in deze lijn.","branches_heading":"Onderzoekslijnen","branch_victor_name":"Victor van Vlaenderen","branch_victor_desc":"Natuurlijke zoon van Lodewijk van Male. Heer van Ursel en Wessegem in het Meetjesland. Drie natuurlijke zonen gedocumenteerd in drie primaire oorkonden (1427, 1441, 1446). Zijn zoon Adam, laatst geattesteerd te Gent op 18 maart 1447, is de naast gedocumenteerde individuele brugkandidaat naar de moderne Oost-Vlaamse clusters.","branch_victor_link":"Verken Victor's lijn →","branch_louis_name":"Louis Friese van Vlaenderen","branch_louis_desc":"Natuurlijke zoon van Lodewijk van Male. Heer van Praet en Woestine. Gedood bij Nicopolis 1396. Stichtte het Huis Vlaanderen-Praet — zes geattesteerde generaties die van Vlaenderen gebruikten als erfelijke familienaam. Het Praet-patrimonium verwierf het Vrijhof te Aalter tegen 1516, wat deze tak naast Victor's lijn in het Meetjesland verankert; voortzettingen via cadettakken zijn nog in onderzoek.","branch_louis_link":"Verken de Praet-lijn →","branch_drincham_name":"Jan \\"sans terre\\" van Vlaenderen","branch_drincham_desc":"Natuurlijke zoon van Lodewijk van Male. Kreeg kasteel Drincham bij Cassel in 1383. Gedood bij Nicopolis 1396. Vier gedocumenteerde generaties in Frans-Vlaanderen tot de jaren 1470 — de primaire stichtende lijn voor het Volckerinckhove/Frans-Vlaamse cluster.","branch_drincham_link":"Bekijk het archiefdossier →","branch_robrecht_name":"Robrecht van Vlaenderen","branch_robrecht_desc":"Natuurlijke zoon van Lodewijk van Male. Heer van Elverdinghe en Vlamertinghe vlak buiten Ieper; burggraaf van Ieper <em>jure uxoris</em> via zijn huwelijk in 1419 met Anastasie d'Oultre. Overleden op 21 januari 1434. Drie gedocumenteerde natuurlijke zonen — Jean (gelegitimeerd 1448), Caspar (actief 1453–1464), en Karel (overl. 1491) — droegen de familienaam door de tweede helft van de vijftiende eeuw in het Iepers kwartier. Karels dochter, getrouwd met Omarus de Crane en begraven naast haar vader te Langemark, is de laatst gedocumenteerde drager van de lijn.","branch_robrecht_link":"Verken Robrechts lijn →","reference_heading":"Naslag","ref_gap_title":"De documentaire leemte, 1447–1580","ref_gap_desc":"De periode van 130 jaar tussen de laatste bevestigde grafelijke-lijn-drager en de eerste Meetjeslandse parochiegeneratie. Bewijsmateriaal, uitgevoerde zoekacties, actieve archivalische doelwitten, en drie werkhypothesen voor hoe de leemte wordt gedicht.","ref_gap_link":"Verken de leemte →","ref_methodology_title":"Methodologie & bronnen","ref_methodology_desc":"Hoe archiefdocumenten worden getranscribeerd en vertaald, en de samengestelde leeslijst van primaire en secundaire werken die het onderzoek onderbouwen.","ref_methodology_link":"Methodologie & bronnen →","ref_bibliography_title":"Bronnen & wetenschap","ref_bibliography_desc":"Primaire bronnen, archivalische vindhulpmiddelen en wetenschappelijke literatuur geciteerd in de dossiers — de bewijsbasis van het project op één plaats.","ref_bibliography_link":"Bronnen & wetenschap →","dossiers_heading":"Archiefdossiers","dossiers_intro":"Voor onderzoekers die op zoek zijn naar de onderliggende documentaire bewijsvoering, onderhouden wij gedetailleerde archiefdossiers met volledige oorkondetranscripties, grafschriftgegevens en bronnenanalyse.","dossier_victor_title":"Victor van Vlaenderen dossier","dossier_victor_desc":"Drie-oorkonden-kern (1427, 1441, 1446), Victor's testament van 1430, Lodewyc's nakomelingen, en het Oostborch-grafschriftbewijs.","dossier_victor_link":"Bekijk archiefbewijs →","dossier_praet_title":"Louis Friese: archiefdossier","dossier_praet_desc":"Primaire-bronfragmenten en territoriale geschiedenis van het Huis Vlaanderen-Praet.","dossier_praet_link":"Bekijk archiefbewijs →","dossier_praet_lineage_title":"Huis Praet: afstammingsdossier","dossier_praet_lineage_desc":"Zes generaties met primaire-bron-bevestigde gegevens. De vijf kinderen van Johan I, de zes kinderen van Lodewijk II (inclusief de Josse de Flandre-zijtak), en de oorkonde van Knesselare uit 1517.","dossier_praet_lineage_link":"Bekijk afstammingsbewijs →","dossier_drincham_title":"Jan sans terre — Drincham-dossier","dossier_drincham_desc":"De Drincham-landtoewijzing van 1383, vier gedocumenteerde generaties in het gebied Cassel, het grafschrift van Jacques de Drincham in Veurne, en de geografisch-documentaire argumentatie voor het Frans-Vlaamse Van Vlaenderen-cluster.","dossier_drincham_link":"Bekijk archiefbewijs →","articles_heading":"Onderzoeksartikelen","articles_intro":"Analytisch en contextueel schrijfwerk dat naast het archiefbewijs staat — distributionele analyse, historische interpretatie en speculatieve draden met duidelijk gemarkeerd bewijsstatus.","article_four_functions_title":"Vier functies, drie clusters","article_four_functions_desc":"Een primaire-bron- en distributionele analyse van de familienaam Van Vlaenderen over vier documentaire functies en drie geografische clusters, over drie eeuwen verspreid. Test de toponymische en bastaardlijn-hypothesen tegen Geneanet-heat-map-gegevens en het onomastische bestand.","article_four_functions_link":"Lees de analyse →","article_nieus_title":"Zegels, leeuwen en de politiek van een familienaam","article_nieus_desc":"Hoe de twaalfde-eeuwse Vlaamse adellijke zegelcultuur — de leeuw, de Dover Recognitio en het politieke gewicht van territoriale identiteit — historische diepgang biedt voor de Van Vlaenderen-hypothese. Gebaseerd op Nieus (2021).","article_nieus_link":"Lees het artikel →","notes_heading":"Bronnen en verwijzingen","notes_intro":"Het onderzoeksoverzicht op deze pagina berust op primaire-bronattestatie van de drie gedocumenteerde bastaardlijnen, op het distributionele bewijs uiteengezet in het Vier functies-artikel, en op ondersteunend onderzoek in Vlaamse zegelcultuur en middeleeuwse genealogie. Volledige documentatie wordt onderhouden op de gelinkte dossier- en artikelpagina's.","notes_source_1_label":"[1]","notes_source_1_text":"Primaire-bronattestatie voor de vier bastaardlijnen (Victor, Jan sans terre, Louis Friese, Robrecht) en de bredere cohort: Olivarius Vredius (Olivier de Wrée), <em>Genealogia Comitum Flandriae</em>, Brugge 1642–43, Tabula XVI: <em>Nothi Ludovici Maleani Comitis Flandriae</em>, fol. 275–297. Volledig gelezen in de Sterling Library, Yale, mei 2026. De Tabula identificeert elf van Lodewijk van Males natuurlijke kinderen plus de Gosnay-vestigingsgroep, met de Gaillard MS-overlevering van twee primaire getuigenissen voor Karel van Vlaenderen — het grafschrift van Karel zelf te Langemark en het aangrenzende grafschrift van zijn echtgenote Catharine de Verdeghem.","notes_source_2_label":"[2]","notes_source_2_text":"De voornaamste moderne kritische werken over de bastaardcohort van Lodewijk van Male zijn P. de Lichtervelde, &ldquo;Les Bâtards de Louis de Male,&rdquo; <em>Handelingen van het Genootschap voor Geschiedenis</em> 78(1-2) (1935), pp. 48–58, DOI 10.21825/gvg.92141, dat de volledigste cohortvolkstelling biedt (minimum achttien, geframed als ondergrens) met archivalische verwijzingen naar Brussel A.R.A., Rijsel A.D.N., en Dijon Côte d'Or; en Buylaert, <em>Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500)</em>, Gent: Academia Press, 2011, Van Vlaanderen-lemma's pp. 736–759, dat primaire archivalische folio's citeert (ARA Rekenkamer, SAG Reeks 301/330, RAB blauwe nummers, KBR Fonds Merghelynck, SAB politieke oorkonden) voor vrijwel elke uitspraak. Samen vormen zij de dragende moderne wetenschap voor de afstammingslijnen die hier worden gevolgd. De Foundation for Medieval Genealogy (MedLands), v5.0 januari 2025, is een nuttig tertiair vindhulpmiddel dat vergelijkbaar materiaal synthetiseert met primaire-bronverwijzingen.","notes_source_3_label":"[3]","notes_source_3_text":"De distributionele analyse over drie familienaam-clusters (c. 1500, 1600, 1700) en het toponymische-paradox-argument worden volledig uiteengezet in het artikel Vier functies, drie clusters.","notes_source_3_linktext":"Lees de Vier functies-analyse →","notes_source_4_label":"[4]","notes_source_4_text":"Jean-François Nieus, \\"Aristocratic seal ownership in twelfth-century Flanders: A world in between\\" (preprint, Academia.edu, 2021; Université de Namur; binnenkort in peer-reviewed publicatie). Biedt historische diepgang voor hoe Vlaamse elite-identiteit en territoriale namen functioneerden in het grafelijke netwerk. Volledig besproken op de pagina Zegels, leeuwen en de politiek van een familienaam.","notes_source_4_linktext":"Lees het Zegels-artikel →","diagram_sr_heading":"Onderzoeksoverzichtsdiagram — tekstuele samenvatting"}`);
 const robrecht = /* @__PURE__ */ JSON.parse(`{"page_title":"Robrecht van Vlaenderen — Heer van Elverdinghe en Vlamertinghe","intro_heading":"Robrecht van Vlaenderen — Heer van Elverdinghe en Vlamertinghe","intro_p1":"Robrecht van Vlaenderen, natuurlijke zoon van Lodewijk II van Male, hield de heerlijkheden Elverdinghe en Vlamertinghe — naburige dorpen vlak buiten Ieper — als schenking van zijn vader. Hij diende als Bourgondisch raadslid en kamerheer (<em>raed ende camerlinck</em>) van zowel hertog Jan zonder Vrees als hertog Filips de Goede, huwde Anastasie d'Oultre te Ieper op 12 september 1419 in aanwezigheid van de latere Filips de Goede, en verwierf de titel burggraaf van Ieper via zijn huwelijk. Hij stierf op 21 januari 1434 en werd begraven in de parochiekerk van Elverdinge. Zijn huwelijk met Anastasie bracht geen wettige kinderen voort, maar drie gedocumenteerde natuurlijke zonen — Jean (gelegitimeerd in 1448 bij Bourgondisch hertogelijk diploma), Caspar (actief 1453–1464 als baljuw van Elverdinghe-Vlamertinghe en daarna van Ieper), en Karel (actief 1464–1491, begraven te Langemark) — droegen de familienaam voort door het Iepers kwartier.","marriage_heading":"Huwelijk en territoriale bezittingen","marriage_p1":"Robrecht was reeds actief te Elverdinge in 1412, vóór zijn huwelijk in 1419. Hij hield Elverdinge en Vlamertinghe als directe schenking van zijn vader Lodewijk van Male, niet via zijn echtgenote — de territoriale verbinding is een directe vaderlijke begiftiging, geen huwelijksverwerving.","marriage_p2":"Zijn huwelijk met Anastasie d'Oultre vond plaats te Ieper op 12 september 1419 — twee dagen na de moord op Jan zonder Vrees te Montereau, in aanwezigheid van de graaf van Charolais (de latere Filips de Goede) die nog niet op de hoogte was van de moord op zijn vader. Buylaert reproduceert de documentatie uit ARA Chambre des Comptes N° 38644, fol. 41v°. Via Anastasie verwierf Robrecht de titel Vicomte d'Ypres <em>jure uxoris</em>.","marriage_p3":"Naast zijn heerlijke bezittingen diende Robrecht als Bourgondisch <em>raed ende camerlinck</em> — raadslid en kamerheer — van de hertogen Jan zonder Vrees en Filips de Goede gedurende ongeveer twee decennia. De functie plaatste hem in de hoogste echelons van het Bourgondische grafelijke bestuur.","tomb_heading":"Overlijden en het graf te Elverdinge","tomb_p1":"Robrecht stierf op Sint-Vincentius-vooravond — 21 januari 1434. Zijn houten graftombe stond aan de noordzijde van het koor van de parochiekerk van Elverdinge, met deze Middelnederlandse inscriptie:","tomb_quote_inscription":"Hier licht edele ende moghende heere mijnheer Roelandt van Vlaenderen, ruddere, heere van Elverdinghe ende Vlamertinghe, raed ende camerlinck ons gheduchts heeren Jan en Philips, hertoghen Bourgoingnen, graeven van Vlaenderen, hertoghe van Brabant. Obiit 1434, up Sint Vincents avent.","tomb_inscription_gloss":"Hier ligt de edele en machtige heer Robrecht van Vlaenderen — Tamboryn merkt op dat de &ldquo;Roelandt&rdquo; van de inscriptie waarschijnlijk Robrecht was, de vorm die elders in het documentaire bestand wordt geattesteerd — ridder, heer van Elverdinghe en Vlamertinghe, raadslid en kamerheer van onze genadige heren Jan en Filips, hertogen van Bourgondië, graven van Vlaanderen, hertogen van Brabant. Hij stierf in 1434, op Sint-Vincentius-vooravond.","tomb_p2":"Anastasie overleefde hem enkele jaren. De beschrijver van haar eigen grafschrift, overgeleverd in Vredius p. 283, merkte op dat zij van haar twee echtgenoten verschillende zonen had bij haar eerste echtgenoot Eylard van Pouke en <em>ex Roberto verò nullos</em> — geen van Robert. De Gaillard MS geeft dezelfde regel in Nederlandse volkstaal:","tomb_quote_anastasie_dutch":"Vrauw ANASTASIA van Oultre en hadde gheen kinderen by M'her ROBERT van Vlaenderen / haeren tweeden man.","tomb_p3":"Bij Robrechts overlijden vielen de heerlijkheden Elverdinghe en Vlamertinghe terug aan de hertog en werden in mei 1435 geschonken aan Cornelis van Bourgondië, de Bourgondische grand-bâtard van Filips de Goede. Ze keerden een halve eeuw later terug in de Van Vlaenderen-lijn, in 1487, toen Lodewijk III van Vlaenderen uit de Praet-lijn huwde met Isabella van Bourgogne — <em>dame héritière</em> en kleindochter van Cornelis — waardoor beide heerlijkheden terugkeerden in de familie tot het overlijden van Jan zonder generatie in 1545.","jean_heading":"Jean de Flandres (gelegitimeerd 1448)","jean_p1":"Robrechts erkende natuurlijke zoon bij Marie de le Voerde werd formeel gelegitimeerd bij Bourgondisch hertogelijk diploma te Hesdin op 31 juli 1448. Vredius pp. 283–284 reproduceert de bewoording van het diploma:","jean_quote_diploma":"Jean de Flandres, filz naturel & illegitime de feu Robert, bastard de Flandres, procreé & engendré du corps de Damoiselle Marie de le Voerde.","jean_p2":"Het document is geciteerd uit de Archives de la Chambre des Comptes. Het vestigt de keten Lodewijk van Male → Robert (bastaard) → Jean (natuurlijk en onwettig) op primaire-bronniveau, waarbij alle drie de naam <em>de Flandres</em> dragen en Jean formele legitimatie verkrijgt via een door de staat erkend hertogelijk mechanisme. Geen verder loopbaanspoor; het diploma is de enige primaire attestatie maar op zichzelf een definitief document.","jean_evidence":"<strong>Bewijsniveau:</strong> Direct geattesteerd.","caspar_heading":"Caspar (Jaspar) van Vlaenderen","caspar_intro":"Caspar van Vlaenderen is gedocumenteerd door Buylaert p. 758 door een actieve loopbaan van 1453 tot 1464:","caspar_bullet_1":"<strong>Baljuw van Elverdinghe en Vlamertinghe</strong>, 2 januari 1453 tot 16 september 1457 (ARA Rekenkamer nrs. 13928–43; Van Rompaey, <em>Het grafelijk baljuwsambt in Vlaanderen</em>, p. 625). Dezelfde heerlijkheden die Robrecht tot zijn dood in 1434 hield.","caspar_bullet_2":"<strong>Bijgewoond aan het Banket van de Fazant</strong> te Rijsel, 18 maart 1454, als <em>&ldquo;messire Gaspard de Flandres&rdquo;</em> samen met <em>&ldquo;Loys de Flandres&rdquo;</em> — die laatste is Lodewijk II uit de wettige Praet-lijn (Buylaert p. 757; Caron ed., <em>Les voeux du Faisan</em>, pp. 163–167).","caspar_bullet_3":"<strong>Raadslid van de stad Ieper</strong> in 1458, 1460, en 1461 (KBR Fonds Merghelynck nr. 102–3).","caspar_bullet_4":"<strong>Baljuw van Ieper</strong>, 2 januari 1462 tot 6 mei 1464 (ARA Rekenkamer nrs. 14540–50).","caspar_p1":"Caspars afstamming wordt niet vermeld in Buylaert. De broeders-hypothese — dat Caspar Karels broer is en een natuurlijke zoon van Robrecht — berust hoofdzakelijk op geografisch bewijs. Caspars baljuwschap van Elverdinghe en Vlamertinghe in 1453–1457 dekt de exacte gebieden die Robrecht tot zijn dood in 1434 hield. Het gebied was teruggevallen aan de hertog en in mei 1435 overgegaan op Cornelis van Bourgondië, dus tegen 1453 administreerde Caspar voor de nieuwe hertogelijke houder, niet voor het voorgaande Van Vlaenderen-bezit. Maar de territoriaal-administratieve continuïteit is zelf het signaal: een aanstelling tot baljuw van twee specifieke aangrenzende heerlijkheden negentien jaar na de dood van de heer wiens familienaam de aangestelde droeg, is een patroon dat zich moeilijk als toeval laat lezen.","caspar_evidence":"<strong>Bewijsniveau:</strong> Loopbaan en identiteit Direct geattesteerd. Afstamming als zoon van Robrecht Hypothese.","caspar_falsifiability":"<strong>Falsifieerbaarheid:</strong> De broeders-lezing faalt als een primaire archivalische bron Caspars patroniem benoemt met een afstamming buiten Robrechts lijn. De meest waarschijnlijke plaats voor uitsluitsel zijn de ARA Rekenkamer-folio's zelf — de baljuwsrekeningen nrs. 13928–43 (Elverdinghe-Vlamertinghe) en 14540–50 (Ieper), of de KBR Fonds Merghelynck-akten voor de Iepers raadsjaren.","karel_heading":"Karel van Vlaenderen ★","karel_intro":"Karel van Vlaenderen is gedocumenteerd in twee onafhankelijke bronstromen die op dezelfde persoon convergeren.","karel_subheading_buylaert":"Buylaerts loopbaanprofiel","karel_buylaert_intro":"Buylaerts loopbaanprofiel (p. 758) put uit primaire archivalische bronnen:","karel_buylaert_bullet_1":"Aan de algemene Statenvergadering der Nederlanden in 1464 als <em>&ldquo;messire Charles de Flandres&rdquo;</em> (Buylaert et al. eds., 'De adel ingelijst', tekstuitgave nr. 6).","karel_buylaert_bullet_2":"Leenhouder van het Burg van Veurne, september 1472 (ARA Rekenkamer nr. 1086, fol. 96r, 115r).","karel_buylaert_bullet_3":"<em>Ridder</em> en leenhouder van het leenhof van Ieper, 1474 (ARA RK nr. 1111, p. 104).","karel_buylaert_bullet_4":"Brieven van de Raad van Vlaanderen betreffende Abbéville, oktober 1476 (ARA RK Rekeningen & registers nr. 21845, fol. 28r).","karel_buylaert_bullet_5":"Vermeld op de adelslijst <em>&ldquo;tYpre ende int Yperssche&rdquo;</em>, februari 1481 (Buylaert et al. eds., 'De adel ingelijst', tekstuitgave nr. 7).","karel_subheading_vredius":"Vredius' Tabula XVI-lemma","karel_vredius_intro":"Vredius' Tabula XVI-lemma (p. 288, met overlevering van het Langemarkse grafschrift via de Gaillard MS) geeft de afstamming en de territoriale bezittingen:","karel_quote_epitaph":"Sepulture van M'her KAERLE van Vlaendren / Heere van Sgrutersale / filius M'her Robrecht / die starf anno 1491. den 15. Septembre","karel_epitaph_gloss":"Graftombe van M'her Karel van Vlaendren, heer van Grutersale, zoon van M'her Robrecht, die stierf in het jaar 1491, op de 15de september.","karel_p1":"De convergentie — Buylaerts loopbaanprofiel en Vredius' monumentale grafschrift — plaatst Karel stevig binnen het Iepers kwartier (Veurne, Ieper, Grutersale, Langemark, alle binnen een straal van ongeveer 10 km van Ieper), met <em>ridderstand</em>, actief 1464–1491, en met de afstamming ondubbelzinnig vermeld in het Langemarkse grafschrift als zoon van Robrecht.","karel_p2":"Een aanvullende brug: Marguerite van Vlaenderen, <em>fille de messire Charles</em>, huwde Georges Belle, heer van Boezinge, op 29 november 1460 (Tablettes des Flandres Tome 9 p. 66). De benaming &ldquo;messire Charles&rdquo; komt overeen met Karel. Of Marguerite dezelfde dochter is die hieronder wordt genoemd — of een andere dochter — is een open prosopografische vraag.","karel_evidence":"<strong>Bewijsniveau:</strong> Loopbaan en identiteit Direct geattesteerd. Afstamming als zoon van Robrecht Sterk gecorroboreerd (bovenkant). De casus valt onder Direct geattesteerd omdat het grafschrift via twee transcriptielagen wordt gelezen (Gaillard MS → Vredius gedrukt) en omdat Buylaerts loopbaanprofiel via convergente prosopografische gevolgtrekking met Vredius' grafschrift wordt verbonden, in plaats van via één enkel document dat de twee profielen koppelt.","karel_falsifiability":"<strong>Falsifieerbaarheid:</strong> De identificatie van Karel als zoon van Robrecht faalt als (a) de kerk van Langemark of de oorspronkelijke graftombe-records, indien terugvindbaar, Karels afstamming anders benoemen dan <em>filius M'her Robrecht</em>; (b) de Gaillard MS, voorbij Vredius' transcriptie getraceerd, een andere afstamming geeft in hetzij het Langemarkse grafschrift hetzij het testament van 1430; (c) primaire archivalische akten voor de Karel uit het Iepers-kwartier-loopbaanprofiel hem met een ander patroniem benoemen; (d) een tweede, onderscheiden Karel van Vlaenderen uit dezelfde regio en periode wordt gedocumenteerd, waardoor de Langemarkse figuur van de Buylaert-loopbaanfiguur wordt onderscheiden.","daughter_heading":"Karels dochter en het huwelijk met de Crane","daughter_p1":"Vredius p. 288 noteert:","daughter_quote_vredius":"Hp hadde ghetrauwt een dochter van M'her Charles van Vlaendren / Rudder / Heere van Grutersale","daughter_quote_gloss":"Hij had getrouwd een dochter van M'her Charles van Vlaendren, ridder, heer van Grutersale.","daughter_p2":"De &ldquo;hij&rdquo; is Omarus de Crane, <em>Eques</em>, die op 16 augustus 1485 stierf en te Langemark werd begraven naast Karels graftombe. Een tweede Omarus de Crane (vermoedelijk kleinzoon) werd te Nieuwpoort geplaatst met overlijdensdatum 1505.","daughter_p3":"De voornaam van de dochter is niet in de bron bewaard. Of zij dezelfde is als de Marguerite van Vlaenderen die in 1460 met Georges Belle huwde (Tablettes Tome 9 p. 66), of een andere dochter, is een open prosopografische vraag — het huwelijk met Belle in 1460 en het huwelijk met de Crane zouden dezelfde vrouw in een tweede huwelijk kunnen vertegenwoordigen, of twee verschillende dochters van Karel.","daughter_p4":"Karels dochter is de laatst gedocumenteerde drager van de familienaam in Robrechts lijn. Na haar huwelijk in de familie de Crane wordt de familienaam in deze tak niet voortgezet.","daughter_evidence":"<strong>Bewijsniveau:</strong> Direct geattesteerd.","evidence_heading":"Overzicht archivalisch bewijs","evidence_intro":"Primaire attestaties die de architectuur hierboven ondersteunen:","evidence_bullet_1":"<strong>ARA, Chambre des Comptes N° 38644, fol. 41v°</strong> — Robrechts huwelijk met Anastasie d'Oultre te Ieper in 1419 (geciteerd via de Lichtervelde p. 51)","evidence_bullet_2":"<strong>ARA, Archives de la Chambre des Comptes</strong> — Hesdin-diploma dat Jean de Flandres legitimeert, 31 juli 1448 (geciteerd via Vredius pp. 283–284)","evidence_bullet_3":"<strong>Parochiekerk van Elverdinge</strong> — houten graftombe van Robrecht met Middelnederlandse inscriptie (geciteerd via Buylaert p. 753, die op zijn beurt Tamboryn, <em>Geschiedenis van Elverdinghe</em>, pp. 23–24 citeert)","evidence_bullet_4":"<strong>Parochiekerk van Langemark</strong> — Karels graftombe met grafschrift; aangrenzende graftombe van Catharine de Verdeghem; Omarus de Crane in de nabijheid begraven (alle via Vredius p. 288, met overlevering van de Gaillard MS)","evidence_bullet_5":"<strong>ARA Rekenkamer nrs. 13928–43</strong> — Baljuwsrekeningen van Caspar voor Elverdinghe-Vlamertinghe, 1453–1457","evidence_bullet_6":"<strong>ARA Rekenkamer nrs. 14540–50</strong> — Baljuwsrekeningen van Caspar voor Ieper, 1462–1464","evidence_bullet_7":"<strong>ARA Rekenkamer nr. 1086, fol. 96r, 115r</strong> — Karel als leenhouder van het Burg van Veurne, 1472","evidence_bullet_8":"<strong>ARA Rekenkamer nr. 1111, p. 104</strong> — Karel als leenhouder van het leenhof van Ieper, 1474","evidence_bullet_9":"<strong>ARA Rekenkamer nr. 21845, fol. 28r</strong> — Brieven van de Raad van Vlaanderen betreffende Abbéville, 1476","evidence_bullet_10":"<strong>KBR Fonds Merghelynck nr. 102–3</strong> — Caspar als raadslid van Ieper, 1458, 1460, 1461","questions_heading":"Open onderzoeksvragen","questions_intro":"Drie onderzoekslijnen blijven in deze tak open:","questions_caspar_heading":"Caspars afstamming op primaire-bronniveau","questions_caspar_body":"De broeders-hypothese (Caspar en Karel beide zonen van Robrecht) is de dragende lezing op deze pagina, maar de primaire-bronattestatie van Caspars patroniem ontbreekt nog. De ARA Rekenkamer-folio's 13928–43 en 14540–50 zijn de meest waarschijnlijke plaats voor uitsluitsel.","questions_prosopography_heading":"De prosopografie van Verdeghem en de Crane","questions_prosopography_body":"Karels echtgenote Catharine de Verdeghem (Vrouwe van Dadizele) en zijn schoonzoon Omarus de Crane (overl. 1485) zijn toetsbare aanknopingspunten met het adellijk netwerk van het Iepers kwartier. Buylaert documenteert vrijwel zeker ergens de families Verdeghem en de Crane; kruisverwijzing zou de identificatie van Karel verstevigen en mogelijk verdere afstammelingen van Robrechts lijn aan het licht brengen.","questions_gaillard_heading":"De herkomst van de Gaillard MS","questions_gaillard_body":"Vredius' transcripties van het Langemarkse grafschrift en (afzonderlijk) van Victors testament van 1430 lopen beide via de Gaillard MS. Het Gaillard-manuscript is de volgende laag van bronherkomst — zowel voor het verstevigen van Karels identificatie als voor de beoordeling van de werkelijke formulering van het testament inzake de <em>broeders</em>-aanduiding die Vredius weergeeft.","diagram_sr_text":"Dit diagram volgt de lijn van Robrecht van Vlaenderen. Robrecht (overleden 1434), natuurlijke zoon van Lodewijk II van Male, hield de heerlijkheden Elverdinghe en Vlamertinghe — naburige dorpen vlak buiten Ieper — als directe schenking van zijn vader. Hij huwde Anastasie d'Oultre te Ieper op 12 september 1419 in aanwezigheid van de latere Filips de Goede, en verwierf de titel burggraaf van Ieper via zijn echtgenote. Het huwelijk bracht geen wettige kinderen voort. Drie gedocumenteerde natuurlijke zonen droegen de familienaam: Jean de Flandres (bij Marie de le Voerde) werd gelegitimeerd bij Bourgondisch hertogelijk diploma te Hesdin in 1448; Caspar diende als baljuw van Elverdinghe-Vlamertinghe 1453–1457 en van Ieper 1462–1464 — dezelfde gebieden die zijn vermoedelijke vader Robrecht had gehouden — al wordt Caspars afstamming niet direct vermeld in enige primaire bron; en Karel (heer van Grutersale, gestorven 15 september 1491) werd in zijn Langemarkse grafschrift, overgeleverd door de Gaillard MS via Vredius, geïdentificeerd als Robrechts zoon. Karels dochter huwde Omarus de Crane, een ridder uit het Iepers kwartier die naast haar vader te Langemark werd begraven; zij is de laatst gedocumenteerde drager van de familienaam in deze lijn."}`);
 const name = /* @__PURE__ */ JSON.parse(`{"hero_eyebrow":"Van Vlaenderen · Etymologie · Geschiedenis","hero_title":"De naam Van Vlaenderen","hero_lead":"Een naam is een vat voor geschiedenis. De achternaam Van Vlaenderen begrijpen is de beweging van mensen door het Vlaamse landschap volgen.","map_alt":"Kaart van de regio Meetjesland in Oost-Vlaanderen met Bassevelde en Ursel","map_caption":"De regio Meetjesland in Oost-Vlaanderen — de dorpen Bassevelde en Ursel vormen het gedocumenteerde hartland van de achternaam Van Vlaenderen, gelegen tussen Brugge en Gent.","pull_quote":"De naam Van Vlaenderen is op zich al een stukje geschiedenis — een verslag van beweging, identiteit en verbondenheid, geschreven in de eigen titel van de familie.","villages_title":"Waar de naam voorkomt","village_bassevelde":"Bassevelde","village_bassevelde_note":"Parochieregisters uit de 17e eeuw","village_ursel":"Ursel","village_ursel_note":"Registers van land- en molenbezit","village_boekhoute":"Boekhoute","village_boekhoute_note":"Vroege burgerlijke en landregisters","variations_title":"Spellingvariaties","cronike_title":"De Cronike Van Vlaenderen","cronike_p1":"Een van de belangrijkste middeleeuwse kronieken van Vlaanderen is de Cronike Van Vlaenderen — de Kroniek van Vlaanderen. Dit 15e-eeuwse manuscript documenteert de geschiedenis van de graven van Vlaanderen en de grote gebeurtenissen in de regio vanaf de vroegste opgetekende geschiedenis. Het is een opmerkelijk werk van middeleeuwse historiografie, rijk geïllustreerd met heraldische schilden en portretten van de Vlaamse adel.","cronike_p2":"De kroniek is geen genealogisch verslag van de familie Van Vlaenderen, maar biedt de essentiële context om de wereld te begrijpen waarin de familie leefde. De graven van Vlaanderen — wier heraldische leeuw, de Leeuw van Vlaanderen, het symbool van de hele regio werd — gaven vorm aan het politieke, economische en culturele landschap dat de familie Van Vlaenderen generaties lang bewoonde.","cta_text":"Is uw familienaam een variant van Van Vlaenderen?","cta_note":"We documenteren alle historische spellingen en regionale variaties van de naam.","history_title":"Geschiedenis van een achternaam","history_p1":"Vroege parochiale en burgerlijke registers tonen aan dat de naam geconcentreerd was in een relatief klein gebied van het Meetjesland in Oost-Vlaanderen, met name in Bassevelde, Boekhoute, Evergem, Lovendegem, Sleidinge, Ursel en Wessegem. De continuïteit van de achternaam in deze regio over meerdere generaties nodigt uit tot nader historisch onderzoek.","history_p2":"Een eerste lezing behandelt van Vlaenderen als een eenvoudige plaatsaanduiding — een kenmerk toegekend aan mensen die uit Vlaanderen waren vertrokken. Die lezing lijkt op zichzelf natuurlijk, maar houdt geen stand bij nauwkeurige bestudering van de documentaire bronnen. De uitdrukking vervult ten minste vier verschillende functies in middeleeuwse Vlaamse documenten, waarvan er slechts één een erfelijke familienaam is. Zodra die functies van elkaar worden onderscheiden, blijkt niet een verspreiding van onverwante migranten, maar een klein aantal gedocumenteerde familielijnen die de naam aannamen juist binnen Vlaanderen — en dat deden in de generatie waarin de grafelijke titel zelf werd beëindigd. De analyse hieronder zet uiteen wat het historisch materiaal werkelijk toont.","history_p3":"Deze site verzamelt beschikbare documentatie en nodigt Van Vlaenderens over de hele wereld uit om de registers te verkennen, familieverhalen bij te dragen, stambomen te verbinden en deel te nemen aan het Van Vlaenderen Family Genealogy Project.","villages_intro":"De naam Van Vlaenderen komt voor in de historische registers van verschillende Oost-Vlaamse gemeenschappen, geconcentreerd in de regio Meetjesland. De dorpen waar de naam het vaakst gedocumenteerd is, zijn onder meer:","village_evergem":"Evergem","village_evergem_note":"Burgerlijke stand vanaf 1796","village_lovendegem":"Lovendegem","village_lovendegem_note":"Gemeentelijke registers, 19e eeuw","village_sleidinge":"Sleidinge","village_sleidinge_note":"Parochiale en notariële registers","village_wessegem":"Wessegem","village_wessegem_note":"Doop- en huwelijksregisters","village_vinderhoute":"Vinderhoute","village_vinderhoute_note":"Thuisbasis van de Van Vlaenderensmolen","variations_intro":"Voordat de gestandaardiseerde spelling werd afgedwongen via de burgerlijke stand in de Napoleontische tijd (na 1796 in België), werden achternamen fonetisch genoteerd door parochiepriesters en lokale ambtenaren. De naam Van Vlaenderen komt in historische documenten in een grote verscheidenheid aan vormen voor:","variations_footer":"Als u de familie Van Vlaenderen in historische archieven onderzoekt, is het de moeite waard om naar al deze varianten te zoeken, vooral in registers van voor 1800.","notable_forthcoming":"Bekende dragers van de familienaam door de eeuwen heen worden geprofileerd op een toekomstige pagina (in voorbereiding).","document_alt":"Pagina's uit de Cronike Van Vlaenderen met heraldische schilden van familieleden Van Vlaenderen","document_caption":"Pagina's uit de Cronike Van Vlaenderen — heraldische schilden met de namen \\"Gillam Ban Claendren\\", \\"Philips Ban Claendren\\", \\"Boulben Ban Claendren\\" en \\"die connestauell Ban Claendren\\". Direct documentair bewijs van de naam Van Vlaenderen in middeleeuwse Vlaamse heraldische registers.","manuscript_1_alt":"Gravin van Vlaanderen te paard omringd door heraldische schilden — verlucht manuscript","manuscript_1_caption":"Gravin van Vlaanderen — uit de Cronike Van Vlaenderen, omringd door de heraldische schilden van de grote Vlaamse huizen","manuscript_2_alt":"Filips van de Elzas, graaf van Vlaanderen — illustratie uit verlucht manuscript","manuscript_2_caption":"Filips van de Elzas, graaf van Vlaanderen — met de zwarte leeuwenbanier, uit een 15e-eeuws verlucht manuscript","manuscript_3_alt":"De Leeuw van Vlaanderen — houtsnede","manuscript_3_caption":"De Leeuw van Vlaanderen — het blijvende symbool van de regio die de familie Van Vlaenderen eeuwenlang hun thuis noemde","cta_button":"Deel uw verhaal →","four_bucket_title":"Wat \\"Van Vlaenderen\\" deed in middeleeuwse documenten","four_bucket_intro":"De automatische reactie op een familienaam die begint met een plaatsnaam is deze als toponymisch te classificeren — de familie kwam eenvoudigweg van die plaats. Voor \\"van Vlaenderen\\" luidt die redenering: het betekent gewoon \\"uit Vlaanderen.\\" Debrabanderes gezaghebbende woordenboek van Belgische familienamen geeft een PlN-classificatie (plaatsnaam). Zaak gesloten.","four_bucket_rebuttal":"Het probleem is dat \\"van Vlaenderen\\" — en de Franse equivalenten de Flandre en de Flandres — in middeleeuwse Vlaamse en Bourgondische documenten tegelijkertijd minstens vier verschillende functies had, en slechts één daarvan is de erfelijke familienaam. Voordat een archiefstuk als bewijs voor onze familie kan worden meegeteld, moet het aan de juiste categorie worden toegewezen. Debrabanderes classificatie is een etymologische uitspraak over woordoorsprong, geen genealogische uitspraak over familiecontinuïteit.","four_bucket_table_heading":"Vier functies van \\"Van Vlaenderen\\" in het documentaire erfgoed","four_bucket_b1_label":"Bestuurlijke formule","four_bucket_b1_desc":"De frase verschijnt routinematig in institutionele hoofdingen zonder naamfunctie: Souvereyne Kamer van Redeninge van Vlaenderen, De Gedeputeerde van de Staeden van Vlaenderen. Dit zegt waar een instelling actief was, niet wie iemands familie was.","four_bucket_b2_label":"Feodaal titulatuur","four_bucket_b2_desc":"Dienstman Mijnsheeren van Vlaenderen — \\"vazal van mijn heer van Vlaanderen.\\" Dit duidt een relatie tot de graaf aan, geen familienaam. Robrecht van Béthune, graaf van Vlaanderen, verschijnt in een Aardenburg-rekening van 1309–10 als \\"mijn here Robrecht van Vlaendren\\" — de graaf zelf, geen naamdrager.","four_bucket_b3_label":"Ambtelijke functieaanduiding","four_bucket_b3_desc":"Mijns heeren van Vlaenderen messagier — \\"boodschapper van mijn heer van Vlaanderen.\\" Personeel verbonden aan het grafelijk hof droeg een ambtstittel die de frase bevatte. Het aantreffen van \\"van Vlaenderen\\" in een stadsrekening betekent niet automatisch een erfelijke familienaam. Deze emmer is echter ook de meest gebruikelijke voorloper van Emmer 4: de zoon van een ambtenaar erfde vaak de naam lang nadat het ambt zelf was overgegaan.","four_bucket_b4_label":"Erfelijke familienaam","four_bucket_b4_desc":"Identificeerbare individuen en meertalige familieclusters die de naam als overgedragen familieaanduiding gebruiken: Victor van Vlaenderen en zijn gedocumenteerde natuurlijke zonen Lodewyc, Janne en Adam (charter 1441/42); de Brugse Vrije-erflater Joos van Vlaenderen (1547); de Oost-Vlaamse parochieregisterfamilies in Bassevelde, Boekhoute, Ursel en Waarschoot. Dit is het genealogisch bewijs. Emmers 1–3 moeten worden uitgesloten voordat Emmer 4 kan worden meegeteld.","four_bucket_conclusion":"De genealogische casus voor de familie Van Vlaenderen berust uitsluitend op Emmer 4. Maar Emmers 1–3 zijn niet irrelevant — zij verklaren waarom een erfelijke familienaam gebaseerd op deze frase kon ontstaan en stabiliseren. Emmer 3 is in het bijzonder vaak de voorloper van Emmer 4: wanneer de zoon van een ambtenaar niet het ambt erft maar wel de naam die eraan verbonden was, ontstaat een erfelijke familienaam. Dat is de bodem waarin de familienaam wortel schoot — het maakt de naam niet generiek; het maakt het voortbestaan ervan betekenisvol.","map_caption_bucket_note":"De kaart toont het geografische onderzoekscluster — parochies waar de familienaam Van Vlaenderen in gedocumenteerde bronnen voorkomt. Afzonderlijke kaartpunten vertegenwoordigen locaties, geen vooraf geclassificeerde naamvermeldingen; de vier-emmeranalyse hierboven moet op elke bron worden toegepast voordat een archiefstuk als erfelijk naamsbewijs kan worden beschouwd.","notes_heading":"Bronnen en verwijzingen","notes_intro":"De analyse op deze pagina is inleidend. Uitgebreidere documentatie, primaire-bronnentranscripties en bewijsniveau-classificaties worden onderhouden op de onderzoeks- en dossierpagina's waarnaar in de tekst wordt verwezen.","notes_source_1_label":"[1]","notes_source_1_text":"Voor de drie gedocumenteerde bastaardlijnen die afstammen van Lodewijk II van Male, graaf van Vlaanderen (1330–1384), zie de Onderzoekspagina en de bijbehorende dossiers. Primaire oorkondegegevens voor Victor's natuurlijke zonen zijn afkomstig van Olivarius Vredius (Olivier de Wrée), Genealogia Comitum Flandriae, Brugge 1642–43, Tabula XVI.","notes_source_2_label":"[2]","notes_source_2_text":"Voor de vier-functie-analyse in haar geheel, inclusief primaire-bronvoorbeelden voor elke functie en het distributionele bewijs over drie eeuwen, zie het artikel Vier functies, drie clusters.","notes_source_3_label":"[3]","notes_source_3_text":"Frans Debrabandere, Woordenboek van de familienamen in België en Noord-Frankrijk (WFB2), lemma Van Vlaenderen. Het gezaghebbende etymologische woordenboek classificeert de naam als een plaatsnaam (PlN). De CBG Familienamenbank-versie op cbgfamilienamen.nl verwerkt de manuscriptherzieningen van de auteur van na 2003.","notes_source_4_label":"[4]","notes_source_4_text":"Geneanet familienaam-frequentiegegevens voor Van Vlaenderen, geraadpleegd april 2026. De distributiepatronen en heat-map-gegevens waarnaar hierboven wordt verwezen, worden volledig geanalyseerd in het Vier functies-artikel.","notes_research_link":"Zie de Onderzoekspagina →","notes_analysis_link":"Lees de Vier functies-analyse →"}`);
 const victor = { "hero_eyebrow": "Van Vlaenderen · Genealogisch onderzoek", "hero_title": "Victor van Vlaenderen", "dossier_title": "Dossier Victor van Vlaenderen", "pull_quote": "Victor van Vlaenderen vormt de meest directe gedocumenteerde schakel tussen het grafelijk huis van Vlaanderen en de regio Meetjesland.", "sources_title": "Noten & bibliografie", "back_button": "Terug naar onderzoeksoverzicht", "military_p1": 'Victor komt ook voor in de gepubliceerde militair-maritieme literatuur. Een DBNL-artikel stelt: "Victor was, en dit is belangrijk, kapitein van de vesting Biervliet." Een door de UGent gehoste studie over de Vlaamse kaapvaart vermeldt eveneens de aanstelling van "een nieuwe admiraal: Victor van Vlaenderen." Deze bronnen ondersteunen de conclusie dat Victor een belangrijke kust- of marinecommandofunctie bekleedde.', "cta_text": "Heeft u onderzoek dat aansluit bij de lijn van Victor van Vlaenderen?", "cta_note": "We zijn actief op zoek naar manieren om de kloof tussen de 15e-eeuwse registers en de vroegmoderne parochieregisters te overbruggen.", "gap_p1": "De belangrijkste onopgeloste vraag in dit onderzoek is de generationele brug tussen de laatst gedocumenteerde vijftiende-eeuwse van Vlaendren (Adam, vermeld 1441) en de eerste bevestigde vroegmoderne drager (Joos, vermeld 1547). Deze kloof van ongeveer een eeuw overspant de overgang van feodale verslaglegging naar consistente parochieregistratie, en het is hier waar de hypothese van continue afstamming staat of valt.", "gap_p3": "Drie archiefpaden bieden het meest realistische vooruitzicht om de kloof te dichten:", "gap_p4": "Ten eerste, cijnsboeken en leenboeken voor de ambachten Ursel en Maldegem, over de periode 1440-1540. Als land dat in de jaren 1420 en 1430 in het bezit was van Victors familie een of twee generaties later verschijnt onder de naam van Vlaenderen, vormt dat eigendomscontinuïteit -- het sterkst beschikbare niet-genealogische bewijs van afstamming.", "gap_p5": "Ten tweede, Staten van Goed (boedelbeschrijvingen) voor dezelfde regio. Als Adam stierf en erfgenamen naliet, zou een boedelverdeling waarin zijn kinderen worden genoemd transformatief zijn. De relevante collecties in het Rijksarchief Gent omvatten het Ambacht Ursel, Ambacht Maldegem en de omliggende heerlijkheden.", "gap_p6": "Ten derde, de procesdossiers van de Raad van Vlaanderen. Erfenisgeschillen, voogdijzaken en verwantschapsverklaringen in gerechtelijke procedures bewaren soms genealogische relaties die nooit in parochieregisters verschijnen. Deze registers worden bewaard in het Rijksarchief Gent en zijn nog niet systematisch doorzocht op partijen met de naam van Vlaenderen." };
-const louis_friese = { "hero_eyebrow": "Van Vlaenderen · Genealogisch onderzoek", "hero_title": "Lodewijk 'de Fries' van Vlaenderen", "dossier_title": "Dossier Lodewijk 'de Fries' van Vlaenderen", "praet_title": "Het huis van Vlaanderen-Praet", "praet_p1": "Lodewijk 'de Fries' van Vlaenderen — ook wel Lodewijk de Fries of Louis le Frison genoemd — was een onwettige zoon van Lodewijk II van Male, graaf van Vlaanderen. Hij kreeg de heerlijkheid Praet (Oedelem) en de heerlijkheid Woestine toegewezen, waarmee hij een belangrijke adellijke tak stichtte die gedurende verschillende generaties de achternaam van Vlaenderen droeg.", "praet_p2": "Het huis van Vlaanderen-Praet is een van de best gedocumenteerde onwettige takken van het grafelijk huis. De leden bekleedden hoge ambten, waaronder het Gulden Vlies, en dienden als adviseurs van de hertogen van Bourgondië en de Habsburgse vorsten.", "figures_title": "Sleutelfiguren van de Praet-lijn", "figure_1": "Lodewijk 'de Fries' van Vlaenderen (d. 1396) — Stichter; heer van Praet en Woestine.", "figure_2": "Johan I van Vlaenderen (d. ca. 1440) — Heer van Praet; geridderd door de hertog van Bourgondië.", "figure_3": "Lodewijk II van Vlaenderen — Heer van Praet en Woestine.", "figure_4": "Lodewijk III van Vlaenderen (d. 1490) — Heer van Praet.", "sources_title": "Noten & bibliografie", "source_1": "Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut.", "source_2": "Foundation for Medieval Genealogy, MedLands: Flemish Nobility.", "source_3": "Wappenwiki: House of Flanders-Praet.", "back_button": "Terug naar onderzoeksoverzicht", "praet_p3": "Lodewijk de Fries werd geboren rond 1350. Hij was een prominente militaire figuur en sneuvelde in de Slag bij Nicopolis op 28 september 1396, samen met zijn broers Lodewijk de Haze en Jan zonder Vrees.", "praet_p4": "De heerlijkheid Praet werd in 1373 door Lodewijk van Male verworven en vervolgens aan Lodewijk de Fries geschonken. Hiermee werd de zetel van de familie in West-Vlaanderen gevestigd, hoewel hun invloed en bezittingen zich over het hele graafschap uitstrekten.", "praet_p5": "Het consistente gebruik van 'van Vlaenderen' door deze tak is een belangrijk aandachtspunt van ons onderzoek. Het laat zien hoe de naam fungeerde als een erfelijk kenmerk van grafelijke afstamming tijdens de overgang van de Dampierre-dynastie naar het huis van Bourgondië.", "praet_p6": "De legitieme mannelijke lijn van het huis van Vlaanderen-Praet eindigde met de dood van Lodewijk IV in 1556. Zijn enige gedocumenteerde zoon, Jan II, stierf vóór hem zonder nakomelingen, en de heerlijkheid Praet ging over op andere families.", "survival_title": "Voortbestaan van de achternaam", "survival_p1": "Hoewel de legitieme mannelijke lijn van de heerlijkheid Praet in 1556 eindigde, blijft de vraag of zijtakken of onwettige takken van dit huis overleefden en opgingen in de bredere Van Vlaenderen-bevolking van het Meetjesland een onderwerp van onderzoek.", "survival_p2": "De Praet-lijn dient als een cruciaal 'onderzoekscontrolepunt' voor ons project. Door de bekende leden van deze hooggeplaatste tak te documenteren, kunnen we hen beter onderscheiden van de hedendaagse Van Vlaenderen-families die voorkomen in de parochieregisters van Ursel, Bassevelde en de omliggende dorpen.", "figures_intro": "De volgende personen vertegenwoordigen de primaire afstamming van het huis van Vlaanderen-Praet:", "figure_5": "Lodewijk IV van Vlaenderen (d. 1555) — Ridder in de Orde van het Gulden Vlies; stadhouder van Holland.", "source_4": "GenealogieOnline: West-Europese Adel (Lodewijk van Vlaanderen).", "source_5": "GenealogieOnline: West-Europese Adel (Johan van Vlaanderen).", "source_6": "DBNL: Correspondentie van Erasmus (verwijzend naar Lodewijk van Praet).", "cta_text": "Heeft u onderzoek naar de zijtakken van het huis van Praet?", "cta_note": "We onderzoeken het mogelijke voortbestaan van de naam van Vlaenderen via niet-seigneuriale lijnen van dit huis.", "badge_hypothesis": "Hypothese" };
+const louis_friese = { "hero_eyebrow": "Van Vlaenderen · Genealogisch onderzoek", "hero_title": "Lodewijk 'de Fries' van Vlaenderen", "dossier_title": "Dossier Lodewijk 'de Fries' van Vlaenderen", "praet_title": "Het huis van Vlaanderen-Praet", "praet_p1": "Lodewijk 'de Fries' van Vlaenderen — ook wel Lodewijk de Fries of Louis le Frison genoemd — was een onwettige zoon van Lodewijk II van Male, graaf van Vlaanderen. Hij kreeg de heerlijkheid Praet (Oedelem) en de heerlijkheid Woestine toegewezen, waarmee hij een belangrijke adellijke tak stichtte die gedurende verschillende generaties de achternaam van Vlaenderen droeg.", "praet_p2": "Het huis van Vlaanderen-Praet is een van de best gedocumenteerde onwettige takken van het grafelijk huis. De leden bekleedden hoge ambten, waaronder het Gulden Vlies, en dienden als adviseurs van de hertogen van Bourgondië en de Habsburgse vorsten.", "figures_title": "Sleutelfiguren van de Praet-lijn", "figure_1": "Lodewijk 'de Fries' van Vlaenderen (d. 1396) — Stichter; heer van Praet en Woestine.", "figure_2": "Johan I van Vlaenderen (d. ca. 1440) — Heer van Praet; geridderd door de hertog van Bourgondië.", "figure_3": "Lodewijk II van Vlaenderen — Heer van Praet en Woestine.", "figure_4": "Lodewijk III van Vlaenderen (d. 1490) — Heer van Praet.", "sources_title": "Noten & bibliografie", "source_1": "Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut.", "source_2": "Foundation for Medieval Genealogy, MedLands: Flemish Nobility.", "source_3": "Wappenwiki: House of Flanders-Praet.", "back_button": "Terug naar onderzoeksoverzicht", "praet_p3": "Lodewijk de Fries werd geboren rond 1350. Hij was een prominente militaire figuur en sneuvelde in de Slag bij Nicopolis op 25 september 1396, samen met zijn broers Lodewijk de Haze en Jan zonder Vrees.", "praet_p4": "De heerlijkheid Praet werd in 1373 door Lodewijk van Male verworven en vervolgens aan Lodewijk de Fries geschonken. Hiermee werd de zetel van de familie in West-Vlaanderen gevestigd, hoewel hun invloed en bezittingen zich over het hele graafschap uitstrekten.", "praet_p5": "Het consistente gebruik van 'van Vlaenderen' door deze tak is een belangrijk aandachtspunt van ons onderzoek. Het laat zien hoe de naam fungeerde als een erfelijk kenmerk van grafelijke afstamming tijdens de overgang van de Dampierre-dynastie naar het huis van Bourgondië.", "praet_p6": "De legitieme mannelijke lijn van het huis van Vlaanderen-Praet eindigde met de dood van Lodewijk IV in 1556. Zijn enige gedocumenteerde zoon, Jan II, stierf vóór hem zonder nakomelingen, en de heerlijkheid Praet ging over op andere families.", "survival_title": "Voortbestaan van de achternaam", "survival_p1": "Hoewel de legitieme mannelijke lijn van de heerlijkheid Praet in 1556 eindigde, blijft de vraag of zijtakken of onwettige takken van dit huis overleefden en opgingen in de bredere Van Vlaenderen-bevolking van het Meetjesland een onderwerp van onderzoek.", "survival_p2": "De Praet-lijn dient als een cruciaal 'onderzoekscontrolepunt' voor ons project. Door de bekende leden van deze hooggeplaatste tak te documenteren, kunnen we hen beter onderscheiden van de hedendaagse Van Vlaenderen-families die voorkomen in de parochieregisters van Ursel, Bassevelde en de omliggende dorpen.", "figures_intro": "De volgende personen vertegenwoordigen de primaire afstamming van het huis van Vlaanderen-Praet:", "figure_5": "Lodewijk IV van Vlaenderen (d. 1555) — Ridder in de Orde van het Gulden Vlies; stadhouder van Holland.", "source_4": "GenealogieOnline: West-Europese Adel (Lodewijk van Vlaanderen).", "source_5": "GenealogieOnline: West-Europese Adel (Johan van Vlaanderen).", "source_6": "DBNL: Correspondentie van Erasmus (verwijzend naar Lodewijk van Praet).", "cta_text": "Heeft u onderzoek naar de zijtakken van het huis van Praet?", "cta_note": "We onderzoeken het mogelijke voortbestaan van de naam van Vlaenderen via niet-seigneuriale lijnen van dit huis.", "badge_hypothesis": "Hypothese" };
 const nl = {
   nav: nav$1,
   home,
@@ -2955,7 +2955,7 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }) {
         cursor: "pointer"
       },
       children: [
-        isStacked && /* @__PURE__ */ jsxs(Fragment, { children: [
+        isStacked && /* @__PURE__ */ jsxs(Fragment$1, { children: [
           /* @__PURE__ */ jsx(
             "div",
             {
@@ -3138,6 +3138,25 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }) {
                 children: "?"
               }
             )
+          }
+        ),
+        cfg.continuation && /* @__PURE__ */ jsx(
+          "div",
+          {
+            style: {
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: "100%",
+              marginTop: 8,
+              textAlign: "center",
+              pointerEvents: "none",
+              fontFamily: "EB Garamond, Georgia, serif",
+              fontSize: 16,
+              color: "#8a8f9e",
+              lineHeight: 1
+            },
+            children: "↓"
           }
         ),
         cfg.focus && /* @__PURE__ */ jsx(
@@ -3388,25 +3407,32 @@ function LineageDiagram({ diagram: diagram2, title: title2, subtitle: subtitle2 
                       },
                       `label-${i}`
                     )),
-                    diagram2.annotations?.map((ann, i) => /* @__PURE__ */ jsx(
-                      "div",
-                      {
-                        style: {
-                          position: "absolute",
-                          left: ann.x,
-                          top: ann.y,
-                          transform: "translateY(-50%)",
-                          fontFamily: "EB Garamond, Georgia, serif",
-                          fontSize: 15,
-                          fontStyle: "italic",
-                          color: ann.color || C.muted,
-                          whiteSpace: "nowrap",
-                          pointerEvents: "none"
+                    diagram2.annotations?.map((ann, i) => {
+                      const align = ann.align || "left";
+                      const tx2 = align === "center" ? "translate(-50%, -50%)" : align === "right" ? "translate(-100%, -50%)" : "translateY(-50%)";
+                      return /* @__PURE__ */ jsx(
+                        "div",
+                        {
+                          style: {
+                            position: "absolute",
+                            left: ann.x,
+                            top: ann.y,
+                            transform: tx2,
+                            fontFamily: "EB Garamond, Georgia, serif",
+                            fontSize: 15,
+                            fontStyle: "italic",
+                            color: ann.color || C.muted,
+                            whiteSpace: ann.maxWidth ? "normal" : "nowrap",
+                            maxWidth: ann.maxWidth,
+                            textAlign: align,
+                            lineHeight: 1.4,
+                            pointerEvents: "none"
+                          },
+                          children: ann.text
                         },
-                        children: ann.text
-                      },
-                      `ann-${i}`
-                    )),
+                        `ann-${i}`
+                      );
+                    }),
                     diagram2.nodes.map((n) => /* @__PURE__ */ jsx(
                       DiagramNode,
                       {
@@ -3659,68 +3685,70 @@ function LineageDiagram({ diagram: diagram2, title: title2, subtitle: subtitle2 
                 borderTop: "1px solid #1e2230",
                 background: "rgba(255,255,255,0.015)"
               },
-              children: diagram2.legendItems.map((item, i) => /* @__PURE__ */ jsxs(
-                "div",
-                {
-                  style: {
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 7,
-                    fontSize: 14,
-                    color: "#d0d4dc"
-                  },
-                  children: [
-                    item.glyph ? item.glyphStyle === "circle" ? /* @__PURE__ */ jsx(
-                      "span",
-                      {
-                        style: {
-                          display: "inline-block",
-                          width: 14,
-                          height: 14,
-                          lineHeight: "12px",
-                          borderRadius: "50%",
-                          border: "1px solid #8a8f9e",
-                          color: "#8a8f9e",
-                          fontFamily: "EB Garamond, Georgia, serif",
-                          fontSize: 10,
-                          fontWeight: 500,
-                          textAlign: "center",
-                          flexShrink: 0
-                        },
-                        children: item.glyph
-                      }
-                    ) : /* @__PURE__ */ jsx(
-                      "span",
-                      {
-                        style: {
-                          display: "inline-block",
-                          width: 14,
-                          textAlign: "center",
-                          color: "#8a8f9e",
-                          fontFamily: "EB Garamond, Georgia, serif",
-                          fontSize: 14,
-                          lineHeight: 1,
-                          flexShrink: 0
-                        },
-                        children: item.glyph
-                      }
-                    ) : /* @__PURE__ */ jsx(
-                      "div",
-                      {
-                        style: {
-                          width: 11,
-                          height: 11,
-                          borderRadius: 2,
-                          flexShrink: 0,
-                          background: item.color
+              children: diagram2.legendItems.map((item, i) => /* @__PURE__ */ jsxs(Fragment, { children: [
+                item.forceBreakBefore && /* @__PURE__ */ jsx("div", { style: { flexBasis: "100%", height: 0 }, "aria-hidden": "true" }),
+                /* @__PURE__ */ jsxs(
+                  "div",
+                  {
+                    style: {
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 7,
+                      fontSize: 14,
+                      color: "#d0d4dc"
+                    },
+                    children: [
+                      item.glyph ? item.glyphStyle === "circle" ? /* @__PURE__ */ jsx(
+                        "span",
+                        {
+                          style: {
+                            display: "inline-block",
+                            width: 14,
+                            height: 14,
+                            lineHeight: "12px",
+                            borderRadius: "50%",
+                            border: "1px solid #8a8f9e",
+                            color: "#8a8f9e",
+                            fontFamily: "EB Garamond, Georgia, serif",
+                            fontSize: 10,
+                            fontWeight: 500,
+                            textAlign: "center",
+                            flexShrink: 0
+                          },
+                          children: item.glyph
                         }
-                      }
-                    ),
-                    item.label
-                  ]
-                },
-                i
-              ))
+                      ) : /* @__PURE__ */ jsx(
+                        "span",
+                        {
+                          style: {
+                            display: "inline-block",
+                            width: 14,
+                            textAlign: "center",
+                            color: "#8a8f9e",
+                            fontFamily: "EB Garamond, Georgia, serif",
+                            fontSize: 14,
+                            lineHeight: 1,
+                            flexShrink: 0
+                          },
+                          children: item.glyph
+                        }
+                      ) : /* @__PURE__ */ jsx(
+                        "div",
+                        {
+                          style: {
+                            width: 11,
+                            height: 11,
+                            borderRadius: 2,
+                            flexShrink: 0,
+                            background: item.color
+                          }
+                        }
+                      ),
+                      item.label
+                    ]
+                  }
+                )
+              ] }, i))
             }
           )
         ]
@@ -3732,34 +3760,33 @@ const EVIDENCE = {
   attested: "#4ade80",
   corroborated: "#60a5fa",
   probable: "#fbbf24",
-  hypothesis: "#f87171",
-  lineEnds: "#9ca3af"
+  hypothesis: "#f87171"
 };
 const LINE$4 = "#5a6378";
 const diagram$4 = {
-  viewBox: "0 0 960 440",
+  viewBox: "0 0 1140 440",
   nodes: [
     // ── Row 1 — Louis II de Male ───────────────────────────────────────────
     {
       id: "lm",
-      x: 370,
+      x: 460,
       y: 30,
       cfg: {
         name: "Louis II de Male",
         dates: "Count of Flanders · 1330–1384",
         tag: "HOUSE OF DAMPIERRE",
-        body: "Last Count of Flanders from the House of Dampierre. De Lichtervelde (1935) documents at least eighteen of his natural children. Four of his natural sons founded surname-bearing lines; his daughters bore the name in marriage but did not transmit it forward. His death in 1384 marks the generation in which van Vlaenderen crystallises as a heritable surname — at the precise moment the Dampierre comital title itself was extinguished.",
-        src: "Vredius, Tab. XVI; de Lichtervelde (1935) pp. 49–58; FMG MedLands [817]",
+        body: "Last Count of Flanders from the House of Dampierre. De Lichtervelde (1935) documents at least eighteen of his natural children. Five of his natural sons founded surname-bearing lines; his daughters bore the name in marriage but did not transmit it forward. His death in 1384 marks the generation in which van Vlaenderen crystallises as a heritable surname — at the precise moment the Dampierre comital title itself was extinguished.",
+        src: "Vredius, Tab. XVI; P. de Lichtervelde (1935) pp. 48–58; FMG MedLands [817]",
         color: C.root,
         ev: "direct",
         w: 220,
         h: 76
       }
     },
-    // ── Row 2 — Four progenitor sons (featured) + stacked card ─────────────
+    // ── Row 2 — Five surname-bearing direct bastards ───────────────────────
     {
       id: "vic",
-      x: 20,
+      x: 90,
       y: 195,
       cfg: {
         name: "Victor\nvan Vlaenderen",
@@ -3770,44 +3797,64 @@ const diagram$4 = {
         color: EVIDENCE.attested,
         ev: "direct",
         w: 180,
-        h: 130
+        h: 130,
+        continuation: true
       }
     },
     {
       id: "jst",
-      x: 215,
+      x: 285,
       y: 195,
       cfg: {
         name: 'Jan "sans terre"\nvan Vlaenderen',
-        dates: "d. 28 Sep 1396 · Nicopolis",
+        dates: "d. 25 Sep 1396 · Nicopolis",
         tag: "DRINCHAM",
         body: "Natural son of Louis de Male. Granted Drincham castle near Cassel in 1383. Killed at Nicopolis (1396). Four documented generations in French Flanders through the 1470s — the proposed progenitor of the Volckerinckhove / French Flanders surname cluster.",
         src: "Vredius, Tab. XVI (fol. 281); de l'Espinoy (1631); FMG MedLands [836–840]",
         color: EVIDENCE.attested,
         ev: "direct",
         w: 180,
-        h: 130
+        h: 130,
+        continuation: true
       }
     },
     {
       id: "fri",
-      x: 410,
+      x: 480,
       y: 195,
       cfg: {
         name: 'Louis "Friese"\nvan Vlaenderen',
-        dates: "c.1350 – 28 Sep 1396 · Nicopolis",
+        dates: "c.1350 – 25 Sep 1396 · Nicopolis",
         tag: "PRAET & WOESTINE",
         body: "Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis (1396). Founded the House of Flanders-Praet — six documented generations using van Vlaenderen as a hereditary surname. The proposed progenitor of the Brabant surname cluster.",
         src: "Vredius, Tab. XVI; FMG MedLands [864–869]",
         color: EVIDENCE.attested,
         ev: "direct",
         w: 180,
-        h: 130
+        h: 130,
+        continuation: true
+      }
+    },
+    {
+      id: "loys",
+      x: 675,
+      y: 195,
+      cfg: {
+        name: 'Loys "le Hase"\nvan Vlaenderen',
+        dates: "b. after 1361 – d. 25 Sep 1396 · Nicopolis",
+        tag: "WESSEGEM, URSEL,\nELVERDINGHE & VLAMERTINGHE",
+        body: "Natural son of Louis de Male; the earliest-endowed of the direct bastards (Wessegem grant 1372). Lord of Wessegem, Ursel, Oostburg, Elverdinghe-Vlamertinghe, Schuurveld, and Vake. Captain of Biervliet 1385. Killed at Nicopolis alongside half-brothers Louis Friese and Jan sans terre. Four documented natural children — Hector, Regnault, Kathelijne, Joanna — but no continuing line. His Wessegem and Ursel seigniories passed to Victor at the 1398 ducal regrant; his Elverdinghe-Vlamertinghe lordship passed to Robrecht.",
+        src: "Despars, Cronijcke Vol. III (six narrative attestations 1380–1396); Moelaert (1973) pp. 226–229; Rogghé (1968) p. 252; Lichtervelde (1935)",
+        color: EVIDENCE.attested,
+        ev: "direct",
+        w: 180,
+        h: 130,
+        continuation: true
       }
     },
     {
       id: "rob",
-      x: 605,
+      x: 870,
       y: 195,
       cfg: {
         name: "Robrecht\nvan Vlaenderen",
@@ -3818,47 +3865,27 @@ const diagram$4 = {
         color: EVIDENCE.attested,
         ev: "direct",
         w: 180,
-        h: 130
-      }
-    },
-    {
-      id: "others",
-      x: 810,
-      y: 195,
-      cfg: {
-        name: "Other Documented\nLines",
-        dates: "1 bearer · line terminated",
-        tag: "CLICK TO EXPAND",
-        color: EVIDENCE.lineEnds,
-        variant: "stacked",
-        expandsTo: "terminated-lines",
-        w: 130,
-        h: 130
+        h: 130,
+        continuation: true
       }
     }
   ],
   connections: [
-    // Louis de Male → four progenitor sons (solid, neutral)
+    // Louis de Male → five progenitor sons (solid, neutral)
     { from: "lm", to: "vic", color: LINE$4 },
     { from: "lm", to: "jst", color: LINE$4 },
     { from: "lm", to: "fri", color: LINE$4 },
-    { from: "lm", to: "rob", color: LINE$4 },
-    // Louis de Male → stacked "Other Documented Lines" card (dashed — subordinates)
-    { from: "lm", to: "others", color: LINE$4, dashed: true }
+    { from: "lm", to: "loys", color: LINE$4 },
+    { from: "lm", to: "rob", color: LINE$4 }
   ],
   labels: [],
   annotations: [
     {
-      x: 30,
-      y: 378,
-      text: "At least eighteen of Louis de Male’s natural children are documented (de Lichtervelde, 1935). At least four of his natural sons",
-      color: "#d0d4dc"
-    },
-    {
-      x: 30,
-      y: 406,
-      text: "propagated van Vlaenderen as a hereditary surname; his daughters bore the name in marriage but did not transmit it forward.",
-      color: "#d0d4dc"
+      x: 90,
+      y: 408,
+      text: "At least eighteen of Louis de Male's natural children are documented (Lichtervelde, 1935). Five of his natural sons propagated van Vlaenderen as a hereditary surname; one (Loys 'le Hase') ended in the second generation, four continued, and his daughters bore the name in marriage without transmitting it.",
+      color: "#d0d4dc",
+      maxWidth: 960
     }
   ],
   legendItems: [
@@ -3867,21 +3894,7 @@ const diagram$4 = {
     { color: EVIDENCE.corroborated, label: "Strongly Corroborated" },
     { color: EVIDENCE.probable, label: "Probable" },
     { color: EVIDENCE.hypothesis, label: "Hypothesis" },
-    { color: EVIDENCE.lineEnds, label: "Line Ends" }
-  ],
-  expansions: [
-    {
-      id: "terminated-lines",
-      heading: "Other documented lines — terminated bearer",
-      entries: [
-        {
-          name: 'Loys "le Hase" van Vlaenderen',
-          dates: "d. 28 Sep 1396 · Nicopolis",
-          body: "One son (Renaud, 1397); no further record.",
-          src: "Vredius, Tab. XVI; de l'Espinoy (1631)"
-        }
-      ]
-    }
+    { glyph: "↓", label: "Has its own line page", forceBreakBefore: true }
   ]
 };
 function OverviewDiagram() {
@@ -3895,7 +3908,7 @@ function OverviewDiagram() {
 }
 const LINE$3 = "#5a6378";
 const diagram$3 = {
-  viewBox: "0 0 920 640",
+  viewBox: "0 0 1100 660",
   nodes: [
     // ── Gen 1: Louis II de Male ──────────────────────────────────────────
     {
@@ -3920,17 +3933,17 @@ const diagram$3 = {
       y: 140,
       cfg: {
         name: "Victor van Vlaenderen",
-        dates: "d. before 10 Mar 1442",
+        dates: "d. 1431, Saint-Omer",
         tag: "SEIGNEUR D'URSELE ET WESSEGHEM",
-        body: "Natural son of Louis de Male. Burgundian admiral; captain of Biervliet. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420. Three natural sons documented across three primary charters (1427, 1441, 1446) by two mistresses: Lodewyc and Janne by Alix van Boyeghem; Adam by Gertrud Lindekens.",
-        src: "FMG MedLands [841–845]; Vredius (1643) pp.285–287",
+        body: "Natural son of Louis de Male. Burgundian admiral; captain of Biervliet. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420. Three natural sons documented across three primary charters (1427, 1441, 1446) by two mistresses: Lodewyc and Janne by Alix van Boyeghem; Adam by Gertrud Lindekens. Nicolaes Despars's Cronijcke (Vol. III pp. 114–115) names a fourth child, Isabelle, the matrilineal ancestress of the chronicler's wife — see her node and the Despars Compendium for the descent chain.",
+        src: "FMG MedLands [841–845]; Vredius (1643) pp.285–287; Despars Cronijcke Vol. III pp. 114–115",
         color: "#4ade80",
         ev: "direct",
         w: 252,
         h: 96
       }
     },
-    // ── Gen 3: Three sons of Victor ──────────────────────────────────────
+    // ── Gen 3: Three documented natural sons + Isabelle (matrilineal) ────
     {
       id: "lod",
       x: 86,
@@ -3980,7 +3993,24 @@ const diagram$3 = {
         h: 112
       }
     },
-    // ── Gen 4: Lodewyc's two documented children ─────────────────────────
+    {
+      // Phase 2 NEW: matrilineal bridge to Despars (chronicle attestation only)
+      id: "isabelle",
+      x: 870,
+      y: 288,
+      cfg: {
+        name: "Isabelle\nvan Vlaenderen",
+        dates: "fl. 15th c. · m. Symoen de Wijndt",
+        tag: "DESPARS CHRONICLE",
+        body: "Daughter of Victor named in Nicolaes Despars's Cronijcke Vol. III pp. 114–115. Despars (chronicler, c. 1562–1592) traces a six-generation matrilineal descent from Isabelle to his own wife Anne Avesoete (m. 1549). Not named in Vredius or in the charter cohort of 1427/1441/1446 — sourced only through Despars's family-anchored chronicle account. Probable tier pending direct read of Vol. III pp. 114–115 in the 1840 De Jonghe edition.",
+        src: "Despars, Cronijcke van den Lande ende Graefscepe van Vlaenderen, Vol. III pp. 114–115 (De Jonghe ed., 1840)",
+        color: "#fbbf24",
+        ev: "direct",
+        w: 200,
+        h: 112
+      }
+    },
+    // ── Gen 4 — Lodewyc's two documented children ────────────────────────
     {
       id: "josse_l",
       x: 50,
@@ -3988,7 +4018,7 @@ const diagram$3 = {
       cfg: {
         name: "Josse\nvan Vlaenderen",
         dates: "died young, bur Oostborch",
-        body: "Son of Lodewyc. Died young and is buried at Oostborch near his mother Jacqueline de Wilde. Line terminates. Cannot be the 1547 Brugse Vrije testator. His existence confirms the name Josse/Joos was in active use in Victor's direct line in the mid-to-late 15th century.",
+        body: "Son of Lodewyc. Died young and is buried at Oostborch near his mother Jacqueline de Wilde. Line terminates.",
         src: "FMG MedLands [849]; Bethune (1900) p.356",
         color: "#4ade80",
         ev: "ends",
@@ -4003,10 +4033,10 @@ const diagram$3 = {
       cfg: {
         name: "Margareta\nvan Vlaenderen",
         dates: "fl. 1478–1486",
-        body: "Daughter of Lodewyc. Married firstly Lodewijk van Baenst Heer van Santvelde; secondly Adriaan van Schouteten Heer van Erpe. Documented in charters of 1478 and 1486. Sources do not record whether she had children by either marriage.",
+        body: "Daughter of Lodewyc. Married firstly Lodewijk van Baenst Heer van Santvelde; secondly Adriaan van Schouteten Heer van Erpe.",
         src: "FMG MedLands [850]; Vredius (1643) p.287",
         color: "#4ade80",
-        ev: "unknown",
+        ev: "married-out",
         w: 120,
         h: 86
       }
@@ -4017,6 +4047,7 @@ const diagram$3 = {
     { from: "vic", to: "lod", color: LINE$3 },
     { from: "vic", to: "jan_s", color: LINE$3 },
     { from: "vic", to: "adam", color: LINE$3 },
+    { from: "vic", to: "isabelle", color: LINE$3 },
     { from: "lod", to: "josse_l", color: LINE$3 },
     { from: "lod", to: "marg", color: LINE$3 }
   ],
@@ -4024,19 +4055,41 @@ const diagram$3 = {
     { x: 180, y: 450, text: "LODEWYC'S TWO DOCUMENTED CHILDREN", color: "#8a8f9e", size: 10 }
   ],
   annotations: [
+    // NEW Phase 2: Wessegem regrant context — wrapped, right of Victor's node
     {
-      x: 180,
-      y: 610,
-      text: "After 1486, Victor's line is no longer documented. For the 15th → 16th century evidentiary gap, see the Gap Dossier.",
+      x: 600,
+      y: 188,
+      maxWidth: 480,
+      text: 'Wessegem & Ursel acquired 11 April 1398 by ducal regrant from half-brother Loys "le Hase" (d. Nicopolis 1396) — ADN B 1604 fol. 184. Not a direct paternal grant from Louis de Male.',
+      color: "#d4a830"
+    },
+    // NEW Phase 2: Despars descent bridge — wrapped, below Isabelle
+    {
+      x: 870,
+      y: 425,
+      maxWidth: 210,
+      text: "Despars's wife Anne Avesoete (m. 1549) descends through six generations from Isabelle. Full chain in the Despars Compendium.",
+      color: "#8a8f9e"
+    },
+    // Existing bottom annotation — wrapped + centred
+    {
+      x: 550,
+      y: 620,
+      align: "center",
+      maxWidth: 800,
+      text: "After 1486, Victor's documented line is no longer attested in surviving primary sources. For the 15th → 16th century evidentiary gap and the candidate bridges to the modern Meetjesland cluster, see the Gap Dossier.",
       color: "#8a8f9e"
     }
   ],
   legendItems: [
     { color: C.root, label: "Comital source" },
     { color: "#4ade80", label: "Directly Attested" },
-    { color: C.blue, label: "Strongly Corroborated" },
+    { color: "#60a5fa", label: "Strongly Corroborated" },
     { color: "#fbbf24", label: "Probable" },
-    { color: "#f87171", label: "Hypothesis" }
+    { color: "#f87171", label: "Hypothesis" },
+    { glyph: "†", label: "No issue documented", forceBreakBefore: true },
+    { glyph: "?", glyphStyle: "circle", label: "Source silent on descendants" },
+    { glyph: "×", glyphStyle: "circle", label: "Surname not transmitted" }
   ]
 };
 function VictorDiagram() {
@@ -4051,12 +4104,12 @@ function VictorDiagram() {
 }
 const LINE$2 = "#5a6378";
 const Y_GEN1$1 = 30;
-const Y_GEN2$1 = 130;
-const Y_GEN3$1 = 230;
-const Y_GEN4$1 = 348;
-const Y_GEN5$1 = 478;
-const Y_GEN6 = 628;
-const Y_GEN7 = 760;
+const Y_GEN2$1 = 156;
+const Y_GEN3$1 = 304;
+const Y_GEN4$1 = 430;
+const Y_GEN5$1 = 566;
+const Y_GEN6 = 702;
+const Y_GEN7 = 856;
 const G4_C1$1 = 170;
 const G4_C2$1 = 330;
 const G4_C3$1 = 500;
@@ -4069,11 +4122,11 @@ const G5_C4 = 600;
 const G5_C5 = 760;
 const G5_C6 = 920;
 const NODE_W = 120;
-const NODE_H_STD = 76;
-const NODE_H_HEIR = 86;
+const NODE_H_STD = 90;
+const NODE_H_HEIR = 102;
 const nx = (cx, w = NODE_W) => cx - w / 2;
 const diagram$2 = {
-  viewBox: "0 0 1120 860",
+  viewBox: "0 0 1120 1000",
   nodes: [
     // ── Gen 1 ────────────────────────────────────────────────────────────
     {
@@ -4089,7 +4142,7 @@ const diagram$2 = {
         color: C.root,
         ev: "direct",
         w: 152,
-        h: 76
+        h: 92
       }
     },
     // ── Gen 2 ────────────────────────────────────────────────────────────
@@ -4099,14 +4152,14 @@ const diagram$2 = {
       y: Y_GEN2$1,
       cfg: {
         name: "Louis Friese van Vlaenderen",
-        dates: "c.1350 – 28 Sep 1396 · Nicopolis",
+        dates: "c.1350 – 25 Sep 1396 · Nicopolis",
         tag: "LORD OF PRAET & WOESTINE",
-        body: "Natural son of Louis de Male by a daughter of Monsieur de Borre. Granted Praet c.1373. Twice married: first wife (unnamed, connected with La Woestine), then Marie van Gistel. Killed at Nicopolis alongside his brothers Louis le Haeze and Jean sans terre.",
-        src: "Vredius, Tab. XVI; FMG MedLands [864–869]; Espinoy (1631)",
+        body: "Natural son of Louis de Male by a daughter of Monsieur de Borre. Granted Praet c.1373. Twice married: first wife (unnamed, connected with La Woestine), then Marie van Ghistelle, Dame de Roosbeke et Sweveghem. Killed at Nicopolis 25 September 1396 alongside half-brothers Loys 'le Hase' and Jan sans terre.",
+        src: "Vredius, Tab. XVI; FMG MedLands [864–869]; Espinoy (1631); Gailliard, Bruges et le Franc T. I p. 257",
         color: "#4ade80",
         ev: "direct",
         w: 192,
-        h: 84
+        h: 116
       }
     },
     // ── Gen 3 ────────────────────────────────────────────────────────────
@@ -4118,12 +4171,12 @@ const diagram$2 = {
         name: "Johan I van Vlaenderen",
         dates: "d. after 10 Sep 1439",
         tag: "LORD OF PRAET",
-        body: "Son of Louis Friese. Issued own charter as Lord of Praet 10 Sep 1439. Married Johanna van Reygersvliet. Five documented children, named individually in the Gen 4 row below.",
-        src: "FMG MedLands [872, 873, 875]",
+        body: "Son of Louis Friese and Marie van Ghistelle. Échevin du Franc 1393; knighted at Brouwershaven January 1426. Issued own charter as Lord of Praet 10 Sep 1439. Married Johanna van Reygersvliet. Five documented children named individually in the Gen 4 row below.",
+        src: "FMG MedLands [872, 873, 875]; Gailliard T. I p. 257",
         color: "#4ade80",
         ev: "direct",
         w: 172,
-        h: 76
+        h: 92
       }
     },
     // ── Gen 4 — Johan I's five children ──────────────────────────────────
@@ -4137,7 +4190,7 @@ const diagram$2 = {
         body: "Daughter of Johan I. Married Jean Seigneur de Pouckes, Vicomte d'Ypres. Documented in charters of 24 January 1441 and a further document of 1446. Not to be confused with her niece Iehenne (Gen 5, daughter of Lodewijk II).",
         src: "FMG MedLands [883–885]",
         color: "#4ade80",
-        ev: "unknown",
+        ev: "married-out",
         w: NODE_W,
         h: NODE_H_STD
       }
@@ -4152,7 +4205,7 @@ const diagram$2 = {
         body: "Daughter of Johan I — attribution structurally inferential from the 'sorores Ludovici Patris' heading on Vredius p. 278 rather than directly textual. Treated here as Strongly Corroborated pending direct consultation of Buylaert (2011).",
         src: "Vredius MS via FMG MedLands [886]; Grimarez",
         color: C.blue,
-        ev: "unknown",
+        ev: "married-out",
         w: NODE_W,
         h: NODE_H_STD
       }
@@ -4183,7 +4236,7 @@ const diagram$2 = {
         body: "Daughter of Johan I. Married Waleran, Lord of Landas and Warlain. Named under guardianship with Lodewijk II and Landrada in the March 1442 Ghent partition following Johan I's death.",
         src: "FMG MedLands [887]",
         color: "#4ade80",
-        ev: "unknown",
+        ev: "married-out",
         w: NODE_W,
         h: NODE_H_STD
       }
@@ -4211,7 +4264,7 @@ const diagram$2 = {
       cfg: {
         name: "Louise\nde Flandre",
         dates: "fl. 15th c.",
-        body: "Daughter of Lodewijk II by Louise de Bruges. Named in Damhouder's list of the six children (Vredius p. 278) but with no further biographical detail in the sources reviewed.",
+        body: "Daughter of Lodewijk II by Louise de Bruges. Named in Damhouder's list of the six children (Vredius p. 278) but with no further biographical detail.",
         src: "Damhouder via Vredius p. 278",
         color: "#4ade80",
         ev: "unknown",
@@ -4226,7 +4279,7 @@ const diagram$2 = {
       cfg: {
         name: "Jaques\nde Flandre",
         dates: "fl. 15th c.",
-        body: "Son of Lodewijk II by Louise de Bruges. Named in Damhouder's list of the six children (Vredius p. 278) but with no further biographical detail in the sources reviewed.",
+        body: "Son of Lodewijk II by Louise de Bruges. Named in Damhouder's list of the six children (Vredius p. 278) but with no further biographical detail.",
         src: "Damhouder via Vredius p. 278",
         color: "#4ade80",
         ev: "unknown",
@@ -4273,7 +4326,7 @@ const diagram$2 = {
         name: "Josse\nde Flandre",
         dates: "d. after 1526",
         tag: "LINE TO 1592",
-        body: "Son of Lodewijk II. Inherited Onlede, Beveren, and Wijchuize after his brother Jean's death in 1523. Married Martina van Moerkerke; his cadet branch survived to at least 1592 per Buylaert. The most significant documented cadet branch of the Praet line.",
+        body: "Son of Lodewijk II. Inherited Onlede, Beveren, and Wijchuize after his brother Jean's death in 1523. Married Martina van Moerkerke; his cadet branch survived to at least 1592 per Buylaert.",
         src: "Damhouder via Vredius p. 278; Buylaert via FMG MedLands [881, 882]",
         color: "#4ade80",
         ev: "direct",
@@ -4311,7 +4364,7 @@ const diagram$2 = {
         ev: "direct",
         focus: true,
         w: 136,
-        h: 94
+        h: 120
       }
     },
     // ── Gen 7 — Jan II (legitimate line ends) ────────────────────────────
@@ -4322,12 +4375,12 @@ const diagram$2 = {
       cfg: {
         name: "Jan II\nvan Vlaenderen",
         dates: "d. 10 Dec 1545",
-        body: "Only son of Lodewijk IV. Heer van Woestine, Elverdinghe, and Vlamertinghe. Predeceased his father by approximately a decade, dying without issue. Widow Jacqueline de Bourgogne remarried and died in childbirth 1556. Legitimate Praet male line extinct 1545.",
+        body: "Only son of Lodewijk IV. Heer van Woestine, Elverdinghe, and Vlamertinghe. Predeceased his father, dying without issue. Widow Jacqueline de Bourgogne remarried and died in childbirth 1556. Legitimate Praet male line extinct 1545.",
         src: "Vredius p. 388; FMG MedLands [894, 895]",
         color: "#4ade80",
         ev: "ends",
         w: 136,
-        h: 82
+        h: 96
       }
     }
   ],
@@ -4349,10 +4402,18 @@ const diagram$2 = {
     { from: "l4", to: "j2", color: LINE$2 }
   ],
   labels: [
-    { x: 560, y: 340, text: "JOHAN I'S FIVE CHILDREN", color: "#8a8f9e", size: 10 },
-    { x: 500, y: 470, text: "LODEWIJK II'S SIX CHILDREN", color: "#8a8f9e", size: 10 }
+    { x: 560, y: 413, text: "JOHAN I'S FIVE CHILDREN", color: "#8a8f9e", size: 10 },
+    { x: 500, y: 549, text: "LODEWIJK II'S SIX CHILDREN", color: "#8a8f9e", size: 10 }
   ],
   annotations: [
+    // NEW Phase 2: widow-continuation annotation right of Le Frison, wrapped
+    {
+      x: 670,
+      y: 214,
+      maxWidth: 430,
+      text: "← Line continues through widow Marie van Ghistelle (Dame de Roosbeke et Sweveghem) and son Johan I — échevin du Franc 1393, knighted at Brouwershaven 1426.",
+      color: "#d4a830"
+    },
     {
       x: G5_C3$1 + 80,
       y: Y_GEN6 + 40,
@@ -4365,7 +4426,10 @@ const diagram$2 = {
     { color: "#4ade80", label: "Directly Attested" },
     { color: C.blue, label: "Strongly Corroborated" },
     { color: "#fbbf24", label: "Probable" },
-    { color: "#f87171", label: "Hypothesis" }
+    { color: "#f87171", label: "Hypothesis" },
+    { glyph: "†", label: "No issue documented", forceBreakBefore: true },
+    { glyph: "?", glyphStyle: "circle", label: "Source silent on descendants" },
+    { glyph: "×", glyphStyle: "circle", label: "Surname not transmitted" }
   ]
 };
 function PraetDiagram() {
@@ -4380,19 +4444,14 @@ function PraetDiagram() {
 }
 const LINE$1 = "#5a6378";
 const Y_GEN1 = 40;
-const Y_GEN2 = 140;
-const Y_GEN3 = 280;
-const Y_GEN4 = 446;
-const Y_GEN5 = 620;
-const G4_C1 = 170;
-const G4_C2 = 430;
-const G4_C3 = 680;
-const G4_C4 = 940;
-const G5_C1 = 80;
-const G5_C2 = 218;
-const G5_C3 = 380;
+const Y_GEN2 = 166;
+const Y_GEN3 = 348;
+const Y_GEN4 = 518;
+const Y_GEN5 = 690;
+const G4_C1 = 170, G4_C2 = 430, G4_C3 = 680, G4_C4 = 940;
+const G5_C1 = 80, G5_C2 = 218, G5_C3 = 380;
 const diagram$1 = {
-  viewBox: "0 0 1120 920",
+  viewBox: "0 0 1120 956",
   nodes: [
     // ── Gen 1: Louis II de Male ──────────────────────────────────────────
     {
@@ -4408,24 +4467,25 @@ const diagram$1 = {
         color: C.root,
         ev: "direct",
         w: 152,
-        h: 76
+        h: 92
       }
     },
     // ── Gen 2: Jan sans terre ────────────────────────────────────────────
+    // Phase 2: Wilhelmine de Nevele info absorbed into body
     {
       id: "jst",
       x: 434,
       y: Y_GEN2,
       cfg: {
         name: 'Jan "sans terre" van Vlaenderen',
-        dates: "d. 28 Sep 1396 · Nicopolis",
+        dates: "d. 25 Sep 1396 · Nicopolis",
         tag: "LORD OF DRINCHAM · GRANT 1383",
-        body: "Natural son of Louis de Male by Ive de Luu. On 22 November 1383 Louis de Male granted him the castle and lordship of Drincham near Cassel, confiscated from Jean de Scheurvelde. Married Guillemette de Nevele (daughter of Willem de Nevele and Guillemette de Halewijn, heiress of Lichtervelde). Killed at the Battle of Nicopolis alongside his brothers Loys le Hase and Louis le Frison. The Gaillard text quoted in Vredius names all three explicitly under the van Vlaenderen surname.",
-        src: "Vredius, Tab. XVI (fol. 281); de l'Espinoy (1631); FMG MedLands [836–840]",
+        body: "Natural son of Louis de Male by Ive de Luu. On 22 November 1383 Louis de Male granted him the castle and lordship of Drincham near Cassel, confiscated from Jean de Scheurvelde. Married Wilhelmine de Nevele at Arras c. 1388 — daughter of Guillaume de Nevele and Wilhelmine de Halewyn, Dame de Lichtervelde du chef de sa mère. Killed at the Battle of Nicopolis alongside half-brothers Loys 'le Hase' and Louis Friese.",
+        src: "Vredius, Tab. XVI (fol. 281); de l'Espinoy (1631); FMG MedLands [836–840]; Lichtervelde (1935) p. 51 fn 1",
         color: "#4ade80",
         ev: "direct",
         w: 252,
-        h: 98
+        h: 136
       }
     },
     // ── Gen 3: Jan II of Drincham (single heir) ──────────────────────────
@@ -4437,12 +4497,12 @@ const diagram$1 = {
         name: "Jan van Vlaenderen",
         dates: "Lord of Drincham · m. Isabella de Ghistelles",
         tag: "LORD OF DRINCHAM",
-        body: "Son of Jan sans terre. Married Isabella de Ghistelles, Dame de Vissaert. No dates recorded in Vredius. His heraldic arms — quartered with Ghistelles, bearing a canton of Flanders and Luxembourg — pass through him to his son Jacques de Drincham, where they appear on the Veurne epitaph.",
-        src: "Vredius, Tab. XVI",
+        body: "Son of Jan sans terre and Wilhelmine de Nevele. Active 1419 as lord of Drincham at Furnes castellany alongside uncles Victor and Robert (ADN B 43124 fol. 41r°). Married Isabella de Ghistelles, Dame de Vissaert. His heraldic arms — quartered with Ghistelles, bearing a canton of Flanders and Luxembourg — pass through him to his son Jacques de Drincham.",
+        src: "Vredius, Tab. XVI; ADN B 43124 fol. 41r°; Lichtervelde (1935) p. 56 fn 2",
         color: "#4ade80",
         ev: "direct",
         w: 252,
-        h: 116
+        h: 126
       }
     },
     // ── Gen 4: Four sons ─────────────────────────────────────────────────
@@ -4459,7 +4519,7 @@ const diagram$1 = {
         color: "#4ade80",
         ev: "direct",
         w: 144,
-        h: 126
+        h: 136
       }
     },
     {
@@ -4468,15 +4528,15 @@ const diagram$1 = {
       y: Y_GEN4,
       cfg: {
         name: "Jacques\nde Drincham",
-        dates: "d. 10 Apr 1459 · m. Guillemette de Bambeke (d. 19 Apr 1473)",
+        dates: "d. 10 Apr 1459 · m. Guillemette de Bambeke",
         tag: "BAILIFF OF VEURNE",
-        body: "Son of Jan II of Drincham. Chamberlain and Counsellor to Philip the Good, Duke of Burgundy. Bailiff of Veurne at his death 10 April 1459. The Veurne church epitaph (preserved in Gaillard, quoted in Vredius) is the most concrete physical evidence for the entire Drincham line. His heraldic arms (de Ghistelles with a canton of Flanders and Luxembourg) visually confirm the dynastic lineage. Sources do not record whether he had children.",
+        body: "Son of Jan II of Drincham. Chamberlain and Counsellor to Philip the Good, Duke of Burgundy. Bailiff of Veurne at his death 10 April 1459. The Veurne church epitaph (preserved in Gaillard, quoted in Vredius) is the most concrete physical evidence for the entire Drincham line. Sources do not record whether he had children.",
         src: "Vredius, Tab. XVI (Veurne epitaph via Gaillard)",
         color: "#4ade80",
         ev: "unknown",
         focus: true,
         w: 144,
-        h: 126
+        h: 136
       }
     },
     {
@@ -4491,7 +4551,7 @@ const diagram$1 = {
         color: "#4ade80",
         ev: "unknown",
         w: 144,
-        h: 126
+        h: 136
       }
     },
     {
@@ -4506,7 +4566,7 @@ const diagram$1 = {
         color: "#4ade80",
         ev: "unknown",
         w: 144,
-        h: 126
+        h: 136
       }
     },
     // ── Gen 5: Jan III's children ────────────────────────────────────────
@@ -4522,7 +4582,7 @@ const diagram$1 = {
         color: "#4ade80",
         ev: "ends",
         w: 96,
-        h: 86
+        h: 92
       }
     },
     {
@@ -4532,12 +4592,12 @@ const diagram$1 = {
       cfg: {
         name: "Jan\nde Flandres",
         dates: "legitimated at Arras",
-        body: "Son of Jan III × Isabella de Vernieulles. Received a letter of legitimation from the Duke of Burgundy at Arras. Last documented member of the Drincham line in Vredius. No further descendants recorded — source silent rather than source-stated-none. Last attestation c.1473 (inferred from his mother's death date).",
+        body: "Son of Jan III × Isabella de Vernieulles. Received a letter of legitimation from the Duke of Burgundy at Arras. Last documented member of the Drincham line in Vredius.",
         src: "Vredius, Tab. XVI",
         color: "#4ade80",
         ev: "unknown",
         w: 96,
-        h: 86
+        h: 92
       }
     },
     {
@@ -4547,12 +4607,12 @@ const diagram$1 = {
       cfg: {
         name: "3 unnamed\ndaughters",
         dates: "fl. 15th c. per Vredius",
-        body: "Three unnamed daughters of Jan III × Isabella de Vernieulles. Named as a count only — no individual biographies, no marriages recorded. Source silent on descendants.",
+        body: "Three unnamed daughters of Jan III × Isabella de Vernieulles. Named as a count only — no individual biographies, no marriages recorded.",
         src: "Vredius, Tab. XVI",
         color: "#4ade80",
         ev: "unknown",
         w: 96,
-        h: 86
+        h: 92
       }
     }
   ],
@@ -4568,26 +4628,32 @@ const diagram$1 = {
     { from: "j3", to: "daughters", color: LINE$1 }
   ],
   labels: [
-    { x: 560, y: 432, text: "JAN II OF DRINCHAM'S FOUR DOCUMENTED SONS", color: "#8a8f9e", size: 10 },
-    { x: 230, y: 606, text: "JAN III'S DOCUMENTED CHILDREN", color: "#8a8f9e", size: 10 }
+    { x: 560, y: 500, text: "JAN II OF DRINCHAM'S FOUR DOCUMENTED SONS", color: "#8a8f9e", size: 10 },
+    { x: 230, y: 672, text: "JAN III'S DOCUMENTED CHILDREN", color: "#8a8f9e", size: 10 }
   ],
   annotations: [
     {
-      x: 742,
-      y: 188,
-      text: "← 22 Nov 1383: castle & lordship of Drincham, near Cassel (Scheurvelde confiscation)",
+      x: 696,
+      y: 216,
+      maxWidth: 408,
+      text: "← 22 November 1383: castle & lordship of Drincham, near Cassel — confiscation from Jean de Scheurvelde, granted to Jan as comital endowment.",
       color: "#8a8f9e"
     },
+    // NEW Phase 2: widow-continuation annotation right of Jan sans terre, wrapped
     {
-      x: 560,
-      y: 790,
-      text: "After c.1473, the Drincham line is no longer documented in de Wrée. For the 15th → 16th century",
-      color: "#8a8f9e"
+      x: 696,
+      y: 262,
+      maxWidth: 408,
+      text: "← Line continues through widow Wilhelmine de Nevele and a documented son active 1419 as lord of Drincham — ADN B 43124 fol. 41r°.",
+      color: "#d4a830"
     },
+    // Bottom annotation — centred with wrap
     {
       x: 560,
-      y: 810,
-      text: "evidentiary gap and the French Flanders cluster hypothesis, see the Gap Dossier.",
+      y: 886,
+      align: "center",
+      maxWidth: 880,
+      text: "After c.1473, the Drincham line is no longer documented in de Wrée. For the 15th → 16th century evidentiary gap and the French Flanders cluster hypothesis, see the Gap Dossier.",
       color: "#8a8f9e"
     }
   ],
@@ -4596,7 +4662,10 @@ const diagram$1 = {
     { color: "#4ade80", label: "Directly Attested" },
     { color: C.blue, label: "Strongly Corroborated" },
     { color: "#fbbf24", label: "Probable" },
-    { color: "#f87171", label: "Hypothesis" }
+    { color: "#f87171", label: "Hypothesis" },
+    { glyph: "†", label: "No issue documented", forceBreakBefore: true },
+    { glyph: "?", glyphStyle: "circle", label: "Source silent on descendants" },
+    { glyph: "×", glyphStyle: "circle", label: "Surname not transmitted" }
   ]
 };
 function JanDrinchamDiagram() {
@@ -4611,7 +4680,7 @@ function JanDrinchamDiagram() {
 }
 const LINE = "#5a6378";
 const diagram = {
-  viewBox: "0 0 920 640",
+  viewBox: "0 0 1100 660",
   nodes: [
     // ── Gen 1: Louis II de Male ──────────────────────────────────────────
     {
@@ -4638,7 +4707,7 @@ const diagram = {
         name: "Robrecht van Vlaenderen",
         dates: "d. 21 Jan 1434",
         tag: "ELVERDINGHE &\nVLAMERTINGHE",
-        body: `Natural son of Louis de Male. Lord of Elverdinghe and Vlamertinghe as a direct paternal grant (active there from 1412). Burgundian raed ende camerlinck (councillor and chamberlain) to Dukes John the Fearless and Philip the Good. Married Anastasie d'Oultre at Ypres on 12 September 1419, acquiring the title Vicomte d'Ypres jure uxoris. The marriage produced no legitimate children. His wooden tomb in the Elverdinge parish church bore a Middle Dutch inscription naming him "Roelandt van Vlaenderen" (likely Robrecht, per Tamboryn).`,
+        body: `Natural son of Louis de Male. Acquired Elverdinghe and Vlamertinghe at his half-brother Loys 'le Hase's 1396 death (see annotation). Burgundian raed ende camerlinck (councillor and chamberlain) to Dukes John the Fearless and Philip the Good. Married Anastasie d'Oultre at Ypres on 12 September 1419, acquiring the title Vicomte d'Ypres jure uxoris. The marriage produced no legitimate children. His wooden tomb in the Elverdinge parish church bore a Middle Dutch inscription naming him "Roelandt van Vlaenderen" (likely Robrecht, per Tamboryn).`,
         src: "Buylaert (2011) pp. 752–753; Vredius (1643) pp. 283–284; Tamboryn, Geschiedenis van Elverdinghe, pp. 23–24",
         color: "#4ade80",
         ev: "direct",
@@ -4671,7 +4740,7 @@ const diagram = {
       cfg: {
         name: "Caspar\nvan Vlaenderen",
         dates: "fl. 1453–1464",
-        body: 'Career documented across two bailiwicks: bailiff of Elverdinghe-Vlamertinghe (2 Jan 1453 – 16 Sep 1457, the same territories Robrecht had held), then bailiff of Ypres (2 Jan 1462 – 6 May 1464). Councillor of the city of Ypres in 1458, 1460, 1461. Attended the Feast of the Pheasant at Lille on 18 March 1454 as "messire Gaspard de Flandres" alongside Loys de Flandres of the Praet line. Descent as son of Robrecht is not stated in any primary source; the brothers hypothesis rests on territorial-administrative continuity.',
+        body: 'Career documented across two bailiwicks: bailiff of Elverdinghe-Vlamertinghe (2 Jan 1453 – 16 Sep 1457, the same territories Robrecht had held), then bailiff of Ypres (2 Jan 1462 – 6 May 1464). Councillor of Ypres in 1458, 1460, 1461. Attended the Feast of the Pheasant at Lille on 18 March 1454 as "messire Gaspard de Flandres" alongside Loys de Flandres of the Praet line. Descent as son of Robrecht is not stated in any primary source; the brothers hypothesis rests on territorial-administrative continuity.',
         src: "Buylaert (2011) p. 758; ARA Rekenkamer nrs. 13928–43, 14540–50; KBR Fonds Merghelynck nr. 102–3",
         color: "#f87171",
         ev: "unknown",
@@ -4680,11 +4749,12 @@ const diagram = {
       }
     },
     {
+      // Phase 2: renamed Karel → Karel II
       id: "karel",
       x: 642,
       y: 288,
       cfg: {
-        name: "Karel\nvan Vlaenderen",
+        name: "Karel II\nvan Vlaenderen",
         dates: "d. 15 Sep 1491",
         tag: "GRUTERSALE",
         body: `Lord of Grutersale, knight, fief-holder of the Burg of Veurne (1472) and of the Ypres feudal court (1474). Listed on the nobility roll "tYpre ende int Yperssche" in February 1481. The Langemark epitaph (Vredius p. 288, via the Gaillard MS) names him filius M'her Robrecht and gives his death as 15 September 1491. His wife Catharine de Verdeghem (Lady of Dadizele) is buried in an adjacent tomb at Langemark.`,
@@ -4696,19 +4766,19 @@ const diagram = {
         h: 112
       }
     },
-    // ── Gen 4: Karel's daughter ──────────────────────────────────────────
+    // ── Gen 4: Karel II's daughter ───────────────────────────────────────
     {
       id: "daughter",
       x: 670,
       y: 458,
       cfg: {
-        name: "Karel's daughter",
+        name: "Karel II's daughter",
         dates: "m. Omarus de Crane",
-        body: `The last documented bearer of the surname in Robrecht's line. Vredius p. 288 records that Omarus de Crane (Eques, d. 16 August 1485, buried at Langemark beside Karel's tomb) had married "een dochter van M'her Charles van Vlaendren, Rudder, Heere van Grutersale." Her first name is not preserved. After her marriage into the de Crane family, the surname is not carried forward in this branch.`,
+        body: `The last documented bearer of the surname in Robrecht's line. Vredius p. 288 records that Omarus de Crane (Eques, d. 16 August 1485, buried at Langemark beside Karel II's tomb) had married "een dochter van M'her Charles van Vlaendren, Rudder, Heere van Grutersale." Her first name is not preserved. After her marriage into the de Crane family, the surname is not carried forward in this branch.`,
         src: "Vredius (1643) p. 288 (via Gaillard MS)",
         color: "#4ade80",
         ev: "married-out",
-        w: 140,
+        w: 168,
         h: 86
       }
     }
@@ -4723,16 +4793,37 @@ const diagram = {
   ],
   labels: [],
   annotations: [
+    // NEW Phase 2: upstream territorial context — wrapped, right of Robrecht
     {
-      x: 603,
+      x: 600,
+      y: 188,
+      maxWidth: 480,
+      text: `← Elverdinghe-Vlamertinghe held by half-brother Loys "le Hase" 1372–1396. Passed to Robrecht at Loys's Nicopolis death — not a direct paternal grant.`,
+      color: "#d4a830"
+    },
+    // NEW Phase 2: Karel II disambiguation — wrapped, right of Karel II
+    {
+      x: 842,
+      y: 344,
+      maxWidth: 248,
+      text: "← Karel II — distinct from Karel I (Victor's brother, direct bastard of Louis de Male; no descendants — see cohort sidebar on the Research overview page).",
+      color: "#8a8f9e"
+    },
+    // Langemark tomb pointer — kept as a separate annotation below Karel II
+    {
+      x: 740,
       y: 420,
+      align: "center",
+      maxWidth: 220,
       text: "↑ Langemark tomb: filius M'her Robrecht",
       color: "#d4a830"
     },
+    // Caspar baljuwship footer — wrapped, anchored bottom-left
     {
       x: 30,
       y: 600,
-      text: "Caspar's 1453–1457 baljuwship of Elverdinghe-Vlamertinghe covered the exact territories Robrecht held until 1434.",
+      maxWidth: 640,
+      text: "Caspar's 1453–1457 baljuwship of Elverdinghe-Vlamertinghe covered the exact territories Robrecht held until 1434. The brothers hypothesis rests on this territorial-administrative continuity.",
       color: "#8a8f9e"
     }
   ],
@@ -4741,7 +4832,7 @@ const diagram = {
     { color: "#4ade80", label: "Directly Attested" },
     { color: C.blue, label: "Strongly Corroborated" },
     { color: "#f87171", label: "Hypothesis" },
-    { glyph: "†", label: "No issue documented" },
+    { glyph: "†", label: "No issue documented", forceBreakBefore: true },
     { glyph: "?", glyphStyle: "circle", label: "Source silent on descendants" },
     { glyph: "×", glyphStyle: "circle", label: "Surname not transmitted" }
   ]
@@ -5885,6 +5976,33 @@ function RobrechtLineagePage() {
       ) })
     ] })
   ] });
+}
+function LoysDeHazeLineagePage() {
+  return /* @__PURE__ */ jsx("div", { className: styles$2.page, children: /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
+    /* @__PURE__ */ jsx("h1", { children: "Loys “le Hase” van Vlaenderen — Lord of Wessegem and Elverdinghe-Vlamertinghe" }),
+    /* @__PURE__ */ jsx("p", { children: "The senior direct-bastard line of Louis II de Male: Loys “le Hase” van Vlaenderen (Lodewijk de Haze), Lord of Wessegem and Elverdinghe-Vlamertinghe by grant of 1372. Six dated chronicle attestations in Despars (1380–1396). Killed at Nicopolis 25 September 1396 alongside half-brothers Louis Friese and Jan sans terre. Four documented natural children." }),
+    /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", opacity: 0.7 }, children: "This page is under construction. The full line treatment is in preparation as part of the Phase 2 site build." })
+  ] }) });
+}
+function JanSansTerreLineagePage() {
+  return /* @__PURE__ */ jsx("div", { className: styles$2.page, children: /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
+    /* @__PURE__ */ jsx("h1", { children: "Jan “sans terre” van Vlaenderen — The Drincham Line" }),
+    /* @__PURE__ */ jsx("p", { children: "Jan “sans terre” van Vlaenderen, natural son of Louis II de Male, granted Drincham castle near Cassel in 1383. Killed at Nicopolis 25 September 1396. The Drincham line continues through widow Wilhelmine de Nevele and at least one documented son active 1419 — anchoring the French Flanders / Cassel surname cluster." }),
+    /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", opacity: 0.7 }, children: "This page is under construction. The full line treatment is in preparation as part of the Phase 2 site build." })
+  ] }) });
+}
+function DesparsCompendiumPage() {
+  return /* @__PURE__ */ jsx("div", { className: styles$2.page, children: /* @__PURE__ */ jsxs("div", { className: styles$2.content, children: [
+    /* @__PURE__ */ jsx("h1", { children: "Despars Cronijcke — Cross-Reference Compendium" }),
+    /* @__PURE__ */ jsxs("p", { children: [
+      "A systematic cross-reference of the four-volume ",
+      /* @__PURE__ */ jsx("em", { children: "Cronijcke van den Lande ende Graefscepe van Vlaenderen" }),
+      " by Nicolaes Despars (compiled c. 1562–1592; published 1840 De Jonghe edition). Master enumerations, dated narrative attestations, and cross-source bridges to Vredius’s ",
+      /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae" }),
+      " and Lichtervelde 1935. To be published as a downloadable PDF and rendered HTML."
+    ] }),
+    /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", opacity: 0.7 }, children: "This page is under construction. The compendium and its rendering pipeline are in preparation as part of the Phase 2 site build." })
+  ] }) });
 }
 function VictorDossierPage() {
   const { goToResearch } = useNav();
@@ -8912,7 +9030,7 @@ function BibliographyPage() {
       /* @__PURE__ */ jsx("h1", { children: "Sources & Scholarship" }),
       /* @__PURE__ */ jsx("p", { style: { color: "rgba(255,255,255,0.65)", marginBottom: "2rem", maxWidth: "680px", lineHeight: 1.7 }, children: "The primary sources, archival finding aids, and scholarly literature that underpin the research presented in the dossiers. Entries in the first section are directly quoted or cited. Entries in the second section are recommended reading for researchers interested in the broader historiographical context." }),
       error && /* @__PURE__ */ jsx("p", { style: { color: "#f87171" }, children: "Bibliography data could not be loaded." }),
-      data && /* @__PURE__ */ jsxs(Fragment, { children: [
+      data && /* @__PURE__ */ jsxs(Fragment$1, { children: [
         /* @__PURE__ */ jsxs("section", { className: styles$2.section, children: [
           /* @__PURE__ */ jsx("h2", { children: data.sections.primarySources.label }),
           Object.values(data.sections.primarySources.subsections).map((sub) => /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2rem" }, children: [
@@ -10083,7 +10201,7 @@ const styles = {
   attributionDim,
   licenseLink
 };
-const buildDate = "2026-05-18";
+const buildDate = "2026-05-20";
 function formatBuildDate(iso, locale) {
   try {
     const d = /* @__PURE__ */ new Date(iso + "T00:00:00Z");
@@ -10164,7 +10282,7 @@ function Footer() {
   ] }) });
 }
 function App() {
-  return /* @__PURE__ */ jsxs(Fragment, { children: [
+  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
     /* @__PURE__ */ jsx(FamilyTreeCanvas, {}),
     /* @__PURE__ */ jsx(Nav, {}),
     /* @__PURE__ */ jsx("main", { style: { position: "relative", zIndex: 1 }, children: /* @__PURE__ */ jsxs(Routes, { children: [
@@ -10176,6 +10294,9 @@ function App() {
       /* @__PURE__ */ jsx(Route, { path: "/research/victor", element: /* @__PURE__ */ jsx(VictorLineagePage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/research/louis-friese", element: /* @__PURE__ */ jsx(LouisFrieseLineagePage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/research/robrecht", element: /* @__PURE__ */ jsx(RobrechtLineagePage, {}) }),
+      /* @__PURE__ */ jsx(Route, { path: "/research/loys-le-hase", element: /* @__PURE__ */ jsx(LoysDeHazeLineagePage, {}) }),
+      /* @__PURE__ */ jsx(Route, { path: "/research/jan-sans-terre", element: /* @__PURE__ */ jsx(JanSansTerreLineagePage, {}) }),
+      /* @__PURE__ */ jsx(Route, { path: "/research/despars-compendium", element: /* @__PURE__ */ jsx(DesparsCompendiumPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/research/victor-dossier", element: /* @__PURE__ */ jsx(VictorDossierPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/research/praet-dossier", element: /* @__PURE__ */ jsx(PraetDossierPage, {}) }),
       /* @__PURE__ */ jsx(Route, { path: "/research/praet-lineage-dossier", element: /* @__PURE__ */ jsx(PraetLineageDossierPage, {}) }),
@@ -10256,10 +10377,10 @@ const PAGE_META = {
   },
   "/research": {
     title: "Research Overview — Van Vlaenderen Archival Dossiers | vanvlaenderen.org",
-    description: "Overview of Van Vlaenderen archival research: the Victor line (Lord of Wessegem) and the Louis Friese / Praet line, both descending from Louis II de Male, Count of Flanders.",
+    description: 'Overview of Van Vlaenderen archival research: five direct-bastard lines of Louis II de Male (Loys "le Hase", Victor, Louis Friese, Jan sans terre, Robrecht) and their documented descendants. The earliest hereditary use of van Vlaenderen as a surname, traced from at least 1275.',
     canonical: "https://vanvlaenderen.org/research/",
     ogTitle: "Research Overview — Van Vlaenderen Archival Dossiers",
-    ogDescription: "Two surname-bearing bastard lines of Louis II de Male: Victor van Vlaenderen and Louis Friese van Vlaenderen.",
+    ogDescription: 'Five surname-bearing bastard lines of Louis II de Male: Loys "le Hase", Victor, Louis Friese, Jan sans terre, and Robrecht.',
     ogType: "article"
   },
   "/research/victor": {
@@ -10284,6 +10405,30 @@ const PAGE_META = {
     canonical: "https://vanvlaenderen.org/research/robrecht/",
     ogTitle: "Robrecht van Vlaenderen — Lord of Elverdinghe and Vlamertinghe",
     ogDescription: "The fourth surname-bearing bastard line of Louis II de Male. Three documented sons in the Ypres quarter; line ends with Karel's daughter, c. 1491–1505.",
+    ogType: "article"
+  },
+  "/research/loys-le-hase": {
+    title: 'Loys "le Hase" van Vlaenderen — Lord of Wessegem and Elverdinghe-Vlamertinghe | vanvlaenderen.org',
+    description: 'The senior direct-bastard line of Louis II de Male: Loys "le Hase" van Vlaenderen (Lodewijk de Haze), Lord of Wessegem and Elverdinghe-Vlamertinghe by grant of 1372. Six dated chronicle attestations in Despars (1380–1396). Killed at Nicopolis 25 September 1396 alongside half-brothers Louis Friese and Jan sans terre. Four documented natural children.',
+    canonical: "https://vanvlaenderen.org/research/loys-le-hase/",
+    ogTitle: 'Loys "le Hase" van Vlaenderen — Lord of Wessegem',
+    ogDescription: "The earliest-endowed direct bastard of Louis II de Male. Killed at Nicopolis 1396. Four documented natural children; line ends in the second generation.",
+    ogType: "article"
+  },
+  "/research/jan-sans-terre": {
+    title: 'Jan "sans terre" van Vlaenderen — The Drincham Line | vanvlaenderen.org',
+    description: 'Jan "sans terre" van Vlaenderen, natural son of Louis II de Male, granted Drincham castle near Cassel in 1383. Killed at Nicopolis 25 September 1396. The Drincham line continues through widow Wilhelmine de Nevele and at least one documented son active 1419 — anchoring the French Flanders / Cassel surname cluster.',
+    canonical: "https://vanvlaenderen.org/research/jan-sans-terre/",
+    ogTitle: 'Jan "sans terre" van Vlaenderen — The Drincham Line',
+    ogDescription: "Granted Drincham 1383; killed at Nicopolis 1396. Line continues through widow Wilhelmine de Nevele and a documented son active 1419.",
+    ogType: "article"
+  },
+  "/research/despars-compendium": {
+    title: "Despars Cronijcke — Cross-Reference Compendium | vanvlaenderen.org",
+    description: "A systematic cross-reference of the four-volume Cronijcke van den Lande ende Graefscepe van Vlaenderen by Nicolaes Despars (compiled c. 1562–1592; published 1840 De Jonghe edition). Master enumerations, dated narrative attestations, and cross-source bridges to Vredius's Genealogia Comitum Flandriae and Lichtervelde 1935. Published as a downloadable PDF and rendered HTML.",
+    canonical: "https://vanvlaenderen.org/research/despars-compendium/",
+    ogTitle: "Despars Cronijcke — Cross-Reference Compendium",
+    ogDescription: "Systematic compendium of the Despars Cronijcke (1840 De Jonghe edition) — master enumerations, dated attestations, and cross-source bridges.",
     ogType: "article"
   },
   "/research/victor-dossier": {

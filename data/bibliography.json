@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-25",
+  "lastUpdated": "2026-05-19",
   "sections": {
     "primarySources": {
       "label": "I. Primary Sources and Finding Aids",
@@ -760,6 +760,24 @@
               "title": "Stamreeks van Vlaanderen — De Zeeuwse Tak-2, ~1500 tot 2020",
               "publisher": "Privately compiled family register. Author resident in Schoorl, The Netherlands.",
               "note": "A private, collaborator-compiled register of the 'Zeeuwse Tak' (Zeeland branch) of the Van Vlaenderen family from approximately 1500 through 2020, prepared by Pieter Antheunisz van Vlaanderen in Schoorl. The register documents the Zeeland line descending from Laureys Arentsz van Vlaenderen, schoolmaster at Ritthem (attested 1588, d. late 1601), whose signature appears on the cover alongside the compiler's own. This compilation is the documentary basis for the ongoing Big Y-700 testing collaboration between Pieter and this project: the reconstructed Zeeland lineage serves as the reference pedigree against which Y-chromosomal results can be interpreted. Cited here to declare the provenance of the DNA collaboration transparently; as a privately-compiled family register, it is treated as a collaborator-provided secondary source rather than a peer-reviewed scholarly publication.",
+              "status": "consulted"
+            }
+          ]
+        },
+        {
+          "heading": "H. Comital Bastard Cohort Studies",
+          "entries": [
+            {
+              "id": "lichtervelde-1935",
+              "source_type": "scholarly_article",
+              "type": "Belgian Historiography",
+              "author": "Lichtervelde, P. de",
+              "year": "1935",
+              "title": "Les Bâtards de Louis de Male",
+              "publisher": "Handelingen van het Genootschap voor Geschiedenis 78(1-2) (1935), pp. 48–58.",
+              "note": "The standard early-twentieth-century census of Louis II de Male's natural children. Lichtervelde documents at least eighteen of Louis de Male's bastards — seven adult sons named in the 1384 testament plus eleven children at the Gosnay nursery establishment (ADN B 16228 N° 10948), framed as a floor rather than a total. Cites archival material at Brussels A.G.R., Lille A.D.N., and Dijon Côte d'Or. The load-bearing modern source for the comital-bastard cohort frame across the Phase 2 research findings; entry added in May 2026 as part of the Phase 2 site build.",
+              "url": "https://doi.org/10.21825/gvg.92141",
+              "urlLabel": "DOI link (open access)",
               "status": "consulted"
             }
           ]
