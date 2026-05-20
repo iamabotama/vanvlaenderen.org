@@ -7,7 +7,11 @@ import researchStyles from './ResearchPage.module.css';
 
 import cronikeShields from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
-// Leaflet touches window on import — lazy-load so it's skipped during SSR prerender
+import ClientOnly from '../components/ClientOnly';
+// Leaflet touches window on import. lazy() alone does NOT skip SSR — renderToString
+// still tries to resolve the Suspense boundary and aborts, injecting an error stack
+// trace into the static HTML. ClientOnly is what actually skips the prerender; lazy()
+// here is just for bundle splitting.
 const ResearchMap = lazy(() => import('../components/ResearchMap/ResearchMap'));
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
@@ -222,9 +226,11 @@ export default function NamePage() {
         </section>
 
         {/* Interactive Research Map */}
-        <Suspense fallback={<div style={{ height: '400px' }} />}>
-          <ResearchMap />
-        </Suspense>
+        <ClientOnly fallback={<div style={{ width: '100%', height: 'clamp(400px, 60vw, 520px)' }} />}>
+          <Suspense fallback={<div style={{ width: '100%', height: 'clamp(400px, 60vw, 520px)' }} />}>
+            <ResearchMap />
+          </Suspense>
+        </ClientOnly>
 
         {/* Static Meetjesland Map */}
         <div className={nameStyles.mapContainer}>

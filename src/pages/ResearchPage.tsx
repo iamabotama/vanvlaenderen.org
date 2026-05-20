@@ -7,8 +7,12 @@ import { OverviewDiagram } from '../components/Diagrams';
 import { CohortSidebar } from '../components/Cohort';
 import { lazy, Suspense } from 'react';
 import { useNav } from '../hooks/useNav';
+import ClientOnly from '../components/ClientOnly';
 
-// Leaflet touches window on import — lazy-load so it's skipped during SSR prerender
+// Leaflet touches window on import. lazy() alone does NOT skip SSR — renderToString
+// still tries to resolve the Suspense boundary and aborts, injecting an error stack
+// trace into the static HTML. ClientOnly is what actually skips the prerender; lazy()
+// here is just for bundle splitting.
 const ResearchMap = lazy(() => import('../components/ResearchMap/ResearchMap'));
 import { Helmet } from 'react-helmet-async';
 
@@ -293,9 +297,11 @@ export default function ResearchPage() {
         </section>
 
         {/* Interactive Research Map */}
-        <Suspense fallback={<div style={{ height: '400px' }} />}>
-          <ResearchMap />
-        </Suspense>
+        <ClientOnly fallback={<div style={{ width: '100%', height: 'clamp(400px, 60vw, 520px)' }} />}>
+          <Suspense fallback={<div style={{ width: '100%', height: 'clamp(400px, 60vw, 520px)' }} />}>
+            <ResearchMap />
+          </Suspense>
+        </ClientOnly>
 
         {/* ── Archival Dossiers ────────────────────────────────────── */}
         <section className={styles.section} style={{ marginTop: '3rem' }}>
