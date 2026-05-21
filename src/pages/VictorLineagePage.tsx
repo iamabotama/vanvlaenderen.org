@@ -1,13 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { VictorDiagram } from '../components/Diagrams';
-import { useNav } from '../hooks/useNav';
 import { Helmet } from 'react-helmet-async';
 
 export default function VictorLineagePage() {
-  const { goToResearch } = useNav();
   const { t } = useTranslation();
 
   return (
@@ -141,13 +140,10 @@ export default function VictorLineagePage() {
 
         {/* ── Dossier Link ────────────────────────────────────────── */}
         <section className={styles.section} style={{ marginTop: '3rem', borderTop: '1px solid rgba(232, 184, 48, 0.2)', paddingTop: '2rem' }}>
-          <div
+          <Link
+            to="/research/victor-dossier"
             className={researchStyles.branchCard}
-            role="button"
-            tabIndex={0}
-            style={{ borderTop: '3px solid var(--gold)', maxWidth: '100%', cursor: 'pointer' }}
-            onClick={() => goToResearch('victor-dossier')}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('victor-dossier'); } }}
+            style={{ borderTop: '3px solid var(--gold)', maxWidth: '100%' }}
             aria-label="Victor van Vlaenderen: Archival Dossier"
           >
             <h3>Victor van Vlaenderen: Archival Dossier</h3>
@@ -155,7 +151,7 @@ export default function VictorLineagePage() {
             <span className={researchStyles.branchLink} aria-hidden="true">
               View Archival Evidence &rarr;
             </span>
-          </div>
+          </Link>
         </section>
 
         <div className={styles.pullQuote}>
@@ -193,22 +189,19 @@ export default function VictorLineagePage() {
           </div>
         </section>
 
-        <div className={styles.ctaBox} onClick={() => goToResearch('contact')} style={{ cursor: 'pointer' }}>
+        <Link className={styles.ctaBox} to="/contact">
           <div className={styles.ctaText}>
             {t('victor.cta_text')}
           </div>
           <div className={styles.ctaNote}>
             {t('victor.cta_note')}
           </div>
-        </div>
+        </Link>
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
-          <button
-            onClick={() => goToResearch('main')}
+          <Link
+            to="/research"
             style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
               color: 'var(--gold)',
               fontSize: '16px',
               textDecoration: 'underline',
@@ -218,7 +211,7 @@ export default function VictorLineagePage() {
             }}
           >
             {t('victor.back_button')}
-          </button>
+          </Link>
         </div>
       </div>
     </div>

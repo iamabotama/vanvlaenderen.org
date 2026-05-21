@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import type { KeyboardEvent } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Cohort.module.css';
 import { cohortEntries } from './data';
 import type { CohortEntry, CohortState } from './types';
-import { useNav } from '../../hooks/useNav';
 
 const GLYPH: Record<CohortState, string> = {
   lineage: '↓',
@@ -22,12 +21,11 @@ const STATE_CLASS: Record<CohortState, string> = {
 interface EntryRowProps {
   entry: CohortEntry;
   caption: string;
-  onActivate?: () => void;
 }
 
-function EntryRow({ entry, caption, onActivate }: EntryRowProps) {
-  const isClickable = Boolean(onActivate);
-  const rowClass = [
+function EntryRow({ entry, caption }: EntryRowProps) {
+  const isClickable = entry.state === 'lineage' && Boolean(entry.route);
+  const wrapperClass = [
     styles.entry,
     STATE_CLASS[entry.state],
     isClickable ? styles.entryClickable : '',
@@ -35,53 +33,42 @@ function EntryRow({ entry, caption, onActivate }: EntryRowProps) {
     .filter(Boolean)
     .join(' ');
 
-  const handleKey = (e: KeyboardEvent) => {
-    if (!onActivate) return;
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      onActivate();
-    }
-  };
-
-  return (
-    <li
-      className={rowClass}
-      role={isClickable ? 'button' : undefined}
-      tabIndex={isClickable ? 0 : undefined}
-      onClick={onActivate}
-      onKeyDown={isClickable ? handleKey : undefined}
-      aria-label={isClickable ? `${entry.name} — ${caption}` : undefined}
-    >
+  const inner = (
+    <>
       <span className={styles.entryGlyph} aria-hidden="true">
         {GLYPH[entry.state]}
       </span>
       <span className={styles.entryName}>{entry.name}</span>
       <span className={styles.entryCaption}>{caption}</span>
+    </>
+  );
+
+  return (
+    <li className={styles.entryItem}>
+      {isClickable ? (
+        <Link
+          to={entry.route!}
+          className={wrapperClass}
+          aria-label={`${entry.name} — ${caption}`}
+        >
+          {inner}
+        </Link>
+      ) : (
+        <div className={wrapperClass}>{inner}</div>
+      )}
     </li>
   );
 }
 
 export default function CohortSidebar() {
   const { t } = useTranslation();
-  const { goToResearch } = useNav();
 
   const sonEntries = cohortEntries.filter((e) => !e.daughter);
   const daughterEntries = cohortEntries.filter((e) => e.daughter);
 
   const renderEntry = (entry: CohortEntry) => {
     const caption = t(`research.cohort_entry_${entry.id}_caption`);
-    const onActivate =
-      entry.state === 'lineage' && entry.route
-        ? () => goToResearch(entry.route!)
-        : undefined;
-    return (
-      <EntryRow
-        key={entry.id}
-        entry={entry}
-        caption={caption}
-        onActivate={onActivate}
-      />
-    );
+    return <EntryRow key={entry.id} entry={entry} caption={caption} />;
   };
 
   return (

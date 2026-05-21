@@ -1,12 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { OverviewDiagram } from '../components/Diagrams';
 import { CohortSidebar } from '../components/Cohort';
 import { lazy, Suspense } from 'react';
-import { useNav } from '../hooks/useNav';
 import ClientOnly from '../components/ClientOnly';
 
 // Leaflet touches window on import. lazy() alone does NOT skip SSR — renderToString
@@ -17,8 +16,6 @@ const ResearchMap = lazy(() => import('../components/ResearchMap/ResearchMap'));
 import { Helmet } from 'react-helmet-async';
 
 export default function ResearchPage() {
-  const { goToResearch } = useNav();
-  const navigate = useNavigate();
   const { t } = useTranslation();
 
   return (
@@ -106,22 +103,23 @@ export default function ResearchPage() {
               {t('research.paradox_title')}
             </div>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '0.9rem', fontStyle: 'normal' }} dangerouslySetInnerHTML={{ __html: t('research.paradox_body') }} />
-            <button
-              onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            <Link
+              to="/name/surname-origins"
               style={{
                 background: 'none',
                 border: '1px solid rgba(232,184,48,0.35)',
                 color: 'var(--gold)',
                 padding: '0.45rem 1rem',
-                cursor: 'pointer',
                 borderRadius: '3px',
                 fontSize: '0.82rem',
                 fontFamily: 'var(--font-ui)',
                 letterSpacing: '0.06em',
+                textDecoration: 'none',
+                display: 'inline-block',
               }}
             >
               {t('research.paradox_button')}
-            </button>
+            </Link>
           </div>
         </section>
 
@@ -143,13 +141,9 @@ export default function ResearchPage() {
         </section>
 
         <div className={researchStyles.branchCards}>
-          <div
+          <Link
+            to="/research/victor"
             className={researchStyles.branchCard}
-            role="button"
-            tabIndex={0}
-            style={{ cursor: 'pointer' }}
-            onClick={() => goToResearch('victor')}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('victor'); } }}
             aria-label={t('research.branch_victor_name')}
           >
             <h3>{t('research.branch_victor_name')}</h3>
@@ -157,15 +151,11 @@ export default function ResearchPage() {
             <span className={researchStyles.branchLink} aria-hidden="true">
               {t('research.branch_victor_link')}
             </span>
-          </div>
+          </Link>
 
-          <div
+          <Link
+            to="/research/louis-friese"
             className={researchStyles.branchCard}
-            role="button"
-            tabIndex={0}
-            style={{ cursor: 'pointer' }}
-            onClick={() => goToResearch('louis-friese')}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('louis-friese'); } }}
             aria-label={t('research.branch_louis_name')}
           >
             <h3>{t('research.branch_louis_name')}</h3>
@@ -173,15 +163,11 @@ export default function ResearchPage() {
             <span className={researchStyles.branchLink} aria-hidden="true">
               {t('research.branch_louis_link')}
             </span>
-          </div>
+          </Link>
 
-          <div
+          <Link
+            to="/research/drincham-dossier"
             className={researchStyles.branchCard}
-            role="button"
-            tabIndex={0}
-            style={{ cursor: 'pointer' }}
-            onClick={() => goToResearch('drincham-dossier')}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('drincham-dossier'); } }}
             aria-label={t('research.branch_drincham_name')}
           >
             <h3>{t('research.branch_drincham_name')}</h3>
@@ -189,15 +175,11 @@ export default function ResearchPage() {
             <span className={researchStyles.branchLink} aria-hidden="true">
               {t('research.branch_drincham_link')}
             </span>
-          </div>
+          </Link>
 
-          <div
+          <Link
+            to="/research/loys-le-hase"
             className={researchStyles.branchCard}
-            role="button"
-            tabIndex={0}
-            style={{ cursor: 'pointer' }}
-            onClick={() => goToResearch('loys-le-hase')}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('loys-le-hase'); } }}
             aria-label={t('research.branch_loys_name')}
           >
             <h3>{t('research.branch_loys_name')}</h3>
@@ -205,15 +187,11 @@ export default function ResearchPage() {
             <span className={researchStyles.branchLink} aria-hidden="true">
               {t('research.branch_loys_link')}
             </span>
-          </div>
+          </Link>
 
-          <div
+          <Link
+            to="/research/robrecht"
             className={researchStyles.branchCard}
-            role="button"
-            tabIndex={0}
-            style={{ cursor: 'pointer' }}
-            onClick={() => goToResearch('robrecht')}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('robrecht'); } }}
             aria-label={t('research.branch_robrecht_name')}
           >
             <h3>{t('research.branch_robrecht_name')}</h3>
@@ -221,19 +199,16 @@ export default function ResearchPage() {
             <span className={researchStyles.branchLink} aria-hidden="true">
               {t('research.branch_robrecht_link')}
             </span>
-          </div>
+          </Link>
         </div>
 
         {/* ── Reference Pages ─────────────────────────────────────────── */}
         <section className={styles.section}>
           <h2>{t('research.reference_heading')}</h2>
           <div className={researchStyles.branchCards}>
-            <div
+            <Link
+              to="/research/gap-dossier"
               className={researchStyles.branchCard}
-              tabIndex={0}
-              style={{ cursor: 'pointer' }}
-              onClick={() => goToResearch('gap-dossier')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('gap-dossier'); } }}
               aria-label={t('research.ref_gap_title')}
             >
               <h3>{t('research.ref_gap_title')}</h3>
@@ -241,13 +216,10 @@ export default function ResearchPage() {
               <span className={researchStyles.branchLink} aria-hidden="true">
                 {t('research.ref_gap_link')}
               </span>
-            </div>
-            <div
+            </Link>
+            <Link
+              to="/research/methodology"
               className={researchStyles.branchCard}
-              tabIndex={0}
-              style={{ cursor: 'pointer' }}
-              onClick={() => goToResearch('methodology')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('methodology'); } }}
               aria-label={t('research.ref_methodology_title')}
             >
               <h3>{t('research.ref_methodology_title')}</h3>
@@ -255,13 +227,10 @@ export default function ResearchPage() {
               <span className={researchStyles.branchLink} aria-hidden="true">
                 {t('research.ref_methodology_link')}
               </span>
-            </div>
-            <div
+            </Link>
+            <Link
+              to="/research/bibliography"
               className={researchStyles.branchCard}
-              tabIndex={0}
-              style={{ cursor: 'pointer' }}
-              onClick={() => goToResearch('bibliography')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('bibliography'); } }}
               aria-label={t('research.ref_bibliography_title')}
             >
               <h3>{t('research.ref_bibliography_title')}</h3>
@@ -269,7 +238,7 @@ export default function ResearchPage() {
               <span className={researchStyles.branchLink} aria-hidden="true">
                 {t('research.ref_bibliography_link')}
               </span>
-            </div>
+            </Link>
           </div>
         </section>
 
@@ -308,13 +277,10 @@ export default function ResearchPage() {
           <h2>{t('research.dossiers_heading')}</h2>
           <p>{t('research.dossiers_intro')}</p>
           <div className={researchStyles.branchCards}>
-            <div
+            <Link
+              to="/research/victor-dossier"
               className={researchStyles.branchCard}
-              role="button"
-              tabIndex={0}
-              style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => goToResearch('victor-dossier')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('victor-dossier'); } }}
+              style={{ borderTop: '3px solid var(--gold)' }}
               aria-label={t('research.dossier_victor_title')}
             >
               <h3>{t('research.dossier_victor_title')}</h3>
@@ -322,14 +288,11 @@ export default function ResearchPage() {
               <span className={researchStyles.branchLink} aria-hidden="true">
                 {t('research.dossier_victor_link')}
               </span>
-            </div>
-            <div
+            </Link>
+            <Link
+              to="/research/praet-dossier"
               className={researchStyles.branchCard}
-              role="button"
-              tabIndex={0}
-              style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => goToResearch('praet-dossier')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('praet-dossier'); } }}
+              style={{ borderTop: '3px solid var(--gold)' }}
               aria-label={t('research.dossier_praet_title')}
             >
               <h3>{t('research.dossier_praet_title')}</h3>
@@ -337,14 +300,11 @@ export default function ResearchPage() {
               <span className={researchStyles.branchLink} aria-hidden="true">
                 {t('research.dossier_praet_link')}
               </span>
-            </div>
-            <div
+            </Link>
+            <Link
+              to="/research/praet-lineage-dossier"
               className={researchStyles.branchCard}
-              role="button"
-              tabIndex={0}
-              style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => goToResearch('praet-lineage-dossier')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('praet-lineage-dossier'); } }}
+              style={{ borderTop: '3px solid var(--gold)' }}
               aria-label={t('research.dossier_praet_lineage_title')}
             >
               <h3>{t('research.dossier_praet_lineage_title')}</h3>
@@ -352,14 +312,11 @@ export default function ResearchPage() {
               <span className={researchStyles.branchLink} aria-hidden="true">
                 {t('research.dossier_praet_lineage_link')}
               </span>
-            </div>
-            <div
+            </Link>
+            <Link
+              to="/research/drincham-dossier"
               className={researchStyles.branchCard}
-              role="button"
-              tabIndex={0}
-              style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => goToResearch('drincham-dossier')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('drincham-dossier'); } }}
+              style={{ borderTop: '3px solid var(--gold)' }}
               aria-label={t('research.dossier_drincham_title')}
             >
               <h3>{t('research.dossier_drincham_title')}</h3>
@@ -367,7 +324,7 @@ export default function ResearchPage() {
               <span className={researchStyles.branchLink} aria-hidden="true">
                 {t('research.dossier_drincham_link')}
               </span>
-            </div>
+            </Link>
           </div>
         </section>
 
@@ -376,13 +333,10 @@ export default function ResearchPage() {
           <h2>{t('research.articles_heading')}</h2>
           <p>{t('research.articles_intro')}</p>
           <div className={researchStyles.branchCards}>
-            <div
+            <Link
+              to="/name/surname-origins"
               className={researchStyles.branchCard}
-              role="button"
-              tabIndex={0}
-              style={{ borderTop: '3px solid rgba(232,184,48,0.45)', cursor: 'pointer' }}
-              onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); } }}
+              style={{ borderTop: '3px solid rgba(232,184,48,0.45)' }}
               aria-label={t('research.article_four_functions_title')}
             >
               <h3>{t('research.article_four_functions_title')}</h3>
@@ -390,14 +344,11 @@ export default function ResearchPage() {
               <span className={researchStyles.branchLink} aria-hidden="true">
                 {t('research.article_four_functions_link')}
               </span>
-            </div>
-            <div
+            </Link>
+            <Link
+              to="/research/nieus-seals"
               className={researchStyles.branchCard}
-              role="button"
-              tabIndex={0}
-              style={{ borderTop: '3px solid rgba(232,184,48,0.45)', cursor: 'pointer' }}
-              onClick={() => goToResearch('nieus-seals')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('nieus-seals'); } }}
+              style={{ borderTop: '3px solid rgba(232,184,48,0.45)' }}
               aria-label={t('research.article_nieus_title')}
             >
               <h3>{t('research.article_nieus_title')}</h3>
@@ -405,7 +356,7 @@ export default function ResearchPage() {
               <span className={researchStyles.branchLink} aria-hidden="true">
                 {t('research.article_nieus_link')}
               </span>
-            </div>
+            </Link>
           </div>
         </section>
 
@@ -424,21 +375,21 @@ export default function ResearchPage() {
             </p>
             <p>
               {t('research.notes_source_3_label')} {t('research.notes_source_3_text')}{' '}
-              <button
-                onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+              <Link
+                to="/name/surname-origins"
+                style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}
               >
                 {t('research.notes_source_3_linktext')}
-              </button>
+              </Link>
             </p>
             <p>
               {t('research.notes_source_4_label')} {t('research.notes_source_4_text')}{' '}
-              <button
-                onClick={() => { goToResearch('nieus-seals'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+              <Link
+                to="/research/nieus-seals"
+                style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}
               >
                 {t('research.notes_source_4_linktext')}
-              </button>
+              </Link>
             </p>
           </div>
         </section>
@@ -450,14 +401,14 @@ export default function ResearchPage() {
           <p dangerouslySetInnerHTML={{ __html: t('research.conclusion_p2') }} />
         </section>
 
-        <div className={styles.ctaBox} onClick={() => goToResearch('contact')} style={{ cursor: 'pointer' }}>
+        <Link className={styles.ctaBox} to="/contact">
           <div className={styles.ctaText}>
             {t('research.cta_text')}
           </div>
           <div className={styles.ctaNote}>
             {t('research.cta_note')}
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

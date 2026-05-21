@@ -1,11 +1,10 @@
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import meetjeslandMap from '../assets/images/heraldic/meetjesland-map.jpg';
-import { useNav } from '../hooks/useNav';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 export default function GapDossierPage() {
-  const { goTo } = useNav();
   return (
     <div className={styles.page}>
       <Helmet>
@@ -392,12 +391,12 @@ export default function GapDossierPage() {
           <p>
             The full genetic genealogy project &mdash; including haplogroup details, methodology, and
             how to participate &mdash; is documented on the{' '}
-            <button
-              onClick={() => goTo('dna')}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: 'var(--gold)', textDecoration: 'underline', font: 'inherit' }}
+            <Link
+              to="/dna"
+              style={{ color: 'var(--gold)', textDecoration: 'underline', font: 'inherit' }}
             >
               DNA page
-            </button>.
+            </Link>.
           </p>
         </section>
 

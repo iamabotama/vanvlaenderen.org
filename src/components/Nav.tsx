@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import lionShield from '../assets/images/lion-shield.png';
 import { LanguageToggle } from './LanguageToggle';
 import styles from './Nav.module.css';
@@ -30,11 +30,12 @@ const TAB_PATHS: { id: Tab; path: string }[] = [
 
 export default function Nav(_props: NavProps) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const location = useLocation();
 
   // Derive active tab from current path. Pick the TAB with the longest matching path,
   // so nested routes (e.g. /research/bibliography) resolve to the more specific tab.
+  // NavLink's built-in matching doesn't express "longest match wins" directly, so we
+  // keep the explicit logic here and feed the result into a plain <Link>'s className.
   const activePath = location.pathname;
   const activeTab = [...TAB_PATHS]
     .sort((a, b) => b.path.length - a.path.length)
@@ -42,37 +43,33 @@ export default function Nav(_props: NavProps) {
       t.path === '/' ? activePath === '/' : activePath === t.path || activePath.startsWith(t.path + '/')
     )?.id ?? 'home';
 
-  const handleNav = (path: string) => {
-    navigate(path);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <nav className={styles.nav}>
-      <button
+      <Link
+        to="/"
         className={styles.logo}
-        onClick={() => handleNav('/')}
         aria-label="Van Vlaenderen — Home"
       >
         <img src={lionShield} alt="Lion of Flanders heraldic shield" className={styles.logoImg} />
         <span className={styles.logoText}>Van Vlaenderen</span>
-      </button>
+      </Link>
 
       <ul className={styles.tabs} role="menubar">
         {TAB_PATHS.map(({ id, path }) => {
           const labelKey = id === 'dna'      ? 'nav.dna' :
                            id === 'research'  ? 'nav.history' :
                            `nav.${id}`;
+          const isActive = activeTab === id;
           return (
             <li key={id} role="none">
-              <button
+              <Link
+                to={path}
                 role="menuitem"
-                className={`${styles.tab} ${activeTab === id ? styles.active : ''}`}
-                onClick={() => handleNav(path)}
-                aria-current={activeTab === id ? 'page' : undefined}
+                className={`${styles.tab} ${isActive ? styles.active : ''}`}
+                aria-current={isActive ? 'page' : undefined}
               >
                 {t(labelKey)}
-              </button>
+              </Link>
             </li>
           );
         })}

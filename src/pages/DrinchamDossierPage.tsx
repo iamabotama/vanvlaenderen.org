@@ -2,7 +2,7 @@ import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
 import { JanDrinchamDiagram } from '../components/Diagrams';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 const tdStyle = {
@@ -24,9 +24,6 @@ const thStyle = {
 };
 
 export default function DrinchamDossierPage() {
-  const navigate = useNavigate();
-  const nav = (path: string) => { navigate(path); window.scrollTo({ top: 0, behavior: 'smooth' }); };
-
   return (
     <div className={styles.page}>
       <Helmet>
@@ -277,7 +274,7 @@ export default function DrinchamDossierPage() {
             The documented Drincham line spans roughly 1383 (land grant) to c. 1473 (death of Jacques's wife Guillemette de Bambeke). For approximately ninety years, multiple generations of Van Vlaenderen surname-bearers were physically present in the Cassel area of French Flanders — the precise geographic zone where Geneanet's distributional data shows the heaviest pre-1600 concentration of the surname.
           </p>
           <p>
-            The hypothesis — argued in full in the <button onClick={() => nav('/name/surname-origins')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>Four Functions, Three Clusters analysis</button> — is that this geographic-documentary coincidence is the explanation for the French Flanders cluster. The argument does not depend on the Geneanet count being accurate (it almost certainly reflects noble-tree duplication). It depends on the observation that the earliest securely documented hereditary Van Vlaenderen surname-bearers in the Cassel zone are precisely the documented bastard comital line, making them the most parsimonious founding explanation.
+            The hypothesis — argued in full in the <Link to="/name/surname-origins" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>Four Functions, Three Clusters analysis</Link> — is that this geographic-documentary coincidence is the explanation for the French Flanders cluster. The argument does not depend on the Geneanet count being accurate (it almost certainly reflects noble-tree duplication). It depends on the observation that the earliest securely documented hereditary Van Vlaenderen surname-bearers in the Cassel zone are precisely the documented bastard comital line, making them the most parsimonious founding explanation.
           </p>
           <p>
             The Drincham line's documented reach is also worth noting. Jacques de Drincham operated as Bailiff of Veurne and Chamberlain to Philip the Good — the kind of administrative reach across French Flanders and the Flemish coast that would explain how a surname attached to one castle near Cassel could spread across the broader Volckerinckhove/Renescure/Bollezeele zone visible in the later data. It should be noted that Veurne, while on the Flemish coast, is firmly in West Flanders — geographically distinct from the Zeeuws-Vlaanderen/Zeeland thread associated with Victor's son Lodewijc at Oostburg. The Drincham line's coastal footprint is a French Flanders and West Flemish phenomenon; the Zeeland anchor, to the extent one exists, belongs to the Victor line.
@@ -305,7 +302,7 @@ export default function DrinchamDossierPage() {
             The Drincham line is geographically and genealogically distinct from the Victor line (Meetjesland/Belgian cluster) and the Praet line (Franc de Bruges/Brabant cluster). The three lines represent parallel surname-carrying foundations in different regions of Flanders, each anchored to a specific lordship granted by Louis de Male in the 1373–1399 period.
           </p>
           <p>
-            For the full multi-line analysis, see the <button onClick={() => nav('/name/surname-origins')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>Four Functions, Three Clusters</button> article, and for the Praet line's separate documentation, see the <button onClick={() => nav('/research/praet-dossier')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>Praet Archival Dossier</button>.
+            For the full multi-line analysis, see the <Link to="/name/surname-origins" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>Four Functions, Three Clusters</Link> article, and for the Praet line's separate documentation, see the <Link to="/research/praet-dossier" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>Praet Archival Dossier</Link>.
           </p>
         </section>
 
@@ -338,18 +335,18 @@ export default function DrinchamDossierPage() {
 
         {/* ── Back nav ──────────────────────────────────────────────── */}
         <div style={{ borderTop: '1px solid rgba(232,184,48,0.15)', paddingTop: '1.5rem', marginTop: '1rem', display: 'flex', gap: '1.5rem', fontSize: '0.875rem', flexWrap: 'wrap' }}>
-          <button onClick={() => nav('/research')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>
+          <Link to="/research" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>
             ← Research
-          </button>
-          <button onClick={() => nav('/name/surname-origins')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>
+          </Link>
+          <Link to="/name/surname-origins" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>
             Four Functions, Three Clusters →
-          </button>
-          <button onClick={() => nav('/research/praet-dossier')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>
+          </Link>
+          <Link to="/research/praet-dossier" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>
             Praet Archival Dossier →
-          </button>
-          <button onClick={() => nav('/research/victor-dossier')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>
+          </Link>
+          <Link to="/research/victor-dossier" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>
             Victor Archival Dossier →
-          </button>
+          </Link>
         </div>
 
       </div>

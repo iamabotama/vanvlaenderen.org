@@ -1,13 +1,10 @@
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import lionShield from '../assets/images/lion-shield.png';
 
 export default function NieusSealPage() {
-  const navigate = useNavigate();
-  const nav = (path: string) => { navigate(path); window.scrollTo({ top: 0, behavior: 'smooth' }); };
-
   return (
     <div className={styles.page}>
       <Helmet>
@@ -133,12 +130,12 @@ export default function NieusSealPage() {
 
         {/* ── Back nav ──────────────────────────────────────────────── */}
         <div style={{ borderTop: '1px solid rgba(232,184,48,0.15)', paddingTop: '1.5rem', marginTop: '1rem', display: 'flex', gap: '1.5rem', fontSize: '0.875rem' }}>
-          <button onClick={() => nav('/research')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>
+          <Link to="/research" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: '0.875rem' }}>
             ← Research
-          </button>
-          <button onClick={() => nav('/research/bibliography')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>
+          </Link>
+          <Link to="/research/bibliography" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: '0.875rem' }}>
             Full Bibliography →
-          </button>
+          </Link>
         </div>
 
       </div>

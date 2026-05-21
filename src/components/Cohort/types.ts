@@ -14,8 +14,6 @@
  *   married_out   — ×  Daughter who carried the name only in marriage
  */
 
-import type { ResearchSubpage } from '../../hooks/useNav';
-
 export type CohortState = 'lineage' | 'undocumented' | 'no_issue' | 'married_out';
 
 export interface CohortEntry {
@@ -25,8 +23,8 @@ export interface CohortEntry {
   name: string;
   /** Visual state and bucket. */
   state: CohortState;
-  /** Navigation target for clickable lineage entries; only set when state is 'lineage'. */
-  route?: ResearchSubpage;
+  /** Full router path for clickable lineage entries; only set when state is 'lineage'. */
+  route?: string;
   /** Marks daughter entries, which render under the Daughters subheading. */
   daughter?: boolean;
 }

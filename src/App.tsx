@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Nav from './components/Nav';
+import ScrollToTop from './components/ScrollToTop';
 import FamilyTreeCanvas from './components/FamilyTreeCanvas';
 import HomePage from './pages/HomePage';
 import MillPage from './pages/MillPage';
@@ -32,6 +33,10 @@ import './App.css';
 export default function App() {
   return (
     <>
+      {/* Reset scroll on cross-page navigation. Mounted inside the Router so
+          it can call useLocation; renders nothing. */}
+      <ScrollToTop />
+
       {/* Fixed background: procedural scrolling family tree */}
       <FamilyTreeCanvas />
 

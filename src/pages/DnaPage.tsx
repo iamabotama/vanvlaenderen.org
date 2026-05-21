@@ -1,17 +1,14 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import dnaStyles from './DnaPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import vintageFamilyPhoto from '../assets/images/vintage-family-photo.jpg';
 import cronikeShields from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
-import { useNav } from '../hooks/useNav';
 import { Helmet } from 'react-helmet-async';
 
 export default function DnaPage() {
-  const { goTo } = useNav();
-  const nav = useNavigate();
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const toggle = (id: string) => setExpanded(prev => ({ ...prev, [id]: !prev[id] }));
@@ -88,12 +85,12 @@ export default function DnaPage() {
             <strong>{t('dna.participate_step3_label')}</strong>{' '}{t('dna.participate_step3_body')}
           </p>
           <div className={dnaStyles.participateButtonWrap}>
-            <button
+            <Link
               className={dnaStyles.joinTeamBtn}
-              onClick={() => goTo('contact')}
+              to="/contact"
             >
               {t('dna.participate_button')}
-            </button>
+            </Link>
           </div>
           <div className={dnaStyles.participateAlternative}>
             <strong>{t('dna.participate_alternative_label')}</strong>{' '}{t('dna.participate_alternative_body')}
@@ -109,24 +106,24 @@ export default function DnaPage() {
           </h2>
           <p>
             {t('dna.testing_intro_pre')}{' '}
-            <button
-              onClick={() => nav('/research/victor-dossier')}
-              style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+            <Link
+              to="/research/victor-dossier"
+              style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}
             >
               {t('dna.testing_intro_victor_text')}
-            </button>{' '}{t('dna.testing_intro_mid1')}{' '}
-            <button
-              onClick={() => nav('/research/drincham-dossier')}
-              style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+            </Link>{' '}{t('dna.testing_intro_mid1')}{' '}
+            <Link
+              to="/research/drincham-dossier"
+              style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}
             >
               {t('dna.testing_intro_drincham_text')}
-            </button>{' '}{t('dna.testing_intro_mid2')}{' '}
-            <button
-              onClick={() => nav('/research/praet-dossier')}
-              style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+            </Link>{' '}{t('dna.testing_intro_mid2')}{' '}
+            <Link
+              to="/research/praet-dossier"
+              style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}
             >
               {t('dna.testing_intro_praet_text')}
-            </button>{' '}{t('dna.testing_intro_post')}
+            </Link>{' '}{t('dna.testing_intro_post')}
           </p>
           <p>{t('dna.testing_hypotheses_intro')}</p>
           <p>
@@ -137,12 +134,12 @@ export default function DnaPage() {
           </p>
           <p>
             {t('dna.testing_toponymy_pre')}{' '}
-            <button
-              onClick={() => nav('/name/surname-origins')}
-              style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+            <Link
+              to="/name/surname-origins"
+              style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}
             >
               {t('dna.testing_toponymy_linktext')}
-            </button>{' '}{t('dna.testing_toponymy_post')}
+            </Link>{' '}{t('dna.testing_toponymy_post')}
           </p>
           <p>{t('dna.testing_predictions_intro')}</p>
           <p>
@@ -155,12 +152,12 @@ export default function DnaPage() {
           <p style={{ fontSize: '0.85em', opacity: 0.75, marginTop: '-0.5em' }}>
             <em>
               {t('dna.testing_p_mixed_source_label')}
-              <button
-                onClick={() => nav('/research/bibliography#larmuseau-2013-cuckoldry')}
-                style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit', fontStyle: 'inherit', fontFamily: 'inherit' }}
+              <Link
+                to="/research/bibliography#larmuseau-2013-cuckoldry"
+                style={{ color: 'inherit', textDecoration: 'underline', fontSize: 'inherit', fontStyle: 'inherit', fontFamily: 'inherit' }}
               >
                 {t('dna.testing_p_mixed_source_text')}
-              </button>
+              </Link>
             </em>
           </p>
           <p>
@@ -328,21 +325,21 @@ export default function DnaPage() {
             </p>
             <p>
               {t('dna.notes_source_2_label')} {t('dna.notes_source_2_text')}{' '}
-              <button
-                onClick={() => { nav('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+              <Link
+                to="/name/surname-origins"
+                style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}
               >
                 {t('dna.notes_source_2_linktext')}
-              </button>
+              </Link>
             </p>
             <p>
               {t('dna.notes_source_3_label')} {t('dna.notes_source_3_text')}{' '}
-              <button
-                onClick={() => nav('/research/bibliography#larmuseau-2013-cuckoldry')}
-                style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+              <Link
+                to="/research/bibliography#larmuseau-2013-cuckoldry"
+                style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}
               >
                 {t('dna.notes_source_3_linktext')}
-              </button>
+              </Link>
             </p>
             <p>
               {t('dna.notes_source_4_label')} {t('dna.notes_source_4_text')}{' '}
@@ -360,12 +357,12 @@ export default function DnaPage() {
           <div className={styles.ctaNote}>
             {t('dna.cta_note')}
           </div>
-          <button
+          <Link
             className={dnaStyles.joinTeamBtn}
-            onClick={() => goTo('contact')}
+            to="/contact"
           >
             {t('dna.cta_button')}
-          </button>
+          </Link>
         </div>
 
       </div>

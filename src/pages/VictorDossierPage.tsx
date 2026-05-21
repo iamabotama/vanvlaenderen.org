@@ -1,13 +1,10 @@
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
-import { useNav } from '../hooks/useNav';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 export default function VictorDossierPage() {
-  const { goToResearch } = useNav();
-  const navigate = useNavigate();
   return (
     <div className={styles.page}>
       <Helmet>
@@ -230,12 +227,12 @@ export default function VictorDossierPage() {
           </p>
           <p>
             The 150-year documentary gap between Adam's last attestation (18 March 1447) and Franciscus van Vlaenderen in Ghent (1568) is the central open question in the project. A systematic onomastic sweep of the Zeeuws-Vlaanderen record (Gysseling, Vier Ambachten, c.1240–1500) has confirmed the surname is not indigenous to that region — it arrives into Bassevelde/Assenede from the Ghent hinterland. The primary remaining bridge candidates are the Staten van Goed series at RAG (Ambacht Assenede I &amp; II) and the Landboek/Leenhof records. For the full distributional and documentary analysis of the surname's origin, see the{' '}
-            <button
-              onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+            <Link
+              to="/name/surname-origins"
+              style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}
             >
               Four Functions, Three Clusters analysis →
-            </button>
+            </Link>
           </p>
         </section>
 
@@ -281,12 +278,9 @@ export default function VictorDossierPage() {
         </section>
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
-          <button
-            onClick={() => goToResearch('victor')}
+          <Link
+            to="/research/victor"
             style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
               color: 'var(--gold)',
               fontSize: '16px',
               textDecoration: 'underline',
@@ -296,13 +290,10 @@ export default function VictorDossierPage() {
             }}
           >
             Return to Victor Lineage
-          </button>
-          <button
-            onClick={() => goToResearch('bibliography')}
+          </Link>
+          <Link
+            to="/research/bibliography"
             style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
               color: 'var(--gold)',
               fontSize: '14px',
               textDecoration: 'underline',
@@ -313,7 +304,7 @@ export default function VictorDossierPage() {
             }}
           >
             Full Bibliography &rarr;
-          </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,13 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptKnight from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
 import { LoysDeHazeDiagram } from '../components/Diagrams';
-import { useNav } from '../hooks/useNav';
 import { Helmet } from 'react-helmet-async';
 
 export default function LoysDeHazeLineagePage() {
-  const { goToResearch } = useNav();
   const { t } = useTranslation();
 
   return (
@@ -182,20 +181,17 @@ export default function LoysDeHazeLineagePage() {
         </section>
 
         {/* ── CTA ────────────────────────────────────────── */}
-        <div className={styles.ctaBox} onClick={() => goToResearch('contact')} style={{ cursor: 'pointer' }}>
+        <Link className={styles.ctaBox} to="/contact">
           <div className={styles.ctaText} dangerouslySetInnerHTML={{ __html: t('loys.cta_text') }} />
           <div className={styles.ctaNote}>
             {t('loys.cta_note')}
           </div>
-        </div>
+        </Link>
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
-          <button
-            onClick={() => goToResearch('main')}
+          <Link
+            to="/research"
             style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
               color: 'var(--gold)',
               fontSize: '16px',
               textDecoration: 'underline',
@@ -205,7 +201,7 @@ export default function LoysDeHazeLineagePage() {
             }}
           >
             Back to Research Overview
-          </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,13 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import millVinderhoute from '../assets/images/places/van-vlaenderensmolen-vinderhoute-cc-by-sa-3.0.jpg';
 import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
 import styles from './InnerPage.module.css';
 import millStyles from './MillPage.module.css';
-import { useNav } from '../hooks/useNav';
 import { Helmet } from 'react-helmet-async';
 
 export default function MillPage() {
-  const { goTo } = useNav();
   const { t } = useTranslation();
 
   return (
@@ -163,14 +162,14 @@ export default function MillPage() {
           </div>
         </div>
 
-        <div className={styles.ctaBox} onClick={() => goTo('contact')} style={{ cursor: 'pointer' }}>
+        <Link className={styles.ctaBox} to="/contact">
           <div className={styles.ctaText}>
             {t('mill.cta_text')}
           </div>
           <div className={styles.ctaNote}>
             {t('mill.cta_note')}
           </div>
-        </div>
+        </Link>
 
       </div>
     </div>

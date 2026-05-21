@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { useNav } from '../hooks/useNav';
+import { Link } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
@@ -161,8 +161,6 @@ const READING_LIST: { group: string; entries: ReadingEntry[] }[] = [
 ];
 
 export default function MethodologyPage() {
-  const { goToResearch } = useNav();
-
   return (
     <div className={styles.page}>
       <Helmet>
@@ -315,13 +313,13 @@ export default function MethodologyPage() {
 
         {/* ── Back nav ────────────────────────────────────────────── */}
         <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid rgba(232,184,48,0.15)' }}>
-          <button
-            onClick={() => goToResearch('main')}
+          <Link
+            to="/research"
             className={researchStyles.refLink}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.9rem' }}
+            style={{ fontSize: '0.9rem' }}
           >
             &larr; Back to Research Overview
-          </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -71,6 +71,10 @@
   padding: 0;
 }
 
+.entryItem {
+  display: block;
+}
+
 .entry {
   display: grid;
   grid-template-columns: 2rem minmax(0, 14rem) 1fr;
@@ -78,9 +82,11 @@
   gap: 0.75rem 1rem;
   padding: 0.7rem 0.5rem;
   border-top: 1px solid rgba(232, 184, 48, 0.1);
+  text-decoration: none;
+  color: inherit;
 }
 
-.entry:first-child {
+.list > .entryItem:first-child .entry {
   border-top: none;
 }
 

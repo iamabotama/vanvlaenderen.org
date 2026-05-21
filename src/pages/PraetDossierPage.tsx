@@ -2,11 +2,10 @@
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
-import { useNav } from '../hooks/useNav';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 export default function PraetDossierPage() {
-  const { goToResearch } = useNav();
   return (
     <div className={styles.page}>
       <Helmet>
@@ -154,13 +153,10 @@ export default function PraetDossierPage() {
         </section>
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
-          <button 
-            onClick={() => goToResearch('louis-friese')} 
-            style={{ 
-              background: 'none', 
-              border: 'none', 
-              cursor: 'pointer', 
-              color: 'var(--gold)', 
+          <Link
+            to="/research/louis-friese"
+            style={{
+              color: 'var(--gold)',
               fontSize: '16px',
               textDecoration: 'underline',
               fontFamily: 'var(--font-ui)',
@@ -169,13 +165,10 @@ export default function PraetDossierPage() {
             }}
           >
             Back to Louis Friese Lineage
-          </button>
-          <button
-            onClick={() => goToResearch('bibliography')}
+          </Link>
+          <Link
+            to="/research/bibliography"
             style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
               color: 'var(--gold)',
               fontSize: '14px',
               textDecoration: 'underline',
@@ -186,7 +179,7 @@ export default function PraetDossierPage() {
             }}
           >
             Full Bibliography &rarr;
-          </button>
+          </Link>
         </div>
       </div>
     </div>

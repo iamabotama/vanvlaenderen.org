@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import lionShield from '../assets/images/lion-shield.png';
 import heroBg from '../assets/images/hero-background.jpg';
 import windmill from '../assets/images/places/van-vlaenderensmolen-vinderhoute-cc-by-sa-3.0.jpg';
@@ -6,8 +7,6 @@ import windmill from '../assets/images/places/van-vlaenderensmolen-vinderhoute-c
 import manuscriptNoblewoman from '../assets/images/manuscript-noblewoman.jpg';
 import cronike from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
 import styles from './HomePage.module.css';
-import { useNav } from '../hooks/useNav';
-import type { Tab } from '../components/Nav';
 import { Helmet } from 'react-helmet-async';
 
 const villages = [
@@ -16,40 +15,45 @@ const villages = [
   'Eeklo', 'Ghent',
 ];
 
-export default function HomePage() {
-  const { goTo } = useNav();
-  const { t } = useTranslation();
+// Cards are listed in display order. The `path` is the route Link targets;
+// keys correspond to the i18n labels for each card.
+const CARDS: { id: string; path: string; titleKey: string; subtitleKey: string; quoteKey: string; img: string }[] = [
+  {
+    id: 'mill',
+    path: '/mill',
+    titleKey: 'home.card_mill_title',
+    subtitleKey: 'home.card_mill_subtitle',
+    quoteKey: 'home.card_mill_quote',
+    img: windmill,
+  },
+  {
+    id: 'name',
+    path: '/name',
+    titleKey: 'home.card_name_title',
+    subtitleKey: 'home.card_name_subtitle',
+    quoteKey: 'home.card_name_quote',
+    img: manuscriptNoblewoman,
+  },
+  {
+    id: 'research',
+    path: '/research',
+    titleKey: 'home.card_research_title',
+    subtitleKey: 'home.card_research_subtitle',
+    quoteKey: 'home.card_research_quote',
+    img: manuscriptNoblewoman,
+  },
+  {
+    id: 'dna',
+    path: '/dna',
+    titleKey: 'home.card_dna_title',
+    subtitleKey: 'home.card_dna_subtitle',
+    quoteKey: 'home.card_dna_quote',
+    img: cronike,
+  },
+];
 
-  const cards = [
-    {
-      id: 'mill' as Tab,
-      titleKey: 'home.card_mill_title',
-      subtitleKey: 'home.card_mill_subtitle',
-      quoteKey: 'home.card_mill_quote',
-      img: windmill,
-    },
-    {
-      id: 'name' as Tab,
-      titleKey: 'home.card_name_title',
-      subtitleKey: 'home.card_name_subtitle',
-      quoteKey: 'home.card_name_quote',
-      img: manuscriptNoblewoman,
-    },
-    {
-      id: 'research' as Tab,
-      titleKey: 'home.card_research_title',
-      subtitleKey: 'home.card_research_subtitle',
-      quoteKey: 'home.card_research_quote',
-      img: manuscriptNoblewoman,
-    },
-    {
-      id: 'dna' as Tab,
-      titleKey: 'home.card_dna_title',
-      subtitleKey: 'home.card_dna_subtitle',
-      quoteKey: 'home.card_dna_quote',
-      img: cronike,
-    },
-  ];
+export default function HomePage() {
+  const { t } = useTranslation();
 
   return (
     <div className={styles.page}>
@@ -140,9 +144,9 @@ export default function HomePage() {
             </p>
 
             <div className={styles.hypothesesCta}>
-              <button className={styles.primaryBtn} onClick={() => goTo('research')}>
+              <Link className={styles.primaryBtn} to="/research">
                 {t('home.cta_research')} →
-              </button>
+              </Link>
             </div>
 
             <div className={styles.pullQuote}>
@@ -161,12 +165,12 @@ export default function HomePage() {
           </div>
 
           <div className={styles.mysteryActions}>
-            <button className={styles.primaryBtn} onClick={() => goTo('name')}>
+            <Link className={styles.primaryBtn} to="/name">
               {t('home.cta_explore')}
-            </button>
-            <button className={styles.secondaryBtn} onClick={() => goTo('contact')}>
+            </Link>
+            <Link className={styles.secondaryBtn} to="/contact">
               {t('home.cta_contribute')}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -182,11 +186,11 @@ export default function HomePage() {
       <div className={styles.cardsSection}>
         <div className={styles.cardsHeading}>{t('home.explore_archive')}</div>
         <div className={styles.cards}>
-          {cards.map(card => (
-            <button
+          {CARDS.map(card => (
+            <Link
               key={card.id}
               className={styles.card}
-              onClick={() => goTo(card.id)}
+              to={card.path}
             >
               <div className={styles.cardImg}>
                 <img src={card.img} alt={t(card.titleKey)} />
@@ -198,7 +202,7 @@ export default function HomePage() {
                 <div className={styles.cardQuote}>{t(card.quoteKey)}</div>
                 <div className={styles.cardArrow}>→</div>
               </div>
-            </button>
+            </Link>
           ))}
         </div>
       </div>

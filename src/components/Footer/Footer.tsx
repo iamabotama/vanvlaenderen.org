@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 
 /**
@@ -36,12 +36,6 @@ function formatBuildDate(iso: string, locale: string): string {
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
-
-  const go = (path: string) => {
-    navigate(path);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   const currentLang = i18n.language?.startsWith('nl') ? 'nl' : 'en';
   const formattedDate = formatBuildDate(buildDate, currentLang);
@@ -54,19 +48,19 @@ export default function Footer() {
         <nav aria-label={t('footer.nav_heading')}>
           <h2 className={styles.colHeading}>{t('footer.nav_heading')}</h2>
           <ul className={styles.navList}>
-            <li><button className={styles.navLink} onClick={() => go('/')}>{t('nav.home')}</button></li>
-            <li><button className={styles.navLink} onClick={() => go('/research')}>{t('nav.history')}</button></li>
+            <li><Link className={styles.navLink} to="/">{t('nav.home')}</Link></li>
+            <li><Link className={styles.navLink} to="/research">{t('nav.history')}</Link></li>
             <li>
-              <button
+              <Link
                 className={`${styles.navLink} ${styles.navLinkEmphasised}`}
-                onClick={() => go('/research/bibliography')}
+                to="/research/bibliography"
               >
                 {t('footer.bibliography_link_label')}
-              </button>
+              </Link>
             </li>
-            <li><button className={styles.navLink} onClick={() => go('/dna')}>{t('nav.dna')}</button></li>
-            <li><button className={styles.navLink} onClick={() => go('/about')}>{t('nav.about')}</button></li>
-            <li><button className={styles.navLink} onClick={() => go('/contact')}>{t('nav.contact')}</button></li>
+            <li><Link className={styles.navLink} to="/dna">{t('nav.dna')}</Link></li>
+            <li><Link className={styles.navLink} to="/about">{t('nav.about')}</Link></li>
+            <li><Link className={styles.navLink} to="/contact">{t('nav.contact')}</Link></li>
           </ul>
         </nav>
 
@@ -74,14 +68,14 @@ export default function Footer() {
         <div className={styles.centre}>
           <h2 className={styles.colHeading}>{t('footer.project_heading')}</h2>
           <p className={styles.tagline}>{t('footer.tagline')}</p>
-          <button
+          <Link
             className={styles.sourcesCallout}
-            onClick={() => go('/research/bibliography')}
+            to="/research/bibliography"
             aria-label={t('footer.sources_callout_aria')}
           >
             <span>{t('footer.sources_callout')}</span>
             <span className={styles.sourcesCalloutArrow} aria-hidden="true">→</span>
-          </button>
+          </Link>
         </div>
 
         {/* ── Right: attribution + timestamp ──────────────────────── */}
@@ -90,13 +84,13 @@ export default function Footer() {
           <p className={styles.attributionLine}>{t('footer.copyright')}</p>
           <p className={styles.attributionLine}>{t('footer.collaboration')}</p>
           <p className={styles.attributionLine}>
-            <button
+            <Link
               className={styles.licenseLink}
-              onClick={() => go('/license')}
+              to="/license"
               aria-label={t('footer.license_link_aria')}
             >
               {t('footer.license')}
-            </button>
+            </Link>
           </p>
           <p className={styles.attributionDim}>
             {t('footer.last_updated_prefix')} {formattedDate}

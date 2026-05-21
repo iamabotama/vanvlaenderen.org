@@ -1,11 +1,10 @@
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
-import { useNav } from '../hooks/useNav';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 export default function PraetLineageDossierPage() {
-  const { goToResearch } = useNav();
   const lineageData = [
     { gen: 1, name: 'Louis Friese van Vlaenderen', dates: 'c.1350 \u2013 25 Sep 1396', role: 'Bastard of Flanders; Lord of Praet & Woestine', spouse: '1) Unknown (La Woestine) 2) Marie van Gistel', sources: 'Vredius MS via FMG [864\u2013869]; Wikipedia', level: 'Directly attested', levelClass: researchStyles.levelAttested },
     { gen: 2, name: 'Johan I van Vlaenderen', dates: 'd. after 10 Sep 1439', role: 'Lord of Praet & Woestine; Burgher of Praet', spouse: 'Johanna van Reygersvliet', sources: 'Charter 10 Sep 1439 via FMG [873]; Vredius MS [875]', level: 'Directly attested', levelClass: researchStyles.levelAttested },
@@ -255,12 +254,9 @@ export default function PraetLineageDossierPage() {
         </section>
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
-          <button
-            onClick={() => goToResearch('louis-friese')}
+          <Link
+            to="/research/louis-friese"
             style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
               color: 'var(--gold)',
               fontSize: '16px',
               textDecoration: 'underline',
@@ -270,13 +266,10 @@ export default function PraetLineageDossierPage() {
             }}
           >
             Back to Louis Friese Lineage
-          </button>
-          <button
-            onClick={() => goToResearch('bibliography')}
+          </Link>
+          <Link
+            to="/research/bibliography"
             style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
               color: 'var(--gold)',
               fontSize: '14px',
               textDecoration: 'underline',
@@ -287,7 +280,7 @@ export default function PraetLineageDossierPage() {
             }}
           >
             Full Bibliography &rarr;
-          </button>
+          </Link>
         </div>
       </div>
     </div>

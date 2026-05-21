@@ -1,13 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { PraetDiagram } from '../components/Diagrams';
-import { useNav } from '../hooks/useNav';
 import { Helmet } from 'react-helmet-async';
 
 export default function LouisFrieseLineagePage() {
-  const { goToResearch } = useNav();
   const { t } = useTranslation();
 
   return (
@@ -162,13 +161,10 @@ export default function LouisFrieseLineagePage() {
         {/* ── Dossier Links ──────────────────────────────── */}
         <section className={styles.section} style={{ marginTop: '3rem', borderTop: '1px solid rgba(232, 184, 48, 0.2)', paddingTop: '2rem' }}>
           <div className={researchStyles.branchCards}>
-            <div
+            <Link
+              to="/research/praet-dossier"
               className={researchStyles.branchCard}
-              role="button"
-              tabIndex={0}
-              style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => goToResearch('praet-dossier')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('praet-dossier'); } }}
+              style={{ borderTop: '3px solid var(--gold)' }}
               aria-label="Louis Friese: Archival Dossier"
             >
               <h3>Louis Friese: Archival Dossier</h3>
@@ -176,14 +172,11 @@ export default function LouisFrieseLineagePage() {
               <span className={researchStyles.branchLink} aria-hidden="true">
                 View Archival Evidence &rarr;
               </span>
-            </div>
-            <div
+            </Link>
+            <Link
+              to="/research/praet-lineage-dossier"
               className={researchStyles.branchCard}
-              role="button"
-              tabIndex={0}
-              style={{ borderTop: '3px solid var(--gold)', cursor: 'pointer' }}
-              onClick={() => goToResearch('praet-lineage-dossier')}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToResearch('praet-lineage-dossier'); } }}
+              style={{ borderTop: '3px solid var(--gold)' }}
               aria-label="House of Praet: Lineage Dossier"
             >
               <h3>House of Praet: Lineage Dossier</h3>
@@ -191,27 +184,24 @@ export default function LouisFrieseLineagePage() {
               <span className={researchStyles.branchLink} aria-hidden="true">
                 View Lineage Evidence &rarr;
               </span>
-            </div>
+            </Link>
           </div>
         </section>
 
         {/* ── CTA ────────────────────────────────────────── */}
-        <div className={styles.ctaBox} onClick={() => goToResearch('contact')} style={{ cursor: 'pointer' }}>
+        <Link className={styles.ctaBox} to="/contact">
           <div className={styles.ctaText}>
             {t('louis_friese.cta_text')}
           </div>
           <div className={styles.ctaNote}>
             {t('louis_friese.cta_note')}
           </div>
-        </div>
+        </Link>
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
-          <button
-            onClick={() => goToResearch('main')}
+          <Link
+            to="/research"
             style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
               color: 'var(--gold)',
               fontSize: '16px',
               textDecoration: 'underline',
@@ -221,7 +211,7 @@ export default function LouisFrieseLineagePage() {
             }}
           >
             {t('louis_friese.back_button')}
-          </button>
+          </Link>
         </div>
       </div>
     </div>

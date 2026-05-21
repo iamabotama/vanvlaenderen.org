@@ -1,12 +1,11 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import aboutStyles from './AboutPage.module.css';
 import michaelConstanceCanal from '../assets/images/michael-constance-canal.jpg';
-import { useNav } from '../hooks/useNav';
 import { Helmet } from 'react-helmet-async';
 
 export default function AboutPage() {
-  const { goTo, goToResearch } = useNav();
   const { t } = useTranslation();
   return (
     <div className={styles.page}>
@@ -80,40 +79,42 @@ export default function AboutPage() {
             </span>
           </p>
           <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <button
-              onClick={() => goTo('research')}
+            <Link
+              to="/research"
               style={{
                 background: 'none',
                 border: '1px solid rgba(232,184,48,0.35)',
                 borderRadius: '4px',
                 color: 'var(--gold)',
-                cursor: 'pointer',
                 fontSize: '0.82rem',
                 fontFamily: 'var(--font-ui)',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
                 padding: '0.5rem 1.1rem',
+                textDecoration: 'none',
+                display: 'inline-block',
               }}
             >
               Research Overview &rarr;
-            </button>
-            <button
-              onClick={() => goToResearch('methodology')}
+            </Link>
+            <Link
+              to="/research/methodology"
               style={{
                 background: 'none',
                 border: '1px solid rgba(232,184,48,0.35)',
                 borderRadius: '4px',
                 color: 'var(--gold)',
-                cursor: 'pointer',
                 fontSize: '0.82rem',
                 fontFamily: 'var(--font-ui)',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
                 padding: '0.5rem 1.1rem',
+                textDecoration: 'none',
+                display: 'inline-block',
               }}
             >
               Methodology &amp; Sources &rarr;
-            </button>
+            </Link>
           </div>
         </section>
 
@@ -177,21 +178,21 @@ export default function AboutPage() {
           <p>
             {t('about.lineage_cta_body')}
           </p>
-          <button 
+          <Link
             className={styles.ctaBox}
-            onClick={() => goTo('lineage')}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, width: '100%', textAlign: 'center' }}
+            to="/lineage"
+            style={{ textAlign: 'center' }}
           >
             <div className={styles.ctaText}>
               {t('about.lineage_cta_link')}
             </div>
-          </button>
+          </Link>
         </section>
 
-        <button 
+        <Link 
           className={styles.ctaBox}
-          onClick={() => goTo('contact')}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, width: '100%', textAlign: 'center' }}
+          to="/contact"
+          style={{ textAlign: 'center' }}
         >
           <div className={styles.ctaText}>
             {t('about.contact_cta_body')}
@@ -199,7 +200,7 @@ export default function AboutPage() {
           <div className={styles.ctaNote}>
             {t('about.contact_cta_note')}
           </div>
-        </button>
+        </Link>
       </div>
     </div>
   );

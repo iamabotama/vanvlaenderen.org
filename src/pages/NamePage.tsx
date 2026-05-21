@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import nameStyles from './NamePage.module.css';
 import researchStyles from './ResearchPage.module.css';
@@ -16,12 +16,9 @@ const ResearchMap = lazy(() => import('../components/ResearchMap/ResearchMap'));
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
 import lionWoodcut from '../assets/images/lion-woodcut.jpg';
-import { useNav } from '../hooks/useNav';
 import { Helmet } from 'react-helmet-async';
 
 export default function NamePage() {
-  const { goTo } = useNav();
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const [lightbox, setLightbox] = useState<{ src: string; alt: string; caption: string } | null>(null);
 
@@ -206,22 +203,23 @@ export default function NamePage() {
             <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '1rem', fontStyle: 'normal' }}>
               The name appears, at first glance, to explain itself. But when the earliest surname populations are mapped geographically across three centuries, they cluster in ways that pure toponymy cannot explain — concentrated inside Flanders itself, stable over two hundred years in specific villages. This analysis sets out what the documentary and distributional evidence actually shows.
             </p>
-            <button
-              onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            <Link
+              to="/name/surname-origins"
               style={{
                 background: 'none',
                 border: '1px solid rgba(232,184,48,0.35)',
                 color: 'var(--gold)',
                 padding: '0.5rem 1rem',
-                cursor: 'pointer',
                 borderRadius: '3px',
                 fontSize: '0.82rem',
                 fontFamily: 'var(--font-ui)',
                 letterSpacing: '0.06em',
+                textDecoration: 'none',
+                display: 'inline-block',
               }}
             >
               Read the Analysis →
-            </button>
+            </Link>
           </div>
         </section>
 
@@ -337,21 +335,21 @@ export default function NamePage() {
           <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.75 }}>
             <p>
               {t('name.notes_source_1_label')} {t('name.notes_source_1_text')}{' '}
-              <button
-                onClick={() => { navigate('/research'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+              <Link
+                to="/research"
+                style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}
               >
                 {t('name.notes_research_link')}
-              </button>
+              </Link>
             </p>
             <p>
               {t('name.notes_source_2_label')} {t('name.notes_source_2_text')}{' '}
-              <button
-                onClick={() => { navigate('/name/surname-origins'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}
+              <Link
+                to="/name/surname-origins"
+                style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}
               >
                 {t('name.notes_analysis_link')}
-              </button>
+              </Link>
             </p>
             <p>
               {t('name.notes_source_3_label')} {t('name.notes_source_3_text')}
@@ -369,12 +367,12 @@ export default function NamePage() {
           <div className={styles.ctaNote}>
             {t('name.cta_note')}
           </div>
-          <button
+          <Link
             className={nameStyles.shareStoryBtn}
-            onClick={() => goTo('contact')}
+            to="/contact"
           >
             {t('name.cta_button')}
-          </button>
+          </Link>
         </div>
 
       </div>

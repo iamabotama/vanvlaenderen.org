@@ -1,13 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { RobrechtDiagram } from '../components/Diagrams';
-import { useNav } from '../hooks/useNav';
 import { Helmet } from 'react-helmet-async';
 
 export default function RobrechtLineagePage() {
-  const { goToResearch } = useNav();
   const { t } = useTranslation();
 
   return (
@@ -208,22 +207,19 @@ export default function RobrechtLineagePage() {
         </section>
 
         {/* ── CTA ────────────────────────────────────────────────── */}
-        <div className={styles.ctaBox} onClick={() => goToResearch('contact')} style={{ cursor: 'pointer' }}>
+        <Link className={styles.ctaBox} to="/contact">
           <div className={styles.ctaText}>
             Do you have research that connects to the line of Robrecht van Vlaenderen?
           </div>
           <div className={styles.ctaNote}>
             We welcome correspondence on the Caspar descent question, the Verdeghem and de Crane families, and the Gaillard MS provenance.
           </div>
-        </div>
+        </Link>
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
-          <button
-            onClick={() => goToResearch('main')}
+          <Link
+            to="/research"
             style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
               color: 'var(--gold)',
               fontSize: '16px',
               textDecoration: 'underline',
@@ -233,7 +229,7 @@ export default function RobrechtLineagePage() {
             }}
           >
             Back to Research Overview
-          </button>
+          </Link>
         </div>
       </div>
     </div>

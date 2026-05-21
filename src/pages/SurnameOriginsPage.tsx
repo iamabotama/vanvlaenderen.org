@@ -1,6 +1,6 @@
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
 import heatmap1500 from '../assets/images/heatmap-1500.png';
@@ -52,9 +52,6 @@ function DistributionTable({ rows, caption }: { rows: [string, string, string][]
 }
 
 export default function SurnameOriginsPage() {
-  const navigate = useNavigate();
-  const nav = (path: string) => { navigate(path); window.scrollTo({ top: 0, behavior: 'smooth' }); };
-
   return (
     <div className={styles.page}>
       <Helmet>
@@ -105,7 +102,7 @@ export default function SurnameOriginsPage() {
         <section className={styles.section}>
           <h2>The Four Functions of the Phrase</h2>
           <p>
-            Before any surname-bearing individual can be identified in a historical source, the phrase <em>van Vlaenderen</em> must be correctly interpreted. In the Flemish documentary record, it performs at least four distinct functions, and conflating them produces false evidence in either direction. The full framework is presented on <button onClick={() => nav('/name')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>The Name page</button>; the summary below provides the necessary context for this analysis.
+            Before any surname-bearing individual can be identified in a historical source, the phrase <em>van Vlaenderen</em> must be correctly interpreted. In the Flemish documentary record, it performs at least four distinct functions, and conflating them produces false evidence in either direction. The full framework is presented on <Link to="/name" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>The Name page</Link>; the summary below provides the necessary context for this analysis.
           </p>
 
           {[
@@ -359,7 +356,7 @@ export default function SurnameOriginsPage() {
                   <td style={{ ...tdStyle, whiteSpace: 'nowrap' as const, color: 'var(--text-muted)' }}>1427–1447 N.S.</td>
                   <td style={{ ...tdStyle, borderLeft: '2px solid var(--gold)', paddingLeft: '1rem' }}>
                     <strong>Meetjesland / Ghent — closest documented individual bridge candidate for the Belgian cluster, alongside the parallel Praet-at-Aalter possibility.</strong> Geographically closest to Sleidinge and Oostwinkel. Last attested 1447, three to four undocumented generations before Franciscus (1568). Record scarcity in the intervening period is the expected explanation for the gap, not a late founding event. See also:{' '}
-                    <button onClick={() => nav('/research/victor-dossier')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>Victor Archival Dossier →</button>
+                    <Link to="/research/victor-dossier" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>Victor Archival Dossier →</Link>
                   </td>
                 </tr>
                 <tr>
@@ -410,7 +407,7 @@ export default function SurnameOriginsPage() {
           </p>
           <p>
             The <strong>Belgian cluster</strong> (Sleidinge, Oostwinkel, Evergem, Bassevelde) is geographically consistent with descent from Victor's son Adam. Adam was last attested in Ghent in 1447. The cluster's epicentre lies immediately north of Ghent, within easy distance of Ursel and Wessegem where Victor held his lordship. The cluster's near-invisibility before 1600 is most plausibly explained by record scarcity: the registers that would document Adam's grandchildren simply do not survive. On this reading, the founding event belongs in the mid-fifteenth century, and the Belgian cluster is not appreciably younger than the French Flanders one. This hypothesis is plausible and merits continued archival investigation; it is not yet proven. The 150-year documentary gap between Adam's last attestation (1447) and the first Belgian parish records is discussed in the{' '}
-            <button onClick={() => nav('/research/victor-dossier')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>Victor Archival Dossier</button>.
+            <Link to="/research/victor-dossier" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>Victor Archival Dossier</Link>.
           </p>
           <p>
             The <strong>Brabant/Brussels cluster</strong> (Wambeek) is consistent with descent through the Praet line, whose later documented members married into Brabantine noble families. This is a probable connection but has not been verified through direct archival evidence.
@@ -468,22 +465,23 @@ export default function SurnameOriginsPage() {
             <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
               The relevant archive is the <strong>Archives Départementales du Nord</strong> (Lille), which holds the Cassel castellany records and related comital administrative series. A pre-1383 identification would establish an independent Function 3 origin for the French Flanders cluster; a post-1383 identification would more likely represent a continuation of the bastard line.
             </p>
-            <button
-              onClick={() => nav('/contact')}
+            <Link
+              to="/contact"
               style={{
                 background: 'rgba(232,184,48,0.1)',
                 border: '1px solid rgba(232,184,48,0.4)',
                 color: 'var(--gold)',
                 padding: '0.6rem 1.25rem',
-                cursor: 'pointer',
                 borderRadius: '3px',
                 fontSize: '0.85rem',
                 fontFamily: 'var(--font-ui)',
                 letterSpacing: '0.05em',
+                textDecoration: 'none',
+                display: 'inline-block',
               }}
             >
               Get in Touch →
-            </button>
+            </Link>
           </div>
         </section>
 
@@ -525,12 +523,12 @@ export default function SurnameOriginsPage() {
 
         {/* ── Back nav ──────────────────────────────────────────────── */}
         <div style={{ borderTop: '1px solid rgba(232,184,48,0.15)', paddingTop: '1.5rem', marginTop: '1rem', display: 'flex', gap: '1.5rem', fontSize: '0.875rem' }}>
-          <button onClick={() => nav('/name')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>
+          <Link to="/name" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>
             ← The Name
-          </button>
-          <button onClick={() => nav('/research/bibliography')} style={{ background: 'none', border: 'none', color: 'var(--gold)', cursor: 'pointer', padding: 0, textDecoration: 'underline', fontSize: 'inherit' }}>
+          </Link>
+          <Link to="/research/bibliography" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>
             Full Bibliography →
-          </button>
+          </Link>
         </div>
 
       </div>

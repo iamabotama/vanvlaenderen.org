@@ -15,7 +15,7 @@ export const cohortEntries: CohortEntry[] = [
     id: 'dhase',
     name: 'Mer Lodewijck "dHase"',
     state: 'lineage',
-    route: 'loys-le-hase',
+    route: '/research/loys-le-hase',
   },
   {
     id: 'rodolf',
@@ -31,13 +31,13 @@ export const cohortEntries: CohortEntry[] = [
     id: 'devriese',
     name: 'Mer Lodewijck "de Vriese"',
     state: 'lineage',
-    route: 'louis-friese',
+    route: '/research/louis-friese',
   },
   {
     id: 'sansterre',
     name: 'Mer Jan "zonder Landt"',
     state: 'lineage',
-    route: 'drincham-dossier',
+    route: '/research/drincham-dossier',
   },
   {
     id: 'hector',
@@ -48,7 +48,7 @@ export const cohortEntries: CohortEntry[] = [
     id: 'robrecht',
     name: 'Mer Robrecht',
     state: 'lineage',
-    route: 'robrecht',
+    route: '/research/robrecht',
   },
   {
     id: 'karel',
@@ -59,7 +59,7 @@ export const cohortEntries: CohortEntry[] = [
     id: 'victor',
     name: 'Mer Victor',
     state: 'lineage',
-    route: 'victor',
+    route: '/research/victor',
   },
   {
     id: 'johanne',
