@@ -62,7 +62,7 @@ const diagram: DiagramDef = {
       y: 195,
       cfg: {
         name: 'Victor\nvan Vlaenderen',
-        dates: 'd. before 10 Mar 1442',
+        dates: 'd. 1431, Saint-Omer',
         tag: 'URSEL & WESSEGEM',
         body: 'Natural son of Louis de Male. Lord of Ursel and Wessegem in the Meetjesland. Burgundian admiral; captain of Biervliet. Three natural sons documented across three primary charters (1427, 1441, 1446). The proposed progenitor of the Belgian / Meetjesland surname cluster.',
         src: 'Vredius, Tab. XVI; FMG MedLands [841–855]',
@@ -132,7 +132,7 @@ const diagram: DiagramDef = {
         name: 'Robrecht\nvan Vlaenderen',
         dates: 'd. 21 Jan 1434',
         tag: 'ELVERDINGHE &\nVLAMERTINGHE',
-        body: 'Natural son of Louis de Male. Lord of Elverdinghe and Vlamertinghe just outside Ypres; Viscount of Ypres jure uxoris through his 1419 marriage to Anastasie d\'Oultre. Three documented natural sons — Jean (legitimized 1448), Caspar (active 1453–1464 as bailiff), and Karel (d. 1491) — carried the surname through the Ypres quarter until Karel\'s daughter, the last documented bearer.',
+        body: 'Natural son of Louis de Male. Lord of Elverdinghe and Vlamertinghe just outside Ypres; Viscount of Ypres jure uxoris through his 1419 marriage to Anastasie d\'Oultre. Three documented natural sons — Jean (legitimized 1448), Caspar (active 1453–1464 as bailiff), and Karel II (d. 1491) — carried the surname through the Ypres quarter until Karel\'s daughter, the last documented bearer.',
         src: 'Vredius, Tab. XVI; Buylaert (2011) pp. 752–753; Tamboryn, Geschiedenis van Elverdinghe',
         color: EVIDENCE.attested,
         ev: 'direct',
