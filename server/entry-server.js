@@ -1,7 +1,7 @@
 import { jsxs, jsx, Fragment } from "react/jsx-runtime";
-import React4, { Component, useRef, useEffect, useState, lazy, useCallback, Suspense, useMemo, Fragment as Fragment$1, StrictMode } from "react";
+import React4, { Component, useEffect, useRef, useState, lazy, useCallback, Suspense, useMemo, Fragment as Fragment$1, StrictMode } from "react";
 import { renderToString } from "react-dom/server";
-import { useNavigate, useLocation, Routes, Route, Navigate, StaticRouter } from "react-router-dom";
+import { useLocation, Link, Routes, Route, Navigate, StaticRouter } from "react-router-dom";
 import i18n from "i18next";
 import { useTranslation, initReactI18next } from "react-i18next";
 import ReactMarkdown from "react-markdown";
@@ -1262,13 +1262,13 @@ function LanguageToggle() {
     )
   ] });
 }
-const nav = "_nav_ezmhu_1";
-const logo = "_logo_ezmhu_16";
-const logoImg = "_logoImg_ezmhu_30";
-const logoText = "_logoText_ezmhu_36";
-const tabs = "_tabs_ezmhu_45";
-const tab = "_tab_ezmhu_45";
-const active = "_active_ezmhu_73";
+const nav = "_nav_moe3o_1";
+const logo = "_logo_moe3o_16";
+const logoImg = "_logoImg_moe3o_30";
+const logoText = "_logoText_moe3o_36";
+const tabs = "_tabs_moe3o_45";
+const tab = "_tab_moe3o_45";
+const active = "_active_moe3o_75";
 const styles$6 = {
   nav,
   logo,
@@ -1290,22 +1290,17 @@ const TAB_PATHS = [
 ];
 function Nav(_props) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const location = useLocation();
   const activePath = location.pathname;
   const activeTab = [...TAB_PATHS].sort((a, b) => b.path.length - a.path.length).find(
     (t2) => t2.path === "/" ? activePath === "/" : activePath === t2.path || activePath.startsWith(t2.path + "/")
   )?.id ?? "home";
-  const handleNav = (path) => {
-    navigate(path);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
   return /* @__PURE__ */ jsxs("nav", { className: styles$6.nav, children: [
     /* @__PURE__ */ jsxs(
-      "button",
+      Link,
       {
+        to: "/",
         className: styles$6.logo,
-        onClick: () => handleNav("/"),
         "aria-label": "Van Vlaenderen — Home",
         children: [
           /* @__PURE__ */ jsx("img", { src: lionShield, alt: "Lion of Flanders heraldic shield", className: styles$6.logoImg }),
@@ -1315,19 +1310,28 @@ function Nav(_props) {
     ),
     /* @__PURE__ */ jsx("ul", { className: styles$6.tabs, role: "menubar", children: TAB_PATHS.map(({ id, path }) => {
       const labelKey = id === "dna" ? "nav.dna" : id === "research" ? "nav.history" : `nav.${id}`;
+      const isActive = activeTab === id;
       return /* @__PURE__ */ jsx("li", { role: "none", children: /* @__PURE__ */ jsx(
-        "button",
+        Link,
         {
+          to: path,
           role: "menuitem",
-          className: `${styles$6.tab} ${activeTab === id ? styles$6.active : ""}`,
-          onClick: () => handleNav(path),
-          "aria-current": activeTab === id ? "page" : void 0,
+          className: `${styles$6.tab} ${isActive ? styles$6.active : ""}`,
+          "aria-current": isActive ? "page" : void 0,
           children: t(labelKey)
         }
       ) }, id);
     }) }),
     /* @__PURE__ */ jsx("div", { style: { marginLeft: "auto", display: "flex", alignItems: "center" }, children: /* @__PURE__ */ jsx(LanguageToggle, {}) })
   ] });
+}
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) return;
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname, hash]);
+  return null;
 }
 const MAX_NODES = 52;
 const MAX_SEGS = 72;
@@ -1544,55 +1548,55 @@ const heroBg = "/assets/hero-background-rVYnRAiM.jpg";
 const millVinderhoute = "/assets/van-vlaenderensmolen-vinderhoute-cc-by-sa-3.0-DLfqQN5a.jpg";
 const manuscriptNoblewoman$1 = "/assets/manuscript-noblewoman-DWtkNqY0.jpg";
 const cronikeShields = "/assets/cronike-van-vlaenderen-shields-double-page-CTwR9X-P.jpg";
-const page$3 = "_page_dkfc0_1";
-const hero = "_hero_dkfc0_8";
-const heroOverlay = "_heroOverlay_dkfc0_18";
-const heroContent = "_heroContent_dkfc0_29";
-const shield = "_shield_dkfc0_37";
-const title$1 = "_title_dkfc0_50";
-const subtitle = "_subtitle_dkfc0_60";
-const heroSubtitleNarrative = "_heroSubtitleNarrative_dkfc0_70";
-const heroSubtitleLocations = "_heroSubtitleLocations_dkfc0_76";
-const heroScrollHint = "_heroScrollHint_dkfc0_83";
-const villageStrip = "_villageStrip_dkfc0_95";
-const villageScroll = "_villageScroll_dkfc0_103";
-const villageItem = "_villageItem_dkfc0_120";
-const villageDot = "_villageDot_dkfc0_132";
-const mysterySection = "_mysterySection_dkfc0_138";
-const mysteryInner = "_mysteryInner_dkfc0_149";
-const mysteryQuestion = "_mysteryQuestion_dkfc0_155";
-const mysteryBody = "_mysteryBody_dkfc0_170";
-const dividerLine = "_dividerLine_dkfc0_189";
-const emergingTheory = "_emergingTheory_dkfc0_196";
-const pullQuote$1 = "_pullQuote_dkfc0_204";
-const pullQuoteMark = "_pullQuoteMark_dkfc0_217";
-const callToAction = "_callToAction_dkfc0_225";
-const visitorNote = "_visitorNote_dkfc0_240";
-const hypothesisBlock = "_hypothesisBlock_dkfc0_251";
-const hypothesisLabel = "_hypothesisLabel_dkfc0_265";
-const hypothesisTitle = "_hypothesisTitle_dkfc0_273";
-const hypothesesBridge = "_hypothesesBridge_dkfc0_281";
-const hypothesesCta = "_hypothesesCta_dkfc0_291";
-const researchNote = "_researchNote_dkfc0_297";
-const mysteryActions = "_mysteryActions_dkfc0_308";
-const primaryBtn = "_primaryBtn_dkfc0_316";
-const secondaryBtn = "_secondaryBtn_dkfc0_337";
-const heraldicDivider = "_heraldicDivider_dkfc0_359";
-const heraldicLine = "_heraldicLine_dkfc0_368";
-const heraldicSymbol = "_heraldicSymbol_dkfc0_375";
-const cardsSection = "_cardsSection_dkfc0_382";
-const cardsHeading = "_cardsHeading_dkfc0_387";
-const cards = "_cards_dkfc0_382";
-const card$1 = "_card_dkfc0_382";
-const cardImg = "_cardImg_dkfc0_424";
-const cardImgOverlay = "_cardImgOverlay_dkfc0_443";
-const cardBody = "_cardBody_dkfc0_449";
-const cardTitle = "_cardTitle_dkfc0_457";
-const cardSub = "_cardSub_dkfc0_464";
-const cardQuote = "_cardQuote_dkfc0_472";
-const cardArrow = "_cardArrow_dkfc0_482";
-const footerStrip = "_footerStrip_dkfc0_492";
-const footerDivider = "_footerDivider_dkfc0_508";
+const page$3 = "_page_1yn2w_1";
+const hero = "_hero_1yn2w_8";
+const heroOverlay = "_heroOverlay_1yn2w_18";
+const heroContent = "_heroContent_1yn2w_29";
+const shield = "_shield_1yn2w_37";
+const title$1 = "_title_1yn2w_50";
+const subtitle = "_subtitle_1yn2w_60";
+const heroSubtitleNarrative = "_heroSubtitleNarrative_1yn2w_70";
+const heroSubtitleLocations = "_heroSubtitleLocations_1yn2w_76";
+const heroScrollHint = "_heroScrollHint_1yn2w_83";
+const villageStrip = "_villageStrip_1yn2w_95";
+const villageScroll = "_villageScroll_1yn2w_103";
+const villageItem = "_villageItem_1yn2w_120";
+const villageDot = "_villageDot_1yn2w_132";
+const mysterySection = "_mysterySection_1yn2w_138";
+const mysteryInner = "_mysteryInner_1yn2w_149";
+const mysteryQuestion = "_mysteryQuestion_1yn2w_155";
+const mysteryBody = "_mysteryBody_1yn2w_170";
+const dividerLine = "_dividerLine_1yn2w_189";
+const emergingTheory = "_emergingTheory_1yn2w_196";
+const pullQuote$1 = "_pullQuote_1yn2w_204";
+const pullQuoteMark = "_pullQuoteMark_1yn2w_217";
+const callToAction = "_callToAction_1yn2w_225";
+const visitorNote = "_visitorNote_1yn2w_240";
+const hypothesisBlock = "_hypothesisBlock_1yn2w_251";
+const hypothesisLabel = "_hypothesisLabel_1yn2w_265";
+const hypothesisTitle = "_hypothesisTitle_1yn2w_273";
+const hypothesesBridge = "_hypothesesBridge_1yn2w_281";
+const hypothesesCta = "_hypothesesCta_1yn2w_291";
+const researchNote = "_researchNote_1yn2w_297";
+const mysteryActions = "_mysteryActions_1yn2w_308";
+const primaryBtn = "_primaryBtn_1yn2w_316";
+const secondaryBtn = "_secondaryBtn_1yn2w_339";
+const heraldicDivider = "_heraldicDivider_1yn2w_363";
+const heraldicLine = "_heraldicLine_1yn2w_372";
+const heraldicSymbol = "_heraldicSymbol_1yn2w_379";
+const cardsSection = "_cardsSection_1yn2w_386";
+const cardsHeading = "_cardsHeading_1yn2w_391";
+const cards = "_cards_1yn2w_386";
+const card$1 = "_card_1yn2w_386";
+const cardImg = "_cardImg_1yn2w_430";
+const cardImgOverlay = "_cardImgOverlay_1yn2w_449";
+const cardBody = "_cardBody_1yn2w_455";
+const cardTitle = "_cardTitle_1yn2w_463";
+const cardSub = "_cardSub_1yn2w_470";
+const cardQuote = "_cardQuote_1yn2w_478";
+const cardArrow = "_cardArrow_1yn2w_488";
+const footerStrip = "_footerStrip_1yn2w_498";
+const footerDivider = "_footerDivider_1yn2w_514";
 const styles$5 = {
   page: page$3,
   hero,
@@ -1644,50 +1648,6 @@ const styles$5 = {
   footerStrip,
   footerDivider
 };
-const TOP_PATHS = {
-  home: "/",
-  mill: "/mill",
-  name: "/name",
-  dna: "/dna",
-  research: "/research",
-  lineage: "/lineage",
-  about: "/about",
-  contact: "/contact"
-};
-const RESEARCH_PATHS = {
-  main: "/research",
-  victor: "/research/victor",
-  "louis-friese": "/research/louis-friese",
-  "robrecht": "/research/robrecht",
-  "loys-le-hase": "/research/loys-le-hase",
-  "victor-dossier": "/research/victor-dossier",
-  "praet-dossier": "/research/praet-dossier",
-  "praet-lineage-dossier": "/research/praet-lineage-dossier",
-  "methodology": "/research/methodology",
-  "bibliography": "/research/bibliography",
-  "gap-dossier": "/research/gap-dossier",
-  "nieus-seals": "/research/nieus-seals",
-  "drincham-dossier": "/research/drincham-dossier",
-  "despars-compendium": "/research/despars-compendium"
-};
-function useNav() {
-  const navigate = useNavigate();
-  const goTo = (tab2) => {
-    const path = TOP_PATHS[tab2] ?? "/";
-    navigate(path);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-  const goToResearch = (subpage) => {
-    if (subpage === "contact") {
-      navigate("/contact");
-    } else {
-      const path = RESEARCH_PATHS[subpage] ?? "/research";
-      navigate(path);
-    }
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-  return { goTo, goToResearch };
-}
 const villages = [
   "Ursel",
   "Bassevelde",
@@ -1702,39 +1662,42 @@ const villages = [
   "Eeklo",
   "Ghent"
 ];
+const CARDS = [
+  {
+    id: "mill",
+    path: "/mill",
+    titleKey: "home.card_mill_title",
+    subtitleKey: "home.card_mill_subtitle",
+    quoteKey: "home.card_mill_quote",
+    img: millVinderhoute
+  },
+  {
+    id: "name",
+    path: "/name",
+    titleKey: "home.card_name_title",
+    subtitleKey: "home.card_name_subtitle",
+    quoteKey: "home.card_name_quote",
+    img: manuscriptNoblewoman$1
+  },
+  {
+    id: "research",
+    path: "/research",
+    titleKey: "home.card_research_title",
+    subtitleKey: "home.card_research_subtitle",
+    quoteKey: "home.card_research_quote",
+    img: manuscriptNoblewoman$1
+  },
+  {
+    id: "dna",
+    path: "/dna",
+    titleKey: "home.card_dna_title",
+    subtitleKey: "home.card_dna_subtitle",
+    quoteKey: "home.card_dna_quote",
+    img: cronikeShields
+  }
+];
 function HomePage() {
-  const { goTo } = useNav();
   const { t } = useTranslation();
-  const cards2 = [
-    {
-      id: "mill",
-      titleKey: "home.card_mill_title",
-      subtitleKey: "home.card_mill_subtitle",
-      quoteKey: "home.card_mill_quote",
-      img: millVinderhoute
-    },
-    {
-      id: "name",
-      titleKey: "home.card_name_title",
-      subtitleKey: "home.card_name_subtitle",
-      quoteKey: "home.card_name_quote",
-      img: manuscriptNoblewoman$1
-    },
-    {
-      id: "research",
-      titleKey: "home.card_research_title",
-      subtitleKey: "home.card_research_subtitle",
-      quoteKey: "home.card_research_quote",
-      img: manuscriptNoblewoman$1
-    },
-    {
-      id: "dna",
-      titleKey: "home.card_dna_title",
-      subtitleKey: "home.card_dna_subtitle",
-      quoteKey: "home.card_dna_quote",
-      img: cronikeShields
-    }
-  ];
   return /* @__PURE__ */ jsxs("div", { className: styles$5.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Van Vlaenderen — Flemish Heritage & Family History Research" }),
@@ -1799,7 +1762,7 @@ function HomePage() {
           /* @__PURE__ */ jsx("p", { children: t("home.hypothesis_two_body") })
         ] }),
         /* @__PURE__ */ jsx("p", { className: styles$5.hypothesesBridge, children: /* @__PURE__ */ jsx("em", { children: t("home.hypotheses_bridge") }) }),
-        /* @__PURE__ */ jsx("div", { className: styles$5.hypothesesCta, children: /* @__PURE__ */ jsxs("button", { className: styles$5.primaryBtn, onClick: () => goTo("research"), children: [
+        /* @__PURE__ */ jsx("div", { className: styles$5.hypothesesCta, children: /* @__PURE__ */ jsxs(Link, { className: styles$5.primaryBtn, to: "/research", children: [
           t("home.cta_research"),
           " →"
         ] }) }),
@@ -1818,8 +1781,8 @@ function HomePage() {
         /* @__PURE__ */ jsx("p", { className: styles$5.researchNote, children: t("home.research_note") })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: styles$5.mysteryActions, children: [
-        /* @__PURE__ */ jsx("button", { className: styles$5.primaryBtn, onClick: () => goTo("name"), children: t("home.cta_explore") }),
-        /* @__PURE__ */ jsx("button", { className: styles$5.secondaryBtn, onClick: () => goTo("contact"), children: t("home.cta_contribute") })
+        /* @__PURE__ */ jsx(Link, { className: styles$5.primaryBtn, to: "/name", children: t("home.cta_explore") }),
+        /* @__PURE__ */ jsx(Link, { className: styles$5.secondaryBtn, to: "/contact", children: t("home.cta_contribute") })
       ] })
     ] }) }),
     /* @__PURE__ */ jsxs("div", { className: styles$5.heraldicDivider, children: [
@@ -1829,11 +1792,11 @@ function HomePage() {
     ] }),
     /* @__PURE__ */ jsxs("div", { className: styles$5.cardsSection, children: [
       /* @__PURE__ */ jsx("div", { className: styles$5.cardsHeading, children: t("home.explore_archive") }),
-      /* @__PURE__ */ jsx("div", { className: styles$5.cards, children: cards2.map((card2) => /* @__PURE__ */ jsxs(
-        "button",
+      /* @__PURE__ */ jsx("div", { className: styles$5.cards, children: CARDS.map((card2) => /* @__PURE__ */ jsxs(
+        Link,
         {
           className: styles$5.card,
-          onClick: () => goTo(card2.id),
+          to: card2.path,
           children: [
             /* @__PURE__ */ jsxs("div", { className: styles$5.cardImg, children: [
               /* @__PURE__ */ jsx("img", { src: card2.img, alt: t(card2.titleKey) }),
@@ -1862,24 +1825,24 @@ function HomePage() {
   ] });
 }
 const meetjeslandMap$1 = "/assets/meetjesland-map-CT1b2Tqt.jpg";
-const page$2 = "_page_1y0qd_3";
-const heroStrip = "_heroStrip_1y0qd_15";
-const heroImg = "_heroImg_1y0qd_21";
-const heroImgOverlay = "_heroImgOverlay_1y0qd_28";
-const heroText = "_heroText_1y0qd_35";
-const textHero = "_textHero_1y0qd_48";
-const eyebrow = "_eyebrow_1y0qd_59";
-const heroLead = "_heroLead_1y0qd_68";
-const content$1 = "_content_1y0qd_78";
-const section = "_section_1y0qd_87";
-const pullQuote = "_pullQuote_1y0qd_108";
-const mapNote = "_mapNote_1y0qd_133";
-const mapNoteInner = "_mapNoteInner_1y0qd_147";
-const mapNoteIcon = "_mapNoteIcon_1y0qd_153";
-const mapNoteCoords = "_mapNoteCoords_1y0qd_173";
-const ctaBox = "_ctaBox_1y0qd_180";
-const ctaText = "_ctaText_1y0qd_195";
-const ctaNote = "_ctaNote_1y0qd_204";
+const page$2 = "_page_3f3e1_3";
+const heroStrip = "_heroStrip_3f3e1_15";
+const heroImg = "_heroImg_3f3e1_21";
+const heroImgOverlay = "_heroImgOverlay_3f3e1_28";
+const heroText = "_heroText_3f3e1_35";
+const textHero = "_textHero_3f3e1_48";
+const eyebrow = "_eyebrow_3f3e1_59";
+const heroLead = "_heroLead_3f3e1_68";
+const content$1 = "_content_3f3e1_78";
+const section = "_section_3f3e1_87";
+const pullQuote = "_pullQuote_3f3e1_108";
+const mapNote = "_mapNote_3f3e1_133";
+const mapNoteInner = "_mapNoteInner_3f3e1_147";
+const mapNoteIcon = "_mapNoteIcon_3f3e1_153";
+const mapNoteCoords = "_mapNoteCoords_3f3e1_173";
+const ctaBox = "_ctaBox_3f3e1_180";
+const ctaText = "_ctaText_3f3e1_198";
+const ctaNote = "_ctaNote_3f3e1_207";
 const styles$4 = {
   page: page$2,
   heroStrip,
@@ -1941,7 +1904,6 @@ const millStyles = {
   meetjeslandContent
 };
 function MillPage() {
-  const { goTo } = useNav();
   const { t } = useTranslation();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
@@ -2070,33 +2032,33 @@ function MillPage() {
           )
         ] })
       ] }) }),
-      /* @__PURE__ */ jsxs("div", { className: styles$4.ctaBox, onClick: () => goTo("contact"), style: { cursor: "pointer" }, children: [
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("mill.cta_text") }),
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("mill.cta_note") })
       ] })
     ] })
   ] });
 }
-const villageGrid = "_villageGrid_y0x67_1";
-const villageCard = "_villageCard_y0x67_8";
-const villageName = "_villageName_y0x67_17";
-const villageNote = "_villageNote_y0x67_24";
-const spellingList = "_spellingList_y0x67_31";
-const spellingTag = "_spellingTag_y0x67_38";
-const shareStoryBtn = "_shareStoryBtn_y0x67_50";
-const mapContainer = "_mapContainer_y0x67_83";
-const mapImage = "_mapImage_y0x67_90";
-const mapCaption = "_mapCaption_y0x67_98";
-const documentContainer = "_documentContainer_y0x67_109";
-const documentImage = "_documentImage_y0x67_117";
-const documentCaption = "_documentCaption_y0x67_127";
-const manuscriptRow = "_manuscriptRow_y0x67_137";
-const manuscriptCard = "_manuscriptCard_y0x67_148";
-const manuscriptCaption = "_manuscriptCaption_y0x67_183";
-const lightboxOverlay = "_lightboxOverlay_y0x67_193";
-const lightboxImage = "_lightboxImage_y0x67_210";
-const lightboxCaption = "_lightboxCaption_y0x67_218";
-const lightboxClose = "_lightboxClose_y0x67_231";
+const villageGrid = "_villageGrid_vt7y1_1";
+const villageCard = "_villageCard_vt7y1_8";
+const villageName = "_villageName_vt7y1_17";
+const villageNote = "_villageNote_vt7y1_24";
+const spellingList = "_spellingList_vt7y1_31";
+const spellingTag = "_spellingTag_vt7y1_38";
+const shareStoryBtn = "_shareStoryBtn_vt7y1_50";
+const mapContainer = "_mapContainer_vt7y1_84";
+const mapImage = "_mapImage_vt7y1_91";
+const mapCaption = "_mapCaption_vt7y1_99";
+const documentContainer = "_documentContainer_vt7y1_110";
+const documentImage = "_documentImage_vt7y1_118";
+const documentCaption = "_documentCaption_vt7y1_128";
+const manuscriptRow = "_manuscriptRow_vt7y1_138";
+const manuscriptCard = "_manuscriptCard_vt7y1_149";
+const manuscriptCaption = "_manuscriptCaption_vt7y1_184";
+const lightboxOverlay = "_lightboxOverlay_vt7y1_194";
+const lightboxImage = "_lightboxImage_vt7y1_211";
+const lightboxCaption = "_lightboxCaption_vt7y1_219";
+const lightboxClose = "_lightboxClose_vt7y1_232";
 const nameStyles = {
   villageGrid,
   villageCard,
@@ -2119,27 +2081,27 @@ const nameStyles = {
   lightboxCaption,
   lightboxClose
 };
-const dossierHeader = "_dossierHeader_1pohl_1";
-const dossierTitle = "_dossierTitle_1pohl_10";
-const dossierMeta = "_dossierMeta_1pohl_17";
-const methodologyBox = "_methodologyBox_1pohl_25";
-const methodologyTitle = "_methodologyTitle_1pohl_33";
-const methodologyGrid = "_methodologyGrid_1pohl_41";
-const methodItem = "_methodItem_1pohl_47";
-const methodLabel = "_methodLabel_1pohl_52";
-const evidenceLevel = "_evidenceLevel_1pohl_62";
-const levelAttested = "_levelAttested_1pohl_73";
-const levelCorroborated = "_levelCorroborated_1pohl_74";
-const levelProbable = "_levelProbable_1pohl_75";
-const levelHypothesis = "_levelHypothesis_1pohl_76";
-const treeContainer = "_treeContainer_1pohl_78";
-const referenceList = "_referenceList_1pohl_159";
-const refItem = "_refItem_1pohl_174";
-const refNumber = "_refNumber_1pohl_181";
-const refLink = "_refLink_1pohl_187";
-const branchCards = "_branchCards_1pohl_199";
-const branchCard = "_branchCard_1pohl_199";
-const branchLink = "_branchLink_1pohl_239";
+const dossierHeader = "_dossierHeader_1ryx6_1";
+const dossierTitle = "_dossierTitle_1ryx6_10";
+const dossierMeta = "_dossierMeta_1ryx6_17";
+const methodologyBox = "_methodologyBox_1ryx6_25";
+const methodologyTitle = "_methodologyTitle_1ryx6_33";
+const methodologyGrid = "_methodologyGrid_1ryx6_41";
+const methodItem = "_methodItem_1ryx6_47";
+const methodLabel = "_methodLabel_1ryx6_52";
+const evidenceLevel = "_evidenceLevel_1ryx6_62";
+const levelAttested = "_levelAttested_1ryx6_73";
+const levelCorroborated = "_levelCorroborated_1ryx6_74";
+const levelProbable = "_levelProbable_1ryx6_75";
+const levelHypothesis = "_levelHypothesis_1ryx6_76";
+const treeContainer = "_treeContainer_1ryx6_78";
+const referenceList = "_referenceList_1ryx6_159";
+const refItem = "_refItem_1ryx6_174";
+const refNumber = "_refNumber_1ryx6_181";
+const refLink = "_refLink_1ryx6_187";
+const branchCards = "_branchCards_1ryx6_199";
+const branchCard = "_branchCard_1ryx6_199";
+const branchLink = "_branchLink_1ryx6_242";
 const researchStyles = {
   dossierHeader,
   dossierTitle,
@@ -2175,8 +2137,6 @@ const knightPhilip = "/assets/cronike-van-vlaenderen-philip-of-alsace-knight-DGQ
 const lionWoodcut = "/assets/lion-woodcut-BatZURmx.jpg";
 const ResearchMap$1 = lazy(() => import("./assets/ResearchMap-DF8B_k4w.js"));
 function NamePage() {
-  const { goTo } = useNav();
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const [lightbox, setLightbox] = useState(null);
   const closeLightbox = useCallback(() => setLightbox(null), []);
@@ -2316,22 +2276,20 @@ function NamePage() {
           /* @__PURE__ */ jsx("div", { style: { fontFamily: "var(--font-display)", fontSize: "1.1rem", color: "var(--gold)", marginBottom: "0.6rem" }, children: "Four Functions, Three Clusters" }),
           /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.65, marginBottom: "1rem", fontStyle: "normal" }, children: "The name appears, at first glance, to explain itself. But when the earliest surname populations are mapped geographically across three centuries, they cluster in ways that pure toponymy cannot explain — concentrated inside Flanders itself, stable over two hundred years in specific villages. This analysis sets out what the documentary and distributional evidence actually shows." }),
           /* @__PURE__ */ jsx(
-            "button",
+            Link,
             {
-              onClick: () => {
-                navigate("/name/surname-origins");
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              },
+              to: "/name/surname-origins",
               style: {
                 background: "none",
                 border: "1px solid rgba(232,184,48,0.35)",
                 color: "var(--gold)",
                 padding: "0.5rem 1rem",
-                cursor: "pointer",
                 borderRadius: "3px",
                 fontSize: "0.82rem",
                 fontFamily: "var(--font-ui)",
-                letterSpacing: "0.06em"
+                letterSpacing: "0.06em",
+                textDecoration: "none",
+                display: "inline-block"
               },
               children: "Read the Analysis →"
             }
@@ -2418,13 +2376,10 @@ function NamePage() {
             t("name.notes_source_1_text"),
             " ",
             /* @__PURE__ */ jsx(
-              "button",
+              Link,
               {
-                onClick: () => {
-                  navigate("/research");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                },
-                style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" },
+                to: "/research",
+                style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" },
                 children: t("name.notes_research_link")
               }
             )
@@ -2435,13 +2390,10 @@ function NamePage() {
             t("name.notes_source_2_text"),
             " ",
             /* @__PURE__ */ jsx(
-              "button",
+              Link,
               {
-                onClick: () => {
-                  navigate("/name/surname-origins");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                },
-                style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" },
+                to: "/name/surname-origins",
+                style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" },
                 children: t("name.notes_analysis_link")
               }
             )
@@ -2462,10 +2414,10 @@ function NamePage() {
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("name.cta_text") }),
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("name.cta_note") }),
         /* @__PURE__ */ jsx(
-          "button",
+          Link,
           {
             className: nameStyles.shareStoryBtn,
-            onClick: () => goTo("contact"),
+            to: "/contact",
             children: t("name.cta_button")
           }
         )
@@ -2504,25 +2456,25 @@ function NamePage() {
     )
   ] });
 }
-const dnaGrid = "_dnaGrid_1l3mz_1";
-const dnaCard = "_dnaCard_1l3mz_8";
-const dnaType = "_dnaType_1l3mz_23";
-const dnaDesc = "_dnaDesc_1l3mz_31";
-const familyPhotoContainer = "_familyPhotoContainer_1l3mz_116";
-const familyPhoto = "_familyPhoto_1l3mz_116";
-const familyPhotoCaption = "_familyPhotoCaption_1l3mz_146";
-const joinTeamBtn = "_joinTeamBtn_1l3mz_157";
-const participateBlock = "_participateBlock_1l3mz_182";
-const participateHeading = "_participateHeading_1l3mz_191";
-const participateIntro = "_participateIntro_1l3mz_199";
-const participateStep = "_participateStep_1l3mz_205";
-const participateAlternative = "_participateAlternative_1l3mz_217";
-const participateButtonWrap = "_participateButtonWrap_1l3mz_231";
-const dnaCardToggle = "_dnaCardToggle_1l3mz_237";
-const dnaCardHeader = "_dnaCardHeader_1l3mz_256";
-const dnaCardChevron = "_dnaCardChevron_1l3mz_264";
-const dnaCardExpanded = "_dnaCardExpanded_1l3mz_277";
-const dnaCardExpandedItem = "_dnaCardExpandedItem_1l3mz_286";
+const dnaGrid = "_dnaGrid_1ppw6_1";
+const dnaCard = "_dnaCard_1ppw6_8";
+const dnaType = "_dnaType_1ppw6_23";
+const dnaDesc = "_dnaDesc_1ppw6_31";
+const familyPhotoContainer = "_familyPhotoContainer_1ppw6_116";
+const familyPhoto = "_familyPhoto_1ppw6_116";
+const familyPhotoCaption = "_familyPhotoCaption_1ppw6_146";
+const joinTeamBtn = "_joinTeamBtn_1ppw6_157";
+const participateBlock = "_participateBlock_1ppw6_183";
+const participateHeading = "_participateHeading_1ppw6_192";
+const participateIntro = "_participateIntro_1ppw6_200";
+const participateStep = "_participateStep_1ppw6_206";
+const participateAlternative = "_participateAlternative_1ppw6_218";
+const participateButtonWrap = "_participateButtonWrap_1ppw6_232";
+const dnaCardToggle = "_dnaCardToggle_1ppw6_238";
+const dnaCardHeader = "_dnaCardHeader_1ppw6_257";
+const dnaCardChevron = "_dnaCardChevron_1ppw6_265";
+const dnaCardExpanded = "_dnaCardExpanded_1ppw6_278";
+const dnaCardExpandedItem = "_dnaCardExpandedItem_1ppw6_287";
 const dnaStyles = {
   dnaGrid,
   dnaCard,
@@ -2546,8 +2498,6 @@ const dnaStyles = {
 };
 const vintageFamilyPhoto = "/assets/vintage-family-photo-CrbyeLFQ.jpg";
 function DnaPage() {
-  const { goTo } = useNav();
-  const nav2 = useNavigate();
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState({});
   const toggle = (id) => setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -2616,10 +2566,10 @@ function DnaPage() {
           t("dna.participate_step3_body")
         ] }),
         /* @__PURE__ */ jsx("div", { className: dnaStyles.participateButtonWrap, children: /* @__PURE__ */ jsx(
-          "button",
+          Link,
           {
             className: dnaStyles.joinTeamBtn,
-            onClick: () => goTo("contact"),
+            to: "/contact",
             children: t("dna.participate_button")
           }
         ) }),
@@ -2638,10 +2588,10 @@ function DnaPage() {
           t("dna.testing_intro_pre"),
           " ",
           /* @__PURE__ */ jsx(
-            "button",
+            Link,
             {
-              onClick: () => nav2("/research/victor-dossier"),
-              style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" },
+              to: "/research/victor-dossier",
+              style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" },
               children: t("dna.testing_intro_victor_text")
             }
           ),
@@ -2649,10 +2599,10 @@ function DnaPage() {
           t("dna.testing_intro_mid1"),
           " ",
           /* @__PURE__ */ jsx(
-            "button",
+            Link,
             {
-              onClick: () => nav2("/research/drincham-dossier"),
-              style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" },
+              to: "/research/drincham-dossier",
+              style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" },
               children: t("dna.testing_intro_drincham_text")
             }
           ),
@@ -2660,10 +2610,10 @@ function DnaPage() {
           t("dna.testing_intro_mid2"),
           " ",
           /* @__PURE__ */ jsx(
-            "button",
+            Link,
             {
-              onClick: () => nav2("/research/praet-dossier"),
-              style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" },
+              to: "/research/praet-dossier",
+              style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" },
               children: t("dna.testing_intro_praet_text")
             }
           ),
@@ -2685,10 +2635,10 @@ function DnaPage() {
           t("dna.testing_toponymy_pre"),
           " ",
           /* @__PURE__ */ jsx(
-            "button",
+            Link,
             {
-              onClick: () => nav2("/name/surname-origins"),
-              style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" },
+              to: "/name/surname-origins",
+              style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" },
               children: t("dna.testing_toponymy_linktext")
             }
           ),
@@ -2710,10 +2660,10 @@ function DnaPage() {
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.85em", opacity: 0.75, marginTop: "-0.5em" }, children: /* @__PURE__ */ jsxs("em", { children: [
           t("dna.testing_p_mixed_source_label"),
           /* @__PURE__ */ jsx(
-            "button",
+            Link,
             {
-              onClick: () => nav2("/research/bibliography#larmuseau-2013-cuckoldry"),
-              style: { background: "none", border: "none", color: "inherit", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit", fontStyle: "inherit", fontFamily: "inherit" },
+              to: "/research/bibliography#larmuseau-2013-cuckoldry",
+              style: { color: "inherit", textDecoration: "underline", fontSize: "inherit", fontStyle: "inherit", fontFamily: "inherit" },
               children: t("dna.testing_p_mixed_source_text")
             }
           )
@@ -2883,13 +2833,10 @@ function DnaPage() {
             t("dna.notes_source_2_text"),
             " ",
             /* @__PURE__ */ jsx(
-              "button",
+              Link,
               {
-                onClick: () => {
-                  nav2("/name/surname-origins");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                },
-                style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" },
+                to: "/name/surname-origins",
+                style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" },
                 children: t("dna.notes_source_2_linktext")
               }
             )
@@ -2900,10 +2847,10 @@ function DnaPage() {
             t("dna.notes_source_3_text"),
             " ",
             /* @__PURE__ */ jsx(
-              "button",
+              Link,
               {
-                onClick: () => nav2("/research/bibliography#larmuseau-2013-cuckoldry"),
-                style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" },
+                to: "/research/bibliography#larmuseau-2013-cuckoldry",
+                style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" },
                 children: t("dna.notes_source_3_linktext")
               }
             )
@@ -2921,10 +2868,10 @@ function DnaPage() {
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("dna.cta_body") }),
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("dna.cta_note") }),
         /* @__PURE__ */ jsx(
-          "button",
+          Link,
           {
             className: dnaStyles.joinTeamBtn,
-            onClick: () => goTo("contact"),
+            to: "/contact",
             children: t("dna.cta_button")
           }
         )
@@ -5028,23 +4975,24 @@ function LoysDeHazeDiagram() {
     }
   );
 }
-const container = "_container_p8v4g_7";
-const heading = "_heading_p8v4g_16";
-const intro$1 = "_intro_p8v4g_24";
-const legend$1 = "_legend_p8v4g_37";
-const legendItem$1 = "_legendItem_p8v4g_51";
-const legendGlyph = "_legendGlyph_p8v4g_58";
-const list = "_list_p8v4g_68";
-const entry = "_entry_p8v4g_74";
-const entryGlyph = "_entryGlyph_p8v4g_87";
-const entryName = "_entryName_p8v4g_95";
-const entryCaption = "_entryCaption_p8v4g_102";
-const stateLineage = "_stateLineage_p8v4g_110";
-const stateUndocumented = "_stateUndocumented_p8v4g_113";
-const stateNoIssue = "_stateNoIssue_p8v4g_116";
-const stateMarriedOut = "_stateMarriedOut_p8v4g_119";
-const entryClickable = "_entryClickable_p8v4g_124";
-const daughtersHeading = "_daughtersHeading_p8v4g_142";
+const container = "_container_1s11r_7";
+const heading = "_heading_1s11r_16";
+const intro$1 = "_intro_1s11r_24";
+const legend$1 = "_legend_1s11r_37";
+const legendItem$1 = "_legendItem_1s11r_51";
+const legendGlyph = "_legendGlyph_1s11r_58";
+const list = "_list_1s11r_68";
+const entryItem = "_entryItem_1s11r_74";
+const entry = "_entry_1s11r_74";
+const entryGlyph = "_entryGlyph_1s11r_93";
+const entryName = "_entryName_1s11r_101";
+const entryCaption = "_entryCaption_1s11r_108";
+const stateLineage = "_stateLineage_1s11r_116";
+const stateUndocumented = "_stateUndocumented_1s11r_119";
+const stateNoIssue = "_stateNoIssue_1s11r_122";
+const stateMarriedOut = "_stateMarriedOut_1s11r_125";
+const entryClickable = "_entryClickable_1s11r_130";
+const daughtersHeading = "_daughtersHeading_1s11r_148";
 const styles$3 = {
   container,
   heading,
@@ -5053,6 +5001,7 @@ const styles$3 = {
   legendItem: legendItem$1,
   legendGlyph,
   list,
+  entryItem,
   entry,
   entryGlyph,
   entryName,
@@ -5069,7 +5018,7 @@ const cohortEntries = [
     id: "dhase",
     name: 'Mer Lodewijck "dHase"',
     state: "lineage",
-    route: "loys-le-hase"
+    route: "/research/loys-le-hase"
   },
   {
     id: "rodolf",
@@ -5085,13 +5034,13 @@ const cohortEntries = [
     id: "devriese",
     name: 'Mer Lodewijck "de Vriese"',
     state: "lineage",
-    route: "louis-friese"
+    route: "/research/louis-friese"
   },
   {
     id: "sansterre",
     name: 'Mer Jan "zonder Landt"',
     state: "lineage",
-    route: "drincham-dossier"
+    route: "/research/drincham-dossier"
   },
   {
     id: "hector",
@@ -5102,7 +5051,7 @@ const cohortEntries = [
     id: "robrecht",
     name: "Mer Robrecht",
     state: "lineage",
-    route: "robrecht"
+    route: "/research/robrecht"
   },
   {
     id: "karel",
@@ -5113,7 +5062,7 @@ const cohortEntries = [
     id: "victor",
     name: "Mer Victor",
     state: "lineage",
-    route: "victor"
+    route: "/research/victor"
   },
   {
     id: "johanne",
@@ -5140,54 +5089,35 @@ const STATE_CLASS = {
   no_issue: styles$3.stateNoIssue,
   married_out: styles$3.stateMarriedOut
 };
-function EntryRow({ entry: entry2, caption, onActivate }) {
-  const isClickable = Boolean(onActivate);
-  const rowClass = [
+function EntryRow({ entry: entry2, caption }) {
+  const isClickable = entry2.state === "lineage" && Boolean(entry2.route);
+  const wrapperClass = [
     styles$3.entry,
     STATE_CLASS[entry2.state],
     isClickable ? styles$3.entryClickable : ""
   ].filter(Boolean).join(" ");
-  const handleKey = (e) => {
-    if (!onActivate) return;
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      onActivate();
-    }
-  };
-  return /* @__PURE__ */ jsxs(
-    "li",
+  const inner2 = /* @__PURE__ */ jsxs(Fragment, { children: [
+    /* @__PURE__ */ jsx("span", { className: styles$3.entryGlyph, "aria-hidden": "true", children: GLYPH[entry2.state] }),
+    /* @__PURE__ */ jsx("span", { className: styles$3.entryName, children: entry2.name }),
+    /* @__PURE__ */ jsx("span", { className: styles$3.entryCaption, children: caption })
+  ] });
+  return /* @__PURE__ */ jsx("li", { className: styles$3.entryItem, children: isClickable ? /* @__PURE__ */ jsx(
+    Link,
     {
-      className: rowClass,
-      role: isClickable ? "button" : void 0,
-      tabIndex: isClickable ? 0 : void 0,
-      onClick: onActivate,
-      onKeyDown: isClickable ? handleKey : void 0,
-      "aria-label": isClickable ? `${entry2.name} — ${caption}` : void 0,
-      children: [
-        /* @__PURE__ */ jsx("span", { className: styles$3.entryGlyph, "aria-hidden": "true", children: GLYPH[entry2.state] }),
-        /* @__PURE__ */ jsx("span", { className: styles$3.entryName, children: entry2.name }),
-        /* @__PURE__ */ jsx("span", { className: styles$3.entryCaption, children: caption })
-      ]
+      to: entry2.route,
+      className: wrapperClass,
+      "aria-label": `${entry2.name} — ${caption}`,
+      children: inner2
     }
-  );
+  ) : /* @__PURE__ */ jsx("div", { className: wrapperClass, children: inner2 }) });
 }
 function CohortSidebar() {
   const { t } = useTranslation();
-  const { goToResearch } = useNav();
   const sonEntries = cohortEntries.filter((e) => !e.daughter);
   const daughterEntries = cohortEntries.filter((e) => e.daughter);
   const renderEntry = (entry2) => {
     const caption = t(`research.cohort_entry_${entry2.id}_caption`);
-    const onActivate = entry2.state === "lineage" && entry2.route ? () => goToResearch(entry2.route) : void 0;
-    return /* @__PURE__ */ jsx(
-      EntryRow,
-      {
-        entry: entry2,
-        caption,
-        onActivate
-      },
-      entry2.id
-    );
+    return /* @__PURE__ */ jsx(EntryRow, { entry: entry2, caption }, entry2.id);
   };
   return /* @__PURE__ */ jsxs(
     "section",
@@ -5237,8 +5167,6 @@ function CohortSidebar() {
 }
 const ResearchMap = lazy(() => import("./assets/ResearchMap-DF8B_k4w.js"));
 function ResearchPage() {
-  const { goToResearch } = useNav();
-  const navigate = useNavigate();
   const { t } = useTranslation();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
@@ -5309,22 +5237,20 @@ function ResearchPage() {
           /* @__PURE__ */ jsx("div", { style: { fontFamily: "var(--font-display)", fontSize: "1.05rem", color: "var(--gold)", marginBottom: "0.5rem" }, children: t("research.paradox_title") }),
           /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.65, marginBottom: "0.9rem", fontStyle: "normal" }, dangerouslySetInnerHTML: { __html: t("research.paradox_body") } }),
           /* @__PURE__ */ jsx(
-            "button",
+            Link,
             {
-              onClick: () => {
-                navigate("/name/surname-origins");
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              },
+              to: "/name/surname-origins",
               style: {
                 background: "none",
                 border: "1px solid rgba(232,184,48,0.35)",
                 color: "var(--gold)",
                 padding: "0.45rem 1rem",
-                cursor: "pointer",
                 borderRadius: "3px",
                 fontSize: "0.82rem",
                 fontFamily: "var(--font-ui)",
-                letterSpacing: "0.06em"
+                letterSpacing: "0.06em",
+                textDecoration: "none",
+                display: "inline-block"
               },
               children: t("research.paradox_button")
             }
@@ -5342,19 +5268,10 @@ function ResearchPage() {
       /* @__PURE__ */ jsx("section", { className: styles$4.section, children: /* @__PURE__ */ jsx("h2", { children: t("research.branches_heading") }) }),
       /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
         /* @__PURE__ */ jsxs(
-          "div",
+          Link,
           {
+            to: "/research/victor",
             className: researchStyles.branchCard,
-            role: "button",
-            tabIndex: 0,
-            style: { cursor: "pointer" },
-            onClick: () => goToResearch("victor"),
-            onKeyDown: (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                goToResearch("victor");
-              }
-            },
             "aria-label": t("research.branch_victor_name"),
             children: [
               /* @__PURE__ */ jsx("h3", { children: t("research.branch_victor_name") }),
@@ -5364,19 +5281,10 @@ function ResearchPage() {
           }
         ),
         /* @__PURE__ */ jsxs(
-          "div",
+          Link,
           {
+            to: "/research/louis-friese",
             className: researchStyles.branchCard,
-            role: "button",
-            tabIndex: 0,
-            style: { cursor: "pointer" },
-            onClick: () => goToResearch("louis-friese"),
-            onKeyDown: (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                goToResearch("louis-friese");
-              }
-            },
             "aria-label": t("research.branch_louis_name"),
             children: [
               /* @__PURE__ */ jsx("h3", { children: t("research.branch_louis_name") }),
@@ -5386,19 +5294,10 @@ function ResearchPage() {
           }
         ),
         /* @__PURE__ */ jsxs(
-          "div",
+          Link,
           {
+            to: "/research/drincham-dossier",
             className: researchStyles.branchCard,
-            role: "button",
-            tabIndex: 0,
-            style: { cursor: "pointer" },
-            onClick: () => goToResearch("drincham-dossier"),
-            onKeyDown: (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                goToResearch("drincham-dossier");
-              }
-            },
             "aria-label": t("research.branch_drincham_name"),
             children: [
               /* @__PURE__ */ jsx("h3", { children: t("research.branch_drincham_name") }),
@@ -5408,19 +5307,10 @@ function ResearchPage() {
           }
         ),
         /* @__PURE__ */ jsxs(
-          "div",
+          Link,
           {
+            to: "/research/loys-le-hase",
             className: researchStyles.branchCard,
-            role: "button",
-            tabIndex: 0,
-            style: { cursor: "pointer" },
-            onClick: () => goToResearch("loys-le-hase"),
-            onKeyDown: (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                goToResearch("loys-le-hase");
-              }
-            },
             "aria-label": t("research.branch_loys_name"),
             children: [
               /* @__PURE__ */ jsx("h3", { children: t("research.branch_loys_name") }),
@@ -5430,19 +5320,10 @@ function ResearchPage() {
           }
         ),
         /* @__PURE__ */ jsxs(
-          "div",
+          Link,
           {
+            to: "/research/robrecht",
             className: researchStyles.branchCard,
-            role: "button",
-            tabIndex: 0,
-            style: { cursor: "pointer" },
-            onClick: () => goToResearch("robrecht"),
-            onKeyDown: (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                goToResearch("robrecht");
-              }
-            },
             "aria-label": t("research.branch_robrecht_name"),
             children: [
               /* @__PURE__ */ jsx("h3", { children: t("research.branch_robrecht_name") }),
@@ -5456,18 +5337,10 @@ function ResearchPage() {
         /* @__PURE__ */ jsx("h2", { children: t("research.reference_heading") }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
           /* @__PURE__ */ jsxs(
-            "div",
+            Link,
             {
+              to: "/research/gap-dossier",
               className: researchStyles.branchCard,
-              tabIndex: 0,
-              style: { cursor: "pointer" },
-              onClick: () => goToResearch("gap-dossier"),
-              onKeyDown: (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  goToResearch("gap-dossier");
-                }
-              },
               "aria-label": t("research.ref_gap_title"),
               children: [
                 /* @__PURE__ */ jsx("h3", { children: t("research.ref_gap_title") }),
@@ -5477,18 +5350,10 @@ function ResearchPage() {
             }
           ),
           /* @__PURE__ */ jsxs(
-            "div",
+            Link,
             {
+              to: "/research/methodology",
               className: researchStyles.branchCard,
-              tabIndex: 0,
-              style: { cursor: "pointer" },
-              onClick: () => goToResearch("methodology"),
-              onKeyDown: (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  goToResearch("methodology");
-                }
-              },
               "aria-label": t("research.ref_methodology_title"),
               children: [
                 /* @__PURE__ */ jsx("h3", { children: t("research.ref_methodology_title") }),
@@ -5498,18 +5363,10 @@ function ResearchPage() {
             }
           ),
           /* @__PURE__ */ jsxs(
-            "div",
+            Link,
             {
+              to: "/research/bibliography",
               className: researchStyles.branchCard,
-              tabIndex: 0,
-              style: { cursor: "pointer" },
-              onClick: () => goToResearch("bibliography"),
-              onKeyDown: (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  goToResearch("bibliography");
-                }
-              },
               "aria-label": t("research.ref_bibliography_title"),
               children: [
                 /* @__PURE__ */ jsx("h3", { children: t("research.ref_bibliography_title") }),
@@ -5547,19 +5404,11 @@ function ResearchPage() {
         /* @__PURE__ */ jsx("p", { children: t("research.dossiers_intro") }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
           /* @__PURE__ */ jsxs(
-            "div",
+            Link,
             {
+              to: "/research/victor-dossier",
               className: researchStyles.branchCard,
-              role: "button",
-              tabIndex: 0,
-              style: { borderTop: "3px solid var(--gold)", cursor: "pointer" },
-              onClick: () => goToResearch("victor-dossier"),
-              onKeyDown: (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  goToResearch("victor-dossier");
-                }
-              },
+              style: { borderTop: "3px solid var(--gold)" },
               "aria-label": t("research.dossier_victor_title"),
               children: [
                 /* @__PURE__ */ jsx("h3", { children: t("research.dossier_victor_title") }),
@@ -5569,19 +5418,11 @@ function ResearchPage() {
             }
           ),
           /* @__PURE__ */ jsxs(
-            "div",
+            Link,
             {
+              to: "/research/praet-dossier",
               className: researchStyles.branchCard,
-              role: "button",
-              tabIndex: 0,
-              style: { borderTop: "3px solid var(--gold)", cursor: "pointer" },
-              onClick: () => goToResearch("praet-dossier"),
-              onKeyDown: (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  goToResearch("praet-dossier");
-                }
-              },
+              style: { borderTop: "3px solid var(--gold)" },
               "aria-label": t("research.dossier_praet_title"),
               children: [
                 /* @__PURE__ */ jsx("h3", { children: t("research.dossier_praet_title") }),
@@ -5591,19 +5432,11 @@ function ResearchPage() {
             }
           ),
           /* @__PURE__ */ jsxs(
-            "div",
+            Link,
             {
+              to: "/research/praet-lineage-dossier",
               className: researchStyles.branchCard,
-              role: "button",
-              tabIndex: 0,
-              style: { borderTop: "3px solid var(--gold)", cursor: "pointer" },
-              onClick: () => goToResearch("praet-lineage-dossier"),
-              onKeyDown: (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  goToResearch("praet-lineage-dossier");
-                }
-              },
+              style: { borderTop: "3px solid var(--gold)" },
               "aria-label": t("research.dossier_praet_lineage_title"),
               children: [
                 /* @__PURE__ */ jsx("h3", { children: t("research.dossier_praet_lineage_title") }),
@@ -5613,19 +5446,11 @@ function ResearchPage() {
             }
           ),
           /* @__PURE__ */ jsxs(
-            "div",
+            Link,
             {
+              to: "/research/drincham-dossier",
               className: researchStyles.branchCard,
-              role: "button",
-              tabIndex: 0,
-              style: { borderTop: "3px solid var(--gold)", cursor: "pointer" },
-              onClick: () => goToResearch("drincham-dossier"),
-              onKeyDown: (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  goToResearch("drincham-dossier");
-                }
-              },
+              style: { borderTop: "3px solid var(--gold)" },
               "aria-label": t("research.dossier_drincham_title"),
               children: [
                 /* @__PURE__ */ jsx("h3", { children: t("research.dossier_drincham_title") }),
@@ -5641,23 +5466,11 @@ function ResearchPage() {
         /* @__PURE__ */ jsx("p", { children: t("research.articles_intro") }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
           /* @__PURE__ */ jsxs(
-            "div",
+            Link,
             {
+              to: "/name/surname-origins",
               className: researchStyles.branchCard,
-              role: "button",
-              tabIndex: 0,
-              style: { borderTop: "3px solid rgba(232,184,48,0.45)", cursor: "pointer" },
-              onClick: () => {
-                navigate("/name/surname-origins");
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              },
-              onKeyDown: (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  navigate("/name/surname-origins");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }
-              },
+              style: { borderTop: "3px solid rgba(232,184,48,0.45)" },
               "aria-label": t("research.article_four_functions_title"),
               children: [
                 /* @__PURE__ */ jsx("h3", { children: t("research.article_four_functions_title") }),
@@ -5667,19 +5480,11 @@ function ResearchPage() {
             }
           ),
           /* @__PURE__ */ jsxs(
-            "div",
+            Link,
             {
+              to: "/research/nieus-seals",
               className: researchStyles.branchCard,
-              role: "button",
-              tabIndex: 0,
-              style: { borderTop: "3px solid rgba(232,184,48,0.45)", cursor: "pointer" },
-              onClick: () => goToResearch("nieus-seals"),
-              onKeyDown: (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  goToResearch("nieus-seals");
-                }
-              },
+              style: { borderTop: "3px solid rgba(232,184,48,0.45)" },
               "aria-label": t("research.article_nieus_title"),
               children: [
                 /* @__PURE__ */ jsx("h3", { children: t("research.article_nieus_title") }),
@@ -5710,13 +5515,10 @@ function ResearchPage() {
             t("research.notes_source_3_text"),
             " ",
             /* @__PURE__ */ jsx(
-              "button",
+              Link,
               {
-                onClick: () => {
-                  navigate("/name/surname-origins");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                },
-                style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" },
+                to: "/name/surname-origins",
+                style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" },
                 children: t("research.notes_source_3_linktext")
               }
             )
@@ -5727,13 +5529,10 @@ function ResearchPage() {
             t("research.notes_source_4_text"),
             " ",
             /* @__PURE__ */ jsx(
-              "button",
+              Link,
               {
-                onClick: () => {
-                  goToResearch("nieus-seals");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                },
-                style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" },
+                to: "/research/nieus-seals",
+                style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" },
                 children: t("research.notes_source_4_linktext")
               }
             )
@@ -5745,7 +5544,7 @@ function ResearchPage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("research.conclusion_p1") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("research.conclusion_p2") } })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$4.ctaBox, onClick: () => goToResearch("contact"), style: { cursor: "pointer" }, children: [
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("research.cta_text") }),
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("research.cta_note") })
       ] })
@@ -5753,7 +5552,6 @@ function ResearchPage() {
   ] });
 }
 function VictorLineagePage() {
-  const { goToResearch } = useNav();
   const { t } = useTranslation();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
@@ -5864,19 +5662,11 @@ function VictorLineagePage() {
         /* @__PURE__ */ jsx("p", { children: t("victor.military_p1") })
       ] }),
       /* @__PURE__ */ jsx("section", { className: styles$4.section, style: { marginTop: "3rem", borderTop: "1px solid rgba(232, 184, 48, 0.2)", paddingTop: "2rem" }, children: /* @__PURE__ */ jsxs(
-        "div",
+        Link,
         {
+          to: "/research/victor-dossier",
           className: researchStyles.branchCard,
-          role: "button",
-          tabIndex: 0,
-          style: { borderTop: "3px solid var(--gold)", maxWidth: "100%", cursor: "pointer" },
-          onClick: () => goToResearch("victor-dossier"),
-          onKeyDown: (e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              goToResearch("victor-dossier");
-            }
-          },
+          style: { borderTop: "3px solid var(--gold)", maxWidth: "100%" },
           "aria-label": "Victor van Vlaenderen: Archival Dossier",
           children: [
             /* @__PURE__ */ jsx("h3", { children: "Victor van Vlaenderen: Archival Dossier" }),
@@ -5929,18 +5719,15 @@ function VictorLineagePage() {
           /* @__PURE__ */ jsx("a", { href: "https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library, Thesis RUG01-001786522 (2012)" })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$4.ctaBox, onClick: () => goToResearch("contact"), style: { cursor: "pointer" }, children: [
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("victor.cta_text") }),
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("victor.cta_note") })
       ] }),
       /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
-        "button",
+        Link,
         {
-          onClick: () => goToResearch("main"),
+          to: "/research",
           style: {
-            background: "none",
-            border: "none",
-            cursor: "pointer",
             color: "var(--gold)",
             fontSize: "16px",
             textDecoration: "underline",
@@ -5955,7 +5742,6 @@ function VictorLineagePage() {
   ] });
 }
 function LouisFrieseLineagePage() {
-  const { goToResearch } = useNav();
   const { t } = useTranslation();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
@@ -6081,19 +5867,11 @@ function LouisFrieseLineagePage() {
       ] }),
       /* @__PURE__ */ jsx("section", { className: styles$4.section, style: { marginTop: "3rem", borderTop: "1px solid rgba(232, 184, 48, 0.2)", paddingTop: "2rem" }, children: /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
         /* @__PURE__ */ jsxs(
-          "div",
+          Link,
           {
+            to: "/research/praet-dossier",
             className: researchStyles.branchCard,
-            role: "button",
-            tabIndex: 0,
-            style: { borderTop: "3px solid var(--gold)", cursor: "pointer" },
-            onClick: () => goToResearch("praet-dossier"),
-            onKeyDown: (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                goToResearch("praet-dossier");
-              }
-            },
+            style: { borderTop: "3px solid var(--gold)" },
             "aria-label": "Louis Friese: Archival Dossier",
             children: [
               /* @__PURE__ */ jsx("h3", { children: "Louis Friese: Archival Dossier" }),
@@ -6103,19 +5881,11 @@ function LouisFrieseLineagePage() {
           }
         ),
         /* @__PURE__ */ jsxs(
-          "div",
+          Link,
           {
+            to: "/research/praet-lineage-dossier",
             className: researchStyles.branchCard,
-            role: "button",
-            tabIndex: 0,
-            style: { borderTop: "3px solid var(--gold)", cursor: "pointer" },
-            onClick: () => goToResearch("praet-lineage-dossier"),
-            onKeyDown: (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                goToResearch("praet-lineage-dossier");
-              }
-            },
+            style: { borderTop: "3px solid var(--gold)" },
             "aria-label": "House of Praet: Lineage Dossier",
             children: [
               /* @__PURE__ */ jsx("h3", { children: "House of Praet: Lineage Dossier" }),
@@ -6125,18 +5895,15 @@ function LouisFrieseLineagePage() {
           }
         )
       ] }) }),
-      /* @__PURE__ */ jsxs("div", { className: styles$4.ctaBox, onClick: () => goToResearch("contact"), style: { cursor: "pointer" }, children: [
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("louis_friese.cta_text") }),
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("louis_friese.cta_note") })
       ] }),
       /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
-        "button",
+        Link,
         {
-          onClick: () => goToResearch("main"),
+          to: "/research",
           style: {
-            background: "none",
-            border: "none",
-            cursor: "pointer",
             color: "var(--gold)",
             fontSize: "16px",
             textDecoration: "underline",
@@ -6151,7 +5918,6 @@ function LouisFrieseLineagePage() {
   ] });
 }
 function RobrechtLineagePage() {
-  const { goToResearch } = useNav();
   const { t } = useTranslation();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
@@ -6315,18 +6081,15 @@ function RobrechtLineagePage() {
         /* @__PURE__ */ jsx("h3", { children: t("robrecht.questions_gaillard_heading") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.questions_gaillard_body") } })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$4.ctaBox, onClick: () => goToResearch("contact"), style: { cursor: "pointer" }, children: [
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: "Do you have research that connects to the line of Robrecht van Vlaenderen?" }),
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: "We welcome correspondence on the Caspar descent question, the Verdeghem and de Crane families, and the Gaillard MS provenance." })
       ] }),
       /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
-        "button",
+        Link,
         {
-          onClick: () => goToResearch("main"),
+          to: "/research",
           style: {
-            background: "none",
-            border: "none",
-            cursor: "pointer",
             color: "var(--gold)",
             fontSize: "16px",
             textDecoration: "underline",
@@ -6341,7 +6104,6 @@ function RobrechtLineagePage() {
   ] });
 }
 function LoysDeHazeLineagePage() {
-  const { goToResearch } = useNav();
   const { t } = useTranslation();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
@@ -6483,18 +6245,15 @@ function LoysDeHazeLineagePage() {
         /* @__PURE__ */ jsx("h3", { children: t("loys.questions_toponyms_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("loys.questions_toponyms_body") })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$4.ctaBox, onClick: () => goToResearch("contact"), style: { cursor: "pointer" }, children: [
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, dangerouslySetInnerHTML: { __html: t("loys.cta_text") } }),
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("loys.cta_note") })
       ] }),
       /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
-        "button",
+        Link,
         {
-          onClick: () => goToResearch("main"),
+          to: "/research",
           style: {
-            background: "none",
-            border: "none",
-            cursor: "pointer",
             color: "var(--gold)",
             fontSize: "16px",
             textDecoration: "underline",
@@ -6510,7 +6269,6 @@ function LoysDeHazeLineagePage() {
 }
 const manuscriptHeraldry = "/assets/cronike-van-vlaenderen-counts-heraldry-Dpt1LTFu.jpg";
 function JanSansTerreLineagePage() {
-  const { goToResearch } = useNav();
   const { t } = useTranslation();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
@@ -6633,18 +6391,15 @@ function JanSansTerreLineagePage() {
         /* @__PURE__ */ jsx("h3", { children: t("jan_sans_terre.questions_lichtervelde_heading") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.questions_lichtervelde_body") } })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$4.ctaBox, onClick: () => goToResearch("contact"), style: { cursor: "pointer" }, children: [
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, dangerouslySetInnerHTML: { __html: t("jan_sans_terre.cta_text") } }),
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("jan_sans_terre.cta_note") })
       ] }),
       /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
-        "button",
+        Link,
         {
-          onClick: () => goToResearch("main"),
+          to: "/research",
           style: {
-            background: "none",
-            border: "none",
-            cursor: "pointer",
             color: "var(--gold)",
             fontSize: "16px",
             textDecoration: "underline",
@@ -8385,8 +8140,6 @@ function DesparsCompendiumPage() {
   ] }) });
 }
 function VictorDossierPage() {
-  const { goToResearch } = useNav();
-  const navigate = useNavigate();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Victor van Vlaenderen — Archival Dossier | vanvlaenderen.org" }),
@@ -8608,13 +8361,10 @@ function VictorDossierPage() {
           "The 150-year documentary gap between Adam's last attestation (18 March 1447) and Franciscus van Vlaenderen in Ghent (1568) is the central open question in the project. A systematic onomastic sweep of the Zeeuws-Vlaanderen record (Gysseling, Vier Ambachten, c.1240–1500) has confirmed the surname is not indigenous to that region — it arrives into Bassevelde/Assenede from the Ghent hinterland. The primary remaining bridge candidates are the Staten van Goed series at RAG (Ambacht Assenede I & II) and the Landboek/Leenhof records. For the full distributional and documentary analysis of the surname's origin, see the",
           " ",
           /* @__PURE__ */ jsx(
-            "button",
+            Link,
             {
-              onClick: () => {
-                navigate("/name/surname-origins");
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              },
-              style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" },
+              to: "/name/surname-origins",
+              style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" },
               children: "Four Functions, Three Clusters analysis →"
             }
           )
@@ -8678,13 +8428,10 @@ function VictorDossierPage() {
       ] }),
       /* @__PURE__ */ jsxs("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: [
         /* @__PURE__ */ jsx(
-          "button",
+          Link,
           {
-            onClick: () => goToResearch("victor"),
+            to: "/research/victor",
             style: {
-              background: "none",
-              border: "none",
-              cursor: "pointer",
               color: "var(--gold)",
               fontSize: "16px",
               textDecoration: "underline",
@@ -8696,13 +8443,10 @@ function VictorDossierPage() {
           }
         ),
         /* @__PURE__ */ jsx(
-          "button",
+          Link,
           {
-            onClick: () => goToResearch("bibliography"),
+            to: "/research/bibliography",
             style: {
-              background: "none",
-              border: "none",
-              cursor: "pointer",
               color: "var(--gold)",
               fontSize: "14px",
               textDecoration: "underline",
@@ -8719,7 +8463,6 @@ function VictorDossierPage() {
   ] });
 }
 function PraetDossierPage() {
-  const { goToResearch } = useNav();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "The Praet Line — Archival Dossier | vanvlaenderen.org" }),
@@ -8908,13 +8651,10 @@ function PraetDossierPage() {
       ] }),
       /* @__PURE__ */ jsxs("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: [
         /* @__PURE__ */ jsx(
-          "button",
+          Link,
           {
-            onClick: () => goToResearch("louis-friese"),
+            to: "/research/louis-friese",
             style: {
-              background: "none",
-              border: "none",
-              cursor: "pointer",
               color: "var(--gold)",
               fontSize: "16px",
               textDecoration: "underline",
@@ -8926,13 +8666,10 @@ function PraetDossierPage() {
           }
         ),
         /* @__PURE__ */ jsx(
-          "button",
+          Link,
           {
-            onClick: () => goToResearch("bibliography"),
+            to: "/research/bibliography",
             style: {
-              background: "none",
-              border: "none",
-              cursor: "pointer",
               color: "var(--gold)",
               fontSize: "14px",
               textDecoration: "underline",
@@ -8949,7 +8686,6 @@ function PraetDossierPage() {
   ] });
 }
 function PraetLineageDossierPage() {
-  const { goToResearch } = useNav();
   const lineageData = [
     { gen: 1, name: "Louis Friese van Vlaenderen", dates: "c.1350 – 25 Sep 1396", role: "Bastard of Flanders; Lord of Praet & Woestine", spouse: "1) Unknown (La Woestine) 2) Marie van Gistel", sources: "Vredius MS via FMG [864–869]; Wikipedia", level: "Directly attested", levelClass: researchStyles.levelAttested },
     { gen: 2, name: "Johan I van Vlaenderen", dates: "d. after 10 Sep 1439", role: "Lord of Praet & Woestine; Burgher of Praet", spouse: "Johanna van Reygersvliet", sources: "Charter 10 Sep 1439 via FMG [873]; Vredius MS [875]", level: "Directly attested", levelClass: researchStyles.levelAttested },
@@ -9208,13 +8944,10 @@ function PraetLineageDossierPage() {
       ] }),
       /* @__PURE__ */ jsxs("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: [
         /* @__PURE__ */ jsx(
-          "button",
+          Link,
           {
-            onClick: () => goToResearch("louis-friese"),
+            to: "/research/louis-friese",
             style: {
-              background: "none",
-              border: "none",
-              cursor: "pointer",
               color: "var(--gold)",
               fontSize: "16px",
               textDecoration: "underline",
@@ -9226,13 +8959,10 @@ function PraetLineageDossierPage() {
           }
         ),
         /* @__PURE__ */ jsx(
-          "button",
+          Link,
           {
-            onClick: () => goToResearch("bibliography"),
+            to: "/research/bibliography",
             style: {
-              background: "none",
-              border: "none",
-              cursor: "pointer",
               color: "var(--gold)",
               fontSize: "14px",
               textDecoration: "underline",
@@ -9496,7 +9226,6 @@ const aboutStyles = {
 };
 const michaelConstanceCanal = "/assets/michael-constance-canal-CzKbZRok.jpg";
 function AboutPage() {
-  const { goTo, goToResearch } = useNav();
   const { t } = useTranslation();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
@@ -9549,39 +9278,41 @@ function AboutPage() {
         ] }),
         /* @__PURE__ */ jsxs("div", { style: { marginTop: "1rem", display: "flex", gap: "1rem", flexWrap: "wrap" }, children: [
           /* @__PURE__ */ jsx(
-            "button",
+            Link,
             {
-              onClick: () => goTo("research"),
+              to: "/research",
               style: {
                 background: "none",
                 border: "1px solid rgba(232,184,48,0.35)",
                 borderRadius: "4px",
                 color: "var(--gold)",
-                cursor: "pointer",
                 fontSize: "0.82rem",
                 fontFamily: "var(--font-ui)",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                padding: "0.5rem 1.1rem"
+                padding: "0.5rem 1.1rem",
+                textDecoration: "none",
+                display: "inline-block"
               },
               children: "Research Overview →"
             }
           ),
           /* @__PURE__ */ jsx(
-            "button",
+            Link,
             {
-              onClick: () => goToResearch("methodology"),
+              to: "/research/methodology",
               style: {
                 background: "none",
                 border: "1px solid rgba(232,184,48,0.35)",
                 borderRadius: "4px",
                 color: "var(--gold)",
-                cursor: "pointer",
                 fontSize: "0.82rem",
                 fontFamily: "var(--font-ui)",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                padding: "0.5rem 1.1rem"
+                padding: "0.5rem 1.1rem",
+                textDecoration: "none",
+                display: "inline-block"
               },
               children: "Methodology & Sources →"
             }
@@ -9627,21 +9358,21 @@ function AboutPage() {
         /* @__PURE__ */ jsx("h2", { children: t("about.lineage_cta_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("about.lineage_cta_body") }),
         /* @__PURE__ */ jsx(
-          "button",
+          Link,
           {
             className: styles$4.ctaBox,
-            onClick: () => goTo("lineage"),
-            style: { background: "none", border: "none", cursor: "pointer", padding: 0, width: "100%", textAlign: "center" },
+            to: "/lineage",
+            style: { textAlign: "center" },
             children: /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("about.lineage_cta_link") })
           }
         )
       ] }),
       /* @__PURE__ */ jsxs(
-        "button",
+        Link,
         {
           className: styles$4.ctaBox,
-          onClick: () => goTo("contact"),
-          style: { background: "none", border: "none", cursor: "pointer", padding: 0, width: "100%", textAlign: "center" },
+          to: "/contact",
+          style: { textAlign: "center" },
           children: [
             /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("about.contact_cta_body") }),
             /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("about.contact_cta_note") })
@@ -10195,7 +9926,6 @@ const READING_LIST = [
   }
 ];
 function MethodologyPage() {
-  const { goToResearch } = useNav();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Methodology & Sources — Van Vlaenderen Research | vanvlaenderen.org" }),
@@ -10294,11 +10024,11 @@ function MethodologyPage() {
         ] }, group.group))
       ] }),
       /* @__PURE__ */ jsx("div", { style: { marginTop: "3rem", paddingTop: "2rem", borderTop: "1px solid rgba(232,184,48,0.15)" }, children: /* @__PURE__ */ jsx(
-        "button",
+        Link,
         {
-          onClick: () => goToResearch("main"),
+          to: "/research",
           className: researchStyles.refLink,
-          style: { background: "none", border: "none", cursor: "pointer", fontSize: "0.9rem" },
+          style: { fontSize: "0.9rem" },
           children: "← Back to Research Overview"
         }
       ) })
@@ -10307,7 +10037,6 @@ function MethodologyPage() {
 }
 const meetjeslandMap = "/assets/meetjesland-map-D7thb5CK.jpg";
 function GapDossierPage() {
-  const { goTo } = useNav();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "The Documentary Gap, 1447–1580 | vanvlaenderen.org" }),
@@ -10528,10 +10257,10 @@ function GapDossierPage() {
           "The full genetic genealogy project — including haplogroup details, methodology, and how to participate — is documented on the",
           " ",
           /* @__PURE__ */ jsx(
-            "button",
+            Link,
             {
-              onClick: () => goTo("dna"),
-              style: { background: "none", border: "none", cursor: "pointer", padding: 0, color: "var(--gold)", textDecoration: "underline", font: "inherit" },
+              to: "/dna",
+              style: { color: "var(--gold)", textDecoration: "underline", font: "inherit" },
               children: "DNA page"
             }
           ),
@@ -11486,11 +11215,6 @@ function DistributionTable({ rows, caption }) {
   ] });
 }
 function SurnameOriginsPage() {
-  const navigate = useNavigate();
-  const nav2 = (path) => {
-    navigate(path);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Four Functions, Three Clusters — The Van Vlaenderen Surname | vanvlaenderen.org" }),
@@ -11531,7 +11255,7 @@ function SurnameOriginsPage() {
           "Before any surname-bearing individual can be identified in a historical source, the phrase ",
           /* @__PURE__ */ jsx("em", { children: "van Vlaenderen" }),
           " must be correctly interpreted. In the Flemish documentary record, it performs at least four distinct functions, and conflating them produces false evidence in either direction. The full framework is presented on ",
-          /* @__PURE__ */ jsx("button", { onClick: () => nav2("/name"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "The Name page" }),
+          /* @__PURE__ */ jsx(Link, { to: "/name", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "The Name page" }),
           "; the summary below provides the necessary context for this analysis."
         ] }),
         [
@@ -11790,7 +11514,7 @@ function SurnameOriginsPage() {
                 /* @__PURE__ */ jsx("strong", { children: "Meetjesland / Ghent — closest documented individual bridge candidate for the Belgian cluster, alongside the parallel Praet-at-Aalter possibility." }),
                 " Geographically closest to Sleidinge and Oostwinkel. Last attested 1447, three to four undocumented generations before Franciscus (1568). Record scarcity in the intervening period is the expected explanation for the gap, not a late founding event. See also:",
                 " ",
-                /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research/victor-dossier"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Victor Archival Dossier →" })
+                /* @__PURE__ */ jsx(Link, { to: "/research/victor-dossier", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "Victor Archival Dossier →" })
               ] })
             ] }),
             /* @__PURE__ */ jsxs("tr", { children: [
@@ -11871,7 +11595,7 @@ function SurnameOriginsPage() {
           /* @__PURE__ */ jsx("strong", { children: "Belgian cluster" }),
           " (Sleidinge, Oostwinkel, Evergem, Bassevelde) is geographically consistent with descent from Victor's son Adam. Adam was last attested in Ghent in 1447. The cluster's epicentre lies immediately north of Ghent, within easy distance of Ursel and Wessegem where Victor held his lordship. The cluster's near-invisibility before 1600 is most plausibly explained by record scarcity: the registers that would document Adam's grandchildren simply do not survive. On this reading, the founding event belongs in the mid-fifteenth century, and the Belgian cluster is not appreciably younger than the French Flanders one. This hypothesis is plausible and merits continued archival investigation; it is not yet proven. The 150-year documentary gap between Adam's last attestation (1447) and the first Belgian parish records is discussed in the",
           " ",
-          /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research/victor-dossier"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Victor Archival Dossier" }),
+          /* @__PURE__ */ jsx(Link, { to: "/research/victor-dossier", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "Victor Archival Dossier" }),
           "."
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -11937,19 +11661,20 @@ function SurnameOriginsPage() {
             " (Lille), which holds the Cassel castellany records and related comital administrative series. A pre-1383 identification would establish an independent Function 3 origin for the French Flanders cluster; a post-1383 identification would more likely represent a continuation of the bastard line."
           ] }),
           /* @__PURE__ */ jsx(
-            "button",
+            Link,
             {
-              onClick: () => nav2("/contact"),
+              to: "/contact",
               style: {
                 background: "rgba(232,184,48,0.1)",
                 border: "1px solid rgba(232,184,48,0.4)",
                 color: "var(--gold)",
                 padding: "0.6rem 1.25rem",
-                cursor: "pointer",
                 borderRadius: "3px",
                 fontSize: "0.85rem",
                 fontFamily: "var(--font-ui)",
-                letterSpacing: "0.05em"
+                letterSpacing: "0.05em",
+                textDecoration: "none",
+                display: "inline-block"
               },
               children: "Get in Touch →"
             }
@@ -11992,18 +11717,13 @@ function SurnameOriginsPage() {
         ] })
       ] }),
       /* @__PURE__ */ jsxs("div", { style: { borderTop: "1px solid rgba(232,184,48,0.15)", paddingTop: "1.5rem", marginTop: "1rem", display: "flex", gap: "1.5rem", fontSize: "0.875rem" }, children: [
-        /* @__PURE__ */ jsx("button", { onClick: () => nav2("/name"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "← The Name" }),
-        /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research/bibliography"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Full Bibliography →" })
+        /* @__PURE__ */ jsx(Link, { to: "/name", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "← The Name" }),
+        /* @__PURE__ */ jsx(Link, { to: "/research/bibliography", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "Full Bibliography →" })
       ] })
     ] })
   ] });
 }
 function NieusSealPage() {
-  const navigate = useNavigate();
-  const nav2 = (path) => {
-    navigate(path);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Seals, Lions, and the Politics of a Surname | vanvlaenderen.org" }),
@@ -12101,8 +11821,8 @@ function NieusSealPage() {
         ] })
       ] }),
       /* @__PURE__ */ jsxs("div", { style: { borderTop: "1px solid rgba(232,184,48,0.15)", paddingTop: "1.5rem", marginTop: "1rem", display: "flex", gap: "1.5rem", fontSize: "0.875rem" }, children: [
-        /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "← Research" }),
-        /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research/bibliography"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Full Bibliography →" })
+        /* @__PURE__ */ jsx(Link, { to: "/research", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "0.875rem" }, children: "← Research" }),
+        /* @__PURE__ */ jsx(Link, { to: "/research/bibliography", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "0.875rem" }, children: "Full Bibliography →" })
       ] })
     ] })
   ] });
@@ -12125,11 +11845,6 @@ const thStyle = {
   borderBottom: "1px solid rgba(232,184,48,0.3)"
 };
 function DrinchamDossierPage() {
-  const navigate = useNavigate();
-  const nav2 = (path) => {
-    navigate(path);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Jan sans terre van Vlaenderen — Archival Dossier | vanvlaenderen.org" }),
@@ -12427,7 +12142,7 @@ function DrinchamDossierPage() {
         /* @__PURE__ */ jsx("p", { children: "The documented Drincham line spans roughly 1383 (land grant) to c. 1473 (death of Jacques's wife Guillemette de Bambeke). For approximately ninety years, multiple generations of Van Vlaenderen surname-bearers were physically present in the Cassel area of French Flanders — the precise geographic zone where Geneanet's distributional data shows the heaviest pre-1600 concentration of the surname." }),
         /* @__PURE__ */ jsxs("p", { children: [
           "The hypothesis — argued in full in the ",
-          /* @__PURE__ */ jsx("button", { onClick: () => nav2("/name/surname-origins"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Four Functions, Three Clusters analysis" }),
+          /* @__PURE__ */ jsx(Link, { to: "/name/surname-origins", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "Four Functions, Three Clusters analysis" }),
           " — is that this geographic-documentary coincidence is the explanation for the French Flanders cluster. The argument does not depend on the Geneanet count being accurate (it almost certainly reflects noble-tree duplication). It depends on the observation that the earliest securely documented hereditary Van Vlaenderen surname-bearers in the Cassel zone are precisely the documented bastard comital line, making them the most parsimonious founding explanation."
         ] }),
         /* @__PURE__ */ jsx("p", { children: "The Drincham line's documented reach is also worth noting. Jacques de Drincham operated as Bailiff of Veurne and Chamberlain to Philip the Good — the kind of administrative reach across French Flanders and the Flemish coast that would explain how a surname attached to one castle near Cassel could spread across the broader Volckerinckhove/Renescure/Bollezeele zone visible in the later data. It should be noted that Veurne, while on the Flemish coast, is firmly in West Flanders — geographically distinct from the Zeeuws-Vlaanderen/Zeeland thread associated with Victor's son Lodewijc at Oostburg. The Drincham line's coastal footprint is a French Flanders and West Flemish phenomenon; the Zeeland anchor, to the extent one exists, belongs to the Victor line." }),
@@ -12447,9 +12162,9 @@ function DrinchamDossierPage() {
         /* @__PURE__ */ jsx("p", { children: "The Drincham line is geographically and genealogically distinct from the Victor line (Meetjesland/Belgian cluster) and the Praet line (Franc de Bruges/Brabant cluster). The three lines represent parallel surname-carrying foundations in different regions of Flanders, each anchored to a specific lordship granted by Louis de Male in the 1373–1399 period." }),
         /* @__PURE__ */ jsxs("p", { children: [
           "For the full multi-line analysis, see the ",
-          /* @__PURE__ */ jsx("button", { onClick: () => nav2("/name/surname-origins"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Four Functions, Three Clusters" }),
+          /* @__PURE__ */ jsx(Link, { to: "/name/surname-origins", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "Four Functions, Three Clusters" }),
           " article, and for the Praet line's separate documentation, see the ",
-          /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research/praet-dossier"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Praet Archival Dossier" }),
+          /* @__PURE__ */ jsx(Link, { to: "/research/praet-dossier", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "Praet Archival Dossier" }),
           "."
         ] })
       ] }),
@@ -12489,10 +12204,10 @@ function DrinchamDossierPage() {
         ] })
       ] }),
       /* @__PURE__ */ jsxs("div", { style: { borderTop: "1px solid rgba(232,184,48,0.15)", paddingTop: "1.5rem", marginTop: "1rem", display: "flex", gap: "1.5rem", fontSize: "0.875rem", flexWrap: "wrap" }, children: [
-        /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "← Research" }),
-        /* @__PURE__ */ jsx("button", { onClick: () => nav2("/name/surname-origins"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Four Functions, Three Clusters →" }),
-        /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research/praet-dossier"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Praet Archival Dossier →" }),
-        /* @__PURE__ */ jsx("button", { onClick: () => nav2("/research/victor-dossier"), style: { background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: 0, textDecoration: "underline", fontSize: "inherit" }, children: "Victor Archival Dossier →" })
+        /* @__PURE__ */ jsx(Link, { to: "/research", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "← Research" }),
+        /* @__PURE__ */ jsx(Link, { to: "/name/surname-origins", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "Four Functions, Three Clusters →" }),
+        /* @__PURE__ */ jsx(Link, { to: "/research/praet-dossier", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "Praet Archival Dossier →" }),
+        /* @__PURE__ */ jsx(Link, { to: "/research/victor-dossier", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "Victor Archival Dossier →" })
       ] })
     ] })
   ] });
@@ -12584,7 +12299,7 @@ const styles = {
   attributionDim,
   licenseLink
 };
-const buildDate = "2026-05-20";
+const buildDate = "2026-05-21";
 function formatBuildDate(iso, locale) {
   try {
     const d = /* @__PURE__ */ new Date(iso + "T00:00:00Z");
@@ -12601,40 +12316,35 @@ function formatBuildDate(iso, locale) {
 }
 function Footer() {
   const { t, i18n: i18n2 } = useTranslation();
-  const navigate = useNavigate();
-  const go = (path) => {
-    navigate(path);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
   const currentLang = i18n2.language?.startsWith("nl") ? "nl" : "en";
   const formattedDate = formatBuildDate(buildDate, currentLang);
   return /* @__PURE__ */ jsx("footer", { className: styles.footer, role: "contentinfo", children: /* @__PURE__ */ jsxs("div", { className: styles.inner, children: [
     /* @__PURE__ */ jsxs("nav", { "aria-label": t("footer.nav_heading"), children: [
       /* @__PURE__ */ jsx("h2", { className: styles.colHeading, children: t("footer.nav_heading") }),
       /* @__PURE__ */ jsxs("ul", { className: styles.navList, children: [
-        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("button", { className: styles.navLink, onClick: () => go("/"), children: t("nav.home") }) }),
-        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("button", { className: styles.navLink, onClick: () => go("/research"), children: t("nav.history") }) }),
+        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(Link, { className: styles.navLink, to: "/", children: t("nav.home") }) }),
+        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(Link, { className: styles.navLink, to: "/research", children: t("nav.history") }) }),
         /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(
-          "button",
+          Link,
           {
             className: `${styles.navLink} ${styles.navLinkEmphasised}`,
-            onClick: () => go("/research/bibliography"),
+            to: "/research/bibliography",
             children: t("footer.bibliography_link_label")
           }
         ) }),
-        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("button", { className: styles.navLink, onClick: () => go("/dna"), children: t("nav.dna") }) }),
-        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("button", { className: styles.navLink, onClick: () => go("/about"), children: t("nav.about") }) }),
-        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("button", { className: styles.navLink, onClick: () => go("/contact"), children: t("nav.contact") }) })
+        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(Link, { className: styles.navLink, to: "/dna", children: t("nav.dna") }) }),
+        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(Link, { className: styles.navLink, to: "/about", children: t("nav.about") }) }),
+        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(Link, { className: styles.navLink, to: "/contact", children: t("nav.contact") }) })
       ] })
     ] }),
     /* @__PURE__ */ jsxs("div", { className: styles.centre, children: [
       /* @__PURE__ */ jsx("h2", { className: styles.colHeading, children: t("footer.project_heading") }),
       /* @__PURE__ */ jsx("p", { className: styles.tagline, children: t("footer.tagline") }),
       /* @__PURE__ */ jsxs(
-        "button",
+        Link,
         {
           className: styles.sourcesCallout,
-          onClick: () => go("/research/bibliography"),
+          to: "/research/bibliography",
           "aria-label": t("footer.sources_callout_aria"),
           children: [
             /* @__PURE__ */ jsx("span", { children: t("footer.sources_callout") }),
@@ -12648,10 +12358,10 @@ function Footer() {
       /* @__PURE__ */ jsx("p", { className: styles.attributionLine, children: t("footer.copyright") }),
       /* @__PURE__ */ jsx("p", { className: styles.attributionLine, children: t("footer.collaboration") }),
       /* @__PURE__ */ jsx("p", { className: styles.attributionLine, children: /* @__PURE__ */ jsx(
-        "button",
+        Link,
         {
           className: styles.licenseLink,
-          onClick: () => go("/license"),
+          to: "/license",
           "aria-label": t("footer.license_link_aria"),
           children: t("footer.license")
         }
@@ -12666,6 +12376,7 @@ function Footer() {
 }
 function App() {
   return /* @__PURE__ */ jsxs(Fragment, { children: [
+    /* @__PURE__ */ jsx(ScrollToTop, {}),
     /* @__PURE__ */ jsx(FamilyTreeCanvas, {}),
     /* @__PURE__ */ jsx(Nav, {}),
     /* @__PURE__ */ jsx("main", { style: { position: "relative", zIndex: 1 }, children: /* @__PURE__ */ jsxs(Routes, { children: [
