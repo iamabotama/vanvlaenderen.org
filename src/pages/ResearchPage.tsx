@@ -4,7 +4,6 @@ import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { OverviewDiagram } from '../components/Diagrams';
-import { CohortSidebar } from '../components/Cohort';
 import { lazy, Suspense } from 'react';
 import ClientOnly from '../components/ClientOnly';
 
@@ -131,9 +130,6 @@ export default function ResearchPage() {
             <p>{t('research.diagram_sr_text')}</p>
           </div>
         </div>
-
-        {/* Cohort Sidebar — the full 11-individuated Despars A.1 enumeration */}
-        <CohortSidebar />
 
         {/* ── Branch Cards ────────────────────────────────────────── */}
         <section className={styles.section}>

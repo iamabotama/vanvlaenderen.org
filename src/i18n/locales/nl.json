@@ -430,26 +430,87 @@
     "notes_source_4_text": "Jean-François Nieus, \"Aristocratic seal ownership in twelfth-century Flanders: A world in between\" (preprint, Academia.edu, 2021; Université de Namur; binnenkort in peer-reviewed publicatie). Biedt historische diepgang voor hoe Vlaamse elite-identiteit en territoriale namen functioneerden in het grafelijke netwerk. Volledig besproken op de pagina Zegels, leeuwen en de politiek van een familienaam.",
     "notes_source_4_linktext": "Lees het Zegels-artikel →",
     "diagram_sr_heading": "Onderzoeksoverzichtsdiagram — tekstuele samenvatting",
-    "cohort_heading": "De volledige cohorte — Despars's opsomming van 1383",
-    "cohort_intro_p1": "Bij de dood van Lodewijk II van Male in 1383 somt Despars in zijn <em>Cronijcke</em> negen bastaardzonen en twee natuurlijke dochters op. Ten minste vijf van de zonen stichtten de naamdragende lijnen die hierboven gedocumenteerd zijn. De overige zes leden van de cohorte — vier zonen wier lijnen uitdoofden, ongedocumenteerd blijven, of na één geattesteerde generatie wegvallen, en twee dochters die de naam enkel in huwelijk droegen — vervolledigen het beeld.",
-    "cohort_intro_p2": "De studie van Lichtervelde (1935) documenteert &ldquo;ten minste achttien&rdquo; natuurlijke kinderen van Lodewijk II uit alle beschikbare bronnen samen, met inbegrip van een kinderkamer van elf te Gosnay rond 1384. De twee cijfers zijn op verschillende resoluties opgemaakt: Despars geeft een gesloten zestiende-eeuwse lijst; Lichtervelde telt elk documenteerbaar hoofd over meerdere bronnen heen. Ze zijn niet in tegenspraak — ze beantwoorden verschillende vragen.",
-    "cohort_legend_aria": "Legende cohorte-status",
-    "cohort_legend_lineage": "Gedocumenteerde lijn — zie gekoppelde pagina",
-    "cohort_legend_undocumented": "Lijn ongedocumenteerd",
-    "cohort_legend_no_issue": "Gedocumenteerd zonder nakomelingschap",
-    "cohort_legend_married_out": "Naam enkel in huwelijk gedragen",
-    "cohort_daughters_subheading": "Dochters",
-    "cohort_entry_dhase_caption": "Gesneuveld te Nicopolis 1396. Vier gedocumenteerde kinderen; territoriale opvolging naar Robrecht en Victor.",
-    "cohort_entry_rodolf_caption": "Dicht geattesteerd in Vol. II (vóór 1383), Aerdenburg (1385), raadsrollen (1408), de verlieslijst van Azincourt (1415). Geen nakomelingen gedocumenteerd in enige bron.",
-    "cohort_entry_colaert_caption": "Verschijnt enkel in de hoofdlijst en een getuigenlijst in Vol. II (p. 507). Geen verdere attestatie.",
-    "cohort_entry_devriese_caption": "Gesneuveld te Nicopolis 1396. Lijn loopt voort via Marie van Ghistele en Jan van Praet; vijf generaties tot 1545.",
-    "cohort_entry_sansterre_caption": "Heer van Drincham (verleend ca. 1383). Gesneuveld te Nicopolis 1396. Lijn loopt voort via Wilhelmine van Nevele tot een gedocumenteerde zoon, heer van Drincham 1419.",
-    "cohort_entry_hector_caption": "Loopbaan 1382–1436. Één gedocumenteerde nakomeling: zoon Adriaen, geattesteerd in 1453 als &ldquo;heer van Voorhoute, zoon van wijlen Hector&rdquo;. Eigen nakomelingen van Adriaen ongedocumenteerd.",
-    "cohort_entry_robrecht_caption": "Heer van Elverdinghe en Vlamertinghe; burggraaf van Ieper. Overl. 1434. Natuurlijke zoon Karel II te Langemark 1491; lijn loopt voort via Karels dochter.",
-    "cohort_entry_karel_caption": "Enkel in de hoofdlijst (1383) en de uitvoerderslijst van het testament van 1430. Geen biografische attestatie tussen beide; geen nakomelingen gedocumenteerd. Te onderscheiden van Karel II (zoon van Robrecht).",
-    "cohort_entry_victor_caption": "Overl. 1431; kapitein van Sint-Omaars. Drie natuurlijke zonen in primaire oorkonden (1427, 1441, 1446). De voorgestelde stamvader van de Meetjeslandse familienaamcluster.",
-    "cohort_entry_johanne_caption": "Huwde Mer Diederijck van Hontschote. Nakomelingschap onder de familienaam Hontschote.",
-    "cohort_entry_margriete_caption": "Huwde Mer Robrecht van Vaveringny, maarschalk van Vlaanderen. Overl. maart 1388. Nakomelingschap onder de familienaam Vaveringny."
+    "cohort_sidebar": {
+      "heading": "De bredere kohort",
+      "intro": "Lodewijk van Male's gedocumenteerde natuurlijke kohort telt minstens achttien, geattesteerd in het hertogelijke testament van 1384, Vredius' kroniek, Pierre de Lichtervelde's archiefonderzoek uit 1935, het Despars-compendium, en een Bourgondische inventaris uit 1384 te Rijsel. Van zijn overlevende zonen — de potentiële stamvaders van de Van Vlaenderen-naam — droegen er minstens vijf de naam verder en verschijnen hierboven. De rest van de kohort wordt hieronder getoond. Klik op een tegel om uit te klappen.",
+      "stack_label": "De bredere kohort",
+      "click_hint": "Klik om te openen ▾",
+      "close_label": "Sluiten",
+      "uncertain_label": "onzeker",
+      "state_strong_candidate": "Sterke kandidaat — gedocumenteerde zoon, spoor verdwijnt",
+      "state_no_issue_documented": "Geen nageslacht gedocumenteerd — geattesteerde figuur, geen afstammelingen in overgeleverde bronnen",
+      "layer_testament": "TESTAMENT 1384",
+      "layer_vredius": "VREDIUS",
+      "layer_lichtervelde": "LICHTERVELDE ARCHIEFONDERZOEK",
+      "layer_despars": "ALLEEN DESPARS",
+      "tile": {
+        "margriete_i": {
+          "name": "Margriete I (vrouw van Wavrin)",
+          "collapsed": "Testament 1384; gehuwd met de heer van Wavrin (700 livres parisis rente)",
+          "expanded": "Genoemd in het hertogelijk testament van 1384. Haar vader bezegelde een <em>rente</em> van 700 livres parisis bij haar huwelijk met de heer van Wavrin (Lichtervelde 1935 p. 51, geciteerd uit ARA Rekenkamer nr. 2704, rekening Jan Utenhove, fol. 68 v°). Geen gedocumenteerde nakomelingen onder de Van Vlaenderen-naam.<br/><br/><strong>Open identificatievraag:</strong> Despars' A.1-opsomming noemt een &ldquo;Vrau Margriete&rdquo; gehuwd met Mer Robrecht van Vaveringny, maarschalk van Vlaanderen, overleden maart 1388. Of dit dezelfde persoon is als Lichtervelde's Margriete I (Wavrin) onder een verschillende bronweergave van de familienaam van de echtgenoot, of een afzonderlijke dochter, is op grond van beschikbare bronnen niet vast te stellen. Wavrin en Vaveringny zijn onafhankelijke adellijke families in verschillende streken, maar transliteratievariatie in Despars' laat-16e-eeuwse Middelnederlandse weergave van Franstalige testamentnamen valt niet uit te sluiten."
+        },
+        "margriete_ii": {
+          "name": "Margriete II (abdis van Petegem)",
+          "collapsed": "Testament 1384; abdis van Petegem in 1414",
+          "expanded": "Genoemd in het hertogelijk testament van 1384 als de &ldquo;Nonnain de Peteghem.&rdquo; Abdis van Petegem in 1414, met een toelage van 75 livres (Lichtervelde 1935 p. 51, geciteerd uit ARA Rekenkamer nr. 2704, rekening Jan Utenhove, Ontvanger-Generaal van Vlaanderen, fol. 68 v°). Kloosterling; geen nageslacht verwacht of gedocumenteerd."
+        },
+        "pieter": {
+          "name": "Pieter († 3 maart 1376)",
+          "collapsed": "† 3 maart 1376; begraven Gent Dominicanen",
+          "expanded": "Opgetekend door Vredius (<em>Genealogia Comitum Flandriae</em> T. II 2e partie p. 111) als overleden vóór zijn vader, op 3 maart 1376, begraven bij de Dominicanen te Gent (Lichtervelde 1935 p. 51). Overleed vóór het testament van 1384 en wordt daarin niet genoemd."
+        },
+        "margriete_iii": {
+          "name": "Margriete III (Maldegem → Vuerhoute → Gent)",
+          "collapsed": "Vredius-laag; achtereenvolgens gehuwd met Maldegem → Vuerhoute → Gent; † 1415",
+          "expanded": "Door Vredius opgetekend als de derde Margriete onder Lodewijk van Male's natuurlijke dochters. In 1374 weduwe van Florent van Maldegem; vervolgens gehuwd met Hector de Vuerhoute, daarna met Sigeer van Gent. Overleden 1415 (Lichtervelde 1935 p. 52). Reeds volwassen ruim voor het testament van 1384 — haar eerste weduwschap gaat er tien jaar aan vooraf — en dus niet onder de Gosnay-kinderkohort. Geen gedocumenteerde nakomelingen onder de Van Vlaenderen-naam."
+        },
+        "johanna": {
+          "name": "Johanna (vrouw van Hondschote)",
+          "collapsed": "Vredius-laag; gehuwd met Diederik heer van Hondschote; in leven 1420; mogelijk Gosnay-meisje",
+          "expanded": "Door Vredius opgetekend. Gehuwd met Diederik, heer van Hondschote. Nog in leven in 1420 (Lichtervelde 1935 p. 52, geciteerd uit ARA Rekenkamer nr. 43125 fol. 19 r° en v°). Geen gedocumenteerde nakomelingen onder de Van Vlaenderen-naam; eventueel nageslacht droeg de Hondschote-naam.<br/><br/><strong>Mogelijke Gosnay-identificatie:</strong> Lichtervelde 1935 p. 55 vermoedt dat Johanna mogelijk een van de zeven meisjes in het Gosnay-kinderhuis in 1384 was, samen met Beatrice en de twee Katherines — &ldquo;Peut être! Mais je ne puis apporter aucune précision à ce sujet.&rdquo; Geen identificatie kan op grond van overgeleverde primaire bronnen worden vastgesteld."
+        },
+        "beatrice": {
+          "name": "Beatrice (vrouw van Robert le Maréchal)",
+          "collapsed": "Vredius-laag; gehuwd met Robert le Maréchal, kamerheer; mogelijk Gosnay-meisje",
+          "expanded": "Door Vredius opgetekend. Gehuwd met Robert le Maréchal, kamerheer van de graaf van Vlaanderen en één van de getuigen bij het hertogelijk testament van 1384 (Lichtervelde 1935 p. 52). Geen gedocumenteerde nakomelingen onder de Van Vlaenderen-naam.<br/><br/><strong>Mogelijke Gosnay-identificatie:</strong> Lichtervelde 1935 p. 55 vermoedt dat Beatrice mogelijk een van de zeven meisjes in het Gosnay-kinderhuis in 1384 was, samen met Johanna en de twee Katherines. Geen identificatie kan op grond van overgeleverde primaire bronnen worden vastgesteld."
+        },
+        "katherine_i": {
+          "name": "Katherine I (Ieper 1390)",
+          "collapsed": "Ieperse stadsrekeningen 1390; &ldquo;Joncvr. Kateline&rdquo;-attestatie; mogelijk Gosnay-meisje",
+          "expanded": "Door Pierre de Lichtervelde aan het licht gebracht via de Ieperse stadsrekeningen, derde trimester 1390: een huwelijksgeschenk van 38 livres geboekt onder &ldquo;Dépenses diverses — XX Cronen ghescut ter brulocht <em>Joncvr. Kateline bastarde dochter Van Min here Lodewick Van Vlanderen</em>&rdquo; (Lichtervelde 1935 p. 52 noot 7, geciteerd uit KBR Handschriften Fonds Merghelynck nr. 32 T. II p. 141). De vroegste volkstaalattestatie van de familienaam in de Ieperse stadsrekeningen.<br/><br/><strong>Mogelijke Gosnay-identificatie:</strong> Lichtervelde 1935 p. 55 vermoedt dat Katherine I mogelijk een van de zeven meisjes in het Gosnay-kinderhuis in 1384 was, samen met Johanna, Beatrice en Katherine II. Geen identificatie kan op grond van overgeleverde primaire bronnen worden vastgesteld.<br/><br/><strong>Open identificatievraag — Katherine I tegenover Katherine II:</strong> Lichtervelde brengt Katherine I en Katherine II onder als twee afzonderlijke archiefattestaties zonder onafhankelijk bewijs van onderscheidenheid. Katherine I is gedocumenteerd als huwende te Ieper in 1390; Katherine II als kloosterlinge te Thieuloye-lez-Arras. De huwelijk-vs-kloosterstaat-tegenstelling suggereert afzonderlijke personen maar sluit een latere kloostergelofte van Katherine I na 1390 niet uit. De voorzichtige bronlezing behandelt hen als afzonderlijk; de conservatieve lezing erkent de fusiemogelijkheid."
+        },
+        "katherine_ii": {
+          "name": "Katherine II (Thieuloye-lez-Arras)",
+          "collapsed": "Kloosterlinge te de Thieuloye-lez-Arras; mogelijk Gosnay-meisje",
+          "expanded": "Door Pierre de Lichtervelde aan het licht gebracht via het Inventaire Sommaire van ADN Rijsel: kloosterlinge te het Monastère de la Thieuloye-lez-Arras (Lichtervelde 1935 p. 53, geciteerd uit Rijsel ADN Inventaire Sommaire T. VII p. 213, 2e kol., B. 3829). Kloosterling; geen nageslacht verwacht of gedocumenteerd.<br/><br/><strong>Mogelijke Gosnay-identificatie:</strong> Lichtervelde 1935 p. 55 vermoedt dat Katherine II mogelijk een van de zeven meisjes in het Gosnay-kinderhuis in 1384 was, samen met Johanna, Beatrice en Katherine I. Geen identificatie kan op grond van overgeleverde primaire bronnen worden vastgesteld.<br/><br/><strong>Open identificatievraag — Katherine II tegenover Katherine I:</strong> Zie tegel Katherine I. De fusiemogelijkheid is niet triviaal: Katherine I's huwelijk te Ieper in 1390 en Katherine II's kloosterstaat in Artesië kunnen achtereenvolgende fasen van één leven vertegenwoordigen in plaats van twee afzonderlijke personen. De site behandelt hen als afzonderlijk op grond van de voorzichtige bronlezing."
+        },
+        "rodolf": {
+          "name": "Rodolf († Azincourt 1415)",
+          "collapsed": "Despars-compendium A.1 #2; sneuvelde te Azincourt 1415",
+          "expanded": "Opgetekend in de Despars-kroniek als de tweede van Lodewijk van Male's natuurlijke zonen (A.1 &ldquo;Mer Rodolf&rdquo;). Dicht geattesteerd in primaire bronnen: Vredius vóór 1383, de Aardenburg-attestatie van 1385, de raadsrollen van 1408, en de Azincourt-slachtofferlijst voor 25 oktober 1415. Geen nageslacht gedocumenteerd in enige bron."
+        },
+        "colaert": {
+          "name": "Colaert",
+          "collapsed": "Despars-compendium A.1 #3; beperkte attestaties",
+          "expanded": "Opgetekend in de Despars-kroniek als de derde van Lodewijk van Male's natuurlijke zonen (A.1 &ldquo;Mer Colaert&rdquo;). Buiten de hoofdlijst slechts geattesteerd in een enkele getuigenlijst te Despars Vol II p. 507. Geen biografische bijzonderheden hierbuiten; geen nageslacht gedocumenteerd; geen belangrijke heerlijkheden."
+        },
+        "hector": {
+          "name": "Hector (heer van Voorhoute)",
+          "collapsed": "Despars-compendium A.1 #6 + B.16; zoon Adriaen gedocumenteerd; mogelijke tweede zoon Buth",
+          "expanded": "Opgetekend in de Despars-kroniek als Mer Hector, heere van Voorhoute (A.1 #6). Loopbaan 1382–1436. Gedocumenteerd als <em>joncheer Hector, bastaert van Vlaenderen, heere van Voorhoute</em> in 1382.<br/><br/>Eén gedocumenteerde zoon: Adriaen van Vlaenderen, opgetekend in Despars-compendium B.16 (Vol III p. 518) als zoon van Hector en kleinzoon van Lodewijk II &ldquo;van bastaerdye weghe,&rdquo; geattesteerd 1453 als &ldquo;heer van Voorhoute, zoon van wijlen Hector.&rdquo; Adriaens eigen nageslacht is in overgeleverde primaire bronnen niet gedocumenteerd. Een mogelijke tweede zoon, Jacobus Buth, is onder onderzoek (Q-2026-05-20-04) op grond van de Despars-compendium B.16-lezing; verificatie tegen Buth's eigen kroniek en de Duinenabdij-records is in afwachting.<br/><br/>Hectors lijn zet de gravelijk-bastaard achternaam voort in een gedocumenteerde tweede generatie via Adriaen — voldoende voor het criterium &ldquo;Sterke kandidaat&rdquo; van minstens één gedocumenteerde zoon met de achternaamafstamming aanwezig. Of Adriaens lijn verder doorloopt, en of Jacobus Buth een verifieerbare tweede zoon is, blijven open onderzoeksvragen."
+        },
+        "karel_senior": {
+          "name": "Karel senior (testamentexecuteur 1430)",
+          "collapsed": "Despars-compendium A.1 #8; executeur Victor's testament 1430; te onderscheiden van Karel van Langemark (zoon van Robrecht)",
+          "expanded": "Opgetekend in de Despars-kroniek als Mer Charles onder Lodewijk van Male's natuurlijke zonen (A.1 #8). Genoemd als één van de executeurs in het testament uit 1430 van zijn broer Victor (Vredius A.26 met &ldquo;beede sijn broeders,&rdquo; wat hem als zoon van Lodewijk van Male plaatst).<br/><br/>Te onderscheiden van de jongere Karel van Langemark (zoon van Robrecht, † 1491) per de Karel-disambiguatiebevinding van 2026-05-18. De disambiguatie zoekt een lang bestaande interne spanning in Vredius op tussen de 1430-executeurslijst en het grafschrift te Langemark — Lichtervelde 1935 p. 51 vouwde beide figuren samen op een 108-jaar-argument (een zoon van Lodewijk van Male overlijdend in 1491 zou 108+ jaar oud zijn geweest). De twee-Karel-lezing behandelt de testamentexecuteur en de Langemark-figuur als afzonderlijk: Karel senior als natuurlijke zoon van Lodewijk van Male actief 1430, Karel junior als zoon van Robrecht opgetekend te Langemark 1491.<br/><br/>Karel seniors gedocumenteerde activiteit valt in de 1430-generatie als executeur van Victor's testament. Of hij gedocumenteerde nakomelingen had — en of de Karel van Vlaenderen geattesteerd in 1472–1476 als ridder en leenhouder te Ieper en Veurne (ARA Rekenkamer nr. 1086 fol. 96r en 115r; nr. 1111 p. 104; nr. 21845 fol. 28r) overeenkomt met Karel seniors zoon, Karel junior, of een derde persoon — zijn open onderzoeksvragen."
+        }
+      },
+      "gosnay": {
+        "name": "Het Gosnay-kinderhuis, 1384",
+        "collapsed": "Elf kinderen (4 jongens + 7 meisjes) in het Gosnay-kinderhuis, 1384; tussen 5 en 11 onbenoemd",
+        "expanded": "Het Bourgondische inventaris van het kasteel van Gosnay uit 1384 (ADN Rijsel B 16228 nr. 10948) registreert elf kinderen — vier jongens en zeven meisjes — onder de bewaarster Lisebette de Lichtervelde, met Marie Wiericx als econoom, Belle de Rolleghem als kamermeid, en Pierre Stemonc als knecht.<br/><br/><strong>Van de vier jongens:</strong> Victor is in 1389 gedocumenteerd te Langres onder de tutoraire zorg van Pierre de Cembourg (administratie) en Jean Regnaudot (onderwijs), nadat Filips de Stoute de jongens vóór 1385 naar Bourgondië had overgebracht. Lichtervelde 1935 p. 55 leest de vierde Gosnay-jongen voorzichtig als Robrecht, die in 1384 nog jong zou zijn geweest (gehuwd 1419). De overige twee jongens zijn slechts bekend onder de Vlaamse verkleinvormen Rennequin en Ginnequin uit de Langres-records van 1389; geen verder spoor na 1394.<br/><br/><strong>Van de zeven meisjes:</strong> Lichtervelde 1935 p. 55 vermoedt dat Johanna, Beatrice, Katherine I, en Katherine II onder hen kunnen zijn geweest — &ldquo;Peut être! Mais je ne puis apporter aucune précision à ce sujet.&rdquo; Geen van deze identificaties kan op grond van overgeleverde primaire bronnen worden vastgesteld.<br/><br/><strong>Het onbenoemde aantal:</strong> tussen vijf en elf Gosnay-kinderen blijven in overgeleverde primaire bronnen onbenoemd, afhankelijk van hoe Lichtervelde's vermoedens zich oplossen. De maximum-overlap-lezing (Robrecht als vierde jongen + Johanna + Beatrice + Katherine I + Katherine II onder de meisjes, allen bevestigd) laat vijf werkelijk onbenoemd (twee jongens — Rennequin en Ginnequin slechts door verkleinvorm — en drie meisjes). De voorzichtige lezing (alleen Victor bevestigd te Gosnay) laat tot elf onbenoemd.<br/><br/>Na 1394 zijn geen verdere stukken over de Gosnay-inrichting, de Langres-tutoraire regeling, of hun uitgaven bewaard in Bourgondische, Artezische of Vlaamse rekeningen."
+      }
+    }
   },
   "robrecht": {
     "page_title": "Robrecht van Vlaenderen — Heer van Elverdinghe en Vlamertinghe",

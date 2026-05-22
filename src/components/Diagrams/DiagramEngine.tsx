@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef, useMemo, Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 export interface NodeConfig {
@@ -56,16 +57,50 @@ export interface AnnotationDef {
 
 // An expansion panel renders below the canvas (above the legend) when
 // triggered by clicking a node with `expandsTo` matching its id. Used for
-// "Other Documented Lines" stacked-paper pattern on the Overview diagram.
+// the wider-cohort stacked-paper pattern on the Overview diagram and any
+// future diagram that wants per-tile click-to-toggle disclosure.
+//
+// Two tile shapes are supported, distinguished by which fields are set:
+//
+//   (a) Legacy shape — `body` set; renders the entry inline with no
+//       click-to-toggle. Used by older diagrams that group a few related
+//       entries under one stacked-paper card.
+//
+//   (b) Wider-cohort shape — `collapsed` and `expanded` both set; renders
+//       a click-to-toggle tile that shows `collapsed` by default and
+//       swaps in `expanded` on click. Carries optional metadata: a
+//       small-caps source-tier `layer` label, an `uncertain` flag that
+//       renders a gold italic tag, a `state` dot (gold for documented-son
+//       lines that go cold, grey for figures with no documented issue),
+//       and an `outsideSchema` flag that styles the tile with a gold
+//       left accent for entries that sit outside the three-state schema
+//       (e.g. the 1384 Gosnay nursery aggregate tile).
 export interface ExpansionEntry {
   name: string;
   dates?: string;
-  body: string;
+  // Legacy single-body shape. Optional now that the wider-cohort shape
+  // (collapsed + expanded) is supported.
+  body?: string;
   src?: string;
+  // Wider-cohort shape — set both to opt into per-tile click-to-toggle.
+  collapsed?: string;
+  expanded?: string;
+  // Optional metadata for wider-cohort tiles. Ignored on legacy entries.
+  uncertain?: boolean;
+  layer?: string;
+  outsideSchema?: boolean;
+  state?: 'strong_candidate' | 'no_issue_documented';
 }
 export interface ExpansionPanelDef {
   id: string;
   heading: string;
+  // Optional intro paragraph rendered above the tile grid. Set on the
+  // wider-cohort panel; legacy panels omit it.
+  intro?: string;
+  // Optional state-dot legend rendered between intro and entries grid.
+  // Each item renders as a small filled circle + label. Used to explain
+  // the per-tile state dots on wider-cohort panels.
+  stateLegend?: Array<{ color: string; label: string }>;
   entries: ExpansionEntry[];
 }
 
@@ -394,6 +429,7 @@ interface LineageDiagramProps {
 }
 
 export default function LineageDiagram({ diagram, title, subtitle }: LineageDiagramProps) {
+  const { t } = useTranslation();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const tipRef = useRef<HTMLDivElement>(null);
@@ -404,6 +440,28 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
   const [scale, setScale] = useState(1);
   // Expansion panel state — holds the id of the currently-open panel, or null
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  // Per-tile expansion state for wider-cohort panels. Keyed by panel id,
+  // value is the set of tile indices currently expanded within that panel.
+  // Legacy expansion entries (body shape) ignore this state.
+  const [expandedTiles, setExpandedTiles] = useState<Record<string, Set<number>>>({});
+
+  // Close the expansion panel and clear all per-tile expansions. Called
+  // from the CLOSE button and when a stacked node is clicked to toggle
+  // its panel closed.
+  const closeExpansion = useCallback(() => {
+    setExpandedId(null);
+    setExpandedTiles({});
+  }, []);
+
+  const toggleTile = useCallback((panelId: string, tileIdx: number) => {
+    setExpandedTiles((prev) => {
+      const current = prev[panelId] ?? new Set<number>();
+      const next = new Set(current);
+      if (next.has(tileIdx)) next.delete(tileIdx);
+      else next.add(tileIdx);
+      return { ...prev, [panelId]: next };
+    });
+  }, []);
 
   // Parse viewBox for canvas dimensions
   const [canvasW, canvasH] = useMemo(() => {
@@ -469,7 +527,14 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
     e.stopPropagation();
     // Stacked nodes toggle their expansion panel instead of pinning a tooltip
     if (data.variant === 'stacked' && data.expandsTo) {
-      setExpandedId((cur) => (cur === data.expandsTo ? null : data.expandsTo!));
+      setExpandedId((cur) => {
+        if (cur === data.expandsTo) {
+          // Closing — also clear per-tile expansions
+          setExpandedTiles({});
+          return null;
+        }
+        return data.expandsTo!;
+      });
       setPinned(null);
       setTipData(null);
       return;
@@ -807,7 +872,7 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
                 </div>
                 <button
                   type="button"
-                  onClick={() => setExpandedId(null)}
+                  onClick={closeExpansion}
                   style={{
                     fontFamily: 'Cinzel, serif',
                     fontSize: 11,
@@ -820,9 +885,64 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
                   }}
                   aria-label="Close expansion panel"
                 >
-                  CLOSE ×
+                  {t('research.cohort_sidebar.close_label')} ×
                 </button>
               </div>
+              {panel.intro && (
+                <div
+                  style={{
+                    fontFamily: 'EB Garamond, Georgia, serif',
+                    fontSize: 15,
+                    color: '#f0e8d0',
+                    lineHeight: 1.6,
+                    marginBottom: 18,
+                    maxWidth: 880,
+                  }}
+                >
+                  {panel.intro}
+                </div>
+              )}
+              {panel.stateLegend && panel.stateLegend.length > 0 && (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '8px 20px',
+                    marginBottom: 16,
+                    padding: '8px 12px',
+                    background: 'rgba(255,255,255,0.02)',
+                    border: '1px solid #2a2f40',
+                    borderRadius: 4,
+                  }}
+                >
+                  {panel.stateLegend.map((item, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        fontFamily: 'EB Garamond, Georgia, serif',
+                        fontSize: 13,
+                        color: '#d0d4dc',
+                      }}
+                    >
+                      <span
+                        aria-hidden="true"
+                        style={{
+                          display: 'inline-block',
+                          width: 8,
+                          height: 8,
+                          borderRadius: '50%',
+                          background: item.color,
+                          flexShrink: 0,
+                        }}
+                      />
+                      {item.label}
+                    </div>
+                  ))}
+                </div>
+              )}
               <div
                 style={{
                   display: 'grid',
@@ -830,7 +950,95 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
                   gap: 14,
                 }}
               >
-                {panel.entries.map((entry, idx) => (
+                {panel.entries.map((entry, idx) => {
+                  // Wider-cohort tile shape — collapsed/expanded set, per-tile click-to-toggle
+                  if (entry.collapsed !== undefined && entry.expanded !== undefined) {
+                    const isExpanded = expandedTiles[panel.id]?.has(idx) ?? false;
+                    const stateColor =
+                      entry.state === 'strong_candidate' ? '#c4a55a' :
+                      entry.state === 'no_issue_documented' ? '#9ca3af' :
+                      null;
+                    return (
+                      <div
+                        key={idx}
+                        onClick={() => toggleTile(panel.id, idx)}
+                        style={{
+                          background: '#1c2030',
+                          border: '1px solid #6b7180',
+                          borderLeft: entry.outsideSchema ? '3px solid #c4a55a' : '1px solid #6b7180',
+                          borderRadius: 6,
+                          padding: '12px 14px',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        {entry.layer && (
+                          <div
+                            style={{
+                              fontFamily: 'Cinzel, serif',
+                              fontSize: 10,
+                              letterSpacing: '0.18em',
+                              color: '#9ca3af',
+                              textTransform: 'uppercase',
+                              marginBottom: 6,
+                            }}
+                          >
+                            {entry.layer}
+                          </div>
+                        )}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                          {stateColor && (
+                            <span
+                              aria-hidden="true"
+                              style={{
+                                display: 'inline-block',
+                                width: 8,
+                                height: 8,
+                                borderRadius: '50%',
+                                background: stateColor,
+                                flexShrink: 0,
+                              }}
+                            />
+                          )}
+                          <div
+                            style={{
+                              fontFamily: 'Cinzel, serif',
+                              fontSize: 13,
+                              fontWeight: 600,
+                              color: '#f0e8d0',
+                            }}
+                          >
+                            {entry.name}
+                          </div>
+                          {entry.uncertain && (
+                            <span
+                              style={{
+                                fontFamily: 'EB Garamond, Georgia, serif',
+                                fontStyle: 'italic',
+                                fontSize: 12,
+                                color: '#c4a55a',
+                              }}
+                            >
+                              {t('research.cohort_sidebar.uncertain_label')}
+                            </span>
+                          )}
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: 'EB Garamond, Georgia, serif',
+                            fontSize: 14,
+                            color: '#f0e8d0',
+                            marginTop: 8,
+                            lineHeight: 1.55,
+                          }}
+                          dangerouslySetInnerHTML={{
+                            __html: isExpanded ? entry.expanded! : entry.collapsed!,
+                          }}
+                        />
+                      </div>
+                    );
+                  }
+                  // Legacy tile shape — single body, no toggle
+                  return (
                   <div
                     key={idx}
                     style={{
@@ -887,7 +1095,8 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
                       </div>
                     )}
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           );

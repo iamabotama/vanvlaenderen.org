@@ -430,26 +430,87 @@
     "notes_source_4_text": "Jean-François Nieus, \"Aristocratic seal ownership in twelfth-century Flanders: A world in between\" (preprint, Academia.edu, 2021; University of Namur; forthcoming in peer-reviewed publication). Provides historical depth for how Flemish elite identity and territorial names functioned in the comital network. Discussed in full on the Seals, Lions, and the Politics of a Surname page.",
     "notes_source_4_linktext": "Read the Seals article →",
     "diagram_sr_heading": "Research overview diagram — text summary",
-    "cohort_heading": "The full cohort — Despars's 1383 enumeration",
-    "cohort_intro_p1": "When Louis II de Male died in 1383, Despars's <em>Cronijcke</em> enumerates nine bastard sons and two natural daughters. At least five of the sons founded the surname-bearing lines documented above. The remaining six members of the cohort — four sons whose lines ended, remain undocumented, or trail off after a single attested generation, and two daughters who carried the name only in marriage — complete the picture.",
-    "cohort_intro_p2": "Lichtervelde's 1935 study documents &ldquo;at least eighteen&rdquo; natural children of Louis II across all available sources, including a nursery of eleven resident at Gosnay c. 1384. The two figures sit at different resolutions: Despars names a closed sixteenth-century list; Lichtervelde counts every documentable head across multiple sources. They aren't in conflict — they answer different questions.",
-    "cohort_legend_aria": "Cohort state legend",
-    "cohort_legend_lineage": "Documented lineage — see linked page",
-    "cohort_legend_undocumented": "Lineage undocumented",
-    "cohort_legend_no_issue": "Documented no issue",
-    "cohort_legend_married_out": "Surname carried in marriage only",
-    "cohort_daughters_subheading": "Daughters",
-    "cohort_entry_dhase_caption": "Killed at Nicopolis 1396. Four documented children; territorial succession to Robrecht and Victor.",
-    "cohort_entry_rodolf_caption": "Densely attested across Vol II (pre-1383), Aerdenburg (1385), council rolls (1408), Agincourt casualty list (1415). No descendants documented in any source.",
-    "cohort_entry_colaert_caption": "Appears only in the master list and a Vol II witness list (p. 507). No further attestation.",
-    "cohort_entry_devriese_caption": "Killed at Nicopolis 1396. Line continues through Marie van Ghistele and Jean de Praet; five-generation extent to 1545.",
-    "cohort_entry_sansterre_caption": "Lord of Drincham (granted c. 1383). Killed at Nicopolis 1396. Line continues through Wilhelmine de Nevele to a documented son lord of Drincham 1419.",
-    "cohort_entry_hector_caption": "Career 1382–1436. One documented descendant: son Adriaen, attested 1453 as &ldquo;lord of Voorhoute, son of the late Hector.&rdquo; Adriaen's own descendants undocumented.",
-    "cohort_entry_robrecht_caption": "Lord of Elverdinghe and Vlamertinghe; burgrave of Ypres. D. 1434. Natural son Karel II at Langemark 1491; line continues through Karel's daughter.",
-    "cohort_entry_karel_caption": "Master list (1383) and the 1430 testament executor list only. No biographical attestation between the two; no descendants documented. Distinct from Karel II (Robrecht's son).",
-    "cohort_entry_victor_caption": "D. 1431; captain of Saint-Omer. Three natural sons in primary charters (1427, 1441, 1446). The proposed progenitor of the Meetjesland surname cluster.",
-    "cohort_entry_johanne_caption": "Married Sir Diederijck van Hontschote. Issue under the Hontschote surname.",
-    "cohort_entry_margriete_caption": "Married Sir Robrecht van Vaveringny, marshal of Flanders. D. March 1388. Issue under the Vaveringny surname."
+    "cohort_sidebar": {
+      "heading": "The wider cohort",
+      "intro": "Louis de Male's documented natural cohort numbers at least eighteen, attested across the 1384 ducal testament, Vredius's chronicle, Pierre de Lichtervelde's 1935 archival work, the Despars compendium, and a Burgundian inventory at Lille. Of his surviving sons — the potential progenitors of the van Vlaenderen surname — at least five carried it forward and appear above. The remainder of the cohort sits below. Click any tile to expand.",
+      "stack_label": "The wider cohort",
+      "click_hint": "Click to open ▾",
+      "close_label": "Close",
+      "uncertain_label": "uncertain",
+      "state_strong_candidate": "Strong candidate — documented son, trail goes cold",
+      "state_no_issue_documented": "No issue documented — attested figure, no descendants in extant record",
+      "layer_testament": "TESTAMENT 1384",
+      "layer_vredius": "VREDIUS",
+      "layer_lichtervelde": "LICHTERVELDE ARCHIVAL",
+      "layer_despars": "DESPARS-ONLY",
+      "tile": {
+        "margriete_i": {
+          "name": "Margriete I (vrouw van Wavrin)",
+          "collapsed": "Testament 1384; m. Sgr. de Wavrin (700 livres parisis rente)",
+          "expanded": "Named in the 1384 ducal testament. Her father settled a 700 livres parisis <em>rente</em> on her marriage to the Sgr. de Wavrin (Lichtervelde 1935 p. 51, citing ARA Ch. des Comptes N° 2704, account of Jean Utenhove, fol. 68 v°). No bastard-line descendants documented under the Van Vlaenderen surname.<br/><br/><strong>Open identification question:</strong> Despars's A.1 enumeration names a &ldquo;Vrau Margriete&rdquo; married to Mer Robrecht van Vaveringny, marshal of Flanders, who died March 1388. Whether this is the same person as Lichtervelde's Margriete I (Wavrin) under a different source-rendering of the husband's family name, or a distinct daughter, is not pinned by available evidence. Wavrin and Vaveringny are independent noble families in different geographies, but transliteration variation in Despars's late-16th-century Middle Dutch rendering of French-language testament names cannot be excluded."
+        },
+        "margriete_ii": {
+          "name": "Margriete II (abdis van Petegem)",
+          "collapsed": "Testament 1384; Abbess of Peteghem by 1414",
+          "expanded": "Named in the 1384 ducal testament as the &ldquo;Nonnain de Peteghem.&rdquo; Abbess of Peteghem by 1414, drawing a pension of 75 livres (Lichtervelde 1935 p. 51, citing ARA Ch. des Comptes N° 2704, account of Jean Utenhove, Receveur Général de Flandre, fol. 68 v°). Religious; no descendants expected or documented."
+        },
+        "pieter": {
+          "name": "Pieter († 3 maart 1376)",
+          "collapsed": "d. 3 March 1376; buried Ghent Dominicans",
+          "expanded": "Recorded by Vredius (<em>Genealogia Comitum Flandriae</em> T. II 2e partie p. 111) as having died before his father, on 3 March 1376, buried at the Ghent Dominicans (Lichtervelde 1935 p. 51). Predeceased the 1384 testament and is therefore not named in it."
+        },
+        "margriete_iii": {
+          "name": "Margriete III (Maldegem → Vuerhoute → Gand)",
+          "collapsed": "Vredius layer; m. successively Maldeghem → Vuerhoute → Gand; d. 1415",
+          "expanded": "Recorded by Vredius as the third Marguerite among Louis de Male's natural daughters. First widowed in 1374 from Florent de Maldeghem; subsequently married Hector de Vuerhoute, then Siger de Gand. Died 1415 (Lichtervelde 1935 p. 52). Documented as adult well before the 1384 testament — her first widowhood predates it by ten years — and therefore not among the Gosnay nursery cohort. No bastard-line descendants documented under the Van Vlaenderen surname."
+        },
+        "johanna": {
+          "name": "Johanna (vrouw van Hondschote)",
+          "collapsed": "Vredius layer; m. Theodoric Sgr. de Hondschote; living 1420; possibly Gosnay-girl",
+          "expanded": "Recorded by Vredius. Married Theodoric, lord of Hondschote. Still living in 1420 (Lichtervelde 1935 p. 52, citing ARA Ch. des Comptes N° 43125 fol. 19 r° and v°). No bastard-line descendants documented under the Van Vlaenderen surname; any issue carried the Hondschote surname.<br/><br/><strong>Possible Gosnay identification:</strong> Lichtervelde 1935 p. 55 conjectures that Johanna may have been among the seven girls at the Gosnay nursery in 1384, alongside Beatrice and the two Catherines — &ldquo;Peut être! Mais je ne puis apporter aucune précision à ce sujet.&rdquo; No identification can be pinned from extant primary sources."
+        },
+        "beatrice": {
+          "name": "Beatrice (vrouw van Robert le Maréchal)",
+          "collapsed": "Vredius layer; m. Robert le Maréchal, chamberlain; possibly Gosnay-girl",
+          "expanded": "Recorded by Vredius. Married Robert le Maréchal, chamberlain of the Count of Flanders and one of the witnesses to the 1384 ducal testament (Lichtervelde 1935 p. 52). No bastard-line descendants documented under the Van Vlaenderen surname.<br/><br/><strong>Possible Gosnay identification:</strong> Lichtervelde 1935 p. 55 conjectures that Beatrice may have been among the seven girls at the Gosnay nursery in 1384, alongside Johanna and the two Catherines. No identification can be pinned from extant primary sources."
+        },
+        "katherine_i": {
+          "name": "Katherine I (Ieper 1390)",
+          "collapsed": "1390 Ypres city accounts; &ldquo;Joncvr. Kateline&rdquo; attestation; possibly Gosnay-girl",
+          "expanded": "Surfaced by Pierre de Lichtervelde from the Ypres city accounts, third quarter 1390: a wedding gift of 38 livres entered under &ldquo;Dépenses diverses — XX Cronen ghescut ter brulocht <em>Joncvr. Kateline bastarde dochter Van Min here Lodewick Van Vlanderen</em>&rdquo; (Lichtervelde 1935 p. 52 fn. 7, citing KBR Manuscrits Fonds Merghelynck N° 32 T. II p. 141). The earliest vernacular-language attestation of the surname in Ypres city records.<br/><br/><strong>Possible Gosnay identification:</strong> Lichtervelde 1935 p. 55 conjectures that Katherine I may have been among the seven girls at the Gosnay nursery in 1384, alongside Johanna, Beatrice, and Katherine II. No identification can be pinned from extant primary sources.<br/><br/><strong>Open identification question — Katherine I vs Katherine II:</strong> Lichtervelde surfaces Katherine I and Katherine II as two separate archival attestations under the name without independent proof of distinctness. Katherine I is documented marrying in Ypres in 1390; Katherine II as a religious at Thieuloye-lez-Arras. The marriage-and-religion contrast is suggestive of distinct persons but does not exclude a subsequent religious vocation by Katherine I post-1390. The cautious documentary reading is to treat them as distinct; the conservative reading recognizes the merger possibility."
+        },
+        "katherine_ii": {
+          "name": "Katherine II (Thieuloye-lez-Arras)",
+          "collapsed": "Religious at the Monastère de la Thieuloye-lez-Arras; possibly Gosnay-girl",
+          "expanded": "Surfaced by Pierre de Lichtervelde from the Lille ADN Inventaire Sommaire: religious at the Monastère de la Thieuloye-lez-Arras (Lichtervelde 1935 p. 53, citing Lille ADN Inventaire Sommaire T. VII p. 213, 2e col., B. 3829). Religious; no descendants expected or documented.<br/><br/><strong>Possible Gosnay identification:</strong> Lichtervelde 1935 p. 55 conjectures that Katherine II may have been among the seven girls at the Gosnay nursery in 1384, alongside Johanna, Beatrice, and Katherine I. No identification can be pinned from extant primary sources.<br/><br/><strong>Open identification question — Katherine II vs Katherine I:</strong> See Katherine I tile. The merger possibility is non-trivial: Katherine I's 1390 Ypres marriage and Katherine II's Artois religious state could represent successive phases of one life rather than two distinct persons. The site treats them as distinct on the cautious documentary reading."
+        },
+        "rodolf": {
+          "name": "Rodolf († Azincourt 1415)",
+          "collapsed": "Despars compendium A.1 #2; fell at Agincourt 1415",
+          "expanded": "Recorded in the Despars compendium chronicle as the second of Louis de Male's natural sons (A.1 entry &ldquo;Mer Rodolf&rdquo;). Densely attested in primary sources: Vredius pre-1383, the Aerdenburg attestation of 1385, the council rolls of 1408, and the Agincourt casualty list for 25 October 1415. No descendants documented in any source."
+        },
+        "colaert": {
+          "name": "Colaert",
+          "collapsed": "Despars compendium A.1 #3; limited attestations",
+          "expanded": "Recorded in the Despars compendium chronicle as the third of Louis de Male's natural sons (A.1 entry &ldquo;Mer Colaert&rdquo;). Beyond the master list, attested only in a single witness list at Despars Vol II p. 507. No biographical detail beyond this; no descendants documented; no principal seigneurial holdings."
+        },
+        "hector": {
+          "name": "Hector (heer van Voorhoute)",
+          "collapsed": "Despars compendium A.1 #6 + B.16; son Adriaen documented; possible second son Buth",
+          "expanded": "Recorded in the Despars compendium chronicle as Mer Hector, heere van Voorhoute (A.1 #6). Career 1382–1436. Documented as <em>joncheer Hector, bastaert van Vlaenderen, heere van Voorhoute</em> in 1382.<br/><br/>One documented son: Adriaen van Vlaenderen, recorded at Despars compendium entry B.16 (Vol III p. 518) as son of Hector and grandson of Louis II &ldquo;van bastaerdye weghe,&rdquo; attested 1453 as &ldquo;lord of Voorhoute, son of the late Hector.&rdquo; Adriaen's own descendants are not documented in extant primary sources. A possible second son, Jacobus Buth, is under research (Q-2026-05-20-04) on the basis of the Despars compendium B.16 reading; verification against Buth's own chronicle and the Duinenabdij records is pending.<br/><br/>Hector's line propagates the comital-bastard surname into a documented second generation through Adriaen — meeting the &ldquo;Strong candidate&rdquo; criterion of at least one documented son with the surname descent in place. Whether Adriaen's line continues further, or whether Jacobus Buth is a verifiable second son, remain open research questions."
+        },
+        "karel_senior": {
+          "name": "Karel senior (testamentexecuteur 1430)",
+          "collapsed": "Despars compendium A.1 #8; Victor's 1430 testament executor; distinct from Langemark Karel (Robrecht's son)",
+          "expanded": "Recorded in the Despars compendium chronicle as Mer Charles among Louis de Male's natural sons (A.1 #8). Named as one of the executors in the 1430 testament of his brother Victor (Vredius A.26 listing &ldquo;beede sijn broeders,&rdquo; placing him as Louis de Male's son).<br/><br/>Disambiguated from the younger Karel of Langemark (Robrecht's son, d. 1491) per the 2026-05-18 Karel disambiguation finding. The disambiguation reconciles a long-standing internal tension in Vredius between the 1430 executor list and the Langemark epitaph — Lichtervelde 1935 p. 51 collapsed the two figures onto a 108-year reductio (a son of Louis de Male dying in 1491 would have been 108+ years old). The two-Karel reading treats the testament-executor and the Langemark figure as distinct: senior Karel as Louis de Male's natural son active 1430, junior Karel as Robrecht's son recorded at Langemark 1491.<br/><br/>Senior Karel's documented activity sits squarely in the 1430 generation as Victor's testament executor. Whether he had documented descendants — and whether the 1472–1476 Karel van Vlaenderen attested as chevalier and leenhouder at Ypres and Veurne (ARA Rekenkamer nr. 1086 fol. 96r and 115r; nr. 1111 p. 104; nr. 21845 fol. 28r) corresponds to senior Karel's son, junior Karel, or a third individual — are open research questions."
+        }
+      },
+      "gosnay": {
+        "name": "The Gosnay nursery, 1384",
+        "collapsed": "Eleven children (4 boys + 7 girls) at the Gosnay nursery, 1384; between 5 and 11 unnamed",
+        "expanded": "The 1384 Burgundian inventory of Château de Gosnay (Lille ADN B 16228 N° 10948) records eleven children — four boys and seven girls — under the governess Lisebette de Lichtervelde, with Marie Wiericx as économe, Belle de Rolleghem as chambermaid, and Pierre Stemonc as varlet.<br/><br/><strong>Of the four boys:</strong> Victor is documented at Langres in 1389 under the tutorial care of Pierre de Cembourg (administration) and Jean Regnaudot (instruction) after Philippe le Hardi transferred the boys to Burgundy by 1385. Lichtervelde 1935 p. 55 tentatively reads the fourth Gosnay boy as Robrecht, who would have been still young in 1384 (married 1419). The remaining two boys are known only by the Flemish diminutives Rennequin and Ginnequin from the 1389 Langres records; no further trace after 1394.<br/><br/><strong>Of the seven girls:</strong> Lichtervelde 1935 p. 55 conjectures that Johanna, Beatrice, Katherine I, and Katherine II may have been among them — &ldquo;Peut être! Mais je ne puis apporter aucune précision à ce sujet.&rdquo; None of these identifications can be pinned from extant primary sources.<br/><br/><strong>The unnamed count:</strong> between five and eleven Gosnay children remain unnamed in extant primary sources, depending on how Lichtervelde's conjectures resolve. The maximum-overlap reading (Robrecht as fourth boy + Johanna + Beatrice + Katherine I + Katherine II among the girls, all confirmed) leaves five truly unnamed (two boys — Rennequin and Ginnequin only by diminutive — and three girls). The conservative reading (only Victor confirmed at Gosnay) leaves up to eleven unnamed.<br/><br/>After 1394 no further records of the Gosnay establishment, the Langres tutorial arrangement, or their expenditures survive in Burgundian, Artois, or Flemish accounts."
+      }
+    }
   },
   "robrecht": {
     "page_title": "Robrecht van Vlaenderen — Lord of Elverdinghe and Vlamertinghe",
