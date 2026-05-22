@@ -329,7 +329,8 @@ export default function OverviewDiagram() {
   return (
     <LineageDiagram
       diagram={diagram}
-      subtitle={t('research.dossier_title')}
+      title={t('research.diagram_title')}
+      subtitle={t('research.diagram_subtitle')}
     />
   );
 }
