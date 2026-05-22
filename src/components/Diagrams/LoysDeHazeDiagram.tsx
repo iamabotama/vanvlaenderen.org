@@ -23,7 +23,7 @@ const EVIDENCE = {
 const LINE = '#5a6378';
 
 const diagram: DiagramDef = {
-  viewBox: '0 0 960 640',
+  viewBox: '0 0 960 730',
 
   nodes: [
     // ── Row 1 — Louis II de Male ─────────────────────────────────────────
@@ -148,7 +148,7 @@ const diagram: DiagramDef = {
   annotations: [
     {
       x: 480,
-      y: 588,
+      y: 595,
       align: 'center',
       maxWidth: 880,
       text: "Loys de Haze's seigniories at his 1396 death: Wessegem & Ursel reverted to the duke, regranted to half-brother Victor 11 Apr 1398 (ADN B 1604 fol. 184); Elverdinghe-Vlamertinghe passed to half-brother Robrecht; Vake to Regnault; Bortsant to Hector; Le Heneede + Oostkerke house to Kathelijne & Joanna.",
@@ -156,7 +156,7 @@ const diagram: DiagramDef = {
     },
     {
       x: 480,
-      y: 622,
+      y: 685,
       align: 'center',
       maxWidth: 880,
       text: "Plus a 22 October 1419 wedding of 'Myns heren s'Haze dochter' (Katelijne or Joanna) at Furnes, attended by uncles Victor and Robert — ADN B 43124 fol. 44v° and 58r°, via Lichtervelde 1935 p. 56 fn 2. Husband not yet identified.",
