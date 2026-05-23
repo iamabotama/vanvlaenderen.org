@@ -837,7 +837,87 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
           </div>
         </div>
 
-        {/* Expansion panel — renders below canvas when a stacked node is clicked */}
+        {/* Legend — sits between canvas and expansion panel so the always-visible
+            chrome stays at the top of the diagram. The expansion panel (when open)
+            slides in BELOW the legend as a drawer, not above it. */}
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '10px 18px',
+            padding: '12px 16px',
+            borderTop: '1px solid #1e2230',
+            background: 'rgba(255,255,255,0.015)',
+          }}
+        >
+          {diagram.legendItems.map((item, i) => (
+            <Fragment key={i}>
+              {item.forceBreakBefore && (
+                <div style={{ flexBasis: '100%', height: 0 }} aria-hidden="true" />
+              )}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 7,
+                  fontSize: 14,
+                  color: '#d0d4dc',
+                }}
+              >
+              {item.glyph ? (
+                item.glyphStyle === 'circle' ? (
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      width: 14,
+                      height: 14,
+                      lineHeight: '12px',
+                      borderRadius: '50%',
+                      border: '1px solid #8a8f9e',
+                      color: '#8a8f9e',
+                      fontFamily: 'EB Garamond, Georgia, serif',
+                      fontSize: 10,
+                      fontWeight: 500,
+                      textAlign: 'center',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {item.glyph}
+                  </span>
+                ) : (
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      width: 14,
+                      textAlign: 'center',
+                      color: '#8a8f9e',
+                      fontFamily: 'EB Garamond, Georgia, serif',
+                      fontSize: 14,
+                      lineHeight: 1,
+                      flexShrink: 0,
+                    }}
+                  >
+                    {item.glyph}
+                  </span>
+                )
+              ) : (
+                <div
+                  style={{
+                    width: 11,
+                    height: 11,
+                    borderRadius: 2,
+                    flexShrink: 0,
+                    background: item.color,
+                  }}
+                />
+              )}
+              {item.label}
+              </div>
+            </Fragment>
+          ))}
+        </div>
+
+        {/* Expansion panel — renders below canvas+legend when a stacked node is clicked */}
         {expandedId && diagram.expansions && (() => {
           const panel = diagram.expansions.find((p) => p.id === expandedId);
           if (!panel) return null;
@@ -1102,83 +1182,6 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
           );
         })()}
 
-        {/* Legend */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '10px 18px',
-            padding: '12px 16px',
-            borderTop: '1px solid #1e2230',
-            background: 'rgba(255,255,255,0.015)',
-          }}
-        >
-          {diagram.legendItems.map((item, i) => (
-            <Fragment key={i}>
-              {item.forceBreakBefore && (
-                <div style={{ flexBasis: '100%', height: 0 }} aria-hidden="true" />
-              )}
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 7,
-                  fontSize: 14,
-                  color: '#d0d4dc',
-                }}
-              >
-              {item.glyph ? (
-                item.glyphStyle === 'circle' ? (
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      width: 14,
-                      height: 14,
-                      lineHeight: '12px',
-                      borderRadius: '50%',
-                      border: '1px solid #8a8f9e',
-                      color: '#8a8f9e',
-                      fontFamily: 'EB Garamond, Georgia, serif',
-                      fontSize: 10,
-                      fontWeight: 500,
-                      textAlign: 'center',
-                      flexShrink: 0,
-                    }}
-                  >
-                    {item.glyph}
-                  </span>
-                ) : (
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      width: 14,
-                      textAlign: 'center',
-                      color: '#8a8f9e',
-                      fontFamily: 'EB Garamond, Georgia, serif',
-                      fontSize: 14,
-                      lineHeight: 1,
-                      flexShrink: 0,
-                    }}
-                  >
-                    {item.glyph}
-                  </span>
-                )
-              ) : (
-                <div
-                  style={{
-                    width: 11,
-                    height: 11,
-                    borderRadius: 2,
-                    flexShrink: 0,
-                    background: item.color,
-                  }}
-                />
-              )}
-              {item.label}
-              </div>
-            </Fragment>
-          ))}
-        </div>
       </div>
     </div>
   );

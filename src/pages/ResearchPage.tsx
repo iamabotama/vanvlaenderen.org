@@ -131,6 +131,21 @@ export default function ResearchPage() {
           </div>
         </div>
 
+        {/* ── Diagram caption — always-visible editorial bridge between the
+            diagram and the Research Branches section. The eighteen-count
+            framing also appears inside the wider-cohort panel intro, but
+            that intro is hidden until the stack is clicked; this paragraph
+            keeps the framing always visible. */}
+        <p style={{
+          margin: '1.5rem 0 2rem',
+          fontSize: '0.95rem',
+          lineHeight: 1.7,
+          color: 'var(--text-secondary, #d0d4dc)',
+          fontStyle: 'italic',
+        }}>
+          {t('research.diagram_caption')}
+        </p>
+
         {/* ── Branch Cards ────────────────────────────────────────── */}
         <section className={styles.section}>
           <h2>{t('research.branches_heading')}</h2>
