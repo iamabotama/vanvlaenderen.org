@@ -98,9 +98,6 @@ export default function ResearchPage() {
             <div style={{ fontSize: '0.72rem', fontFamily: 'var(--font-ui)', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
               {t('research.paradox_eyebrow')}
             </div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', color: 'var(--gold)', marginBottom: '0.5rem' }}>
-              {t('research.paradox_title')}
-            </div>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '0.9rem', fontStyle: 'normal' }} dangerouslySetInnerHTML={{ __html: t('research.paradox_body') }} />
             <Link
               to="/name/surname-origins"
@@ -401,6 +398,12 @@ export default function ResearchPage() {
               >
                 {t('research.notes_source_4_linktext')}
               </Link>
+            </p>
+            <p>
+              {t('research.notes_source_5_label')} <span dangerouslySetInnerHTML={{ __html: t('research.notes_source_5_text') }} />
+            </p>
+            <p>
+              {t('research.notes_source_6_label')} <span dangerouslySetInnerHTML={{ __html: t('research.notes_source_6_text') }} />
             </p>
           </div>
         </section>
