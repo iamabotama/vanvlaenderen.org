@@ -1,6 +1,6 @@
 <!--
   Despars Cronijcke — Cross-Reference Compendium
-  Source of truth: findings-despars-cronijcke-cross-reference-2026-05-18.md
+  Source of truth: the Despars cross-reference compendium in the project research corpus (2026-05-18).
   Edit this file to update site-rendered content; regenerate the PDF
   separately via WeasyPrint when content stabilises.
 
@@ -18,7 +18,7 @@ This v3.2 four-volume edition extends the Vol III–only treatment (v3.1, April 
 
 #### Volume II — the Cressiacensis era expanded
 
-Despars's Vol II covers the period 1067–1346 — the parental generation of the Maleani cohort. Six earlier comital bastards are documented in the volume, three of them previously identified in the Vredius compendium's Section H (the Cressiacensis cohort, A.1–A.6) and three of them new: **Mer Guy van Vlaenderen heere van Rijckenburch** (c. 1331), bastard of Robert of Cassel — a generation between the Cressiacensis and the Maleani that the Vredius corpus does not capture; **Mer Heyndrick van Vlaenderen heere van Ninive** (1339–1340), a senior Flemish military commander of uncertain parentage; and **Jan van Vlaenderen** (1304–1305), paternal half-brother of Count Robrecht III de Béthune — a bastard of Guy de Dampierre, one generation earlier than the Cressiacensis cohort. Two unrecognised attestations validate the Vol III master enumeration: **dHaze and Rodolf are named together** at p. 506 as "**beede sgrave bastaerde zuenen van Vlaenderen**" — the first independent attestation of Rodolf's existence outside the master list — and **Colaert** appears as "**die bastaert van Vlaenderen**" in a witness list at p. 507, validating the third master-list name. A separate Vol II passage at p. 220 attests **Isabella, bastard daughter of Louis I de Nevers**, married to Simon de Mirabello, with her tomb at Saint-Pharahildis (Ste-Veerle) Ghent — an independent attestation of Vredius A.5 / A.32 that confirms both the bastard status and the tomb location.
+Despars's Vol II covers the period 1067–1346 — the parental generation of the Maleani cohort. Six earlier comital figures are documented in the volume, three of them previously identified in the Vredius compendium's Section H (the Cressiacensis cohort, A.1–A.6) and three of them new: **Mer Guy van Vlaenderen heere van Rijckenburch** (c. 1331), bastard of Robert of Cassel — a generation between the Cressiacensis and the Maleani that the Vredius corpus does not capture; **Mer Heyndrick van Vlaenderen heere van Ninive** (1339–1340), a senior Flemish military commander since identified as a *legitimate* Dampierre cadet of the Lodi–Ninove line, not a bastard (see D.6); and **Jan van Vlaenderen** (1304–1305), paternal half-brother of Count Robrecht III de Béthune — a bastard of Guy de Dampierre, one generation earlier than the Cressiacensis cohort. Two unrecognised attestations validate the Vol III master enumeration: **dHaze and Rodolf are named together** at p. 506 as "**beede sgrave bastaerde zuenen van Vlaenderen**" — the first independent attestation of Rodolf's existence outside the master list — and **Colaert** appears as "**die bastaert van Vlaenderen**" in a witness list at p. 507, validating the third master-list name. A separate Vol II passage at p. 220 attests **Isabella, bastard daughter of Louis I de Nevers**, married to Simon de Mirabello, with her tomb at Saint-Pharahildis (Ste-Veerle) Ghent — an independent attestation of Vredius A.5 / A.32 that confirms both the bastard status and the tomb location.
 
 #### Volume IV — the Burgundian cohort
 
@@ -56,7 +56,7 @@ Despars enumerates nine bastard sons of Louis II de Male at p. 114–115 (entry 
 |---|---|---|---|
 | 1 | Mer Lodewijck, ghezeit dHase | Lodewijk "le Haze" (Section F · A.7, A.8) | Direct match. Both record Nicopolis 1396 death. Despars adds 1380 ambush at Torhout (B.1), 1381 young-knight portrait with age inference (B.2), 1382–83 ongoing field command (B.18, plus several adjacent attestations), 1385 council membership (B.3) and Biervliet defence (B.18), 1389 Paris tournament prize (B.20). Vredius adds the 1370 Gerard de Moor estate grant and son Renault de Flandres of la Vacke. |
 | 2 | Mer Rodolf (= Rufelaert) | not in Tab. XVI as primary; mentioned in passing | Despars uniquely identifies "Rufelaert van Vlaenderen, den bastaerden oom" at the 1385 Aerdenburg surprise (B.6), pairs dHaze and Rodolf jointly at Vol II p. 506 as "**beede sgrave bastaerde zuenen van Vlaenderen**" (D.2 — earlier than the Vol III master list by an indeterminate margin), and records "Rodolph van Vlaenderen" among the Agincourt 1415 dead (B.9) plus an additional 1408 attestation at the side of Jan van Bethune (B.22). Vredius silent on this branch. |
-| 3 | Mer Colaert | not present | Master-list mention in Despars; validated by a separate Vol II witness list at p. 517 where "**Colaert, die bastaert van Vlaenderen**" appears as a witness (D.3). No further chronicle attestation. Possibly the same as "Cornelis" or "Niclais" of other genealogies; needs cross-checking against Gaillard's Collectanea. |
+| 3 | Mer Colaert | not present | Master-list mention in Despars; validated by a separate Vol II witness list at p. 507 where "**Colaert, die bastaert van Vlaenderen**" appears as a witness (D.3). No further chronicle attestation. Possibly the same as "Cornelis" or "Niclais" of other genealogies; needs cross-checking against Gaillard's Collectanea. |
 | 4 | Mer Lodewijck, ghezeit de Vriese | Louis Friese (Section C · A.9) | Direct match. Despars confirms the Praet/Aeltere/Woestine descent and at p. 425 (B.15) explicitly names "**F. Mer Lodewijcx ghezeit de Vriese**" as the father of the second-generation Mer Jan van Vlaenderen — a one-line filiation that Vredius also derives from de l'Espinoy. |
 | 5 | Mer Jan, ghezeit zonder Landt | Jan "sans terre," Lord of Drincham | Direct match. Both record Nicopolis 1396 death (B.7); Despars adds the lordship of Drincham as "**toecommende**" (forthcoming) at the 1383 master-list passage and confirms the lordship in B.17 at p. 93 (1383). |
 | 6 | Mer Hector, heere van Voorhoute | not in Tab. XVI as Maleani son; appears as husband of Margriete (II) in Vredius A.22 | The two sources may describe different Hectors, or — more likely — the same Hector with conflicting filiations. Despars repeatedly identifies this Hector as bastard son of Louis II: at B.4 (1382 Rypelmonde), B.8 (1405 with Victor), B.18 (1385 Biervliet with dHaze as brother), and B.23 (1436 Hulst — possibly Hector aged ~71 or a "Hector II" son of the same name). Vredius A.22 treats his wife Margriete (II) as the Maleani-descended party, with Hector as a separately-attested van Vuerhoute knight. The 1453 Adriaen passage (B.16) is decisive for Despars's reading: it explicitly says Adriaen's grandfather was Louis II "by way of bastardy." See also cross-flag F.6 on the chronology of "Mer Hectoors". |
@@ -79,7 +79,7 @@ Johanne is the sister jointly receiving the 1373 city-of-Ghent dowry in Vredius 
 | Vol II p. 507 (D.3) | Colaert "**die bastaert van Vlaenderen**" in witness list | not in Vredius | New — validates master-list position 3 |
 | Vol II p. 466 (D.4) | Mer Ruselart van Vlaenderen, bastard brother of Louis de Male, 1364 | Vredius A.4 ("Mer Ruflard" in Cressiacensis knight-brothers list) | Working ID: Despars Ruselart = Vredius Ruflard (long-s ↔ f confusion) |
 | Vol II p. 307 (D.5) | Mer Guy van Vlaenderen heere van Rijckenburch, bastard of Robert of Cassel, c. 1331 | not in Vredius | New — a parallel lineage between Cressiacensis and Maleani |
-| Vol II pp. 336+ (D.6) | Mer Heyndrick van Vlaenderen heere van Ninive, military service 1339–40 | not in Vredius | New — parentage unspecified |
+| Vol II pp. 336+ (D.6) | Mer Heyndrick van Vlaenderen heere van Ninive, military service 1339–40 | not in Vredius | New — legitimate Dampierre cadet (Lodi–Ninove line), not a bastard |
 | Vol II p. 167 (D.7) | Jan van Vlaenderen, paternal half-brother of Count Robrecht III, 1304–05 | not in Vredius | New — bastard of Guy de Dampierre |
 | Vol II p. 117 (D.8) | Mer Guy + Jan van Namen as paternal half-brothers of count | partial — Guy de Dampierre's bastards | New |
 
@@ -939,7 +939,7 @@ Colaert's name is now established as a real Maleani bastard, not a phantom in th
 
 **Source precedence**
 
-For Colaert as a Maleani bastard: cite **Despars Vol. II p. 517** as the only known primary attestation outside A.1.
+For Colaert as a Maleani bastard: cite **Despars Vol. II p. 507** as the only known primary attestation outside A.1.
 
 Despars, *Cronijcke*, Vol. II, p. 507.
 
@@ -1021,7 +1021,7 @@ Despars, *Cronijcke*, Vol. II, p. 307 (with p. 303). No Vredius parallel.
 
 ### D.6 — Mer Heyndrick van Vlaenderen, Heere van Ninive
 
-*Military service 1339–1340 — parentage unspecified*
+*Military service 1339–1340 — identified as the legitimate Dampierre cadet Henri de Flandre, heer van Ninove (d. 1366)*
 
 **Source:** Despars, *Cronijcke*, Vol. II, pp. 336, ~345, ~349
 **Type:** Three military command name lists
@@ -1044,17 +1044,17 @@ In 1339–1340, **Mer Heyndrick van Vlaenderen, heere van Ninive (Ninove)** appe
 (2) Vol. II ~p. 345 — listed alongside the Earl of Pembroke, Earl Richard of Stafford, and Sir Walter Manny
 (3) Vol. II ~p. 349 — listed in 1340 alongside John of Hainaut and the lord of Beaumont
 
-The seigniory "*heere van Ninive*" refers to Ninove, in eastern Flanders. Mer Heyndrick's parentage is not specified by Despars. He is *not* in the Vredius compendium A.4 list of Louis I's five knight-brothers (Tristram, Ruflard, Lancelot, Guy, Perceval), so he is unlikely to be a *direct* bastard of Louis I de Nevers in the Cressiacensis cohort. Possible identifications:
+The seigniory "*heere van Ninive*" refers to Ninove, in eastern Flanders. Mer Heyndrick's parentage is not specified by Despars, and he is *not* in the Vredius compendium A.4 list of Louis I's five knight-brothers (Tristram, Ruflard, Lancelot, Guy, Perceval). The identification is settled by the records-based history of the Ninove lordship: the 1339–1340 commander is **Henri de Flandre, heer van Ninove (d. 1366) — a *legitimate* cadet of the comital house of Dampierre, not a bastard.** He was the son of Henri de Flandre, Comte de Lodi (d. 6 November 1337), himself a legitimate son of Count Guy de Dampierre by his second wife Isabella of Luxembourg. The county of Lodi (in Italy) was a grant of Emperor Henry VII of Luxembourg; the elder Henri settled at Ninove and walled the town, and the younger Henri died without heir in 1366, the lordship reverting to the Counts of Flanders (V. Fris, *Korte schets der geschiedenis van Ninove*, De Vlaamsche Gids, 1914). The contemporary Gelre Armorial (c. 1370–95, folio 49v, shield 413) records the arms of Henri de Flandre, Seigneur de Ninove: the Flanders lion, crowned gules, differenced with a compony cotice argent and gules — a cadency difference, not a bastardy mark.
 
-(1) **An older-generation bastard** — possibly a bastard of Robrecht III de Béthune (d. 1322) like Mer Guy of Rijckenburch (D.5), or even of Guy de Dampierre (d. 1305).
-(2) **A second-generation bastard descendant** — son of one of the Cressiacensis knight-brothers (e.g., son of Mer Tristram heere vanden Tempel).
-(3) **A surname-carrier from a separate non-comital line** that has acquired or been given the Ninove seigniory.
+Two disambiguation guards follow:
 
-The 1339–1340 dating places his floruit in his mature years, suggesting a birth date c. 1290–1310, which is consistent with reading (1) or (2). No further information is available in Despars. See queue item Q.3.
+(1) **Not a comital bastard.** L'Espinoy (*Recherche des antiquitez et noblesse de Flandres*, Douai 1631, Ch. XXXI p. 70 and armorial pp. 108, 110) compresses the Lodi father and the Ninove son into a single "Henry de Flandres, comte de Lode, seigneur de Ninove" and files him among Louis de Male's bastards. Both moves are errors: the figure is two legitimate Dampierre cadets, two-to-three generations *senior* to Louis de Male, and the line was extinct by 1366.
+
+(2) **Not the later Nevers bastard.** This Heyndrick is also distinct from the Hendrik van Vlaenderen, bastard of Louis I de Nevers, attested c. 1440 in coastal Zeeland-Flanders (De Flou, *Woordenboek der Toponymie*, Vol. 16 col. 554) — a separate, later figure.
 
 **Source precedence**
 
-For Mer Heyndrick van Vlaenderen, heere van Ninive, as Flemish military commander 1339–1340: **Despars Vol. II is the only known primary attestation**. This is a clean addition to the project corpus.
+For Mer Heyndrick van Vlaenderen, heere van Ninive, as Flemish military commander 1339–1340: **Despars Vol. II is the only known chronicle attestation of the command itself.** The genealogical identification rests on V. Fris, *Korte schets der geschiedenis van Ninove* (De Vlaamsche Gids, 1914) and the Gelre Armorial (folio 49v, shield 413).
 
 Despars, *Cronijcke*, Vol. II, pp. 336, ~345, ~349. No Vredius parallel.
 

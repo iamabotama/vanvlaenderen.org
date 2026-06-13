@@ -34,7 +34,7 @@ export default function DrinchamDossierPage() {
         <meta property="og:description" content="The 1383 Drincham land grant, four documented generations in French Flanders, and the geographic-documentary case for the Volckerinckhove cluster." />
         <meta property="og:url" content="https://vanvlaenderen.org/research/drincham-dossier" />
         <meta property="og:type" content="article" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Jan sans terre van Vlaenderen \\u2014 Archival Dossier","description":"Primary source dossier for Jan sans terre van Vlaenderen and the Drincham line.","url":"https://vanvlaenderen.org/research/drincham-dossier","inLanguage":"en","dateModified":"2026-04-16","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}`}} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Jan sans terre van Vlaenderen \\u2014 Archival Dossier","description":"Primary source dossier for Jan sans terre van Vlaenderen and the Drincham line.","url":"https://vanvlaenderen.org/research/drincham-dossier","inLanguage":"en","dateModified":"2026-06-12","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}`}} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Drincham Dossier","item":"https://vanvlaenderen.org/research/drincham-dossier"}]}`}} />
       </Helmet>
 
@@ -49,7 +49,7 @@ export default function DrinchamDossierPage() {
           <h1>Jan "sans terre" van Vlaenderen</h1>
           <div className="gold-rule" />
           <p className={styles.heroLead}>
-            Natural son of Louis II de Male, Count of Flanders; lord of Drincham near Cassel, French Flanders; progenitor of the most plausible documented founding line for the French Flanders Van Vlaenderen surname cluster. Updated April 2026 from direct reading of Vredius.
+            Natural son of Louis II de Male, Count of Flanders; lord of Drincham near Cassel, French Flanders; progenitor of the most plausible documented founding line for the French Flanders Van Vlaenderen surname cluster. Updated April 2026 from direct reading of Vredius; extended June 2026 from Donche's records-based study of the line.
           </p>
         </div>
       </div>
@@ -58,7 +58,7 @@ export default function DrinchamDossierPage() {
 
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Archival Dossier</h2>
-          <div className={researchStyles.dossierMeta}>Updated April 2026</div>
+          <div className={researchStyles.dossierMeta}>Updated June 2026</div>
         </div>
 
         {/* ── Methodology ──────────────────────────────────────────── */}
@@ -86,7 +86,7 @@ export default function DrinchamDossierPage() {
             </div>
           </div>
           <p style={{ fontSize: '0.85rem', marginTop: '1.5rem', fontStyle: 'italic', color: 'var(--text-muted)', borderTop: '1px solid rgba(232, 184, 48, 0.1)', paddingTop: '1rem' }}>
-            <strong>Primary source:</strong> Olivarius Vredius (Olivier de Wrée), <em>Genealogia Comitum Flandriae</em>, Pars Secunda, Tabula XVI, foll. 281–283 (PDF pp. 291–293), Bruges: J.B. &amp; Lucas Kerchovios, 1642–43. Direct reading conducted April 2026. Collateral attestation from FMG MedLands: Flanders, Hainaut (v5.0, January 2025) and de l'Espinoy, <em>Recherche des antiquitez et noblesse de Flandres</em> (Douai, 1631).
+            <strong>Primary source:</strong> Olivarius Vredius (Olivier de Wrée), <em>Genealogia Comitum Flandriae</em>, Pars Secunda, Tabula XVI, foll. 281–283 (PDF pp. 291–293), Bruges: J.B. &amp; Lucas Kerchovios, 1642–43. Direct reading conducted April 2026. Collateral attestation from de l'Espinoy, <em>Recherche des antiquitez et noblesse de Flandres</em> (Douai, 1631), Livre 2, Chapitre XXXI.
           </p>
         </section>
 
@@ -94,7 +94,7 @@ export default function DrinchamDossierPage() {
         <section className={styles.section}>
           <h2>Identity and Parentage <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            Jan van Vlaenderen, surnamed <em>sans terre</em> ("without land"), was a natural son of Louis II de Male, Count of Flanders (1330–1384). De l'Espinoy identifies him as the fifth natural son of Louis de Male. His mother was <strong>Ive de Luu</strong>, recorded in Vredius.
+            Jan van Vlaenderen, surnamed <em>sans terre</em> ("without land"), was a natural son of Louis II de Male, Count of Flanders (1330–1384). De l'Espinoy identifies him as the fifth natural son of Louis de Male. His mother is not securely identified: the secondary literature offers Petronella de la Val (per Donche, citing De Herckenrode and Van Hille), but no source examined by this project names her directly; the question remains open.
           </p>
           <p>
             The surname <em>van Vlaenderen</em> — used by Jan and his descendants — is confirmed as a shared marker of comital bastard identity in the Gaillard text quoted by Vredius, which names all three brothers killed at Nicopolis explicitly under the Van Vlaenderen name:
@@ -125,7 +125,7 @@ export default function DrinchamDossierPage() {
           <JanDrinchamDiagram />
           <div className="sr-only">
             <h3>Drincham line lineage &mdash; text summary</h3>
-            <p>This diagram shows five generations of the Drincham line descending from Louis II de Male, Count of Flanders (1330&ndash;1384). Generation 2: Jan sans terre van Vlaenderen (died 28 September 1396 at Nicopolis), natural son of Louis de Male by Ive de Luu; granted the castle and lordship of Drincham near Cassel on 22 November 1383; married Guillemette de Nevele. Generation 3: Jan van Vlaenderen, Lord of Drincham, married Isabella de Ghistelles Dame de Vissaert. Generation 4: four documented sons &mdash; Jan (Lord of Drincham, married Isabella de Vernieulles), Jacques de Drincham (died 10 April 1459, Bailiff of Veurne, his church epitaph preserved in Gaillard via Vredius is the line's most concrete physical evidence), Loys de Drincham, and Francq de Drincham. Generation 5: Jan III's documented children &mdash; Philippe de Flandres (died unmarried, line terminates), Jan de Flandres (legitimated at Arras, last documented member of the Drincham line in Vredius), and three unnamed daughters. After circa 1473 the Drincham line is no longer documented in Vredius. For the 15th-to-16th-century evidentiary gap and the French Flanders cluster hypothesis, see the Gap Dossier.</p>
+            <p>This diagram shows five generations of the Drincham line descending from Louis II de Male, Count of Flanders (1330&ndash;1384). Generation 2: Jan sans terre van Vlaenderen (died 25 September 1396 at Nicopolis), natural son of Louis de Male (his mother is not securely identified); granted the castle and lordship of Drincham near Cassel on 22 November 1383; married Guillemette de Nevele. Generation 3: Jan van Vlaenderen, Lord of Drincham, married Isabella de Ghistelles Dame de Vissaert. Generation 4: four documented sons &mdash; Jan (Lord of Drincham, married Isabella de Vernieulles), Jacques de Drincham (died 10 April 1459, Bailiff of Veurne, his church epitaph preserved in Gaillard via Vredius is the line's most concrete physical evidence), Loys de Drincham, and Francq de Drincham. Generation 5: Jan III's documented children &mdash; Philippe de Flandres (died unmarried, line terminates), Jan de Flandres (legitimated at Arras, last documented member of the Drincham line in Vredius), and three unnamed daughters. After circa 1473 the Drincham line is no longer documented in Vredius. For the 15th-to-16th-century evidentiary gap and the French Flanders cluster hypothesis, see the Gap Dossier.</p>
           </div>
         </div>
 
@@ -184,15 +184,15 @@ export default function DrinchamDossierPage() {
                   <td style={{ ...tdStyle, color: 'var(--gold)', fontWeight: 600 }}>Gen 1</td>
                   <td style={{ ...tdStyle, fontWeight: 500 }}>Jan van Vlaenderen, "sans terre"<br /><span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 400 }}>Lord of Drincham</span></td>
                   <td style={{ ...tdStyle, color: 'var(--text-muted)' }}>Guillemette de Nevele<br /><span style={{ fontSize: '0.82rem' }}>dau. of Willem de Nevele &amp; Guillemette de Halewijn</span></td>
-                  <td style={tdStyle}>Land grant 22 Nov 1383. Killed at Nicopolis 28 Sep 1396. Mother: Ive de Luu.</td>
+                  <td style={tdStyle}>Land grant 22 Nov 1383. Killed at Nicopolis 25 Sep 1396. Mother: not securely identified.</td>
                   <td style={tdStyle}><span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></td>
                 </tr>
                 <tr style={{ background: 'rgba(255,255,255,0.015)' }}>
                   <td style={{ ...tdStyle, color: 'var(--gold)', fontWeight: 600 }}>Gen 2</td>
                   <td style={{ ...tdStyle, fontWeight: 500 }}>Jan van Vlaenderen<br /><span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 400 }}>Lord of Drincham</span></td>
                   <td style={{ ...tdStyle, color: 'var(--text-muted)' }}>Isabella de Ghistelles<br /><span style={{ fontSize: '0.82rem' }}>Dame de Vissaert</span></td>
-                  <td style={tdStyle}>Son of Gen 1. No dates given in source.</td>
-                  <td style={tdStyle}><span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></td>
+                  <td style={tdStyle}>Heir of Gen 1 per the Vredius–Donche transmission. No dates given in source. The founding filiation (Jan sans terre → this Jan) awaits primary confirmation in the ADN Lille B-series record of the lordship's descent after 1396.</td>
+                  <td style={tdStyle}><span className={`${researchStyles.evidenceLevel} ${researchStyles.levelProbable}`}>Probable (filiation)</span></td>
                 </tr>
                 <tr>
                   <td style={{ ...tdStyle, color: 'var(--gold)', fontWeight: 600 }}>Gen 3</td>
@@ -267,6 +267,29 @@ export default function DrinchamDossierPage() {
           </p>
         </section>
 
+        {/* ── Beyond Vredius: the Donche Consolidation ─────────────── */}
+        <section className={styles.section}>
+          <h2>Beyond Vredius: Six Generations to the Mid-Sixteenth Century <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
+          <p>
+            Donche's records-based study of the line — 'De Familie Van Drincham, gezegd van Vlaanderen,' <em>Vlaamse Stam</em> 42/6 (2006), pp. 548–580 — extends the reconstruction past Vredius's c. 1473 horizon to <strong>six generations</strong>, from the founding c. 1388 to the mid-sixteenth century, and establishes the line as the structural twin of the Praet branch: both founded by natural sons of Louis II de Male, both carrying the dynastic house-name in the bridged "van Vlaenderen gezegd van Drincham" form alongside the lordship name, both integrated into Burgundian-noble office across five and more generations, and both intermarrying the same noble kindreds (Gistel, Sint-Omaars, Halewijn, Bambeke). The bridged form is monumentally attested: the 1466 tomb at Houtem names the second-generation Jan, as father of Maria, <em>"Mer Jans van Vlandres gheseit Drincham"</em> (Donche p. 567), and Margareta, the line's sixth and last generation, is attested in 1503 as <em>"joncvrouwe Margriete van Vlaendren gheseit van Drincham"</em> (Buylaert, <em>Repertorium van de Vlaamse adel</em>, p. 756).
+          </p>
+          <p>
+            <strong>The 1393 Broekburg relief waiver.</strong> The line's comital-bastard origin is institutionally confirmed, not merely genealogically asserted. The Broekburg (Bourbourg) feudal-relief account of 1393 records Jan sans terre — styled <em>Messire de Drincham</em> — taking up two fiefs, the inheritances of Jacob van Drincham and Jan van Schuurvelde, both deceased, and owing the count's treasury the relief on each. The verso annotation records that Margareta van Male, Louis II's legitimate daughter and reigning heiress, personally ordered the receiver not to collect: <em>"me commanda que je ne prinsse point argent de mans.r de Drincham"</em> (Donche p. 556, citing ADN Lille, Chambres des Comptes, B 421). A relief was owed to the count; its remission is a grace only the comital house could grant, and Margareta granted it to her half-brother — a contemporary administrative act predicated on the kinship, entered in the count's own accounts. A direct reading of the Lille original remains an open archival action; the waiver evidences half-sibling recognition, consistent with but not independently proving the specific paternity.
+          </p>
+          <p>
+            <strong>Marriage and escheat reconciled.</strong> The same 1393 account resolves the apparent conflict between the two acquisition traditions — the 1383 escheat grant of the confiscated Scheurvelde-Drincham holdings (de l'Espinoy, quoted above) and the acquisition by marriage to the heiress Willemine, who brought the original Drincham patrimony (Donche, Buylaert). The account has Jan paying reliefs on the two inheritances, Drincham and Schuurvelde: marriage to the heiress and a comital re-grant of escheated holdings are not mutually exclusive, and both describe how the bundle of Drincham and Schuurvelde rights consolidated in Jan's hands.
+          </p>
+          <p>
+            <strong>The later generations.</strong> In Donche's fourth generation the line divides: a senior branch under a further Jan van Drincham, whose heiress Judoca carried the seat out of the surname to the de Jauche and Vilain families, and a cadet under Jacob van Drincham — the Jacques of the Veurne epitaph above, bailiff of Veurne from 1453 to his death in office in 1459. Simon van Drincham, échanson at Mary of Burgundy's court in 1474 and bailiff of Veurne 1477–1486, carries the fifth generation (Donche pp. 574–577). The sixth and last is Margareta van Drincham, gezegd van Vlaanderen, who married Denijs van Sint-Omaars gezegd van Moerbeke, lord of Hondecouter, in 1496, then Karel van Halewijn, lord of Piennes, and died c. 1529–30 (Donche pp. 577–578). In 1551 the two cadet branches converge: Lodewijk van Vlaanderen, lord of Praet — descendant of another natural son of Louis II de Male — bought the Drincham seat from Gabriel de Jauche, only to be pre-empted by Francisca de Jauche exercising a kinship right (Donche pp. 569–570). A descendant of one bastard line attempting, a century and a half on, to buy the seat of the other is the first documented instance of the late Maleani kindred acting across its branches.
+          </p>
+          <p>
+            <strong>Two disambiguations.</strong> First, "Jeanne de Flandre dite Drincham" (Gailliard, <em>Bruges et le Franc</em>, Tome I p. 258, married to Jean van Poucke) is a different person — Le Frison's granddaughter through her Praet-side father Jean de Praet, carrying the Drincham epithet by toponym, not a member of this line. Second, the original, pre-cadet de Drincham family — from a Jacob van Drincham sealing in 1312 down to the heiress Willemine c. 1385–88 — is distinct from the post-1396 cadet line that took the seat and its name; the discontinuity is heraldic as well as genealogical, the original family bearing checky argent and azure with a bordure gules against the cadet line's Gistel arms with a free-quarter of Flanders.
+          </p>
+          <p style={{ fontSize: '0.9rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
+            Evidence note: the line's existence, comital-bastard origin, and six-generation institutional continuity are Strongly Corroborated across Donche (2006), Buylaert (<em>Repertorium</em>, pp. 753 and 756), de l'Espinoy (1631, ch. XXXI), and de Lichtervelde (1935). The founding filiation — Jan sans terre to the second-generation Jan — is graded Probable pending the ADN Lille B-series record of the lordship's descent after 1396 (see the generations table above).
+          </p>
+        </section>
+
         {/* ── Geographic Significance ─────────────────────────────── */}
         <section className={styles.section}>
           <h2>Geographic Significance and the French Flanders Hypothesis <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`}>Hypothesis</span></h2>
@@ -296,7 +319,7 @@ export default function DrinchamDossierPage() {
         <section className={styles.section}>
           <h2>Relationship to the Other Bastard Lines</h2>
           <p>
-            Jan sans terre, Loys le Frison (Praet line), and Loys le Hase were all killed together at Nicopolis on 28 September 1396. The Gaillard text names all three in a single passage under the Van Vlaenderen surname, confirming the name was used by multiple natural sons simultaneously as a shared marker of comital bastard identity — not unique to any one branch.
+            Jan sans terre, Loys le Frison (Praet line), and Loys le Hase were all killed together at Nicopolis on 25 September 1396. The Gaillard text names all three in a single passage under the Van Vlaenderen surname, confirming the name was used by multiple natural sons simultaneously as a shared marker of comital bastard identity — not unique to any one branch.
           </p>
           <p>
             The Drincham line is geographically and genealogically distinct from the Victor line (Meetjesland/Belgian cluster) and the Praet line (Franc de Bruges/Brabant cluster). The three lines represent parallel surname-carrying foundations in different regions of Flanders, each anchored to a specific lordship granted by Louis de Male in the 1373–1399 period.
@@ -320,7 +343,7 @@ export default function DrinchamDossierPage() {
             </div>
             <div className={researchStyles.refItem}>
               <span className={researchStyles.refNumber}>3.</span>
-              Foundation for Medieval Genealogy. <em>MedLands: Flanders, Hainaut</em>, v5.0, updated January 2025. <a href="https://fmg.ac/Projects/MedLands/FLANDERS.htm" style={{ color: 'var(--gold)' }} target="_blank" rel="noopener noreferrer">fmg.ac/Projects/MedLands/FLANDERS.htm</a>. Collateral verification of Jan sans terre entry.
+              Foundation for Medieval Genealogy. <em>MedLands: Flanders, Hainaut</em>, v5.0, updated January 2025. <a href="https://fmg.ac/Projects/MedLands/FLANDERS.htm" style={{ color: 'var(--gold)' }} target="_blank" rel="noopener noreferrer">fmg.ac/Projects/MedLands/FLANDERS.htm</a>. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority.
             </div>
             <div className={researchStyles.refItem}>
               <span className={researchStyles.refNumber}>4.</span>
@@ -329,6 +352,14 @@ export default function DrinchamDossierPage() {
             <div className={researchStyles.refItem}>
               <span className={researchStyles.refNumber}>5.</span>
               Epitaph of Jacques de Drincham, Veurne church, as preserved in Gaillard and quoted in Vredius, Tabula XVI. Confirms death date 10 April 1459 and offices held.
+            </div>
+            <div className={researchStyles.refItem}>
+              <span className={researchStyles.refNumber}>6.</span>
+              Donche. 'De Familie Van Drincham, gezegd van Vlaanderen.' <em>Vlaamse Stam</em> 42/6 (2006), pp. 548–580. Records-based six-generation reconstruction of the line. Source for the 1393 Broekburg relief waiver (p. 556, citing ADN Lille, Chambres des Comptes, B 421), the 1466 Houtem tomb verbatim (p. 567), the fifth- and sixth-generation members Simon and Margareta (pp. 574–578), and the 1551 Praet purchase attempt (pp. 569–570).
+            </div>
+            <div className={researchStyles.refItem}>
+              <span className={researchStyles.refNumber}>7.</span>
+              Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500)</em>. Pages 753 (the line's founder as a bastard of Louis de Male) and 756 (the 1503 attestation of 'joncvrouwe Margriete van Vlaendren gheseit van Drincham').
             </div>
           </div>
         </section>

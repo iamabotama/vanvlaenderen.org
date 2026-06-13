@@ -40,7 +40,7 @@ export default function JanSansTerreLineagePage() {
       <div className={styles.content}>
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Jan &ldquo;sans terre&rdquo; van Vlaenderen Dossier</h2>
-          <div className={researchStyles.dossierMeta}>Updated May 2026</div>
+          <div className={researchStyles.dossierMeta}>Updated June 2026</div>
         </div>
 
         {/* ── Intro ──────────────────────────────────────── */}
@@ -68,6 +68,23 @@ export default function JanSansTerreLineagePage() {
           <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.marriage_p1') }} />
           <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.marriage_p2') }} />
           <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.marriage_evidence') }} />
+        </section>
+
+        {/* ── 1393 Broekburg Relief Waiver ─────────────────── */}
+        <section className={styles.section}>
+          <h2>
+            {t('jan_sans_terre.relief_heading')}{' '}
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span>
+          </h2>
+          <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.relief_p1') }} />
+          <blockquote className={styles.pullQuote} style={{ fontStyle: 'italic' }}>
+            {t('jan_sans_terre.relief_quote')}
+          </blockquote>
+          <p style={{ fontStyle: 'italic', color: 'var(--text-muted)' }}>
+            {t('jan_sans_terre.relief_quote_gloss')}
+          </p>
+          <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.relief_p2') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.relief_evidence') }} />
         </section>
 
         {/* ── Death at Nicopolis ───────────────────────────── */}
@@ -100,7 +117,7 @@ export default function JanSansTerreLineagePage() {
         <section className={styles.section}>
           <h2>
             {t('jan_sans_terre.heir_heading')}{' '}
-            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span>
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelProbable}`}>Probable</span>
           </h2>
           <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.heir_p1') }} />
           <blockquote className={styles.pullQuote} style={{ fontStyle: 'italic' }}>
@@ -122,6 +139,7 @@ export default function JanSansTerreLineagePage() {
           </h2>
           <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.disambig_p1') }} />
           <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.disambig_p2') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.disambig_p3') }} />
           <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.disambig_evidence') }} />
         </section>
 
@@ -130,6 +148,18 @@ export default function JanSansTerreLineagePage() {
           <h2>{t('jan_sans_terre.later_heading')}</h2>
           <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.later_p1') }} />
           <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.later_p2') }} />
+        </section>
+
+        {/* ── Donche Consolidation: Six Generations ─────────── */}
+        <section className={styles.section}>
+          <h2>
+            {t('jan_sans_terre.donche_heading')}{' '}
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span>
+          </h2>
+          <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.donche_p1') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.donche_p2') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.donche_p3') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.donche_evidence') }} />
         </section>
 
         {/* ── Archival Evidence ───────────────────────────── */}
@@ -145,6 +175,9 @@ export default function JanSansTerreLineagePage() {
             <li dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.evidence_bullet_6') }} />
             <li dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.evidence_bullet_7') }} />
             <li dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.evidence_bullet_8') }} />
+            <li dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.evidence_bullet_9') }} />
+            <li dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.evidence_bullet_10') }} />
+            <li dangerouslySetInnerHTML={{ __html: t('jan_sans_terre.evidence_bullet_11') }} />
           </ul>
         </section>
 

@@ -41,14 +41,14 @@ export default function VictorLineagePage() {
       <div className={styles.content}>
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>{t('victor.dossier_title')}</h2>
-          <div className={researchStyles.dossierMeta}>Updated April 2026</div>
+          <div className={researchStyles.dossierMeta}>Updated June 2026</div>
         </div>
 
         {/* ── Identity ────────────────────────────────────────────── */}
         <section className={styles.section}>
           <h2>Identity and Parentage <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
           <p>
-            Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders (1330&ndash;1384). FMG MedLands lists him as illegitimate child 9 of Louis II, noting that Espinoy records his parentage [841]. His mother is identified in the 12 May 1427 charter as Mergriete Haelfhuuts (Heinricx Mayen&hellip;wijf). Victor is styled Seigneur d'Ursele et de Wesseghem and is documented as a Burgundian admiral and captain of Biervliet.
+            Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders (1330&ndash;1384). Espinoy (1631), Livre 2, Ch. XXXI, p. 69, records his parentage among the natural sons of Louis II. His mother is identified in the 12 May 1427 charter as Mergriete Haelfhuuts (Heinricx Mayen&hellip;wijf). Victor is styled Seigneur d'Ursele et de Wesseghem and is documented as a Burgundian admiral and captain of Biervliet.
           </p>
         </section>
 
@@ -57,22 +57,23 @@ export default function VictorLineagePage() {
           <h2>{t('victor.territorial_heading')} <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p dangerouslySetInnerHTML={{ __html: t('victor.territorial_p1') }} />
           <p dangerouslySetInnerHTML={{ __html: t('victor.territorial_p2') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('victor.territorial_p3') }} />
         </section>
 
         {/* ── Three-Charter Nucleus ───────────────────────────────── */}
         <section className={styles.section}>
           <h2>The Three-Charter Nucleus <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            Three charters from the Ghent partition court records, preserved in Vredius (1643) via FMG MedLands, form the documentary nucleus of Victor's line. Together they span twenty years (1427&ndash;1447) and name all three of Victor's acknowledged natural sons.
+            Three charters from the Ghent partition court records, preserved in Vredius (1643) <em>Pars secunda</em> pp.285&ndash;287 (direct reading, April 2026), form the documentary nucleus of Victor's line. Together they span twenty years (1427&ndash;1447) and name all three of Victor's acknowledged natural sons.
           </p>
           <p>
-            <strong>Charter 1 (12 May 1427):</strong> Mergriete Haelfhuuts, Victor's mother, donates property to 'Lodekinen ende Hannekinen' (Lodewyc and Janne), Victor's natural sons by Alix van Boyeghem, and to 'Adaemkine' (Adam), his natural son by Gertrud Lindekens [FMG 846,853].
+            <strong>Charter 1 (12 May 1427):</strong> Mergriete Haelfhuuts, Victor's mother, donates property to 'Lodekinen ende Hannekinen' (Lodewyc and Janne), Victor's natural sons by Alix van Boyeghem, and to 'Adaemkine' (Adam), his natural son by Gertrud Lindekens (Vredius p.285).
           </p>
           <p>
-            <strong>Charter 2 (10 March 1441 O.S. = 1442 N.S.):</strong> Mergriete donates to 'Lodewyc, Janne ende Adam van Vlaendren natuerliche sonen van wijlen edelen&hellip;mer Victor van Vlaendren heere was van Desele ende van Wesseghem.' Victor is now described as deceased ('wijlen') [FMG 847,852,854].
+            <strong>Charter 2 (10 March 1441 O.S. = 1442 N.S.):</strong> Mergriete donates to 'Lodewyc, Janne ende Adam van Vlaendren natuerliche sonen van wijlen edelen&hellip;mer Victor van Vlaendren heere was van Orsele ende van Wesseghem.' Victor is now described as deceased ('wijlen') (Vredius pp.285&ndash;286).
           </p>
           <p>
-            <strong>Charter 3 (18 March 1446 O.S. = 1447 N.S.):</strong> 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem' donates money from 'joncfr Margriete Aelhuuts zijn groete vrauwe' to Christiane van Rouse. Adam is the active donor &mdash; the only charter where he acts independently [FMG 855].
+            <strong>Charter 3 (18 March 1446 O.S. = 1447 N.S.):</strong> 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem' donates money from 'joncfr Margriete Aelhuuts zijn groete vrauwe' to Christiane van Rouse. Adam is the active donor &mdash; the only charter where he acts independently (Vredius pp.286&ndash;287).
           </p>
         </section>
 
@@ -81,7 +82,7 @@ export default function VictorLineagePage() {
           <VictorDiagram />
           <div className="sr-only">
             <h3>Victor van Vlaenderen lineage — text summary</h3>
-            <p>This diagram shows the descent from Louis II de Male, Count of Flanders (1330–1384), through his natural son Victor van Vlaenderen (died before 1442), Lord of Ursel and Wessegem. Victor had three documented natural sons by Alix van Boyeghem: Lodewyc van Vlaendren (fl. 1427–1442), Janne van Vlaendren (fl. 1427–1442), and Adam van Vlaendren (fl. 1427 – 18 March 1447), the closest documented individual bridge candidate to the modern East Flanders clusters. Lodewyc married Jacqueline de Wilde and had two children: Josse van Vlaenderen (died young, buried Oostborch) and Margareta van Vlaenderen (fl. 1478–1486, married into noble families). An evidentiary gap of approximately 100 years separates Adam (last confirmed 1447) from Joos van Vlaenderen (fl. 1547), the first confirmed early modern bearer as testator in the Brugse Vrije probate records (TBO 184, bundle 21300). No direct genealogical link between Adam and Joos has yet been demonstrated. Key archival targets for bridging this gap: cijnsboeken and leenboeken (Ambacht Ursel / Maldegem), Staten van Goed, and Raad van Vlaanderen records at Rijksarchief Gent.</p>
+            <p>This diagram shows the descent from Louis II de Male, Count of Flanders (1330–1384), through his natural son Victor van Vlaenderen (died before 1442), Lord of Ursel and Wessegem. Victor had three documented natural sons: Lodewyc van Vlaendren (fl. 1427–1442) and Janne van Vlaendren (fl. 1427–1442) by Alix van Boyeghem, and Adam van Vlaendren (fl. 1427 – 18 March 1447) by Gertrud Lindekens — Adam being the closest documented individual bridge candidate to the modern East Flanders clusters. Lodewyc married Jacqueline de Wilde and had two children: Josse van Vlaenderen (died young, buried Oostborch) and Margareta van Vlaenderen (fl. 1478–1486, married into noble families). A deed of 17 July 1441 names the children jointly — 'mher Victoors van Vlaenderen kindren lande' — as adjoining landholders at Cadzand in the West-Flemish coastal zone, ten years after Victor's death (Verschelde 1867, p. 221). An evidentiary gap of more than 130 years separates Adam (last confirmed 1447) from the first Meetjesland parish-register generation (1580s); the Joos van Vlaenderen of the Brugse Vrije records of 1545–49 (TBO 184, bundles 21300–21302), formerly read as the first early modern bearer, is now identified as the Praet line's cadet branch. No direct genealogical link between Adam and the parish cluster has yet been demonstrated. Key archival targets for bridging this gap: cijnsboeken and leenboeken (Ambacht Ursel / Maldegem), Staten van Goed, and Raad van Vlaanderen records at Rijksarchief Gent.</p>
           </div>
         </div>
 
@@ -100,21 +101,21 @@ export default function VictorLineagePage() {
         <section className={styles.section}>
           <h2>Lodewyc's Descendants <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            Lodewyc van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch records the burial of Jacqueline and nearby 'haer Joos van Vlaenderen fs Lodewijcx' [FMG 848,849]. Josse died young and cannot be the 1547 Brugse Vrije testator &mdash; but his existence confirms the name Josse/Joos was in active use in Victor's direct line.
+            Lodewyc van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch, preserved in Vredius (1643) pp.286&ndash;287 (Gaillard MS), records the burial of Jacqueline and nearby 'haer Joos van Vlaenderen fs Lodewijcx.' Josse died young and cannot be the Joos van Vlaenderen of the 1545&ndash;49 Brugse Vrije wardship records (the Praet cadet) &mdash; but his existence confirms the name Josse/Joos was in active use in Victor's direct line.
           </p>
           <p>
-            Lodewyc's daughter Margareta van Vlaenderen (fl. 1478&ndash;1486) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe [FMG 850].
+            Lodewyc's daughter Margareta van Vlaenderen (fl. 1478&ndash;1486) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe (charters of 1478 and 1486, Vredius p.287).
           </p>
         </section>
 
         {/* ── Bridging the Gap ────────────────────────────────────── */}
         <section className={styles.section}>
-          <h2>Bridging the Gap: Adam to Joos <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`}>Hypothesis</span></h2>
+          <h2>Bridging the Gap: 1447&ndash;1580 <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`}>Hypothesis</span></h2>
           <p>
             {t('victor.gap_p1')}
           </p>
           <p>
-            Adam is documented across three charters spanning 1427&ndash;1447, but he is only the active donor in the 1446/1447 charter. In the earlier two charters he is named as a beneficiary of his grandmother's donations. The gap between Adam (last confirmed 1447) and Joos van Vlaenderen (testator, Brugse Vrije 1547) spans approximately 100 years &mdash; three to four generations.
+            Adam is documented across three charters spanning 1427&ndash;1447, but he is only the active donor in the 1446/1447 charter. In the earlier two charters he is named as a beneficiary of his grandmother's donations. The gap between Adam (last confirmed 1447) and the first Meetjesland parish-register generation (1580s) spans more than 130 years &mdash; some four to five generations.
           </p>
           <p>
             {t('victor.gap_p3')}
@@ -165,7 +166,7 @@ export default function VictorLineagePage() {
           <h3>{t('victor.sources_title')}</h3>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>1.</span>
-            FMG MedLands: Flanders, Hainaut. v5.0, January 2025. Victor entry [841&ndash;855]. Source for all three charters: Vredius (1643) <em>Pars secunda</em>, pp.285&ndash;287.{' '}
+            Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae</em>, Pars secunda. Bruges, 1643. Pp.285&ndash;287: the three Ghent partition-court charters and the Oostborch epitaph; direct reading April 2026. FMG MedLands: Flanders, Hainaut (v5.0, January 2025) was consulted as a tertiary pointer to these pages.{' '}
             <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
           </div>
           <div className={researchStyles.refItem}>
@@ -175,7 +176,7 @@ export default function VictorLineagePage() {
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>3.</span>
-            Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen [FMG 848&ndash;849].
+            Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286&ndash;287, from which it is cited above. Not yet consulted directly by the project.
           </div>
           <div className={researchStyles.refItem}>
             <span className={researchStyles.refNumber}>4.</span>

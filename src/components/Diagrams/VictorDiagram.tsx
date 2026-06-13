@@ -10,6 +10,13 @@ import LineageDiagram, { C, type DiagramDef } from './DiagramEngine';
 // Avesoete (m. 1549). The full six-generation matrilineal chain lives in
 // the Despars Compendium; Isabelle anchors the bridge on this diagram.
 //
+// June 2026: territorial annotation added for the 17 July 1441 Cadzand
+// koopbrief — 'mher Victoors van Vlaenderen kindren lande' three times in
+// the boundary clauses (Verschelde, Geschiedenis van Middelburg in
+// Vlaenderen, 1867, Bewysstukken N° 1, p. 221). Directly Attested for the
+// landholding; identification of the children as Lodewyc/Janne/Adam rests
+// on the 1427 charter (Strongly Corroborated).
+//
 // Locked visual rules: see PraetDiagram.tsx header for full rationale.
 //   Color = record confidence.
 //   Glyph below card = descendant status (†, ?, ×).
@@ -31,7 +38,7 @@ const diagram: DiagramDef = {
         name: 'Louis II de Male',
         dates: 'Count of Flanders · 1330–1384',
         body: "Father of Victor van Vlaenderen by his mistress Margaretha Haelshuuts — the only named mistress in the primary sources.",
-        src: 'FMG MedLands [817, 841]',
+        src: "Vredius, Tab. XVI; de l'Espinoy (1631), Livre 2, Ch. XXXI, p. 69; Vredius (1643) p.285",
         color: C.root,
         ev: 'direct',
         w: 152,
@@ -49,7 +56,7 @@ const diagram: DiagramDef = {
         dates: 'd. 1431, Saint-Omer',
         tag: "SEIGNEUR D'URSELE ET WESSEGHEM",
         body: "Natural son of Louis de Male. Burgundian admiral; captain of Biervliet. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420. Three natural sons documented across three primary charters (1427, 1441, 1446) by two mistresses: Lodewyc and Janne by Alix van Boyeghem; Adam by Gertrud Lindekens. Nicolaes Despars's Cronijcke (Vol. III pp. 114–115) names a fourth child, Isabelle, the matrilineal ancestress of the chronicler's wife — see her node and the Despars Compendium for the descent chain.",
-        src: 'FMG MedLands [841–845]; Vredius (1643) pp.285–287; Despars Cronijcke Vol. III pp. 114–115',
+        src: "Vredius (1643) pp.285–287; de l'Espinoy (1631), Livre 2, Ch. XXXI, pp. 68–69; Despars Cronijcke Vol. III pp. 114–115",
         color: '#4ade80',
         ev: 'direct',
         w: 252,
@@ -67,7 +74,7 @@ const diagram: DiagramDef = {
         dates: 'fl. 1427–1442 · by Alix van Boyeghem',
         tag: 'CHARTERS 1427 · 1441',
         body: "Natural son of Victor. Named in charters of 1427 and 1441. Married Jacqueline de Wilde (-Apr 1482, bur Oostborch). Two documented children shown in Gen 4.",
-        src: 'FMG MedLands [846, 847]',
+        src: 'Vredius (1643) pp.285–287',
         color: '#4ade80',
         ev: 'direct',
         w: 188,
@@ -83,7 +90,7 @@ const diagram: DiagramDef = {
         dates: 'fl. 1427–1442 · by Alix van Boyeghem',
         tag: 'CHARTERS 1427 · 1441',
         body: "Natural son of Victor. Named in charters of 1427 and 1441. No further records identified — source silent on marriage, children, or death date.",
-        src: 'FMG MedLands [851, 852]',
+        src: 'Vredius (1643) p.285',
         color: '#4ade80',
         ev: 'unknown',
         w: 188,
@@ -99,7 +106,7 @@ const diagram: DiagramDef = {
         dates: 'fl. 1427 – 18 Mar 1447 N.S. · by Gertrud Lindekens',
         tag: 'LAST ATTESTATION 1447',
         body: "Natural son of Victor. Named in all three charters; active donor in the 1446 charter: 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem.' Margriete Aelfhuuts still active patroness in 1446. No further records after 1447 — source silent on whether he had descendants. The central research question of this project.",
-        src: 'FMG MedLands [853–855]; Vredius (1643) pp.285–287',
+        src: 'Vredius (1643) pp.285–287',
         color: '#4ade80',
         ev: 'unknown',
         focus: true,
@@ -134,7 +141,7 @@ const diagram: DiagramDef = {
         name: 'Josse\nvan Vlaenderen',
         dates: 'died young, bur Oostborch',
         body: "Son of Lodewyc. Died young and is buried at Oostborch near his mother Jacqueline de Wilde. Line terminates.",
-        src: 'FMG MedLands [849]; Bethune (1900) p.356',
+        src: 'Vredius (1643) pp.286–287 (Oostburg tomb, Gaillard MS)',
         color: '#4ade80',
         ev: 'ends',
         w: 120,
@@ -149,7 +156,7 @@ const diagram: DiagramDef = {
         name: 'Margareta\nvan Vlaenderen',
         dates: 'fl. 1478–1486',
         body: "Daughter of Lodewyc. Married firstly Lodewijk van Baenst Heer van Santvelde; secondly Adriaan van Schouteten Heer van Erpe.",
-        src: 'FMG MedLands [850]; Vredius (1643) p.287',
+        src: 'Vredius (1643) p.287',
         color: '#4ade80',
         ev: 'married-out',
         w: 120,
@@ -188,6 +195,14 @@ const diagram: DiagramDef = {
       maxWidth: 210,
       text: "Despars's wife Anne Avesoete (m. 1549) descends through six generations from Isabelle. Full chain in the Despars Compendium.",
       color: '#8a8f9e',
+    },
+    // NEW June 2026: 1441 Cadzand territorial attestation of the children
+    {
+      x: 560,
+      y: 425,
+      maxWidth: 290,
+      text: "17 July 1441: 'mher Victoors van Vlaenderen kindren lande' — the children hold land jointly at Cadzand, West-Flemish coastal zone, ten years after Victor's death (Verschelde 1867, p. 221).",
+      color: '#d4a830',
     },
     // Existing bottom annotation — wrapped + centred
     {

@@ -62,7 +62,7 @@ export default function SurnameOriginsPage() {
         <meta property="og:description" content="Distributional and documentary analysis testing the toponymic and bastard-line hypotheses for the Van Vlaenderen surname origin." />
         <meta property="og:url" content="https://vanvlaenderen.org/name/surname-origins" />
         <meta property="og:type" content="article" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Four Functions, Three Clusters — The Van Vlaenderen Surname in the Documentary Record","description":"A primary source and distributional analysis of the Van Vlaenderen surname across four documentary functions and three geographic clusters.","url":"https://vanvlaenderen.org/name/surname-origins","inLanguage":"en","dateModified":"2026-04-15","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}`}} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Four Functions, Three Clusters — The Van Vlaenderen Surname in the Documentary Record","description":"A primary source and distributional analysis of the Van Vlaenderen surname across four documentary functions and three geographic clusters.","url":"https://vanvlaenderen.org/name/surname-origins","inLanguage":"en","dateModified":"2026-06-12","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}`}} />
       </Helmet>
 
       {/* ── Hero ───────────────────────────────────────────────────── */}
@@ -84,7 +84,7 @@ export default function SurnameOriginsPage() {
 
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Research Article</h2>
-          <div className={researchStyles.dossierMeta}>Updated April 2026</div>
+          <div className={researchStyles.dossierMeta}>Updated June 2026</div>
         </div>
 
         {/* ── Analytical Challenge ──────────────────────────────────── */}
@@ -127,7 +127,7 @@ export default function SurnameOriginsPage() {
             {
               num: '4',
               label: 'Hereditary surname',
-              desc: 'Identifiable individuals and multi-generational family clusters using the name as a transmitted family identifier. Victor van Vlaenderen and his natural sons (1427–1447 charters); the Brugse Vrije testator Joos van Vlaenderen (1547); the East Flanders parish-record families across Bassevelde, Boekhoute, Ursel, and Waarschoot. Functions 1–3 must be excluded before Function 4 can be counted.',
+              desc: 'Identifiable individuals and multi-generational family clusters using the name as a transmitted family identifier. Victor van Vlaenderen and his natural sons (1427–1447 charters); the Joos van Vlaenderen family of the 1545–49 Brugse Vrije wardship records; the East Flanders parish-record families across Bassevelde, Boekhoute, Ursel, and Waarschoot. Functions 1–3 must be excluded before Function 4 can be counted.',
               muted: false,
             },
           ].map(({ num, label, desc, muted }) => (
@@ -252,7 +252,7 @@ export default function SurnameOriginsPage() {
         <section className={styles.section}>
           <h2>The Progenitor Candidates</h2>
           <p>
-            The following tables set out the documented individuals who carried the Van Vlaenderen surname before the distributional clusters are established, together with their descendants in the surname-carrying line. All documentary evidence derives from a direct reading of Olivarius Vredius (<em>Genealogia Comitum Flandriae</em>, Pars Secunda, Tabula XVI, fol. 275–288, Bruges 1642–43) [²] and the Foundation for Medieval Genealogy MedLands: Flanders, Hainaut (v5.0, January 2025). [³]
+            The following tables set out the documented individuals who carried the Van Vlaenderen surname before the distributional clusters are established, together with their descendants in the surname-carrying line. All documentary evidence derives from a direct reading of Olivarius Vredius (<em>Genealogia Comitum Flandriae</em>, Pars Secunda, Tabula XVI, fol. 275–288, Bruges 1642–43). [²]
           </p>
 
           {/* Tier 1 */}
@@ -443,6 +443,51 @@ export default function SurnameOriginsPage() {
           </p>
         </section>
 
+        {/* ── Register-Dependent Naming ─────────────────────────────── */}
+        <section className={styles.section}>
+          <h2>
+            How the Cohort Used the Name: Register-Dependent Naming
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>
+              Strongly Corroborated
+            </span>
+          </h2>
+          <p>
+            The distribution data tells us where the surname persisted. The documentary record adds a second, independent line of evidence: <strong>how</strong> the comital-bastard cohort actually used the name. For the cohort, "van Vlaenderen" was not a fixed, invariant surname but a functionally deployed identifier. Three name-layers coexisted for the same individuals — the dynastic house-name (<em>van Vlaenderen / de Flandre</em>), a lordship-title (<em>van Praet, van Drincham, van Voorhoute</em>), and a personal byname (<em>die Hase, le Frison, sans terre</em>) — and the genre and purpose of the record determined which combination surfaced. A register-tagged pass over the project's collected attestations — roughly 95–105 genuine cohort name-attestations across some 35–40 bearers and ten distinct register types, from treaty charters and Latin annals to testaments, tombs, armorials, fief registers, and fiscal rolls — supports two register-robust observations and one directional one. [⁴]
+          </p>
+          <p>
+            <strong>First, the house-name travels bound to the bastard-marker and comital descent, in every register.</strong> The 1385 Peace of Tournai charter carries <em>"Lodewijc gheseyt die hase, bastaert van Vlaendren"</em> in its Dutch recension (<em>Excellente Cronike van Vlaenderen</em>, Vorsterman 1531, folio lxxvi) and <em>"Loys, bastard de Flandre, dict le Haze"</em> in its French recension (de Smet, <em>Recueil des chroniques de Flandre</em>, Tome IV, p. 311) — the same man, the same act, the dynastic formula stable across languages. The Latin annals render the same figure <em>"Ludovico, bastardo Flandriae"</em> (de Budt, in de Smet, Tome I). A place-of-origin label does not behave this way: no scribe writes "the bastard of Bruges, called Jan."
+          </p>
+          <p>
+            <strong>Second, the house-name is interchanged with a lordship-title for the same person.</strong> Robrecht is <em>"de Flandre, viconte d'Ypres"</em> in one register and <em>"van Vlaendren, heere van Elverdinghe"</em> in his brother Victor's 1430 testament; the Praet heirs appear as <em>"heer van Praet"</em> in chronicle narrative, <em>"van Vlaenderen gheseit van Praet"</em> in the fief registers, and <em>"van Vlaenderen, heere van Praet"</em> on their tombs. One identity, two surfaces — the behaviour of a lineage name layered over a territorial title, which an origin-name does not show. The recurring bridged form "van Vlaenderen gheseyt van [lordship]" is discussed as a methodological principle on the{' '}
+            <Link to="/research/methodology" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: 'inherit' }}>Methodology page</Link>.
+          </p>
+          <p>
+            <strong>Third — and directionally, not absolutely — formal documents foreground the house-name.</strong> Treaty charters, testaments, tombs, and armorials carry the dynastic form at roughly 80% of attestations. The effect is a tendency, not a rule, and the counter-instances are carried openly: Despars's narrative chronicle uses the full <em>"bastaert van Vlaenderen, ghezeyt [byname]"</em> formula as its default, while the 1459 Veurne tomb of Jacob van Drincham carries the lordship name alone — where the same family's 1466 Houtem tomb reads <em>"Mer Jans van Vlandres gheseit Drincham"</em> (Donche 2006). The lordship-only instances cluster precisely where a lordship had hardened into a heritable surname of its own.
+          </p>
+          <p>
+            One refinement matters for reading any single attestation. Recognized nobles of the cohort appear in fiscal and wardship registers under the <em>bare</em> house-name with an honorific — <em>"mher Victoors van Vlaenderen"</em> in the 1431 Aardenburg accounts and the 1441 Cadzand deed, and the entire Honnelede wardship series of 1545–49 (RAB, Brugse Vrije, Staten van Goed, TBO 184). The isolated bare-form attestations recorded in the surname dictionaries — a Jacop van Vlaendre in a 1376 bailiff's account, a Jaquemaerde van Vlaendren in the 1426 Kortrijk orphan-court records (Debrabandere, WFB2) — sit in exactly the register types that produce bare forms for nobles and commoners alike. A bare fiscal "van Vlaenderen" therefore does not by itself settle a bearer's status in either direction. The reading rule this project applies: weight the register, and look for the binding-and-interchange signature — not the bare surface form alone.
+          </p>
+        </section>
+
+        {/* ── Separate Name-Families ────────────────────────────────── */}
+        <section className={styles.section}>
+          <h2>
+            What the Corpus Excludes: Half-Vlaenderen and Other Separate Name-Families
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>
+              Strongly Corroborated
+            </span>
+          </h2>
+          <p>
+            The argument above does not claim that every Vlaenderen-derived name is dynastic. The opposite: there are genuinely ordinary, toponymic name-families built on <em>Vlaenderen</em>, and the project keeps them out of its corpus. Demonstrating that the classification is discriminating, not totalising, is part of the method.
+          </p>
+          <p>
+            The clearest case is <strong>"Half-Vlaenderen" / "Alfvlandren"</strong> — a separate name-family, not a van Vlaenderen variant and not a bastardy marker. Its etymology, per Debrabandere (<em>Persoonsnamen in Hulster Ambacht 1300–1400</em>, 2018, §233), reads <em>half</em> as "in the middle of": <em>"Naam voor iemand die uit Midden-Vlaanderen stamt"</em> — a name for someone from central Flanders — with the direct parallels of German <em>Halbendorf</em> and French <em>Demiville</em>. Beele's onomastic study of the Ypres accounts files it as its own lemma (nr. 940), cross-referenced <em>away from</em> the van Vlaanderen lemma (nr. 2866). [⁵] Its three known medieval attestations are all ordinary burgher and tenant contexts: Oostburg 1281 (Clais, son of Willelmus Alfvlandren, and Willelmus's widow), Ypres 1306 (Willaumes Halfvlaendren), and Hulst 1372 (Pieter van Alf Vlaenderen). On this basis the 1306 Ypres bearer is excluded from the project's hereditary-bearer roster.
+          </p>
+          <p>
+            The same discipline applies to the <em>-man</em> formation <strong>Vlaender(t)man</strong> (attested 1399 at Eeklo; De Flou, <em>Woordenboek der Toponymie van Westelijk Vlaanderen</em>), treated as a separate ordinary name-family rather than folded into the cohort. Together with the Eeklo Vlaminc control case above, these exclusions define the boundary of the claim: the dynastic reading is argued for the documented comital cohort and its surname-carrying descendants — not for every name in the record that contains <em>Vlaenderen</em>.
+          </p>
+        </section>
+
         {/* ── Volckerinckhove Question ──────────────────────────────── */}
         <section className={styles.section}>
           <h2>The Volckerinckhove Question</h2>
@@ -513,10 +558,16 @@ export default function SurnameOriginsPage() {
               [2] Olivarius Vredius (Olivier de Wrée), <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>, Bruges: J.B. &amp; Lucas Kerchovios, 1642–43. Tabula XVI, fol. 275–288 (PDF pp. 285–298). Direct reading conducted April 2026. The primary charter data for Victor's three sons derives from the <em>Acta Curiae partitionum Gandensium</em>, as transcribed by Vredius from the Ghent partition court registers.
             </p>
             <p>
-              [3] Foundation for Medieval Genealogy, <em>MedLands: Flanders, Hainaut</em>, v5.0, updated January 2025.{' '}
+              [3] Foundation for Medieval Genealogy, <em>MedLands: Flanders, Hainaut</em>, v5.0, updated January 2025. Tertiary compilation consulted as a pointer to primary sources during the survey phase; not used as a fact-level authority.{' '}
               <a href="https://fmg.ac/Projects/MedLands/FLANDERS.htm" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)' }}>
                 fmg.ac/Projects/MedLands/FLANDERS.htm
               </a>
+            </p>
+            <p>
+              [4] Principal register-attestation sources: <em>Excellente Cronike van Vlaenderen</em> (Antwerp: Willem Vorsterman, 1531), folio lxxvi; J.-J. de Smet (ed.), <em>Recueil des chroniques de Flandre / Corpus Chronicorum Flandriae</em>, 4 vols. (Brussels: Hayez, 1837–1865), Tome I and Tome IV p. 311; N. Despars, <em>Cronijcke van den lande ende graefscepe van Vlaenderen</em>, ed. J. De Jonghe, 4 vols. (Bruges, 1840–1842); P. Donche, "De Familie Van Drincham, gezegd van Vlaanderen (ca. 1350 tot 16de eeuw)," <em>Vlaamse Stam</em> 42/6 (2006), pp. 548–580; K. De Flou, <em>Woordenboek der Toponymie van Westelijk Vlaanderen</em> (Bruges, 1914–1938); Rijksarchief Brugge, Brugse Vrije, Staten van Goed, Eerste Reeks, TBO 184, nrs. 21300–21302; F. Debrabandere, <em>Woordenboek van de familienamen in België en Noord-Frankrijk</em> (WFB2, 2003).
+            </p>
+            <p>
+              [5] F. Debrabandere, <em>Persoonsnamen in Hulster Ambacht 1300–1400</em> (2018), §233, citing Haeseryn 1953, p. 67 for the 1281 Oostburg attestations; W. Beele, <em>Studie van de Ieperse persoonsnamen uit de stads- en baljuwsrekeningen 1250–1400</em>, 2 vols. (Handzame: Familia et Patria, 1975), Glossarium lemmas 940 (<em>halfvlaanderen</em>) and 2866 (<em>Vlaanderen, van</em>).
             </p>
           </div>
         </section>

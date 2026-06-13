@@ -97,7 +97,7 @@ export const PAGE_META: Record<string, PageMeta> = {
     description: 'Louis Friese van Vlaenderen, Lord of Praet and Woestine: the second bastard line of Louis II de Male using the Van Vlaenderen surname. Ancestor of Lodewijk IV (Louis of Praet).',
     canonical: 'https://vanvlaenderen.org/research/louis-friese/',
     ogTitle: 'Louis Friese van Vlaenderen — The Praet Line',
-    ogDescription: 'The Praet bastard line: Louis Friese van Vlaenderen to Lodewijk IV, Knight of the Golden Fleece — extinct 1556.',
+    ogDescription: 'The Praet bastard line: Louis Friese van Vlaenderen through Lodewijk IV, Knight of the Golden Fleece, to the last male, Lodewijk V — the surname ends 1591.',
     ogType: 'article',
   },
   '/research/robrecht': {
@@ -134,7 +134,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   '/research/victor-dossier': {
     title: 'Victor van Vlaenderen — Archival Dossier | vanvlaenderen.org',
-    description: 'Primary source dossier for Victor van Vlaenderen: 1427 and 1441/42 charter evidence, FMG MedLands documentation, Hof van Wessegem heritage record, and the Alix van Boyeghem connection.',
+    description: 'Primary source dossier for Victor van Vlaenderen: 1427 and 1441/42 charter evidence from the Vredius (1643) transcriptions, Hof van Wessegem heritage record, and the Alix van Boyeghem connection.',
     canonical: 'https://vanvlaenderen.org/research/victor-dossier/',
     ogTitle: 'Victor van Vlaenderen — Archival Dossier',
     ogDescription: 'Primary source evidence: the 1427 and 1441/42 charters, Wessegem heritage, and Victor\'s three natural sons.',
@@ -142,7 +142,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   '/research/praet-dossier': {
     title: 'The Praet Line — Archival Dossier | vanvlaenderen.org',
-    description: 'Archival dossier for the Praet line: Louis Friese van Vlaenderen through Lodewijk IV (Louis of Praet, Knight of the Golden Fleece, d. 1555). Sources, evidence levels, and open research questions.',
+    description: 'Archival dossier for the Praet line: Louis Friese van Vlaenderen through Lodewijk IV (Louis of Praet, Knight of the Golden Fleece, d. 1555/1558) and the post-1545 collateral continuation to the 1591 terminus. Sources, evidence levels, and open research questions.',
     canonical: 'https://vanvlaenderen.org/research/praet-dossier/',
     ogTitle: 'The Praet Line — Archival Dossier',
     ogDescription: 'From Louis Friese van Vlaenderen to Lodewijk IV, Knight of the Golden Fleece. Primary and secondary sources for the Praet bastard line.',
@@ -174,7 +174,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   '/research/gap-dossier': {
     title: 'The Documentary Gap, 1447–1580 | vanvlaenderen.org',
-    description: 'The 130-year gap between Adam van Vlaendren (last attested 1447) and the Meetjesland parish cluster (fl. 1547–). Archival evidence in hand, searches completed, active targets, and three working hypotheses.',
+    description: 'The gap of more than 130 years between Adam van Vlaendren (last attested 1447) and the Meetjesland parish cluster (1580s–). Archival evidence in hand, searches completed, active targets, and four working hypotheses.',
     canonical: 'https://vanvlaenderen.org/research/gap-dossier/',
     ogTitle: 'The Documentary Gap, 1447–1580 — Van Vlaenderen Research',
     ogDescription: 'Named gap between the comital bastard lines and the Meetjesland parish cluster. Evidence in hand, active archival targets, and three working hypotheses.',

@@ -40,7 +40,7 @@ export default function LoysDeHazeLineagePage() {
       <div className={styles.content}>
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Loys &ldquo;le Hase&rdquo; van Vlaenderen Dossier</h2>
-          <div className={researchStyles.dossierMeta}>Updated May 2026</div>
+          <div className={researchStyles.dossierMeta}>Updated June 2026</div>
         </div>
 
         {/* ── Intro ──────────────────────────────────────── */}
@@ -70,6 +70,24 @@ export default function LoysDeHazeLineagePage() {
           </p>
           <p dangerouslySetInnerHTML={{ __html: t('loys.career_p3') }} />
           <p dangerouslySetInnerHTML={{ __html: t('loys.career_evidence') }} />
+        </section>
+
+        {/* ── Dated Fixpoints: Roosebeke 1382 / Peace of Tournai 1385 ── */}
+        <section className={styles.section}>
+          <h2>
+            {t('loys.host_heading')}{' '}
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span>
+          </h2>
+          <p dangerouslySetInnerHTML={{ __html: t('loys.host_p1') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('loys.host_p2') }} />
+          <blockquote className={styles.pullQuote} style={{ fontStyle: 'italic' }}>
+            {t('loys.host_quote_tournai')}
+          </blockquote>
+          <p style={{ fontStyle: 'italic', color: 'var(--text-muted)' }}>
+            {t('loys.host_quote_tournai_gloss')}
+          </p>
+          <p dangerouslySetInnerHTML={{ __html: t('loys.host_p3') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('loys.host_evidence') }} />
         </section>
 
         {/* ── Marriage and Territorial Holdings ─────────────────── */}
@@ -161,6 +179,8 @@ export default function LoysDeHazeLineagePage() {
             <li dangerouslySetInnerHTML={{ __html: t('loys.evidence_bullet_7') }} />
             <li dangerouslySetInnerHTML={{ __html: t('loys.evidence_bullet_8') }} />
             <li dangerouslySetInnerHTML={{ __html: t('loys.evidence_bullet_9') }} />
+            <li dangerouslySetInnerHTML={{ __html: t('loys.evidence_bullet_10') }} />
+            <li dangerouslySetInnerHTML={{ __html: t('loys.evidence_bullet_11') }} />
           </ul>
         </section>
 

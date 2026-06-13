@@ -17,6 +17,23 @@ import LineageDiagram, { C, type DiagramDef } from './DiagramEngine';
 //   • Node heights bumped to fix text overflow.
 //   • Bottom annotation centred with maxWidth wrap.
 //   • Legend split into two rows: confidence keys + glyph keys.
+//
+// June 2026 (Donche consolidation):
+//   • 1393 Broekburg relief-waiver annotation added right of jst (Margareta
+//     van Male remitting her half-brother's relief — Donche p. 556, citing
+//     ADN Lille B 421).
+//   • Founding filiation jst → j2 softened to Probable per the consolidated
+//     reading (Despars confirms Jan at Drincham but not the son; filiation
+//     rests on the Vredius–Donche transmission pending the ADN B-series).
+//   • Bottom annotation extended: Donche (2006) carries the line to six
+//     generations (Simon; Margareta van Drincham, gezegd van Vlaanderen,
+//     d. c. 1529–30) and records the Praet line's 1551 purchase attempt.
+//   • "Ive de Luu" removed as Jan sans terre's mother (June 2026): the claim
+//     was unsupported — the project's Vredius source note has no such record,
+//     and Ive sLuus/sLuis is the documented mother of ROBRECHT (Béthune
+//     p. 233). Jan's mother is treated as not securely identified.
+//   • jst → j2 connector recolored to Probable amber to match the filiation
+//     tier (node fill stays green: the man's existence is attested).
 // ─────────────────────────────────────────────────────────────────────────────
 
 const LINE = '#5a6378';
@@ -47,8 +64,8 @@ const diagram: DiagramDef = {
         name: 'Louis II de Male',
         dates: 'Count of Flanders · 1330–1384',
         tag: 'HOUSE OF DAMPIERRE',
-        body: "Last Count of Flanders from the House of Dampierre. Father of Jan sans terre by Ive de Luu. De l'Espinoy identifies Jan as the fifth natural son of Louis de Male.",
-        src: 'Vredius, Tab. XVI; FMG MedLands [817, 836]',
+        body: "Last Count of Flanders from the House of Dampierre. Father of Jan sans terre. De l'Espinoy identifies Jan as the fifth natural son of Louis de Male.",
+        src: "Vredius, Tab. XVI; de l'Espinoy (1631), Livre 2, Ch. XXXI, pp. 69–70",
         color: C.root,
         ev: 'direct',
         w: 152,
@@ -66,8 +83,8 @@ const diagram: DiagramDef = {
         name: 'Jan "sans terre" van Vlaenderen',
         dates: 'd. 25 Sep 1396 · Nicopolis',
         tag: 'LORD OF DRINCHAM · GRANT 1383',
-        body: "Natural son of Louis de Male by Ive de Luu. On 22 November 1383 Louis de Male granted him the castle and lordship of Drincham near Cassel, confiscated from Jean de Scheurvelde. Married Wilhelmine de Nevele at Arras c. 1388 — daughter of Guillaume de Nevele and Wilhelmine de Halewyn, Dame de Lichtervelde du chef de sa mère. Killed at the Battle of Nicopolis alongside half-brothers Loys 'le Hase' and Louis Friese.",
-        src: "Vredius, Tab. XVI (fol. 281); de l'Espinoy (1631); FMG MedLands [836–840]; Lichtervelde (1935) p. 51 fn 1",
+        body: "Natural son of Louis de Male; his mother is not securely identified. On 22 November 1383 Louis de Male granted him the castle and lordship of Drincham near Cassel, confiscated from Jean de Scheurvelde. Married Wilhelmine de Nevele at Arras c. 1388 — daughter of Guillaume de Nevele and Wilhelmine de Halewyn, Dame de Lichtervelde du chef de sa mère. Killed at the Battle of Nicopolis alongside half-brothers Loys 'le Hase' and Louis Friese.",
+        src: "Vredius, Tab. XVI (fol. 281); de l'Espinoy (1631); Lichtervelde (1935) p. 51 fn 1",
         color: '#4ade80',
         ev: 'direct',
         w: 252,
@@ -84,8 +101,8 @@ const diagram: DiagramDef = {
         name: 'Jan van Vlaenderen',
         dates: 'Lord of Drincham · m. Isabella de Ghistelles',
         tag: 'LORD OF DRINCHAM',
-        body: "Son of Jan sans terre and Wilhelmine de Nevele. Active 1419 as lord of Drincham at Furnes castellany alongside uncles Victor and Robert (ADN B 43124 fol. 41r°). Married Isabella de Ghistelles, Dame de Vissaert. His heraldic arms — quartered with Ghistelles, bearing a canton of Flanders and Luxembourg — pass through him to his son Jacques de Drincham.",
-        src: 'Vredius, Tab. XVI; ADN B 43124 fol. 41r°; Lichtervelde (1935) p. 56 fn 2',
+        body: "Heir of Jan sans terre and Wilhelmine de Nevele per the Vredius–Donche transmission; the founding filiation is graded Probable pending the ADN Lille B-series record (see annotation). Active 1419 as lord of Drincham at Furnes castellany alongside uncles Victor and Robert (ADN B 43124 fol. 41r°). Married Isabella de Ghistelles, Dame de Vissaert. The 1466 Houtem tomb of his daughter Maria names him 'Mer Jans van Vlandres gheseit Drincham' (Donche p. 567). His heraldic arms — quartered with Ghistelles, bearing a canton of Flanders and Luxembourg — pass through him to his son Jacques de Drincham.",
+        src: 'Vredius, Tab. XVI; ADN B 43124 fol. 41r°; Lichtervelde (1935) p. 56 fn 2; Donche, Vlaamse Stam 42/6 (2006) pp. 557–559, 567',
         color: '#4ade80',
         ev: 'direct',
         w: 252,
@@ -208,7 +225,11 @@ const diagram: DiagramDef = {
 
   connections: [
     { from: 'lm', to: 'jst',           color: LINE },
-    { from: 'jst', to: 'j2',           color: LINE },
+    // jst → j2 drawn in Probable amber: the man's existence is attested
+    // (1419 Furnes castellany), but the founding filiation itself is graded
+    // Probable — see the amber annotation right of j2. Node fill stays
+    // attested-green because color encodes record confidence for the person.
+    { from: 'jst', to: 'j2',           color: '#fbbf24' },
     { from: 'j2', to: 'j3',            color: LINE },
     { from: 'j2', to: 'jacques',       color: LINE },
     { from: 'j2', to: 'loys',          color: LINE },
@@ -239,13 +260,29 @@ const diagram: DiagramDef = {
       text: '← Line continues through widow Wilhelmine de Nevele and a documented son active 1419 as lord of Drincham — ADN B 43124 fol. 41r°.',
       color: '#d4a830',
     },
+    // NEW June 2026: 1393 Broekburg relief waiver — comital recognition
+    {
+      x: 696,
+      y: 308,
+      maxWidth: 408,
+      text: "← 1393 Broekburg relief account: Margareta van Male orders the receiver to take no money from 'Messire de Drincham' — comital recognition of her half-brother (Donche p. 556, citing ADN Lille B 421).",
+      color: '#d4a830',
+    },
+    // NEW June 2026: founding-filiation tier note — right of j2
+    {
+      x: 700,
+      y: 400,
+      maxWidth: 400,
+      text: '← Founding filiation (Jan sans terre → Jan) graded Probable: Despars confirms Jan sans terre at Drincham but does not name the son; the filiation rests on the Vredius–Donche transmission pending the ADN Lille B-series record.',
+      color: '#fbbf24',
+    },
     // Bottom annotation — centred with wrap
     {
       x: 560,
       y: 886,
       align: 'center',
       maxWidth: 880,
-      text: 'After c.1473, the Drincham line is no longer documented in de Wrée. For the 15th → 16th century evidentiary gap and the French Flanders cluster hypothesis, see the Gap Dossier.',
+      text: 'After c.1473, the Drincham line is no longer documented in de Wrée. Donche (2006) extends it to six generations — through Simon van Drincham (bailiff of Veurne 1477–86) to Margareta van Drincham, gezegd van Vlaanderen (d. c. 1529–30) — with the Praet line attempting to buy the Drincham seat in 1551. For the evidentiary gap into the French Flanders cluster, see the Gap Dossier.',
       color: '#8a8f9e',
     },
   ],
