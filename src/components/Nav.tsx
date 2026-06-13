@@ -7,13 +7,6 @@ import styles from './Nav.module.css';
 // Keep Tab type exported — some legacy prop signatures still reference it
 export type Tab = 'home' | 'mill' | 'name' | 'dna' | 'research' | 'sources' | 'lineage' | 'about' | 'contact';
 
-interface NavProps {
-  // active and onNav are now derived internally from the router,
-  // but kept as optional props for backward compatibility with App.tsx
-  active?: Tab | string;
-  onNav?: (tab: Tab | string) => void;
-}
-
 // Tabs listed in display order. Order also matters for active-tab matching:
 // the longest matching path wins, so /research/bibliography lights up
 // `sources`, not `research`. See `activeTab` below.
@@ -28,7 +21,7 @@ const TAB_PATHS: { id: Tab; path: string }[] = [
   { id: 'contact',  path: '/contact'                 },
 ];
 
-export default function Nav(_props: NavProps) {
+export default function Nav() {
   const { t } = useTranslation();
   const location = useLocation();
 

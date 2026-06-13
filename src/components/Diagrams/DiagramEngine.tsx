@@ -115,6 +115,7 @@ export interface DiagramDef {
 }
 
 // ── Color palette ──────────────────────────────────────────────────────────
+// eslint-disable-next-line react-refresh/only-export-components -- shared design tokens co-located with the engine
 export const C = {
   root: '#e8812a',
   victor: '#9b7fd4',

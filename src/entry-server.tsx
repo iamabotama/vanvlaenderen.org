@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components -- SSR entry module; fast-refresh does not apply */
 /**
  * entry-server.tsx
  *

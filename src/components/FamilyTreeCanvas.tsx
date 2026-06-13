@@ -72,9 +72,6 @@ interface TSeg {
 
 // ── Component ──────────────────────────────────────────────────────────────
 export default function FamilyTreeCanvas() {
-  // SSR guard — canvas and window don't exist in Node during prerender
-  if (typeof window === 'undefined') return null;
-
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -291,6 +288,10 @@ export default function FamilyTreeCanvas() {
       window.removeEventListener('resize', onResize);
     };
   }, []);
+
+  // SSR guard — canvas/window don't exist in Node during prerender; placed after
+  // the hooks so hook order stays unconditional (react-hooks/rules-of-hooks).
+  if (typeof window === 'undefined') return null;
 
   return (
     <canvas

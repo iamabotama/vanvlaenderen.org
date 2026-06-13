@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactNode } from 'react';
+import { useSyncExternalStore, type ReactNode } from 'react';
 
 /**
  * Renders children only after the component has mounted on the client.
@@ -13,8 +13,11 @@ interface ClientOnlyProps {
   fallback?: ReactNode;
 }
 
+const subscribeClientOnly = () => () => {};
+
 export default function ClientOnly({ children, fallback = null }: ClientOnlyProps) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
+  // SSR-safe client detection without setState-in-effect: server snapshot is false
+  // (fallback emitted during prerender), client snapshot is true.
+  const mounted = useSyncExternalStore(subscribeClientOnly, () => true, () => false);
   return <>{mounted ? children : fallback}</>;
 }
