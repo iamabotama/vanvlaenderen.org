@@ -58,7 +58,7 @@ const READING_LIST: { group: string; entries: ReadingEntry[] }[] = [
         author: 'Buylaert, F.',
         year: '2010',
         title: 'Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen',
-        note: 'The most important recent study of the Flemish nobility in the 14th–15th centuries, by the same Buylaert cited in FMG MedLands for the Josse de Flandre cadet branch. Demonstrates the nobility\'s adaptability and social mobility during exactly the period our research covers. In Dutch. An English-language article by the same author ("The late medieval crisis of the nobility reconsidered: the case of Flanders", Journal of Social History 45, 2012) covers the main arguments and is freely available.',
+        note: 'The most important recent study of the Flemish nobility in the 14th–15th centuries, by the same Buylaert whose Repertorium van de Vlaamse adel (2011) documents the Josse de Flandre cadet branch. Demonstrates the nobility\'s adaptability and social mobility during exactly the period our research covers. In Dutch. An English-language article by the same author ("The late medieval crisis of the nobility reconsidered: the case of Flanders", Journal of Social History 45, 2012) covers the main arguments and is freely available.',
         links: [
           { label: 'Amazon', url: 'https://www.amazon.com/Eeuwen-Van-Ambitie-Laatmiddeleeuws-Verhandelingen/dp/9065690751' },
           { label: 'Free download (Academia.edu)', url: 'https://www.academia.edu/2418411/Frederik_Buylaert_Eeuwen_van_ambitie' },
@@ -195,7 +195,7 @@ export default function MethodologyPage() {
       <div className={styles.content}>
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Research Foundations</h2>
-          <div className={researchStyles.dossierMeta}>Updated April 2026</div>
+          <div className={researchStyles.dossierMeta}>Updated June 2026</div>
         </div>
 
         {/* ── Section 1: Transcription & Translation Methodology ── */}
@@ -238,6 +238,51 @@ export default function MethodologyPage() {
             Every claim on this site traces to a named primary or secondary authority.
             Tool outputs that cannot be verified against a named source are flagged
             as provisional.
+          </p>
+        </section>
+
+        {/* ── Section 1b: The dual name-form convention ───────────── */}
+        <section className={styles.section}>
+          <h2>
+            Reading the Dual Name-Form: "van Vlaenderen gheseyt van [lordship]"
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>
+              Strongly Corroborated
+            </span>
+          </h2>
+          <p>
+            One naming pattern recurs often enough in the project's sources that it is treated
+            as a convention rather than as scribal idiosyncrasy: the bridged dual form
+            <em> "van Vlaenderen gheseyt van [lordship]"</em>, in which a single person carries
+            both the house-name and a territorial title, explicitly linked by a "called /
+            known-as" bridge word (<em>gheseyt / gheseit / gezegd</em>).
+          </p>
+          <p>
+            The form is attested verbatim for at least five distinct bearers, across two
+            independent lordship-lineages, in both word-orders, over the span 1466–1522.
+            In the Praet line: <em>"Joncheer Antheunis van Vlaenderen, gheseyt van Praet"</em>{' '}
+            (Antoine, d. 1522, tombstone transcribed in Gailliard, <em>Bruges et le Franc</em>,
+            Tome I, p. 260), and <em>"Jan van Vlaendren gheseit van Praet"</em> and{' '}
+            <em>"Joos van Vlaendren gheseit van Praet"</em> (both 1520; Buylaert,{' '}
+            <em>Repertorium van de Vlaamse adel</em>). In the Drincham line:{' '}
+            <em>"Mer Jans van Vlandres gheseit Drincham"</em> (tomb of 1466 at Houtem,
+            transcribed via Donche, "De Familie Van Drincham, gezegd van Vlaanderen,"{' '}
+            <em>Vlaamse Stam</em> 42/6, 2006, p. 567) and{' '}
+            <em>"joncvrouwe Margriete van Vlaendren gheseit van Drincham, vrouwe van Krubeke"</em>{' '}
+            (1503 fief register; Buylaert, p. 756).
+          </p>
+          <p>
+            Why this matters methodologically: a genuine origin-name ("from Flanders") is never
+            bridged to a specific lordship — a scribe has no reason to write "van Vlaenderen,
+            called van Praet" if "van Vlaenderen" merely records where a family came from. The
+            dual form records two coexisting identifiers — a heritable house-name and a current
+            territorial title — which is the documented behaviour of a noble lineage-surname
+            carried by a lordholder. Five bearers across two separate lordship-branches of one
+            kin-group, over roughly fifty-five years, is decisive against reading the form as
+            one individual's quirk. When the project encounters any "van Vlaenderen" attestation
+            paired with a lordship, this convention is the interpretive frame applied — and it
+            is held falsifiable: a cadet documented holding a current seigneurial title yet
+            bearing "van Vlaenderen" alone, or a titleless cadet consistently bearing a
+            non-Vlaenderen surname, would break the rule.
           </p>
         </section>
 

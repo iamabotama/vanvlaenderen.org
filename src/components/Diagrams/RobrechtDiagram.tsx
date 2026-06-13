@@ -21,6 +21,11 @@ import LineageDiagram, { C, type DiagramDef } from './DiagramEngine';
 //   • viewBox widened 920 → 1100 to accommodate right-side annotations.
 //   • Legend split into two rows: confidence keys + glyph keys.
 //
+// June 2026:
+//   • Robrecht's mother added to the rob card: Ive sLuus of the van de
+//     Lus patrician family of Ghent, per Béthune, Épitaphes et monuments
+//     (1897–1900) p. 233 (Elverdinge entry; Directly Attested).
+//
 // Visual conventions:
 //   Color = record confidence (matches site-wide reliability palette).
 //   Glyph below card = descendant status (†, ?, ×).
@@ -44,7 +49,7 @@ const diagram: DiagramDef = {
         name: 'Louis II de Male',
         dates: 'Count of Flanders · 1330–1384',
         body: "Father of Robrecht van Vlaenderen. The 1419 marriage of Robrecht to Anastasie d'Oultre at Ypres took place in the presence of the future Philip the Good, two days after the assassination of John the Fearless at Montereau.",
-        src: 'FMG MedLands [817]; Buylaert (2011) pp. 752–753',
+        src: 'Vredius, Tab. XVI; Buylaert (2011) pp. 752–753',
         color: C.root,
         ev: 'direct',
         w: 152,
@@ -61,8 +66,8 @@ const diagram: DiagramDef = {
         name: 'Robrecht van Vlaenderen',
         dates: 'd. 21 Jan 1434',
         tag: 'ELVERDINGHE &\nVLAMERTINGHE',
-        body: "Natural son of Louis de Male. Acquired Elverdinghe and Vlamertinghe at his half-brother Loys 'le Hase's 1396 death (see annotation). Burgundian raed ende camerlinck (councillor and chamberlain) to Dukes John the Fearless and Philip the Good. Married Anastasie d'Oultre at Ypres on 12 September 1419, acquiring the title Vicomte d'Ypres jure uxoris. The marriage produced no legitimate children. His wooden tomb in the Elverdinge parish church bore a Middle Dutch inscription naming him \"Roelandt van Vlaenderen\" (likely Robrecht, per Tamboryn).",
-        src: 'Buylaert (2011) pp. 752–753; Vredius (1643) pp. 283–284; Tamboryn, Geschiedenis van Elverdinghe, pp. 23–24',
+        body: "Natural son of Louis de Male; his mother is named in Béthune's p. 233 transcription of the Elverdinge epitaph as Ive sLuus of the van de Lus patrician family of Ghent (arms: azure a lion gules). Acquired Elverdinghe and Vlamertinghe at his half-brother Loys 'le Hase's 1396 death (see annotation). Burgundian raed ende camerlinck (councillor and chamberlain) to Dukes John the Fearless and Philip the Good. Married Anastasie d'Oultre at Ypres on 12 September 1419, acquiring the title Vicomte d'Ypres jure uxoris. The marriage produced no legitimate children. His wooden tomb in the Elverdinge parish church bore a Middle Dutch inscription naming him \"Roelandt van Vlaenderen\" (likely Robrecht, per Tamboryn; Béthune's transcription preserves the tomb's 'Roelant' beside Gailliard's gloss 'denwelcke Robrecht').",
+        src: 'Buylaert (2011) pp. 752–753; Vredius (1643) pp. 283–284; Tamboryn, Geschiedenis van Elverdinghe, pp. 23–24; Béthune, Épitaphes et monuments (1897–1900) p. 233',
         color: '#4ade80',
         ev: 'direct',
         w: 252,

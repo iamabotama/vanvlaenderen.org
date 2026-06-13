@@ -40,7 +40,7 @@ export default function LouisFrieseLineagePage() {
       <div className={styles.content}>
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Louis Friese van Vlaenderen Dossier</h2>
-          <div className={researchStyles.dossierMeta}>Updated May 2026</div>
+          <div className={researchStyles.dossierMeta}>Updated June 2026</div>
         </div>
 
         {/* ── Intro ──────────────────────────────────────── */}
@@ -126,6 +126,7 @@ export default function LouisFrieseLineagePage() {
           <p dangerouslySetInnerHTML={{ __html: t('louis_friese.later_p1') }} />
           <p dangerouslySetInnerHTML={{ __html: t('louis_friese.later_p2') }} />
           <p dangerouslySetInnerHTML={{ __html: t('louis_friese.later_p3') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('louis_friese.later_p4') }} />
         </section>
 
         {/* ── Archival Evidence Summary ──────────────────── */}
@@ -180,7 +181,7 @@ export default function LouisFrieseLineagePage() {
               aria-label="House of Praet: Lineage Dossier"
             >
               <h3>House of Praet: Lineage Dossier</h3>
-              <p>Six generations with primary-source confirmed data. Includes Johan I's five children, Lodewijk II's six children (including Jean de Flandre and the Josse de Flandre cadet branch), and the 1517 Knesselare charter.</p>
+              <p>Seven generations with primary-source confirmed data. Includes Johan I's five children, Lodewijk II's six children, the collateral continuation through Joos, Jacob, and Lodewijk V to the 1591 terminus, and the 1517 Knesselare charter.</p>
               <span className={researchStyles.branchLink} aria-hidden="true">
                 View Lineage Evidence &rarr;
               </span>

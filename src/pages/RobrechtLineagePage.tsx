@@ -42,7 +42,7 @@ export default function RobrechtLineagePage() {
       <div className={styles.content}>
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Robrecht van Vlaenderen Dossier</h2>
-          <div className={researchStyles.dossierMeta}>Updated May 2026</div>
+          <div className={researchStyles.dossierMeta}>Updated June 2026</div>
         </div>
 
         {/* ── Intro ───────────────────────────────────────────────── */}
@@ -77,6 +77,24 @@ export default function RobrechtLineagePage() {
             {t('robrecht.tomb_quote_anastasie_dutch')}
           </blockquote>
           <p dangerouslySetInnerHTML={{ __html: t('robrecht.tomb_p3') }} />
+        </section>
+
+        {/* ── Mother: Ive sLuus ───────────────────────────────────── */}
+        <section className={styles.section}>
+          <h2>
+            {t('robrecht.mother_heading')}{' '}
+            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span>
+          </h2>
+          <p dangerouslySetInnerHTML={{ __html: t('robrecht.mother_p1') }} />
+          <blockquote className={styles.pullQuote} style={{ fontStyle: 'italic' }}>
+            {t('robrecht.mother_quote_bethune')}
+          </blockquote>
+          <p style={{ fontStyle: 'italic', color: 'var(--text-muted)' }}>
+            {t('robrecht.mother_quote_gloss')}
+          </p>
+          <p dangerouslySetInnerHTML={{ __html: t('robrecht.mother_p2') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('robrecht.mother_p3') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('robrecht.mother_evidence') }} />
         </section>
 
         {/* ── Interactive Diagram ─────────────────────────────────── */}
@@ -191,6 +209,7 @@ export default function RobrechtLineagePage() {
             <li dangerouslySetInnerHTML={{ __html: t('robrecht.evidence_bullet_8') }} />
             <li dangerouslySetInnerHTML={{ __html: t('robrecht.evidence_bullet_9') }} />
             <li dangerouslySetInnerHTML={{ __html: t('robrecht.evidence_bullet_10') }} />
+            <li dangerouslySetInnerHTML={{ __html: t('robrecht.evidence_bullet_11') }} />
           </ul>
         </section>
 
