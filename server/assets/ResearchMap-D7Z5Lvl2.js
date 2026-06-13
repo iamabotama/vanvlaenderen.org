@@ -95,7 +95,7 @@ const MEDIEVAL_ANCHORS = [
   { name: "Biervliet", lat: 51.3333, lng: 3.7333, label: "Victor: Captain of Biervliet", date: "c.1400s" },
   { name: "Oedelem/Praet", lat: 51.15, lng: 3.35, label: "Praet Lordship", date: "c.1373–1555" },
   { name: "Tielt", lat: 50.9833, lng: 3.3333, label: "Robbrecht Van Vlaendren", date: "1418–1432" },
-  { name: "Brugse Vrije", lat: 51.2, lng: 3.2167, label: "Joos Van Vlaanderen (testator)", date: "1547–1549" },
+  { name: "Brugse Vrije", lat: 51.2, lng: 3.2167, label: "Joos van Vlaenderen (wardship file)", date: "1545–1549" },
   { name: "Knesselare", lat: 51.1333, lng: 3.4833, label: "1517: Praet fiefs at Knesselare", date: "1517" }
 ];
 const LINEAGE_TRAIL = [
