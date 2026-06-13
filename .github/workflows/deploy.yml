@@ -29,6 +29,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Check i18n consistency (EN/NL names + evidence tiers)
+        run: node scripts/check-i18n.mjs
+
       - name: Build client bundle
         run: pnpm exec tsc -b && pnpm exec vite build
 
