@@ -1,5 +1,5 @@
 # vanvlaenderen.org — Website To-Do & Changelog
-*Last updated: April 25, 2026*
+*Last updated: June 14, 2026*
 *Repository: github.com/iamabotama/vanvlaenderen.org · Branch: main*
 
 ---
@@ -81,6 +81,18 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 ---
 
 ## 📋 CHANGELOG
+
+### June 14, 2026 — Editorial wave: Research/Name Nevers reframing + historical cluster map *(STAGED on mvf — pending gates + push approval)*
+Two packets. Packet A's text edits were prepared, stashed during a concurrent-thread git operation (`stash@{0}`), and restored; the map (Packet B) was reworked mid-stream to a fixed-base + transparent-overlay design (a separate thread's redesign, folded in here).
+
+Packet A (Research-page text + bibliography):
+- `src/i18n/locales/en.json` + `nl.json` — `research.*`: reframed the Guy of Richebourg / Louis de Nevers material from established to **Hypothesis** footing; moved the parentage chronology into footnote `notes_source_6_text` (Vandermaesen vs Despars conflict + the banneret-rank chronology argument); corrected "(d. 1322)" → Louis de Crécy d. 1346; re-mapped the surviving clusters to Meetjesland+Ghent / French Flanders (Cassel) / Brabant, Robrecht's Ypres line shown extinguished; finished four→five in the notes; glossed "toponymic"/"referent". NL strings are drafts → native Flemish review queue.
+- `public/data/bibliography.json` — added `de-raadt-1898-sceaux-armories` and `vandermaesen-1999-droit-de-livree` (both `cited_via_intermediary`); bumped `lastUpdated`.
+
+Packet B (cluster map — fixed base + transparent heat overlays):
+- `src/components/TimelineClusterMap.tsx` — a fixed antique base map (`flandria-comitatus-1600.jpg`, loads once) with three stacked transparent heat overlays (`van-vlaenderen-heat-{pre1500,16thc,1600}.png`) that cross-fade on toggle; EN+NL captions, legend, Geneanet credit via the `clusterMap.*` i18n namespace. SSR-safe, renders directly (prerenders).
+- `src/pages/ResearchPage.tsx` + `NamePage.tsx` — swapped the DB-driven Leaflet `ResearchMap` for `<TimelineClusterMap />`; the database map is framed as a future release.
+- Assets: the base was re-delivered clean (the repo copy had arrived 45 bytes short, baking a ~28px gray tear into the earlier baked composites); the lightweight transparent overlays (~10–25 KB each) replace the ~240 KB baked composites, which are superseded.
 
 ### April 25, 2026 — DNA page citation cleanup: Larmuseau name removed, bibliography deep-link wired
 Following the project's authorial policy that genealogical-genetics researchers are to be referenced via citation links rather than named in article prose, the two surviving "Larmuseau et al. (2013)" mentions on the DNA page have been removed and replaced with internal links to the bibliography. The cuckoldry paper (Proc. R. Soc. B 280: 20132400, doi:10.1098/rspb.2013.2400) was previously cited inline on the DNA page but absent from the bibliography itself; it has now been added to Section D as `larmuseau-2013-cuckoldry` (status `consulted`, full DOI URL).
