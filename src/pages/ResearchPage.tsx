@@ -267,7 +267,11 @@ export default function ResearchPage() {
         </section>
 
         {/* Historical surname-cluster timeline map (Geneanet-based, antique base) */}
-        <TimelineClusterMap />
+        <section className={styles.section}>
+          <h2>{t('clusterMap.section_heading')}</h2>
+          <p>{t('clusterMap.section_intro')}</p>
+          <TimelineClusterMap />
+        </section>
 
         {/* ── Archival Dossiers ────────────────────────────────────── */}
         <section className={styles.section} style={{ marginTop: '3rem' }}>

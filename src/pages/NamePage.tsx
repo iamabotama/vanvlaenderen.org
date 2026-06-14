@@ -219,7 +219,11 @@ export default function NamePage() {
         </section>
 
         {/* Historical surname-cluster timeline map (Geneanet-based, antique base) */}
-        <TimelineClusterMap />
+        <section className={styles.section}>
+          <h2>{t('clusterMap.section_heading')}</h2>
+          <p>{t('clusterMap.section_intro')}</p>
+          <TimelineClusterMap />
+        </section>
 
         {/* Static Meetjesland Map */}
         <div className={nameStyles.mapContainer}>
