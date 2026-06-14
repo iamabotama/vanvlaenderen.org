@@ -909,6 +909,8 @@
   },
   "clusterMap": {
     "region_label": "Time period",
+    "section_heading": "Where the surname clustered over time",
+    "section_intro": "Across three time windows, the recorded bearers of Van Vlaenderen concentrate in a handful of clusters inside the historic County — early on in French Flanders, then the Meetjesland and Ghent, with a later offshoot in Brabant — rather than scattering as a place-of-origin name would. Use the buttons to move between periods.",
     "btn_pre1500": "pre-1500",
     "btn_16thc": "16th c.",
     "btn_1600": "by 1600",

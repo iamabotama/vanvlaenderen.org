@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 // Historical Van Vlaenderen surname-density map, three time windows.
-// Fixed antique base map (loads once, never re-decodes) with three transparent
-// heat overlays stacked on top; toggling cross-fades the active overlay's opacity.
-// Compositing is alpha-over the base, identical to the baked version, but lighter
-// and flash-free. Pure CSS/img — no Leaflet, no window access at render time, so
-// it is SSR/prerender-safe and renders directly (no ClientOnly wrapper needed).
+// Fixed antique base map (loads once) with three transparent heat overlays
+// stacked on top; toggling cross-fades the active overlay's opacity. Pure
+// CSS/img — no Leaflet, no window access at render time, so it is SSR/prerender
+// safe and renders directly. Text uses the site design tokens (gold/amber on the
+// dark theme) so it stays legible; the map artwork carries its own parchment look.
 // Heat positions LOCKED 2026-06-14; counts are per-municipality from Geneanet.
 
 const BASE = '/new_images/flandria-comitatus-1600.jpg';
@@ -24,11 +24,11 @@ export default function TimelineClusterMap() {
   const [active, setActive] = useState(2); // default: "by 1600"
 
   return (
-    <figure style={{ fontFamily: 'Georgia, serif', maxWidth: 760, margin: '2.5rem auto 0' }}>
+    <figure style={{ maxWidth: 760, margin: '1.5rem auto 0' }}>
       <div
         role="group"
         aria-label={t('clusterMap.region_label')}
-        style={{ display: 'flex', gap: 8, justifyContent: 'center', marginBottom: 12 }}
+        style={{ display: 'flex', gap: 8, justifyContent: 'center', marginBottom: 14, flexWrap: 'wrap' }}
       >
         {BTN_KEYS.map((key, i) => (
           <button
@@ -37,13 +37,16 @@ export default function TimelineClusterMap() {
             aria-pressed={active === i}
             onClick={() => setActive(i)}
             style={{
-              fontFamily: 'Georgia, serif',
-              fontSize: 13,
+              font: 'inherit',
+              fontSize: '0.85rem',
+              letterSpacing: '0.02em',
               padding: '7px 16px',
-              border: `0.5px solid ${active === i ? '#5a1411' : '#6b4f34'}`,
-              background: active === i ? '#7a1d16' : '#efe4cd',
-              color: active === i ? '#f3e7cb' : '#4a3a28',
+              borderRadius: 2,
               cursor: 'pointer',
+              border: `1px solid ${active === i ? 'var(--gold)' : 'var(--gold-dim)'}`,
+              background: active === i ? 'var(--gold)' : 'transparent',
+              color: active === i ? 'var(--dark)' : 'var(--text-muted)',
+              transition: 'all 0.2s',
             }}
           >
             {t(key)}
@@ -56,7 +59,7 @@ export default function TimelineClusterMap() {
         style={{
           position: 'relative',
           lineHeight: 0,
-          border: '1px solid #6b4f34',
+          border: '1px solid var(--gold-dim)',
           borderRadius: 4,
           overflow: 'hidden',
         }}
@@ -81,22 +84,23 @@ export default function TimelineClusterMap() {
         ))}
       </div>
 
-      <figcaption style={{ fontSize: 13, color: '#4a3a28', lineHeight: 1.6, margin: '12px 2px 6px' }}>
+      <figcaption style={{ color: 'var(--text-primary)', fontSize: '0.95rem', lineHeight: 1.6, margin: '14px 2px 8px' }}>
         {t(CAP_KEYS[active])}
       </figcaption>
       <div
-        style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 11, color: '#6b573c', margin: '0 2px' }}
+        style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: '0.8rem', color: 'var(--text-muted)', margin: '0 2px 4px' }}
       >
         <span
-          style={{ width: 30, height: 10, borderRadius: 5, background: 'linear-gradient(90deg,#ffd628,#e24a14)' }}
+          aria-hidden="true"
+          style={{ width: 30, height: 10, borderRadius: 5, flex: '0 0 auto', background: 'linear-gradient(90deg,#ffd628,#e24a14)' }}
         />
         {t('clusterMap.legend')}
       </div>
       <p
-        style={{ fontSize: 10, color: '#6b573c', margin: '10px 2px 0', lineHeight: 1.55 }}
+        style={{ fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: '8px 2px 0' }}
         dangerouslySetInnerHTML={{ __html: t('clusterMap.credit_html') }}
       />
-      <p style={{ fontSize: 10, color: '#6b573c', margin: '6px 2px 0', lineHeight: 1.55, fontStyle: 'italic' }}>
+      <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: '6px 2px 0', fontStyle: 'italic' }}>
         {t('clusterMap.db_note')}
       </p>
     </figure>
