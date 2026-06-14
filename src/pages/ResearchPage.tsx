@@ -4,14 +4,7 @@ import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { OverviewDiagram } from '../components/Diagrams';
-import { lazy, Suspense } from 'react';
-import ClientOnly from '../components/ClientOnly';
-
-// Leaflet touches window on import. lazy() alone does NOT skip SSR — renderToString
-// still tries to resolve the Suspense boundary and aborts, injecting an error stack
-// trace into the static HTML. ClientOnly is what actually skips the prerender; lazy()
-// here is just for bundle splitting.
-const ResearchMap = lazy(() => import('../components/ResearchMap/ResearchMap'));
+import TimelineClusterMap from '../components/TimelineClusterMap';
 import { Helmet } from 'react-helmet-async';
 
 export default function ResearchPage() {
@@ -273,12 +266,8 @@ export default function ResearchPage() {
           </div>
         </section>
 
-        {/* Interactive Research Map */}
-        <ClientOnly fallback={<div style={{ width: '100%', height: 'clamp(400px, 60vw, 520px)' }} />}>
-          <Suspense fallback={<div style={{ width: '100%', height: 'clamp(400px, 60vw, 520px)' }} />}>
-            <ResearchMap />
-          </Suspense>
-        </ClientOnly>
+        {/* Historical surname-cluster timeline map (Geneanet-based, antique base) */}
+        <TimelineClusterMap />
 
         {/* ── Archival Dossiers ────────────────────────────────────── */}
         <section className={styles.section} style={{ marginTop: '3rem' }}>
