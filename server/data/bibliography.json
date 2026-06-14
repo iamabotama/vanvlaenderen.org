@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-12",
+  "lastUpdated": "2026-06-14",
   "sections": {
     "primarySources": {
       "label": "I. Primary Sources and Finding Aids",
@@ -417,6 +417,17 @@
               "publisher": "Stadsarchief Gent (De Zwarte Doos). Available via the volunteer transcription project.",
               "note": "Indexed transcription of marriage registers from the Sint-Martinus parish in Ghent, 1584–1796, sorted alphabetically by the groom's family and given name. Useful for targeted lookup of Van Vlaenderen / Vlaendren marriage records in Ghent during the period between the 1547 Brugse Vrije TBO 184 documents and the 18th-century parish registers already incorporated into the project's parish-record database. Not a substitute for the primary registers but an efficient finding aid for name-targeted queries.",
               "status": "consulted"
+            },
+            {
+              "id": "de-raadt-1898-sceaux-armories",
+              "source_type": "tertiary_compilation",
+              "type": "Finding Aid",
+              "author": "De Raadt, J.-Th.",
+              "year": "1898",
+              "title": "Sceaux armoriés des Pays-Bas et des pays avoisinants",
+              "publisher": "Brussels, 1898. Multi-volume armorial of seals; vol. I (1898), p. 456 cited.",
+              "note": "A multi-volume armorial of the seals of the Low Countries and neighbouring regions. Vol. I (1898) p. 456 carries the 1517 Knesselare charter recording Lodewijk IV holding six fiefs from the seigneurie of Wessegem, cited in the Praet and Gap dossiers (louis_friese.later_p3, PraetLineageDossierPage, GapDossierPage). The project knows this charter through De Raadt's apparatus as relayed by C. Cawley, 'Medieval Lands' (FMG); the De Raadt volume has not yet been read directly. Publisher and full volume span to be verified when the volume is obtained.",
+              "status": "cited_via_intermediary"
             }
           ]
         }
@@ -486,6 +497,17 @@
               "publisher": "Trans. James Bruce Ross. Columbia University Press, 1967.",
               "note": "A 12th-century primary source included as contextual background. Galbert names Gervais de Praet as Chambellan de Bruges after the murder of Count Charles the Good in 1127.",
               "status": "consulted"
+            },
+            {
+              "id": "vandermaesen-1999-droit-de-livree",
+              "source_type": "scholarly_article",
+              "type": "Belgian Historiography",
+              "author": "Vandermaesen, Maurice",
+              "year": "1999",
+              "title": "Le droit de livrée à la cour de Louis, comte de Flandre, en 1331",
+              "publisher": "In W. Blockmans, M. Boone & Th. de Hemptinne (eds.), Secretum Scriptorum: Liber Alumnorum Walter Prevenier. Leuven: Garant, 1999, pp. 279–306.",
+              "note": "An edition and analysis of the 1331 livery records (droit de livrée) of the court of Louis I, Count of Flanders, including the banneret roster that names Guy van Vlaenderen, lord of Richebourg. Cited on the Research page (notes_source_6) for the identification and dating of Guy of Richebourg; the project reaches it via Buylaert, Repertorium (2011), p. 738. Bears on the contested parentage of Guy of Richebourg within the comital house (Vandermaesen: a Nevers/de Crécy natural son; Despars: a bastard of Robert of Cassel).",
+              "status": "cited_via_intermediary"
             }
           ]
         },
