@@ -3039,8 +3039,8 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }) {
               width: "100%",
               height: "100%",
               borderRadius: 6,
-              background: cfg.titleHeld ? "#1e1c10" : C.surf,
-              border: `${cfg.titleHeld ? 2.5 : 1.5}px solid ${color}`,
+              background: C.surf,
+              border: `1.5px solid ${color}`,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -3054,7 +3054,7 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }) {
                 {
                   style: {
                     fontFamily: "Cinzel, serif",
-                    fontSize: cfg.titleHeld ? 14 : 13,
+                    fontSize: 13,
                     fontWeight: 600,
                     color: C.text,
                     textAlign: "center",
