@@ -3,10 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import styles from './InnerPage.module.css';
 import nameStyles from './NamePage.module.css';
-import researchStyles from './ResearchPage.module.css';
+import EvidenceBadge from '../components/EvidenceBadge';
 
 import cronikeShields from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
-// import meetjeslandMap from '../assets/images/meetjesland-map.jpg'; // TODO: restore with comprehensive multi-cluster geography
 import TimelineClusterMap from '../components/TimelineClusterMap';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
@@ -19,7 +18,6 @@ export default function NamePage() {
 
   const closeLightbox = useCallback(() => setLightbox(null), []);
 
-  // Close lightbox on Escape key
   useEffect(() => {
     if (!lightbox) return;
     const handleKey = (e: KeyboardEvent) => {
@@ -28,19 +26,6 @@ export default function NamePage() {
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, [lightbox, closeLightbox]);
-
-  /* TODO: restore as a comprehensive, cluster-by-cluster list (not Meetjesland-only).
-  const villages = [
-    { name: t('name.village_bassevelde'), note: t('name.village_bassevelde_note') },
-    { name: t('name.village_boekhoute'), note: t('name.village_boekhoute_note') },
-    { name: t('name.village_ursel'), note: t('name.village_ursel_note') },
-    { name: t('name.village_evergem'), note: t('name.village_evergem_note') },
-    { name: t('name.village_lovendegem'), note: t('name.village_lovendegem_note') },
-    { name: t('name.village_sleidinge'), note: t('name.village_sleidinge_note') },
-    { name: t('name.village_wessegem'), note: t('name.village_wessegem_note') },
-    { name: t('name.village_vinderhoute'), note: t('name.village_vinderhoute_note') },
-  ];
-  */
 
   const variations = [
     'Van Vlaenderen', 'Van Vlaendereen',
@@ -54,14 +39,39 @@ export default function NamePage() {
     { src: lionWoodcut, alt: t('name.manuscript_3_alt'), caption: t('name.manuscript_3_caption') },
   ];
 
+  // Referent taxonomy — the 2×2 of what the name could point to, with a plain verdict per reading.
+  const referentGroups = [
+    {
+      group: t('name.referent_place_group'),
+      items: [
+        { base: 'referent_1a', tone: '#e74c3c' },
+        { base: 'referent_1b', tone: '#e67e22' },
+      ],
+    },
+    {
+      group: t('name.referent_count_group'),
+      items: [
+        { base: 'referent_2a', tone: '#3498db' },
+        { base: 'referent_2b', tone: '#2ecc71' },
+      ],
+    },
+  ];
+
+  const functions = [
+    { num: '1', label: t('name.four_bucket_b1_label'), desc: t('name.four_bucket_b1_desc'), muted: true },
+    { num: '2', label: t('name.four_bucket_b2_label'), desc: t('name.four_bucket_b2_desc'), muted: true },
+    { num: '3', label: t('name.four_bucket_b3_label'), desc: t('name.four_bucket_b3_desc'), muted: true },
+    { num: '4', label: t('name.four_bucket_b4_label'), desc: t('name.four_bucket_b4_desc'), muted: false },
+  ];
+
   return (
     <div className={styles.page}>
       <Helmet>
         <title>The Name — Where "Van Vlaenderen" Comes From | vanvlaenderen.org</title>
-        <meta name="description" content="Investigating the origins of the Van Vlaenderen surname. Why distributional mapping and the Toponymic Paradox rule out a generic toponymic reading at the cluster level, and how the comital household and bloodline mechanisms explain what remains." />
+        <meta name="description" content="Van Vlaenderen means 'from Flanders' — so why do its historic bearers cluster inside Flanders, where that label means nothing? An accessible guide to what the name pointed to, the four jobs it did in medieval documents, and the evidence behind each reading." />
         <link rel="canonical" href="https://vanvlaenderen.org/name" />
         <meta property="og:title" content="The Name — Where Van Vlaenderen Comes From" />
-        <meta property="og:description" content="Investigating the origins of the Van Vlaenderen surname. Why distributional mapping and the Toponymic Paradox rule out a generic toponymic reading at the cluster level, and how the comital household and bloodline mechanisms explain what remains." />
+        <meta property="og:description" content="Van Vlaenderen means 'from Flanders' — so why do its historic bearers cluster inside Flanders, where that label means nothing? What the name pointed to, and the evidence behind each reading." />
         <meta property="og:url" content="https://vanvlaenderen.org/name" />
         <meta property="og:type" content="article" />
       </Helmet>
@@ -78,38 +88,97 @@ export default function NamePage() {
           <div className={styles.eyebrow}>{t('name.hero_eyebrow')}</div>
           <h1>{t('name.hero_title')}</h1>
           <div className="gold-rule" />
-          <p className={styles.heroLead}>
-            {t('name.hero_lead')}
-          </p>
+          <p className={styles.heroLead} dangerouslySetInnerHTML={{ __html: t('name.hero_lead') }} />
         </div>
       </div>
 
       <div className={styles.content}>
 
+        {/* ── The short version (orientation for skimmers + both audiences) ── */}
+        <div style={{
+          margin: '0 0 2.5rem',
+          padding: '1.25rem 1.5rem',
+          background: 'rgba(232,184,48,0.06)',
+          border: '1px solid rgba(232,184,48,0.25)',
+          borderLeft: '3px solid var(--gold)',
+          borderRadius: '4px',
+        }}>
+          <div style={{ fontSize: '0.72rem', fontFamily: 'var(--font-ui)', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--gold)', marginBottom: '0.6rem' }}>
+            {t('name.shortver_title')}
+          </div>
+          <p style={{ margin: 0, lineHeight: 1.7 }} dangerouslySetInnerHTML={{ __html: t('name.shortver_body') }} />
+        </div>
+
+        {/* ── A Place-Name That Points Inward: geography + the paradox ── */}
         <section className={styles.section}>
           <h2>
             {t('name.history_title')}
-            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>
-              {t('research.method_corroborated_label')}
-            </span>
+            <EvidenceBadge level="corroborated" />
           </h2>
-          <p>
-            {t('name.history_p1')}
-          </p>
-          <p dangerouslySetInnerHTML={{ __html: t('name.history_p2') }} />
-          <p dangerouslySetInnerHTML={{ __html: t('name.history_p2b') }} />
-          <p>
-            {t('name.history_p3')}
-          </p>
+          <p>{t('name.history_p1')}</p>
+          <p dangerouslySetInnerHTML={{ __html: t('name.history_paradox') }} />
         </section>
 
-        {/* ── Four-Bucket Section ──────────────────────────────── */}
+        {/* ── The cluster map (the paradox, made visible) ──────────── */}
+        <section className={styles.section}>
+          <h2>{t('clusterMap.section_heading')}</h2>
+          <p>{t('clusterMap.section_intro')}</p>
+          <TimelineClusterMap />
+        </section>
+
+        {/* ── What Was the Name Pointing To? — the referent taxonomy ── */}
+        <section className={styles.section}>
+          <h2>{t('name.referent_heading')}</h2>
+          <p dangerouslySetInnerHTML={{ __html: t('name.referent_intro') }} />
+
+          {referentGroups.map(({ group, items }) => (
+            <div key={group} style={{ margin: '1.5rem 0' }}>
+              <div style={{ fontSize: '0.78rem', fontFamily: 'var(--font-ui)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '0.75rem' }}>
+                {group}
+              </div>
+              <div style={{ display: 'grid', gap: '0.75rem' }}>
+                {items.map(({ base, tone }) => (
+                  <div key={base} style={{
+                    padding: '1rem 1.25rem',
+                    borderRadius: '4px',
+                    background: 'rgba(255,255,255,0.02)',
+                    border: '1px solid rgba(255,255,255,0.07)',
+                    borderLeft: `3px solid ${tone}`,
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
+                      <span style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.95rem' }}>
+                        {t(`name.${base}_title`)}
+                      </span>
+                      <span style={{
+                        flexShrink: 0,
+                        fontSize: '0.68rem', fontFamily: 'var(--font-ui)', fontWeight: 700,
+                        textTransform: 'uppercase', letterSpacing: '0.05em',
+                        color: tone, border: `1px solid ${tone}`, borderRadius: '3px',
+                        padding: '0.12rem 0.45rem',
+                      }}>
+                        {t(`name.${base}_verdict`)}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '0.5rem' }}
+                      dangerouslySetInnerHTML={{ __html: t(`name.${base}_desc`) }} />
+                    <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.55, paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                      <span style={{ color: tone, fontWeight: 600 }}>{t(`name.${base}_verdict`)} — </span>
+                      <span dangerouslySetInnerHTML={{ __html: t(`name.${base}_status`) }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <p dangerouslySetInnerHTML={{ __html: t('name.referent_synthesis') }} />
+        </section>
+
+        {/* ── What the name was DOING: the Four Functions ──────────── */}
         <section className={styles.section}>
           <h2>
             {t('name.four_bucket_title')}
-            <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>
-              {t('research.method_attested_label')}
-            </span>
+            <EvidenceBadge level="attested" />
           </h2>
           <p dangerouslySetInnerHTML={{ __html: t('name.four_bucket_intro') }} />
           <p dangerouslySetInnerHTML={{ __html: t('name.four_bucket_rebuttal') }} />
@@ -127,12 +196,7 @@ export default function NamePage() {
               {t('name.four_bucket_table_heading')}
             </div>
 
-            {[
-              { num: '1', label: t('name.four_bucket_b1_label'), desc: t('name.four_bucket_b1_desc'), muted: true },
-              { num: '2', label: t('name.four_bucket_b2_label'), desc: t('name.four_bucket_b2_desc'), muted: true },
-              { num: '3', label: t('name.four_bucket_b3_label'), desc: t('name.four_bucket_b3_desc'), muted: true },
-              { num: '4', label: t('name.four_bucket_b4_label'), desc: t('name.four_bucket_b4_desc'), muted: false },
-            ].map(({ num, label, desc, muted }) => (
+            {functions.map(({ num, label, desc, muted }) => (
               <div key={num} style={{
                 display: 'grid',
                 gridTemplateColumns: '2.5rem 1fr',
@@ -140,12 +204,8 @@ export default function NamePage() {
                 padding: '1rem 1.25rem',
                 marginBottom: '0.5rem',
                 borderRadius: '4px',
-                background: muted
-                  ? 'rgba(255,255,255,0.02)'
-                  : 'rgba(232,184,48,0.06)',
-                border: muted
-                  ? '1px solid rgba(255,255,255,0.06)'
-                  : '1px solid rgba(232,184,48,0.25)',
+                background: muted ? 'rgba(255,255,255,0.02)' : 'rgba(232,184,48,0.06)',
+                border: muted ? '1px solid rgba(255,255,255,0.06)' : '1px solid rgba(232,184,48,0.25)',
                 boxShadow: muted ? 'none' : '0 0 12px rgba(232,184,48,0.07)',
               }}>
                 <div style={{
@@ -178,9 +238,7 @@ export default function NamePage() {
             ))}
           </div>
 
-          <p style={{ fontStyle: 'italic', color: 'var(--text-muted)', fontSize: '0.95rem' }}>
-            {t('name.four_bucket_conclusion')}
-          </p>
+          <p dangerouslySetInnerHTML={{ __html: t('name.four_bucket_conclusion') }} />
 
           {/* Teaser → Surname Origins article */}
           <div style={{
@@ -219,51 +277,11 @@ export default function NamePage() {
           </div>
         </section>
 
-        {/* Historical surname-cluster timeline map (Geneanet-based, antique base) */}
-        <section className={styles.section}>
-          <h2>{t('clusterMap.section_heading')}</h2>
-          <p>{t('clusterMap.section_intro')}</p>
-          <TimelineClusterMap />
-        </section>
-
-        {/* Static Meetjesland Map — commented out 2026-06-14: partial geography; the cluster timeline map above now carries the distribution. TODO: restore reframed as the lineage home, or as a comprehensive map.
-        <div className={nameStyles.mapContainer}>
-          <img
-            src={meetjeslandMap}
-            alt={t('name.map_alt')}
-            className={nameStyles.mapImage}
-          />
-          <div className={nameStyles.mapCaption}>
-            {t('name.map_caption')}
-          </div>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontStyle: 'italic', marginTop: '0.5rem', padding: '0 0.5rem' }}>
-            {t('name.map_caption_bucket_note')}
-          </div>
-        </div>
-        */}
-
         <div className={styles.pullQuote}>
           <blockquote>
             "{t('name.pull_quote')}"
           </blockquote>
         </div>
-
-        {/* "Where the Name Appears" village cards — commented out 2026-06-14: partial (Meetjesland-only) list. TODO: restore as a comprehensive, cluster-by-cluster list.
-        <section className={styles.section}>
-          <h2>{t('name.villages_title')}</h2>
-          <p>
-            {t('name.villages_intro')}
-          </p>
-          <div className={nameStyles.villageGrid}>
-            {villages.map(v => (
-              <div key={v.name} className={nameStyles.villageCard}>
-                <div className={nameStyles.villageName}>{v.name}</div>
-                <div className={nameStyles.villageNote}>{v.note}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-        */}
 
         <section className={styles.section}>
           <h2>{t('name.variations_title')}</h2>
@@ -356,8 +374,18 @@ export default function NamePage() {
             <p>
               {t('name.notes_source_4_label')} {t('name.notes_source_4_text')}
             </p>
+            <p>
+              {t('name.notes_source_5_label')} {t('name.notes_source_5_text')}
+            </p>
+            <p>
+              {t('name.notes_source_6_label')} {t('name.notes_source_6_text')}
+            </p>
           </div>
         </section>
+
+        <p style={{ lineHeight: 1.7 }}>
+          {t('name.history_p3')}
+        </p>
 
         <div className={styles.ctaBox}>
           <div className={styles.ctaText}>
