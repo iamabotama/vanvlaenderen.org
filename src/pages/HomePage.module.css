@@ -80,6 +80,14 @@
   opacity: 0.7;
 }
 
+.heroSpine {
+  font-size: 0.95rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+  margin-top: 0.5rem;
+}
+
 .heroScrollHint {
   color: rgba(232, 184, 48, 0.4);
   font-size: 1.4rem;

@@ -6,7 +6,7 @@ import nameStyles from './NamePage.module.css';
 import researchStyles from './ResearchPage.module.css';
 
 import cronikeShields from '../assets/images/heraldic/cronike-van-vlaenderen-shields-double-page.jpg';
-import meetjeslandMap from '../assets/images/meetjesland-map.jpg';
+// import meetjeslandMap from '../assets/images/meetjesland-map.jpg'; // TODO: restore with comprehensive multi-cluster geography
 import TimelineClusterMap from '../components/TimelineClusterMap';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
@@ -29,6 +29,7 @@ export default function NamePage() {
     return () => window.removeEventListener('keydown', handleKey);
   }, [lightbox, closeLightbox]);
 
+  /* TODO: restore as a comprehensive, cluster-by-cluster list (not Meetjesland-only).
   const villages = [
     { name: t('name.village_bassevelde'), note: t('name.village_bassevelde_note') },
     { name: t('name.village_boekhoute'), note: t('name.village_boekhoute_note') },
@@ -39,6 +40,7 @@ export default function NamePage() {
     { name: t('name.village_wessegem'), note: t('name.village_wessegem_note') },
     { name: t('name.village_vinderhoute'), note: t('name.village_vinderhoute_note') },
   ];
+  */
 
   const variations = [
     'Van Vlaenderen', 'Van Vlaendereen',
@@ -225,7 +227,7 @@ export default function NamePage() {
           <TimelineClusterMap />
         </section>
 
-        {/* Static Meetjesland Map */}
+        {/* Static Meetjesland Map — commented out 2026-06-14: partial geography; the cluster timeline map above now carries the distribution. TODO: restore reframed as the lineage home, or as a comprehensive map.
         <div className={nameStyles.mapContainer}>
           <img
             src={meetjeslandMap}
@@ -239,6 +241,7 @@ export default function NamePage() {
             {t('name.map_caption_bucket_note')}
           </div>
         </div>
+        */}
 
         <div className={styles.pullQuote}>
           <blockquote>
@@ -246,6 +249,7 @@ export default function NamePage() {
           </blockquote>
         </div>
 
+        {/* "Where the Name Appears" village cards — commented out 2026-06-14: partial (Meetjesland-only) list. TODO: restore as a comprehensive, cluster-by-cluster list.
         <section className={styles.section}>
           <h2>{t('name.villages_title')}</h2>
           <p>
@@ -260,6 +264,7 @@ export default function NamePage() {
             ))}
           </div>
         </section>
+        */}
 
         <section className={styles.section}>
           <h2>{t('name.variations_title')}</h2>
