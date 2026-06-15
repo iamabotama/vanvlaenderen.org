@@ -1535,7 +1535,6 @@ function FamilyTreeCanvas() {
       window.removeEventListener("resize", onResize);
     };
   }, []);
-  if (typeof window === "undefined") return null;
   return /* @__PURE__ */ jsx(
     "canvas",
     {
