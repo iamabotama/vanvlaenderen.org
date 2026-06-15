@@ -96,9 +96,8 @@ export default function NamePage() {
           <p>
             {t('name.history_p1')}
           </p>
-          <p>
-            {t('name.history_p2')}
-          </p>
+          <p dangerouslySetInnerHTML={{ __html: t('name.history_p2') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('name.history_p2b') }} />
           <p>
             {t('name.history_p3')}
           </p>
@@ -112,8 +111,8 @@ export default function NamePage() {
               {t('research.method_attested_label')}
             </span>
           </h2>
-          <p>{t('name.four_bucket_intro')}</p>
-          <p>{t('name.four_bucket_rebuttal')}</p>
+          <p dangerouslySetInnerHTML={{ __html: t('name.four_bucket_intro') }} />
+          <p dangerouslySetInnerHTML={{ __html: t('name.four_bucket_rebuttal') }} />
 
           <div style={{ margin: '2rem 0' }}>
             <div style={{
