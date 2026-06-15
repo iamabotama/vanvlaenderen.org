@@ -377,7 +377,7 @@ export default function NamePage() {
           </div>
           <Link
             className={nameStyles.shareStoryBtn}
-            to="/dna"
+            to="/contact"
           >
             {t('name.cta_button')}
           </Link>

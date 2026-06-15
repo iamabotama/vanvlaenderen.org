@@ -118,7 +118,7 @@
 .documentImage {
   width: 100%;
   display: block;
-  max-height: 520px;
+  max-height: 680px;
   object-fit: contain;
   object-position: center;
   background: #1a1208;
