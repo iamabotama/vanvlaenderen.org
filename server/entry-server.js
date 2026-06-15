@@ -2950,7 +2950,6 @@ const C = {
 const EV = {
   direct: { label: "Directly Attested", bg: "rgba(74,222,128,0.18)", c: "#4ade80" },
   strong: { label: "Strongly Corroborated", bg: "rgba(251,191,36,0.18)", c: "#fbbf24" },
-  focus: { label: "Research Focus", bg: "rgba(212,168,48,0.18)", c: "#d4a830" },
   hypo: { label: "Evidentiary Gap", bg: "rgba(248,113,113,0.18)", c: "#f87171" },
   parish: { label: "Parish Records", bg: "rgba(96,165,250,0.18)", c: "#60a5fa" },
   ends: { label: "Line Ends Here", bg: "rgba(156,163,175,0.18)", c: "#9ca3af" },
@@ -3040,8 +3039,8 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }) {
               width: "100%",
               height: "100%",
               borderRadius: 6,
-              background: cfg.focus ? "#1e1c10" : C.surf,
-              border: `${cfg.focus ? 2.5 : 1.5}px solid ${color}`,
+              background: cfg.titleHeld ? "#1e1c10" : C.surf,
+              border: `${cfg.titleHeld ? 2.5 : 1.5}px solid ${color}`,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -3055,7 +3054,7 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }) {
                 {
                   style: {
                     fontFamily: "Cinzel, serif",
-                    fontSize: cfg.focus ? 14 : 13,
+                    fontSize: cfg.titleHeld ? 14 : 13,
                     fontWeight: 600,
                     color: C.text,
                     textAlign: "center",
@@ -3187,7 +3186,7 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }) {
             children: "↓"
           }
         ),
-        cfg.focus && /* @__PURE__ */ jsx(
+        cfg.titleHeld && /* @__PURE__ */ jsx(
           "div",
           {
             style: {
@@ -3206,7 +3205,7 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }) {
               textAlign: "center",
               pointerEvents: "none"
             },
-            children: "★"
+            children: cfg.titleKind === "fief" ? "☆" : "★"
           }
         )
       ]
@@ -3539,6 +3538,20 @@ function LineageDiagram({ diagram: diagram2, title: title2, subtitle: subtitle2 
                               children: tipData.dates
                             }
                           ),
+                          tipData.titleHeld && /* @__PURE__ */ jsxs(
+                            "div",
+                            {
+                              style: {
+                                fontSize: 13,
+                                color: "#d4a830",
+                                marginBottom: 7
+                              },
+                              children: [
+                                tipData.titleKind === "fief" ? "Fief held: " : "Title held: ",
+                                tipData.titleHeld
+                              ]
+                            }
+                          ),
                           ev && /* @__PURE__ */ jsx(
                             "span",
                             {
@@ -3594,7 +3607,11 @@ function LineageDiagram({ diagram: diagram2, title: title2, subtitle: subtitle2 
                 borderTop: "1px solid #1e2230",
                 background: "rgba(255,255,255,0.015)"
               },
-              children: diagram2.legendItems.map((item, i) => /* @__PURE__ */ jsxs(Fragment, { children: [
+              children: [
+                ...diagram2.legendItems,
+                ...diagram2.nodes.some((n) => n.cfg.titleHeld && n.cfg.titleKind !== "fief") ? [{ glyph: "★", label: "Held a title — eventually extinct to the family", color: "#d4a830" }] : [],
+                ...diagram2.nodes.some((n) => n.cfg.titleKind === "fief") ? [{ glyph: "☆", label: "Held a fief only", color: "#d4a830" }] : []
+              ].map((item, i) => /* @__PURE__ */ jsxs(Fragment, { children: [
                 item.forceBreakBefore && /* @__PURE__ */ jsx("div", { style: { flexBasis: "100%", height: 0 }, "aria-hidden": "true" }),
                 /* @__PURE__ */ jsxs(
                   "div",
@@ -3633,7 +3650,7 @@ function LineageDiagram({ diagram: diagram2, title: title2, subtitle: subtitle2 
                             display: "inline-block",
                             width: 14,
                             textAlign: "center",
-                            color: "#8a8f9e",
+                            color: item.color || "#8a8f9e",
                             fontFamily: "EB Garamond, Georgia, serif",
                             fontSize: 14,
                             lineHeight: 1,
@@ -3980,6 +3997,7 @@ function OverviewDiagram() {
         y: 30,
         cfg: {
           name: "Louis II de Male",
+          titleHeld: "Count of Flanders",
           dates: "Count of Flanders · 1330–1384",
           tag: "HOUSE OF DAMPIERRE",
           body: "Last Count of Flanders from the House of Dampierre. De Lichtervelde (1935) documents at least eighteen of his natural children. Five of his natural sons founded surname-bearing lines; his daughters bore the name in marriage but did not transmit it forward. His death in 1384 marks the generation in which van Vlaenderen crystallises as a heritable surname — at the precise moment the Dampierre comital title itself was extinguished.",
@@ -3999,6 +4017,7 @@ function OverviewDiagram() {
           name: "Victor\nvan Vlaenderen",
           dates: "d. 1431, Saint-Omer",
           tag: "URSEL & WESSEGEM",
+          titleHeld: "Lord of Wessegem & Ursel",
           body: "Natural son of Louis de Male. Lord of Ursel and Wessegem in the Meetjesland. Burgundian admiral; captain of Biervliet. Three natural sons documented across three primary charters (1427, 1441, 1446). The proposed progenitor of the Belgian / Meetjesland surname cluster.",
           src: "Vredius, Tab. XVI & (1643) pp. 285–287; de l'Espinoy (1631), Livre 2, Ch. XXXI, p. 69",
           color: EVIDENCE$1.attested,
@@ -4016,6 +4035,7 @@ function OverviewDiagram() {
           name: 'Jan "sans terre"\nvan Vlaenderen',
           dates: "d. 25 Sep 1396 · Nicopolis",
           tag: "DRINCHAM",
+          titleHeld: "Lord of Drincham",
           body: "Natural son of Louis de Male. Granted Drincham castle near Cassel in 1383. Killed at Nicopolis (1396). Four documented generations in French Flanders through the 1470s — the proposed progenitor of the Volckerinckhove / French Flanders surname cluster.",
           src: "Vredius, Tab. XVI (fol. 281); de l'Espinoy (1631)",
           color: EVIDENCE$1.attested,
@@ -4033,6 +4053,7 @@ function OverviewDiagram() {
           name: 'Louis "Friese"\nvan Vlaenderen',
           dates: "c.1350 – 25 Sep 1396 · Nicopolis",
           tag: "PRAET & WOESTINE",
+          titleHeld: "Lord of Praet & Woestine",
           body: "Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis (1396). Founded the House of Flanders-Praet — six documented generations using van Vlaenderen as a hereditary surname. The proposed progenitor of the Brabant surname cluster.",
           src: "Vredius, Tab. XVI & (1643) pp. 276–277; de l'Espinoy (1631), Livre 2, Ch. XXXI, p. 68",
           color: EVIDENCE$1.attested,
@@ -4049,6 +4070,7 @@ function OverviewDiagram() {
         cfg: {
           name: 'Loys "le Hase"\nvan Vlaenderen',
           dates: "b. after 1361 – d. 25 Sep 1396 · Nicopolis",
+          titleHeld: "Lord of Wessegem, Ursel & Elverdinghe",
           tag: "WESSEGEM, URSEL,\nELVERDINGHE &\nVLAMERTINGHE",
           body: "Natural son of Louis de Male; the earliest-endowed of the direct bastards (Wessegem grant 1372). Lord of Wessegem, Ursel, Oostburg, Elverdinghe-Vlamertinghe, Schuurveld, and Vake. Captain of Biervliet 1385. Killed at Nicopolis alongside half-brothers Louis Friese and Jan sans terre. Four documented natural children — Hector, Regnault, Kathelijne, Joanna — but no continuing line. His Wessegem and Ursel seigniories passed to Victor at the 1398 ducal regrant; his Elverdinghe-Vlamertinghe lordship passed to Robrecht.",
           src: "Despars, Cronijcke Vol. III (six narrative attestations 1380–1396); Moelaert (1973) pp. 226–229; Rogghé (1968) p. 252; Lichtervelde (1935)",
@@ -4066,6 +4088,7 @@ function OverviewDiagram() {
         cfg: {
           name: "Robrecht\nvan Vlaenderen",
           dates: "d. 21 Jan 1434",
+          titleHeld: "Lord of Elverdinghe & Vlamertinghe",
           tag: "ELVERDINGHE &\nVLAMERTINGHE",
           body: "Natural son of Louis de Male. Lord of Elverdinghe and Vlamertinghe just outside Ypres; Viscount of Ypres jure uxoris through his 1419 marriage to Anastasie d'Oultre. Three documented natural sons — Jean (legitimized 1448), Caspar (active 1453–1464 as bailiff), and Karel II (d. 1491) — carried the surname through the Ypres quarter until Karel's daughter, the last documented bearer.",
           src: "Vredius, Tab. XVI; Buylaert (2011) pp. 752–753; Tamboryn, Geschiedenis van Elverdinghe",
@@ -4261,6 +4284,7 @@ const diagram$4 = {
       y: 40,
       cfg: {
         name: "Louis II de Male",
+        titleHeld: "Count of Flanders",
         dates: "Count of Flanders · 1330–1384",
         body: "Father of Victor van Vlaenderen by his mistress Margaretha Haelshuuts — the only named mistress in the primary sources.",
         src: "Vredius, Tab. XVI; de l'Espinoy (1631), Livre 2, Ch. XXXI, p. 69; Vredius (1643) p.285",
@@ -4277,6 +4301,7 @@ const diagram$4 = {
       y: 140,
       cfg: {
         name: "Victor van Vlaenderen",
+        titleHeld: "Lord of Wessegem & Ursel",
         dates: "d. 1431, Saint-Omer",
         tag: "SEIGNEUR D'URSELE ET WESSEGHEM",
         body: "Natural son of Louis de Male. Burgundian admiral; captain of Biervliet. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420. Three natural sons documented across three primary charters (1427, 1441, 1446) by two mistresses: Lodewyc and Janne by Alix van Boyeghem; Adam by Gertrud Lindekens. Nicolaes Despars's Cronijcke (Vol. III pp. 114–115) names a fourth child, Isabelle, the matrilineal ancestress of the chronicler's wife — see her node and the Despars Compendium for the descent chain.",
@@ -4332,7 +4357,6 @@ const diagram$4 = {
         src: "Vredius (1643) pp.285–287",
         color: "#4ade80",
         ev: "unknown",
-        focus: true,
         w: 196,
         h: 112
       }
@@ -4489,6 +4513,7 @@ const diagram$3 = {
       y: Y_GEN1$1,
       cfg: {
         name: "Louis II de Male",
+        titleHeld: "Count of Flanders",
         dates: "Count of Flanders · 1330–1384",
         tag: "HOUSE OF DAMPIERRE",
         body: "In 1373 purchased the leengoed of Praet in Oedelem from the van Praet family, then granted it to his natural son Louis Friese. His death in 1384 marks the generation in which van Vlaenderen crystallises as a heritable surname among his bastard descendants.",
@@ -4506,6 +4531,7 @@ const diagram$3 = {
       y: Y_GEN2$1,
       cfg: {
         name: "Louis Friese van Vlaenderen",
+        titleHeld: "Lord of Praet & Woestine",
         dates: "c.1350 – 25 Sep 1396 · Nicopolis",
         tag: "LORD OF PRAET & WOESTINE",
         body: "Natural son of Louis de Male by a daughter of Monsieur de Borre. Granted Praet c.1373. Twice married: first wife (unnamed, connected with La Woestine), then Marie van Ghistelle, Dame de Roosbeke et Sweveghem. Killed at Nicopolis 25 September 1396 alongside half-brothers Loys 'le Hase' and Jan sans terre.",
@@ -4523,6 +4549,7 @@ const diagram$3 = {
       y: Y_GEN3$1,
       cfg: {
         name: "Johan I van Vlaenderen",
+        titleHeld: "Lord of Praet",
         dates: "d. after 10 Sep 1439",
         tag: "LORD OF PRAET",
         body: "Son of Louis Friese and Marie van Ghistelle. Échevin du Franc 1393. Named at the battle of Brouwershaven (13 January 1426) in Philip the Good's Holland-Zeeland campaign, alongside Jan van Egmond — 'Jan van Vlaendren, de heere Van Praet' in the Kronyk van Jan van Dixmude; independently 'Jan van Vlaenderen, die heere van Praet ende van der Woestijne' in Despars. Issued own charter as Lord of Praet 10 Sep 1439. Married Johanna van Reygersvliet. Five documented children named individually in the Gen 4 row below.",
@@ -4571,6 +4598,7 @@ const diagram$3 = {
       cfg: {
         name: "Lodewijk II\nvan Vlaenderen",
         dates: "d. 24 Aug / 1 Oct 1488",
+        titleHeld: "Lord of Praet",
         tag: "LORD OF PRAET",
         body: "Son of Johan I. Married Louise de Bruges, daughter of Jan van de Aa Heer van Gruuthuse. Death in 1488 confirmed by the Aalter tomb epitaph; two primary sources disagree on the day — de l'Espinoy records St. Bartholomew (24 Aug), the Aalter tomb itself records St. Bavo (1 Oct). Six documented children, named individually in the Gen 5 row below.",
         src: "Vredius p. 277–278 (Aalter tomb); Espinoy (1631)",
@@ -4648,6 +4676,7 @@ const diagram$3 = {
       cfg: {
         name: "Lodewijk III\nvan Vlaenderen",
         dates: "d. New Year's 1490",
+        titleHeld: "Lord of Praet",
         tag: "LORD OF PRAET",
         body: "Son of Lodewijk II. Married Isabelle de Bourgogne (d. 12 Nov 1504, bur Gent). Died at New Year's 1490 per the Aalter tomb inscription (a Monday in 1490, buried beside his father). Grimarez's '1 January 1488' is a conflation with his father Lodewijk II's death year (1488) — a logged known error, not a competing date.",
         src: "Vredius p. 279 (Aalter tomb)",
@@ -4663,6 +4692,7 @@ const diagram$3 = {
       y: Y_GEN5$1,
       cfg: {
         name: "Jean\nde Flandre",
+        titleHeld: "Heer van Onlede & Beveren",
         dates: "d. 6 Sep 1523",
         body: "Son of Lodewijk II. Heer van Onlede en Beveren bij Roeselare; Grand Bailiff of Bruges and the Brugse Vrije. Died without surviving male issue; lordships passed to brother Josse in 1523.",
         src: "Beveren tomb via Vredius p. 280",
@@ -4679,6 +4709,7 @@ const diagram$3 = {
       cfg: {
         name: "Joos (Josse)\nvan Vlaenderen",
         dates: "d. bef. 30 Nov 1545",
+        titleHeld: "Heer van Onlede, Beveren & Wijchuize",
         tag: "CADET — LINE CONTINUES",
         body: "Son of Lodewijk II. Inherited Onlede, Beveren, and Wijchuize after his brother Jean's death in 1523. Married Martina van Moerkerke; died before 30 November 1545 — his sons' wardship file names him posthumously, its earliest account year beginning St. Andrew's Day 1545 (the older printed death-year 1553 rests on the same bundle and is corrected against the original). When the senior line failed (Jan II d. 10 Dec 1545), the lordship and surname passed to his branch: his son Jacob received Praet and Woestijne in 1550 — the collateral continuation drawn below.",
         src: "Damhouder via Vredius p. 278; Verhoustraete, 'De heren van Praet te Oedelem,' Jaarboek 1967, pp. 101–113; Serrure 1863 (Vaderlandsch Museum Deel 5); RAB TBO 184 nrs. 21300–21302",
@@ -4716,7 +4747,7 @@ const diagram$3 = {
         src: "Vredius p. 387 (Aalter tomb); Verhoustraete 1967; Gailliard, Bruges et le Franc, T. I p. 261; 1517 charter: De Raadt, Sceaux armoriés, I (1898) p. 456, as cited in C. Cawley, 'Medieval Lands', FMG",
         color: "#4ade80",
         ev: "direct",
-        focus: true,
+        titleHeld: "Lord of Praet",
         w: 136,
         h: 120
       }
@@ -4730,6 +4761,7 @@ const diagram$3 = {
         name: "Jacob\nvan Vlaanderen",
         dates: "d. 17 Aug 1566",
         tag: "PRAET & WOESTIJNE 1550",
+        titleHeld: "Lord of Praet & Woestine",
         body: "Son of Joos — Lodewijk IV's nearest heir after the senior line failed in 1545. Received Woestijne and Praet at Aalter by act of 25 September 1550; married Catharina van Boetzelaer 1551/52; died 17 August 1566, buried Beveren. Not to be confused with the 15th-century 'Jaques de Flandre' of Damhouder's list (Gen 5), who did not inherit.",
         src: "Verhoustraete 1967, pp. 101–113; Valkeneers & Soen, 'Praet, Bronkhorst en Boetzelaer' (2014); RAB TBO 184 nrs. 21300–21302",
         color: C.blue,
@@ -4745,6 +4777,7 @@ const diagram$3 = {
       y: Y_GEN7,
       cfg: {
         name: "Jan II\nvan Vlaenderen",
+        titleHeld: "Heer van Woestine, Elverdinghe & Vlamertinghe",
         dates: "d. 10 Dec 1545",
         body: "Only surviving son of Lodewijk IV (a younger son Jan d. 1543). Heer van Woestine, Elverdinghe, and Vlamertinghe. Predeceased his father, dying without issue. Widow Jacqueline de Bourgogne remarried and died in childbirth 1556. His death ends the senior direct male line only — the lordship and surname passed to the collateral branch of Joos, whose son Jacob received Praet and Woestijne in 1550.",
         src: "Vredius p. 388 (Aalter tomb); Verhoustraete 1967",
@@ -4763,6 +4796,7 @@ const diagram$3 = {
         name: "Lodewijk V\nvan Vlaanderen",
         dates: "b. 1559 – d. 31 Oct 1591",
         tag: "LAST MALE — SURNAME ENDS",
+        titleHeld: "Lord of Praet",
         body: "Son of Jacob. Calvinist; married Maria van Marnix, who died childless in 1580. Sold the encumbered Praet/Aalter estate before his death; died sonless on All Saints' Eve, 31 October 1591, in exile — the last male of the line. The surname ends; the title passes through female links to men of other surnames.",
         src: "Verhoustraete 1967, pp. 101–113 (post-1591 succession pp. 109–112); Valkeneers & Soen (2014)",
         color: C.blue,
@@ -4864,6 +4898,7 @@ const diagram$2 = {
       y: Y_GEN1,
       cfg: {
         name: "Louis II de Male",
+        titleHeld: "Count of Flanders",
         dates: "Count of Flanders · 1330–1384",
         tag: "HOUSE OF DAMPIERRE",
         body: "Last Count of Flanders from the House of Dampierre. Father of Jan sans terre. De l'Espinoy identifies Jan as the fifth natural son of Louis de Male.",
@@ -4882,6 +4917,7 @@ const diagram$2 = {
       y: Y_GEN2,
       cfg: {
         name: 'Jan "sans terre" van Vlaenderen',
+        titleHeld: "Lord of Drincham",
         dates: "d. 25 Sep 1396 · Nicopolis",
         tag: "LORD OF DRINCHAM · GRANT 1383",
         body: "Natural son of Louis de Male; his mother is not securely identified. On 22 November 1383 Louis de Male granted him the castle and lordship of Drincham near Cassel, confiscated from Jean de Scheurvelde. Married Wilhelmine de Nevele at Arras c. 1388 — daughter of Guillaume de Nevele and Wilhelmine de Halewyn, Dame de Lichtervelde du chef de sa mère. Killed at the Battle of Nicopolis alongside half-brothers Loys 'le Hase' and Louis Friese.",
@@ -4899,6 +4935,7 @@ const diagram$2 = {
       y: Y_GEN3,
       cfg: {
         name: "Jan van Vlaenderen",
+        titleHeld: "Lord of Drincham",
         dates: "Lord of Drincham · m. Isabella de Ghistelles",
         tag: "LORD OF DRINCHAM",
         body: "Heir of Jan sans terre and Wilhelmine de Nevele per the Vredius–Donche transmission; the founding filiation is graded Probable pending the ADN Lille B-series record (see annotation). Active 1419 as lord of Drincham at Furnes castellany alongside uncles Victor and Robert (ADN B 43124 fol. 41r°). Married Isabella de Ghistelles, Dame de Vissaert. The 1466 Houtem tomb of his daughter Maria names him 'Mer Jans van Vlandres gheseit Drincham' (Donche p. 567). His heraldic arms — quartered with Ghistelles, bearing a canton of Flanders and Luxembourg — pass through him to his son Jacques de Drincham.",
@@ -4917,6 +4954,7 @@ const diagram$2 = {
       cfg: {
         name: "Jan\nvan Vlaenderen",
         dates: "Lord of Drincham",
+        titleHeld: "Lord of Drincham",
         tag: "LORD OF DRINCHAM",
         body: "Son of Jan II of Drincham. Married Isabella de Vernieulles. Two sons (Philippe, who died unmarried, and Jan, who was legitimated at Arras) plus three unnamed daughters — all named in Vredius.",
         src: "Vredius, Tab. XVI",
@@ -4938,7 +4976,6 @@ const diagram$2 = {
         src: "Vredius, Tab. XVI (Veurne epitaph via Gaillard)",
         color: "#4ade80",
         ev: "unknown",
-        focus: true,
         w: 144,
         h: 136
       }
@@ -5113,6 +5150,7 @@ const diagram$1 = {
       y: 40,
       cfg: {
         name: "Louis II de Male",
+        titleHeld: "Count of Flanders",
         dates: "Count of Flanders · 1330–1384",
         body: "Father of Robrecht van Vlaenderen. The 1419 marriage of Robrecht to Anastasie d'Oultre at Ypres took place in the presence of the future Philip the Good, two days after the assassination of John the Fearless at Montereau.",
         src: "Vredius, Tab. XVI; Buylaert (2011) pp. 752–753",
@@ -5129,6 +5167,7 @@ const diagram$1 = {
       y: 140,
       cfg: {
         name: "Robrecht van Vlaenderen",
+        titleHeld: "Lord of Elverdinghe & Vlamertinghe",
         dates: "d. 21 Jan 1434",
         tag: "ELVERDINGHE &\nVLAMERTINGHE",
         body: `Natural son of Louis de Male; his mother is named in Béthune's p. 233 transcription of the Elverdinge epitaph as Ive sLuus of the van de Lus patrician family of Ghent (arms: azure a lion gules). Acquired Elverdinghe and Vlamertinghe at his half-brother Loys 'le Hase's 1396 death (see annotation). Burgundian raed ende camerlinck (councillor and chamberlain) to Dukes John the Fearless and Philip the Good. Married Anastasie d'Oultre at Ypres on 12 September 1419, acquiring the title Vicomte d'Ypres jure uxoris. The marriage produced no legitimate children. His wooden tomb in the Elverdinge parish church bore a Middle Dutch inscription naming him "Roelandt van Vlaenderen" (likely Robrecht, per Tamboryn; Béthune's transcription preserves the tomb's 'Roelant' beside Gailliard's gloss 'denwelcke Robrecht').`,
@@ -5185,7 +5224,7 @@ const diagram$1 = {
         src: "Buylaert (2011) p. 758; Vredius (1643) p. 288 (via Gaillard MS); ARA Rekenkamer nrs. 1086, 1111, 21845",
         color: C.blue,
         ev: "direct",
-        focus: true,
+        titleHeld: "Lord of Grutersale",
         w: 196,
         h: 112
       }
@@ -5286,6 +5325,7 @@ const diagram = {
       y: 30,
       cfg: {
         name: "Louis II de Male",
+        titleHeld: "Count of Flanders",
         dates: "Count of Flanders · 1330–1384",
         tag: "HOUSE OF DAMPIERRE",
         body: "Last Count of Flanders from the House of Dampierre. See the Research overview for the full direct-bastard cohort.",
@@ -5309,7 +5349,7 @@ const diagram = {
         src: "Despars, Cronijcke Vol. III (six narrative attestations 1380–1396); de Smet, Recueil des chroniques de Flandre, T. III p. 278 (1382 host) and T. IV p. 311 (Tournai 1385); Excellente Cronike van Vlaenderen (Vorsterman 1531), fol. lxxvi; Moelaert (1973) pp. 226–229, (1978) pp. 6–56; Rogghé (1968) pp. 252–253; Lichtervelde (1935) pp. 48–58; ADN B 1273 stuk 10535; ADN B 1604 fol. 184",
         color: EVIDENCE.attested,
         ev: "direct",
-        focus: true,
+        titleHeld: "Lord of Wessegem, Ursel & Elverdinghe",
         w: 220,
         h: 180
       }
@@ -5323,6 +5363,8 @@ const diagram = {
       y: 440,
       cfg: {
         name: "Hector",
+        titleHeld: "Fief of Bortsant",
+        titleKind: "fief",
         dates: "fl. 1396 onward",
         tag: "FIEF OF BORTSANT",
         body: 'Natural son of Loys, raised at Wessegem ("sheren bastaerde Hector te Ursele", Moelaert 1973 p. 228). Distinct from the elder Hector of Voorhoute (a Maleani direct bastard, master-list position 6 in Despars A.1). Probable tier — second-generation, not yet directly named in 1419 primary records.',
@@ -5339,6 +5381,8 @@ const diagram = {
       y: 440,
       cfg: {
         name: "Regnault\n(Reinierken)",
+        titleHeld: "Fief of Le Vake",
+        titleKind: "fief",
         dates: "fl. 1396 onward",
         tag: "FIEF OF LE VAKE",
         body: "Natural son of Loys. Raised at Wessegem; baptism attended by his Loo-based mother (Moelaert 1978). Probable tier.",
@@ -5355,6 +5399,8 @@ const diagram = {
       y: 440,
       cfg: {
         name: "Kathelijne",
+        titleHeld: "Le Heneede fief",
+        titleKind: "fief",
         dates: "fl. 1396 onward",
         tag: "LE HENEEDE ·\nOOSTKERKE HOUSE",
         body: "Natural daughter of Loys. Joint tenant with Joanna of a house in Oostkerke parish and of the Le Heneede fief. 30-goud-franc annuity on Ninove receipts. Possibly the daughter at the 22 October 1419 Furnes wedding. Probable tier.",
@@ -5371,6 +5417,8 @@ const diagram = {
       y: 440,
       cfg: {
         name: "Joanna",
+        titleHeld: "Le Heneede fief",
+        titleKind: "fief",
         dates: "fl. 1396 onward · m. Jan van Prijzeel",
         tag: "LE HENEEDE ·\nOOSTKERKE HOUSE",
         body: "Natural daughter of Loys. Joint tenant with Kathelijne (Oostkerke house, Le Heneede fief). Married Jan van Prijzeel. Possibly the daughter at the 22 October 1419 Furnes wedding. Probable tier.",
