@@ -62,6 +62,7 @@ const diagram: DiagramDef = {
       y: Y_GEN1,
       cfg: {
         name: 'Louis II de Male',
+        titleHeld: 'Count of Flanders',
         dates: 'Count of Flanders · 1330–1384',
         tag: 'HOUSE OF DAMPIERRE',
         body: "Last Count of Flanders from the House of Dampierre. Father of Jan sans terre. De l'Espinoy identifies Jan as the fifth natural son of Louis de Male.",
@@ -81,6 +82,7 @@ const diagram: DiagramDef = {
       y: Y_GEN2,
       cfg: {
         name: 'Jan "sans terre" van Vlaenderen',
+        titleHeld: 'Lord of Drincham',
         dates: 'd. 25 Sep 1396 · Nicopolis',
         tag: 'LORD OF DRINCHAM · GRANT 1383',
         body: "Natural son of Louis de Male; his mother is not securely identified. On 22 November 1383 Louis de Male granted him the castle and lordship of Drincham near Cassel, confiscated from Jean de Scheurvelde. Married Wilhelmine de Nevele at Arras c. 1388 — daughter of Guillaume de Nevele and Wilhelmine de Halewyn, Dame de Lichtervelde du chef de sa mère. Killed at the Battle of Nicopolis alongside half-brothers Loys 'le Hase' and Louis Friese.",
@@ -99,6 +101,7 @@ const diagram: DiagramDef = {
       y: Y_GEN3,
       cfg: {
         name: 'Jan van Vlaenderen',
+        titleHeld: 'Lord of Drincham',
         dates: 'Lord of Drincham · m. Isabella de Ghistelles',
         tag: 'LORD OF DRINCHAM',
         body: "Heir of Jan sans terre and Wilhelmine de Nevele per the Vredius–Donche transmission; the founding filiation is graded Probable pending the ADN Lille B-series record (see annotation). Active 1419 as lord of Drincham at Furnes castellany alongside uncles Victor and Robert (ADN B 43124 fol. 41r°). Married Isabella de Ghistelles, Dame de Vissaert. The 1466 Houtem tomb of his daughter Maria names him 'Mer Jans van Vlandres gheseit Drincham' (Donche p. 567). His heraldic arms — quartered with Ghistelles, bearing a canton of Flanders and Luxembourg — pass through him to his son Jacques de Drincham.",
@@ -118,6 +121,7 @@ const diagram: DiagramDef = {
       cfg: {
         name: 'Jan\nvan Vlaenderen',
         dates: 'Lord of Drincham',
+        titleHeld: 'Lord of Drincham',
         tag: 'LORD OF DRINCHAM',
         body: "Son of Jan II of Drincham. Married Isabella de Vernieulles. Two sons (Philippe, who died unmarried, and Jan, who was legitimated at Arras) plus three unnamed daughters — all named in Vredius.",
         src: 'Vredius, Tab. XVI',
@@ -139,7 +143,6 @@ const diagram: DiagramDef = {
         src: 'Vredius, Tab. XVI (Veurne epitaph via Gaillard)',
         color: '#4ade80',
         ev: 'unknown',
-        focus: true,
         w: 144,
         h: 136,
       },

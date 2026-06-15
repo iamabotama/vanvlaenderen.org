@@ -36,6 +36,7 @@ const diagram: DiagramDef = {
       y: 40,
       cfg: {
         name: 'Louis II de Male',
+        titleHeld: 'Count of Flanders',
         dates: 'Count of Flanders · 1330–1384',
         body: "Father of Victor van Vlaenderen by his mistress Margaretha Haelshuuts — the only named mistress in the primary sources.",
         src: "Vredius, Tab. XVI; de l'Espinoy (1631), Livre 2, Ch. XXXI, p. 69; Vredius (1643) p.285",
@@ -53,6 +54,7 @@ const diagram: DiagramDef = {
       y: 140,
       cfg: {
         name: 'Victor van Vlaenderen',
+        titleHeld: 'Lord of Wessegem & Ursel',
         dates: 'd. 1431, Saint-Omer',
         tag: "SEIGNEUR D'URSELE ET WESSEGHEM",
         body: "Natural son of Louis de Male. Burgundian admiral; captain of Biervliet. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420. Three natural sons documented across three primary charters (1427, 1441, 1446) by two mistresses: Lodewyc and Janne by Alix van Boyeghem; Adam by Gertrud Lindekens. Nicolaes Despars's Cronijcke (Vol. III pp. 114–115) names a fourth child, Isabelle, the matrilineal ancestress of the chronicler's wife — see her node and the Despars Compendium for the descent chain.",
@@ -109,7 +111,6 @@ const diagram: DiagramDef = {
         src: 'Vredius (1643) pp.285–287',
         color: '#4ade80',
         ev: 'unknown',
-        focus: true,
         w: 196,
         h: 112,
       },
