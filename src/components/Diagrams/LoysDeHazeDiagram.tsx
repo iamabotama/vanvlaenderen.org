@@ -33,6 +33,7 @@ const diagram: DiagramDef = {
       y: 30,
       cfg: {
         name: 'Louis II de Male',
+        titleHeld: 'Count of Flanders',
         dates: 'Count of Flanders · 1330–1384',
         tag: 'HOUSE OF DAMPIERRE',
         body: "Last Count of Flanders from the House of Dampierre. See the Research overview for the full direct-bastard cohort.",
@@ -57,7 +58,7 @@ const diagram: DiagramDef = {
         src: "Despars, Cronijcke Vol. III (six narrative attestations 1380–1396); de Smet, Recueil des chroniques de Flandre, T. III p. 278 (1382 host) and T. IV p. 311 (Tournai 1385); Excellente Cronike van Vlaenderen (Vorsterman 1531), fol. lxxvi; Moelaert (1973) pp. 226–229, (1978) pp. 6–56; Rogghé (1968) pp. 252–253; Lichtervelde (1935) pp. 48–58; ADN B 1273 stuk 10535; ADN B 1604 fol. 184",
         color: EVIDENCE.attested,
         ev: 'direct',
-        focus: true,
+        titleHeld: 'Lord of Wessegem, Ursel & Elverdinghe',
         w: 220,
         h: 180,
       },
@@ -72,6 +73,8 @@ const diagram: DiagramDef = {
       y: 440,
       cfg: {
         name: 'Hector',
+        titleHeld: 'Fief of Bortsant',
+        titleKind: 'fief',
         dates: 'fl. 1396 onward',
         tag: 'FIEF OF BORTSANT',
         body: 'Natural son of Loys, raised at Wessegem ("sheren bastaerde Hector te Ursele", Moelaert 1973 p. 228). Distinct from the elder Hector of Voorhoute (a Maleani direct bastard, master-list position 6 in Despars A.1). Probable tier — second-generation, not yet directly named in 1419 primary records.',
@@ -88,6 +91,8 @@ const diagram: DiagramDef = {
       y: 440,
       cfg: {
         name: 'Regnault\n(Reinierken)',
+        titleHeld: 'Fief of Le Vake',
+        titleKind: 'fief',
         dates: 'fl. 1396 onward',
         tag: 'FIEF OF LE VAKE',
         body: 'Natural son of Loys. Raised at Wessegem; baptism attended by his Loo-based mother (Moelaert 1978). Probable tier.',
@@ -104,6 +109,8 @@ const diagram: DiagramDef = {
       y: 440,
       cfg: {
         name: 'Kathelijne',
+        titleHeld: 'Le Heneede fief',
+        titleKind: 'fief',
         dates: 'fl. 1396 onward',
         tag: 'LE HENEEDE ·\nOOSTKERKE HOUSE',
         body: 'Natural daughter of Loys. Joint tenant with Joanna of a house in Oostkerke parish and of the Le Heneede fief. 30-goud-franc annuity on Ninove receipts. Possibly the daughter at the 22 October 1419 Furnes wedding. Probable tier.',
@@ -120,6 +127,8 @@ const diagram: DiagramDef = {
       y: 440,
       cfg: {
         name: 'Joanna',
+        titleHeld: 'Le Heneede fief',
+        titleKind: 'fief',
         dates: 'fl. 1396 onward · m. Jan van Prijzeel',
         tag: 'LE HENEEDE ·\nOOSTKERKE HOUSE',
         body: 'Natural daughter of Loys. Joint tenant with Kathelijne (Oostkerke house, Le Heneede fief). Married Jan van Prijzeel. Possibly the daughter at the 22 October 1419 Furnes wedding. Probable tier.',

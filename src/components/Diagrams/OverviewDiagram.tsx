@@ -57,6 +57,7 @@ export default function OverviewDiagram() {
         y: 30,
         cfg: {
           name: 'Louis II de Male',
+          titleHeld: 'Count of Flanders',
           dates: 'Count of Flanders · 1330–1384',
           tag: 'HOUSE OF DAMPIERRE',
           body: 'Last Count of Flanders from the House of Dampierre. De Lichtervelde (1935) documents at least eighteen of his natural children. Five of his natural sons founded surname-bearing lines; his daughters bore the name in marriage but did not transmit it forward. His death in 1384 marks the generation in which van Vlaenderen crystallises as a heritable surname — at the precise moment the Dampierre comital title itself was extinguished.',
@@ -77,6 +78,7 @@ export default function OverviewDiagram() {
           name: 'Victor\nvan Vlaenderen',
           dates: 'd. 1431, Saint-Omer',
           tag: 'URSEL & WESSEGEM',
+          titleHeld: 'Lord of Wessegem & Ursel',
           body: 'Natural son of Louis de Male. Lord of Ursel and Wessegem in the Meetjesland. Burgundian admiral; captain of Biervliet. Three natural sons documented across three primary charters (1427, 1441, 1446). The proposed progenitor of the Belgian / Meetjesland surname cluster.',
           src: "Vredius, Tab. XVI & (1643) pp. 285–287; de l'Espinoy (1631), Livre 2, Ch. XXXI, p. 69",
           color: EVIDENCE.attested,
@@ -94,6 +96,7 @@ export default function OverviewDiagram() {
           name: 'Jan "sans terre"\nvan Vlaenderen',
           dates: 'd. 25 Sep 1396 · Nicopolis',
           tag: 'DRINCHAM',
+          titleHeld: 'Lord of Drincham',
           body: 'Natural son of Louis de Male. Granted Drincham castle near Cassel in 1383. Killed at Nicopolis (1396). Four documented generations in French Flanders through the 1470s — the proposed progenitor of the Volckerinckhove / French Flanders surname cluster.',
           src: 'Vredius, Tab. XVI (fol. 281); de l\'Espinoy (1631)',
           color: EVIDENCE.attested,
@@ -111,6 +114,7 @@ export default function OverviewDiagram() {
           name: 'Louis "Friese"\nvan Vlaenderen',
           dates: 'c.1350 – 25 Sep 1396 · Nicopolis',
           tag: 'PRAET & WOESTINE',
+          titleHeld: 'Lord of Praet & Woestine',
           body: 'Natural son of Louis de Male. Lord of Praet and Woestine. Killed at Nicopolis (1396). Founded the House of Flanders-Praet — six documented generations using van Vlaenderen as a hereditary surname. The proposed progenitor of the Brabant surname cluster.',
           src: "Vredius, Tab. XVI & (1643) pp. 276–277; de l'Espinoy (1631), Livre 2, Ch. XXXI, p. 68",
           color: EVIDENCE.attested,
@@ -127,6 +131,7 @@ export default function OverviewDiagram() {
         cfg: {
           name: 'Loys "le Hase"\nvan Vlaenderen',
           dates: 'b. after 1361 – d. 25 Sep 1396 · Nicopolis',
+          titleHeld: 'Lord of Wessegem, Ursel & Elverdinghe',
           tag: 'WESSEGEM, URSEL,\nELVERDINGHE &\nVLAMERTINGHE',
           body: 'Natural son of Louis de Male; the earliest-endowed of the direct bastards (Wessegem grant 1372). Lord of Wessegem, Ursel, Oostburg, Elverdinghe-Vlamertinghe, Schuurveld, and Vake. Captain of Biervliet 1385. Killed at Nicopolis alongside half-brothers Louis Friese and Jan sans terre. Four documented natural children — Hector, Regnault, Kathelijne, Joanna — but no continuing line. His Wessegem and Ursel seigniories passed to Victor at the 1398 ducal regrant; his Elverdinghe-Vlamertinghe lordship passed to Robrecht.',
           src: 'Despars, Cronijcke Vol. III (six narrative attestations 1380–1396); Moelaert (1973) pp. 226–229; Rogghé (1968) p. 252; Lichtervelde (1935)',
@@ -144,6 +149,7 @@ export default function OverviewDiagram() {
         cfg: {
           name: 'Robrecht\nvan Vlaenderen',
           dates: 'd. 21 Jan 1434',
+          titleHeld: 'Lord of Elverdinghe & Vlamertinghe',
           tag: 'ELVERDINGHE &\nVLAMERTINGHE',
           body: 'Natural son of Louis de Male. Lord of Elverdinghe and Vlamertinghe just outside Ypres; Viscount of Ypres jure uxoris through his 1419 marriage to Anastasie d\'Oultre. Three documented natural sons — Jean (legitimized 1448), Caspar (active 1453–1464 as bailiff), and Karel II (d. 1491) — carried the surname through the Ypres quarter until Karel\'s daughter, the last documented bearer.',
           src: 'Vredius, Tab. XVI; Buylaert (2011) pp. 752–753; Tamboryn, Geschiedenis van Elverdinghe',

@@ -10,7 +10,11 @@ export interface NodeConfig {
   src?: string;
   ev?: string;
   color: string;
-  focus?: boolean;
+  // A node that held a title/lordship/fief that the family eventually lost.
+  // titleHeld is the specific holding (e.g. 'Lord of Praet'); titleKind 'fief'
+  // renders a hollow ☆ (lesser holding) vs the filled ★ for a title/lordship.
+  titleHeld?: string;
+  titleKind?: 'title' | 'fief';
   w?: number;
   h?: number;
   // Optional visual variant. 'stacked' renders a stacked-paper metaphor
@@ -133,7 +137,6 @@ export const C = {
 const EV: Record<string, { label: string; bg: string; c: string }> = {
   direct: { label: 'Directly Attested', bg: 'rgba(74,222,128,0.18)', c: '#4ade80' },
   strong: { label: 'Strongly Corroborated', bg: 'rgba(251,191,36,0.18)', c: '#fbbf24' },
-  focus: { label: 'Research Focus', bg: 'rgba(212,168,48,0.18)', c: '#d4a830' },
   hypo: { label: 'Evidentiary Gap', bg: 'rgba(248,113,113,0.18)', c: '#f87171' },
   parish: { label: 'Parish Records', bg: 'rgba(96,165,250,0.18)', c: '#60a5fa' },
   ends: { label: 'Line Ends Here', bg: 'rgba(156,163,175,0.18)', c: '#9ca3af' },
@@ -239,8 +242,8 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }: NodePro
           width: '100%',
           height: '100%',
           borderRadius: 6,
-          background: cfg.focus ? '#1e1c10' : C.surf,
-          border: `${cfg.focus ? 2.5 : 1.5}px solid ${color}`,
+          background: cfg.titleHeld ? '#1e1c10' : C.surf,
+          border: `${cfg.titleHeld ? 2.5 : 1.5}px solid ${color}`,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -255,7 +258,7 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }: NodePro
             key={i}
             style={{
               fontFamily: 'Cinzel, serif',
-              fontSize: cfg.focus ? 14 : 13,
+              fontSize: cfg.titleHeld ? 14 : 13,
               fontWeight: 600,
               color: C.text,
               textAlign: 'center',
@@ -395,8 +398,8 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }: NodePro
         </div>
       )}
 
-      {/* Research-focus star badge — top-right corner */}
-      {cfg.focus && (
+      {/* Title/fief badge — filled ★ = title/lordship, hollow ☆ = fief; the specific holding is in the hover card */}
+      {cfg.titleHeld && (
         <div
           style={{
             position: 'absolute',
@@ -415,7 +418,7 @@ function DiagramNode({ cfg, x, y, onClick, onMouseEnter, onMouseLeave }: NodePro
             pointerEvents: 'none',
           }}
         >
-          ★
+          {cfg.titleKind === 'fief' ? '☆' : '★'}
         </div>
       )}
     </div>
@@ -796,6 +799,18 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
                     {tipData.dates}
                   </div>
                 )}
+                {tipData.titleHeld && (
+                  <div
+                    style={{
+                      fontSize: 13,
+                      color: '#d4a830',
+                      marginBottom: 7,
+                    }}
+                  >
+                    {tipData.titleKind === 'fief' ? 'Fief held: ' : 'Title held: '}
+                    {tipData.titleHeld}
+                  </div>
+                )}
                 {ev && (
                   <span
                     style={{
@@ -851,7 +866,15 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
             background: 'rgba(255,255,255,0.015)',
           }}
         >
-          {diagram.legendItems.map((item, i) => (
+          {([
+            ...diagram.legendItems,
+            ...(diagram.nodes.some((n) => n.cfg.titleHeld && n.cfg.titleKind !== 'fief')
+              ? [{ glyph: '★', label: 'Held a title — eventually extinct to the family', color: '#d4a830' }]
+              : []),
+            ...(diagram.nodes.some((n) => n.cfg.titleKind === 'fief')
+              ? [{ glyph: '☆', label: 'Held a fief only', color: '#d4a830' }]
+              : []),
+          ] as typeof diagram.legendItems).map((item, i) => (
             <Fragment key={i}>
               {item.forceBreakBefore && (
                 <div style={{ flexBasis: '100%', height: 0 }} aria-hidden="true" />
@@ -891,7 +914,7 @@ export default function LineageDiagram({ diagram, title, subtitle }: LineageDiag
                       display: 'inline-block',
                       width: 14,
                       textAlign: 'center',
-                      color: '#8a8f9e',
+                      color: item.color || '#8a8f9e',
                       fontFamily: 'EB Garamond, Georgia, serif',
                       fontSize: 14,
                       lineHeight: 1,

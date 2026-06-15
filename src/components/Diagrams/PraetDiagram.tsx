@@ -106,6 +106,7 @@ const diagram: DiagramDef = {
       y: Y_GEN1,
       cfg: {
         name: 'Louis II de Male',
+        titleHeld: 'Count of Flanders',
         dates: 'Count of Flanders · 1330–1384',
         tag: 'HOUSE OF DAMPIERRE',
         body: "In 1373 purchased the leengoed of Praet in Oedelem from the van Praet family, then granted it to his natural son Louis Friese. His death in 1384 marks the generation in which van Vlaenderen crystallises as a heritable surname among his bastard descendants.",
@@ -124,6 +125,7 @@ const diagram: DiagramDef = {
       y: Y_GEN2,
       cfg: {
         name: 'Louis Friese van Vlaenderen',
+        titleHeld: 'Lord of Praet & Woestine',
         dates: 'c.1350 – 25 Sep 1396 · Nicopolis',
         tag: 'LORD OF PRAET & WOESTINE',
         body: "Natural son of Louis de Male by a daughter of Monsieur de Borre. Granted Praet c.1373. Twice married: first wife (unnamed, connected with La Woestine), then Marie van Ghistelle, Dame de Roosbeke et Sweveghem. Killed at Nicopolis 25 September 1396 alongside half-brothers Loys 'le Hase' and Jan sans terre.",
@@ -142,6 +144,7 @@ const diagram: DiagramDef = {
       y: Y_GEN3,
       cfg: {
         name: 'Johan I van Vlaenderen',
+        titleHeld: 'Lord of Praet',
         dates: 'd. after 10 Sep 1439',
         tag: 'LORD OF PRAET',
         body: "Son of Louis Friese and Marie van Ghistelle. Échevin du Franc 1393. Named at the battle of Brouwershaven (13 January 1426) in Philip the Good's Holland-Zeeland campaign, alongside Jan van Egmond — 'Jan van Vlaendren, de heere Van Praet' in the Kronyk van Jan van Dixmude; independently 'Jan van Vlaenderen, die heere van Praet ende van der Woestijne' in Despars. Issued own charter as Lord of Praet 10 Sep 1439. Married Johanna van Reygersvliet. Five documented children named individually in the Gen 4 row below.",
@@ -191,6 +194,7 @@ const diagram: DiagramDef = {
       cfg: {
         name: 'Lodewijk II\nvan Vlaenderen',
         dates: 'd. 24 Aug / 1 Oct 1488',
+        titleHeld: 'Lord of Praet',
         tag: 'LORD OF PRAET',
         body: "Son of Johan I. Married Louise de Bruges, daughter of Jan van de Aa Heer van Gruuthuse. Death in 1488 confirmed by the Aalter tomb epitaph; two primary sources disagree on the day — de l'Espinoy records St. Bartholomew (24 Aug), the Aalter tomb itself records St. Bavo (1 Oct). Six documented children, named individually in the Gen 5 row below.",
         src: 'Vredius p. 277–278 (Aalter tomb); Espinoy (1631)',
@@ -269,6 +273,7 @@ const diagram: DiagramDef = {
       cfg: {
         name: 'Lodewijk III\nvan Vlaenderen',
         dates: "d. New Year's 1490",
+        titleHeld: 'Lord of Praet',
         tag: 'LORD OF PRAET',
         body: "Son of Lodewijk II. Married Isabelle de Bourgogne (d. 12 Nov 1504, bur Gent). Died at New Year's 1490 per the Aalter tomb inscription (a Monday in 1490, buried beside his father). Grimarez's '1 January 1488' is a conflation with his father Lodewijk II's death year (1488) — a logged known error, not a competing date.",
         src: 'Vredius p. 279 (Aalter tomb)',
@@ -284,6 +289,7 @@ const diagram: DiagramDef = {
       y: Y_GEN5,
       cfg: {
         name: 'Jean\nde Flandre',
+        titleHeld: 'Heer van Onlede & Beveren',
         dates: 'd. 6 Sep 1523',
         body: "Son of Lodewijk II. Heer van Onlede en Beveren bij Roeselare; Grand Bailiff of Bruges and the Brugse Vrije. Died without surviving male issue; lordships passed to brother Josse in 1523.",
         src: 'Beveren tomb via Vredius p. 280',
@@ -300,6 +306,7 @@ const diagram: DiagramDef = {
       cfg: {
         name: 'Joos (Josse)\nvan Vlaenderen',
         dates: 'd. bef. 30 Nov 1545',
+        titleHeld: 'Heer van Onlede, Beveren & Wijchuize',
         tag: 'CADET — LINE CONTINUES',
         body: "Son of Lodewijk II. Inherited Onlede, Beveren, and Wijchuize after his brother Jean's death in 1523. Married Martina van Moerkerke; died before 30 November 1545 — his sons' wardship file names him posthumously, its earliest account year beginning St. Andrew's Day 1545 (the older printed death-year 1553 rests on the same bundle and is corrected against the original). When the senior line failed (Jan II d. 10 Dec 1545), the lordship and surname passed to his branch: his son Jacob received Praet and Woestijne in 1550 — the collateral continuation drawn below.",
         src: "Damhouder via Vredius p. 278; Verhoustraete, 'De heren van Praet te Oedelem,' Jaarboek 1967, pp. 101–113; Serrure 1863 (Vaderlandsch Museum Deel 5); RAB TBO 184 nrs. 21300–21302",
@@ -338,7 +345,7 @@ const diagram: DiagramDef = {
         src: "Vredius p. 387 (Aalter tomb); Verhoustraete 1967; Gailliard, Bruges et le Franc, T. I p. 261; 1517 charter: De Raadt, Sceaux armoriés, I (1898) p. 456, as cited in C. Cawley, 'Medieval Lands', FMG",
         color: '#4ade80',
         ev: 'direct',
-        focus: true,
+        titleHeld: 'Lord of Praet',
         w: 136,
         h: 120,
       },
@@ -353,6 +360,7 @@ const diagram: DiagramDef = {
         name: 'Jacob\nvan Vlaanderen',
         dates: 'd. 17 Aug 1566',
         tag: 'PRAET & WOESTIJNE 1550',
+        titleHeld: 'Lord of Praet & Woestine',
         body: "Son of Joos — Lodewijk IV's nearest heir after the senior line failed in 1545. Received Woestijne and Praet at Aalter by act of 25 September 1550; married Catharina van Boetzelaer 1551/52; died 17 August 1566, buried Beveren. Not to be confused with the 15th-century 'Jaques de Flandre' of Damhouder's list (Gen 5), who did not inherit.",
         src: "Verhoustraete 1967, pp. 101–113; Valkeneers & Soen, 'Praet, Bronkhorst en Boetzelaer' (2014); RAB TBO 184 nrs. 21300–21302",
         color: C.blue,
@@ -369,6 +377,7 @@ const diagram: DiagramDef = {
       y: Y_GEN7,
       cfg: {
         name: 'Jan II\nvan Vlaenderen',
+        titleHeld: 'Heer van Woestine, Elverdinghe & Vlamertinghe',
         dates: 'd. 10 Dec 1545',
         body: "Only surviving son of Lodewijk IV (a younger son Jan d. 1543). Heer van Woestine, Elverdinghe, and Vlamertinghe. Predeceased his father, dying without issue. Widow Jacqueline de Bourgogne remarried and died in childbirth 1556. His death ends the senior direct male line only — the lordship and surname passed to the collateral branch of Joos, whose son Jacob received Praet and Woestijne in 1550.",
         src: 'Vredius p. 388 (Aalter tomb); Verhoustraete 1967',
@@ -388,6 +397,7 @@ const diagram: DiagramDef = {
         name: 'Lodewijk V\nvan Vlaanderen',
         dates: 'b. 1559 – d. 31 Oct 1591',
         tag: 'LAST MALE — SURNAME ENDS',
+        titleHeld: 'Lord of Praet',
         body: "Son of Jacob. Calvinist; married Maria van Marnix, who died childless in 1580. Sold the encumbered Praet/Aalter estate before his death; died sonless on All Saints' Eve, 31 October 1591, in exile — the last male of the line. The surname ends; the title passes through female links to men of other surnames.",
         src: 'Verhoustraete 1967, pp. 101–113 (post-1591 succession pp. 109–112); Valkeneers & Soen (2014)',
         color: C.blue,
