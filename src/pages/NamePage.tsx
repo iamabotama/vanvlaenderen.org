@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import styles from './InnerPage.module.css';
@@ -385,8 +386,10 @@ export default function NamePage() {
 
       </div>
 
-      {/* ── Lightbox overlay ──────────────────────────────────────── */}
-      {lightbox && (
+      {/* ── Lightbox overlay — portaled to <body> so position:fixed escapes
+            the identity transform .page carries from the pageFadeIn animation
+            (a transformed ancestor becomes the containing block for fixed children). ── */}
+      {lightbox && typeof document !== 'undefined' && createPortal(
         <div
           className={nameStyles.lightboxOverlay}
           onClick={closeLightbox}
@@ -408,7 +411,8 @@ export default function NamePage() {
             onClick={(e) => e.stopPropagation()}
           />
           <div className={nameStyles.lightboxCaption}>{lightbox.caption}</div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
