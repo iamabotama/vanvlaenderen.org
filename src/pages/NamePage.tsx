@@ -41,20 +41,8 @@ export default function NamePage() {
 
   // Referent taxonomy — the 2×2 of what the name could point to, with a plain verdict per reading.
   const referentGroups = [
-    {
-      group: t('name.referent_place_group'),
-      items: [
-        { base: 'referent_1a', tone: '#e74c3c' },
-        { base: 'referent_1b', tone: '#e67e22' },
-      ],
-    },
-    {
-      group: t('name.referent_count_group'),
-      items: [
-        { base: 'referent_2a', tone: '#3498db' },
-        { base: 'referent_2b', tone: '#2ecc71' },
-      ],
-    },
+    { group: t('name.referent_place_group'), items: ['referent_1a', 'referent_1b'] },
+    { group: t('name.referent_count_group'), items: ['referent_2a', 'referent_2b'] },
   ];
 
   const functions = [
@@ -137,13 +125,12 @@ export default function NamePage() {
                 {group}
               </div>
               <div style={{ display: 'grid', gap: '0.75rem' }}>
-                {items.map(({ base, tone }) => (
+                {items.map((base) => (
                   <div key={base} style={{
                     padding: '1rem 1.25rem',
                     borderRadius: '4px',
                     background: 'rgba(255,255,255,0.02)',
-                    border: '1px solid rgba(255,255,255,0.07)',
-                    borderLeft: `3px solid ${tone}`,
+                    border: '1px solid rgba(255,255,255,0.08)',
                   }}>
                     <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
                       <span style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.95rem' }}>
@@ -151,20 +138,16 @@ export default function NamePage() {
                       </span>
                       <span style={{
                         flexShrink: 0,
-                        fontSize: '0.68rem', fontFamily: 'var(--font-ui)', fontWeight: 700,
-                        textTransform: 'uppercase', letterSpacing: '0.05em',
-                        color: tone, border: `1px solid ${tone}`, borderRadius: '3px',
-                        padding: '0.12rem 0.45rem',
+                        fontSize: '0.7rem', fontFamily: 'var(--font-ui)', fontWeight: 600,
+                        textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--gold)',
                       }}>
                         {t(`name.${base}_verdict`)}
                       </span>
                     </div>
                     <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '0.5rem' }}
                       dangerouslySetInnerHTML={{ __html: t(`name.${base}_desc`) }} />
-                    <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.55, paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                      <span style={{ color: tone, fontWeight: 600 }}>{t(`name.${base}_verdict`)} — </span>
-                      <span dangerouslySetInnerHTML={{ __html: t(`name.${base}_status`) }} />
-                    </div>
+                    <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.55 }}
+                      dangerouslySetInnerHTML={{ __html: t(`name.${base}_status`) }} />
                   </div>
                 ))}
               </div>
@@ -173,6 +156,8 @@ export default function NamePage() {
 
           <p dangerouslySetInnerHTML={{ __html: t('name.referent_synthesis') }} />
         </section>
+
+        <hr style={{ border: 0, borderTop: '1px solid rgba(232,184,48,0.18)', margin: '1rem 0 0' }} />
 
         {/* ── What the name was DOING: the Four Functions ──────────── */}
         <section className={styles.section}>
@@ -383,10 +368,6 @@ export default function NamePage() {
           </div>
         </section>
 
-        <p style={{ lineHeight: 1.7 }}>
-          {t('name.history_p3')}
-        </p>
-
         <div className={styles.ctaBox}>
           <div className={styles.ctaText}>
             {t('name.cta_text')}
@@ -396,7 +377,7 @@ export default function NamePage() {
           </div>
           <Link
             className={nameStyles.shareStoryBtn}
-            to="/contact"
+            to="/dna"
           >
             {t('name.cta_button')}
           </Link>
