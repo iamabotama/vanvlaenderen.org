@@ -9,10 +9,12 @@ import cronike from '../assets/images/heraldic/cronike-van-vlaenderen-shields-do
 import styles from './HomePage.module.css';
 import { Helmet } from 'react-helmet-async';
 
+// Comital cities + all three surviving clusters + the Meetjesland lineage villages,
+// so bearers from Bruges/Ypres/French Flanders/Brabant see themselves here too.
 const villages = [
-  'Ursel', 'Bassevelde', 'Boekhoute', 'Evergem', 'Merendree',
-  'Lovendegem', 'Vinderhoute', 'Wessegem', 'Kaprijke', 'Adegem',
-  'Eeklo', 'Ghent',
+  'Bruges', 'Ypres', 'Ghent', 'Kortrijk', 'Brussels',
+  'Cassel', 'Volckerinckhove', 'Wambeek', 'Aalter', 'Eeklo',
+  'Waarschoot', 'Sleidinge', 'Oostwinkel', 'Bassevelde', 'Ursel', 'Evergem',
 ];
 
 // Cards are listed in display order. The `path` is the route Link targets;
@@ -77,7 +79,7 @@ export default function HomePage() {
           <h1 className={styles.title}>Van Vlaenderen</h1>
           <div className={styles.subtitle}>
             <div className={styles.heroSubtitleNarrative}>{t('home.hero_subtitle_narrative')}</div>
-            <div className={styles.heroSubtitleLocations}>· {t('home.hero_subtitle_locations')}</div>
+            <div className={styles.heroSpine}>{t('home.hero_spine')}</div>
           </div>
           <div className={styles.heroScrollHint}>↓</div>
         </div>
