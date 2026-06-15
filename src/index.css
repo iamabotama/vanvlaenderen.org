@@ -69,7 +69,11 @@ body {
 }
 
 main > * {
-  animation: pageFadeIn 0.55s var(--transition-slow) both;
+  /* `backwards` (not `both`): keep the pre-animation state during any delay, but let
+     transform/opacity revert to their base values when the animation ends. Using `both`
+     left a permanent identity transform on the page, which made it the containing block
+     for any position:fixed descendant (broke the lightbox; see NamePage portal note). */
+  animation: pageFadeIn 0.55s var(--transition-slow) backwards;
 }
 
 /* ─── Typography ─────────────────────────────────────────────── */

@@ -289,10 +289,11 @@ export default function FamilyTreeCanvas() {
     };
   }, []);
 
-  // SSR guard — canvas/window don't exist in Node during prerender; placed after
-  // the hooks so hook order stays unconditional (react-hooks/rules-of-hooks).
-  if (typeof window === 'undefined') return null;
-
+  // The <canvas> element itself is SSR-safe: every window/canvas access happens inside
+  // the useEffect above, which never runs during prerender. Rendering it on the server
+  // too keeps the hydrated tree identical to the prerendered DOM. (A `typeof window`
+  // early-return here returned null on the server but <canvas> on the client's first
+  // render — a hydration mismatch, React #418.)
   return (
     <canvas
       ref={canvasRef}

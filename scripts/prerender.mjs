@@ -97,8 +97,19 @@ function buildHeadTags(meta) {
 function injectIntoTemplate(template, appHtml, meta) {
   let html = template
 
+  // react-helmet-async v3 disables itself under React 19 and renders its <title>/<meta>/
+  // <link> tags inline in the app markup instead of collecting them for the <head>. The
+  // correct head tags are injected from PAGE_META below, so strip the stray in-body copies:
+  // left in #root they duplicate the metadata and cause a hydration mismatch (React #418),
+  // because the client — where Helmet works — relocates them to <head>. No legitimate
+  // <title>/<meta>/<link> is ever rendered in the app body, so a global strip is safe.
+  const cleanApp = appHtml.replace(
+    /<title\b[^>]*>[\s\S]*?<\/title>|<meta\b[^>]*\/?>|<link\b[^>]*\/?>/gi,
+    ''
+  )
+
   // 1. Replace app shell with rendered content
-  html = html.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
+  html = html.replace('<div id="root"></div>', `<div id="root">${cleanApp}</div>`)
 
   if (!meta) return html
 
