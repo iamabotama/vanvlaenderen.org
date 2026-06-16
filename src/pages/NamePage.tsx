@@ -363,9 +363,6 @@ export default function NamePage() {
             <p>
               {t('name.notes_source_5_label')} {t('name.notes_source_5_text')}
             </p>
-            <p>
-              {t('name.notes_source_6_label')} {t('name.notes_source_6_text')}
-            </p>
           </div>
         </section>
 
