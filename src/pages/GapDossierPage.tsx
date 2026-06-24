@@ -5,21 +5,156 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Cite } from '../components/Footnote';
 
-// Short citation text shown in the inline footnote popovers. The full notes
-// live in the "Notes & Bibliography" section at the foot of the page (#fn-N).
-const CITES: Record<number, string> = {
-  1: 'Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300–21302 (1545–49) — the Honnelede wardship file. Consulted April 2026 (case 2026/0451).',
-  2: "Verhoustraete, 'De heren van Praet te Oedelem,' Jaarboek 1967 (Bos en Beverveld), pp. 101–113.",
-  3: 'Serrure (ed.), Vaderlandsch Museum, Deel 5 (Gent, 1863), pp. 295–310.',
-  4: 'Lauwens, Verhalen uit de genealogie Van Praet (2021).',
-  5: "Valkeneers & Soen, 'Praet, Bronkhorst en Boetzelaer…' (2014), pp. 265–284.",
-  6: 'FMG, MedLands: Flanders, Hainaut (v5.0, 2025) — the tertiary pointer that carries the De Raadt citation.',
-  7: 'Buylaert, Repertorium van de Vlaamse adel (ca. 1350–1500) (Gent, 2011), p. 747.',
-  8: 'Debrabandere, Woordenboek van de familienamen in België en Noord-Frankrijk (WFB2, 2003), via CBG Familienamenbank.',
-  9: 'Debrabandere, Woordenboek van de familienamen in Zeeland (WFZ, 2009) — searched in full; no hereditary bearers.',
-  10: 'Gysseling & Debrabandere, Persoonsnamen in de Vier Ambachten, 14e–15e eeuw, KCTD 71 (1999), pp. 491–588 — not yet read.',
-  11: 'Limburg-Stirum, Cartulaire de Louis de Male (Bruges, 1898–1901) — not yet consulted.',
-};
+// Single source for this page's footnotes. Each note carries a concise `short`
+// form (shown in the inline hover/tap popover) and the `full` citation (rendered
+// in the Notes & Bibliography list at the foot of the page). Editing a note in
+// one place keeps the popover and the bottom note in sync. `CITES` is derived
+// from the array so the inline <Cite> markers need no separate map.
+const notes = [
+  {
+    n: 1,
+    short: 'Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300–21302 (1545–49) — the Honnelede wardship file. Consulted April 2026 (case 2026/0451).',
+    full: (
+      <>
+        Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300&ndash;21302 (1545&ndash;49). The
+        Honnelede wardship file: Joos van Vlaenderen's minor sons Jacob and Philips as wards;
+        the 1547&ndash;48 entry <em>&lsquo;nopende Phelipe van Vlaendren &hellip; In Lande van
+        Hollandt ende Zeelandt&rsquo;</em> at nr. 21300, Rekening B, fol. 16r. Consulted April 2026.
+        Reference: case 2026/0451.
+      </>
+    ),
+  },
+  {
+    n: 2,
+    short: "Verhoustraete, 'De heren van Praet te Oedelem,' Jaarboek 1967 (Bos en Beverveld), pp. 101–113.",
+    full: (
+      <>
+        Verhoustraete, Arthur. &lsquo;De heren van Praet te Oedelem.&rsquo; <em>Jaarboek 1967</em>{' '}
+        (Bos en Beverveld), pp. 101&ndash;113. The 1545 senior-line failure, the collateral
+        continuation (Joos &rarr; Jacob &rarr; Lodewijk V), the 1591 sonless terminus, and the
+        post-1591 title succession (pp. 109&ndash;112).
+      </>
+    ),
+  },
+  {
+    n: 3,
+    short: 'Serrure (ed.), Vaderlandsch Museum, Deel 5 (Gent, 1863), pp. 295–310.',
+    full: (
+      <>
+        Serrure, C.P., ed. <em>Vaderlandsch Museum</em>, Deel 5. Gent, 1863. &lsquo;De geslachten
+        Van Praet, Van Moerkercke&hellip;,&rsquo; pp. 295&ndash;310 &mdash; names Joos's children
+        Jacob, Philips, and Philippote; anchors Joos to Lodewijk II via the Gruuthuse marriage.
+      </>
+    ),
+  },
+  {
+    n: 4,
+    short: 'Lauwens, Verhalen uit de genealogie Van Praet (2021).',
+    full: (
+      <>
+        Lauwens, Patrik. <em>Verhalen uit de genealogie Van Praet.</em> 2021. The senior line's
+        Mijnsheerenland van Moerkerken / Hof van Holland litigation context for Philips's maternal
+        van Moerckercke standing.
+      </>
+    ),
+  },
+  {
+    n: 5,
+    short: "Valkeneers & Soen, 'Praet, Bronkhorst en Boetzelaer…' (2014), pp. 265–284.",
+    full: (
+      <>
+        Valkeneers, Nina &amp; Soen, Violet. &lsquo;Praet, Bronkhorst en Boetzelaer. Adellijke
+        weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566&ndash;1567)&rsquo;
+        (2014), pp. 265&ndash;284. Jacob van Vlaanderen &times; Catharina van Boetzelaer; the
+        Calvinist banishment and confiscation behind the over-determined 1591 terminus.
+      </>
+    ),
+  },
+  {
+    n: 6,
+    short: 'FMG, MedLands: Flanders, Hainaut (v5.0, 2025) — the tertiary pointer that carries the De Raadt citation.',
+    full: (
+      <>
+        Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025.
+        Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level
+        authority. The De Raadt citation above is taken from its footnote apparatus.{' '}
+        <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
+          Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut
+        </a>
+      </>
+    ),
+  },
+  {
+    n: 7,
+    short: 'Buylaert, Repertorium van de Vlaamse adel (ca. 1350–1500) (Gent, 2011), p. 747.',
+    full: (
+      <>
+        Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350&ndash;ca. 1500).</em>{' '}
+        Gent: Academia Press, 2011. P. 747 (Josse de Flandre and the cadet Praet branch), read
+        directly within the project&rsquo;s pp. 736&ndash;759 pass.
+      </>
+    ),
+  },
+  {
+    n: 8,
+    short: 'Debrabandere, Woordenboek van de familienamen in België en Noord-Frankrijk (WFB2, 2003), via CBG Familienamenbank.',
+    full: (
+      <>
+        Debrabandere, Frans. <em>Woordenboek van de familienamen in België en Noord-Frankrijk.</em>{' '}
+        LJ Veen, 2003. Van Vlaenderen entry via CBG Familienamenbank.{' '}
+        <a href="https://www.cbgfamilienamen.nl" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
+          cbgfamilienamen.nl
+        </a>
+      </>
+    ),
+  },
+  {
+    n: 9,
+    short: 'Debrabandere, Woordenboek van de familienamen in Zeeland (WFZ, 2009) — searched in full; no hereditary bearers.',
+    full: (
+      <>
+        Debrabandere, Frans. <em>Woordenboek van de familienamen in Zeeland.</em> 2009.
+        Searched in full &mdash; no hereditary surname bearers.{' '}
+        <a href="https://www.naamkunde.net/wp-content/uploads/2010/01/WZF-Debrabandere.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
+          Free PDF, naamkunde.net
+        </a>
+      </>
+    ),
+  },
+  {
+    n: 10,
+    short: 'Gysseling & Debrabandere, Persoonsnamen in de Vier Ambachten, 14e–15e eeuw, KCTD 71 (1999), pp. 491–588 — not yet read.',
+    full: (
+      <>
+        Gysseling, M. &amp; Debrabandere, F. <em>Persoonsnamen in de Vier Ambachten, 14e en 15e eeuw.</em>{' '}
+        KCTD vol. 71 (1999), pp. 491&ndash;588.{' '}
+        <a href="https://openjournals.ugent.be/hctd" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
+          Free via KCTD portal
+        </a>{' '}
+        &mdash; not yet read.
+      </>
+    ),
+  },
+  {
+    n: 11,
+    short: 'Limburg-Stirum, Cartulaire de Louis de Male (Bruges, 1898–1901) — not yet consulted.',
+    full: (
+      <>
+        Limburg-Stirum, Th. de. <em>Cartulaire de Louis de Male, comte de Flandre.</em>{' '}
+        Bruges, 1898&ndash;1901. Held at{' '}
+        <a href="http://lib.ugent.be/catalog/rug01:002005149" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
+          Ghent University Library
+        </a>{' '}
+        &mdash; not yet consulted.
+      </>
+    ),
+  },
+];
+
+const CITES: Record<number, string> = {};
+notes.forEach((nt) => {
+  CITES[nt.n] = nt.short;
+});
 
 export default function GapDossierPage() {
   return (
@@ -506,89 +641,21 @@ export default function GapDossierPage() {
         {/* ── Notes & Bibliography ──────────────────────────────────── */}
         <section className={researchStyles.referenceList}>
           <h2>Notes &amp; Bibliography</h2>
-          <div className={researchStyles.refItem}>
-            <span id="fn-1" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>1.</span>
-            Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300&ndash;21302 (1545&ndash;49). The
-            Honnelede wardship file: Joos van Vlaenderen's minor sons Jacob and Philips as wards;
-            the 1547&ndash;48 entry <em>&lsquo;nopende Phelipe van Vlaendren &hellip; In Lande van
-            Hollandt ende Zeelandt&rsquo;</em> at nr. 21300, Rekening B, fol. 16r. Consulted April 2026.
-            Reference: case 2026/0451.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span id="fn-2" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>2.</span>
-            Verhoustraete, Arthur. &lsquo;De heren van Praet te Oedelem.&rsquo; <em>Jaarboek 1967</em>{' '}
-            (Bos en Beverveld), pp. 101&ndash;113. The 1545 senior-line failure, the collateral
-            continuation (Joos &rarr; Jacob &rarr; Lodewijk V), the 1591 sonless terminus, and the
-            post-1591 title succession (pp. 109&ndash;112).
-          </div>
-          <div className={researchStyles.refItem}>
-            <span id="fn-3" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>3.</span>
-            Serrure, C.P., ed. <em>Vaderlandsch Museum</em>, Deel 5. Gent, 1863. &lsquo;De geslachten
-            Van Praet, Van Moerkercke&hellip;,&rsquo; pp. 295&ndash;310 &mdash; names Joos's children
-            Jacob, Philips, and Philippote; anchors Joos to Lodewijk II via the Gruuthuse marriage.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span id="fn-4" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>4.</span>
-            Lauwens, Patrik. <em>Verhalen uit de genealogie Van Praet.</em> 2021. The senior line's
-            Mijnsheerenland van Moerkerken / Hof van Holland litigation context for Philips's maternal
-            van Moerckercke standing.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span id="fn-5" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>5.</span>
-            Valkeneers, Nina &amp; Soen, Violet. &lsquo;Praet, Bronkhorst en Boetzelaer. Adellijke
-            weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566&ndash;1567)&rsquo;
-            (2014), pp. 265&ndash;284. Jacob van Vlaanderen &times; Catharina van Boetzelaer; the
-            Calvinist banishment and confiscation behind the over-determined 1591 terminus.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span id="fn-6" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>6.</span>
-            Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025.
-            Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level
-            authority. The De Raadt citation above is taken from its footnote apparatus.{' '}
-            <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
-              Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut
-            </a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span id="fn-7" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>7.</span>
-            Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350&ndash;ca. 1500).</em>{' '}
-            Gent: Academia Press, 2011. P. 747 (Josse de Flandre and the cadet Praet branch), read
-            directly within the project&rsquo;s pp. 736&ndash;759 pass.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span id="fn-8" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>8.</span>
-            Debrabandere, Frans. <em>Woordenboek van de familienamen in België en Noord-Frankrijk.</em>{' '}
-            LJ Veen, 2003. Van Vlaenderen entry via CBG Familienamenbank.{' '}
-            <a href="https://www.cbgfamilienamen.nl" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
-              cbgfamilienamen.nl
-            </a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span id="fn-9" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>9.</span>
-            Debrabandere, Frans. <em>Woordenboek van de familienamen in Zeeland.</em> 2009.
-            Searched in full &mdash; no hereditary surname bearers.{' '}
-            <a href="https://www.naamkunde.net/wp-content/uploads/2010/01/WZF-Debrabandere.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
-              Free PDF, naamkunde.net
-            </a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span id="fn-10" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>10.</span>
-            Gysseling, M. &amp; Debrabandere, F. <em>Persoonsnamen in de Vier Ambachten, 14e en 15e eeuw.</em>{' '}
-            KCTD vol. 71 (1999), pp. 491&ndash;588.{' '}
-            <a href="https://openjournals.ugent.be/hctd" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
-              Free via KCTD portal
-            </a>{' '}
-            &mdash; not yet read.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span id="fn-11" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>11.</span>
-            Limburg-Stirum, Th. de. <em>Cartulaire de Louis de Male, comte de Flandre.</em>{' '}
-            Bruges, 1898&ndash;1901. Held at{' '}
-            <a href="http://lib.ugent.be/catalog/rug01:002005149" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
-              Ghent University Library
-            </a>{' '}
-            &mdash; not yet consulted.
-          </div>
+          {notes.map(({ n, full }) => (
+            <div key={n} id={`fn-${n}`} className={researchStyles.refItem} style={{ scrollMarginTop: '6rem' }}>
+              <span className={researchStyles.refNumber}>{n}.</span>
+              {full}
+              {' '}
+              <a
+                href={`#fnref-${n}`}
+                className={researchStyles.refLink}
+                aria-label="Back to text"
+                title="Back to text"
+              >
+                ↩
+              </a>
+            </div>
+          ))}
         </section>
 
       </div>
