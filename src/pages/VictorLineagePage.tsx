@@ -5,6 +5,69 @@ import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { VictorDiagram } from '../components/Diagrams';
 import { Helmet } from 'react-helmet-async';
+import { Cite } from '../components/Footnote';
+
+// Single source for this page's footnotes. Each note carries a concise `short`
+// form (shown in the inline hover/tap popover) and the `full` citation (rendered
+// in the Notes & Bibliography list at the foot of the page). Editing a note in
+// one place keeps the popover and the bottom note in sync. `CITES` is derived
+// from the array so the inline <Cite> markers need no separate map.
+const notes = [
+  {
+    n: 1,
+    short: 'Vredius, Olivarius (Olivier de Wree). Genealogia Comitum Flandriae, Pars secunda. Bruges, 1643. Pp.285–287.',
+    full: (
+      <>
+        Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae</em>, Pars secunda. Bruges, 1643. Pp.285&ndash;287: the three Ghent partition-court charters and the Oostborch epitaph; direct reading April 2026. FMG MedLands: Flanders, Hainaut (v5.0, January 2025) was consulted as a tertiary pointer to these pages.{' '}
+        <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
+      </>
+    ),
+  },
+  {
+    n: 2,
+    short: 'Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem.',
+    full: (
+      <>
+        Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem.{' '}
+        <a href="https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Inventaris Onroerend Erfgoed, Erfgoedobject 33384</a>
+      </>
+    ),
+  },
+  {
+    n: 3,
+    short: 'Bethune, J.B. de. Epitaphes et monuments des églises de la Flandre. Third part. 1900. p.356.',
+    full: (
+      <>
+        Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286&ndash;287, from which it is cited above. Not yet consulted directly by the project.
+      </>
+    ),
+  },
+  {
+    n: 4,
+    short: 'Degryse, R. Willem Beukel(s) van Hughevliet. De Vlaamse Gids 38 (1954).',
+    full: (
+      <>
+        Degryse, R. Willem Beukel(s) van Hughevliet. <em>De Vlaamse Gids</em> 38 (1954).{' '}
+        <a href="https://www.dbnl.org/tekst/_vla001195401_01/_vla001195401_01_0055.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DBNL, Vlaamse Stam (1954)</a>
+      </>
+    ),
+  },
+  {
+    n: 5,
+    short: 'Tailler, Margaux. Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees. MA thesis, Ghent University, 2011.',
+    full: (
+      <>
+        Tailler, Margaux. <em>Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees.</em> MA thesis, Ghent University, 2011. Supervised by Jan Dumolyn.{' '}
+        <a href="https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library, Thesis RUG01-001786522 (2012)</a>
+      </>
+    ),
+  },
+];
+
+const CITES: Record<number, string> = {};
+notes.forEach((nt) => {
+  CITES[nt.n] = nt.short;
+});
 
 export default function VictorLineagePage() {
   const { t } = useTranslation();
@@ -64,7 +127,7 @@ export default function VictorLineagePage() {
         <section className={styles.section}>
           <h2>The Three-Charter Nucleus <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            Three charters from the Ghent partition court records, preserved in Vredius (1643) <em>Pars secunda</em> pp.285&ndash;287 (direct reading, April 2026), form the documentary nucleus of Victor's line. Together they span twenty years (1427&ndash;1447) and name all three of Victor's acknowledged natural sons.
+            Three charters from the Ghent partition court records, preserved in Vredius (1643) <em>Pars secunda</em> pp.285&ndash;287 (direct reading, April 2026)<Cite n={1} text={CITES[1]} />, form the documentary nucleus of Victor's line. Together they span twenty years (1427&ndash;1447) and name all three of Victor's acknowledged natural sons.
           </p>
           <p>
             <strong>Charter 1 (12 May 1427):</strong> Mergriete Haelfhuuts, Victor's mother, donates property to 'Lodekinen ende Hannekinen' (Lodewyc and Janne), Victor's natural sons by Alix van Boyeghem, and to 'Adaemkine' (Adam), his natural son by Gertrud Lindekens (Vredius p.285).
@@ -101,7 +164,7 @@ export default function VictorLineagePage() {
         <section className={styles.section}>
           <h2>Lodewyc's Descendants <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            Lodewyc van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch, preserved in Vredius (1643) pp.286&ndash;287 (Gaillard MS), records the burial of Jacqueline and nearby 'haer Joos van Vlaenderen fs Lodewijcx.' Josse died young and cannot be the Joos van Vlaenderen of the 1545&ndash;49 Brugse Vrije wardship records (the Praet cadet) &mdash; but his existence confirms the name Josse/Joos was in active use in Victor's direct line.
+            Lodewyc van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch, preserved in Vredius (1643) pp.286&ndash;287 (Gaillard MS), records the burial of Jacqueline and nearby 'haer Joos van Vlaenderen fs Lodewijcx.'<Cite n={3} text={CITES[3]} /> Josse died young and cannot be the Joos van Vlaenderen of the 1545&ndash;49 Brugse Vrije wardship records (the Praet cadet) &mdash; but his existence confirms the name Josse/Joos was in active use in Victor's direct line.
           </p>
           <p>
             Lodewyc's daughter Margareta van Vlaenderen (fl. 1478&ndash;1486) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe (charters of 1478 and 1486, Vredius p.287).
@@ -164,30 +227,21 @@ export default function VictorLineagePage() {
         {/* ── Sources ─────────────────────────────────────────────── */}
         <section className={researchStyles.referenceList}>
           <h3>{t('victor.sources_title')}</h3>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>1.</span>
-            Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae</em>, Pars secunda. Bruges, 1643. Pp.285&ndash;287: the three Ghent partition-court charters and the Oostborch epitaph; direct reading April 2026. FMG MedLands: Flanders, Hainaut (v5.0, January 2025) was consulted as a tertiary pointer to these pages.{' '}
-            <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>2.</span>
-            Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem.{' '}
-            <a href="https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Inventaris Onroerend Erfgoed, Erfgoedobject 33384</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>3.</span>
-            Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286&ndash;287, from which it is cited above. Not yet consulted directly by the project.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>4.</span>
-            Degryse, R. Willem Beukel(s) van Hughevliet. <em>De Vlaamse Gids</em> 38 (1954).{' '}
-            <a href="https://www.dbnl.org/tekst/_vla001195401_01/_vla001195401_01_0055.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DBNL, Vlaamse Stam (1954)</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>5.</span>
-            Tailler, Margaux. <em>Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees.</em> MA thesis, Ghent University, 2011. Supervised by Jan Dumolyn.{' '}
-            <a href="https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library, Thesis RUG01-001786522 (2012)</a>
-          </div>
+          {notes.map(({ n, full }) => (
+            <div key={n} id={`fn-${n}`} className={researchStyles.refItem} style={{ scrollMarginTop: '6rem' }}>
+              <span className={researchStyles.refNumber}>{n}.</span>
+              {full}
+              {' '}
+              <a
+                href={`#fnref-${n}`}
+                className={researchStyles.refLink}
+                aria-label="Back to text"
+                title="Back to text"
+              >
+                ↩
+              </a>
+            </div>
+          ))}
         </section>
 
         <Link className={styles.ctaBox} to="/contact">
