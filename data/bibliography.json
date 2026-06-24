@@ -485,6 +485,17 @@
               "publisher": "Brussels: Société belge de librairie / Oscar Schepens. T.I: 1897; T.II: 1900; T.III: 1900; T.IV (Supplément): 1901.",
               "note": "A multi-volume sigillographic armorial of the seals of the Low Countries and neighbouring regions. Tomes I–IV all in hand as PDFs (added 12 Jun 2026). T.I pp. 454–456 (the 'Flandre (de)' headword) carries cohort-adjacent seals, including the Guy→Guy→Guy Assenede bastard line (1390–1424), 'S Loys de Flanders b' bailli de Waes (1453), and Lodewijk IV's 1517 Wessegem-mouvance holding (Fiefs No 10881); T.I p. 70 gives the brisure doctrine for comital bastards; T.I p. 398 validates Donche's 1312 Drincham citation; T.I p. 436 the 'Françoise van Vlaendre dite van Drincham' 1515 entry; T.IV p. 438 'Loeys dis li Haizes, bastars de Flandres, sires de Helverdinghe.' The FMG-relayed 1517 Knesselare charter reference (Lodewijk IV holding six fiefs of Wessegem), cited in the Praet and Gap dossiers, is now verifiable against the source in hand.",
               "status": "consulted"
+            },
+            {
+              "id": "adn-inventaire-sommaire",
+              "source_type": "edited_collection",
+              "type": "Finding Aid",
+              "author": "Dehaisnes, C.; Finot, J.; Desplanque, A. (comps.)",
+              "year": "1865-1906",
+              "title": "Inventaire sommaire des Archives départementales du Nord antérieures à 1790, Série B (Chambre des comptes de Lille)",
+              "publisher": "Lille: Archives départementales du Nord. Multiple volumes, 1865-1906.",
+              "note": "The published finding aid to the Archives départementales du Nord (ADN) at Lille — the repository behind the 'ADN B …' shelfmarks cited across the comital-bastard pages (e.g. ADN B 1273 stuk 10535, the 1372 Wessegem grant; ADN B 1604 fol. 184, the 1398 regrant to Victor; ADN B 43124, the Loys 'le Hase' cohort). The project reaches these folios via the published inventories and via secondary authorities (Lichtervelde 1935, Moelaert 1973/1978, Rogghé 1968); the underlying ADN folios have not yet been read directly.",
+              "status": "cited_via_intermediary"
             }
           ]
         }
@@ -798,6 +809,28 @@
               "publisher": "Historisch-Geografisch Tijdschrift, 1987.",
               "note": "The key article on the landscape history of the northern Flemish Meetjesland from the 12th to the 19th century — precisely the geographic area of the Van Vlaenderen American-line research — documenting the transition from peat extraction to the sandy-loam landscape of the parish-record period. In Dutch. Backlog acquisition target; not yet consulted directly.",
               "status": "acquisition_pending"
+            },
+            {
+              "id": "moelaert-1973-1978-wessegem",
+              "source_type": "scholarly_article",
+              "type": "Meetjesland",
+              "author": "Moelaert, R.",
+              "year": "1973, 1978",
+              "title": "Wessegem en zijn heren (and a related Loys 'le Hase' domain study)",
+              "publisher": "'Wessegem en zijn heren', Appeltjes van het Meetjesland XXIV (1973), pp. 206–238; further article in Appeltjes van het Meetjesland (1978), pp. 6–56.",
+              "note": "Load-bearing local-scholarly study of the lordship of Wessegem and its holders, including Loys 'le Hase' and Victor van Vlaenderen. Cited on the Loys de Haze and Victor pages for the corrected 9 April 1372 dating of the Wessegem grant (against ADN B 1273 stuk 10535) and for Loys's second-generation children (the 1978 article places their mother at Loo, near Veurne). Reached via the published text; the underlying ADN folios not yet read directly. (1978 article title/volume to be confirmed.)",
+              "status": "cited_via_intermediary"
+            },
+            {
+              "id": "rogghe-1968-appeltjes",
+              "source_type": "scholarly_article",
+              "type": "Meetjesland",
+              "author": "Rogghé, Paul",
+              "year": "1968",
+              "title": "Article in Appeltjes van het Meetjesland, vol. 19 (1968)",
+              "publisher": "Appeltjes van het Meetjesland, vol. 19 (1968), pp. 252–253.",
+              "note": "Cited on the Loys de Haze and Louis Friese pages for Loys's second-generation children (p. 252 fns 70–71, citing the Desplanque and Dehaisnes-Finot ADN inventories) and for Marie van Ghistelle's prior marriage to Jan van Halewijn (Ghent civic record S.A.G. JJ3K 1424-25 fol. 73). Distinct from Rogghé's 1964 Meetjesland historical geography (see rogghe-1964). Reached via the published text; the underlying primary folios not yet read directly. (Article title within vol. 19 to be confirmed.)",
+              "status": "cited_via_intermediary"
             }
           ]
         },
