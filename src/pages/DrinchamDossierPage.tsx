@@ -4,6 +4,83 @@ import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-phili
 import { JanDrinchamDiagram } from '../components/Diagrams';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { Cite } from '../components/Footnote';
+
+// Single source for this page's footnotes. Each note carries a concise `short`
+// form (shown in the inline hover/tap popover) and the `full` citation (rendered
+// in the Notes and Sources list at the foot of the page). Editing a note in
+// one place keeps the popover and the bottom note in sync. `CITES` is derived
+// from the array so the inline <Cite> markers need no separate map.
+const notes = [
+  {
+    n: 1,
+    short: 'Vredius, Olivarius (Olivier de Wrée). Genealogia Comitum Flandriae, Pars Secunda. Bruges: J.B. & Lucas Kerchovios, 1642–43. Tabula XVI, foll. 281–283 (PDF pp. 291–293).',
+    full: (
+      <>
+        Vredius, Olivarius (Olivier de Wrée). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642–43. Tabula XVI, foll. 281–283 (PDF pp. 291–293). Direct reading conducted April 2026. Principal source for all four generations and the 1383 land grant text.
+      </>
+    ),
+  },
+  {
+    n: 2,
+    short: "De l'Espinoy, Philippe. Recherche des antiquitez et noblesse de Flandres. Douai, 1631.",
+    full: (
+      <>
+        De l'Espinoy, Philippe. <em>Recherche des antiquitez et noblesse de Flandres</em>. Douai, 1631. Cited in Vredius as the source for the identification of Jan as the fifth bastard son and for the land grant details. Not accessed directly.
+      </>
+    ),
+  },
+  {
+    n: 3,
+    short: 'Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut, v5.0, updated January 2025.',
+    full: (
+      <>
+        Foundation for Medieval Genealogy. <em>MedLands: Flanders, Hainaut</em>, v5.0, updated January 2025. <a href="https://fmg.ac/Projects/MedLands/FLANDERS.htm" style={{ color: 'var(--gold)' }} target="_blank" rel="noopener noreferrer">fmg.ac/Projects/MedLands/FLANDERS.htm</a>. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority.
+      </>
+    ),
+  },
+  {
+    n: 4,
+    short: 'Gaillard (cited in Vredius). Middle Dutch text naming Loys le Hase, Loys le Frison, and Jan sans terre as Van Vlaenderen at Nicopolis 1396. Tabula XVI.',
+    full: (
+      <>
+        Gaillard (cited in Vredius). Middle Dutch text naming Loys le Hase, Loys le Frison, and Jan sans terre as Van Vlaenderen at Nicopolis 1396. Tabula XVI. Direct quotation transcribed April 2026.
+      </>
+    ),
+  },
+  {
+    n: 5,
+    short: 'Epitaph of Jacques de Drincham, Veurne church, as preserved in Gaillard and quoted in Vredius, Tabula XVI.',
+    full: (
+      <>
+        Epitaph of Jacques de Drincham, Veurne church, as preserved in Gaillard and quoted in Vredius, Tabula XVI. Confirms death date 10 April 1459 and offices held.
+      </>
+    ),
+  },
+  {
+    n: 6,
+    short: "Donche. 'De Familie Van Drincham, gezegd van Vlaanderen.' Vlaamse Stam 42/6 (2006), pp. 548–580.",
+    full: (
+      <>
+        Donche. 'De Familie Van Drincham, gezegd van Vlaanderen.' <em>Vlaamse Stam</em> 42/6 (2006), pp. 548–580. Records-based six-generation reconstruction of the line. Source for the 1393 Broekburg relief waiver (p. 556, citing ADN Lille, Chambres des Comptes, B 421), the 1466 Houtem tomb verbatim (p. 567), the fifth- and sixth-generation members Simon and Margareta (pp. 574–578), and the 1551 Praet purchase attempt (pp. 569–570).
+      </>
+    ),
+  },
+  {
+    n: 7,
+    short: 'Buylaert, Frederik. Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500). Pages 753 and 756.',
+    full: (
+      <>
+        Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500)</em>. Pages 753 (the line's founder as a bastard of Louis de Male) and 756 (the 1503 attestation of 'joncvrouwe Margriete van Vlaendren gheseit van Drincham').
+      </>
+    ),
+  },
+];
+
+const CITES: Record<number, string> = {};
+notes.forEach((nt) => {
+  CITES[nt.n] = nt.short;
+});
 
 const tdStyle = {
   padding: '9px 12px',
@@ -86,7 +163,7 @@ export default function DrinchamDossierPage() {
             </div>
           </div>
           <p style={{ fontSize: '0.85rem', marginTop: '1.5rem', fontStyle: 'italic', color: 'var(--text-muted)', borderTop: '1px solid rgba(232, 184, 48, 0.1)', paddingTop: '1rem' }}>
-            <strong>Primary source:</strong> Olivarius Vredius (Olivier de Wrée), <em>Genealogia Comitum Flandriae</em>, Pars Secunda, Tabula XVI, foll. 281–283 (PDF pp. 291–293), Bruges: J.B. &amp; Lucas Kerchovios, 1642–43. Direct reading conducted April 2026. Collateral attestation from de l'Espinoy, <em>Recherche des antiquitez et noblesse de Flandres</em> (Douai, 1631), Livre 2, Chapitre XXXI.
+            <strong>Primary source:</strong> Olivarius Vredius (Olivier de Wrée), <em>Genealogia Comitum Flandriae</em>, Pars Secunda, Tabula XVI, foll. 281–283 (PDF pp. 291–293), Bruges: J.B. &amp; Lucas Kerchovios, 1642–43.<Cite n={1} text={CITES[1]} /> Direct reading conducted April 2026. Collateral attestation from de l'Espinoy, <em>Recherche des antiquitez et noblesse de Flandres</em> (Douai, 1631), Livre 2, Chapitre XXXI.<Cite n={2} text={CITES[2]} />
           </p>
         </section>
 
@@ -97,7 +174,7 @@ export default function DrinchamDossierPage() {
             Jan van Vlaenderen, surnamed <em>sans terre</em> ("without land"), was a natural son of Louis II de Male, Count of Flanders (1330–1384). De l'Espinoy identifies him as the fifth natural son of Louis de Male. His mother is not securely identified: the secondary literature offers Petronella de la Val (per Donche, citing De Herckenrode and Van Hille), but no source examined by this project names her directly; the question remains open.
           </p>
           <p>
-            The surname <em>van Vlaenderen</em> — used by Jan and his descendants — is confirmed as a shared marker of comital bastard identity in the Gaillard text quoted by Vredius, which names all three brothers killed at Nicopolis explicitly under the Van Vlaenderen name:
+            The surname <em>van Vlaenderen</em> — used by Jan and his descendants — is confirmed as a shared marker of comital bastard identity in the Gaillard text quoted by Vredius,<Cite n={4} text={CITES[4]} /> which names all three brothers killed at Nicopolis explicitly under the Van Vlaenderen name:
           </p>
           <div style={{
             margin: '1.25rem 0',
@@ -238,7 +315,7 @@ export default function DrinchamDossierPage() {
         <section className={styles.section}>
           <h2>The Veurne Epitaph of Jacques de Drincham <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            The most concrete physical evidence for the Drincham line is the epitaph of Jacques de Flandres dict de Drincham at the church in Veurne (Furnes), West Flanders, preserved in Gaillard and quoted in Vredius. The original French:
+            The most concrete physical evidence for the Drincham line is the epitaph of Jacques de Flandres dict de Drincham at the church in Veurne (Furnes), West Flanders, preserved in Gaillard and quoted in Vredius.<Cite n={5} text={CITES[5]} /> The original French:
           </p>
           <div style={{
             margin: '1.25rem 0',
@@ -271,7 +348,7 @@ export default function DrinchamDossierPage() {
         <section className={styles.section}>
           <h2>Beyond Vredius: Six Generations to the Mid-Sixteenth Century <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
           <p>
-            Donche's records-based study of the line — 'De Familie Van Drincham, gezegd van Vlaanderen,' <em>Vlaamse Stam</em> 42/6 (2006), pp. 548–580 — extends the reconstruction past Vredius's c. 1473 horizon to <strong>six generations</strong>, from the founding c. 1388 to the mid-sixteenth century, and establishes the line as the structural twin of the Praet branch: both founded by natural sons of Louis II de Male, both carrying the dynastic house-name in the bridged "van Vlaenderen gezegd van Drincham" form alongside the lordship name, both integrated into Burgundian-noble office across five and more generations, and both intermarrying the same noble kindreds (Gistel, Sint-Omaars, Halewijn, Bambeke). The bridged form is monumentally attested: the 1466 tomb at Houtem names the second-generation Jan, as father of Maria, <em>"Mer Jans van Vlandres gheseit Drincham"</em> (Donche p. 567), and Margareta, the line's sixth and last generation, is attested in 1503 as <em>"joncvrouwe Margriete van Vlaendren gheseit van Drincham"</em> (Buylaert, <em>Repertorium van de Vlaamse adel</em>, p. 756).
+            Donche's records-based study of the line — 'De Familie Van Drincham, gezegd van Vlaanderen,' <em>Vlaamse Stam</em> 42/6 (2006), pp. 548–580<Cite n={6} text={CITES[6]} /> — extends the reconstruction past Vredius's c. 1473 horizon to <strong>six generations</strong>, from the founding c. 1388 to the mid-sixteenth century, and establishes the line as the structural twin of the Praet branch: both founded by natural sons of Louis II de Male, both carrying the dynastic house-name in the bridged "van Vlaenderen gezegd van Drincham" form alongside the lordship name, both integrated into Burgundian-noble office across five and more generations, and both intermarrying the same noble kindreds (Gistel, Sint-Omaars, Halewijn, Bambeke). The bridged form is monumentally attested: the 1466 tomb at Houtem names the second-generation Jan, as father of Maria, <em>"Mer Jans van Vlandres gheseit Drincham"</em> (Donche p. 567), and Margareta, the line's sixth and last generation, is attested in 1503 as <em>"joncvrouwe Margriete van Vlaendren gheseit van Drincham"</em> (Buylaert, <em>Repertorium van de Vlaamse adel</em>, p. 756).<Cite n={7} text={CITES[7]} />
           </p>
           <p>
             <strong>The 1393 Broekburg relief waiver.</strong> The line's comital-bastard origin is institutionally confirmed, not merely genealogically asserted. The Broekburg (Bourbourg) feudal-relief account of 1393 records Jan sans terre — styled <em>Messire de Drincham</em> — taking up two fiefs, the inheritances of Jacob van Drincham and Jan van Schuurvelde, both deceased, and owing the count's treasury the relief on each. The verso annotation records that Margareta van Male, Louis II's legitimate daughter and reigning heiress, personally ordered the receiver not to collect: <em>"me commanda que je ne prinsse point argent de mans.r de Drincham"</em> (Donche p. 556, citing ADN Lille, Chambres des Comptes, B 421). A relief was owed to the count; its remission is a grace only the comital house could grant, and Margareta granted it to her half-brother — a contemporary administrative act predicated on the kinship, entered in the count's own accounts. A direct reading of the Lille original remains an open archival action; the waiver evidences half-sibling recognition, consistent with but not independently proving the specific paternity.
@@ -333,34 +410,21 @@ export default function DrinchamDossierPage() {
         <section className={styles.section}>
           <h2>Notes and Sources</h2>
           <div className={researchStyles.referenceList}>
-            <div className={researchStyles.refItem}>
-              <span className={researchStyles.refNumber}>1.</span>
-              Vredius, Olivarius (Olivier de Wrée). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642–43. Tabula XVI, foll. 281–283 (PDF pp. 291–293). Direct reading conducted April 2026. Principal source for all four generations and the 1383 land grant text.
-            </div>
-            <div className={researchStyles.refItem}>
-              <span className={researchStyles.refNumber}>2.</span>
-              De l'Espinoy, Philippe. <em>Recherche des antiquitez et noblesse de Flandres</em>. Douai, 1631. Cited in Vredius as the source for the identification of Jan as the fifth bastard son and for the land grant details. Not accessed directly.
-            </div>
-            <div className={researchStyles.refItem}>
-              <span className={researchStyles.refNumber}>3.</span>
-              Foundation for Medieval Genealogy. <em>MedLands: Flanders, Hainaut</em>, v5.0, updated January 2025. <a href="https://fmg.ac/Projects/MedLands/FLANDERS.htm" style={{ color: 'var(--gold)' }} target="_blank" rel="noopener noreferrer">fmg.ac/Projects/MedLands/FLANDERS.htm</a>. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority.
-            </div>
-            <div className={researchStyles.refItem}>
-              <span className={researchStyles.refNumber}>4.</span>
-              Gaillard (cited in Vredius). Middle Dutch text naming Loys le Hase, Loys le Frison, and Jan sans terre as Van Vlaenderen at Nicopolis 1396. Tabula XVI. Direct quotation transcribed April 2026.
-            </div>
-            <div className={researchStyles.refItem}>
-              <span className={researchStyles.refNumber}>5.</span>
-              Epitaph of Jacques de Drincham, Veurne church, as preserved in Gaillard and quoted in Vredius, Tabula XVI. Confirms death date 10 April 1459 and offices held.
-            </div>
-            <div className={researchStyles.refItem}>
-              <span className={researchStyles.refNumber}>6.</span>
-              Donche. 'De Familie Van Drincham, gezegd van Vlaanderen.' <em>Vlaamse Stam</em> 42/6 (2006), pp. 548–580. Records-based six-generation reconstruction of the line. Source for the 1393 Broekburg relief waiver (p. 556, citing ADN Lille, Chambres des Comptes, B 421), the 1466 Houtem tomb verbatim (p. 567), the fifth- and sixth-generation members Simon and Margareta (pp. 574–578), and the 1551 Praet purchase attempt (pp. 569–570).
-            </div>
-            <div className={researchStyles.refItem}>
-              <span className={researchStyles.refNumber}>7.</span>
-              Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500)</em>. Pages 753 (the line's founder as a bastard of Louis de Male) and 756 (the 1503 attestation of 'joncvrouwe Margriete van Vlaendren gheseit van Drincham').
-            </div>
+            {notes.map(({ n, full }) => (
+              <div key={n} id={`fn-${n}`} className={researchStyles.refItem} style={{ scrollMarginTop: '6rem' }}>
+                <span className={researchStyles.refNumber}>{n}.</span>
+                {full}
+                {' '}
+                <a
+                  href={`#fnref-${n}`}
+                  className={researchStyles.refLink}
+                  aria-label="Back to text"
+                  title="Back to text"
+                >
+                  ↩
+                </a>
+              </div>
+            ))}
           </div>
         </section>
 
