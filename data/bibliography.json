@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-14",
+  "lastUpdated": "2026-06-24",
   "sections": {
     "primarySources": {
       "label": "I. Primary Sources and Finding Aids",
@@ -8,38 +8,16 @@
           "label": "Charter Compilations and Early Printed Authorities",
           "entries": [
             {
-              "id": "vredius-1642-pars-prima",
-              "source_type": "primary_print",
-              "type": "Primary Source",
-              "author": "Vredius, Olivarius (Olivier de Wree)",
-              "year": "1642",
-              "title": "Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem. Pars Prima",
-              "publisher": "Bruges: J.B. & Lucas Kerchovios, 1642. Vol. 1 of 2.",
-              "note": "The narrative volume of Vredius's genealogy of the Counts of Flanders, running from Baldwin Iron-Arm to Philip IV of Spain. Read in conjunction with the Pars Secunda (Probationes) below; together these two volumes are the single most important early-modern authority for the comital bastard lines and their descendants. Where the Pars Secunda reproduces charter text verbatim, the Pars Prima supplies the narrative framing.",
-              "status": "consulted"
-            },
-            {
               "id": "vredius-1643",
               "source_type": "primary_print",
               "type": "Primary Source",
               "author": "Vredius, Olivarius (Olivier de Wree)",
-              "year": "1643",
-              "title": "Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum",
-              "publisher": "Bruges: J.B. & Lucas Kerchovios, 1642-1643. Vol. 2 of 2. [496 pp.]",
-              "note": "The single most important primary source for this project. Vredius preserves verbatim extracts from the Ghent partition court registers and numerous manuscript sources, many of which no longer survive independently. Direct reading of the 1643 print conducted April 2026 at 300 DPI. Principal coverage: Tabula XVI covers the Louis I de Cressy (Louis I of Flanders, d. 1346) bastard cohort at pp. 267-275 and the Louis II de Male (d. 1384) bastard cohort at pp. 275-289 — including all three Victor charters (1427, 1441, 1446) at pp. 285-287 and the Praet descent through Lodewijk III. Tabula XIX covers the 16th-century Praet generation (Lodewijk IV, Jossine van Praet, Jan II) at pp. 387-388. FMG MedLands was consulted earlier as a tertiary pointer to these pages; its footnote crosswalk is maintained in the project's research files.",
-              "url": "https://www.rct.uk/collection/1021446",
-              "urlLabel": "Royal Collection Trust catalogue (physical copy)",
-              "status": "consulted"
-            },
-            {
-              "id": "vredius-1639-sigilla",
-              "source_type": "primary_print",
-              "type": "Primary Source",
-              "author": "Vredius, Olivarius (Olivier de Wree)",
-              "year": "1639",
-              "title": "Sigilla Comitum Flandriae et Inscriptiones Diplomatum ab iis editorum, cum Expositione Historica",
-              "publisher": "Bruges: Joannes Baptista Kerchovius, via alta, sub signo Bibliorum, 1639.",
-              "note": "The sigillographic companion to Vredius's Genealogia (1642-43). Reproduces the seals and diplomatic inscriptions of the Counts of Flanders from the comital archives, with Vredius's historical exposition. Together with the Genealogia Pars Prima and Pars Secunda, this volume completes Vredius's three-volume corpus on the Counts of Flanders. Relevant to the Nieus-Seal discussion and to any claim about the heraldic and sigillographic language of the comital milieu in which the Van Vlaenderen surname first emerges.",
+              "year": "1635–1643",
+              "title": "Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem (Pars Prima & Pars Secunda), with the Sigilla Comitum Flandriae",
+              "publisher": "Bruges: J.B. & Lucas Kerchovius, 1635–1643. Multiple imprints; the relevant volumes are detailed in the note.",
+              "note": "The single most important early-modern authority for this project, consulted across the several physical volumes that together make up Vredius's corpus on the Counts of Flanders (per-volume title-page dates verified 27 May 2026): (1) Pars Secunda, the 'Probationes' — standalone 1635 imprint plus the 1643 alt-edition bound with the combined 'a Balduino' set — is the load-bearing volume, reproducing verbatim the Ghent partition-court registers, charters, and tomb inscriptions of the comital bastard cohort. Tabula XVI covers the Louis I de Cressy bastards (pp. 267–275) and the Louis II de Male bastards (pp. 275–289), including the three Victor charters (pp. 285–287); Tabula XIX covers the 16th-century Praet generation (Lodewijk IV, Jossine van Praet, Jan II, pp. 387–388). The project's canonical distillation works from this volume, read at 300 DPI in April 2026. (2) Pars Prima (1642) supplies Vredius's narrative genealogy from Baldwin Iron-Arm to Philip IV, framing the Probationes. (3) Sigilla Comitum Flandriae (Bruges: J.B. Kerchovius, 1639) is the sigillographic companion reproducing the comital seals and diplomatic inscriptions, relevant to the heraldic and sigillographic context in which the surname emerges — it is the comital seal-book, not a source for bastard-line heraldry. FMG MedLands was consulted earlier as a tertiary pointer to these pages; that footnote crosswalk is kept in the project's research files.",
+              "url": "https://archive.org/details/bub_gb_CNSBZDBvNV4C",
+              "urlLabel": "Sigilla (1639) — Internet Archive",
               "status": "consulted"
             },
             {
@@ -99,6 +77,39 @@
               "note": "A compiled register of the documented illegitimate children of the Counts of Flanders. Tertiary compilation consulted as a pointer to the broader network of Louis de Male's bastard children; not cited as a fact-level authority. Pattou synthesises Espinoy, Vredius, and later Belgian heraldic literature.",
               "url": "http://racineshistoire.free.fr/LGN/PDF/Flandre-B%E2tards.pdf",
               "urlLabel": "Free download",
+              "status": "consulted"
+            },
+            {
+              "id": "anselme-1726-histoire-royale-t1",
+              "source_type": "primary_print",
+              "type": "Primary Source",
+              "author": "Anselme, Père (de Guibours)",
+              "year": "1726-1733",
+              "title": "Histoire généalogique et chronologique de la maison royale de France, Tome I",
+              "publisher": "3rd ed. Paris, 1726-1733. 805 pp.",
+              "note": "Four royal-bastard naming exempla page-verified (Marguerite de Valois p. 115; Diane légitimée de France p. 156; Louis-Auguste de Bourbon p. 192; Charles bâtard de Valois p. 207), seeding the francophone bastard-naming-precedent finding (Strongly Corroborated). Read 15 Jun 2026 from an OCR'd Gallica PDF (bpt6k76026j).",
+              "status": "consulted"
+            },
+            {
+              "id": "anselme-1726-histoire-genealogique-t2",
+              "source_type": "primary_print",
+              "type": "Primary Source",
+              "author": "Anselme, Père (de Guibours)",
+              "year": "1726-1733",
+              "title": "Histoire généalogique et chronologique des grands officiers de la couronne, Tome II",
+              "publisher": "3rd ed. Paris, 1726-1733.",
+              "note": "Grands-officiers-of-France genealogy; near-negative for the project overall, with one page-verified attestation: p. 1045, Marguerite de Flandres dite de Praet × Jean de Lannoy IV (issue Antoine de Lannoy, Grand Écuyer of Charles V) — a Praet-Vlaenderen-line daughter marrying into Lannoy. Tome II swept 13 Jun 2026. The comté-pairie-de-Flandre genealogy relevant to the cohort sits in a different, un-acquired tome; the 'le Haze' hits here are Jean de Chambly dit le Haze (a French family), not the Flemish de Haze.",
+              "status": "consulted"
+            },
+            {
+              "id": "hemricourt-1791-miroir-nobles-hesbaye",
+              "source_type": "primary_print",
+              "type": "Primary Source",
+              "author": "Hemricourt, Jacques de",
+              "year": "1791",
+              "title": "Miroir des nobles de Hesbaye (Jalheau augmented edition)",
+              "publisher": "Liège: Bassompierre, 1791.",
+              "note": "A Liège/Hesbaye nobility genealogy; project relevance centres on comital-Flanders bastards who married into Liège families. p. 71 fn.(d): Rufflar de Flandres, natural son of Louis I de Nevers (de Crécy), died at Crécy 26 Aug 1346 — the source MedLands cites for the Nevers bastard Ruflard. p. 206 fn.(b): Elisabeth de Flandre, dame de Somerghem, 'fille aînée naturelle' of Louis de Crécy, widow of Simon de Mirabello, remarried Arnoul de Montferant. Cross-flags the Three-Elisabeths disambiguation. Consulted 13 Jun 2026.",
               "status": "consulted"
             }
           ]
@@ -215,6 +226,32 @@
               "publisher": "In: Flandria illustrata, sive Provinciae ac Comitatus hujus descriptio, Tomus Tertius (1735 edition). Hagae-Comitum [The Hague] / Brussels: Carolus & Joannes-Baptista De Vos Fratres, MDCCXXXV.",
               "note": "The continuation of Sanderus's narrative history of Flanders, running from Clovis I through the sixteenth regnal year of Pippin (767 AD). Covers the Merovingian and early Carolingian period of Flemish prehistory, ending just before the formal establishment of the hereditary county under Baldwin Iron-Arm in the 860s. Bundled with Pars Prima and with Flandria Illustrata in the 1735 Hague/Brussels Tomus Tertius.",
               "status": "consulted"
+            },
+            {
+              "id": "froissart-chroniques-kervyn",
+              "source_type": "chronicle",
+              "type": "Primary Source",
+              "author": "Froissart, Jean (ed. Kervyn de Lettenhove)",
+              "year": "1867-1877",
+              "title": "Chroniques de Froissart",
+              "publisher": "Ed. Henri Kervyn de Lettenhove. Brussels: Académie Royale / Devaux, 1867-1877. 25 vols.",
+              "note": "Narrative chronicle for the Maleani-cohort generation; Froissart reports on the Flemish bastard cohort in passages other chronicles do not carry. The 1867-1877 Kervyn de Lettenhove edition is the canonical 19th-century recension. Vol. 1 in hand (IA: chroniquesrelati01kervuoft), acquired 27 May 2026; not yet read or source-noted. Sweep targets: cohort-relevant passages in Vols. 11-16 (1380s–1390s), Nicopolis 1396 in Vols. 15-16.",
+              "url": "https://archive.org/details/chroniquesrelati01kervuoft",
+              "urlLabel": "Vol. 1 (Internet Archive)",
+              "status": "acquisition_pending"
+            },
+            {
+              "id": "de-la-marche-memoires-shf",
+              "source_type": "chronicle",
+              "type": "Primary Source",
+              "author": "De la Marche, Olivier (ed. Beaune & d'Arbaumont)",
+              "year": "1883-1888",
+              "title": "Mémoires d'Olivier de la Marche",
+              "publisher": "Ed. Henri Beaune & J. d'Arbaumont. Paris: Société de l'Histoire de France, 1883-1888. 4 vols.",
+              "note": "Burgundian-court memoirist (c. 1426–1502), Charles the Bold's premier maître d'hôtel; canonical for Golden Fleece ceremonial detail. Vol. 3 in hand (IA: mmoiresdolivie03lamauoft), acquired 27 May 2026; not yet read or source-noted. Covers c. 1474–1488, the Burgundian crisis decade including the Karel II Langemark generation (d. 1491).",
+              "url": "https://archive.org/details/mmoiresdolivie03lamauoft",
+              "urlLabel": "Vol. 3 (Internet Archive)",
+              "status": "acquisition_pending"
             }
           ]
         },
@@ -247,12 +284,12 @@
               "id": "parish-registers",
               "source_type": "primary_charter",
               "type": "Primary Source",
-              "author": "Staat der Bevolking (Civil Registration)",
+              "author": "State Archives of Belgium (Rijksarchief / Archives de l'État)",
               "year": "1796-present",
-              "title": "Parish and Civil Registers of East Flanders",
-              "publisher": "Rijksarchief Gent; Stadsarchief Gent; FamilySearch.",
-              "note": "The primary evidentiary basis for the documented lineage from Bassevelde through Boekhoute, Waarschoot, and Oostwinkel. Accessed via AGATHA and FamilySearch digitisation. Systematic searches covering 1580-1920 across approximately 45 parishes in East Flanders.",
-              "url": "https://search.arch.be/",
+              "title": "Parish and Civil Registers (Belgian State Archives)",
+              "publisher": "Rijksarchief / Archives de l'État (all Belgian provinces); Stadsarchief Gent; FamilySearch.",
+              "note": "The parish and civil-registration records held by the State Archives of Belgium, digitised and searchable through the AGATHA portal — national in coverage, not limited to East Flanders. These registers are the primary evidentiary basis for the documented lineage from Bassevelde through Boekhoute, Waarschoot, and Oostwinkel; the project's systematic searches (1580–1920) focused on approximately 45 East Flanders parishes, accessed via AGATHA and FamilySearch digitisation.",
+              "url": "https://agatha.arch.be/en/search/genealogie/",
               "urlLabel": "AGATHA (Belgian State Archives)",
               "status": "consulted"
             },
@@ -279,6 +316,39 @@
               "publisher": "Belgian civil registers (Bassevelde, Oost-Vlaanderen) and American civil, court, and ecclesiastical records (Indiana, Ohio, Kentucky). Specific records consulted include: Bassevelde geboorteakte no. 52, 14 June 1854 (son of Engelbertus van Vlaenderen and Marie Catherine De Clerck); Allen County (Indiana) naturalization declaration, 5 October 1880; Lucas County (Ohio) Probate Court naturalization affidavit, 5 April 1884; Kenton County (Kentucky) death certificate no. 2793 and probate file, October 1913.",
               "note": "The documentary chain anchoring the project's direct American line to the Bassevelde civil register. Charles Louis was born in Bassevelde (Oost-Vlaanderen) on 13 June 1854 and emigrated via Antwerp–New York in 1875 (per 1880 naturalization declaration; a later 1900 census entry gives 1877). The Bassevelde 1854 geboorteakte is the critical primary-source join between the European parish-record dossier and the American branch that prompted the Lions of Flanders project; all subsequent American records cohere with the Belgian origin despite orthographic drift (Van Vlaenderen, Van Vlanderen, Van Flandern, Van Vanderen, Van Flanderen) across U.S. records. Full evidence trail compiled in the project research record.",
               "status": "consulted"
+            },
+            {
+              "id": "gilliodts-inventaire-chartes-bruges",
+              "source_type": "edited_collection",
+              "type": "Primary Source",
+              "author": "Gilliodts-Van Severen, Louis",
+              "year": "1871-1876",
+              "title": "Inventaire des archives de la ville de Bruges, Section Première: Inventaire des chartes",
+              "publisher": "Bruges, 1871-1876. Tomes I–VI (T.I: 1871; T.II: 1873; T.III: 1875; T.IV–VI: 1876).",
+              "note": "The calendar of Bruges city charters from the 13th through the 15th centuries; all six tomes in hand as text-layer PDFs (series complete 17 Jun 2026), each separately source-noted. Load-bearing across multiple threads: Tome III p. 396 (1396–97) Victor 'den bastaerd van Vlaendre' at Nicopolis; Tome III p. 502 (1404–05) Victor's naval enterprise; Tome IV pp. 202–203 Catherine de Flandre fille bâtarde de Louis de Nevers; Tome V pp. 347–351 (Oosthove/Bailleul) 'dame Ysabel de Fland., vefve de feu mess. Loys de Bailleul'; Tome VI p. 443 (1499) Roland de Moerkerke office-bar 'obstant quil est illegitime.'",
+              "status": "consulted"
+            },
+            {
+              "id": "gilliodts-1892-coutumes-quartier-bruges",
+              "source_type": "edited_collection",
+              "type": "Primary Source",
+              "author": "Gilliodts-Van Severen, Louis",
+              "year": "1892",
+              "title": "Coutumes des pays et comté de Flandre. Quartier de Bruges. T. V: Coutumes de Sysseele, Thourout, Watervliet",
+              "publisher": "Brussels: F. Gobbaerts, 1892.",
+              "note": "Sysseele (= Sijsele) is the Praet-line territorial context. The appended Antiquitez de Watervliet states Watervliet and Moerkerke 'ghecoment ut het huus van Praet' and names Guy de Richebourg 'fratre comitis notho' alongside Jan de Moerkerke at Cadzand. Full PDF in hand and source-noted, 17 Jun 2026.",
+              "status": "consulted"
+            },
+            {
+              "id": "vandenbussche-1881-inventaire-franc-bruges",
+              "source_type": "edited_collection",
+              "type": "Primary Source",
+              "author": "Vanden Bussche, Émile",
+              "year": "1881",
+              "title": "Inventaire des archives de l'État à Bruges, Section Première: Franc de Bruges, Tome I — Chartes",
+              "publisher": "Bruges: Daveluy, 1881.",
+              "note": "Inventory of the State Archives at Bruges (Rijksarchief Brugge), Franc de Bruges fonds — a distinct repository and fonds from the Gilliodts Bruges city archives. Key entries: the 1442 Franc bastard office-bar ('nul bâtard ne pourra être ni bourgmestre ni échevin du Franc de Bruges'); Louis de Praet as imperial commissioner for the Franc (1546, 1548); Vrancke van Praet × Bladelin accord 1471. Full PDF in hand and source-noted, 17 Jun 2026.",
+              "status": "consulted"
             }
           ]
         },
@@ -293,7 +363,7 @@
               "year": "2025",
               "title": "MedLands: Flanders, Hainaut. v5.0",
               "publisher": "Online reference. Compiled by Charles Cawley. Updated January 2025.",
-              "note": "Tertiary compilation consulted as a pointer to primary sources. FMG preserves verbatim excerpts from Vredius, Espinoy, Bethune, Buylaert, Pere Anselme, and numerous manuscript sources, with numbered footnotes that allow the original authority to be identified. Since April 2026 the dossiers cite the underlying authorities directly — principally the Vredius print, read April 2026 — and MedLands is acknowledged here as the finding aid that pointed to them; the FMG footnote crosswalk is maintained in the project's research files, not on the site.",
+              "note": "FMG MedLands (compiled by Charles Cawley) serves two roles for the project. As a finding aid, it preserves verbatim excerpts from Vredius, Espinoy, Bethune, Buylaert, Père Anselme, and numerous manuscript sources, with numbered footnotes that let the original authority be identified; since April 2026 the dossiers cite those underlying authorities directly — principally the Vredius print, read April 2026 — and MedLands is acknowledged as the finding aid that pointed to them. As a methodological model, Cawley's practice of preserving verbatim primary-source quotations with numbered footnotes is the template for the project's evidentiary framework, including the distinction between 'directly attested,' 'strongly corroborated,' and 'hypothesis.' The FMG footnote crosswalk is kept in the project's research files, not on the site.",
               "url": "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm",
               "urlLabel": "Free access (FMG)",
               "status": "consulted"
@@ -306,22 +376,9 @@
               "year": "ongoing",
               "title": "Hoeve Hof van Wessegem. Erfgoedobject 33384",
               "publisher": "Flemish government heritage inventory.",
-              "note": "The Flemish built heritage inventory entry for the Hof van Wessegem in Ursel. Provides the verbatim statement placing Victor van Vlaanderen and Lodewijk de Haze as lords of Wessegem before 1431, and noting the reversion to the comital domain. Directly attested.",
+              "note": "The Flemish built heritage inventory entry for the Hof van Wessegem in Ursel. Provides the verbatim statement placing Victor van Vlaanderen and Lodewijk de Haze as lords of Wessegem before 1431, and noting the reversion to the comital domain. Directly attested. A regional heritage site (mijnplatteland.com, 'Ursel, een Meetjeslands dorp') offers an informal corroborating statement that Wessegem passed to Victor van Vlaanderen, 'another bastard son of Louis van Male,' in 1399 and that he often resided there; it is noted here only as low-authority corroboration of this inventory entry.",
               "url": "https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384",
               "urlLabel": "Free access (Inventaris Onroerend Erfgoed)",
-              "status": "consulted"
-            },
-            {
-              "id": "mijnplatteland-ursel",
-              "source_type": "heritage_register",
-              "type": "Finding Aid",
-              "author": "Mijnplatteland.com",
-              "year": "undated",
-              "title": "Ursel, een Meetjeslands dorp",
-              "publisher": "Regional heritage website.",
-              "note": "A local Ursel history stating that in 1399 Wessegem passed to Victor van Vlaanderen, 'another bastard son of Louis van Male,' and that he often resided there. Useful corroboration of the Inventaris Onroerend Erfgoed entry.",
-              "url": "https://mijnplatteland.com/meetjesland/ursel/",
-              "urlLabel": "Free access",
               "status": "consulted"
             },
             {
@@ -419,15 +476,15 @@
               "status": "consulted"
             },
             {
-              "id": "de-raadt-1898-sceaux-armories",
+              "id": "de-raadt-1897-sceaux-armories",
               "source_type": "tertiary_compilation",
               "type": "Finding Aid",
               "author": "De Raadt, J.-Th.",
-              "year": "1898",
+              "year": "1897",
               "title": "Sceaux armoriés des Pays-Bas et des pays avoisinants",
-              "publisher": "Brussels, 1898. Multi-volume armorial of seals; vol. I (1898), p. 456 cited.",
-              "note": "A multi-volume armorial of the seals of the Low Countries and neighbouring regions. Vol. I (1898) p. 456 carries the 1517 Knesselare charter recording Lodewijk IV holding six fiefs from the seigneurie of Wessegem, cited in the Praet and Gap dossiers (louis_friese.later_p3, PraetLineageDossierPage, GapDossierPage). The project knows this charter through De Raadt's apparatus as relayed by C. Cawley, 'Medieval Lands' (FMG); the De Raadt volume has not yet been read directly. Publisher and full volume span to be verified when the volume is obtained.",
-              "status": "cited_via_intermediary"
+              "publisher": "Brussels: Société belge de librairie / Oscar Schepens. T.I: 1897; T.II: 1900; T.III: 1900; T.IV (Supplément): 1901.",
+              "note": "A multi-volume sigillographic armorial of the seals of the Low Countries and neighbouring regions. Tomes I–IV all in hand as PDFs (added 12 Jun 2026). T.I pp. 454–456 (the 'Flandre (de)' headword) carries cohort-adjacent seals, including the Guy→Guy→Guy Assenede bastard line (1390–1424), 'S Loys de Flanders b' bailli de Waes (1453), and Lodewijk IV's 1517 Wessegem-mouvance holding (Fiefs No 10881); T.I p. 70 gives the brisure doctrine for comital bastards; T.I p. 398 validates Donche's 1312 Drincham citation; T.I p. 436 the 'Françoise van Vlaendre dite van Drincham' 1515 entry; T.IV p. 438 'Loeys dis li Haizes, bastars de Flandres, sires de Helverdinghe.' The FMG-relayed 1517 Knesselare charter reference (Lodewijk IV holding six fiefs of Wessegem), cited in the Praet and Gap dossiers, is now verifiable against the source in hand.",
+              "status": "consulted"
             }
           ]
         }
@@ -484,8 +541,8 @@
               "year": "2011",
               "title": "Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500)",
               "publisher": "Ghent: Academia Press, 2011.",
-              "note": "The authoritative modern Flemish nobility prosopography for the late-medieval period. Pages 740–746 contain the dedicated Van Vlaenderen-Praet entry. Referenced throughout the Praet and Gap dossiers; acquisition in progress via Pascal van Vlaenderen. When the scan arrives, dossier pages that cite Buylaert 2011 will be re-audited against the primary entry.",
-              "status": "acquisition_pending"
+              "note": "The authoritative modern Flemish nobility prosopography for the late-medieval period. Pages 740–746 contain the dedicated Van Vlaenderen-Praet entry. Referenced throughout the Praet and Gap dossiers. A 56-image bundle covering pp. 736–759 (photographed by Constance at Yale, May 2026) is in hand and has been read for the pp. 740–746 Van Vlaenderen-Praet pivot entry and the p. 570 two-Van-Praet-families disambiguation; a full-volume scan is still pending, after which the remaining dossier citations will be re-audited against the primary text.",
+              "status": "consulted"
             },
             {
               "id": "galbert-of-bruges",
@@ -508,6 +565,74 @@
               "publisher": "In W. Blockmans, M. Boone & Th. de Hemptinne (eds.), Secretum Scriptorum: Liber Alumnorum Walter Prevenier. Leuven: Garant, 1999, pp. 279–306.",
               "note": "An edition and analysis of the 1331 livery records (droit de livrée) of the court of Louis I, Count of Flanders, including the banneret roster that names Guy van Vlaenderen, lord of Richebourg. Cited on the Research page (notes_source_6) for the identification and dating of Guy of Richebourg; the project reaches it via Buylaert, Repertorium (2011), p. 738. Bears on the contested parentage of Guy of Richebourg within the comital house (Vandermaesen: a Nevers/de Crécy natural son; Despars: a bastard of Robert of Cassel).",
               "status": "cited_via_intermediary"
+            },
+            {
+              "id": "warlop-1975-flemish-nobility",
+              "source_type": "scholarly_monograph",
+              "type": "Belgian Historiography",
+              "author": "Warlop, E.",
+              "year": "1975-1976",
+              "title": "The Flemish Nobility Before 1300",
+              "publisher": "Handzame: Familia et Patria, 1975-76. 4 vols.",
+              "note": "The foundational English-language prosopographical study of Flemish noble families. The alphabetic repertory of noble families in volumes 3–4 is an essential reference for tracing any lineage with pre-1300 roots in Flanders, including the van Praet family. Backlog acquisition target; not yet consulted directly.",
+              "url": "https://archive.org/details/flemishnobilityb0002unse_q5k3",
+              "urlLabel": "Free download (Internet Archive, vol. 2)",
+              "status": "acquisition_pending"
+            },
+            {
+              "id": "blockmans-prevenier-1999-promised-lands",
+              "source_type": "scholarly_monograph",
+              "type": "Belgian Historiography",
+              "author": "Blockmans, Wim & Prevenier, Walter",
+              "year": "1999",
+              "title": "The Promised Lands: The Low Countries Under Burgundian Rule, 1369-1530",
+              "publisher": "Philadelphia: University of Pennsylvania Press, 1999.",
+              "note": "The accessible single-volume companion to The Burgundian Netherlands (1986), organised thematically around state formation, social structure, and urban economy. Covers the Maleani-cohort period through the Burgundian transition. Backlog acquisition target; not yet consulted directly.",
+              "status": "acquisition_pending"
+            },
+            {
+              "id": "pirenne-histoire-belgique-vol2",
+              "source_type": "scholarly_monograph",
+              "type": "Belgian Historiography",
+              "author": "Pirenne, Henri",
+              "year": "1902",
+              "title": "Histoire de Belgique, Vol. II: Du XIVe siècle à la mort de Charles le Téméraire",
+              "publisher": "Brussels: H. Lamertin, 1902.",
+              "note": "Foundational synthesis of the comital house's institutional history, covering the Maleani-cohort generation through the Burgundian transition; the framework subsequent Flemish historiography builds on. Vol. II in hand as PDF (IA: histoiredebelgiq02pireuoft), acquired 27 May 2026; not yet read or source-noted.",
+              "status": "acquisition_pending"
+            },
+            {
+              "id": "buylaert-2025-seigneurial-lordship",
+              "source_type": "scholarly_article",
+              "type": "Belgian Historiography",
+              "author": "Buylaert, Frederik",
+              "year": "2025",
+              "title": "Seigneurial Lordship and the State in the County of Flanders (c. 1350-1550)",
+              "publisher": "In: Graham-Goering, van der Meulen & Buylaert (eds.), Lordship and the Decentralised State in Late Medieval Europe, PBA 268. Oxford: Oxford University Press, 2025. Pp. 90-106.",
+              "note": "Framework source for the seigneurie-as-nobility-transmission mechanism underpinning the Van Vlaenderen-Praet noble-status argument. Full read 8 Jun 2026; theoretical framework, zero surname attestations. Cites Speecke et al. 2023 (higher-seigneuries repertorium). PDF in hand and source-noted.",
+              "status": "consulted"
+            },
+            {
+              "id": "buylaert-adriaens-2025-lordship-capitalism",
+              "source_type": "scholarly_monograph",
+              "type": "Belgian Historiography",
+              "author": "Buylaert, Frederik & Adriaens, Margot",
+              "year": "2025",
+              "title": "Lordship, Capitalism, and the State in Flanders (c. 1250-1570)",
+              "publisher": "Oxford: Oxford University Press, 2025. ISBN 9780198945727. Open access.",
+              "note": "The master synthesis behind Buylaert's 2025 OUP chapter. Scoped read of Chs 4–6 plus framework, 8 Jun 2026. Load-bearing: corroborates le Frison's Woestijne/Praet grants (p. 271) and the Elverdinge-Vlamertinge 1434 reversion (p. 273); verbatim 1542 van Vlaenderen attestation (Lodewijk IV, pp. 179–80); names Robrecht 'Roeland van Vlaanderen, a Dampierre descendant' (p. 273); mentions Jacob × Catharina van Boetzelaer (pp. 227–28). PDF in hand and source-noted.",
+              "status": "consulted"
+            },
+            {
+              "id": "vandermaesen-1980-vanden-steen",
+              "source_type": "scholarly_article",
+              "type": "Belgian Historiography",
+              "author": "Vandermaesen, Maurice",
+              "year": "1980",
+              "title": "Nikolaas Van den Steen, proost van O.-L.-Vrouw te Brugge en raadsheer van de graven van Vlaanderen",
+              "publisher": "Handelingen van het Genootschap voor Geschiedenis (HvGG), 117(1-2) (1980).",
+              "note": "Comital-council prosopography centred on Nikolaas Van den Steen, provost of Onze-Lieve-Vrouw at Bruges and councillor to the Counts of Flanders. Lower-priority context for the comital administrative milieu; not yet consulted directly.",
+              "status": "acquisition_pending"
             }
           ]
         },
@@ -662,25 +787,23 @@
               "publisher": "Aalter: Stichting Achiel De Vos. Standalone chronological glossarium.",
               "note": "Standalone pre-1600 chronological toponymic glossarium for Oosteeklo (Ambacht Assenede), compiled principally from the RAG-AOE (Abbey of Oosteeklo) archive. Full scan April 2026: zero Van Vlaenderen surname attestations and no parcel-name derived from any \"Isabella\" figure — independent confirmation of the Oosteeklo foundress-claim finding. Covers 1228–1628.",
               "status": "consulted"
+            },
+            {
+              "id": "augustyn-thoen-1987-veen-tot-bos",
+              "source_type": "scholarly_article",
+              "type": "Meetjesland",
+              "author": "Augustyn, B. & Thoen, E.",
+              "year": "1987",
+              "title": "Van veen tot bos: Krachtlijnen van de landschapsevolutie van het Noordvlaamse Meetjesland van de 12e tot de 19e eeuw",
+              "publisher": "Historisch-Geografisch Tijdschrift, 1987.",
+              "note": "The key article on the landscape history of the northern Flemish Meetjesland from the 12th to the 19th century — precisely the geographic area of the Van Vlaenderen American-line research — documenting the transition from peat extraction to the sandy-loam landscape of the parish-record period. In Dutch. Backlog acquisition target; not yet consulted directly.",
+              "status": "acquisition_pending"
             }
           ]
         },
         {
           "heading": "C. Flemish Prosopography and Genealogical Methodology",
           "entries": [
-            {
-              "id": "cawley-medlands-methodology",
-              "source_type": "tertiary_compilation",
-              "type": "Methodology",
-              "author": "Cawley, Charles",
-              "year": "2025",
-              "title": "Medieval Lands: A Prosopography of Medieval European Noble and Royal Families",
-              "publisher": "Foundation for Medieval Genealogy. v5.0.",
-              "note": "The project on which FMG MedLands is based. Cawley's methodology — preserving verbatim quotations from primary sources with numbered footnotes — is the model for the evidentiary framework used in the dossiers. The distinction between 'directly attested,' 'strongly corroborated,' and 'hypothesis' is adapted from Cawley's approach.",
-              "url": "https://fmg.ac/",
-              "urlLabel": "Free access (FMG)",
-              "status": "consulted"
-            },
             {
               "id": "dumolyn-haemers-2005",
               "source_type": "scholarly_article",
@@ -774,6 +897,19 @@
               "url": "https://doi.org/10.1038/hdy.2015.5",
               "urlLabel": "DOI link",
               "status": "consulted"
+            },
+            {
+              "id": "larmuseau-2019-current-biology-epp",
+              "source_type": "scientific_article",
+              "type": "Genetic Genealogy",
+              "author": "Larmuseau, M.H.D., et al.",
+              "year": "2019",
+              "title": "A Historical-Genetic Reconstruction of Human Extra-Pair Paternity",
+              "publisher": "Current Biology, 29 (2019), pp. 4102-4107.",
+              "note": "The De Patrijzen study. Confirms De Patrijzen concerns paternity certainty, not surname origins (the correct framing for the project's DNA page), and maps Larmuseau's lab infrastructure (DNA Brabant/Belgium, 1,638+ samples, Familiekunde Vlaanderen partnership since 2009). Source-noted. Received via Constance, June 2026.",
+              "url": "https://doi.org/10.1016/j.cub.2019.09.075",
+              "urlLabel": "DOI link",
+              "status": "consulted"
             }
           ]
         },
@@ -835,15 +971,15 @@
               "status": "consulted"
             },
             {
-              "id": "valkeneers-soen-2015",
+              "id": "valkeneers-soen-2014",
               "source_type": "scholarly_article",
               "type": "Belgian Historiography",
               "author": "Valkeneers, Nina & Soen, Violet",
-              "year": "2014 [date per project source note]",
+              "year": "2014 [based on N. Valkeneers's 2014 KU Leuven master's thesis; published article venue and year unconfirmed]",
               "title": "Praet, Bronkhorst en Boetzelaer. Adellijke weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566–1567)",
               "publisher": "Belgian academic journal/proceedings article, pp. 265–284; the specific venue is not stated in the copy on file. Received directly from Prof. Violet Soen via academia.edu, April 2026.",
               "note": "Documents the post-1545 Praet–Bronckhorst–Boetzelaer family network relevant to the later generations of the Van Vlaenderen-Praet line, including Jacob van Vlaanderen's 1552 marriage to Catharina van Boetzelaer and residence at the Vrijhof (Huys van Praet) at Aalter. Based on N. Valkeneers's unpublished KU Leuven master's thesis (2014); the published venue and year remain unconfirmed, so the date is carried per the project source note. Full citation to be finalised on the published version.",
-              "status": "acquired_pending_review"
+              "status": "consulted"
             },
             {
               "id": "decavele-2004",
@@ -913,6 +1049,50 @@
               "publisher": "Vlaamse Stam: tijdschrift voor familiegeschiedenis, jg. 42, nr. 6 (november 2006), pp. 548-580. Vlaamse Vereniging voor Familiekunde, Antwerp/Merksem.",
               "note": "The canonical scholarly study of the Drincham line: the original Van Drincham nobles of Drincham parish (kasselrij Broekburg) and the new 'Van Drincham, gezegd van Vlaanderen' family descended from Jan 'sans terre' van Vlaenderen (d. Nicopolis 1396) through his marriage to Wilhelmine van Drincham. Reconstructed primarily from the leenregisters and leenverheffingsrekeningen of Veurne, Sint-Winnoksbergen, and Broekburg. Cited throughout the Drincham dossier, including the 1393 Broekburg relief (p. 556), the 1459 Veurne tomb (p. 573), and the 1466 Houtem tomb 'Mer Jans van Vlandres gheseit Drincham' (p. 567) used in the project's naming-convention and register analyses.",
               "status": "consulted"
+            },
+            {
+              "id": "kusman-1999-jean-de-mirabello-van-haelen",
+              "source_type": "scholarly_article",
+              "type": "Belgian Historiography",
+              "author": "Kusman, David",
+              "year": "1999",
+              "title": "Jean de Mirabello dit van Haelen (ca. 1280-1333). Haute finance et Lombards en Brabant",
+              "publisher": "Revue belge de philologie et d'histoire, 77/4 (1999), pp. 843-931.",
+              "note": "The modern scholarly study of the Mirabello (van Halen) family — the family into which the comital natural daughter Isabella van Lierde married. Corroborates the sister-reading ('Isabelle de Lierde, soeur bâtarde de Louis de Nevers, en 1324', p. 881) and the de Somerghem / Zomergem identity; the husband is Jean's son Simon (sgr. de Perwez), not Jean himself. Cross-flags the Three-Elisabeths disambiguation. Full PDF on file (Persée). Consulted 13 Jun 2026.",
+              "status": "consulted"
+            },
+            {
+              "id": "sabbe-1966-wessegem-praet",
+              "source_type": "scholarly_article",
+              "type": "Belgian Historiography",
+              "author": "Sabbe, J.",
+              "year": "1966",
+              "title": "De ondergang van twee Vlaamse adellijke geslachten in de 14e eeuw: de heren van Wessegem en van Praet",
+              "publisher": "Handelingen van het Genootschap voor Geschiedenis (Emulation Brugge / HvGG), vol. 103 (1966).",
+              "note": "Load-bearing for the Praet-line transition 1373–1379 and the Wessegem seigniorial extinction in 1363. Consulted 26 May 2026; source-noted.",
+              "status": "consulted"
+            },
+            {
+              "id": "carlier-2001-kinderen-van-de-minne",
+              "source_type": "scholarly_monograph",
+              "type": "Belgian Historiography",
+              "author": "Carlier, Myriam",
+              "year": "2001",
+              "title": "Kinderen van de minne? Bastaarden in het 15de-eeuwse Vlaanderen",
+              "publisher": "Brussels: VUBPress, 2001. 328 pp.",
+              "note": "Thematic study of the social position of bastards in 15th-century Flanders (Ghent, Bruges, Kortrijk); a key framework source for the project's comital-bastard argument. A 2004 review is on file, but the book itself has not been read directly. Acquisition target.",
+              "status": "acquisition_pending"
+            },
+            {
+              "id": "decavele-1969-boetzelaer-1566",
+              "source_type": "scholarly_article",
+              "type": "Belgian Historiography",
+              "author": "Decavele, Johan",
+              "year": "1969",
+              "title": "Katharina van Boetzelaer, een merkwaardig figuur in het protestants verzet tijdens het 'wonderjaar' (1566)",
+              "publisher": "Vereniging voor de geschiedenis van het Belgisch Protestantisme, vol. 5 (1969), pp. 151-171.",
+              "note": "Primary-source-grounded study of Catharina van Boetzelaer's Calvinist activities during the Wonderyear 1566, distinct from the 2004 Decavele chapter (decavele-2004) on the same subject in a different venue. Acquisition would upgrade the Calvinist-sympathies layer of the Van Vlaenderen-Praet terminal-generation narrative; not yet in hand.",
+              "status": "acquisition_pending"
             }
           ]
         }

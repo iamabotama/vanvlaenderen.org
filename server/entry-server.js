@@ -11203,7 +11203,7 @@ function GapDossierPage() {
   ] });
 }
 const researchTodo = `# Lions of Flanders — Research To-Do List
-*Last updated: April 25, 2026*
+*Last updated: June 24, 2026*
 
 ---
 
@@ -11310,6 +11310,9 @@ The family's standing across centuries constitutes a distinct argument strand:
 ### Zeeland Thread
 - [ ] Connect Laureys Arentsz van Vlaenderen (Ritthem, ~1530–1601) and Arent van Vlaenderen (postal messenger, Middelburg–Ghent, 1596) to WFZ attestations
 - [ ] Assess "Laurentius" naming pattern (Arnoldus naming son Laurentius, 1628) as possible ancestral memory link
+
+### Acquisition — Next Library Visit
+- [ ] Obtain **Vandermaesen, M. (1999)**, *"Le droit de livrée à la cour de Louis, comte de Flandre, en 1331"* (in *Secretum Scriptorum: Liber Alumnorum Walter Prevenier*, Leuven: Garant, pp. 279–306) — currently cited only via Buylaert *Repertorium* (2011) p. 738; read directly to confirm the 1331 banneret roster naming Guy van Vlaenderen, lord of Richebourg.
 
 ---
 
