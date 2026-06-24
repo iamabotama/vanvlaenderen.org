@@ -3,6 +3,132 @@ import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { Cite } from '../components/Footnote';
+
+// Single source for this page's footnotes. Each note carries a concise `short`
+// form (shown in the inline hover/tap popover) and the `full` citation (rendered
+// in the Notes & Bibliography list at the foot of the page). Editing a note in
+// one place keeps the popover and the bottom note in sync. `CITES` is derived
+// from the array so the inline <Cite> markers need no separate map.
+const notes = [
+  {
+    n: 1,
+    short: 'Vredius, Olivarius (Olivier de Wree). Genealogia Comitum Flandriae…, Pars Secunda: Continens Probationes XII posteriorum tabularum. Bruges: J.B. & Lucas Kerchovios, 1642–43.',
+    full: (
+      <>
+        Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642&ndash;43. Tabula XVI, pp. 275&ndash;289 (Louis II de Male bastard cohort, including Louis Friese and the Praet descent through Lodewijk III); Tabula XIX, pp. 387&ndash;388 (Lodewijk IV, Jossine van Praet, and Jan II at Aalter). Direct reading of the 1643 print conducted April 2026. All tomb-inscription quotations in this dossier are verified against the Vredius print.
+      </>
+    ),
+  },
+  {
+    n: 2,
+    short: 'Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025. Section B: Heeren van Praet.',
+    full: (
+      <>
+        Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025. Section B: Heeren van Praet. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier.{' '}
+        <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
+      </>
+    ),
+  },
+  {
+    n: 3,
+    short: 'Bethune, J.B. de. Epitaphes et monuments des eglises de la Flandre. Third part. 1900.',
+    full: (
+      <>
+        Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. Epitaph transcriptions for Aeltere, Beveren bij Roeselare, Languemarc, and Veere. Print only &mdash; not digitised; not yet consulted directly by the project (only the second part's p. 233 is in hand). Cited above solely in the transparent as-cited-in form. Held at KBR Brussels and Ghent University Library.
+      </>
+    ),
+  },
+  {
+    n: 4,
+    short: 'Lauwens, Patrik. Verhalen uit de genealogie Van Praet. 2010.',
+    full: (
+      <>
+        Lauwens, Patrik. <em>Verhalen uit de genealogie Van Praet.</em> 2010.{' '}
+        <a href="https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Lauwens, Verhalen uit de genealogie Van Praet (2010)</a>
+      </>
+    ),
+  },
+  {
+    n: 5,
+    short: 'Nederland’s Adelsboek. Vol. 6 (1908). ’s-Gravenhage: W.P. van Stockum en Zoon. Van Boetzelaer entry.',
+    full: (
+      <>
+        Nederland&rsquo;s Adelsboek. Vol. 6 (1908). &rsquo;s-Gravenhage: W.P. van Stockum en Zoon. Van Boetzelaer entry.{' '}
+        <a href="https://archive.org/details/nederlandsadelsb28unse_4" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Internet Archive (1908 volume)</a>
+      </>
+    ),
+  },
+  {
+    n: 6,
+    short: 'Buylaert, Frederik. Repertorium van de Vlaamse adel (ca. 1350–ca. 1500). Gent: Academia Press, 2011. P. 747.',
+    full: (
+      <>
+        Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350&ndash;ca. 1500).</em> Gent: Academia Press, 2011. Prosopographical register of Flemish noble families 1350&ndash;1500; p. 747 documents Josse de Flandre and the cadet Praet branch (within the project's pp. 736&ndash;759 direct reading). See also by the same author: <em>Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen</em> (Brussels: Royal Academy, 2010), the accompanying narrative history.{' '}
+        <a href="https://lib.ugent.be/nl/catalog/rug01:001699683" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library catalogue</a>
+      </>
+    ),
+  },
+  {
+    n: 7,
+    short: 'Verhoustraete, Arthur. ‘De heren van Praet te Oedelem.’ Jaarboek 1967 (Bos en Beverveld), pp. 101–113.',
+    full: (
+      <>
+        Verhoustraete, Arthur. &lsquo;De heren van Praet te Oedelem.&rsquo; <em>Jaarboek 1967</em> (Bos en Beverveld), pp. 101&ndash;113. The full van Vlaenderen&ndash;Praet genealogy: the 1545 senior-line failure, the collateral continuation via Joos &rarr; Jacob &rarr; Lodewijk V, the 1591 sonless terminus, and the post-1591 title succession through female links (pp. 109&ndash;112).
+      </>
+    ),
+  },
+  {
+    n: 8,
+    short: 'Serrure, C.P., ed. Vaderlandsch Museum, Deel 5. Gent, 1863. ‘De geslachten Van Praet, Van Moerkercke…,’ pp. 295–310.',
+    full: (
+      <>
+        Serrure, C.P., ed. <em>Vaderlandsch Museum</em>, Deel 5. Gent, 1863. &lsquo;De geslachten Van Praet, Van Moerkercke&hellip;,&rsquo; pp. 295&ndash;310 &mdash; the published edition of a 17th-century Praet-Moerkercke family compilation; names Joos&rsquo;s children Jacob, Philips, and Philippote and anchors Joos to Lodewijk II via the Gruuthuse marriage.
+      </>
+    ),
+  },
+  {
+    n: 9,
+    short: 'Valkeneers, Nina & Soen, Violet. ‘Praet, Bronkhorst en Boetzelaer…’ (2014), pp. 265–284.',
+    full: (
+      <>
+        Valkeneers, Nina &amp; Soen, Violet. &lsquo;Praet, Bronkhorst en Boetzelaer. Adellijke weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566&ndash;1567)&rsquo; (2014), pp. 265&ndash;284. Documents Jacob van Vlaanderen &times; Catharina van Boetzelaer and the post-1545 generation at the Vrijhof, Aalter.
+      </>
+    ),
+  },
+  {
+    n: 10,
+    short: 'Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300–21302 (1545–49). The Honnelede wardship file.',
+    full: (
+      <>
+        Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300&ndash;21302 (1545&ndash;49). The Honnelede wardship file: Joos&rsquo;s sons Jacob and Philips as minor wards.
+      </>
+    ),
+  },
+  {
+    n: 11,
+    short: 'Gailliard. Bruges et le Franc. Tome I, p. 261.',
+    full: (
+      <>
+        Gailliard. <em>Bruges et le Franc.</em> Tome I, p. 261 &mdash; the Aalter tombstone transcription <em>&lsquo;obiit MDLVIII&rsquo;</em> for Lodewijk IV (the 1558 reading of the death-year cross-flag).
+      </>
+    ),
+  },
+  {
+    n: 12,
+    short: 'de Smet, ed. Recueil des chroniques de Flandre. Tome III, p. 39 (Kronyk van Jan van Dixmude).',
+    full: (
+      <>
+        de Smet, ed. <em>Recueil des chroniques de Flandre.</em> Tome III, p. 39 (Kronyk van Jan van Dixmude) &mdash; &lsquo;Jan van Vlaendren, de heere Van Praet&rsquo; at the battle of Brouwershaven, 13 January 1426. Independently: Despars, <em>Cronijcke van den lande&hellip; van Vlaenderen</em>, Vol. III, pp. 298&ndash;299.
+      </>
+    ),
+  },
+];
+
+const CITES: Record<number, string> = {};
+notes.forEach((nt) => {
+  CITES[nt.n] = nt.short;
+});
 
 export default function PraetLineageDossierPage() {
   const lineageData = [
@@ -105,7 +231,7 @@ export default function PraetLineageDossierPage() {
           <div style={{ marginBottom: '2.5rem' }}>
             <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Louis Friese van Vlaenderen (c.1350 &ndash; 25 Sep 1396) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h3>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              Vredius (1643), Pars secunda, p. 276, quotes Damhouder's manuscript memoir: 'messire Loys de Frise fils bastard de...Loys de Male conte de Flandre, lequel il eut dune fille de Monsieur de Borre.' His grant of Praet is recorded by Espinoy (1631), Livre 2, Ch. XXXI, p. 68: Louis de Male 'en avancement de son mariage avec Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke' granted 'les terres et Baronies de Praet et de la Woestine' to his illegitimate son 'Messire Louys de Flandres dit le Frizon' (no source cited). Vredius p. 277, quoting Grimarez's memoir, records that Louis 'eut en partage [la Wostine] par acte du 25 de septembre 1373' and died at Nicopolis. (On the day of the 1373 act: the Grimarez memoir reads '25 de septembre'; the donation letters printed in Vredius's Probationes — direct reading, April 2026 — are dated 25 December 1373, the date carried throughout this research and corroborated by Serrure 1863 and Lauwens.)
+              Vredius (1643), Pars secunda, p. 276,<Cite n={1} text={CITES[1]} /> quotes Damhouder's manuscript memoir: 'messire Loys de Frise fils bastard de...Loys de Male conte de Flandre, lequel il eut dune fille de Monsieur de Borre.' His grant of Praet is recorded by Espinoy (1631), Livre 2, Ch. XXXI, p. 68: Louis de Male 'en avancement de son mariage avec Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke' granted 'les terres et Baronies de Praet et de la Woestine' to his illegitimate son 'Messire Louys de Flandres dit le Frizon' (no source cited). Vredius p. 277, quoting Grimarez's memoir, records that Louis 'eut en partage [la Wostine] par acte du 25 de septembre 1373' and died at Nicopolis. (On the day of the 1373 act: the Grimarez memoir reads '25 de septembre'; the donation letters printed in Vredius's Probationes — direct reading, April 2026 — are dated 25 December 1373, the date carried throughout this research and corroborated by Serrure 1863 and Lauwens.)
             </p>
           </div>
 
@@ -115,11 +241,11 @@ export default function PraetLineageDossierPage() {
               A charter dated 10 Sep 1439, preserved in Vredius (1643), Pars secunda, p. 277 (quoting the Collecta Damhouderii, fol. 276 T), is directly issued by 'Ian van Vlaenderen Heere van Praet ande vander Woestine ende Burghemeesters ende Schepenen vanden selven Heerschepe van Praet.' This is Johan I's own charter &mdash; directly attested. His marriage to Johanna van Reygersvliet is recorded in the Van Hecke manuscript annotations quoted on the same Vredius page: 'Iean de Flandre Seign. de Praet et de la Woestine' married 'Ieanne de Reyghersvliet fille de Henry, fils de Gautier.' No primary source confirming her parentage and marriage has been identified &mdash; the marriage itself is therefore strongly corroborated, her parentage probable. Espinoy (1631), Livre 2, Ch. XXXI, p. 68, records the 1431 settlement of 'messire Louys son pere en son vivant Seigneur de Praet et de la Woestine' between Johan I and his mother.
             </p>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              <strong>Brouwershaven, 13 January 1426</strong> <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span> &mdash; a dated military-service fixpoint between the 1420 and 1439 anchors. The Kronyk van Jan van Dixmude, narrating Philip the Good's Holland-Zeeland campaign, names among those at the battle of Brouwershaven: <em>&lsquo;Jan van Vlaendren, de heere Van Praet, Jan van Eghemond ende zomeghe andere&rsquo;</em> (de Smet, <em>Recueil des chroniques de Flandre</em>, Tome III, p. 39). Despars carries the same 1426 Brouwershaven roll independently: <em>&lsquo;Jan van Vlaenderen, die heere van Praet ende van der Woestijne&rsquo;</em> (<em>Cronijcke van den lande&hellip; van Vlaenderen</em>, Vol. III, pp. 298&ndash;299). The identification of this lord of Praet with Johan I &mdash; whose documented window comfortably brackets the date &mdash; is strongly corroborated.
+              <strong>Brouwershaven, 13 January 1426</strong> <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span> &mdash; a dated military-service fixpoint between the 1420 and 1439 anchors. The Kronyk van Jan van Dixmude, narrating Philip the Good's Holland-Zeeland campaign, names among those at the battle of Brouwershaven: <em>&lsquo;Jan van Vlaendren, de heere Van Praet, Jan van Eghemond ende zomeghe andere&rsquo;</em> (de Smet, <em>Recueil des chroniques de Flandre</em>, Tome III, p. 39).<Cite n={12} text={CITES[12]} /> Despars carries the same 1426 Brouwershaven roll independently: <em>&lsquo;Jan van Vlaenderen, die heere van Praet ende van der Woestijne&rsquo;</em> (<em>Cronijcke van den lande&hellip; van Vlaenderen</em>, Vol. III, pp. 298&ndash;299). The identification of this lord of Praet with Johan I &mdash; whose documented window comfortably brackets the date &mdash; is strongly corroborated.
             </p>
             <h4 style={{ color: 'var(--text-primary)', fontSize: '1rem', marginTop: '1.5rem', marginBottom: '0.75rem' }}>Johan I&rsquo;s Five Documented Children</h4>
             <p style={{ fontSize: '0.9rem', lineHeight: '1.7', color: 'var(--text-muted)' }}>
-              (a) <strong>Lodewijk II</strong> &mdash; the heir; Aalter tomb attested (Vredius pp. 277&ndash;278); (b) <strong>Ioanna (Jeanne) de Flandre</strong> &mdash; m. Jean, Lord of Pouques; 1446 partition record, Vredius p. 278 (a further marriage-contract document of 24 Jan 1441 is known to the project only through Buylaert (2011) p. 567, as cited in C. Cawley, 'Medieval Lands', FMG); (c) <strong>Margareta (Marguerite) de Flandre</strong> &mdash; m. Louis de Bailleul; Grimarez and Van Hecke extracts, Vredius p. 278 (attribution structurally inferential, see note below); (d) <strong>Lisbette (Isabelle) de Flandre</strong> &mdash; m. Waleran, Lord of Landas and Warlain; Vredius p. 279; (e) <strong>Landrada de Flandre</strong> &mdash; Canoness at St. Waudru, Mons; never married; Vredius p. 279. A March 1442 Ghent partition records the three minor children (Lodewijk II, Lisbette, and Landrada) under guardianship after Johan I&rsquo;s death; Ioanna and Margareta were by then already married.
+              (a) <strong>Lodewijk II</strong> &mdash; the heir; Aalter tomb attested (Vredius pp. 277&ndash;278); (b) <strong>Ioanna (Jeanne) de Flandre</strong> &mdash; m. Jean, Lord of Pouques; 1446 partition record, Vredius p. 278 (a further marriage-contract document of 24 Jan 1441 is known to the project only through Buylaert (2011) p. 567,<Cite n={6} text={CITES[6]} /> as cited in C. Cawley, 'Medieval Lands', FMG<Cite n={2} text={CITES[2]} />); (c) <strong>Margareta (Marguerite) de Flandre</strong> &mdash; m. Louis de Bailleul; Grimarez and Van Hecke extracts, Vredius p. 278 (attribution structurally inferential, see note below); (d) <strong>Lisbette (Isabelle) de Flandre</strong> &mdash; m. Waleran, Lord of Landas and Warlain; Vredius p. 279; (e) <strong>Landrada de Flandre</strong> &mdash; Canoness at St. Waudru, Mons; never married; Vredius p. 279. A March 1442 Ghent partition records the three minor children (Lodewijk II, Lisbette, and Landrada) under guardianship after Johan I&rsquo;s death; Ioanna and Margareta were by then already married.
             </p>
             <p style={{ fontSize: '0.85rem', lineHeight: '1.7', color: 'var(--text-muted)', marginTop: '0.75rem', fontStyle: 'italic' }}>
               <strong>Correction noted.</strong> An earlier version of this dossier attributed seven children to Johan I, including Jean de Flandre (d. 1523, Heer van Onlede en Beveren, Grand Bailiff of Bruges) and Josse de Flandre (d. after 1526). Direct reading of Vredius in April 2026 resolves these two figures as sons of Lodewijk II, not of Johan I: the Beveren tomb inscription on Vredius p. 280 explicitly identifies Jean&rsquo;s father as &lsquo;Messire <strong>Loys</strong> de Flandres, Chevalier, Saigneur de Praet&rsquo; (i.e., Lodewijk II, d. 1488). Damhouder&rsquo;s list of Lodewijk II&rsquo;s six children by Louise de Bruges on Vredius p. 278 confirms both Jean and Josse as Lodewijk II&rsquo;s sons. Margareta de Flandre&rsquo;s attribution to Johan I is structurally inferential (from the &lsquo;sorores Ludovici Patris&rsquo; heading on Vredius p. 278) rather than directly textual, and is treated here as probable. Buylaert 2011 (not yet consulted directly) is the definitive arbiter on these attributions.
@@ -129,7 +255,7 @@ export default function PraetLineageDossierPage() {
           <div style={{ marginBottom: '2.5rem', background: 'rgba(96, 165, 250, 0.06)', border: '1px solid rgba(96, 165, 250, 0.15)', borderRadius: '4px', padding: '1.25rem' }}>
             <h4 style={{ color: '#60a5fa', fontSize: '1rem', marginBottom: '0.5rem' }}>Note on Joos (Josse) van Vlaenderen (cadet branch &mdash; the line&rsquo;s continuation)</h4>
             <p style={{ fontSize: '0.9rem', lineHeight: '1.7', color: 'var(--text-muted)' }}>
-              Joos (Josse) van Vlaenderen (d. before 30 November 1545) heads the documented cadet branch of the Praet line, descending from Lodewijk II (not Johan I as earlier framed). He is distinct from Victor&rsquo;s grandson Josse, son of Lodewyc by Jacqueline de Wilde, who died young at Oostburg (Oostborch). This Joos married Martina van Moerkerke; when the senior line failed in 1545, the lordship and the surname passed to his branch &mdash; his son Jacob received Praet and Woestijne in 1550, and Jacob&rsquo;s son Lodewijk V carried the line to its 1591 terminus (see &lsquo;The 1545 Senior Failure, the Collateral Continuation, and the 1591 Terminus&rsquo; below). Sources: Verhoustraete, &lsquo;De heren van Praet te Oedelem,&rsquo; <em>Jaarboek 1967</em> (Bos en Beverveld), pp. 101&ndash;113; Serrure 1863 (<em>Vaderlandsch Museum</em> Deel 5); RAB TBO 184 nrs. 21300&ndash;21302 (1545&ndash;49).
+              Joos (Josse) van Vlaenderen (d. before 30 November 1545) heads the documented cadet branch of the Praet line, descending from Lodewijk II (not Johan I as earlier framed). He is distinct from Victor&rsquo;s grandson Josse, son of Lodewyc by Jacqueline de Wilde, who died young at Oostburg (Oostborch). This Joos married Martina van Moerkerke; when the senior line failed in 1545, the lordship and the surname passed to his branch &mdash; his son Jacob received Praet and Woestijne in 1550, and Jacob&rsquo;s son Lodewijk V carried the line to its 1591 terminus (see &lsquo;The 1545 Senior Failure, the Collateral Continuation, and the 1591 Terminus&rsquo; below). Sources: Verhoustraete, &lsquo;De heren van Praet te Oedelem,&rsquo; <em>Jaarboek 1967</em> (Bos en Beverveld), pp. 101&ndash;113;<Cite n={7} text={CITES[7]} /> Serrure 1863 (<em>Vaderlandsch Museum</em> Deel 5);<Cite n={8} text={CITES[8]} /> RAB TBO 184 nrs. 21300&ndash;21302 (1545&ndash;49).<Cite n={10} text={CITES[10]} />
             </p>
           </div>
 
@@ -160,7 +286,7 @@ export default function PraetLineageDossierPage() {
               Married Jossine van Praet, daughter of Charles van Praet Heer van Moerkercke, heiress of the original Praet baronial family. The same Aalter tomb inscription records her death: &lsquo;Ende Me-vrauwe IOSYNE van Praet/ Vrauwe van Moerkercke/ M&rsquo;her Charles van Praet/ Heere van Moerkercke dochter was/ M&rsquo;her LODEWYCX ghesselnede/ die starf 1546. den 10. December&rsquo; &mdash; died 10 December 1546, buried beside her husband at Aalter (Vredius p. 387).
             </p>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              <strong>Death-year cross-flag</strong> <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelProbable}`}>Probable</span> &mdash; Lodewijk IV&rsquo;s death year is attested two ways. Vredius&rsquo;s print of the Aalter inscription reads &lsquo;die starf 1555,&rsquo; and Verhoustraete likewise carries 1555. Gailliard, however, reports the tombstone itself as <em>&lsquo;obiit MDLVIII&rsquo;</em> &mdash; 1558 (<em>Bruges et le Franc</em>, Tome I, p. 261). The project&rsquo;s working preference is 1558, weighting the epigraphic transcription over the secondary print tradition, held at Probable pending a re-examination of the Aalter monument.
+              <strong>Death-year cross-flag</strong> <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelProbable}`}>Probable</span> &mdash; Lodewijk IV&rsquo;s death year is attested two ways. Vredius&rsquo;s print of the Aalter inscription reads &lsquo;die starf 1555,&rsquo; and Verhoustraete likewise carries 1555. Gailliard, however, reports the tombstone itself as <em>&lsquo;obiit MDLVIII&rsquo;</em> &mdash; 1558 (<em>Bruges et le Franc</em>, Tome I, p. 261).<Cite n={11} text={CITES[11]} /> The project&rsquo;s working preference is 1558, weighting the epigraphic transcription over the secondary print tradition, held at Probable pending a re-examination of the Aalter monument.
             </p>
           </div>
 
@@ -174,7 +300,7 @@ export default function PraetLineageDossierPage() {
           <div style={{ marginBottom: '2.5rem' }}>
             <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Jan II van Vlaenderen (d. 10 Dec 1545) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h3>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              The Aalter tomb inscription, quoted in Vredius p. 388, reads: &lsquo;Inde selve tombe light Jo. IAN van Vlaendren/ Heere van Woestine/ Elverdinghe/ ende Vlamertinghe/ fil. mijns Heeren Lodewijc/ Heere van Praet/ ende van Vrauw&rsquo; Josijne voorseyt/ die starf 1545. den 10. December; hy hadde ghetrauwt Vrauw&rsquo; IAQVELINE van Bourgongnen/ fil. M&rsquo;her Adolf/ Heere van Bevere/ starf sonder generatie.&rsquo; Grimarez on the same page adds that he &lsquo;mourut, sans generation, avant son pere, en l&rsquo;an 1545&rsquo; &mdash; he predeceased his father Lodewijk IV, dying without issue. His death ends the <strong>senior direct male line only</strong>: the lordship and the surname passed to the collateral branch of Joos van Vlaenderen, whose son Jacob received Praet and Woestijne at Aalter in 1550 (see below). A separate epitaph at Veere &mdash; B&eacute;thune, <em>Epitaphes</em> (third part, 1900), p. 392, as cited in C. Cawley, 'Medieval Lands' (FMG); not yet read directly &mdash; records that his widow Jacqueline de Bourgogne remarried Jan Heer van Cruijningen and died &lsquo;van haer laetste kint&rsquo; at Beveren in 1556 &mdash; in childbirth with her last child by her second husband &mdash; and that she was childless by Jan van Vlaenderen.
+              The Aalter tomb inscription, quoted in Vredius p. 388, reads: &lsquo;Inde selve tombe light Jo. IAN van Vlaendren/ Heere van Woestine/ Elverdinghe/ ende Vlamertinghe/ fil. mijns Heeren Lodewijc/ Heere van Praet/ ende van Vrauw&rsquo; Josijne voorseyt/ die starf 1545. den 10. December; hy hadde ghetrauwt Vrauw&rsquo; IAQVELINE van Bourgongnen/ fil. M&rsquo;her Adolf/ Heere van Bevere/ starf sonder generatie.&rsquo; Grimarez on the same page adds that he &lsquo;mourut, sans generation, avant son pere, en l&rsquo;an 1545&rsquo; &mdash; he predeceased his father Lodewijk IV, dying without issue. His death ends the <strong>senior direct male line only</strong>: the lordship and the surname passed to the collateral branch of Joos van Vlaenderen, whose son Jacob received Praet and Woestijne at Aalter in 1550 (see below). A separate epitaph at Veere &mdash; B&eacute;thune, <em>Epitaphes</em> (third part, 1900), p. 392,<Cite n={3} text={CITES[3]} /> as cited in C. Cawley, 'Medieval Lands' (FMG); not yet read directly &mdash; records that his widow Jacqueline de Bourgogne remarried Jan Heer van Cruijningen and died &lsquo;van haer laetste kint&rsquo; at Beveren in 1556 &mdash; in childbirth with her last child by her second husband &mdash; and that she was childless by Jan van Vlaenderen.
             </p>
           </div>
         </section>
@@ -210,7 +336,7 @@ export default function PraetLineageDossierPage() {
           <div style={{ marginBottom: '2rem' }}>
             <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Francoise van Praet van Moerkerke (fl. c.1519) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h3>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              Documented in two independent published sources. Nederland's Adelsboek (1908) records Wessel van Boetzelaer married c.1519 'Francina van Praet.' The Lauwens genealogical study (2010) records 'Francoise van Praet van Moerkerken, vrouwe van Carnesse, huwde Wessel van den Boetzelaer, heer van Langerak en Asperen.' Her precise generation within the Praet-Moerkerke line requires further investigation.
+              Documented in two independent published sources. Nederland's Adelsboek (1908)<Cite n={5} text={CITES[5]} /> records Wessel van Boetzelaer married c.1519 'Francina van Praet.' The Lauwens genealogical study (2010)<Cite n={4} text={CITES[4]} /> records 'Francoise van Praet van Moerkerken, vrouwe van Carnesse, huwde Wessel van den Boetzelaer, heer van Langerak en Asperen.' Her precise generation within the Praet-Moerkerke line requires further investigation.
             </p>
           </div>
 
@@ -250,58 +376,21 @@ export default function PraetLineageDossierPage() {
         {/* ── Notes & Bibliography ────────────────────────────────── */}
         <section className={researchStyles.referenceList}>
           <h3>Notes &amp; Bibliography</h3>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>1.</span>
-            Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642&ndash;43. Tabula XVI, pp. 275&ndash;289 (Louis II de Male bastard cohort, including Louis Friese and the Praet descent through Lodewijk III); Tabula XIX, pp. 387&ndash;388 (Lodewijk IV, Jossine van Praet, and Jan II at Aalter). Direct reading of the 1643 print conducted April 2026. All tomb-inscription quotations in this dossier are verified against the Vredius print.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>2.</span>
-            Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025. Section B: Heeren van Praet. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier.{' '}
-            <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>3.</span>
-            Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. Epitaph transcriptions for Aeltere, Beveren bij Roeselare, Languemarc, and Veere. Print only &mdash; not digitised; not yet consulted directly by the project (only the second part's p. 233 is in hand). Cited above solely in the transparent as-cited-in form. Held at KBR Brussels and Ghent University Library.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>4.</span>
-            Lauwens, Patrik. <em>Verhalen uit de genealogie Van Praet.</em> 2010.{' '}
-            <a href="https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Lauwens, Verhalen uit de genealogie Van Praet (2010)</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>5.</span>
-            Nederland&rsquo;s Adelsboek. Vol. 6 (1908). &rsquo;s-Gravenhage: W.P. van Stockum en Zoon. Van Boetzelaer entry.{' '}
-            <a href="https://archive.org/details/nederlandsadelsb28unse_4" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Internet Archive (1908 volume)</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>6.</span>
-            Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350&ndash;ca. 1500).</em> Gent: Academia Press, 2011. Prosopographical register of Flemish noble families 1350&ndash;1500; p. 747 documents Josse de Flandre and the cadet Praet branch (within the project's pp. 736&ndash;759 direct reading). See also by the same author: <em>Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen</em> (Brussels: Royal Academy, 2010), the accompanying narrative history.{' '}
-            <a href="https://lib.ugent.be/nl/catalog/rug01:001699683" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library catalogue</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>7.</span>
-            Verhoustraete, Arthur. &lsquo;De heren van Praet te Oedelem.&rsquo; <em>Jaarboek 1967</em> (Bos en Beverveld), pp. 101&ndash;113. The full van Vlaenderen&ndash;Praet genealogy: the 1545 senior-line failure, the collateral continuation via Joos &rarr; Jacob &rarr; Lodewijk V, the 1591 sonless terminus, and the post-1591 title succession through female links (pp. 109&ndash;112).
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>8.</span>
-            Serrure, C.P., ed. <em>Vaderlandsch Museum</em>, Deel 5. Gent, 1863. &lsquo;De geslachten Van Praet, Van Moerkercke&hellip;,&rsquo; pp. 295&ndash;310 &mdash; the published edition of a 17th-century Praet-Moerkercke family compilation; names Joos&rsquo;s children Jacob, Philips, and Philippote and anchors Joos to Lodewijk II via the Gruuthuse marriage.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>9.</span>
-            Valkeneers, Nina &amp; Soen, Violet. &lsquo;Praet, Bronkhorst en Boetzelaer. Adellijke weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566&ndash;1567)&rsquo; (2014), pp. 265&ndash;284. Documents Jacob van Vlaanderen &times; Catharina van Boetzelaer and the post-1545 generation at the Vrijhof, Aalter.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>10.</span>
-            Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300&ndash;21302 (1545&ndash;49). The Honnelede wardship file: Joos&rsquo;s sons Jacob and Philips as minor wards.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>11.</span>
-            Gailliard. <em>Bruges et le Franc.</em> Tome I, p. 261 &mdash; the Aalter tombstone transcription <em>&lsquo;obiit MDLVIII&rsquo;</em> for Lodewijk IV (the 1558 reading of the death-year cross-flag).
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>12.</span>
-            de Smet, ed. <em>Recueil des chroniques de Flandre.</em> Tome III, p. 39 (Kronyk van Jan van Dixmude) &mdash; &lsquo;Jan van Vlaendren, de heere Van Praet&rsquo; at the battle of Brouwershaven, 13 January 1426. Independently: Despars, <em>Cronijcke van den lande&hellip; van Vlaenderen</em>, Vol. III, pp. 298&ndash;299.
-          </div>
+          {notes.map(({ n, full }) => (
+            <div key={n} id={`fn-${n}`} className={researchStyles.refItem} style={{ scrollMarginTop: '6rem' }}>
+              <span className={researchStyles.refNumber}>{n}.</span>
+              {full}
+              {' '}
+              <a
+                href={`#fnref-${n}`}
+                className={researchStyles.refLink}
+                aria-label="Back to text"
+                title="Back to text"
+              >
+                ↩
+              </a>
+            </div>
+          ))}
         </section>
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
