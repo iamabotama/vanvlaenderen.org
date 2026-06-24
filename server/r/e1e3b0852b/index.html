@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Van Vlaenderen — Records (live)</title>
+<style>
+  :root{--bg:#f7f5f0;--panel:#fff;--ink:#1d2330;--muted:#6b7280;--line:#e3ddd0;
+        --accent:#7a1f2b;--accent2:#b08d57;--ok:#2f7d4f;--warn:#b4631a;--bad:#a23b3b;--chip:#efeae0;}
+  *{box-sizing:border-box}
+  body{margin:0;font:14px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  header{background:var(--accent);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  header h1{font-size:16px;margin:0;font-weight:600}
+  header .who{margin-left:auto;font-size:12px;opacity:.95;display:flex;gap:10px;align-items:center}
+  header button{background:#fff;color:var(--accent);border:none;border-radius:6px;padding:5px 10px;cursor:pointer;font-weight:600}
+  .role{background:var(--accent2);color:#fff;padding:1px 8px;border-radius:20px;font-size:11px}
+  .banner{font-size:11.5px;padding:6px 20px;border-bottom:1px solid #00000022;background:#3a2226;color:#f3d9c6}
+  nav{display:flex;gap:4px;padding:10px 20px 0;border-bottom:1px solid var(--line);align-items:center;flex-wrap:wrap}
+  nav button.tab{border:1px solid var(--line);border-bottom:none;background:var(--chip);padding:8px 16px;border-radius:8px 8px 0 0;cursor:pointer;color:var(--muted)}
+  nav button.tab.active{background:var(--panel);color:var(--ink);font-weight:600}
+  main{padding:18px 20px 80px;max-width:1120px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;margin:0 auto;max-width:420px}
+  label{display:block;font-size:12px;color:var(--muted);margin:8px 0 2px}
+  input,select,textarea{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--ink);width:100%}
+  .row{display:flex;gap:10px;flex-wrap:wrap}.row>div{flex:1;min-width:120px}
+  button.act{background:var(--accent);color:#fff;border:none;border-radius:7px;padding:9px 16px;cursor:pointer;font-weight:600}
+  button.ghost{background:#fff;border:1px solid var(--line);border-radius:7px;padding:7px 12px;cursor:pointer}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:top}
+  th{background:#efeae0;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:#555}
+  tbody tr.click{cursor:pointer}tbody tr.click:hover{background:#faf7f0}
+  .mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:#555}
+  .link{color:var(--accent);cursor:pointer;text-decoration:underline}
+  .pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11px;background:var(--chip);border:1px solid var(--line)}
+  .pill.bad{background:#f6e3e3;color:var(--bad);border-color:#e6c2c2}.pill.ok{background:#e7f3eb;color:var(--ok);border-color:#bfe0cb}
+  .msg{padding:10px 12px;border-radius:8px;margin:10px 0;font-size:13px;display:none}
+  .msg.show{display:block}.msg.err{background:#f6e3e3;color:#7a1f1f;border:1px solid #e6c2c2}.msg.good{background:#e7f3eb;color:#1f5c39;border:1px solid #bfe0cb}
+  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+  .controls>div{display:flex;flex-direction:column}
+  .hide{display:none}.muted{color:var(--muted)}.count{font-size:12px;color:var(--muted);margin:6px 0}
+  h3{margin:4px 0 2px;font-size:14px}
+  .hintgate{font-size:11.5px;color:var(--warn);margin-top:4px}
+  .st{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:3px}
+  .st.c{background:var(--ok)}.st.p{background:#9bb8c9}.st.i{background:var(--warn)}.st.n{background:#d8d2c4}
+  .overlay{position:fixed;inset:0;background:#0008;display:none;align-items:flex-start;justify-content:center;z-index:60;padding:30px 16px;overflow:auto}
+  .overlay.open{display:flex}
+  .modal{background:#fff;border-radius:12px;max-width:760px;width:100%;box-shadow:0 20px 60px #0006}
+  .modal header{background:var(--accent2);border-radius:12px 12px 0 0}
+  .modal .body{padding:16px 18px}
+  .modal .body h4{margin:14px 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--accent)}
+  .kv{font-size:13px;margin:2px 0}.kv b{color:#555}
+  ul.plain{list-style:none;margin:0;padding:0}ul.plain li{padding:3px 0;border-bottom:1px dotted var(--line);font-size:13px}
+  .role-tag{display:inline-block;min-width:70px;font-size:11px;color:#fff;background:var(--accent2);padding:1px 6px;border-radius:4px;margin-right:6px;text-align:center}
+  .lvl{display:inline-block;font-size:10px;padding:0 6px;border-radius:4px;border:1px solid var(--line);background:var(--chip);margin:0 4px}
+  .transc{white-space:pre-wrap;background:#faf8f3;border:1px solid var(--line);border-radius:6px;padding:8px;font-size:12.5px;max-height:200px;overflow:auto}
+  .modal .foot{padding:12px 18px;border-top:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .stickwrap{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}
+  fieldset{border:1px solid var(--line);border-radius:8px;margin:8px 0;padding:8px 12px}
+  legend{font-size:11px;color:var(--muted);padding:0 6px}
+  th.sortable{cursor:pointer;user-select:none;white-space:nowrap}
+  th.sortable:hover{background:#e7e0d0}
+  th .sortind{color:var(--accent);font-size:10px;margin-left:3px}
+  .pager{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:10px 0 0;font-size:12px}
+  .pager button{background:#fff;border:1px solid var(--line);border-radius:6px;padding:4px 9px;cursor:pointer;color:var(--ink)}
+  .pager button:disabled{opacity:.4;cursor:default}
+  .pager select{width:auto;padding:3px 6px}
+  .pager .pinfo{color:var(--muted);margin-right:4px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Van Vlaenderen — Records <span class="muted" style="font-weight:400;font-size:12px">(live)</span></h1>
+  <div class="who" id="who"></div>
+</header>
+<div class="banner">Live database. No living individuals (births/marriages within ~100 years are blocked; deaths/burials always allowed). Curator edits directly; contributor changes go to the proposal queue.</div>
+
+<!-- LOGIN -->
+<main id="loginView">
+  <div class="card">
+    <h3>Sign in</h3>
+    <div class="msg err" id="loginErr"></div>
+    <label>Email<input type="email" id="li_email" autocomplete="username"></label>
+    <label>Password<input type="password" id="li_pw" autocomplete="current-password"></label>
+    <div style="margin-top:12px"><button class="act" id="li_btn">Sign in</button></div>
+  </div>
+</main>
+
+<!-- APP -->
+<div id="appView" class="hide">
+  <nav>
+    <button class="tab active" data-tab="tracker">Research tracker</button>
+    <button class="tab" data-tab="browse">Browse</button>
+    <button class="tab" data-tab="people">People</button>
+    <button class="tab" data-tab="add">Add record</button>
+    <button class="tab" data-tab="proposals">Proposals <span class="pill" id="propCount">0</span></button>
+  </nav>
+  <main>
+    <div class="msg" id="flash"></div>
+
+    <!-- TRACKER -->
+    <section id="tab-tracker">
+      <p class="muted" style="font-size:11.5px;margin:0 0 8px"><span class="st c"></span>Complete <span class="st p"></span>Present <span class="st i"></span>In progress <span class="st n"></span>Not started &nbsp;·&nbsp; "Held" = event records in the DB for that place. &nbsp;·&nbsp; "Add here" prefills the add form.</p>
+      <div class="controls">
+        <div><label>Search</label><input type="text" id="g_q" placeholder="municipality / arrondissement"></div>
+        <div><label>Arrondissement</label><select id="g_arr"></select></div>
+        <button class="ghost" id="g_run">Filter</button>
+      </div>
+      <div class="count" id="g_count"></div>
+      <table><thead><tr><th>Municipality</th><th>Arr.</th><th>Parish B/M/D</th><th>Civil B/M/D</th><th>FV</th><th>Held</th><th></th></tr></thead>
+        <tbody id="g_body"></tbody></table>
+    </section>
+
+    <!-- BROWSE -->
+    <section id="tab-browse" class="hide">
+      <div class="controls">
+        <div><label>Search name/place</label><input type="text" id="b_q" placeholder="contains…"></div>
+        <div><label>Match</label><select id="b_match"><option value="contains">contains</option><option value="exact">exact</option></select></div>
+        <div><label>Event type</label><select id="b_type"></select></div>
+        <div><label>Surname</label><select id="b_surname"></select></div>
+        <div><label>Municipality</label><select id="b_muni"></select></div>
+        <div><label>Parish</label><select id="b_parish"></select></div>
+        <div><label>Year from</label><input type="number" id="b_y0" style="width:90px"></div>
+        <div><label>Year to</label><input type="number" id="b_y1" style="width:90px"></div>
+        <div><label>Sourcing</label><select id="b_src"><option value="">all</option><option value="sourced">sourced</option><option value="needs">needs source</option><option value="full">fully sourced</option></select></div>
+        <div><label>Per page</label><select id="b_per"><option>25</option><option selected>50</option><option>100</option><option>200</option><option value="all">All</option></select></div>
+        <button class="ghost" id="b_run">Search</button>
+        <button class="ghost" id="b_reset">Reset</button>
+      </div>
+      <div class="count" id="b_count"></div>
+      <table><thead><tr>
+        <th class="sortable" data-key="id">ID</th><th class="sortable" data-key="year">Year</th>
+        <th class="sortable" data-key="type">Type</th><th class="sortable" data-key="principals">Principal(s)</th>
+        <th class="sortable" data-key="place">Place</th><th class="sortable" data-key="src">Src</th>
+      </tr></thead>
+        <tbody id="b_body"></tbody></table>
+      <div class="pager" id="b_pager"></div>
+    </section>
+
+    <!-- PEOPLE -->
+    <section id="tab-people" class="hide">
+      <div class="controls">
+        <div><label>Search name / PER id</label><input type="text" id="pp_q" placeholder="contains…"></div>
+        <div><label>Surname</label><select id="pp_surname"></select></div>
+        <div><label>Sourcing</label><select id="pp_src"><option value="">all</option><option value="sourced">sourced</option><option value="needs">needs source</option></select></div>
+        <div><label>Per page</label><select id="pp_per"><option>25</option><option selected>50</option><option>100</option><option>200</option><option value="all">All</option></select></div>
+        <button class="ghost" id="pp_run">Search</button>
+        <button class="ghost" id="pp_reset">Reset</button>
+      </div>
+      <div class="count" id="pp_count"></div>
+      <table><thead><tr>
+        <th class="sortable" data-key="id">ID</th><th class="sortable" data-key="given">Given</th>
+        <th class="sortable" data-key="surname">Surname</th>
+        <th class="sortable" data-key="born">Born</th><th class="sortable" data-key="died">Died</th>
+        <th class="sortable" data-key="residence">Residence</th><th>Records</th>
+      </tr></thead>
+        <tbody id="pp_body"></tbody></table>
+      <div class="pager" id="pp_pager"></div>
+    </section>
+
+    <!-- ADD -->
+    <section id="tab-add" class="hide">
+      <h3>Add a record</h3>
+      <p class="muted" id="addMode" style="font-size:12.5px"></p>
+      <div class="msg" id="addMsg"></div>
+      <div style="max-width:560px">
+        <div class="row">
+          <div><label>Event type</label><select id="a_type"></select></div>
+          <div><label>Year</label><input type="number" id="a_year" placeholder="auto from date"></div>
+        </div>
+        <label>Date as written<input type="text" id="a_date" placeholder="e.g. 12 Febr. 1734 / 1598"></label>
+        <div class="row">
+          <div><label>Date precision</label><select id="a_prec"><option value="">—</option><option>year</option><option>month</option><option>day</option><option>circa</option><option>range</option><option>unknown</option></select></div>
+          <div><label>Municipality</label><select id="a_muni"></select></div>
+        </div>
+        <label>Parish<select id="a_parish"></select></label>
+        <div class="row">
+          <div><label>Principal name (as written)</label><input type="text" id="a_name" placeholder="e.g. Petrus Van Vlaenderen"></div>
+          <div><label>Role</label><select id="a_role"></select></div>
+        </div>
+        <label>Canonical surname<input type="text" id="a_surname" placeholder="Van Vlaenderen"></label>
+        <fieldset><legend>Register-level source (optional)</legend>
+          <label>URL or citation<input type="text" id="a_regurl" placeholder="register link"></label>
+        </fieldset>
+        <fieldset><legend>Folio-level source (optional)</legend>
+          <label>Image URL<input type="text" id="a_folurl" placeholder="exact page image link"></label>
+        </fieldset>
+        <label>Summary / notes<textarea id="a_summary" rows="2"></textarea></label>
+        <div class="hintgate" id="a_gate"></div>
+        <div class="stickwrap">
+          <button class="act" id="a_save">Save</button>
+          <button class="ghost" id="a_save_more">Save &amp; add another</button>
+          <span class="muted" style="font-size:11.5px">"Add another" keeps every field except the name.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROPOSALS -->
+    <section id="tab-proposals" class="hide">
+      <h3>Proposals</h3>
+      <p class="muted" id="propMode" style="font-size:12.5px"></p>
+      <div class="msg" id="propMsg"></div>
+      <table><thead><tr><th>When</th><th>Kind</th><th>Target</th><th>Summary</th><th>Status</th><th id="propActHead"></th></tr></thead>
+        <tbody id="prop_body"></tbody></table>
+    </section>
+  </main>
+</div>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <header style="padding:12px 16px;color:#fff;display:flex;align-items:center">
+      <strong style="flex:1" id="m_title">Record</strong>
+      <span style="cursor:pointer;font-size:20px" onclick="closeModal()">&times;</span>
+    </header>
+    <div class="body" id="m_body"></div>
+    <div class="foot" id="m_foot"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL="https://shqixhfbtrzybicfmxnv.supabase.co";
+const SUPABASE_KEY="sb_publishable_-_eL35vu_INoQF6wvlOrYg_JMIy7Kqm"; // publishable key — safe to embed; RLS enforces access
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const $=s=>document.querySelector(s);
+const esc=s=>(s==null?"":String(s)).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const EVENT_TYPES=["baptism","marriage","burial","estate_record","civil_birth","civil_marriage","civil_death","document_mention","medieval_mention","index_entry","other"];
+const ROLES=["child","deceased","subject","secondary","officiant","father","mother","bride","groom","godfather","godmother","witness","mentioned"];
+const BIRTHISH=new Set(["baptism","civil_birth","marriage","civil_marriage"]);
+const NOW=new Date().getFullYear();
+const norm=s=>(s||"").split(" (")[0].trim().toLowerCase();
+let USER=null,ROLE=null,MUNIS=[],PARISHES=[],PROGRESS=[],FV={},HELD={},SURNAMES=[],PSURNAMES=[];
+
+/* paging/sort state per tab; defaults overridden by saved prefs */
+const PAGE={
+  browse:{rows:[],sort:{key:"year",dir:"desc"},page:1,per:50},
+  people:{rows:[],sort:{key:"id",dir:"asc"},page:1,per:50}
+};
+const SORT_KEYS={browse:["id","year","type","principals","place","src"],people:["id","given","surname","born","died","residence"]};
+function loadPrefs(tab){try{const p=JSON.parse(localStorage.getItem("vv_"+tab)||"null");if(p){if(p.per!=null)PAGE[tab].per=p.per;if(p.sort&&SORT_KEYS[tab].includes(p.sort.key))PAGE[tab].sort=p.sort;}}catch(e){}}
+function savePrefs(tab){try{localStorage.setItem("vv_"+tab,JSON.stringify({per:PAGE[tab].per,sort:PAGE[tab].sort}));}catch(e){}}
+loadPrefs("browse");loadPrefs("people");
+
+/* fetch every matching row by paging the server in chunks (no 500 cap) */
+async function fetchAll(makeQuery){
+  const CH=1000;let from=0,out=[];
+  for(;;){
+    const {data,error}=await makeQuery().range(from,from+CH-1);
+    if(error) throw error;
+    out=out.concat(data||[]);
+    if(!data||data.length<CH) break;
+    from+=CH;
+  }
+  return out;
+}
+
+/* sortable value extractor per tab/column */
+function sortVal(tab,row,key){
+  if(tab==="browse"){
+    if(key==="id")return row.event_id;
+    if(key==="year")return row.year;
+    if(key==="type")return row.event_type||"";
+    if(key==="principals")return (row.event_participants||[]).map(p=>p.name_as_written).filter(Boolean).join(" ").toLowerCase();
+    if(key==="place")return (muniName(row.municipality_id)||"").toLowerCase();
+    if(key==="src")return row.fully_sourced?2:(row.needs_source?0:1);
+  }else{
+    if(key==="id")return row.person_id;
+    if(key==="given")return (row.given||"").toLowerCase();
+    if(key==="surname")return (row.surname||"").toLowerCase();
+    if(key==="born")return row.birth_year;
+    if(key==="died")return row.death_year;
+    if(key==="residence")return (row.residence||"").toLowerCase();
+  }
+  return "";
+}
+function cmp(a,b,dir){
+  const na=(a==null||a===""),nb=(b==null||b==="");
+  if(na&&nb)return 0; if(na)return 1; if(nb)return -1; // nulls/blanks always last
+  let r;
+  if(typeof a==="number"&&typeof b==="number")r=a-b;
+  else{const sa=String(a),sb=String(b);r=sa<sb?-1:sa>sb?1:0;}
+  return dir==="asc"?r:-r;
+}
+function setSort(tab,key){
+  const s=PAGE[tab].sort;
+  if(s.key===key)s.dir=(s.dir==="asc"?"desc":"asc");
+  else{s.key=key;s.dir=(key==="year"?"desc":"asc");}
+  PAGE[tab].page=1;savePrefs(tab);renderPage(tab);
+}
+function gotoPage(tab,p){PAGE[tab].page=p;renderPage(tab);}
+window.gotoPage=gotoPage;
+function setPer(tab,v){PAGE[tab].per=(v==="all"?"all":parseInt(v,10));PAGE[tab].page=1;savePrefs(tab);renderPage(tab);}
+
+/* render the current page: sort, slice, draw rows, header indicators, pager */
+function renderPage(tab){
+  const st=PAGE[tab],all=st.rows.slice();
+  all.sort((x,y)=>cmp(sortVal(tab,x,st.sort.key),sortVal(tab,y,st.sort.key),st.sort.dir));
+  const total=all.length;
+  const per=st.per==="all"?(total||1):st.per;
+  const pages=Math.max(1,Math.ceil(total/per));
+  if(st.page>pages)st.page=pages;if(st.page<1)st.page=1;
+  const start=(st.page-1)*per,slice=all.slice(start,start+per);
+  // header sort indicators
+  const sec=tab==="browse"?"#tab-browse":"#tab-people";
+  document.querySelectorAll(sec+" th.sortable").forEach(th=>{
+    const ind=th.querySelector(".sortind");if(ind)ind.remove();
+    if(th.dataset.key===st.sort.key){const sp=document.createElement("span");sp.className="sortind";sp.textContent=st.sort.dir==="asc"?"▲":"▼";th.appendChild(sp);}
+  });
+  (tab==="browse"?drawBrowseRows:drawPeopleRows)(slice);
+  // count line
+  const cEl=$(tab==="browse"?"#b_count":"#pp_count");
+  const noun=tab==="browse"?"record":"person";
+  cEl.textContent=total?`showing ${start+1}–${Math.min(start+per,total)} of ${total} ${noun}${total===1?"":"s"}`:`no ${noun}s`;
+  // pager
+  drawPager($(tab==="browse"?"#b_pager":"#pp_pager"),tab,st.page,pages);
+}
+function drawPager(el,tab,page,pages){
+  if(pages<=1){el.innerHTML="";return;}
+  let opts="";for(let i=1;i<=pages;i++)opts+=`<option value="${i}"${i===page?" selected":""}>${i}</option>`;
+  el.innerHTML=
+    `<span class="pinfo">Page</span>`+
+    `<button ${page<=1?"disabled":""} onclick="gotoPage('${tab}',1)">&laquo; First</button>`+
+    `<button ${page<=1?"disabled":""} onclick="gotoPage('${tab}',${page-1})">&lsaquo; Prev</button>`+
+    `<select onchange="gotoPage('${tab}',parseInt(this.value,10))">${opts}</select>`+
+    `<span class="pinfo">of ${pages}</span>`+
+    `<button ${page>=pages?"disabled":""} onclick="gotoPage('${tab}',${page+1})">Next &rsaquo;</button>`+
+    `<button ${page>=pages?"disabled":""} onclick="gotoPage('${tab}',${pages})">Last &raquo;</button>`;
+}
+
+function flash(el,msg,kind){el.className="msg "+(kind||"")+(msg?" show":"");el.innerHTML=msg||"";}
+function muniName(id){const m=MUNIS.find(x=>x.municipality_id===id);return m?m.canonical_name:"";}
+function parishName(id){const p=PARISHES.find(x=>x.parish_id===id);return p?p.parish_name:(id||"");}
+
+/* ---------- auth ---------- */
+$("#li_btn").onclick=async()=>{flash($("#loginErr"),"");
+  const {error}=await sb.auth.signInWithPassword({email:$("#li_email").value.trim(),password:$("#li_pw").value});
+  if(error){flash($("#loginErr"),esc(error.message),"err");return;} boot();};
+$("#li_pw").addEventListener("keydown",e=>{if(e.key==="Enter")$("#li_btn").click();});
+
+async function boot(){
+  const {data:{session}}=await sb.auth.getSession();
+  if(!session){$("#loginView").classList.remove("hide");$("#appView").classList.add("hide");return;}
+  USER=session.user;
+  const {data:prof}=await sb.from("profiles").select("app_role,full_name").eq("id",USER.id).maybeSingle();
+  ROLE=prof?prof.app_role:null;
+  $("#who").innerHTML=`${esc((prof&&prof.full_name)||USER.email)} <span class="role">${esc(ROLE||"no role")}</span> <button id="logout">Sign out</button>`;
+  $("#logout").onclick=async()=>{await sb.auth.signOut();location.reload();};
+  $("#loginView").classList.add("hide");$("#appView").classList.remove("hide");
+  if(!ROLE) flash($("#flash"),"Your account has no role yet. The curator must add your row to public.profiles before you can browse or submit.","err");
+  initUI();
+  await loadRefs();
+  await Promise.all([loadTracker(),runBrowse(),runPeople(),loadProposals()]);
+}
+
+/* ---------- UI ---------- */
+function initUI(){
+  document.querySelectorAll("nav button.tab").forEach(b=>b.onclick=()=>{
+    document.querySelectorAll("nav button.tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");
+    ["tracker","browse","people","add","proposals"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
+  });
+  $("#b_type").innerHTML='<option value="">all types</option>'+EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
+  $("#a_type").innerHTML=EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
+  $("#a_role").innerHTML=ROLES.map(r=>`<option ${r==='child'?'selected':''}>${r}</option>`).join("");
+  $("#b_run").onclick=runBrowse;$("#b_q").addEventListener("keydown",e=>{if(e.key==="Enter")runBrowse();});
+  $("#b_reset").onclick=()=>{["b_q","b_y0","b_y1"].forEach(id=>$("#"+id).value="");["b_type","b_surname","b_muni","b_parish","b_src"].forEach(id=>$("#"+id).value="");$("#b_match").value="contains";fillBrowseParish();runBrowse();};
+  $("#b_muni").addEventListener("change",()=>{fillBrowseParish();});
+  $("#pp_run").onclick=runPeople;$("#pp_q").addEventListener("keydown",e=>{if(e.key==="Enter")runPeople();});
+  $("#pp_reset").onclick=()=>{$("#pp_q").value="";$("#pp_surname").value="";$("#pp_src").value="";runPeople();};
+  // per-page + sortable headers (paging is client-side, so these just re-render)
+  $("#b_per").value=String(PAGE.browse.per);$("#pp_per").value=String(PAGE.people.per);
+  $("#b_per").onchange=()=>setPer("browse",$("#b_per").value);
+  $("#pp_per").onchange=()=>setPer("people",$("#pp_per").value);
+  document.querySelectorAll("#tab-browse th.sortable").forEach(th=>th.onclick=()=>setSort("browse",th.dataset.key));
+  document.querySelectorAll("#tab-people th.sortable").forEach(th=>th.onclick=()=>setSort("people",th.dataset.key));
+  $("#g_run").onclick=renderTracker;$("#g_q").addEventListener("input",renderTracker);$("#g_arr").addEventListener("change",renderTracker);
+  $("#a_save").onclick=()=>submitRecord(false);$("#a_save_more").onclick=()=>submitRecord(true);
+  $("#a_date").addEventListener("input",deriveYear);
+  [$("#a_type"),$("#a_year")].forEach(el=>el.addEventListener("input",updateGateHint));
+  const curator=ROLE==="curator";
+  $("#addMode").textContent=curator?"You are the curator — this writes directly to the database.":"Your change will be submitted to the proposal queue for the curator to review.";
+  $("#a_save").textContent=curator?"Save record":"Submit proposal";
+  $("#propMode").textContent=curator?"Pending proposals from contributors. Approve or reject.":"Your submitted proposals.";
+  $("#propActHead").textContent=curator?"Action":"";
+}
+function gotoTab(name){document.querySelector(`nav button.tab[data-tab="${name}"]`).click();}
+function deriveYear(){const m=/(1[0-9]{3}|20[0-2][0-9])/.exec($("#a_date").value);if(m&&!$("#a_year").value)$("#a_year").value=m[1];updateGateHint();}
+function updateGateHint(){const t=$("#a_type").value,y=parseInt($("#a_year").value||"0",10);
+  $("#a_gate").textContent=(BIRTHISH.has(t)&&y&&y>NOW-100)?`Blocked: a ${t} in ${y} is within 100 years and implies a living person. Only death/burial records are allowed that recent.`:"";}
+
+/* ---------- reference data ---------- */
+async function loadRefs(){
+  const {data:m}=await sb.from("municipalities").select("municipality_id,canonical_name,arrondissement").order("canonical_name");MUNIS=m||[];
+  const {data:p}=await sb.from("parishes").select("parish_id,parish_name,municipality_id").order("parish_name");PARISHES=p||[];
+  const muniOpts='<option value="">all municipalities</option>'+MUNIS.map(x=>`<option value="${esc(x.municipality_id)}">${esc(x.canonical_name)}</option>`).join("");
+  $("#b_muni").innerHTML=muniOpts;
+  $("#a_muni").innerHTML='<option value="">—</option>'+MUNIS.map(x=>`<option value="${esc(x.municipality_id)}">${esc(x.canonical_name)}</option>`).join("");
+  $("#a_muni").onchange=fillAddParish;fillAddParish();fillBrowseParish();
+  // surnames for record filter (from participants) and people filter (from persons)
+  const {data:ps}=await sb.from("event_participants").select("canonical_surname").not("canonical_surname","is",null).limit(5000);
+  SURNAMES=tally(ps.map(r=>r.canonical_surname));
+  $("#b_surname").innerHTML='<option value="">all surnames</option>'+SURNAMES.map(([s,n])=>`<option value="${esc(s)}">${esc(s)} (${n})</option>`).join("");
+  const {data:pp}=await sb.from("persons").select("canonical_surname").not("canonical_surname","is",null).limit(5000);
+  PSURNAMES=tally(pp.map(r=>r.canonical_surname));
+  $("#pp_surname").innerHTML='<option value="">all surnames</option>'+PSURNAMES.map(([s,n])=>`<option value="${esc(s)}">${esc(s)} (${n})</option>`).join("");
+}
+function tally(arr){const c={};arr.forEach(s=>{c[s]=(c[s]||0)+1;});return Object.entries(c).sort((a,b)=>b[1]-a[1]);}
+function fillAddParish(){const mid=$("#a_muni").value,list=mid?PARISHES.filter(p=>p.municipality_id===mid):PARISHES;
+  $("#a_parish").innerHTML='<option value="">—</option>'+list.map(p=>`<option value="${esc(p.parish_id)}">${esc(p.parish_name)}</option>`).join("");}
+function fillBrowseParish(){const mid=$("#b_muni").value,list=mid?PARISHES.filter(p=>p.municipality_id===mid):PARISHES;
+  $("#b_parish").innerHTML='<option value="">all parishes</option>'+list.map(p=>`<option value="${esc(p.parish_id)}">${esc(p.parish_name)}</option>`).join("");}
+
+/* ---------- tracker ---------- */
+async function loadTracker(){
+  const {data:prog}=await sb.from("research_progress").select("*").order("arrondissement").order("municipality");PROGRESS=prog||[];
+  const {data:fv}=await sb.from("fv_index").select("parish_canonical,has_baptism,has_marriage,has_burial");
+  FV={};(fv||[]).forEach(r=>{const k=norm(r.parish_canonical),d=FV[k]||(FV[k]={b:false,m:false,d:false});if(r.has_baptism==='Y')d.b=true;if(r.has_marriage==='Y')d.m=true;if(r.has_burial==='Y')d.d=true;});
+  const {data:evs}=await sb.from("events").select("municipality_id").not("municipality_id","is",null).limit(5000);
+  HELD={};(evs||[]).forEach(e=>{const k=norm(muniName(e.municipality_id));if(k)HELD[k]=(HELD[k]||0)+1;});
+  const arrs=[...new Set(PROGRESS.map(r=>r.arrondissement).filter(Boolean))].sort();
+  $("#g_arr").innerHTML='<option value="">all arrondissements</option>'+arrs.map(a=>`<option>${esc(a)}</option>`).join("");
+  renderTracker();
+}
+const STMAP={"Complete":"c","present":"p","Present":"p","In progress":"i"};
+const DONEISH=new Set(["Complete","present","Present","In progress"]);
+function stc(v,muni,etype){const k=STMAP[v]||"n";const act=muni&&etype?`onclick="cellJump('${esc(muni)}','${etype}','${esc(v||'')}')" style="cursor:pointer" title="${DONEISH.has(v)?'Browse this set':'Add for this set'}"`:"";
+  return `<span class="st ${k}" ${act}></span>`;}
+function midForName(name){return (MUNIS.find(m=>norm(m.canonical_name)===norm(name))||{}).municipality_id||"";}
+function renderTracker(){
+  const q=$("#g_q").value.trim().toLowerCase(),ar=$("#g_arr").value;
+  let rows=PROGRESS.filter(r=>(!ar||r.arrondissement===ar)&&(!q||((r.municipality||"")+" "+(r.arrondissement||"")).toLowerCase().includes(q)));
+  $("#g_count").textContent=`${rows.length} municipalit${rows.length===1?"y":"ies"}`;
+  $("#g_body").innerHTML=rows.map(r=>{
+    const k=norm(r.municipality),fv=FV[k],held=HELD[k]||0,mu=r.municipality;
+    const fvp=fv?`<span class="pill ${(fv.b||fv.m||fv.d)?'ok':''}">${[fv.b?'B':'',fv.m?'M':'',fv.d?'D':''].filter(Boolean).join('')||'—'}</span>`:'<span class="muted">—</span>';
+    const mid=midForName(mu);
+    return `<tr><td>${esc(mu)}</td><td class="muted">${esc(r.arrondissement||"")}</td>
+      <td>${stc(r.parish_birth,mu,'baptism')}${stc(r.parish_marriage,mu,'marriage')}${stc(r.parish_death,mu,'burial')}</td>
+      <td>${stc(r.civil_birth,mu,'civil_birth')}${stc(r.civil_marriage,mu,'civil_marriage')}${stc(r.civil_death,mu,'civil_death')}</td>
+      <td>${fvp}</td><td><b>${held}</b></td>
+      <td><button class="ghost" onclick="addHere('${esc(mid)}')">Add here</button></td></tr>`;
+  }).join("");
+}
+function cellJump(muni,etype,status){
+  const mid=midForName(muni);
+  if(DONEISH.has(status)){ // browse this set
+    gotoTab("browse");$("#b_muni").value=mid;fillBrowseParish();$("#b_type").value=etype;runBrow

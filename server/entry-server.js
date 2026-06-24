@@ -11904,7 +11904,18 @@ function DocsPage() {
     /* @__PURE__ */ jsxs("div", { style: header, children: [
       /* @__PURE__ */ jsx("div", { style: { fontSize: "0.75rem", letterSpacing: "0.1em", color: "#e8b830", textTransform: "uppercase", marginBottom: "0.25rem" }, children: "Van Vlaenderen · Working Documents" }),
       /* @__PURE__ */ jsx("h1", { style: { margin: 0, fontSize: "1.4rem", color: "#e6e6e6" }, children: "Research & Project Files" }),
-      /* @__PURE__ */ jsx("p", { style: { margin: "0.35rem 0 0", fontSize: "0.82rem", color: "#666" }, children: "Private — not indexed or linked from the public site. Share URL directly with collaborators." })
+      /* @__PURE__ */ jsx("p", { style: { margin: "0.35rem 0 0", fontSize: "0.82rem", color: "#666" }, children: "Private — not indexed or linked from the public site. Share URL directly with collaborators." }),
+      /* @__PURE__ */ jsxs("p", { style: { margin: "0.6rem 0 0", fontSize: "0.85rem" }, children: [
+        /* @__PURE__ */ jsx(
+          "a",
+          {
+            href: "/r/e1e3b0852b/",
+            style: { color: "#e8b830", textDecoration: "none", borderBottom: "1px solid rgba(232,184,48,0.4)" },
+            children: "→ Records database (live editor)"
+          }
+        ),
+        /* @__PURE__ */ jsx("span", { style: { color: "#666", marginLeft: "0.6rem" }, children: "Supabase login required." })
+      ] })
     ] }),
     /* @__PURE__ */ jsx("div", { style: tabBar, children: TABS.map((tab2) => /* @__PURE__ */ jsx("button", { style: tabBtn(active2 === tab2.id), onClick: () => setActive(tab2.id), children: tab2.label }, tab2.id)) }),
     /* @__PURE__ */ jsxs("div", { style: content, children: [
@@ -12998,7 +13009,7 @@ const styles = {
   attributionDim,
   licenseLink
 };
-const buildDate = "2026-06-16";
+const buildDate = "2026-06-24";
 function formatBuildDate(iso, locale) {
   try {
     const d = /* @__PURE__ */ new Date(iso + "T00:00:00Z");
