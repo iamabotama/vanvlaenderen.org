@@ -52,7 +52,7 @@ export const vanVlaenderenLineage: AncestorRecord[] = [
     parish: 'Fort Wayne, IN',
     status: 'partial',
     birthRecord: { label: '1881 Fort Wayne, IN' },
-    comment: 'First generation born in America, the year Charles Louis emigrated.',
+    comment: 'First generation born in America.',
   },
   {
     id: 4,
@@ -64,7 +64,7 @@ export const vanVlaenderenLineage: AncestorRecord[] = [
     birthRecord:    { label: '1854 Bassevelde (Assenede)' },
     marriageRecord: { label: 'Ancestry.com' },
     deathRecord:    { label: 'Ancestry.com' },
-    comment: 'Emigrated from Bassevelde to America in 1881. Married Jacqueline Vermaas.',
+    comment: 'Emigrated from Bassevelde to America in 1875. Married Jacqueline Vermaas.',
   },
   {
     id: 5,
