@@ -1236,7 +1236,7 @@ const lionShield = "/assets/lion-shield-CCv7FaFa.png";
 const container = "_container_14ab3_1";
 const button = "_button_14ab3_10";
 const active$1 = "_active_14ab3_24";
-const styles$6 = {
+const styles$7 = {
   container,
   button,
   active: active$1
@@ -1248,11 +1248,11 @@ function LanguageToggle() {
     i18n2.changeLanguage(lang);
     document.documentElement.lang = lang;
   };
-  return /* @__PURE__ */ jsxs("div", { className: styles$6.container, "aria-label": i18n2.t("nav.language_toggle_label"), children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$7.container, "aria-label": i18n2.t("nav.language_toggle_label"), children: [
     /* @__PURE__ */ jsx(
       "button",
       {
-        className: `${styles$6.button} ${current === "nl" ? styles$6.active : ""}`,
+        className: `${styles$7.button} ${current === "nl" ? styles$7.active : ""}`,
         onClick: () => toggle("nl"),
         "aria-pressed": current === "nl",
         "aria-label": "Switch to Dutch",
@@ -1262,7 +1262,7 @@ function LanguageToggle() {
     /* @__PURE__ */ jsx(
       "button",
       {
-        className: `${styles$6.button} ${current === "en" ? styles$6.active : ""}`,
+        className: `${styles$7.button} ${current === "en" ? styles$7.active : ""}`,
         onClick: () => toggle("en"),
         "aria-pressed": current === "en",
         "aria-label": "Switch to English",
@@ -1278,7 +1278,7 @@ const logoText = "_logoText_moe3o_36";
 const tabs = "_tabs_moe3o_45";
 const tab = "_tab_moe3o_45";
 const active = "_active_moe3o_75";
-const styles$5 = {
+const styles$6 = {
   nav,
   logo,
   logoImg,
@@ -1304,20 +1304,20 @@ function Nav() {
   const activeTab = [...TAB_PATHS].sort((a, b) => b.path.length - a.path.length).find(
     (t2) => t2.path === "/" ? activePath === "/" : activePath === t2.path || activePath.startsWith(t2.path + "/")
   )?.id ?? "home";
-  return /* @__PURE__ */ jsxs("nav", { className: styles$5.nav, children: [
+  return /* @__PURE__ */ jsxs("nav", { className: styles$6.nav, children: [
     /* @__PURE__ */ jsxs(
       Link,
       {
         to: "/",
-        className: styles$5.logo,
+        className: styles$6.logo,
         "aria-label": "Van Vlaenderen — Home",
         children: [
-          /* @__PURE__ */ jsx("img", { src: lionShield, alt: "Lion of Flanders heraldic shield", className: styles$5.logoImg }),
-          /* @__PURE__ */ jsx("span", { className: styles$5.logoText, children: "Van Vlaenderen" })
+          /* @__PURE__ */ jsx("img", { src: lionShield, alt: "Lion of Flanders heraldic shield", className: styles$6.logoImg }),
+          /* @__PURE__ */ jsx("span", { className: styles$6.logoText, children: "Van Vlaenderen" })
         ]
       }
     ),
-    /* @__PURE__ */ jsx("ul", { className: styles$5.tabs, role: "menubar", children: TAB_PATHS.map(({ id, path }) => {
+    /* @__PURE__ */ jsx("ul", { className: styles$6.tabs, role: "menubar", children: TAB_PATHS.map(({ id, path }) => {
       const labelKey = id === "dna" ? "nav.dna" : id === "research" ? "nav.history" : `nav.${id}`;
       const isActive = activeTab === id;
       return /* @__PURE__ */ jsx("li", { role: "none", children: /* @__PURE__ */ jsx(
@@ -1325,7 +1325,7 @@ function Nav() {
         {
           to: path,
           role: "menuitem",
-          className: `${styles$5.tab} ${isActive ? styles$5.active : ""}`,
+          className: `${styles$6.tab} ${isActive ? styles$6.active : ""}`,
           "aria-current": isActive ? "page" : void 0,
           children: t(labelKey)
         }
@@ -1605,7 +1605,7 @@ const cardQuote = "_cardQuote_121tp_486";
 const cardArrow = "_cardArrow_121tp_496";
 const footerStrip = "_footerStrip_121tp_506";
 const footerDivider = "_footerDivider_121tp_522";
-const styles$4 = {
+const styles$5 = {
   page: page$3,
   hero,
   heroOverlay,
@@ -1710,7 +1710,7 @@ const CARDS = [
 ];
 function HomePage() {
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$5.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Van Vlaenderen — Flemish Heritage & Family History Research" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Genealogical research tracing the Van Vlaenderen surname to the comital network of fourteenth-century Flanders, and testing whether its origin lies in the comital household, the comital bloodline, or a mix of both. Fourteen generations documented from the Meetjesland to America." }),
@@ -1722,25 +1722,25 @@ function HomePage() {
       /* @__PURE__ */ jsx("meta", { property: "og:image", content: "https://vanvlaenderen.org/assets/hero-background-rVYnRAiM.jpg" }),
       /* @__PURE__ */ jsx("meta", { name: "twitter:card", content: "summary_large_image" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$4.hero, style: { backgroundImage: `url(${heroBg})` }, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$4.heroOverlay }),
-      /* @__PURE__ */ jsxs("div", { className: styles$4.heroContent, children: [
-        /* @__PURE__ */ jsx("img", { src: lionShield, alt: "Lion of Flanders", className: styles$4.shield }),
-        /* @__PURE__ */ jsx("h1", { className: styles$4.title, children: "Van Vlaenderen" }),
-        /* @__PURE__ */ jsxs("div", { className: styles$4.subtitle, children: [
-          /* @__PURE__ */ jsx("div", { className: styles$4.heroSubtitleNarrative, children: t("home.hero_subtitle_narrative") }),
-          /* @__PURE__ */ jsx("div", { className: styles$4.heroSpine, children: t("home.hero_spine") })
+    /* @__PURE__ */ jsxs("div", { className: styles$5.hero, style: { backgroundImage: `url(${heroBg})` }, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$5.heroOverlay }),
+      /* @__PURE__ */ jsxs("div", { className: styles$5.heroContent, children: [
+        /* @__PURE__ */ jsx("img", { src: lionShield, alt: "Lion of Flanders", className: styles$5.shield }),
+        /* @__PURE__ */ jsx("h1", { className: styles$5.title, children: "Van Vlaenderen" }),
+        /* @__PURE__ */ jsxs("div", { className: styles$5.subtitle, children: [
+          /* @__PURE__ */ jsx("div", { className: styles$5.heroSubtitleNarrative, children: t("home.hero_subtitle_narrative") }),
+          /* @__PURE__ */ jsx("div", { className: styles$5.heroSpine, children: t("home.hero_spine") })
         ] }),
-        /* @__PURE__ */ jsx("div", { className: styles$4.heroScrollHint, children: "↓" })
+        /* @__PURE__ */ jsx("div", { className: styles$5.heroScrollHint, children: "↓" })
       ] })
     ] }),
-    /* @__PURE__ */ jsx("div", { className: styles$4.villageStrip, children: /* @__PURE__ */ jsx("div", { className: styles$4.villageScroll, children: [...villages, ...villages].map((v, i) => /* @__PURE__ */ jsxs("span", { className: styles$4.villageItem, children: [
+    /* @__PURE__ */ jsx("div", { className: styles$5.villageStrip, children: /* @__PURE__ */ jsx("div", { className: styles$5.villageScroll, children: [...villages, ...villages].map((v, i) => /* @__PURE__ */ jsxs("span", { className: styles$5.villageItem, children: [
       v,
-      /* @__PURE__ */ jsx("span", { className: styles$4.villageDot, children: "✦" })
+      /* @__PURE__ */ jsx("span", { className: styles$5.villageDot, children: "✦" })
     ] }, i)) }) }),
-    /* @__PURE__ */ jsx("div", { className: styles$4.mysterySection, children: /* @__PURE__ */ jsxs("div", { className: styles$4.mysteryInner, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$4.mysteryQuestion, children: t("home.mystery_question") }),
-      /* @__PURE__ */ jsxs("div", { className: styles$4.mysteryBody, children: [
+    /* @__PURE__ */ jsx("div", { className: styles$5.mysterySection, children: /* @__PURE__ */ jsxs("div", { className: styles$5.mysteryInner, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$5.mysteryQuestion, children: t("home.mystery_question") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$5.mysteryBody, children: [
         /* @__PURE__ */ jsxs("p", { children: [
           t("home.mystery_intro_p1"),
           " ",
@@ -1748,8 +1748,8 @@ function HomePage() {
           " ",
           t("home.mystery_intro_p1_cont")
         ] }),
-        /* @__PURE__ */ jsx("p", { className: styles$4.visitorNote, children: /* @__PURE__ */ jsx("em", { children: t("home.mystery_visitor_note") }) }),
-        /* @__PURE__ */ jsx("div", { className: styles$4.dividerLine }),
+        /* @__PURE__ */ jsx("p", { className: styles$5.visitorNote, children: /* @__PURE__ */ jsx("em", { children: t("home.mystery_visitor_note") }) }),
+        /* @__PURE__ */ jsx("div", { className: styles$5.dividerLine }),
         /* @__PURE__ */ jsxs("p", { children: [
           t("home.mystery_toponymic_p1"),
           " ",
@@ -1759,76 +1759,76 @@ function HomePage() {
           " ",
           t("home.mystery_toponymic_p1_cont")
         ] }),
-        /* @__PURE__ */ jsx("p", { className: styles$4.emergingTheory, children: t("home.mystery_emerging") }),
-        /* @__PURE__ */ jsxs("div", { className: styles$4.hypothesisBlock, children: [
-          /* @__PURE__ */ jsx("div", { className: styles$4.hypothesisLabel, children: t("home.hypothesis_one_label") }),
-          /* @__PURE__ */ jsx("div", { className: styles$4.hypothesisTitle, children: t("home.hypothesis_one_title") }),
+        /* @__PURE__ */ jsx("p", { className: styles$5.emergingTheory, children: t("home.mystery_emerging") }),
+        /* @__PURE__ */ jsxs("div", { className: styles$5.hypothesisBlock, children: [
+          /* @__PURE__ */ jsx("div", { className: styles$5.hypothesisLabel, children: t("home.hypothesis_one_label") }),
+          /* @__PURE__ */ jsx("div", { className: styles$5.hypothesisTitle, children: t("home.hypothesis_one_title") }),
           /* @__PURE__ */ jsx("p", { children: t("home.hypothesis_one_body") })
         ] }),
-        /* @__PURE__ */ jsxs("div", { className: styles$4.hypothesisBlock, children: [
-          /* @__PURE__ */ jsx("div", { className: styles$4.hypothesisLabel, children: t("home.hypothesis_two_label") }),
-          /* @__PURE__ */ jsx("div", { className: styles$4.hypothesisTitle, children: t("home.hypothesis_two_title") }),
+        /* @__PURE__ */ jsxs("div", { className: styles$5.hypothesisBlock, children: [
+          /* @__PURE__ */ jsx("div", { className: styles$5.hypothesisLabel, children: t("home.hypothesis_two_label") }),
+          /* @__PURE__ */ jsx("div", { className: styles$5.hypothesisTitle, children: t("home.hypothesis_two_title") }),
           /* @__PURE__ */ jsx("p", { children: t("home.hypothesis_two_body") })
         ] }),
-        /* @__PURE__ */ jsx("p", { className: styles$4.hypothesesBridge, children: /* @__PURE__ */ jsx("em", { children: t("home.hypotheses_bridge") }) }),
-        /* @__PURE__ */ jsx("div", { className: styles$4.hypothesesCta, children: /* @__PURE__ */ jsxs(Link, { className: styles$4.primaryBtn, to: "/research", children: [
+        /* @__PURE__ */ jsx("p", { className: styles$5.hypothesesBridge, children: /* @__PURE__ */ jsx("em", { children: t("home.hypotheses_bridge") }) }),
+        /* @__PURE__ */ jsx("div", { className: styles$5.hypothesesCta, children: /* @__PURE__ */ jsxs(Link, { className: styles$5.primaryBtn, to: "/research", children: [
           t("home.cta_research"),
           " →"
         ] }) }),
-        /* @__PURE__ */ jsxs("div", { className: styles$4.pullQuote, children: [
-          /* @__PURE__ */ jsx("span", { className: styles$4.pullQuoteMark, children: '"' }),
+        /* @__PURE__ */ jsxs("div", { className: styles$5.pullQuote, children: [
+          /* @__PURE__ */ jsx("span", { className: styles$5.pullQuoteMark, children: '"' }),
           t("home.pull_quote"),
-          /* @__PURE__ */ jsx("span", { className: styles$4.pullQuoteMark, children: '"' })
+          /* @__PURE__ */ jsx("span", { className: styles$5.pullQuoteMark, children: '"' })
         ] }),
-        /* @__PURE__ */ jsxs("p", { className: styles$4.callToAction, children: [
+        /* @__PURE__ */ jsxs("p", { className: styles$5.callToAction, children: [
           t("home.cta_collaborative_p1"),
           " ",
           /* @__PURE__ */ jsx("strong", { children: "Van Vlaenderen" }),
           " ",
           t("home.cta_collaborative_p1_cont")
         ] }),
-        /* @__PURE__ */ jsx("p", { className: styles$4.researchNote, children: t("home.research_note") })
+        /* @__PURE__ */ jsx("p", { className: styles$5.researchNote, children: t("home.research_note") })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$4.mysteryActions, children: [
-        /* @__PURE__ */ jsx(Link, { className: styles$4.primaryBtn, to: "/name", children: t("home.cta_explore") }),
-        /* @__PURE__ */ jsx(Link, { className: styles$4.secondaryBtn, to: "/contact", children: t("home.cta_contribute") })
+      /* @__PURE__ */ jsxs("div", { className: styles$5.mysteryActions, children: [
+        /* @__PURE__ */ jsx(Link, { className: styles$5.primaryBtn, to: "/name", children: t("home.cta_explore") }),
+        /* @__PURE__ */ jsx(Link, { className: styles$5.secondaryBtn, to: "/contact", children: t("home.cta_contribute") })
       ] })
     ] }) }),
-    /* @__PURE__ */ jsxs("div", { className: styles$4.heraldicDivider, children: [
-      /* @__PURE__ */ jsx("span", { className: styles$4.heraldicLine }),
-      /* @__PURE__ */ jsx("span", { className: styles$4.heraldicSymbol, children: "✦" }),
-      /* @__PURE__ */ jsx("span", { className: styles$4.heraldicLine })
+    /* @__PURE__ */ jsxs("div", { className: styles$5.heraldicDivider, children: [
+      /* @__PURE__ */ jsx("span", { className: styles$5.heraldicLine }),
+      /* @__PURE__ */ jsx("span", { className: styles$5.heraldicSymbol, children: "✦" }),
+      /* @__PURE__ */ jsx("span", { className: styles$5.heraldicLine })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$4.cardsSection, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$4.cardsHeading, children: t("home.explore_archive") }),
-      /* @__PURE__ */ jsx("div", { className: styles$4.cards, children: CARDS.map((card2) => /* @__PURE__ */ jsxs(
+    /* @__PURE__ */ jsxs("div", { className: styles$5.cardsSection, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$5.cardsHeading, children: t("home.explore_archive") }),
+      /* @__PURE__ */ jsx("div", { className: styles$5.cards, children: CARDS.map((card2) => /* @__PURE__ */ jsxs(
         Link,
         {
-          className: styles$4.card,
+          className: styles$5.card,
           to: card2.path,
           children: [
-            /* @__PURE__ */ jsxs("div", { className: styles$4.cardImg, children: [
+            /* @__PURE__ */ jsxs("div", { className: styles$5.cardImg, children: [
               /* @__PURE__ */ jsx("img", { src: card2.img, alt: t(card2.titleKey) }),
-              /* @__PURE__ */ jsx("div", { className: styles$4.cardImgOverlay })
+              /* @__PURE__ */ jsx("div", { className: styles$5.cardImgOverlay })
             ] }),
-            /* @__PURE__ */ jsxs("div", { className: styles$4.cardBody, children: [
-              /* @__PURE__ */ jsx("div", { className: styles$4.cardTitle, children: t(card2.titleKey) }),
-              /* @__PURE__ */ jsx("div", { className: styles$4.cardSub, children: t(card2.subtitleKey) }),
-              /* @__PURE__ */ jsx("div", { className: styles$4.cardQuote, children: t(card2.quoteKey) }),
-              /* @__PURE__ */ jsx("div", { className: styles$4.cardArrow, children: "→" })
+            /* @__PURE__ */ jsxs("div", { className: styles$5.cardBody, children: [
+              /* @__PURE__ */ jsx("div", { className: styles$5.cardTitle, children: t(card2.titleKey) }),
+              /* @__PURE__ */ jsx("div", { className: styles$5.cardSub, children: t(card2.subtitleKey) }),
+              /* @__PURE__ */ jsx("div", { className: styles$5.cardQuote, children: t(card2.quoteKey) }),
+              /* @__PURE__ */ jsx("div", { className: styles$5.cardArrow, children: "→" })
             ] })
           ]
         },
         card2.id
       )) })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$4.footerStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$5.footerStrip, children: [
       /* @__PURE__ */ jsx("span", { children: "© 2026 VanVlaenderen.org" }),
-      /* @__PURE__ */ jsx("span", { className: styles$4.footerDivider, children: "·" }),
+      /* @__PURE__ */ jsx("span", { className: styles$5.footerDivider, children: "·" }),
       /* @__PURE__ */ jsx("span", { children: "East Flanders, Belgium" }),
-      /* @__PURE__ */ jsx("span", { className: styles$4.footerDivider, children: "·" }),
+      /* @__PURE__ */ jsx("span", { className: styles$5.footerDivider, children: "·" }),
       /* @__PURE__ */ jsx("span", { children: t("home.footer_project") }),
-      /* @__PURE__ */ jsx("span", { className: styles$4.footerDivider, children: "·" }),
+      /* @__PURE__ */ jsx("span", { className: styles$5.footerDivider, children: "·" }),
       /* @__PURE__ */ jsx("span", { children: t("home.footer_permission") })
     ] })
   ] });
@@ -1852,7 +1852,7 @@ const mapNoteCoords = "_mapNoteCoords_3f3e1_173";
 const ctaBox = "_ctaBox_3f3e1_180";
 const ctaText = "_ctaText_3f3e1_198";
 const ctaNote = "_ctaNote_3f3e1_207";
-const styles$3 = {
+const styles$4 = {
   page: page$2,
   heroStrip,
   heroImg,
@@ -1914,7 +1914,7 @@ const millStyles = {
 };
 function MillPage() {
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "The Mill — Van Vlaenderen Family Origins | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "The documented miller lineage of the Van Vlaenderen family from 1568 Ghent through East Flanders — Wassegem, Oostwinkel, Waarschoot, Boekhoute, and Bassevelde." }),
@@ -1924,23 +1924,23 @@ function MillPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/mill" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${millVinderhoute})`, backgroundPosition: "center center" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: t("mill.hero_eyebrow") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: t("mill.hero_eyebrow") }),
         /* @__PURE__ */ jsx("h1", { children: t("mill.hero_title") }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: t("mill.hero_lead") })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: t("mill.hero_lead") })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: millStyles.proverbBox, children: [
         /* @__PURE__ */ jsx("div", { className: millStyles.proverbDecor, children: "✦" }),
         /* @__PURE__ */ jsxs("div", { className: millStyles.proverbText, children: [
@@ -1951,7 +1951,7 @@ function MillPage() {
         /* @__PURE__ */ jsx("div", { className: millStyles.proverbSource, children: t("mill.proverb_source") }),
         /* @__PURE__ */ jsx("div", { className: millStyles.proverbDecor, children: "✦" })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("mill.history_title") }),
         /* @__PURE__ */ jsx("p", { children: t("mill.history_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("mill.history_p2") }),
@@ -2000,7 +2000,7 @@ function MillPage() {
           ] })
         ] })
       ] }) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("mill.social_title") }),
         /* @__PURE__ */ jsx("p", { children: t("mill.social_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("mill.social_p2") }),
@@ -2020,14 +2020,14 @@ function MillPage() {
           /* @__PURE__ */ jsx("p", { children: t("mill.region_p1") })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: styles$3.mapNote, children: /* @__PURE__ */ jsxs("div", { className: styles$3.mapNoteInner, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.mapNoteIcon, children: "📍" }),
+      /* @__PURE__ */ jsx("div", { className: styles$4.mapNote, children: /* @__PURE__ */ jsxs("div", { className: styles$4.mapNoteInner, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.mapNoteIcon, children: "📍" }),
         /* @__PURE__ */ jsxs("div", { children: [
           /* @__PURE__ */ jsx("strong", { children: t("mill.location_name") }),
           /* @__PURE__ */ jsx("br", {}),
           /* @__PURE__ */ jsx("span", { children: t("mill.location_address") }),
           /* @__PURE__ */ jsx("br", {}),
-          /* @__PURE__ */ jsx("span", { className: styles$3.mapNoteCoords, children: t("mill.location_coords") }),
+          /* @__PURE__ */ jsx("span", { className: styles$4.mapNoteCoords, children: t("mill.location_coords") }),
           /* @__PURE__ */ jsx("br", {}),
           /* @__PURE__ */ jsx(
             "a",
@@ -2041,9 +2041,9 @@ function MillPage() {
           )
         ] })
       ] }) }),
-      /* @__PURE__ */ jsxs(Link, { className: styles$3.ctaBox, to: "/contact", children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaText, children: t("mill.cta_text") }),
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaNote, children: t("mill.cta_note") })
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("mill.cta_text") }),
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("mill.cta_note") })
       ] })
     ] })
   ] });
@@ -2346,7 +2346,7 @@ function NamePage() {
     { num: "3", label: t("name.four_bucket_b3_label"), desc: t("name.four_bucket_b3_desc"), muted: true },
     { num: "4", label: t("name.four_bucket_b4_label"), desc: t("name.four_bucket_b4_desc"), muted: false }
   ];
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: 'The Name — Where "Van Vlaenderen" Comes From | vanvlaenderen.org' }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Van Vlaenderen means 'from Flanders' — so why do its historic bearers cluster inside Flanders, where that label means nothing? An accessible guide to what the name pointed to, the four jobs it did in medieval documents, and the evidence behind each reading." }),
@@ -2356,23 +2356,23 @@ function NamePage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/name" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${knightPhilip})`, backgroundPosition: "top center" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: t("name.hero_eyebrow") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: t("name.hero_eyebrow") }),
         /* @__PURE__ */ jsx("h1", { children: t("name.hero_title") }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, dangerouslySetInnerHTML: { __html: t("name.hero_lead") } })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, dangerouslySetInnerHTML: { __html: t("name.hero_lead") } })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { style: {
         margin: "0 0 2.5rem",
         padding: "1.25rem 1.5rem",
@@ -2384,7 +2384,7 @@ function NamePage() {
         /* @__PURE__ */ jsx("div", { style: { fontSize: "0.72rem", fontFamily: "var(--font-ui)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--gold)", marginBottom: "0.6rem" }, children: t("name.shortver_title") }),
         /* @__PURE__ */ jsx("p", { style: { margin: 0, lineHeight: 1.7 }, dangerouslySetInnerHTML: { __html: t("name.shortver_body") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("name.history_title"),
           /* @__PURE__ */ jsx(EvidenceBadge, { level: "corroborated" })
@@ -2392,12 +2392,12 @@ function NamePage() {
         /* @__PURE__ */ jsx("p", { children: t("name.history_p1") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("name.history_paradox") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("clusterMap.section_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("clusterMap.section_intro") }),
         /* @__PURE__ */ jsx(TimelineClusterMap, {})
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("name.referent_heading") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("name.referent_intro") } }),
         referentGroups.map(({ group, items }) => /* @__PURE__ */ jsxs("div", { style: { margin: "1.5rem 0" }, children: [
@@ -2439,7 +2439,7 @@ function NamePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("name.referent_synthesis") } })
       ] }),
       /* @__PURE__ */ jsx("hr", { style: { border: 0, borderTop: "1px solid rgba(232,184,48,0.18)", margin: "1rem 0 0" } }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("name.four_bucket_title"),
           /* @__PURE__ */ jsx(EvidenceBadge, { level: "attested" })
@@ -2521,19 +2521,19 @@ function NamePage() {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: styles$3.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
+      /* @__PURE__ */ jsx("div", { className: styles$4.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
         '"',
         t("name.pull_quote"),
         '"'
       ] }) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("name.variations_title") }),
         /* @__PURE__ */ jsx("p", { children: t("name.variations_intro") }),
         /* @__PURE__ */ jsx("div", { className: nameStyles.spellingList, children: variations.map((s) => /* @__PURE__ */ jsx("span", { className: nameStyles.spellingTag, children: s }, s)) }),
         /* @__PURE__ */ jsx("p", { children: t("name.variations_footer") })
       ] }),
       /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", fontStyle: "italic", marginTop: "-0.5rem", marginBottom: "1.5rem", paddingLeft: "0.25rem" }, children: t("name.notable_forthcoming") }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("name.cronike_title") }),
         /* @__PURE__ */ jsx("p", { children: t("name.cronike_p1") }),
         /* @__PURE__ */ jsxs("div", { className: nameStyles.documentContainer, children: [
@@ -2570,7 +2570,7 @@ function NamePage() {
         },
         i
       )) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("name.notes_heading") }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", fontStyle: "italic", marginBottom: "1.5rem" }, children: t("name.notes_intro") }),
         /* @__PURE__ */ jsxs("div", { style: { fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.75 }, children: [
@@ -2619,9 +2619,9 @@ function NamePage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.ctaBox, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaText, children: t("name.cta_text") }),
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaNote, children: t("name.cta_note") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.ctaBox, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("name.cta_text") }),
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("name.cta_note") }),
         /* @__PURE__ */ jsx(
           Link,
           {
@@ -2713,7 +2713,7 @@ function DnaPage() {
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState({});
   const toggle = (id) => setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "DNA Project — Y-DNA Research | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "A collaborative Y-DNA research project investigating whether Van Vlaenderen families share a common medieval paternal ancestor. Reference Big Y-700 result on haplogroup R-FT1573." }),
@@ -2723,24 +2723,24 @@ function DnaPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/dna" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${cronikeShields})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: t("dna.hero_eyebrow") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: t("dna.hero_eyebrow") }),
         /* @__PURE__ */ jsx("h1", { children: t("dna.hero_title") }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: t("dna.hero_lead") })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: t("dna.hero_lead") })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("dna.origin_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.origin_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.origin_p2") }),
@@ -2749,7 +2749,7 @@ function DnaPage() {
         /* @__PURE__ */ jsx("p", { children: t("dna.origin_p5") }),
         /* @__PURE__ */ jsx("p", { children: /* @__PURE__ */ jsx("strong", { children: t("dna.origin_p6") }) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("dna.research_stands_heading"),
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: t("research.method_attested_label") })
@@ -2791,7 +2791,7 @@ function DnaPage() {
           t("dna.participate_alternative_body")
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("dna.testing_heading"),
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: t("research.method_hypothesis_label") })
@@ -2882,7 +2882,7 @@ function DnaPage() {
         ] }) }),
         /* @__PURE__ */ jsx("p", { children: /* @__PURE__ */ jsx("em", { children: t("dna.testing_close") }) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("dna.zeeland_heading"),
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: t("research.method_hypothesis_label") })
@@ -2891,7 +2891,7 @@ function DnaPage() {
         /* @__PURE__ */ jsx("p", { children: t("dna.zeeland_p2") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.zeeland_p3") })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: styles$3.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
+      /* @__PURE__ */ jsx("div", { className: styles$4.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
         '"',
         t("dna.pullquote"),
         '"'
@@ -2907,7 +2907,7 @@ function DnaPage() {
         ),
         /* @__PURE__ */ jsx("div", { className: dnaStyles.familyPhotoCaption, children: t("dna.family_photo_caption") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("dna.dna_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.dna_intro") }),
         /* @__PURE__ */ jsxs("div", { className: dnaStyles.dnaGrid, children: [
@@ -2997,7 +2997,7 @@ function DnaPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("dna.project_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.project_p1") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.project_p2") }),
@@ -3005,7 +3005,7 @@ function DnaPage() {
         /* @__PURE__ */ jsx("p", { children: t("dna.project_p4") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.project_p5") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("dna.privacy_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("dna.privacy_intro") }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -3030,7 +3030,7 @@ function DnaPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { children: t("dna.privacy_close") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("dna.notes_heading") }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", fontStyle: "italic", marginBottom: "1.5rem" }, children: t("dna.notes_intro") }),
         /* @__PURE__ */ jsxs("div", { style: { fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.75 }, children: [
@@ -3076,9 +3076,9 @@ function DnaPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.ctaBox, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaText, children: t("dna.cta_body") }),
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaNote, children: t("dna.cta_note") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.ctaBox, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("dna.cta_body") }),
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("dna.cta_note") }),
         /* @__PURE__ */ jsx(
           Link,
           {
@@ -5632,7 +5632,7 @@ function LoysDeHazeDiagram() {
 }
 function ResearchPage() {
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Research Overview — Van Vlaenderen Archival Dossiers | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Archival research into the Van Vlaenderen surname: three documented comital bastard lines of Louis II de Male — Victor (Meetjesland), Louis Friese / Praet (Meetjesland and Brabant, anchored at the Aalter Vrijhof to c. 1590), and Jan sans terre / Drincham (French Flanders) — and the geographic clusters they left in the modern record." }),
@@ -5642,25 +5642,25 @@ function ResearchPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: t("research.hero_eyebrow") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: t("research.hero_eyebrow") }),
         /* @__PURE__ */ jsx("h1", { children: t("research.hero_title") }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, style: { fontStyle: "italic", marginBottom: "0.75em" }, children: t("research.hero_subhead") }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, dangerouslySetInnerHTML: { __html: t("research.hero_lead_p1") } }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, dangerouslySetInnerHTML: { __html: t("research.hero_lead_p2") } })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, style: { fontStyle: "italic", marginBottom: "0.75em" }, children: t("research.hero_subhead") }),
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, dangerouslySetInnerHTML: { __html: t("research.hero_lead_p1") } }),
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, dangerouslySetInnerHTML: { __html: t("research.hero_lead_p2") } })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: t("research.dossier_title") }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: t("research.dossier_updated") })
@@ -5683,7 +5683,7 @@ function ResearchPage() {
         /* @__PURE__ */ jsx("p", { style: { margin: 0, lineHeight: 1.7, color: "var(--text-primary)" }, dangerouslySetInnerHTML: { __html: t("research.tldr_body_p1") } }),
         /* @__PURE__ */ jsx("p", { style: { margin: "1em 0 0", lineHeight: 1.7, color: "var(--text-primary)" }, dangerouslySetInnerHTML: { __html: t("research.tldr_body_p2") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("research.four_lines_heading"),
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: t("research.method_corroborated_label") })
@@ -5734,7 +5734,7 @@ function ResearchPage() {
         color: "var(--text-secondary, #d0d4dc)",
         fontStyle: "italic"
       }, children: t("research.diagram_caption") }),
-      /* @__PURE__ */ jsx("section", { className: styles$3.section, children: /* @__PURE__ */ jsx("h2", { children: t("research.branches_heading") }) }),
+      /* @__PURE__ */ jsx("section", { className: styles$4.section, children: /* @__PURE__ */ jsx("h2", { children: t("research.branches_heading") }) }),
       /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
         /* @__PURE__ */ jsxs(
           Link,
@@ -5802,7 +5802,7 @@ function ResearchPage() {
           }
         )
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("research.reference_heading") }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
           /* @__PURE__ */ jsxs(
@@ -5867,12 +5867,12 @@ function ResearchPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("clusterMap.section_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("clusterMap.section_intro") }),
         /* @__PURE__ */ jsx(TimelineClusterMap, {})
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, style: { marginTop: "3rem" }, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, style: { marginTop: "3rem" }, children: [
         /* @__PURE__ */ jsx("h2", { children: t("research.dossiers_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("research.dossiers_intro") }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
@@ -5934,7 +5934,7 @@ function ResearchPage() {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, style: { marginTop: "3rem" }, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, style: { marginTop: "3rem" }, children: [
         /* @__PURE__ */ jsx("h2", { children: t("research.articles_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("research.articles_intro") }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
@@ -5968,7 +5968,7 @@ function ResearchPage() {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("research.notes_heading") }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", fontStyle: "italic", marginBottom: "1.5rem" }, children: t("research.notes_intro") }),
         /* @__PURE__ */ jsxs("div", { style: { fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.75 }, children: [
@@ -6022,21 +6022,21 @@ function ResearchPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("research.conclusion_title") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("research.conclusion_p1") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("research.conclusion_p2") } })
       ] }),
-      /* @__PURE__ */ jsxs(Link, { className: styles$3.ctaBox, to: "/contact", children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaText, children: t("research.cta_text") }),
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaNote, children: t("research.cta_note") })
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("research.cta_text") }),
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("research.cta_note") })
       ] })
     ] })
   ] });
 }
 function VictorLineagePage() {
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Victor van Vlaenderen — Lord of Wessegem | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Victor van Vlaenderen: bastard son of Louis II de Male, Lord of Ursel and Wessegem, father of Lodewyc, Janne, and Adam van Vlaendren per the 1441/42 charter." }),
@@ -6046,35 +6046,35 @@ function VictorLineagePage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/victor" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: t("victor.hero_eyebrow") }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: t("victor.hero_eyebrow") }),
         /* @__PURE__ */ jsx("h1", { children: t("victor.hero_title") }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: "Natural son of Louis II de Male, Count of Flanders. Lord of Ursel and Wessegem. Burgundian admiral; captain of Biervliet. Father of Lodewyc, Janne, and Adam van Vlaendren — documented across three primary charters (1427, 1441, 1446)." })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: "Natural son of Louis II de Male, Count of Flanders. Lord of Ursel and Wessegem. Burgundian admiral; captain of Biervliet. Father of Lodewyc, Janne, and Adam van Vlaendren — documented across three primary charters (1427, 1441, 1446)." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: t("victor.dossier_title") }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated June 2026" })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Identity and Parentage ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
         /* @__PURE__ */ jsx("p", { children: "Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders (1330–1384). Espinoy (1631), Livre 2, Ch. XXXI, p. 69, records his parentage among the natural sons of Louis II. His mother is identified in the 12 May 1427 charter as Mergriete Haelfhuuts (Heinricx Mayen…wijf). Victor is styled Seigneur d'Ursele et de Wesseghem and is documented as a Burgundian admiral and captain of Biervliet." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("victor.territorial_heading"),
           " ",
@@ -6084,7 +6084,7 @@ function VictorLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("victor.territorial_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("victor.territorial_p3") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The Three-Charter Nucleus ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -6114,7 +6114,7 @@ function VictorLineagePage() {
           /* @__PURE__ */ jsx("p", { children: "This diagram shows the descent from Louis II de Male, Count of Flanders (1330–1384), through his natural son Victor van Vlaenderen (died before 1442), Lord of Ursel and Wessegem. Victor had three documented natural sons: Lodewyc van Vlaendren (fl. 1427–1442) and Janne van Vlaendren (fl. 1427–1442) by Alix van Boyeghem, and Adam van Vlaendren (fl. 1427 – 18 March 1447) by Gertrud Lindekens — Adam being the closest documented individual bridge candidate to the modern East Flanders clusters. Lodewyc married Jacqueline de Wilde and had two children: Josse van Vlaenderen (died young, buried Oostborch) and Margareta van Vlaenderen (fl. 1478–1486, married into noble families). A deed of 17 July 1441 names the children jointly — 'mher Victoors van Vlaenderen kindren lande' — as adjoining landholders at Cadzand in the West-Flemish coastal zone, ten years after Victor's death (Verschelde 1867, p. 221). An evidentiary gap of more than 130 years separates Adam (last confirmed 1447) from the first Meetjesland parish-register generation (1580s); the Joos van Vlaenderen of the Brugse Vrije records of 1545–49 (TBO 184, bundles 21300–21302), formerly read as the first early modern bearer, is now identified as the Praet line's cadet branch. No direct genealogical link between Adam and the parish cluster has yet been demonstrated. Key archival targets for bridging this gap: cijnsboeken and leenboeken (Ambacht Ursel / Maldegem), Staten van Goed, and Raad van Vlaanderen records at Rijksarchief Gent." })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Adam van Vlaendren (fl. 1427 – 18 Mar 1447 N.S.) ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -6122,7 +6122,7 @@ function VictorLineagePage() {
         /* @__PURE__ */ jsx("p", { children: "Adam is named in all three charters but is only the active donor in the third (1446/1447). His corrected date range — fl. 1427 to 18 March 1447 N.S. — extends his documented life five years beyond the previous terminus of 1442. He is the last confirmed 15th-century bearer of the van Vlaendren surname in Victor's line." }),
         /* @__PURE__ */ jsx("p", { children: "The 1446 charter is significant because Adam explicitly identifies Victor as 'Rudder, Heer van Orsele en van Wesseghem' — Knight, Lord of Ursel and Wessegem — and because Margriete Aelfhuuts is still active as his patroness four years after the previous donation." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Lodewyc's Descendants ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -6130,7 +6130,7 @@ function VictorLineagePage() {
         /* @__PURE__ */ jsx("p", { children: "Lodewyc van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch, preserved in Vredius (1643) pp.286–287 (Gaillard MS), records the burial of Jacqueline and nearby 'haer Joos van Vlaenderen fs Lodewijcx.' Josse died young and cannot be the Joos van Vlaenderen of the 1545–49 Brugse Vrije wardship records (the Praet cadet) — but his existence confirms the name Josse/Joos was in active use in Victor's direct line." }),
         /* @__PURE__ */ jsx("p", { children: "Lodewyc's daughter Margareta van Vlaenderen (fl. 1478–1486) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe (charters of 1478 and 1486, Vredius p.287)." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Bridging the Gap: 1447–1580 ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: "Hypothesis" })
@@ -6142,14 +6142,14 @@ function VictorLineagePage() {
         /* @__PURE__ */ jsx("p", { children: t("victor.gap_p5") }),
         /* @__PURE__ */ jsx("p", { children: t("victor.gap_p6") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Naval and Military Activity ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
         /* @__PURE__ */ jsx("p", { children: t("victor.military_p1") })
       ] }),
-      /* @__PURE__ */ jsx("section", { className: styles$3.section, style: { marginTop: "3rem", borderTop: "1px solid rgba(232, 184, 48, 0.2)", paddingTop: "2rem" }, children: /* @__PURE__ */ jsxs(
+      /* @__PURE__ */ jsx("section", { className: styles$4.section, style: { marginTop: "3rem", borderTop: "1px solid rgba(232, 184, 48, 0.2)", paddingTop: "2rem" }, children: /* @__PURE__ */ jsxs(
         Link,
         {
           to: "/research/victor-dossier",
@@ -6163,7 +6163,7 @@ function VictorLineagePage() {
           ]
         }
       ) }),
-      /* @__PURE__ */ jsx("div", { className: styles$3.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
+      /* @__PURE__ */ jsx("div", { className: styles$4.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
         '"',
         t("victor.pull_quote"),
         '"'
@@ -6207,9 +6207,9 @@ function VictorLineagePage() {
           /* @__PURE__ */ jsx("a", { href: "https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library, Thesis RUG01-001786522 (2012)" })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs(Link, { className: styles$3.ctaBox, to: "/contact", children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaText, children: t("victor.cta_text") }),
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaNote, children: t("victor.cta_note") })
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("victor.cta_text") }),
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("victor.cta_note") })
       ] }),
       /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
         Link,
@@ -6231,7 +6231,7 @@ function VictorLineagePage() {
 }
 function LouisFrieseLineagePage() {
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: `${t("louis_friese.page_title")} | vanvlaenderen.org` }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: t("louis_friese.meta_description") }),
@@ -6241,29 +6241,29 @@ function LouisFrieseLineagePage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/louis-friese" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: "Van Vlaenderen · Genealogical Research" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: "Van Vlaenderen · Genealogical Research" }),
         /* @__PURE__ */ jsx("h1", { dangerouslySetInnerHTML: { __html: t("louis_friese.intro_heading") } }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, dangerouslySetInnerHTML: { __html: t("louis_friese.hero_lead") } })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, dangerouslySetInnerHTML: { __html: t("louis_friese.hero_lead") } })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Louis Friese van Vlaenderen Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated June 2026" })
       ] }),
-      /* @__PURE__ */ jsx("section", { className: styles$3.section, children: /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.intro_p1") } }) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsx("section", { className: styles$4.section, children: /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.intro_p1") } }) }),
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("louis_friese.praet_heading"),
           " ",
@@ -6273,7 +6273,7 @@ function LouisFrieseLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.praet_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.praet_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("louis_friese.marriage_heading"),
           " ",
@@ -6283,14 +6283,14 @@ function LouisFrieseLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.marriage_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.marriage_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("louis_friese.nicopolis_heading"),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.nicopolis_p1") } }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("louis_friese.nicopolis_quote_triad") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("louis_friese.nicopolis_quote_triad") }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)" }, children: t("louis_friese.nicopolis_quote_gloss") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.nicopolis_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.nicopolis_evidence") } })
@@ -6302,7 +6302,7 @@ function LouisFrieseLineagePage() {
           /* @__PURE__ */ jsx("p", { children: t("louis_friese.diagram_sr_text") })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("louis_friese.heir_heading"),
           " ",
@@ -6312,7 +6312,7 @@ function LouisFrieseLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.heir_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.heir_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("louis_friese.disambig_heading"),
           " ",
@@ -6321,7 +6321,7 @@ function LouisFrieseLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.disambig_p1") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.disambig_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("louis_friese.later_heading"),
           " ",
@@ -6332,7 +6332,7 @@ function LouisFrieseLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.later_p3") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.later_p4") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("louis_friese.evidence_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("louis_friese.evidence_intro") }),
         /* @__PURE__ */ jsxs("ul", { children: [
@@ -6346,7 +6346,7 @@ function LouisFrieseLineagePage() {
           /* @__PURE__ */ jsx("li", { dangerouslySetInnerHTML: { __html: t("louis_friese.evidence_bullet_8") } })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("louis_friese.questions_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("louis_friese.questions_intro") }),
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginTop: "1.5rem", marginBottom: "0.5rem" }, children: t("louis_friese.questions_marie_heading") }),
@@ -6354,7 +6354,7 @@ function LouisFrieseLineagePage() {
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginTop: "1.5rem", marginBottom: "0.5rem" }, children: t("louis_friese.questions_cadet_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("louis_friese.questions_cadet_body") })
       ] }),
-      /* @__PURE__ */ jsx("section", { className: styles$3.section, style: { marginTop: "3rem", borderTop: "1px solid rgba(232, 184, 48, 0.2)", paddingTop: "2rem" }, children: /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
+      /* @__PURE__ */ jsx("section", { className: styles$4.section, style: { marginTop: "3rem", borderTop: "1px solid rgba(232, 184, 48, 0.2)", paddingTop: "2rem" }, children: /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
         /* @__PURE__ */ jsxs(
           Link,
           {
@@ -6384,9 +6384,9 @@ function LouisFrieseLineagePage() {
           }
         )
       ] }) }),
-      /* @__PURE__ */ jsxs(Link, { className: styles$3.ctaBox, to: "/contact", children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaText, children: t("louis_friese.cta_text") }),
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaNote, children: t("louis_friese.cta_note") })
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("louis_friese.cta_text") }),
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("louis_friese.cta_note") })
       ] }),
       /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
         Link,
@@ -6408,7 +6408,7 @@ function LouisFrieseLineagePage() {
 }
 function RobrechtLineagePage() {
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Robrecht van Vlaenderen — Lord of Elverdinghe and Vlamertinghe | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "The fourth surname-bearing bastard line of Louis II de Male: Robrecht van Vlaenderen, Lord of Elverdinghe and Vlamertinghe and Viscount of Ypres. Documented through three sons in the Ypres quarter, 1448–1491, to Karel's daughter and the de Crane marriage." }),
@@ -6418,33 +6418,33 @@ function RobrechtLineagePage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/robrecht" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: "Van Vlaenderen · Genealogical Research" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: "Van Vlaenderen · Genealogical Research" }),
         /* @__PURE__ */ jsx("h1", { dangerouslySetInnerHTML: { __html: t("robrecht.intro_heading") } }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsxs("p", { className: styles$3.heroLead, children: [
+        /* @__PURE__ */ jsxs("p", { className: styles$4.heroLead, children: [
           "The fourth surname-bearing bastard line of Louis II de Male. Lord of Elverdinghe and Vlamertinghe just outside Ypres; Viscount of Ypres ",
           /* @__PURE__ */ jsx("em", { children: "jure uxoris" }),
           ". Burgundian councillor and chamberlain to Dukes John the Fearless and Philip the Good. Three documented natural sons carried the surname through the second half of the fifteenth century; the line ends with Karel’s daughter and her marriage into the de Crane family."
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Robrecht van Vlaenderen Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated June 2026" })
       ] }),
-      /* @__PURE__ */ jsx("section", { className: styles$3.section, children: /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.intro_p1") } }) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsx("section", { className: styles$4.section, children: /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.intro_p1") } }) }),
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("robrecht.marriage_heading"),
           " ",
@@ -6454,27 +6454,27 @@ function RobrechtLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.marriage_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.marriage_p3") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("robrecht.tomb_heading"),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.tomb_p1") } }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("robrecht.tomb_quote_inscription") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("robrecht.tomb_quote_inscription") }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)" }, dangerouslySetInnerHTML: { __html: t("robrecht.tomb_inscription_gloss") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.tomb_p2") } }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("robrecht.tomb_quote_anastasie_dutch") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("robrecht.tomb_quote_anastasie_dutch") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.tomb_p3") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("robrecht.mother_heading"),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.mother_p1") } }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("robrecht.mother_quote_bethune") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("robrecht.mother_quote_bethune") }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)" }, children: t("robrecht.mother_quote_gloss") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.mother_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.mother_p3") } }),
@@ -6487,18 +6487,18 @@ function RobrechtLineagePage() {
           /* @__PURE__ */ jsx("p", { children: t("robrecht.diagram_sr_text") })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("robrecht.jean_heading"),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.jean_p1") } }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("robrecht.jean_quote_diploma") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("robrecht.jean_quote_diploma") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.jean_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.jean_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("robrecht.caspar_heading"),
           " ",
@@ -6515,7 +6515,7 @@ function RobrechtLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.caspar_evidence") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.caspar_falsifiability") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("robrecht.karel_heading"),
           " ",
@@ -6536,28 +6536,28 @@ function RobrechtLineagePage() {
         ] }),
         /* @__PURE__ */ jsx("h3", { children: t("robrecht.karel_subheading_vredius") }),
         /* @__PURE__ */ jsx("p", { children: t("robrecht.karel_vredius_intro") }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("robrecht.karel_quote_epitaph") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("robrecht.karel_quote_epitaph") }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)" }, children: t("robrecht.karel_epitaph_gloss") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.karel_p1") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.karel_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.karel_evidence") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.karel_falsifiability") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("robrecht.daughter_heading"),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsx("p", { children: t("robrecht.daughter_p1") }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("robrecht.daughter_quote_vredius") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("robrecht.daughter_quote_vredius") }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)" }, children: t("robrecht.daughter_quote_gloss") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.daughter_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.daughter_p3") } }),
         /* @__PURE__ */ jsx("p", { children: t("robrecht.daughter_p4") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.daughter_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("robrecht.evidence_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("robrecht.evidence_intro") }),
         /* @__PURE__ */ jsxs("ul", { children: [
@@ -6574,7 +6574,7 @@ function RobrechtLineagePage() {
           /* @__PURE__ */ jsx("li", { dangerouslySetInnerHTML: { __html: t("robrecht.evidence_bullet_11") } })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("robrecht.questions_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("robrecht.questions_intro") }),
         /* @__PURE__ */ jsx("h3", { children: t("robrecht.questions_caspar_heading") }),
@@ -6584,9 +6584,9 @@ function RobrechtLineagePage() {
         /* @__PURE__ */ jsx("h3", { children: t("robrecht.questions_gaillard_heading") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("robrecht.questions_gaillard_body") } })
       ] }),
-      /* @__PURE__ */ jsxs(Link, { className: styles$3.ctaBox, to: "/contact", children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaText, children: "Do you have research that connects to the line of Robrecht van Vlaenderen?" }),
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaNote, children: "We welcome correspondence on the Caspar descent question, the Verdeghem and de Crane families, and the Gaillard MS provenance." })
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: "Do you have research that connects to the line of Robrecht van Vlaenderen?" }),
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: "We welcome correspondence on the Caspar descent question, the Verdeghem and de Crane families, and the Gaillard MS provenance." })
       ] }),
       /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
         Link,
@@ -6608,7 +6608,7 @@ function RobrechtLineagePage() {
 }
 function LoysDeHazeLineagePage() {
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: `${t("loys.page_title")} | vanvlaenderen.org` }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: t("loys.meta_description") }),
@@ -6618,44 +6618,44 @@ function LoysDeHazeLineagePage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/loys-le-hase" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${knightPhilip})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: "Van Vlaenderen · Genealogical Research" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: "Van Vlaenderen · Genealogical Research" }),
         /* @__PURE__ */ jsx("h1", { dangerouslySetInnerHTML: { __html: t("loys.intro_heading") } }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, dangerouslySetInnerHTML: { __html: t("loys.hero_lead") } })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, dangerouslySetInnerHTML: { __html: t("loys.hero_lead") } })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Loys “le Hase” van Vlaenderen Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated June 2026" })
       ] }),
-      /* @__PURE__ */ jsx("section", { className: styles$3.section, children: /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.intro_p1") } }) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsx("section", { className: styles$4.section, children: /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.intro_p1") } }) }),
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("loys.career_heading"),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.career_p1") } }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("loys.career_quote_white_caproens") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("loys.career_quote_white_caproens") }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)" }, children: t("loys.career_caproens_gloss") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.career_p2") } }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("loys.career_quote_biervliet") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("loys.career_quote_biervliet") }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)" }, children: t("loys.career_biervliet_gloss") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.career_p3") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.career_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("loys.host_heading"),
           " ",
@@ -6663,12 +6663,12 @@ function LoysDeHazeLineagePage() {
         ] }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.host_p1") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.host_p2") } }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("loys.host_quote_tournai") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("loys.host_quote_tournai") }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)" }, children: t("loys.host_quote_tournai_gloss") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.host_p3") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.host_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("loys.marriage_heading"),
           " ",
@@ -6680,14 +6680,14 @@ function LoysDeHazeLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.marriage_evidence") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.marriage_falsifiability") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("loys.nicopolis_heading"),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.nicopolis_p1") } }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("loys.nicopolis_quote_triad") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("loys.nicopolis_quote_triad") }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)" }, children: t("loys.nicopolis_quote_gloss") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.nicopolis_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.nicopolis_evidence") } })
@@ -6699,7 +6699,7 @@ function LoysDeHazeLineagePage() {
           /* @__PURE__ */ jsx("p", { children: t("loys.diagram_sr_text") })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("loys.sons_heading"),
           " ",
@@ -6711,7 +6711,7 @@ function LoysDeHazeLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.sons_evidence") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.sons_falsifiability") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("loys.daughters_heading"),
           " ",
@@ -6723,7 +6723,7 @@ function LoysDeHazeLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.daughters_evidence") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.daughters_falsifiability") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("loys.estate_heading"),
           " ",
@@ -6732,7 +6732,7 @@ function LoysDeHazeLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.estate_p1") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("loys.estate_p2") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("loys.evidence_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("loys.evidence_intro") }),
         /* @__PURE__ */ jsxs("ul", { children: [
@@ -6749,7 +6749,7 @@ function LoysDeHazeLineagePage() {
           /* @__PURE__ */ jsx("li", { dangerouslySetInnerHTML: { __html: t("loys.evidence_bullet_11") } })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("loys.questions_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("loys.questions_intro") }),
         /* @__PURE__ */ jsx("h3", { children: t("loys.questions_landas_heading") }),
@@ -6763,9 +6763,9 @@ function LoysDeHazeLineagePage() {
         /* @__PURE__ */ jsx("h3", { children: t("loys.questions_toponyms_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("loys.questions_toponyms_body") })
       ] }),
-      /* @__PURE__ */ jsxs(Link, { className: styles$3.ctaBox, to: "/contact", children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaText, dangerouslySetInnerHTML: { __html: t("loys.cta_text") } }),
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaNote, children: t("loys.cta_note") })
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, dangerouslySetInnerHTML: { __html: t("loys.cta_text") } }),
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("loys.cta_note") })
       ] }),
       /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
         Link,
@@ -6788,7 +6788,7 @@ function LoysDeHazeLineagePage() {
 const manuscriptHeraldry = "/assets/cronike-van-vlaenderen-counts-heraldry-Dpt1LTFu.jpg";
 function JanSansTerreLineagePage() {
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: `${t("jan_sans_terre.page_title")} | vanvlaenderen.org` }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: t("jan_sans_terre.meta_description") }),
@@ -6798,29 +6798,29 @@ function JanSansTerreLineagePage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/jan-sans-terre" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${manuscriptHeraldry})`, backgroundPosition: "center center" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: "Van Vlaenderen · Genealogical Research" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: "Van Vlaenderen · Genealogical Research" }),
         /* @__PURE__ */ jsx("h1", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.intro_heading") } }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, dangerouslySetInnerHTML: { __html: t("jan_sans_terre.hero_lead") } })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, dangerouslySetInnerHTML: { __html: t("jan_sans_terre.hero_lead") } })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Jan “sans terre” van Vlaenderen Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated June 2026" })
       ] }),
-      /* @__PURE__ */ jsx("section", { className: styles$3.section, children: /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.intro_p1") } }) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsx("section", { className: styles$4.section, children: /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.intro_p1") } }) }),
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("jan_sans_terre.career_heading"),
           " ",
@@ -6830,7 +6830,7 @@ function JanSansTerreLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.career_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.career_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("jan_sans_terre.marriage_heading"),
           " ",
@@ -6840,26 +6840,26 @@ function JanSansTerreLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.marriage_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.marriage_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("jan_sans_terre.relief_heading"),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.relief_p1") } }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("jan_sans_terre.relief_quote") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("jan_sans_terre.relief_quote") }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)" }, children: t("jan_sans_terre.relief_quote_gloss") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.relief_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.relief_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("jan_sans_terre.nicopolis_heading"),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.nicopolis_p1") } }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("jan_sans_terre.nicopolis_quote_triad") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("jan_sans_terre.nicopolis_quote_triad") }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)" }, children: t("jan_sans_terre.nicopolis_quote_gloss") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.nicopolis_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.nicopolis_evidence") } })
@@ -6871,20 +6871,20 @@ function JanSansTerreLineagePage() {
           /* @__PURE__ */ jsx("p", { children: t("jan_sans_terre.diagram_sr_text") })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("jan_sans_terre.heir_heading"),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelProbable}`, children: "Probable" })
         ] }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.heir_p1") } }),
-        /* @__PURE__ */ jsx("blockquote", { className: styles$3.pullQuote, style: { fontStyle: "italic" }, children: t("jan_sans_terre.heir_quote_furnes") }),
+        /* @__PURE__ */ jsx("blockquote", { className: styles$4.pullQuote, style: { fontStyle: "italic" }, children: t("jan_sans_terre.heir_quote_furnes") }),
         /* @__PURE__ */ jsx("p", { style: { fontStyle: "italic", color: "var(--text-muted)" }, children: t("jan_sans_terre.heir_quote_gloss") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.heir_p2") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.heir_evidence") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.heir_falsifiability") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("jan_sans_terre.disambig_heading"),
           " ",
@@ -6895,12 +6895,12 @@ function JanSansTerreLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.disambig_p3") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.disambig_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("jan_sans_terre.later_heading") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.later_p1") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.later_p2") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           t("jan_sans_terre.donche_heading"),
           " ",
@@ -6911,7 +6911,7 @@ function JanSansTerreLineagePage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.donche_p3") } }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.donche_evidence") } })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("jan_sans_terre.evidence_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("jan_sans_terre.evidence_intro") }),
         /* @__PURE__ */ jsxs("ul", { children: [
@@ -6928,7 +6928,7 @@ function JanSansTerreLineagePage() {
           /* @__PURE__ */ jsx("li", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.evidence_bullet_11") } })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("jan_sans_terre.questions_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("jan_sans_terre.questions_intro") }),
         /* @__PURE__ */ jsx("h3", { children: t("jan_sans_terre.questions_heir_heading") }),
@@ -6936,9 +6936,9 @@ function JanSansTerreLineagePage() {
         /* @__PURE__ */ jsx("h3", { children: t("jan_sans_terre.questions_lichtervelde_heading") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("jan_sans_terre.questions_lichtervelde_body") } })
       ] }),
-      /* @__PURE__ */ jsxs(Link, { className: styles$3.ctaBox, to: "/contact", children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaText, dangerouslySetInnerHTML: { __html: t("jan_sans_terre.cta_text") } }),
-        /* @__PURE__ */ jsx("div", { className: styles$3.ctaNote, children: t("jan_sans_terre.cta_note") })
+      /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, dangerouslySetInnerHTML: { __html: t("jan_sans_terre.cta_text") } }),
+        /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("jan_sans_terre.cta_note") })
       ] }),
       /* @__PURE__ */ jsx("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: /* @__PURE__ */ jsx(
         Link,
@@ -6963,7 +6963,7 @@ const version = "_version_66azr_19";
 const downloadButton = "_downloadButton_66azr_26";
 const body = "_body_66azr_63";
 const anchorLink = "_anchorLink_66azr_151";
-const styles$2 = {
+const styles$3 = {
   downloadStrip,
   version,
   downloadButton,
@@ -8645,7 +8645,7 @@ const markdownComponents = {
         "a",
         {
           href: `#${id}`,
-          className: styles$2.anchorLink,
+          className: styles$3.anchorLink,
           "aria-label": `Link to ${text}`,
           children: "§"
         }
@@ -8659,22 +8659,22 @@ function DesparsCompendiumPage() {
     const lang = i18n2.language?.toLowerCase().split("-")[0];
     return lang === "nl" ? compendiumNL : compendiumEN;
   }, [i18n2.language]);
-  return /* @__PURE__ */ jsx("div", { className: styles$3.page, children: /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+  return /* @__PURE__ */ jsx("div", { className: styles$4.page, children: /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
     /* @__PURE__ */ jsx("h1", { children: t("despars_compendium.heading") }),
     /* @__PURE__ */ jsx("p", { children: t("despars_compendium.intro") }),
-    /* @__PURE__ */ jsxs("div", { className: styles$2.downloadStrip, children: [
-      /* @__PURE__ */ jsx("span", { className: styles$2.version, children: t("despars_compendium.version_line", { version: COMPENDIUM_VERSION }) }),
+    /* @__PURE__ */ jsxs("div", { className: styles$3.downloadStrip, children: [
+      /* @__PURE__ */ jsx("span", { className: styles$3.version, children: t("despars_compendium.version_line", { version: COMPENDIUM_VERSION }) }),
       /* @__PURE__ */ jsx(
         "a",
         {
-          className: styles$2.downloadButton,
+          className: styles$3.downloadButton,
           href: PDF_PATH,
           download: true,
           children: t("despars_compendium.download_button", { version: COMPENDIUM_VERSION })
         }
       )
     ] }),
-    /* @__PURE__ */ jsx("div", { className: styles$2.body, children: /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { className: styles$3.body, children: /* @__PURE__ */ jsx(
       ReactMarkdown,
       {
         remarkPlugins: [remarkGfm],
@@ -8685,7 +8685,7 @@ function DesparsCompendiumPage() {
   ] }) });
 }
 function VictorDossierPage() {
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Victor van Vlaenderen — Archival Dossier | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Primary source dossier for Victor van Vlaenderen. Fifteenth-century Ghent charter evidence (1427, 1441, 1446) for his natural sons — Lodewyc, Janne, and Adam — and his lordship of Ursel and Wessegem in the Meetjesland." }),
@@ -8697,23 +8697,23 @@ function VictorDossierPage() {
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Victor van Vlaenderen \\u2014 Archival Dossier","description":"Primary source dossier for Victor van Vlaenderen: 1427 and 1441/42 charter evidence from the Vredius (1643) transcriptions, Hof van Wessegem heritage record, and the Alix van Boyeghem connection.","url":"https://vanvlaenderen.org/research/victor-dossier","inLanguage":"en","dateModified":"2026-06-12","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } }),
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Victor van Vlaenderen","item":"https://vanvlaenderen.org/research/victor"},{"@type":"ListItem","position":4,"name":"Archival Dossier","item":"https://vanvlaenderen.org/research/victor-dossier"}]}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: "Van Vlaenderen · Archival Evidence" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: "Van Vlaenderen · Archival Evidence" }),
         /* @__PURE__ */ jsx("h1", { children: "Victor van Vlaenderen" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: "Bastard son of Louis II de Male, Count of Flanders; lord of Wessegem in Ursel; attested father of Lodewyc, Janne, and Adam van Vlaendren. Updated April 2026 with the primary charter data from the direct reading of Vredius (1643); June 2026 with the 1441 Cadzand attestation of Victor's children." })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: "Bastard son of Louis II de Male, Count of Flanders; lord of Wessegem in Ursel; attested father of Lodewyc, Janne, and Adam van Vlaendren. Updated April 2026 with the primary charter data from the direct reading of Vredius (1643); June 2026 with the 1441 Cadzand attestation of Victor's children." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Archival Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated June 2026" })
@@ -8756,14 +8756,14 @@ function VictorDossierPage() {
           "; page references are to the 1643 Bruges print."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Identity and Parentage ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
         /* @__PURE__ */ jsx("p", { children: "Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders. Espinoy (1631), Livre 2, Ch. XXXI, p. 69, records his parentage among the natural sons of Louis II (without citing a source), and his mother is named in her own charter of 12 May 1427 (see the charter nucleus below). He is identified as Seigneur d'Ursele et de Wesseghem and as a Burgundian admiral." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Territorial Setting: Wessegem and Ursel ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -8772,7 +8772,7 @@ function VictorDossierPage() {
         /* @__PURE__ */ jsx("p", { children: "A local Ursel history states that in 1399 Wessegem passed to Victor van Vlaanderen, 'another bastard son of Louis van Male,' and that he often resided there." }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", fontStyle: "italic", color: "var(--text-muted)" }, children: "Note on spelling: the Vredius print (1643, p. 286) renders the 1441 charter’s lordship designation as ‘Orsele ende van Wesseghem’ — an alternative spelling of ‘Ursele.’ The 1446 charter on the following page uses ‘Orsele en van Wesseghem’ again. The form ‘Desele’ sometimes appearing in secondary OCR transcriptions of the charter is an artifact: the Middle Dutch blackletter capital ‘U’/‘V’ is easily misread as ‘D.’ All references in Vredius point consistently to Ursel (the parish) and Wessegem (the seigneurie within it)." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Victor's Testament (1430) ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -8783,7 +8783,7 @@ function VictorDossierPage() {
           " p.285, citing the Vander Strate manuscript. It confirms Victor was alive in 1430 and had at least two brothers — Robert [Roeland] and Karel van Vlaenderen."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Direct Charter Nucleus ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -8808,7 +8808,7 @@ function VictorDossierPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { children: "This charter directly attests: (1) Adam is alive as late as 18 March 1447 N.S. — his death terminus, previously set at 1442, is now extended five years; (2) Adam explicitly names Victor as 'Rudder, Heer van Orsele en van Wesseghem' — Knight, Lord of Ursel and Wessegem; (3) Margriete Aelfhuuts remains Adam's active patroness in 1446, four years after the previous donation; (4) the lordship now spelled 'Orsele' — confirming Ursel and Wessegem as a paired designation." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The 1441 Cadzand Koopbrief ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -8856,7 +8856,7 @@ function VictorDossierPage() {
           " rather than Directly Attested: the 1441 deed supplies the territorial fact but no personal names, the 1427 charter supplies the names but not the holding, and no competing set of children of Victor is attested."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Chronology ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -8920,7 +8920,7 @@ function VictorDossierPage() {
           ] })
         ] }) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Lodewyc van Vlaenderen — Documented Descendants ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -8941,14 +8941,14 @@ function VictorDossierPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", fontStyle: "italic", color: "var(--text-muted)" }, children: "Note on Oostborch: this is an older spelling of Oostburg, in Zeeuws-Vlaanderen (south of Sluis, now the Netherlands). It sits roughly 12 km north of the Meetjesland border and was part of the medieval Franc de Bruges. The Oostburg church burial places Lodewyc’s wife Jacqueline de Wilde and their son Joos firmly in the coastal Zeeuws-Vlaanderen orbit — not in the inland Meetjesland parishes where the later Van Vlaenderen surname cluster concentrates. A systematic onomastic sweep of Gysseling’s Vier Ambachten corpus (c. 1240–1500) returned no Bucket 4 attestations of the surname in Zeeuws-Vlaanderen, confirming it arrived there from elsewhere." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Naval and Military Activity ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
         /* @__PURE__ */ jsx("p", { children: "A DBNL article states: 'Victor was, en dit is belangrijk, kapitein van de vesting Biervliet.' A UGent-hosted study on Flemish corsair warfare notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.' These sources support Victor's coastal and naval command role." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Genealogical Significance ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: "Hypothesis" })
@@ -9071,7 +9071,7 @@ function VictorDossierPage() {
   ] });
 }
 function PraetDossierPage() {
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "The Praet Line — Archival Dossier | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Archival dossier for the House of Flanders-Praet. Descent from Louis Friese to Lodewijk IV (d. 1555/1558), the Aalter Vrijhof as the line's Meetjesland anchor (1516–c. 1590), the post-1545 collateral continuation (the 1550 act to Jacob, then Lodewijk V to the 1591 terminus), and the non-inheriting late-16th-century cadet branches." }),
@@ -9083,23 +9083,23 @@ function PraetDossierPage() {
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"The Praet Line \\u2014 Archival Dossier","description":"Archival dossier for the Praet line: Louis Friese van Vlaenderen through Lodewijk IV (Louis of Praet, Knight of the Golden Fleece, d. 1555/1558) and the post-1545 collateral continuation to the 1591 terminus.","url":"https://vanvlaenderen.org/research/praet-dossier","inLanguage":"en","dateModified":"2026-04-19","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } }),
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Louis Friese van Vlaenderen","item":"https://vanvlaenderen.org/research/louis-friese"},{"@type":"ListItem","position":4,"name":"Archival Dossier","item":"https://vanvlaenderen.org/research/praet-dossier"}]}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: "Van Vlaenderen · Archival Dossier" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: "Van Vlaenderen · Archival Dossier" }),
         /* @__PURE__ */ jsx("h1", { children: "Louis Friese van Vlaenderen" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: "Bastard son of Louis II de Male, Count of Flanders; lord of Praet and Woestine; founder of the Praet branch of the van Vlaenderen surname." })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: "Bastard son of Louis II de Male, Count of Flanders; lord of Praet and Woestine; founder of the Praet branch of the van Vlaenderen surname." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Archival Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated April 2026" })
@@ -9140,7 +9140,7 @@ function PraetDossierPage() {
           "."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Identity and Parentage ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -9170,7 +9170,7 @@ function PraetDossierPage() {
           /* @__PURE__ */ jsx("sup", { children: "[4]" })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Battle of Nicopolis and Death ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -9183,7 +9183,7 @@ function PraetDossierPage() {
           ". The standard scholarship date is 25 September; Despars dates the battle to 27 September and Lichtervelde to 28 September, with the variants treated as transmission errors per the Despars compendium F.2. The Nicopolis death is the founding moment of the Praet line as a research subject: Le Frison's widow Marie van Ghistelle survived him and raised their son Jean de Praet, and the surname-bearing descent runs through them."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Territorial Holdings: Praet and Woestine ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
@@ -9199,7 +9199,7 @@ function PraetDossierPage() {
           /* @__PURE__ */ jsx("sup", { children: "[2]" })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Marriage and Descent ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
@@ -9213,7 +9213,7 @@ function PraetDossierPage() {
           /* @__PURE__ */ jsx("sup", { children: "[1][2]" })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The Surname van Vlaenderen ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
@@ -9305,7 +9305,7 @@ function PraetLineageDossierPage() {
     { gen: "5 (cadet)", name: "Jacob van Vlaanderen", dates: "d. 17 Aug 1566", role: "Son of Joos; received Praet & Woestijne at Aalter by act of 25 Sep 1550", spouse: "Catharina van Boetzelaer (m. 1551/52)", sources: "Verhoustraete 1967; Valkeneers & Soen, ‘Praet, Bronkhorst en Boetzelaer’ (2014)", level: "Strongly corroborated", levelClass: researchStyles.levelCorroborated },
     { gen: "6 (cadet)", name: "Lodewijk V van Vlaanderen", dates: "b. 1559 – d. 31 Oct 1591", role: "Last male of the line; died sonless in exile — the surname ends", spouse: "Maria van Marnix (d. 1580, childless)", sources: "Verhoustraete 1967, pp. 101–113; Valkeneers & Soen (2014)", level: "Strongly corroborated", levelClass: researchStyles.levelCorroborated }
   ];
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Praet Lineage Detail — Van Vlaenderen Research | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through the 1545 failure of the senior line and the collateral continuation (Joos, Jacob, Lodewijk V) to the 1591 terminus — the research control for Van Vlaenderen surname attribution." }),
@@ -9317,23 +9317,23 @@ function PraetLineageDossierPage() {
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Praet Lineage Detail \\u2014 Van Vlaenderen Research","description":"Generation-by-generation documentation of the Praet descent from Louis Friese van Vlaenderen through Jean I, Louis II, Jacob, and Lodewijk IV.","url":"https://vanvlaenderen.org/research/praet-lineage-dossier","inLanguage":"en","dateModified":"2026-04-19","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } }),
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Louis Friese van Vlaenderen","item":"https://vanvlaenderen.org/research/louis-friese"},{"@type":"ListItem","position":4,"name":"Lineage Detail","item":"https://vanvlaenderen.org/research/praet-lineage-dossier"}]}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: "Van Vlaenderen · Lineage Dossier" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: "Van Vlaenderen · Lineage Dossier" }),
         /* @__PURE__ */ jsx("h1", { children: "The House of Flanders-Praet" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: "Documented lineage from Louis Friese van Vlaenderen (d. 1396) through the failure of the senior direct line (1545) and its collateral continuation — Joos, Jacob, Lodewijk V — to the death of the last male of the line in 1591, with primary-source confirmed generation data. Updated June 2026 with the collateral chain and the post-1591 title succession." })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: "Documented lineage from Louis Friese van Vlaenderen (d. 1396) through the failure of the senior direct line (1545) and its collateral continuation — Joos, Jacob, Lodewijk V — to the death of the last male of the line in 1591, with primary-source confirmed generation data. Updated June 2026 with the collateral chain and the post-1591 title succession." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Lineage Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated June 2026" })
@@ -9346,7 +9346,7 @@ function PraetLineageDossierPage() {
           " Espinoy (1631) and Vredius (1643) are the principal 17th-century authorities, and both are cited directly: Vredius from the project's April 2026 direct reading of the 1643 print, Espinoy from Livre 2, Chapter XXXI of the Douai edition. Traceability runs to those originals. Where a claim is known to the project only through a source not yet read in the original, the citation says so explicitly."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Lineage Summary Table" }),
         /* @__PURE__ */ jsx("div", { style: { overflowX: "auto" }, children: /* @__PURE__ */ jsxs("table", { style: { width: "100%", borderCollapse: "collapse", marginTop: "1rem", fontSize: "0.85rem" }, children: [
           /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { style: { borderBottom: "2px solid var(--gold)", textAlign: "left" }, children: [
@@ -9371,7 +9371,7 @@ function PraetLineageDossierPage() {
           ] }, i)) })
         ] }) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Generation Notes" }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2.5rem" }, children: [
           /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.5rem" }, children: [
@@ -9505,7 +9505,7 @@ function PraetLineageDossierPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Documented Cadet Connections" }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", marginBottom: "1.5rem" }, children: "The following are now documented from primary sources, replacing the previous Geni-only entries." }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2rem" }, children: [
@@ -9554,7 +9554,7 @@ function PraetLineageDossierPage() {
           /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "Charters dated 1478 and 1486, preserved in Vredius (1643) p. 287 (Grimarez, from the Ghent partition registers), record that 'Marguerite de Flandres' (daughter of Lodewyc van Vlaenderen, Victor's son) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe. This is from Victor's line, not the Praet line — noted here to distinguish the two Margaretha van Vlaenderens documented in the 15th century." })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The 1545 Senior Failure, the Collateral Continuation, and the 1591 Terminus" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "The line did ",
@@ -9596,7 +9596,7 @@ function PraetLineageDossierPage() {
           "."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Research Significance" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "The Praet branch provides independent corroboration that ",
@@ -9830,7 +9830,7 @@ function ContactPage() {
       text: t("contact.reason_question_text")
     }
   ];
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Contact — Van Vlaenderen Research | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Get in touch with the Van Vlaenderen research project. Share family connections, Y-DNA results, or archival findings related to the Van Vlaenderen / Van Flandern surname." }),
@@ -9839,13 +9839,13 @@ function ContactPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/contact" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "website" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.textHero, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: t("contact.hero_eyebrow") }),
+    /* @__PURE__ */ jsxs("div", { className: styles$4.textHero, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: t("contact.hero_eyebrow") }),
       /* @__PURE__ */ jsx("h1", { children: t("contact.hero_title") }),
       /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-      /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: t("contact.hero_lead") })
+      /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: t("contact.hero_lead") })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: contactStyles.twoCol, children: [
         /* @__PURE__ */ jsxs("div", { className: contactStyles.reasons, children: [
           /* @__PURE__ */ jsx("h2", { children: t("contact.reasons_title") }),
@@ -9928,7 +9928,7 @@ function ContactPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: styles$3.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
+      /* @__PURE__ */ jsx("div", { className: styles$4.pullQuote, children: /* @__PURE__ */ jsxs("blockquote", { children: [
         '"',
         t("contact.pull_quote"),
         '"'
@@ -9974,7 +9974,7 @@ const aboutStyles = {
 const michaelConstanceCanal = "/assets/michael-constance-canal-CzKbZRok.jpg";
 function AboutPage() {
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "About — Lions of Flanders Project | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "About the Lions of Flanders project: Michael and Constance Van Flandern's 15-year research into Flemish heritage, archival fieldwork in Belgium, and the path from Bassevelde to America." }),
@@ -9984,14 +9984,14 @@ function AboutPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/about" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "website" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.textHero, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: t("about.hero_eyebrow") }),
+    /* @__PURE__ */ jsxs("div", { className: styles$4.textHero, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: t("about.hero_eyebrow") }),
       /* @__PURE__ */ jsx("h1", { children: t("about.hero_title") }),
       /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-      /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: t("about.hero_lead") })
+      /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: t("about.hero_lead") })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("about.scope_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("about.scope_intro") }),
         /* @__PURE__ */ jsx("p", { children: t("about.scope_sources") })
@@ -10014,7 +10014,7 @@ function AboutPage() {
           /* @__PURE__ */ jsx("div", { className: aboutStyles.sourceDesc, children: t("about.source_dna_desc") })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("p", { children: t("about.methodology_note") }),
         /* @__PURE__ */ jsxs("p", { style: { marginTop: "1rem", fontSize: "0.975rem", color: "var(--text-primary)", lineHeight: 1.85 }, children: [
           "In medieval Flanders, territorial designations were rarely neutral. Scholarly research on twelfth-century noble sigillography has shown that aristocratic families in Imperial Flanders — the eastern zone including Ghent, Aalst, and Dendermonde — used visual and symbolic culture tied to territory as political language, sometimes as an explicit assertion of dynastic identity against comital authority. By the fourteenth and fifteenth centuries, when our documented ancestors first appear in the record, this tradition of territorial self-identification was already centuries old. A name styled ",
@@ -10066,7 +10066,7 @@ function AboutPage() {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("about.origins_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("about.origins_body") })
       ] }),
@@ -10081,7 +10081,7 @@ function AboutPage() {
         ),
         /* @__PURE__ */ jsx("div", { className: aboutStyles.photoCaption, children: t("about.photo_caption") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("about.goals_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("about.goals_intro") }),
         /* @__PURE__ */ jsx("p", { children: t("about.goals_seeking") })
@@ -10100,29 +10100,29 @@ function AboutPage() {
           /* @__PURE__ */ jsx("div", { className: aboutStyles.collaborationDesc, children: t("about.collab_family_desc") })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("section", { className: styles$3.section, children: /* @__PURE__ */ jsx("p", { children: t("about.closing") }) }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsx("section", { className: styles$4.section, children: /* @__PURE__ */ jsx("p", { children: t("about.closing") }) }),
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("about.lineage_cta_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("about.lineage_cta_body") }),
         /* @__PURE__ */ jsx(
           Link,
           {
-            className: styles$3.ctaBox,
+            className: styles$4.ctaBox,
             to: "/lineage",
             style: { textAlign: "center" },
-            children: /* @__PURE__ */ jsx("div", { className: styles$3.ctaText, children: t("about.lineage_cta_link") })
+            children: /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("about.lineage_cta_link") })
           }
         )
       ] }),
       /* @__PURE__ */ jsxs(
         Link,
         {
-          className: styles$3.ctaBox,
+          className: styles$4.ctaBox,
           to: "/contact",
           style: { textAlign: "center" },
           children: [
-            /* @__PURE__ */ jsx("div", { className: styles$3.ctaText, children: t("about.contact_cta_body") }),
-            /* @__PURE__ */ jsx("div", { className: styles$3.ctaNote, children: t("about.contact_cta_note") })
+            /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("about.contact_cta_body") }),
+            /* @__PURE__ */ jsx("div", { className: styles$4.ctaNote, children: t("about.contact_cta_note") })
           ]
         }
       )
@@ -10321,7 +10321,7 @@ const detailValue = "_detailValue_6h410_312";
 const detailComment = "_detailComment_6h410_316";
 const archiveLink = "_archiveLink_6h410_328";
 const sourceNote = "_sourceNote_6h410_339";
-const styles$1 = {
+const styles$2 = {
   page: page$1,
   header: header$1,
   title,
@@ -10370,7 +10370,7 @@ function RecordBadge({
   const { t } = useTranslation();
   if (!record) return null;
   const label = t(`lineage.record_${type}`);
-  const content2 = /* @__PURE__ */ jsx("span", { className: `${styles$1.badge} ${styles$1[`badge_${type}`]}`, children: label });
+  const content2 = /* @__PURE__ */ jsx("span", { className: `${styles$2.badge} ${styles$2[`badge_${type}`]}`, children: label });
   if (record.url) {
     return /* @__PURE__ */ jsxs(
       "a",
@@ -10378,12 +10378,12 @@ function RecordBadge({
         href: record.url,
         target: "_blank",
         rel: "noopener noreferrer",
-        className: styles$1.badgeLink,
+        className: styles$2.badgeLink,
         title: `${t("lineage.view_archive")}: ${record.label}`,
         "aria-label": `${label}: ${record.label} — ${t("lineage.view_archive")}`,
         children: [
           content2,
-          /* @__PURE__ */ jsx("span", { className: styles$1.badgeLinkIcon, "aria-hidden": "true", children: "↗" })
+          /* @__PURE__ */ jsx("span", { className: styles$2.badgeLinkIcon, "aria-hidden": "true", children: "↗" })
         ]
       }
     );
@@ -10400,17 +10400,17 @@ function DetailPanel({ ancestor }) {
     { label: t("lineage.detail_death"), value: ancestor.deathRecord?.label },
     { label: t("lineage.detail_status"), value: t(`lineage.status_${ancestor.status}`) }
   ].filter((r) => r.value);
-  return /* @__PURE__ */ jsxs("div", { className: styles$1.detail, role: "region", "aria-label": ancestor.name, children: [
-    /* @__PURE__ */ jsx("h3", { className: styles$1.detailName, children: ancestor.name }),
-    /* @__PURE__ */ jsx("dl", { className: styles$1.detailGrid, children: rows.map((row2) => /* @__PURE__ */ jsxs("div", { className: styles$1.detailRow, children: [
-      /* @__PURE__ */ jsx("dt", { className: styles$1.detailLabel, children: row2.label }),
-      /* @__PURE__ */ jsx("dd", { className: styles$1.detailValue, children: row2.url ? /* @__PURE__ */ jsxs(
+  return /* @__PURE__ */ jsxs("div", { className: styles$2.detail, role: "region", "aria-label": ancestor.name, children: [
+    /* @__PURE__ */ jsx("h3", { className: styles$2.detailName, children: ancestor.name }),
+    /* @__PURE__ */ jsx("dl", { className: styles$2.detailGrid, children: rows.map((row2) => /* @__PURE__ */ jsxs("div", { className: styles$2.detailRow, children: [
+      /* @__PURE__ */ jsx("dt", { className: styles$2.detailLabel, children: row2.label }),
+      /* @__PURE__ */ jsx("dd", { className: styles$2.detailValue, children: row2.url ? /* @__PURE__ */ jsxs(
         "a",
         {
           href: row2.url,
           target: "_blank",
           rel: "noopener noreferrer",
-          className: styles$1.archiveLink,
+          className: styles$2.archiveLink,
           children: [
             row2.value,
             /* @__PURE__ */ jsx("span", { "aria-hidden": "true", children: " ↗" })
@@ -10418,7 +10418,7 @@ function DetailPanel({ ancestor }) {
         }
       ) : row2.value })
     ] }, row2.label)) }),
-    ancestor.comment && /* @__PURE__ */ jsx("p", { className: styles$1.detailComment, children: ancestor.comment })
+    ancestor.comment && /* @__PURE__ */ jsx("p", { className: styles$2.detailComment, children: ancestor.comment })
   ] });
 }
 function LineagePage() {
@@ -10428,10 +10428,10 @@ function LineagePage() {
   const handleSelect = (id) => {
     setActiveId((prev) => prev === id ? null : id);
   };
-  return /* @__PURE__ */ jsxs("main", { className: styles$1.page, children: [
-    /* @__PURE__ */ jsxs("header", { className: styles$1.header, children: [
-      /* @__PURE__ */ jsx("h1", { className: styles$1.title, children: t("lineage.page_title") }),
-      /* @__PURE__ */ jsx("p", { className: styles$1.intro, children: t("lineage.page_intro") })
+  return /* @__PURE__ */ jsxs("main", { className: styles$2.page, children: [
+    /* @__PURE__ */ jsxs("header", { className: styles$2.header, children: [
+      /* @__PURE__ */ jsx("h1", { className: styles$2.title, children: t("lineage.page_title") }),
+      /* @__PURE__ */ jsx("p", { className: styles$2.intro, children: t("lineage.page_intro") })
     ] }),
     /* @__PURE__ */ jsxs("div", { style: {
       maxWidth: "780px",
@@ -10452,30 +10452,30 @@ function LineagePage() {
       " ",
       /* @__PURE__ */ jsx("span", { style: { fontStyle: "italic", opacity: 0.75 }, children: 'Nieus, "Aristocratic seal ownership in twelfth-century Flanders," 2021, pp. 23–26.' })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$1.legend, role: "list", "aria-label": t("lineage.legend_label"), children: [
-      ["documented", "partial", "inferred", "modern"].map((s) => /* @__PURE__ */ jsxs("div", { className: styles$1.legendItem, role: "listitem", children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$2.legend, role: "list", "aria-label": t("lineage.legend_label"), children: [
+      ["documented", "partial", "inferred", "modern"].map((s) => /* @__PURE__ */ jsxs("div", { className: styles$2.legendItem, role: "listitem", children: [
         /* @__PURE__ */ jsx(
           "span",
           {
-            className: styles$1.legendDot,
+            className: styles$2.legendDot,
             style: { background: STATUS_COLOR[s] },
             "aria-hidden": "true"
           }
         ),
         /* @__PURE__ */ jsx("span", { children: t(`lineage.status_${s}`) })
       ] }, s)),
-      /* @__PURE__ */ jsx("span", { className: styles$1.legendHint, children: t("lineage.click_hint") })
+      /* @__PURE__ */ jsx("span", { className: styles$2.legendHint, children: t("lineage.click_hint") })
     ] }),
-    /* @__PURE__ */ jsx("div", { className: styles$1.tree, role: "list", "aria-label": t("lineage.tree_label"), children: vanVlaenderenLineage.map((ancestor, index) => {
+    /* @__PURE__ */ jsx("div", { className: styles$2.tree, role: "list", "aria-label": t("lineage.tree_label"), children: vanVlaenderenLineage.map((ancestor, index) => {
       const isActive = activeId === ancestor.id;
       const isFirst = index === 0;
       const isLast = index === vanVlaenderenLineage.length - 1;
-      return /* @__PURE__ */ jsxs("div", { className: styles$1.row, role: "listitem", children: [
-        /* @__PURE__ */ jsx("span", { className: styles$1.genLabel, "aria-label": `${t("lineage.generation")} ${ancestor.generation}`, children: ancestor.generation }),
+      return /* @__PURE__ */ jsxs("div", { className: styles$2.row, role: "listitem", children: [
+        /* @__PURE__ */ jsx("span", { className: styles$2.genLabel, "aria-label": `${t("lineage.generation")} ${ancestor.generation}`, children: ancestor.generation }),
         /* @__PURE__ */ jsx(
           "div",
           {
-            className: styles$1.connector,
+            className: styles$2.connector,
             "aria-hidden": "true",
             "data-first": isFirst || void 0,
             "data-last": isLast || void 0
@@ -10484,21 +10484,21 @@ function LineagePage() {
         /* @__PURE__ */ jsxs(
           "button",
           {
-            className: `${styles$1.card} ${isActive ? styles$1.cardActive : ""}`,
+            className: `${styles$2.card} ${isActive ? styles$2.cardActive : ""}`,
             style: { "--status-color": STATUS_COLOR[ancestor.status] },
             onClick: () => handleSelect(ancestor.id),
             "aria-pressed": isActive,
             "aria-expanded": isActive,
             "aria-controls": isActive ? `detail-${ancestor.id}` : void 0,
             children: [
-              /* @__PURE__ */ jsx("span", { className: styles$1.cardName, children: ancestor.name }),
-              ancestor.born && /* @__PURE__ */ jsxs("span", { className: styles$1.cardDate, children: [
+              /* @__PURE__ */ jsx("span", { className: styles$2.cardName, children: ancestor.name }),
+              ancestor.born && /* @__PURE__ */ jsxs("span", { className: styles$2.cardDate, children: [
                 t("lineage.born_prefix"),
                 " ",
                 ancestor.born
               ] }),
-              /* @__PURE__ */ jsx("span", { className: styles$1.cardParish, children: ancestor.parish }),
-              /* @__PURE__ */ jsxs("span", { className: styles$1.badgeRow, "aria-label": t("lineage.records_available"), children: [
+              /* @__PURE__ */ jsx("span", { className: styles$2.cardParish, children: ancestor.parish }),
+              /* @__PURE__ */ jsxs("span", { className: styles$2.badgeRow, "aria-label": t("lineage.records_available"), children: [
                 /* @__PURE__ */ jsx(RecordBadge, { type: "birth", record: ancestor.birthRecord }),
                 /* @__PURE__ */ jsx(RecordBadge, { type: "marriage", record: ancestor.marriageRecord }),
                 /* @__PURE__ */ jsx(RecordBadge, { type: "death", record: ancestor.deathRecord })
@@ -10509,7 +10509,7 @@ function LineagePage() {
       ] }, ancestor.id);
     }) }),
     activeAncestor && /* @__PURE__ */ jsx("div", { id: `detail-${activeAncestor.id}`, children: /* @__PURE__ */ jsx(DetailPanel, { ancestor: activeAncestor }) }),
-    /* @__PURE__ */ jsxs("p", { className: styles$1.sourceNote, children: [
+    /* @__PURE__ */ jsxs("p", { className: styles$2.sourceNote, children: [
       t("lineage.source_note"),
       " ",
       /* @__PURE__ */ jsx(
@@ -10518,7 +10518,7 @@ function LineagePage() {
           href: "https://agatha.arch.be",
           target: "_blank",
           rel: "noopener noreferrer",
-          className: styles$1.archiveLink,
+          className: styles$2.archiveLink,
           children: "Rijksarchief Gent (AGATHA)"
         }
       ),
@@ -10673,7 +10673,7 @@ const READING_LIST = [
   }
 ];
 function MethodologyPage() {
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Methodology & Sources — Van Vlaenderen Research | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Transcription and translation methodology for the Van Vlaenderen archival research project, plus a curated reading list of primary and secondary sources." }),
@@ -10683,28 +10683,28 @@ function MethodologyPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:url", content: "https://vanvlaenderen.org/research/methodology" }),
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${manuscriptNoblewoman})`, backgroundPosition: "center top" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: "Van Vlaenderen · Research Foundations" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: "Van Vlaenderen · Research Foundations" }),
         /* @__PURE__ */ jsx("h1", { children: "Methodology & Sources" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: "How archival documents are read, transcribed, and translated — and the published works that form the historiographical foundation for this research." })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: "How archival documents are read, transcribed, and translated — and the published works that form the historiographical foundation for this research." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Research Foundations" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated June 2026" })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Transcription and Translation Methodology" }),
         /* @__PURE__ */ jsx("p", { children: "Archival documents in this project are transcribed using an iterative, multi-system approach. Gemini (Google) serves as the primary real-time reading tool: integrated directly into the browser, it can analyse document images without a separate upload step, allowing the researcher to ask questions about specific characters, words, or passages while actively zooming and navigating the original scan. This ambient availability makes it the natural first pass for difficult passages." }),
         /* @__PURE__ */ jsx("p", { children: "Outputs from Gemini are then cross-checked against independent readings from Claude (Anthropic), GPT-4 (OpenAI), Transkribus, and Tryleo. Where readings converge across systems, confidence is high. Where they diverge, the researcher returns to the original image, zooming to individual characters and applying knowledge of the letter forms, abbreviations, and spelling conventions of the period." }),
@@ -10712,7 +10712,7 @@ function MethodologyPage() {
         /* @__PURE__ */ jsx("p", { children: "Each AI system is given learning samples from the same document hand before being asked to transcribe difficult passages, allowing the system to calibrate to individual scribal idiosyncrasies. This is the same principle professional palaeographers apply when learning a new hand." }),
         /* @__PURE__ */ jsx("p", { children: "AI tools in this project are research instruments, not citation sources. Every claim on this site traces to a named primary or secondary authority. Tool outputs that cannot be verified against a named source are flagged as provisional." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           'Reading the Dual Name-Form: "van Vlaenderen gheseyt van [lordship]"',
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
@@ -10752,7 +10752,7 @@ function MethodologyPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { children: `Why this matters methodologically: a genuine origin-name ("from Flanders") is never bridged to a specific lordship — a scribe has no reason to write "van Vlaenderen, called van Praet" if "van Vlaenderen" merely records where a family came from. The dual form records two coexisting identifiers — a heritable house-name and a current territorial title — which is the documented behaviour of a noble lineage-surname carried by a lordholder. Five bearers across two separate lordship-branches of one kin-group, over roughly fifty-five years, is decisive against reading the form as one individual's quirk. When the project encounters any "van Vlaenderen" attestation paired with a lordship, this convention is the interpretive frame applied — and it is held falsifiable: a cadet documented holding a current seigneurial title yet bearing "van Vlaenderen" alone, or a titleless cadet consistently bearing a non-Vlaenderen surname, would break the rule.` })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Recommended Reading" }),
         /* @__PURE__ */ jsx("p", { children: "The following works form the historiographical foundation for this project. They are the sources against which our findings are tested and the authorities whose frameworks we apply. Entries are grouped by theme. Acquisition links are provided where available." }),
         READING_LIST.map((group) => /* @__PURE__ */ jsxs("div", { style: { marginTop: "2.5rem" }, children: [
@@ -10823,8 +10823,230 @@ function MethodologyPage() {
   ] });
 }
 const meetjeslandMap = "/assets/meetjesland-map-D7thb5CK.jpg";
+const wrap = "_wrap_cs2e6_6";
+const sup = "_sup_cs2e6_12";
+const ref = "_ref_cs2e6_16";
+const popover = "_popover_cs2e6_32";
+const popNum = "_popNum_cs2e6_64";
+const popText = "_popText_cs2e6_70";
+const popJump = "_popJump_cs2e6_74";
+const styles$1 = {
+  wrap,
+  sup,
+  ref,
+  popover,
+  popNum,
+  popText,
+  popJump
+};
+function Cite({ n, text }) {
+  const [open, setOpen] = useState(false);
+  const [pinned, setPinned] = useState(false);
+  const wrapRef = useRef(null);
+  const hideTimer = useRef(null);
+  const show = useCallback(() => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    setOpen(true);
+  }, []);
+  const scheduleHide = useCallback(() => {
+    if (pinned) return;
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    hideTimer.current = setTimeout(() => setOpen(false), 140);
+  }, [pinned]);
+  useEffect(() => {
+    if (!pinned) return;
+    const onDown = (e) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target)) {
+        setPinned(false);
+        setOpen(false);
+      }
+    };
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setPinned(false);
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [pinned]);
+  useEffect(() => () => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+  }, []);
+  return /* @__PURE__ */ jsxs(
+    "span",
+    {
+      ref: wrapRef,
+      className: styles$1.wrap,
+      onMouseEnter: show,
+      onMouseLeave: scheduleHide,
+      children: [
+        /* @__PURE__ */ jsx("sup", { className: styles$1.sup, children: /* @__PURE__ */ jsx(
+          "a",
+          {
+            href: `#fn-${n}`,
+            id: `fnref-${n}`,
+            className: styles$1.ref,
+            "aria-describedby": open ? `fn-pop-${n}` : void 0,
+            onFocus: show,
+            onBlur: scheduleHide,
+            onClick: (e) => {
+              e.preventDefault();
+              setPinned((p) => {
+                const next = !p;
+                setOpen(next);
+                return next;
+              });
+            },
+            children: n
+          }
+        ) }),
+        open && /* @__PURE__ */ jsxs(
+          "span",
+          {
+            role: "tooltip",
+            id: `fn-pop-${n}`,
+            className: styles$1.popover,
+            onMouseEnter: show,
+            onMouseLeave: scheduleHide,
+            children: [
+              /* @__PURE__ */ jsxs("span", { children: [
+                /* @__PURE__ */ jsx("span", { className: styles$1.popNum, children: n }),
+                /* @__PURE__ */ jsx("span", { className: styles$1.popText, children: text })
+              ] }),
+              /* @__PURE__ */ jsx("br", {}),
+              /* @__PURE__ */ jsx("a", { href: `#fn-${n}`, className: styles$1.popJump, children: "full note ↓" })
+            ]
+          }
+        )
+      ]
+    }
+  );
+}
+const notes = [
+  {
+    n: 1,
+    short: "Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300–21302 (1545–49) — the Honnelede wardship file. Consulted April 2026 (case 2026/0451).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300–21302 (1545–49). The Honnelede wardship file: Joos van Vlaenderen's minor sons Jacob and Philips as wards; the 1547–48 entry ",
+      /* @__PURE__ */ jsx("em", { children: "‘nopende Phelipe van Vlaendren … In Lande van Hollandt ende Zeelandt’" }),
+      " at nr. 21300, Rekening B, fol. 16r. Consulted April 2026. Reference: case 2026/0451."
+    ] })
+  },
+  {
+    n: 2,
+    short: "Verhoustraete, 'De heren van Praet te Oedelem,' Jaarboek 1967 (Bos en Beverveld), pp. 101–113.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Verhoustraete, Arthur. ‘De heren van Praet te Oedelem.’ ",
+      /* @__PURE__ */ jsx("em", { children: "Jaarboek 1967" }),
+      " ",
+      "(Bos en Beverveld), pp. 101–113. The 1545 senior-line failure, the collateral continuation (Joos → Jacob → Lodewijk V), the 1591 sonless terminus, and the post-1591 title succession (pp. 109–112)."
+    ] })
+  },
+  {
+    n: 3,
+    short: "Serrure (ed.), Vaderlandsch Museum, Deel 5 (Gent, 1863), pp. 295–310.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Serrure, C.P., ed. ",
+      /* @__PURE__ */ jsx("em", { children: "Vaderlandsch Museum" }),
+      ", Deel 5. Gent, 1863. ‘De geslachten Van Praet, Van Moerkercke…,’ pp. 295–310 — names Joos's children Jacob, Philips, and Philippote; anchors Joos to Lodewijk II via the Gruuthuse marriage."
+    ] })
+  },
+  {
+    n: 4,
+    short: "Lauwens, Verhalen uit de genealogie Van Praet (2021).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Lauwens, Patrik. ",
+      /* @__PURE__ */ jsx("em", { children: "Verhalen uit de genealogie Van Praet." }),
+      " 2021. The senior line's Mijnsheerenland van Moerkerken / Hof van Holland litigation context for Philips's maternal van Moerckercke standing."
+    ] })
+  },
+  {
+    n: 5,
+    short: "Valkeneers & Soen, 'Praet, Bronkhorst en Boetzelaer…' (2014), pp. 265–284.",
+    full: /* @__PURE__ */ jsx(Fragment$1, { children: "Valkeneers, Nina & Soen, Violet. ‘Praet, Bronkhorst en Boetzelaer. Adellijke weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566–1567)’ (2014), pp. 265–284. Jacob van Vlaanderen × Catharina van Boetzelaer; the Calvinist banishment and confiscation behind the over-determined 1591 terminus." })
+  },
+  {
+    n: 6,
+    short: "FMG, MedLands: Flanders, Hainaut (v5.0, 2025) — the tertiary pointer that carries the De Raadt citation.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority. The De Raadt citation above is taken from its footnote apparatus.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Foundation for Medieval Genealogy, MedLands: Flanders & Hainaut" })
+    ] })
+  },
+  {
+    n: 7,
+    short: "Buylaert, Repertorium van de Vlaamse adel (ca. 1350–1500) (Gent, 2011), p. 747.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Buylaert, Frederik. ",
+      /* @__PURE__ */ jsx("em", { children: "Repertorium van de Vlaamse adel (ca. 1350–ca. 1500)." }),
+      " ",
+      "Gent: Academia Press, 2011. P. 747 (Josse de Flandre and the cadet Praet branch), read directly within the project’s pp. 736–759 pass."
+    ] })
+  },
+  {
+    n: 8,
+    short: "Debrabandere, Woordenboek van de familienamen in België en Noord-Frankrijk (WFB2, 2003), via CBG Familienamenbank.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Debrabandere, Frans. ",
+      /* @__PURE__ */ jsx("em", { children: "Woordenboek van de familienamen in België en Noord-Frankrijk." }),
+      " ",
+      "LJ Veen, 2003. Van Vlaenderen entry via CBG Familienamenbank.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://www.cbgfamilienamen.nl", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "cbgfamilienamen.nl" })
+    ] })
+  },
+  {
+    n: 9,
+    short: "Debrabandere, Woordenboek van de familienamen in Zeeland (WFZ, 2009) — searched in full; no hereditary bearers.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Debrabandere, Frans. ",
+      /* @__PURE__ */ jsx("em", { children: "Woordenboek van de familienamen in Zeeland." }),
+      " 2009. Searched in full — no hereditary surname bearers.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://www.naamkunde.net/wp-content/uploads/2010/01/WZF-Debrabandere.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Free PDF, naamkunde.net" })
+    ] })
+  },
+  {
+    n: 10,
+    short: "Gysseling & Debrabandere, Persoonsnamen in de Vier Ambachten, 14e–15e eeuw, KCTD 71 (1999), pp. 491–588 — not yet read.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Gysseling, M. & Debrabandere, F. ",
+      /* @__PURE__ */ jsx("em", { children: "Persoonsnamen in de Vier Ambachten, 14e en 15e eeuw." }),
+      " ",
+      "KCTD vol. 71 (1999), pp. 491–588.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://openjournals.ugent.be/hctd", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Free via KCTD portal" }),
+      " ",
+      "— not yet read."
+    ] })
+  },
+  {
+    n: 11,
+    short: "Limburg-Stirum, Cartulaire de Louis de Male (Bruges, 1898–1901) — not yet consulted.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Limburg-Stirum, Th. de. ",
+      /* @__PURE__ */ jsx("em", { children: "Cartulaire de Louis de Male, comte de Flandre." }),
+      " ",
+      "Bruges, 1898–1901. Held at",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "http://lib.ugent.be/catalog/rug01:002005149", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library" }),
+      " ",
+      "— not yet consulted."
+    ] })
+  }
+];
+const CITES = {};
+notes.forEach((nt) => {
+  CITES[nt.n] = nt.short;
+});
 function GapDossierPage() {
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "The Documentary Gap, 1447–1580 | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "The 1447–1580 documentary gap between the comital bastard lines and the first parish-register Van Vlaenderen families of the Meetjesland. Archival evidence in hand, active targets, and four working hypotheses including a parallel West Flanders origin question." }),
@@ -10836,23 +11058,23 @@ function GapDossierPage() {
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"The Documentary Gap, 1447–1580","description":"The evidentiary gap between the last confirmed comital-line van Vlaenderen bearer (1447) and the Meetjesland parish cluster (fl. 1547–). Archival evidence, search record, active targets, and working hypotheses.","url":"https://vanvlaenderen.org/research/gap-dossier","inLanguage":"en","dateModified":"2026-04-12","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } }),
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"The Gap (1447–1580)","item":"https://vanvlaenderen.org/research/gap-dossier"}]}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${meetjeslandMap})`, backgroundPosition: "center center" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: "Van Vlaenderen · Research Dossier" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: "Van Vlaenderen · Research Dossier" }),
         /* @__PURE__ */ jsx("h1", { children: "The Documentary Gap" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: "1447–1580. The span between the last confirmed comital-line bearer and the first Meetjesland parish generation. This dossier names the gap, records what has been searched, and tracks the archival work required to close it." })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: "1447–1580. The span between the last confirmed comital-line bearer and the first Meetjesland parish generation. This dossier names the gap, records what has been searched, and tracks the archival work required to close it." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Research Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated June 2026" })
@@ -10873,7 +11095,7 @@ function GapDossierPage() {
           " (inference proposed for archival testing)."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Problem" }),
         /* @__PURE__ */ jsx("p", { children: "The Van Vlaenderen research has two well-documented clusters separated by a substantial chronological gap." }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -10894,11 +11116,15 @@ function GapDossierPage() {
           /* @__PURE__ */ jsx("em", { children: "The Praet line." }),
           " Louis Friese van Vlaenderen (d. Nicopolis, 1396) founded a parallel comital-bastard branch whose surname use is documented across seven generations. The",
           /* @__PURE__ */ jsx("strong", { children: " senior direct line" }),
-          " failed when Jan II van Vlaenderen died without issue on 10 December 1545, predeceasing his father Lodewijk IV — but the line did not end there. The lordship and the surname passed to a documented collateral branch: Joos (Josse) van Vlaenderen, son of Lodewijk II (d. before 30 Nov 1545, m. Martina van Moerkerke) → his son Jacob van Vlaanderen (d. 1566), who received Praet and Woestijne at Aalter by act of 25 September 1550 and married Catharina van Boetzelaer → Lodewijk V van Vlaanderen, who died sonless on 31 October 1591, in Calvinist exile — the last male of the titled line, with whom the surname in that branch ends (Verhoustraete 1967, pp. 101–113; Serrure 1863). The titled Praet line is therefore documented to 1591, directly overlapping the first parish-record generation of the Meetjesland cluster."
+          " failed when Jan II van Vlaenderen died without issue on 10 December 1545, predeceasing his father Lodewijk IV — but the line did not end there. The lordship and the surname passed to a documented collateral branch: Joos (Josse) van Vlaenderen, son of Lodewijk II (d. before 30 Nov 1545, m. Martina van Moerkerke) → his son Jacob van Vlaanderen (d. 1566), who received Praet and Woestijne at Aalter by act of 25 September 1550 and married Catharina van Boetzelaer → Lodewijk V van Vlaanderen, who died sonless on 31 October 1591, in Calvinist exile — the last male of the titled line, with whom the surname in that branch ends (Verhoustraete 1967, pp. 101–113",
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES[2] }),
+          "; Serrure 1863",
+          /* @__PURE__ */ jsx(Cite, { n: 3, text: CITES[3] }),
+          "). The titled Praet line is therefore documented to 1591, directly overlapping the first parish-record generation of the Meetjesland cluster."
         ] }),
         /* @__PURE__ */ jsx("p", { children: "The gap, precisely stated, is not a single span but a structural problem: two comital lines bearing the surname are documented above the gap — Victor's to 1447, the Praet line to 1591; a commoner cluster bearing the surname is documented in the parish registers from the 1580s; and no record has yet been located connecting either upper line to the lower cluster." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The 1517 Knesselare Charter — Closest Known Bridge ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelProbable}`, children: "Probable" })
@@ -10910,19 +11136,25 @@ function GapDossierPage() {
           /* @__PURE__ */ jsx("strong", { children: "Archival note:" }),
           " known to the project through De Raadt, ",
           /* @__PURE__ */ jsx("em", { children: "Sceaux armoriés des Pays-Bas" }),
-          ", vol. I (1898), p. 456, as cited in C. Cawley, ‘Medieval Lands’ (FMG). Neither the De Raadt volume nor the underlying archive has yet been directly consulted."
+          ", vol. I (1897), p. 456, as cited in C. Cawley, ‘Medieval Lands’ (FMG).",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES[6] }),
+          "Neither the De Raadt volume nor the underlying archive has yet been directly consulted."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Evidence from the Gap Period" }),
         /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "1.5rem" }, children: [
           "Bruges State Archives, TBO 184, bundles 21300–21302 (1545–49) — the Honnelede wardship file ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "Wardship and estate records naming Joos van Vlaenderen and his minor sons Jacob and Phillip (Phelips). An earlier version of this page read these bundles as the earliest attestations of the Meetjesland commoner cluster, with ‘no connection to either comital line established.’ That reading is superseded: the family of this file is now identified as the ",
+          "Wardship and estate records naming Joos van Vlaenderen and his minor sons Jacob and Phillip (Phelips).",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES[1] }),
+          " An earlier version of this page read these bundles as the earliest attestations of the Meetjesland commoner cluster, with ‘no connection to either comital line established.’ That reading is superseded: the family of this file is now identified as the ",
           /* @__PURE__ */ jsx("strong", { children: "Praet line's cadet branch" }),
-          ". Serrure 1863 names Joos's children Jacob, Philips, and Philippote; the Gruuthuse marriage anchors Joos as a son of Lodewijk II; and the ward Jacob is the same Jacob van Vlaanderen who received Praet and Woestijne at Aalter by act of 25 September 1550 (Verhoustraete 1967). The identification is Strongly Corroborated. These records therefore belong to the gap's ",
+          ". Serrure 1863 names Joos's children Jacob, Philips, and Philippote; the Gruuthuse marriage anchors Joos as a son of Lodewijk II; and the ward Jacob is the same Jacob van Vlaanderen who received Praet and Woestijne at Aalter by act of 25 September 1550 (Verhoustraete 1967). The identification is Strongly Corroborated.",
+          /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES[7] }),
+          "These records therefore belong to the gap's ",
           /* @__PURE__ */ jsx("em", { children: "upper" }),
           " (comital) anchor, not its lower (commoner) one."
         ] }),
@@ -10936,7 +11168,7 @@ function GapDossierPage() {
           " Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300–21302. Consulted April 2026. Reference: case 2026/0451."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Title-Loss Is Not Male-Line Extinction: The Cadet Frontier" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "The Praet line's documented end in 1591 is the end of the ",
@@ -10953,7 +11185,9 @@ function GapDossierPage() {
           /* @__PURE__ */ jsx("strong", { children: "The 1591 end was over-determined" }),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" }),
-          ". Lodewijk V's sonless death coincided with childlessness (Maria van Marnix died childless in 1580), debt (the forced sale of the Praet/Aalter estate), confiscation (the lordships sequestered during Catharina van Boetzelaer's Calvinist banishment), and religious exile (Lodewijk V was a Calvinist who died abroad). A title leaving a surname under that confluence carries no information about whether agnatic cadets survived elsewhere — a poorer, untitled, possibly Protestant cadet would have had neither the standing nor the confessional eligibility to claim a Flemish Catholic fief in 1591 (Verhoustraete 1967; Valkeneers & Soen 2014)."
+          ". Lodewijk V's sonless death coincided with childlessness (Maria van Marnix died childless in 1580), debt (the forced sale of the Praet/Aalter estate), confiscation (the lordships sequestered during Catharina van Boetzelaer's Calvinist banishment), and religious exile (Lodewijk V was a Calvinist who died abroad). A title leaving a surname under that confluence carries no information about whether agnatic cadets survived elsewhere — a poorer, untitled, possibly Protestant cadet would have had neither the standing nor the confessional eligibility to claim a Flemish Catholic fief in 1591 (Verhoustraete 1967; Valkeneers & Soen 2014",
+          /* @__PURE__ */ jsx(Cite, { n: 5, text: CITES[5] }),
+          ")."
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "The named frontier." }),
@@ -10961,7 +11195,9 @@ function GapDossierPage() {
           /* @__PURE__ */ jsx("strong", { children: "Philips van Vlaenderen" }),
           ", Joos's younger son, a ward of the Honnelede file, last attested around 1547–48 in a legal matter ",
           /* @__PURE__ */ jsx("em", { children: "'In Lande van Hollandt ende Zeelandt'" }),
-          " (RAB TBO 184 nr. 21300, Rekening B, fol. 16r) — plausibly connected, through his maternal van Moerckercke line, to the Mijnsheerenland van Moerkerken interests the senior line litigated before the Hof van Holland (Lauwens 2021); (2) the",
+          " (RAB TBO 184 nr. 21300, Rekening B, fol. 16r) — plausibly connected, through his maternal van Moerckercke line, to the Mijnsheerenland van Moerkerken interests the senior line litigated before the Hof van Holland (Lauwens 2021",
+          /* @__PURE__ */ jsx(Cite, { n: 4, text: CITES[4] }),
+          "); (2) the",
           /* @__PURE__ */ jsx("strong", { children: " three unnamed children of Lodewijk II" }),
           " — Verhoustraete records six children but names only three; and (3) the issue of Joos's daughter",
           " ",
@@ -10989,7 +11225,7 @@ function GapDossierPage() {
           " automatically this project's American / Meetjesland line. Philips bears on the comital-survival and Y-DNA questions; he is not (yet) a bridge across the gap this dossier documents, and nothing on this page should be read as presenting him as one."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Search Record — Negative and Partial Results" }),
         /* @__PURE__ */ jsx("p", { children: "The following sources have been searched without producing a bridging record:" }),
         /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: [
@@ -10997,13 +11233,19 @@ function GapDossierPage() {
           /* @__PURE__ */ jsx("em", { children: "Woordenboek van de familienamen in Zeeland" }),
           " (WFZ), 2009"
         ] }),
-        /* @__PURE__ */ jsx("p", { children: "Searched in full. One attestation in Zeeland (Aardenburg, 1309–10) refers to Count Robert de Béthune himself — Bucket 2 titular usage, not a surname bearer. No hereditary van Vlaenderen cluster in Zeeland. Strengthens East Flanders as the surname's geographic core." }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Searched in full. One attestation in Zeeland (Aardenburg, 1309–10) refers to Count Robert de Béthune himself — Bucket 2 titular usage, not a surname bearer. No hereditary van Vlaenderen cluster in Zeeland. Strengthens East Flanders as the surname's geographic core.",
+          /* @__PURE__ */ jsx(Cite, { n: 9, text: CITES[9] })
+        ] }),
         /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: [
           "Debrabandere, ",
           /* @__PURE__ */ jsx("em", { children: "Woordenboek van de familienamen in België en Noord-Frankrijk" }),
           " (WFB2), 2003"
         ] }),
-        /* @__PURE__ */ jsx("p", { children: "Van Vlaenderen entry read via CBG Familienamenbank. Pure place-name classification; three attestations (1280, 1376, 1426), all pre-cluster, none in the Meetjesland. Entry uncorrected in 2010 and 2019 corrigenda. Does not engage with the East Flanders parish-record concentration." }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Van Vlaenderen entry read via CBG Familienamenbank. Pure place-name classification; three attestations (1280, 1376, 1426), all pre-cluster, none in the Meetjesland. Entry uncorrected in 2010 and 2019 corrigenda. Does not engage with the East Flanders parish-record concentration.",
+          /* @__PURE__ */ jsx(Cite, { n: 8, text: CITES[8] })
+        ] }),
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "AGATHA portal — Staten van Goed searches, March 2026" }),
         /* @__PURE__ */ jsx("p", { children: "Searched Ambacht Assenede I & II, Boekhoute I–III, Waarschoot/Oostwinkel/Ronsele, and Heerlijkheid Praet met Oedelem for Van Vlaenderen entries to build the Rijksarchief Gent request list. Results being processed." }),
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "Familiekunde Vlaanderen, Aalter — visit March 2026" }),
@@ -11011,7 +11253,7 @@ function GapDossierPage() {
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "Rijksarchief Gent — Goal 1 and Goal 2 threads (appointment March 31, 2026)" }),
         /* @__PURE__ */ jsx("p", { children: "Twenty documents requested across two research threads. Results being processed. Any record naming a Van Vlaenderen individual between 1447 and 1580 in the Meetjesland zone would be significant." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Active Archival Targets" }),
         /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: [
           "1. Gysseling & Debrabandere, ",
@@ -11022,7 +11264,8 @@ function GapDossierPage() {
           "Personal names in Boekhoute, Assenede, Axel, and Hulst — the heart of the research zone — in the 14th and 15th centuries. Free via the KCTD portal at",
           " ",
           /* @__PURE__ */ jsx("a", { href: "https://openjournals.ugent.be/hctd", target: "_blank", rel: "noopener noreferrer", className: researchStyles.refLink, children: "openjournals.ugent.be/hctd" }),
-          ". The single highest-priority unread source."
+          ". The single highest-priority unread source.",
+          /* @__PURE__ */ jsx(Cite, { n: 10, text: CITES[10] })
         ] }),
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "2. The non-inheriting Praet cadets — Philips and the unnamed children of Lodewijk II" }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -11048,10 +11291,11 @@ function GapDossierPage() {
           "Primary cartulary for Louis II de Male's reign with an alphabetical personal names index. Explicitly cited in the WFB2 apparatus. Held at",
           " ",
           /* @__PURE__ */ jsx("a", { href: "http://lib.ugent.be/catalog/rug01:002005149", target: "_blank", rel: "noopener noreferrer", className: researchStyles.refLink, children: "Ghent University Library" }),
-          ". Most direct route to additional 14th-century charter evidence for either comital line."
+          ". Most direct route to additional 14th-century charter evidence for either comital line.",
+          /* @__PURE__ */ jsx(Cite, { n: 11, text: CITES[11] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Working Hypotheses" }),
         /* @__PURE__ */ jsx("p", { children: "Four hypotheses are currently viable. The first three address the Meetjesland documentary gap directly; the fourth is a parallel question about a separate West Flanders surname presence that overlaps with but is distinct from this dossier's primary question. None of the four is mutually exclusive with the others — the parish-register cluster could represent a mixed population drawing from more than one origin." }),
         /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "1.5rem" }, children: [
@@ -11098,7 +11342,7 @@ function GapDossierPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }, children: "Current status: documentary basis established by the April 2026 Vredius direct-reading; downstream descent for both Jean (1448 legitimation) and Karle (d. 1491) remains untraced. Hypothesis D does not directly address the Meetjesland gap but is recorded here for completeness, as the West Flanders bridge candidates are part of the same Maleanus bastard cohort and the questions are parallel." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Y-DNA as a Parallel Verification Strategy" }),
         /* @__PURE__ */ jsx("p", { children: "Documentary research alone cannot currently distinguish between the three Meetjesland-gap hypotheses (A, B, and C). Y-DNA testing offers a complementary path: if additional male-line Van Vlaenderen descendants can be recruited for comparison, a shared haplogroup across geographically separated lines would support a common patrilineal ancestor (Hypotheses A or B), while divergent haplogroups between branches would support independent emergence (Hypothesis C). Hypothesis D — the parallel West Flanders question — would similarly be informed by recruiting testers from any surviving lines descended from Robert van Vlaendren of Elverdinghe or Karle of Gruterssale. The American line has been tested (haplogroup R-FT1573, Big Y-700); no close database matches have been found to date. A documented descendant of Philips van Vlaenderen (the cadet-frontier lead above) would supply a comparison line for the comital patriline itself — though a result there bears on the comital-survival question, not automatically on the American line's descent." }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -11117,87 +11361,24 @@ function GapDossierPage() {
       ] }),
       /* @__PURE__ */ jsxs("section", { className: researchStyles.referenceList, children: [
         /* @__PURE__ */ jsx("h2", { children: "Notes & Bibliography" }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "1." }),
-          "Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300–21302 (1545–49). The Honnelede wardship file: Joos van Vlaenderen's minor sons Jacob and Philips as wards; the 1547–48 entry ",
-          /* @__PURE__ */ jsx("em", { children: "‘nopende Phelipe van Vlaendren … In Lande van Hollandt ende Zeelandt’" }),
-          " at nr. 21300, Rekening B, fol. 16r. Consulted April 2026. Reference: case 2026/0451."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "2." }),
-          "Verhoustraete, Arthur. ‘De heren van Praet te Oedelem.’ ",
-          /* @__PURE__ */ jsx("em", { children: "Jaarboek 1967" }),
+        notes.map(({ n, full }) => /* @__PURE__ */ jsxs("div", { id: `fn-${n}`, className: researchStyles.refItem, style: { scrollMarginTop: "6rem" }, children: [
+          /* @__PURE__ */ jsxs("span", { className: researchStyles.refNumber, children: [
+            n,
+            "."
+          ] }),
+          full,
           " ",
-          "(Bos en Beverveld), pp. 101–113. The 1545 senior-line failure, the collateral continuation (Joos → Jacob → Lodewijk V), the 1591 sonless terminus, and the post-1591 title succession (pp. 109–112)."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "3." }),
-          "Serrure, C.P., ed. ",
-          /* @__PURE__ */ jsx("em", { children: "Vaderlandsch Museum" }),
-          ", Deel 5. Gent, 1863. ‘De geslachten Van Praet, Van Moerkercke…,’ pp. 295–310 — names Joos's children Jacob, Philips, and Philippote; anchors Joos to Lodewijk II via the Gruuthuse marriage."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "4." }),
-          "Lauwens, Patrik. ",
-          /* @__PURE__ */ jsx("em", { children: "Verhalen uit de genealogie Van Praet." }),
-          " 2021. The senior line's Mijnsheerenland van Moerkerken / Hof van Holland litigation context for Philips's maternal van Moerckercke standing."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "5." }),
-          "Valkeneers, Nina & Soen, Violet. ‘Praet, Bronkhorst en Boetzelaer. Adellijke weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566–1567)’ (2014), pp. 265–284. Jacob van Vlaanderen × Catharina van Boetzelaer; the Calvinist banishment and confiscation behind the over-determined 1591 terminus."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "6." }),
-          "Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority. The De Raadt citation above is taken from its footnote apparatus.",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Foundation for Medieval Genealogy, MedLands: Flanders & Hainaut" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "7." }),
-          "Buylaert, Frederik. ",
-          /* @__PURE__ */ jsx("em", { children: "Repertorium van de Vlaamse adel (ca. 1350–ca. 1500)." }),
-          " ",
-          "Gent: Academia Press, 2011. P. 747 (Josse de Flandre and the cadet Praet branch), read directly within the project’s pp. 736–759 pass."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "8." }),
-          "Debrabandere, Frans. ",
-          /* @__PURE__ */ jsx("em", { children: "Woordenboek van de familienamen in België en Noord-Frankrijk." }),
-          " ",
-          "LJ Veen, 2003. Van Vlaenderen entry via CBG Familienamenbank.",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://www.cbgfamilienamen.nl", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "cbgfamilienamen.nl" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "9." }),
-          "Debrabandere, Frans. ",
-          /* @__PURE__ */ jsx("em", { children: "Woordenboek van de familienamen in Zeeland." }),
-          " 2009. Searched in full — no hereditary surname bearers.",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://www.naamkunde.net/wp-content/uploads/2010/01/WZF-Debrabandere.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Free PDF, naamkunde.net" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "10." }),
-          "Gysseling, M. & Debrabandere, F. ",
-          /* @__PURE__ */ jsx("em", { children: "Persoonsnamen in de Vier Ambachten, 14e en 15e eeuw." }),
-          " ",
-          "KCTD vol. 71 (1999), pp. 491–588.",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://openjournals.ugent.be/hctd", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Free via KCTD portal" }),
-          " ",
-          "— not yet read."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "11." }),
-          "Limburg-Stirum, Th. de. ",
-          /* @__PURE__ */ jsx("em", { children: "Cartulaire de Louis de Male, comte de Flandre." }),
-          " ",
-          "Bruges, 1898–1901. Held at",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "http://lib.ugent.be/catalog/rug01:002005149", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library" }),
-          " ",
-          "— not yet consulted."
-        ] })
+          /* @__PURE__ */ jsx(
+            "a",
+            {
+              href: `#fnref-${n}`,
+              className: researchStyles.refLink,
+              "aria-label": "Back to text",
+              title: "Back to text",
+              children: "↩"
+            }
+          )
+        ] }, n))
       ] })
     ] })
   ] });
@@ -12035,18 +12216,18 @@ function BibliographyPage() {
       });
     }
   }, [data, location.hash]);
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Sources & Scholarship — Van Vlaenderen" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Primary sources, archival finding aids, and scholarly literature cited in the Van Vlaenderen research dossiers." }),
       /* @__PURE__ */ jsx("link", { rel: "canonical", href: "https://vanvlaenderen.org/research/bibliography" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.inner, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.inner, children: [
       /* @__PURE__ */ jsx("h1", { children: "Sources & Scholarship" }),
       /* @__PURE__ */ jsx("p", { style: { color: "rgba(255,255,255,0.65)", marginBottom: "2rem", maxWidth: "680px", lineHeight: 1.7 }, children: "The primary sources, archival finding aids, and scholarly literature that underpin the research presented in the dossiers. Entries in the first section are directly quoted or cited. Entries in the second section are recommended reading for researchers interested in the broader historiographical context." }),
       error && /* @__PURE__ */ jsx("p", { style: { color: "#f87171" }, children: "Bibliography data could not be loaded." }),
       data && /* @__PURE__ */ jsxs(Fragment$1, { children: [
-        /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+        /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
           /* @__PURE__ */ jsx("h2", { children: data.sections.primarySources.label }),
           Object.values(data.sections.primarySources.subsections).map((sub) => /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2rem" }, children: [
             /* @__PURE__ */ jsx("h3", { style: {
@@ -12060,7 +12241,7 @@ function BibliographyPage() {
             sub.entries.map((e, i) => /* @__PURE__ */ jsx(EntryCard, { e }, i))
           ] }, sub.label))
         ] }),
-        /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+        /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
           /* @__PURE__ */ jsx("h2", { children: data.sections.scholarlyLiterature.label }),
           data.sections.scholarlyLiterature.groups.map((group) => /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2.5rem" }, children: [
             /* @__PURE__ */ jsx("h3", { style: {
@@ -12173,7 +12354,7 @@ function SurnameOriginsPage() {
     { name: "Jan van Vlaenderen", dates: "c. 1400–c. 1430", base: "tier2_r5" },
     { name: "Lodewijc van Vlaenderen Heer van Praet", dates: "c. 1440–1488", base: "tier2_r6" }
   ];
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: SO("meta_title") }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: SO("meta_description") }),
@@ -12184,26 +12365,26 @@ function SurnameOriginsPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Four Functions, Three Clusters — The Van Vlaenderen Surname in the Documentary Record","description":"A primary source and distributional analysis of the Van Vlaenderen surname across four documentary functions and three geographic clusters.","url":"https://vanvlaenderen.org/name/surname-origins","inLanguage":"en","dateModified":"2026-06-12","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$3.heroImg, style: { backgroundImage: `url(${knightPhilip})`, backgroundPosition: "top center" }, children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay }) }),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: SO("hero_eyebrow") }),
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$4.heroImg, style: { backgroundImage: `url(${knightPhilip})`, backgroundPosition: "top center" }, children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay }) }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: SO("hero_eyebrow") }),
         /* @__PURE__ */ jsx("h1", { children: SO("hero_title") }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: SO("hero_lead") })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: SO("hero_lead") })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: SO("dossier_title") }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: SO("dossier_meta") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: SO("challenge_h") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("challenge_p1") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("challenge_p2") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: SO("functions_h") }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("span", { dangerouslySetInnerHTML: html("functions_intro_pre") }),
@@ -12227,7 +12408,7 @@ function SurnameOriginsPage() {
           ] })
         ] }, num))
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: SO("dist_h") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("dist_intro") }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.methodologyBox, style: { marginTop: "1.5rem", marginBottom: "2rem" }, children: [
@@ -12254,7 +12435,7 @@ function SurnameOriginsPage() {
           /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("obs_zeeland") })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: SO("progenitor_h") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("progenitor_intro") }),
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", marginBottom: "1rem", marginTop: "2rem", textTransform: "uppercase", letterSpacing: "0.08em", fontSize: "0.82rem" }, children: SO("tier1_h") }),
@@ -12299,7 +12480,7 @@ function SurnameOriginsPage() {
           ] }, row2.base)) })
         ] }) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: SO("bastard_h") }),
         /* @__PURE__ */ jsx("p", { children: SO("bastard_intro") }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -12311,7 +12492,7 @@ function SurnameOriginsPage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("bastard_french") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("bastard_zeeland") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: SO("toponymy_h") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("toponymy_intro") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("toponymy_geography") }),
@@ -12320,7 +12501,7 @@ function SurnameOriginsPage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("toponymy_eeklo") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("toponymy_close") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           SO("register_h"),
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: t("research.method_corroborated_label") })
@@ -12335,7 +12516,7 @@ function SurnameOriginsPage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("register_third") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("register_refinement") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           SO("excludes_h"),
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: t("research.method_corroborated_label") })
@@ -12344,7 +12525,7 @@ function SurnameOriginsPage() {
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("excludes_half") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("excludes_vlaenderman") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: SO("volck_h") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("volck_p1") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("volck_p2") }),
@@ -12374,13 +12555,13 @@ function SurnameOriginsPage() {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: SO("conclusions_h") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("conclusions_p1") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("conclusions_p2") }),
         /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("conclusions_p3") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: SO("notes_h") }),
         /* @__PURE__ */ jsxs("div", { style: { fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.75 }, children: [
           /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: html("note1") }),
@@ -12398,7 +12579,7 @@ function SurnameOriginsPage() {
   ] });
 }
 function NieusSealPage() {
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Seals, Lions, and the Politics of a Surname | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "How twelfth-century Flemish sigillography illuminates the political and dynastic weight of territorial designations — and what that means for the Van Vlaenderen surname." }),
@@ -12409,16 +12590,16 @@ function NieusSealPage() {
       /* @__PURE__ */ jsx("meta", { property: "og:type", content: "article" }),
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Seals, Lions, and the Politics of a Surname","description":"How twelfth-century Flemish sigillography illuminates the political and dynastic weight of territorial designations.","url":"https://vanvlaenderen.org/research/nieus-seals","inLanguage":"en","dateModified":"2026-04-15","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
-      /* @__PURE__ */ jsx("div", { className: styles$3.heroImg, style: { backgroundImage: `url(${lionShield})`, backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundColor: "rgba(10,8,4,0.85)" }, children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay }) }),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: "Van Vlaenderen · Research Articles" }),
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
+      /* @__PURE__ */ jsx("div", { className: styles$4.heroImg, style: { backgroundImage: `url(${lionShield})`, backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundColor: "rgba(10,8,4,0.85)" }, children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay }) }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: "Van Vlaenderen · Research Articles" }),
         /* @__PURE__ */ jsx("h1", { children: "Seals, Lions, and the Politics of a Surname" }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: "How twelfth-century Flemish noble seal culture illuminates the political and dynastic weight of territorial designations — and what that means for a surname that claims to come from Flanders itself." })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: "How twelfth-century Flemish noble seal culture illuminates the political and dynastic weight of territorial designations — and what that means for a surname that claims to come from Flanders itself." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Research Article" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "April 2026" })
@@ -12427,7 +12608,7 @@ function NieusSealPage() {
         /* @__PURE__ */ jsx("span", { className: researchStyles.methodologyTitle, style: { fontSize: "0.9rem" }, children: "Scope and Evidentiary Status" }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", color: "var(--text-muted)", marginBottom: 0 }, children: 'This article draws on Jean-François Nieus, "Aristocratic seal ownership in twelfth-century Flanders: A world in between" (preprint, Academia.edu, 2021; University of Namur; forthcoming in peer-reviewed publication), which covers the period 1071–1200. The Van Vlaenderen bastard lines documented in this project date from the fourteenth and fifteenth centuries — two hundred years later. This article does not argue direct evidential continuity between the two periods. It argues contextual depth: the political and symbolic culture of territorial identity that Nieus documents was the inherited framework within which the later comital bastard lines operated. The argument is interpretive scaffolding, not proof of descent.' })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Lion on the Seal" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "The black lion on gold that names this project — and that defines Flemish heraldic identity to this day — entered the documentary record in 1163. In that year, Count Philip of Alsace placed the lion device on his seal matrix, and it became, in Nieus's formulation, the dominant heraldic reference point for the Flemish nobility through ",
@@ -12440,7 +12621,7 @@ function NieusSealPage() {
           ", from Flanders — is the verbal equivalent of the lion on the seal. Both are territorial identifiers that, in an elite milieu, carry political and dynastic weight far beyond their literal geographic meaning."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Imperial Flanders and the Politics of Territorial Identity" }),
         /* @__PURE__ */ jsx("p", { children: "Nieus's central argument concerns what he calls Imperial Flanders — the eastern zone of the County, including Aalst, Dendermonde, Gavere, and Grammene, which remained part of the Holy Roman Empire and sat in a zone of contested authority between Flemish comital power and the Empire. Noble dynasties in this zone, Nieus shows, deliberately adopted non-comital seal iconography — Brabantine ducal styles rather than Flemish comital ones — as a symbolic assertion of local autonomy and political positioning. As Nieus concludes: in certain circumstances, aristocratic seals assumed a truly political dimension." }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -12454,7 +12635,7 @@ function NieusSealPage() {
           " to them through the grant of lordships and the formal recognition of their parentage, he was operating within a centuries-old tradition of territorial identity as dynastic claim. The name was not incidental; it was constitutive."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Dover Recognitio, 1163" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "Among the signatories to the 1163 Dover Recognitio — a document recording the political relationships of the Flemish nobility at the moment Philip of Alsace was establishing his comital authority — Nieus identifies ",
@@ -12464,7 +12645,7 @@ function NieusSealPage() {
         /* @__PURE__ */ jsx("p", { children: "Michael II of Harnes appears here as a named figure from exactly the noble circles and exactly the geographic zone — the Cassel castellany — that our research identifies as the likely locus of the French Flanders Van Vlaenderen cluster. His presence in this document does not establish a connection to the later Van Vlaenderen lines; the dates are two centuries apart. But it grounds the Cassel area in the politically aware Flemish seal culture that Nieus documents, and it confirms that the castellany of Cassel was, from at least 1163, embedded in the network of comital power and identity from which the Van Vlaenderen surname later emerges." }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.875rem", color: "var(--text-muted)", fontStyle: "italic" }, children: "Note: the connection between Michael II of Harnes and any Van Vlaenderen bastard line is a project hypothesis, not derived from Nieus." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "The Praet Lordship in the Twelfth Century" }),
         /* @__PURE__ */ jsxs("p", { children: [
           "Nieus's appendix confirms ",
@@ -12473,7 +12654,7 @@ function NieusSealPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { children: "This does not establish genealogical continuity between the twelfth-century lords of Praet and the fourteenth-century Van Vlaenderen line. Lordships changed hands, were consolidated, divided, and reassigned constantly in the medieval Flemish context. What it does establish is that the Praet lordship was a real territorial entity with documented noble standing from at least the 1190s — which makes the 1373 grant to Loys le Frison a grant of something with genuine territorial weight, not a nominal title." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "What This Means for the Van Vlaenderen Hypothesis" }),
         /* @__PURE__ */ jsx("p", { children: "Nieus's research does three things for this project, none of them constituting direct proof of anything in our genealogical argument, but all of them providing genuine historical depth." }),
         /* @__PURE__ */ jsx("p", { children: "First, it grounds the lion symbolism of this project in documented heraldic history. The lion that names Lions of Flanders is not a romantic appropriation — it is the specific device that Count Philip of Alsace placed on his seal in 1163 and that became the definitive visual identity of the County of Flanders. The project's name is historically grounded." }),
@@ -12484,7 +12665,7 @@ function NieusSealPage() {
         ] }),
         /* @__PURE__ */ jsx("p", { children: "Third, it confirms the Cassel and Praet territories as documented nodes in the network of Flemish noble power from the twelfth century — providing two centuries of historical depth behind the fourteenth-century grants that are the first documentary evidence for the Van Vlaenderen surname." })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Citation" }),
         /* @__PURE__ */ jsxs("div", { style: { fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.8 }, children: [
           /* @__PURE__ */ jsx("p", { children: 'Nieus, Jean-François. "Aristocratic seal ownership in twelfth-century Flanders: A world in between." Preprint. Academia.edu, 2021. University of Namur. Forthcoming in peer-reviewed publication. Full text on file with project.' }),
@@ -12519,7 +12700,7 @@ const thStyle = {
   borderBottom: "1px solid rgba(232,184,48,0.3)"
 };
 function DrinchamDossierPage() {
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: "Jan sans terre van Vlaenderen — Archival Dossier | vanvlaenderen.org" }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: "Primary source dossier for Jan 'sans terre' van Vlaenderen and the Drincham line: the 1383 land grant, four documented generations in the Cassel area, the Veurne epitaph of Jacques de Drincham, and the geographic-documentary case for French Flanders surname origin." }),
@@ -12531,23 +12712,23 @@ function DrinchamDossierPage() {
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Jan sans terre van Vlaenderen \\u2014 Archival Dossier","description":"Primary source dossier for Jan sans terre van Vlaenderen and the Drincham line.","url":"https://vanvlaenderen.org/research/drincham-dossier","inLanguage":"en","dateModified":"2026-06-12","author":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"publisher":{"@type":"Organization","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"isPartOf":{"@type":"WebSite","name":"Van Vlaenderen","url":"https://vanvlaenderen.org"},"copyrightYear":2026,"copyrightHolder":[{"@type":"Person","name":"Michael Van Flandern"},{"@type":"Person","name":"Constance Van Flandern"}],"license":"https://creativecommons.org/licenses/by/4.0/"}` } }),
       /* @__PURE__ */ jsx("script", { type: "application/ld+json", dangerouslySetInnerHTML: { __html: `{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vanvlaenderen.org/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://vanvlaenderen.org/research"},{"@type":"ListItem","position":3,"name":"Drincham Dossier","item":"https://vanvlaenderen.org/research/drincham-dossier"}]}` } })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.heroStrip, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.heroStrip, children: [
       /* @__PURE__ */ jsx(
         "div",
         {
-          className: styles$3.heroImg,
+          className: styles$4.heroImg,
           style: { backgroundImage: `url(${knightPhilip})`, backgroundPosition: "top center" },
-          children: /* @__PURE__ */ jsx("div", { className: styles$3.heroImgOverlay })
+          children: /* @__PURE__ */ jsx("div", { className: styles$4.heroImgOverlay })
         }
       ),
-      /* @__PURE__ */ jsxs("div", { className: styles$3.heroText, children: [
-        /* @__PURE__ */ jsx("div", { className: styles$3.eyebrow, children: "Van Vlaenderen · Archival Dossier" }),
+      /* @__PURE__ */ jsxs("div", { className: styles$4.heroText, children: [
+        /* @__PURE__ */ jsx("div", { className: styles$4.eyebrow, children: "Van Vlaenderen · Archival Dossier" }),
         /* @__PURE__ */ jsx("h1", { children: 'Jan "sans terre" van Vlaenderen' }),
         /* @__PURE__ */ jsx("div", { className: "gold-rule" }),
-        /* @__PURE__ */ jsx("p", { className: styles$3.heroLead, children: "Natural son of Louis II de Male, Count of Flanders; lord of Drincham near Cassel, French Flanders; progenitor of the most plausible documented founding line for the French Flanders Van Vlaenderen surname cluster. Updated April 2026 from direct reading of Vredius; extended June 2026 from Donche's records-based study of the line." })
+        /* @__PURE__ */ jsx("p", { className: styles$4.heroLead, children: "Natural son of Louis II de Male, Count of Flanders; lord of Drincham near Cassel, French Flanders; progenitor of the most plausible documented founding line for the French Flanders Van Vlaenderen surname cluster. Updated April 2026 from direct reading of Vredius; extended June 2026 from Donche's records-based study of the line." })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.content, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
       /* @__PURE__ */ jsxs("div", { className: researchStyles.dossierHeader, children: [
         /* @__PURE__ */ jsx("h2", { className: researchStyles.dossierTitle, children: "Archival Dossier" }),
         /* @__PURE__ */ jsx("div", { className: researchStyles.dossierMeta, children: "Updated June 2026" })
@@ -12592,7 +12773,7 @@ function DrinchamDossierPage() {
           " (Douai, 1631), Livre 2, Chapitre XXXI."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Identity and Parentage ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -12636,7 +12817,7 @@ function DrinchamDossierPage() {
           /* @__PURE__ */ jsx("p", { children: "This diagram shows five generations of the Drincham line descending from Louis II de Male, Count of Flanders (1330–1384). Generation 2: Jan sans terre van Vlaenderen (died 25 September 1396 at Nicopolis), natural son of Louis de Male (his mother is not securely identified); granted the castle and lordship of Drincham near Cassel on 22 November 1383; married Guillemette de Nevele. Generation 3: Jan van Vlaenderen, Lord of Drincham, married Isabella de Ghistelles Dame de Vissaert. Generation 4: four documented sons — Jan (Lord of Drincham, married Isabella de Vernieulles), Jacques de Drincham (died 10 April 1459, Bailiff of Veurne, his church epitaph preserved in Gaillard via Vredius is the line's most concrete physical evidence), Loys de Drincham, and Francq de Drincham. Generation 5: Jan III's documented children — Philippe de Flandres (died unmarried, line terminates), Jan de Flandres (legitimated at Arras, last documented member of the Drincham line in Vredius), and three unnamed daughters. After circa 1473 the Drincham line is no longer documented in Vredius. For the 15th-to-16th-century evidentiary gap and the French Flanders cluster hypothesis, see the Gap Dossier." })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The 1383 Land Grant ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -12667,7 +12848,7 @@ function DrinchamDossierPage() {
           " this date would establish a pre-bastard Function 3 origin for the French Flanders cluster; anything after 1383 is more plausibly a branch or continuation of this documented line."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The Four Documented Generations ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -12774,7 +12955,7 @@ function DrinchamDossierPage() {
           ] })
         ] }) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "The Veurne Epitaph of Jacques de Drincham ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
@@ -12806,7 +12987,7 @@ function DrinchamDossierPage() {
           " — are directly derived from his mother Isabella de Ghistelles (Gen 2 wife) and confirm the dynastic lineage visually. The Flanders canton explicitly asserts comital bastard descent."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Beyond Vredius: Six Generations to the Mid-Sixteenth Century ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
@@ -12852,7 +13033,7 @@ function DrinchamDossierPage() {
           ", pp. 753 and 756), de l'Espinoy (1631, ch. XXXI), and de Lichtervelde (1935). The founding filiation — Jan sans terre to the second-generation Jan — is graded Probable pending the ADN Lille B-series record of the lordship's descent after 1396 (see the generations table above)."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Geographic Significance and the French Flanders Hypothesis ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelHypothesis}`, children: "Hypothesis" })
@@ -12874,7 +13055,7 @@ function DrinchamDossierPage() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Relationship to the Other Bastard Lines" }),
         /* @__PURE__ */ jsx("p", { children: "Jan sans terre, Loys le Frison (Praet line), and Loys le Hase were all killed together at Nicopolis on 25 September 1396. The Gaillard text names all three in a single passage under the Van Vlaenderen surname, confirming the name was used by multiple natural sons simultaneously as a shared marker of comital bastard identity — not unique to any one branch." }),
         /* @__PURE__ */ jsx("p", { children: "The Drincham line is geographically and genealogically distinct from the Victor line (Meetjesland/Belgian cluster) and the Praet line (Franc de Bruges/Brabant cluster). The three lines represent parallel surname-carrying foundations in different regions of Flanders, each anchored to a specific lordship granted by Louis de Male in the 1373–1399 period." }),
@@ -12886,7 +13067,7 @@ function DrinchamDossierPage() {
           "."
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Notes and Sources" }),
         /* @__PURE__ */ jsxs("div", { className: researchStyles.referenceList, children: [
           /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
@@ -12944,16 +13125,16 @@ function DrinchamDossierPage() {
 }
 function LicensePage() {
   const { t } = useTranslation();
-  return /* @__PURE__ */ jsxs("div", { className: styles$3.page, children: [
+  return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
       /* @__PURE__ */ jsx("title", { children: `${t("license.page_title")} — Van Vlaenderen` }),
       /* @__PURE__ */ jsx("meta", { name: "description", content: t("license.meta_description") }),
       /* @__PURE__ */ jsx("link", { rel: "canonical", href: "https://vanvlaenderen.org/license" })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.inner, children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$4.inner, children: [
       /* @__PURE__ */ jsx("h1", { children: t("license.heading") }),
       /* @__PURE__ */ jsx("p", { style: { color: "rgba(255,255,255,0.75)", marginBottom: "2.5rem", maxWidth: "680px", lineHeight: 1.7 }, children: t("license.intro") }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("license.research_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("license.research_body1") }),
         /* @__PURE__ */ jsx("p", { children: t("license.research_body2") }),
@@ -12968,12 +13149,12 @@ function LicensePage() {
           }
         ) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("license.transcriptions_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("license.transcriptions_body1") }),
         /* @__PURE__ */ jsx("p", { children: t("license.transcriptions_body2") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("license.code_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("license.code_body") }),
         /* @__PURE__ */ jsx("p", { style: { fontFamily: "var(--font-ui)", fontSize: "0.85rem", color: "var(--text-muted)" }, children: /* @__PURE__ */ jsx(
@@ -12987,11 +13168,11 @@ function LicensePage() {
           }
         ) })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("license.third_party_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("license.third_party_body") })
       ] }),
-      /* @__PURE__ */ jsxs("section", { className: styles$3.section, children: [
+      /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: t("license.contact_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("license.contact_body") })
       ] }),
