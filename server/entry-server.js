@@ -11891,7 +11891,34 @@ function MarkdownDoc({ source }) {
     }
   ) });
 }
+function DatabaseTab() {
+  return /* @__PURE__ */ jsxs("div", { style: mdWrap, children: [
+    /* @__PURE__ */ jsx("h1", { style: { color: "#e8b830", borderBottom: "1px solid rgba(232,184,48,0.3)", paddingBottom: "0.4rem" }, children: "Records Database" }),
+    /* @__PURE__ */ jsx("p", { children: "Live editor over the Van Vlaenderen records database — persons, events, attestations, and relationships, hosted on Supabase. Browse and search the corpus, track research coverage by municipality, and add or propose new records." }),
+    /* @__PURE__ */ jsx("p", { style: { color: "#c2c7d0", fontSize: "0.88rem" }, children: "Supabase login required. Access is role-gated: the curator writes directly; contributors submit proposals for review. The page shows nothing until you sign in." }),
+    /* @__PURE__ */ jsx("p", { style: { marginTop: "1.5rem" }, children: /* @__PURE__ */ jsx(
+      "a",
+      {
+        href: "/r/e1e3b0852b/",
+        target: "_blank",
+        rel: "noopener noreferrer",
+        style: {
+          display: "inline-block",
+          background: "rgba(232,184,48,0.15)",
+          border: "1px solid rgba(232,184,48,0.4)",
+          color: "#e8b830",
+          padding: "0.6rem 1.2rem",
+          borderRadius: "6px",
+          textDecoration: "none",
+          fontWeight: "bold"
+        },
+        children: "Open the records editor →"
+      }
+    ) })
+  ] });
+}
 const TABS = [
+  { id: "database", label: "Database" },
   { id: "research", label: "Research To-Do" },
   { id: "sources", label: "Sources & Reading" },
   { id: "analysis", label: "Analysis Log" },
@@ -11899,26 +11926,16 @@ const TABS = [
   { id: "belgium", label: "Belgium Trip 2026" }
 ];
 function DocsPage() {
-  const [active2, setActive] = useState("research");
+  const [active2, setActive] = useState("database");
   return /* @__PURE__ */ jsxs("div", { style: page, children: [
     /* @__PURE__ */ jsxs("div", { style: header, children: [
       /* @__PURE__ */ jsx("div", { style: { fontSize: "0.75rem", letterSpacing: "0.1em", color: "#e8b830", textTransform: "uppercase", marginBottom: "0.25rem" }, children: "Van Vlaenderen · Working Documents" }),
       /* @__PURE__ */ jsx("h1", { style: { margin: 0, fontSize: "1.4rem", color: "#e6e6e6" }, children: "Research & Project Files" }),
-      /* @__PURE__ */ jsx("p", { style: { margin: "0.35rem 0 0", fontSize: "0.82rem", color: "#666" }, children: "Private — not indexed or linked from the public site. Share URL directly with collaborators." }),
-      /* @__PURE__ */ jsxs("p", { style: { margin: "0.6rem 0 0", fontSize: "0.85rem" }, children: [
-        /* @__PURE__ */ jsx(
-          "a",
-          {
-            href: "/r/e1e3b0852b/",
-            style: { color: "#e8b830", textDecoration: "none", borderBottom: "1px solid rgba(232,184,48,0.4)" },
-            children: "→ Records database (live editor)"
-          }
-        ),
-        /* @__PURE__ */ jsx("span", { style: { color: "#666", marginLeft: "0.6rem" }, children: "Supabase login required." })
-      ] })
+      /* @__PURE__ */ jsx("p", { style: { margin: "0.35rem 0 0", fontSize: "0.82rem", color: "#9ca3af" }, children: "Private — not indexed or linked from the public site. Share URL directly with collaborators." })
     ] }),
     /* @__PURE__ */ jsx("div", { style: tabBar, children: TABS.map((tab2) => /* @__PURE__ */ jsx("button", { style: tabBtn(active2 === tab2.id), onClick: () => setActive(tab2.id), children: tab2.label }, tab2.id)) }),
     /* @__PURE__ */ jsxs("div", { style: content, children: [
+      active2 === "database" && /* @__PURE__ */ jsx(DatabaseTab, {}),
       active2 === "research" && /* @__PURE__ */ jsx(MarkdownDoc, { source: researchTodo }),
       active2 === "sources" && /* @__PURE__ */ jsx(MarkdownDoc, { source: readingList }),
       active2 === "analysis" && /* @__PURE__ */ jsx(MarkdownDoc, { source: analysisSessions }),
