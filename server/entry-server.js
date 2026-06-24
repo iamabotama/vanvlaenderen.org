@@ -1,5 +1,5 @@
 import { jsxs, jsx, Fragment as Fragment$1 } from "react/jsx-runtime";
-import React4, { Component, useEffect, useRef, useState, useCallback, useMemo, Fragment, StrictMode } from "react";
+import React4, { Component, useEffect, useRef, useState, useCallback, useMemo, Fragment, useId, StrictMode } from "react";
 import { renderToString } from "react-dom/server";
 import { useLocation, Link, Routes, Route, Navigate, StaticRouter } from "react-router-dom";
 import i18n from "i18next";
@@ -6034,6 +6034,179 @@ function ResearchPage() {
     ] })
   ] });
 }
+const wrap = "_wrap_cs2e6_6";
+const sup = "_sup_cs2e6_12";
+const ref = "_ref_cs2e6_16";
+const popover = "_popover_cs2e6_32";
+const popNum = "_popNum_cs2e6_64";
+const popText = "_popText_cs2e6_70";
+const popJump = "_popJump_cs2e6_74";
+const styles$3 = {
+  wrap,
+  sup,
+  ref,
+  popover,
+  popNum,
+  popText,
+  popJump
+};
+function Cite({ n, text, loc, repeat }) {
+  const [open, setOpen] = useState(false);
+  const [pinned, setPinned] = useState(false);
+  const wrapRef = useRef(null);
+  const hideTimer = useRef(null);
+  const popId = useId();
+  const show = useCallback(() => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    setOpen(true);
+  }, []);
+  const scheduleHide = useCallback(() => {
+    if (pinned) return;
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    hideTimer.current = setTimeout(() => setOpen(false), 140);
+  }, [pinned]);
+  useEffect(() => {
+    if (!pinned) return;
+    const onDown = (e) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target)) {
+        setPinned(false);
+        setOpen(false);
+      }
+    };
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setPinned(false);
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [pinned]);
+  useEffect(() => () => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+  }, []);
+  return /* @__PURE__ */ jsxs(
+    "span",
+    {
+      ref: wrapRef,
+      className: styles$3.wrap,
+      onMouseEnter: show,
+      onMouseLeave: scheduleHide,
+      children: [
+        /* @__PURE__ */ jsx("sup", { className: styles$3.sup, children: /* @__PURE__ */ jsx(
+          "a",
+          {
+            href: `#fn-${n}`,
+            id: repeat ? void 0 : `fnref-${n}`,
+            className: styles$3.ref,
+            "aria-describedby": open ? popId : void 0,
+            onFocus: show,
+            onBlur: scheduleHide,
+            onClick: (e) => {
+              e.preventDefault();
+              setPinned((p) => {
+                const next = !p;
+                setOpen(next);
+                return next;
+              });
+            },
+            children: n
+          }
+        ) }),
+        open && /* @__PURE__ */ jsxs(
+          "span",
+          {
+            role: "tooltip",
+            id: popId,
+            className: styles$3.popover,
+            onMouseEnter: show,
+            onMouseLeave: scheduleHide,
+            children: [
+              /* @__PURE__ */ jsxs("span", { children: [
+                /* @__PURE__ */ jsx("span", { className: styles$3.popNum, children: n }),
+                /* @__PURE__ */ jsx("span", { className: styles$3.popText, children: loc ? `${text} — ${loc}` : text })
+              ] }),
+              /* @__PURE__ */ jsx("br", {}),
+              /* @__PURE__ */ jsx("a", { href: `#fn-${n}`, className: styles$3.popJump, children: "full note ↓" })
+            ]
+          }
+        )
+      ]
+    }
+  );
+}
+const notes$5 = [
+  {
+    n: 1,
+    short: "Vredius, Olivarius (Olivier de Wree). Genealogia Comitum Flandriae. Bruges, 1643.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Vredius, Olivarius (Olivier de Wree). ",
+      /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae" }),
+      ", Pars secunda. Bruges, 1643. Pp.285–287: the three Ghent partition-court charters and the Oostborch epitaph; direct reading April 2026. FMG MedLands: Flanders, Hainaut (v5.0, January 2025) was consulted as a tertiary pointer to these pages.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Foundation for Medieval Genealogy, MedLands: Flanders & Hainaut" })
+    ] })
+  },
+  {
+    n: 2,
+    short: "Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Inventaris Onroerend Erfgoed, Erfgoedobject 33384" })
+    ] })
+  },
+  {
+    n: 3,
+    short: "Bethune, J.B. de. Epitaphes et monuments des églises de la Flandre. Third part. 1900.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Bethune, J.B. de. ",
+      /* @__PURE__ */ jsx("em", { children: "Epitaphes et monuments des eglises de la Flandre." }),
+      " Third part. 1900. p.356. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286–287, from which it is cited above. Not yet consulted directly by the project."
+    ] })
+  },
+  {
+    n: 4,
+    short: "Degryse, R. Willem Beukel(s) van Hughevliet. De Vlaamse Gids 38 (1954).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Degryse, R. Willem Beukel(s) van Hughevliet. ",
+      /* @__PURE__ */ jsx("em", { children: "De Vlaamse Gids" }),
+      " 38 (1954).",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://www.dbnl.org/tekst/_vla001195401_01/_vla001195401_01_0055.php", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "DBNL, Vlaamse Stam (1954)" })
+    ] })
+  },
+  {
+    n: 5,
+    short: "Tailler, Margaux. Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees. MA thesis, Ghent University, 2011.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Tailler, Margaux. ",
+      /* @__PURE__ */ jsx("em", { children: "Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees." }),
+      " MA thesis, Ghent University, 2011. Supervised by Jan Dumolyn.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library, Thesis RUG01-001786522 (2012)" })
+    ] })
+  },
+  {
+    n: 6,
+    short: "Espinoy, Recherche des antiquitez et noblesse de Flandres (Douai, 1631).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Espinoy, Philippe de l'. ",
+      /* @__PURE__ */ jsx("em", { children: "Recherche des antiquitez et noblesse de Flandres." }),
+      " Douai, 1631.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://gallica.bnf.fr/ark:/12148/bpt6k1180858", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Free access (Gallica / BnF)" })
+    ] })
+  }
+];
+const CITES$5 = {};
+notes$5.forEach((nt) => {
+  CITES$5[nt.n] = nt.short;
+});
 function VictorLineagePage() {
   const { t } = useTranslation();
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
@@ -6072,7 +6245,11 @@ function VictorLineagePage() {
           "Identity and Parentage ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
-        /* @__PURE__ */ jsx("p", { children: "Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders (1330–1384). Espinoy (1631), Livre 2, Ch. XXXI, p. 69, records his parentage among the natural sons of Louis II. His mother is identified in the 12 May 1427 charter as Mergriete Haelfhuuts (Heinricx Mayen…wijf). Victor is styled Seigneur d'Ursele et de Wesseghem and is documented as a Burgundian admiral and captain of Biervliet." })
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders (1330–1384). Espinoy records his parentage among the natural sons of Louis II.",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES$5[6], loc: "Livre 2, Ch. XXXI, p. 69" }),
+          " His mother is identified in the 12 May 1427 charter as Mergriete Haelfhuuts (Heinricx Mayen…wijf). Victor is styled Seigneur d'Ursele et de Wesseghem and is documented as a Burgundian admiral and captain of Biervliet."
+        ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
@@ -6090,21 +6267,24 @@ function VictorLineagePage() {
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "Three charters from the Ghent partition court records, preserved in Vredius (1643) ",
-          /* @__PURE__ */ jsx("em", { children: "Pars secunda" }),
-          " pp.285–287 (direct reading, April 2026), form the documentary nucleus of Victor's line. Together they span twenty years (1427–1447) and name all three of Victor's acknowledged natural sons."
+          "Three charters from the Ghent partition court records form the documentary nucleus of Victor's line.",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$5[1], loc: "Pars secunda, pp. 285–287; direct reading, April 2026" }),
+          " Together they span twenty years (1427–1447) and name all three of Victor's acknowledged natural sons."
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "Charter 1 (12 May 1427):" }),
-          " Mergriete Haelfhuuts, Victor's mother, donates property to 'Lodekinen ende Hannekinen' (Lodewyc and Janne), Victor's natural sons by Alix van Boyeghem, and to 'Adaemkine' (Adam), his natural son by Gertrud Lindekens (Vredius p.285)."
+          " Mergriete Haelfhuuts, Victor's mother, donates property to 'Lodekinen ende Hannekinen' (Lodewyc and Janne), Victor's natural sons by Alix van Boyeghem, and to 'Adaemkine' (Adam), his natural son by Gertrud Lindekens.",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$5[1], loc: "p. 285", repeat: true })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "Charter 2 (10 March 1441 O.S. = 1442 N.S.):" }),
-          " Mergriete donates to 'Lodewyc, Janne ende Adam van Vlaendren natuerliche sonen van wijlen edelen…mer Victor van Vlaendren heere was van Orsele ende van Wesseghem.' Victor is now described as deceased ('wijlen') (Vredius pp.285–286)."
+          " Mergriete donates to 'Lodewyc, Janne ende Adam van Vlaendren natuerliche sonen van wijlen edelen…mer Victor van Vlaendren heere was van Orsele ende van Wesseghem.' Victor is now described as deceased ('wijlen').",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$5[1], loc: "pp. 285–286", repeat: true })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "Charter 3 (18 March 1446 O.S. = 1447 N.S.):" }),
-          " 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem' donates money from 'joncfr Margriete Aelhuuts zijn groete vrauwe' to Christiane van Rouse. Adam is the active donor — the only charter where he acts independently (Vredius pp.286–287)."
+          " 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem' donates money from 'joncfr Margriete Aelhuuts zijn groete vrauwe' to Christiane van Rouse. Adam is the active donor — the only charter where he acts independently.",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$5[1], loc: "pp. 286–287", repeat: true })
         ] })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: researchStyles.treeContainer, children: [
@@ -6127,8 +6307,15 @@ function VictorLineagePage() {
           "Lodewyc's Descendants ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
-        /* @__PURE__ */ jsx("p", { children: "Lodewyc van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch, preserved in Vredius (1643) pp.286–287 (Gaillard MS), records the burial of Jacqueline and nearby 'haer Joos van Vlaenderen fs Lodewijcx.' Josse died young and cannot be the Joos van Vlaenderen of the 1545–49 Brugse Vrije wardship records (the Praet cadet) — but his existence confirms the name Josse/Joos was in active use in Victor's direct line." }),
-        /* @__PURE__ */ jsx("p", { children: "Lodewyc's daughter Margareta van Vlaenderen (fl. 1478–1486) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe (charters of 1478 and 1486, Vredius p.287)." })
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Lodewyc van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch records the burial of Jacqueline and nearby 'haer Joos van Vlaenderen fs Lodewijcx.'",
+          /* @__PURE__ */ jsx(Cite, { n: 3, text: CITES$5[3], loc: "Vredius (1643) pp. 286–287, Gaillard MS" }),
+          " Josse died young and cannot be the Joos van Vlaenderen of the 1545–49 Brugse Vrije wardship records (the Praet cadet) — but his existence confirms the name Josse/Joos was in active use in Victor's direct line."
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Lodewyc's daughter Margareta van Vlaenderen (fl. 1478–1486) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe (charters of 1478 and 1486).",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$5[1], loc: "p. 287", repeat: true })
+        ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
@@ -6170,42 +6357,24 @@ function VictorLineagePage() {
       ] }) }),
       /* @__PURE__ */ jsxs("section", { className: researchStyles.referenceList, children: [
         /* @__PURE__ */ jsx("h3", { children: t("victor.sources_title") }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "1." }),
-          "Vredius, Olivarius (Olivier de Wree). ",
-          /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae" }),
-          ", Pars secunda. Bruges, 1643. Pp.285–287: the three Ghent partition-court charters and the Oostborch epitaph; direct reading April 2026. FMG MedLands: Flanders, Hainaut (v5.0, January 2025) was consulted as a tertiary pointer to these pages.",
+        notes$5.map(({ n, full }) => /* @__PURE__ */ jsxs("div", { id: `fn-${n}`, className: researchStyles.refItem, style: { scrollMarginTop: "6rem" }, children: [
+          /* @__PURE__ */ jsxs("span", { className: researchStyles.refNumber, children: [
+            n,
+            "."
+          ] }),
+          full,
           " ",
-          /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Foundation for Medieval Genealogy, MedLands: Flanders & Hainaut" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "2." }),
-          "Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem.",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Inventaris Onroerend Erfgoed, Erfgoedobject 33384" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "3." }),
-          "Bethune, J.B. de. ",
-          /* @__PURE__ */ jsx("em", { children: "Epitaphes et monuments des eglises de la Flandre." }),
-          " Third part. 1900. p.356. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286–287, from which it is cited above. Not yet consulted directly by the project."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "4." }),
-          "Degryse, R. Willem Beukel(s) van Hughevliet. ",
-          /* @__PURE__ */ jsx("em", { children: "De Vlaamse Gids" }),
-          " 38 (1954).",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://www.dbnl.org/tekst/_vla001195401_01/_vla001195401_01_0055.php", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "DBNL, Vlaamse Stam (1954)" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "5." }),
-          "Tailler, Margaux. ",
-          /* @__PURE__ */ jsx("em", { children: "Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees." }),
-          " MA thesis, Ghent University, 2011. Supervised by Jan Dumolyn.",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library, Thesis RUG01-001786522 (2012)" })
-        ] })
+          /* @__PURE__ */ jsx(
+            "a",
+            {
+              href: `#fnref-${n}`,
+              className: researchStyles.refLink,
+              "aria-label": "Back to text",
+              title: "Back to text",
+              children: "↩"
+            }
+          )
+        ] }, n))
       ] }),
       /* @__PURE__ */ jsxs(Link, { className: styles$4.ctaBox, to: "/contact", children: [
         /* @__PURE__ */ jsx("div", { className: styles$4.ctaText, children: t("victor.cta_text") }),
@@ -6963,7 +7132,7 @@ const version = "_version_66azr_19";
 const downloadButton = "_downloadButton_66azr_26";
 const body = "_body_66azr_63";
 const anchorLink = "_anchorLink_66azr_151";
-const styles$3 = {
+const styles$2 = {
   downloadStrip,
   version,
   downloadButton,
@@ -8645,7 +8814,7 @@ const markdownComponents = {
         "a",
         {
           href: `#${id}`,
-          className: styles$3.anchorLink,
+          className: styles$2.anchorLink,
           "aria-label": `Link to ${text}`,
           children: "§"
         }
@@ -8662,19 +8831,19 @@ function DesparsCompendiumPage() {
   return /* @__PURE__ */ jsx("div", { className: styles$4.page, children: /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
     /* @__PURE__ */ jsx("h1", { children: t("despars_compendium.heading") }),
     /* @__PURE__ */ jsx("p", { children: t("despars_compendium.intro") }),
-    /* @__PURE__ */ jsxs("div", { className: styles$3.downloadStrip, children: [
-      /* @__PURE__ */ jsx("span", { className: styles$3.version, children: t("despars_compendium.version_line", { version: COMPENDIUM_VERSION }) }),
+    /* @__PURE__ */ jsxs("div", { className: styles$2.downloadStrip, children: [
+      /* @__PURE__ */ jsx("span", { className: styles$2.version, children: t("despars_compendium.version_line", { version: COMPENDIUM_VERSION }) }),
       /* @__PURE__ */ jsx(
         "a",
         {
-          className: styles$3.downloadButton,
+          className: styles$2.downloadButton,
           href: PDF_PATH,
           download: true,
           children: t("despars_compendium.download_button", { version: COMPENDIUM_VERSION })
         }
       )
     ] }),
-    /* @__PURE__ */ jsx("div", { className: styles$3.body, children: /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { className: styles$2.body, children: /* @__PURE__ */ jsx(
       ReactMarkdown,
       {
         remarkPlugins: [remarkGfm],
@@ -8684,6 +8853,107 @@ function DesparsCompendiumPage() {
     ) })
   ] }) });
 }
+const notes$4 = [
+  {
+    n: 1,
+    short: "Vredius, Olivarius (Olivier de Wree). Genealogia Comitum Flandriae…, Pars Secunda. Bruges: J.B. & Lucas Kerchovios, 1642–43.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Vredius, Olivarius (Olivier de Wree). ",
+      /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem" }),
+      ", Pars Secunda: ",
+      /* @__PURE__ */ jsx("em", { children: "Continens Probationes XII posteriorum tabularum" }),
+      ". Bruges: J.B. & Lucas Kerchovios, 1642–43. Tabula XVI, pp. 285–287 (charter transcriptions for Victor’s three sons) and pp. 267–275 (Louis I de Cressy bastard cohort) and pp. 275–289 (Louis II de Male bastard cohort). Direct reading of the 1643 print conducted April 2026. Vredius transcribes the three charters from the Ghent partition court registers (",
+      /* @__PURE__ */ jsx("em", { children: "In actis curiae partitionum Gandensium, Ex regist. part." }),
+      " f.56). The underlying RAG register has not yet been independently verified; ",
+      /* @__PURE__ */ jsx("em", { children: "Curiae partitionum Gandensium" }),
+      " may correspond to the RAG Jaarregisters van de Keure or Staten van Goed series."
+    ] })
+  },
+  {
+    n: 2,
+    short: "Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut. v5.0, January 2025.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut. v5.0, January 2025. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Foundation for Medieval Genealogy, MedLands: Flanders & Hainaut" })
+    ] })
+  },
+  {
+    n: 3,
+    short: "Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem. Quote: ‘Eind 14de eeuw vinden we Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male, als heren van Wessegem; in 1431 terug bij het kroondomein gevoegd.’",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Inventaris Onroerend Erfgoed, Erfgoedobject 33384" })
+    ] })
+  },
+  {
+    n: 4,
+    short: "Ursel, een Meetjeslands dorp.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Ursel, een Meetjeslands dorp. States that in 1399 Wessegem passed to Victor van Vlaanderen, another bastard son of Louis van Male.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://mijnplatteland.com/meetjesland/ursel/", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ursel, een Meetjeslands dorp" })
+    ] })
+  },
+  {
+    n: 5,
+    short: "Bethune, J.B. de. Epitaphes et monuments des eglises de la Flandre. Third part. 1900.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Bethune, J.B. de. ",
+      /* @__PURE__ */ jsx("em", { children: "Epitaphes et monuments des eglises de la Flandre." }),
+      " Third part. 1900. p.356. Oostborch (Oostburg, Zeeuws-Vlaanderen) epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286–287, from which it is cited above. Print only — not digitised; not yet consulted directly by the project. Held at KBR Brussels (Royal Library of Belgium) and Ghent University Library."
+    ] })
+  },
+  {
+    n: 6,
+    short: "Degryse, R. Willem Beukel(s) van Hughevliet. De Vlaamse Gids 38 (1954).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Degryse, R. Willem Beukel(s) van Hughevliet. ",
+      /* @__PURE__ */ jsx("em", { children: "De Vlaamse Gids" }),
+      " 38 (1954).",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://www.dbnl.org/tekst/_vla001195401_01/_vla001195401_01_0055.php", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "DBNL, Vlaamse Stam (1954)" })
+    ] })
+  },
+  {
+    n: 7,
+    short: "Tailler, Margaux. Corvers en zeeschuimers van den Vlaemsche zeecoste… Master of Arts in History, Ghent University, 2011.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Tailler, Margaux. ",
+      /* @__PURE__ */ jsx("em", { children: "Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees." }),
+      " Master of Arts in History, Ghent University, 2011. Supervised by Jan Dumolyn. Notes the appointment of ‘een nieuwe admiraal: Victor van Vlaanderen.’",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library, Thesis RUG01-001786522 (2012)" })
+    ] })
+  },
+  {
+    n: 8,
+    short: "Verschelde, Karel. Geschiedenis van Middelburg in Vlaenderen. Brugge, 1867.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Verschelde, Karel. ",
+      /* @__PURE__ */ jsx("em", { children: "Geschiedenis van Middelburg in Vlaenderen" }),
+      ". Brugge, 1867. Bewysstukken N° 1, pp. 220–222; the three 'mher Victoors van Vlaenderen kindren lande' boundary clauses at p. 221; index entry 'Van Vlaenderen, Victor — 221.' Transcribes the 17 July 1441 koopbrief from the original deed held at the Rijksarchief Gent ('Staetsarchiven te Gent'). The same attestation is independently cited in K. de Flou, ",
+      /* @__PURE__ */ jsx("em", { children: "Woordenboek der Toponymie van Westelijk Vlaanderen" }),
+      ", Vol. 16 col. 554 ('Gesch. Middelb., 221')."
+    ] })
+  },
+  {
+    n: 9,
+    short: "Espinoy, Recherche des antiquitez et noblesse de Flandres (Douai, 1631).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Espinoy, Philippe de l'. ",
+      /* @__PURE__ */ jsx("em", { children: "Recherche des antiquitez et noblesse de Flandres." }),
+      " Douai, 1631.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://gallica.bnf.fr/ark:/12148/bpt6k1180858", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Free access (Gallica / BnF)" })
+    ] })
+  }
+];
+const CITES$4 = {};
+notes$4.forEach((nt) => {
+  CITES$4[nt.n] = nt.short;
+});
 function VictorDossierPage() {
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
@@ -8761,16 +9031,32 @@ function VictorDossierPage() {
           "Identity and Parentage ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
-        /* @__PURE__ */ jsx("p", { children: "Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders. Espinoy (1631), Livre 2, Ch. XXXI, p. 69, records his parentage among the natural sons of Louis II (without citing a source), and his mother is named in her own charter of 12 May 1427 (see the charter nucleus below). He is identified as Seigneur d'Ursele et de Wesseghem and as a Burgundian admiral." })
+        /* @__PURE__ */ jsxs("p", { children: [
+          "Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders. His parentage among the natural sons of Louis II is recorded (without citing a source)",
+          /* @__PURE__ */ jsx(Cite, { n: 9, text: CITES$4[9], loc: "Livre 2, Ch. XXXI, p. 69" }),
+          ", and his mother is named in her own charter of 12 May 1427 (see the charter nucleus below). He is identified as Seigneur d'Ursele et de Wesseghem and as a Burgundian admiral."
+        ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
           "Territorial Setting: Wessegem and Ursel ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
-        /* @__PURE__ */ jsx("p", { children: "The Flemish heritage inventory for the Hof van Wessegem states that by the end of the fourteenth century 'Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male,' were lords of Wessegem, and that the property reverted to the comital domain in 1431." }),
-        /* @__PURE__ */ jsx("p", { children: "A local Ursel history states that in 1399 Wessegem passed to Victor van Vlaanderen, 'another bastard son of Louis van Male,' and that he often resided there." }),
-        /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", fontStyle: "italic", color: "var(--text-muted)" }, children: "Note on spelling: the Vredius print (1643, p. 286) renders the 1441 charter’s lordship designation as ‘Orsele ende van Wesseghem’ — an alternative spelling of ‘Ursele.’ The 1446 charter on the following page uses ‘Orsele en van Wesseghem’ again. The form ‘Desele’ sometimes appearing in secondary OCR transcriptions of the charter is an artifact: the Middle Dutch blackletter capital ‘U’/‘V’ is easily misread as ‘D.’ All references in Vredius point consistently to Ursel (the parish) and Wessegem (the seigneurie within it)." })
+        /* @__PURE__ */ jsxs("p", { children: [
+          "The Flemish heritage inventory for the Hof van Wessegem",
+          /* @__PURE__ */ jsx(Cite, { n: 3, text: CITES$4[3] }),
+          " states that by the end of the fourteenth century 'Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male,' were lords of Wessegem, and that the property reverted to the comital domain in 1431."
+        ] }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "A local Ursel history",
+          /* @__PURE__ */ jsx(Cite, { n: 4, text: CITES$4[4] }),
+          " states that in 1399 Wessegem passed to Victor van Vlaanderen, 'another bastard son of Louis van Male,' and that he often resided there."
+        ] }),
+        /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.9rem", fontStyle: "italic", color: "var(--text-muted)" }, children: [
+          "Note on spelling: the Vredius print (1643, p. 286)",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$4[1], loc: "p. 286" }),
+          " renders the 1441 charter’s lordship designation as ‘Orsele ende van Wesseghem’ — an alternative spelling of ‘Ursele.’ The 1446 charter on the following page uses ‘Orsele en van Wesseghem’ again. The form ‘Desele’ sometimes appearing in secondary OCR transcriptions of the charter is an artifact: the Middle Dutch blackletter capital ‘U’/‘V’ is easily misread as ‘D.’ All references in Vredius point consistently to Ursel (the parish) and Wessegem (the seigneurie within it)."
+        ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
@@ -8778,9 +9064,9 @@ function VictorDossierPage() {
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "The testament of 'her Victor van Vlaendren', dated 1430, named executors 'mher Robert van Vlaendren heere van Elverdinghe, Vlamertinghe, Burggrave van Ypre en Karle van Vlaendren beede sijn broeders.' This is preserved in Vredius (1643) ",
-          /* @__PURE__ */ jsx("em", { children: "Pars secunda" }),
-          " p.285, citing the Vander Strate manuscript. It confirms Victor was alive in 1430 and had at least two brothers — Robert [Roeland] and Karel van Vlaenderen."
+          "The testament of 'her Victor van Vlaendren', dated 1430, named executors 'mher Robert van Vlaendren heere van Elverdinghe, Vlamertinghe, Burggrave van Ypre en Karle van Vlaendren beede sijn broeders.'",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$4[1], loc: "p. 285 (citing the Vander Strate MS)", repeat: true }),
+          " It confirms Victor was alive in 1430 and had at least two brothers — Robert [Roeland] and Karel van Vlaenderen."
         ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
@@ -8790,21 +9076,23 @@ function VictorDossierPage() {
         ] }),
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "1.5rem" }, children: "Charter 1: 12 May 1427" }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "Vredius (1643), ",
-          /* @__PURE__ */ jsx("em", { children: "Pars secunda" }),
-          " p.285, transcribes a charter from the Ghent partition court records (",
-          /* @__PURE__ */ jsx("em", { children: "In actis curiae partitionum Gandensium, Ex regist. part." }),
-          " f.56): 'Joncfr. Mergriete Haelfhuuts Heinricx Mayen...wijf, moeder van Mer Victoere van Vlaenderen' donated property to 'Lodekinen ende Hannekinen mher Victoers hears soens naturlicke kinderen die by heeft by Alyssen van Boyeghem' and 'Adaemkine svoorsz mer Victoers natuerlick zone die hy heeft by Gertruden Liendekins.'"
+          "A charter from the Ghent partition court records transcribes:",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$4[1], loc: "p. 285 (In actis curiae partitionum Gandensium, Ex regist. part. f.56)", repeat: true }),
+          " 'Joncfr. Mergriete Haelfhuuts Heinricx Mayen...wijf, moeder van Mer Victoere van Vlaenderen' donated property to 'Lodekinen ende Hannekinen mher Victoers hears soens naturlicke kinderen die by heeft by Alyssen van Boyeghem' and 'Adaemkine svoorsz mer Victoers natuerlick zone die hy heeft by Gertruden Liendekins.'"
         ] }),
         /* @__PURE__ */ jsx("p", { children: "This charter directly attests: (1) Mergriete Haelfhuuts as Victor's mother; (2) Lodewyc and Janne as Victor's natural sons by Alix van Boyeghem; (3) Adam as Victor's natural son by Gertrud Lindekens; (4) the distinction between the two mothers." }),
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "2rem" }, children: "Charter 2: 10 March 1441 O.S. (= 10 March 1442 N.S.)" }),
-        /* @__PURE__ */ jsx("p", { children: "Vredius (1643) transcribes a charter from the same Ghent partition records: ‘Joncfr. Mergriete Aelfhuuts Heindricx Maye…wijf’ donated property to ‘Lodewyc, Janne ende Adam van Vlaendren natuerliche sonen van wijlen edelen…mer Victor van Vlaendren heere was van Orsele ende van Wesseghem…zone was vande voorz Joncf. Mergriete.’ Direct inspection of the Vredius print (p. 286) confirms the spelling as ‘Orsele’ — an alternative rendering of Ursele, not a separate place name." }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "A charter from the same Ghent partition records transcribes:",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$4[1], loc: "p. 286", repeat: true }),
+          " ‘Joncfr. Mergriete Aelfhuuts Heindricx Maye…wijf’ donated property to ‘Lodewyc, Janne ende Adam van Vlaendren natuerliche sonen van wijlen edelen…mer Victor van Vlaendren heere was van Orsele ende van Wesseghem…zone was vande voorz Joncf. Mergriete.’ Direct inspection of the print confirms the spelling as ‘Orsele’ — an alternative rendering of Ursele, not a separate place name."
+        ] }),
         /* @__PURE__ */ jsx("p", { children: "This charter directly attests: (1) all three sons named together; (2) Victor described as deceased (‘wijlen’); (3) the lordship spelled ‘Orsele ende van Wesseghem’; (4) Mergriete as Victor’s mother." }),
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.75rem", marginTop: "2rem" }, children: "Charter 3: 18 March 1446 O.S. (= 18 March 1447 N.S.)" }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "Vredius (1643), ",
-          /* @__PURE__ */ jsx("em", { children: "Pars secunda" }),
-          " pp.286–7, transcribes a charter: 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem' donated money from 'joncfr Margriete Aelhuuts zijn groete vrauwe' to 'Christiane van Rouse fil Gheerarts.'"
+          "A charter transcribes:",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$4[1], loc: "pp. 286–287", repeat: true }),
+          " 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem' donated money from 'joncfr Margriete Aelhuuts zijn groete vrauwe' to 'Christiane van Rouse fil Gheerarts.'"
         ] }),
         /* @__PURE__ */ jsx("p", { children: "This charter directly attests: (1) Adam is alive as late as 18 March 1447 N.S. — his death terminus, previously set at 1442, is now extended five years; (2) Adam explicitly names Victor as 'Rudder, Heer van Orsele en van Wesseghem' — Knight, Lord of Ursel and Wessegem; (3) Margriete Aelfhuuts remains Adam's active patroness in 1446, four years after the previous donation; (4) the lordship now spelled 'Orsele' — confirming Ursel and Wessegem as a paired designation." })
       ] }),
@@ -8836,9 +9124,9 @@ function VictorDossierPage() {
         }, children: [
           '"Item bet oost van daer, inden zeluen polre, zesse ende tsestich ghemeten eene line ende achte ende tachtentich roeden tusschen pieter clamps lande an de westzide, ende mher Victoors van Vlaenderen kindren lande an de oostzide."',
           /* @__PURE__ */ jsxs("div", { style: { fontSize: "0.8rem", marginTop: "0.5rem", fontStyle: "normal" }, children: [
-            "Verschelde, ",
-            /* @__PURE__ */ jsx("em", { children: "Geschiedenis van Middelburg in Vlaenderen" }),
-            ` (Brugge, 1867), Bewysstukken N° 1, p. 221. Translation: "Item, further east from there, in the same polder, sixty-six gemeten one line and eighty-eight roeden, between Pieter Clamp's land on the west side, and the land of mher Victor van Vlaenderen's children on the east side."`
+            "From the 1441 Cadzand koopbrief.",
+            /* @__PURE__ */ jsx(Cite, { n: 8, text: CITES$4[8], loc: "Bewysstukken N° 1, p. 221" }),
+            ` Translation: "Item, further east from there, in the same polder, sixty-six gemeten one line and eighty-eight roeden, between Pieter Clamp's land on the west side, and the land of mher Victor van Vlaenderen's children on the east side."`
           ] })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -8847,9 +9135,9 @@ function VictorDossierPage() {
           " — on both sides — of a parcel of roughly 49 gemeten, indicating a substantial contiguous block of their holding in this polder. This is the first known post-1431 territorial attestation of Victor's children as a body. It places their holding in the West-Flemish coastal zone — the same Aardenburg–Cadzand orbit as the line's other coastal holdings, adjacent to Bladelin's land assembly for Middelburg-in-Vlaanderen — and it ties the Praet-Moerkerke line, as vendor, into the same transaction. The neighbouring landholders named alongside (Pieter Clamp, Adriaen van Borssele) situate the holding in the seigneurial-coastal milieu of the Brugse Vrije."
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "The landholding itself is Directly Attested: the deed is transcribed verbatim in Karel Verschelde, ",
-          /* @__PURE__ */ jsx("em", { children: "Geschiedenis van Middelburg in Vlaenderen" }),
-          " (Brugge, 1867), Bewysstukken N° 1, p. 221, from the original deed held at the Rijksarchief Gent, and independently confirmed by Verschelde's own names-index ('Van Vlaenderen, Victor — 221'). The deed names the children only collectively. Identifying the 1441 ",
+          "The landholding itself is Directly Attested: the deed is transcribed verbatim from the original held at the Rijksarchief Gent, and independently confirmed by the source's own names-index ('Van Vlaenderen, Victor — 221').",
+          /* @__PURE__ */ jsx(Cite, { n: 8, text: CITES$4[8], loc: "Bewysstukken N° 1, p. 221 (orig. deed, Rijksarchief Gent)", repeat: true }),
+          " The deed names the children only collectively. Identifying the 1441 ",
           /* @__PURE__ */ jsx("em", { children: "kindren" }),
           " with Victor's three documented natural sons — Lodewyc, Janne, and Adam, named in the 12 May 1427 charter above — is ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" }),
@@ -8926,9 +9214,11 @@ function VictorDossierPage() {
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "Lodewyc (also Louis) van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch, preserved in Vredius (1643) ",
-          /* @__PURE__ */ jsx("em", { children: "Pars secunda" }),
-          " pp.286–287 (Gaillard MS), records the burial of 'Jacquemine de Wilde, ghesellenede van Lodewijc van Vlaenderen, fs Victor...naturelicken zone van...Lodewijc van Male' who died 1482, and nearby 'haer Joos van Vlaenderen fs Lodewijcx.'"
+          "Lodewyc (also Louis) van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch,",
+          /* @__PURE__ */ jsx(Cite, { n: 5, text: CITES$4[5], loc: "p. 356" }),
+          " also preserved in Vredius,",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$4[1], loc: "pp. 286–287 (Gaillard MS)", repeat: true }),
+          " records the burial of 'Jacquemine de Wilde, ghesellenede van Lodewijc van Vlaenderen, fs Victor...naturelicken zone van...Lodewijc van Male' who died 1482, and nearby 'haer Joos van Vlaenderen fs Lodewijcx.'"
         ] }),
         /* @__PURE__ */ jsx("p", { children: "Lodewyc and Jacqueline had two documented children:" }),
         /* @__PURE__ */ jsxs("p", { children: [
@@ -8937,7 +9227,8 @@ function VictorDossierPage() {
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "(2) Margareta van Vlaenderen." }),
-          " Charters dated 1478 and 1486, preserved in Vredius (1643) p.287 (Grimarez, from the Ghent partition registers), record that 'Marguerite de Flandres' married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe."
+          " Charters dated 1478 and 1486 record that 'Marguerite de Flandres' married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe.",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$4[1], loc: "p. 287 (Grimarez, Ghent partition registers)", repeat: true })
         ] }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: "0.9rem", fontStyle: "italic", color: "var(--text-muted)" }, children: "Note on Oostborch: this is an older spelling of Oostburg, in Zeeuws-Vlaanderen (south of Sluis, now the Netherlands). It sits roughly 12 km north of the Meetjesland border and was part of the medieval Franc de Bruges. The Oostburg church burial places Lodewyc’s wife Jacqueline de Wilde and their son Joos firmly in the coastal Zeeuws-Vlaanderen orbit — not in the inland Meetjesland parishes where the later Van Vlaenderen surname cluster concentrates. A systematic onomastic sweep of Gysseling’s Vier Ambachten corpus (c. 1240–1500) returned no Bucket 4 attestations of the surname in Zeeuws-Vlaanderen, confirming it arrived there from elsewhere." })
       ] }),
@@ -8946,7 +9237,13 @@ function VictorDossierPage() {
           "Naval and Military Activity ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
-        /* @__PURE__ */ jsx("p", { children: "A DBNL article states: 'Victor was, en dit is belangrijk, kapitein van de vesting Biervliet.' A UGent-hosted study on Flemish corsair warfare notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.' These sources support Victor's coastal and naval command role." })
+        /* @__PURE__ */ jsxs("p", { children: [
+          "A DBNL article",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES$4[6] }),
+          " states: 'Victor was, en dit is belangrijk, kapitein van de vesting Biervliet.' A UGent-hosted study on Flemish corsair warfare",
+          /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$4[7] }),
+          " notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.' These sources support Victor's coastal and naval command role."
+        ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsxs("h2", { children: [
@@ -8973,66 +9270,24 @@ function VictorDossierPage() {
       ] }),
       /* @__PURE__ */ jsxs("section", { className: researchStyles.referenceList, children: [
         /* @__PURE__ */ jsx("h3", { children: "Notes & Bibliography" }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "1." }),
-          "Vredius, Olivarius (Olivier de Wree). ",
-          /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem" }),
-          ", Pars Secunda: ",
-          /* @__PURE__ */ jsx("em", { children: "Continens Probationes XII posteriorum tabularum" }),
-          ". Bruges: J.B. & Lucas Kerchovios, 1642–43. Tabula XVI, pp. 285–287 (charter transcriptions for Victor’s three sons) and pp. 267–275 (Louis I de Cressy bastard cohort) and pp. 275–289 (Louis II de Male bastard cohort). Direct reading of the 1643 print conducted April 2026. Vredius transcribes the three charters from the Ghent partition court registers (",
-          /* @__PURE__ */ jsx("em", { children: "In actis curiae partitionum Gandensium, Ex regist. part." }),
-          " f.56). The underlying RAG register has not yet been independently verified; ",
-          /* @__PURE__ */ jsx("em", { children: "Curiae partitionum Gandensium" }),
-          " may correspond to the RAG Jaarregisters van de Keure or Staten van Goed series."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "2." }),
-          "Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut. v5.0, January 2025. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier.",
+        notes$4.map(({ n, full }) => /* @__PURE__ */ jsxs("div", { id: `fn-${n}`, className: researchStyles.refItem, style: { scrollMarginTop: "6rem" }, children: [
+          /* @__PURE__ */ jsxs("span", { className: researchStyles.refNumber, children: [
+            n,
+            "."
+          ] }),
+          full,
           " ",
-          /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Foundation for Medieval Genealogy, MedLands: Flanders & Hainaut" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "3." }),
-          "Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem. Quote: ‘Eind 14de eeuw vinden we Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male, als heren van Wessegem; in 1431 terug bij het kroondomein gevoegd.’",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Inventaris Onroerend Erfgoed, Erfgoedobject 33384" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "4." }),
-          "Ursel, een Meetjeslands dorp. States that in 1399 Wessegem passed to Victor van Vlaanderen, another bastard son of Louis van Male.",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://mijnplatteland.com/meetjesland/ursel/", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ursel, een Meetjeslands dorp" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "5." }),
-          "Bethune, J.B. de. ",
-          /* @__PURE__ */ jsx("em", { children: "Epitaphes et monuments des eglises de la Flandre." }),
-          " Third part. 1900. p.356. Oostborch (Oostburg, Zeeuws-Vlaanderen) epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286–287, from which it is cited above. Print only — not digitised; not yet consulted directly by the project. Held at KBR Brussels (Royal Library of Belgium) and Ghent University Library."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "6." }),
-          "Degryse, R. Willem Beukel(s) van Hughevliet. ",
-          /* @__PURE__ */ jsx("em", { children: "De Vlaamse Gids" }),
-          " 38 (1954).",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://www.dbnl.org/tekst/_vla001195401_01/_vla001195401_01_0055.php", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "DBNL, Vlaamse Stam (1954)" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "7." }),
-          "Tailler, Margaux. ",
-          /* @__PURE__ */ jsx("em", { children: "Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees." }),
-          " Master of Arts in History, Ghent University, 2011. Supervised by Jan Dumolyn. Notes the appointment of ‘een nieuwe admiraal: Victor van Vlaanderen.’",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library, Thesis RUG01-001786522 (2012)" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "8." }),
-          "Verschelde, Karel. ",
-          /* @__PURE__ */ jsx("em", { children: "Geschiedenis van Middelburg in Vlaenderen" }),
-          ". Brugge, 1867. Bewysstukken N° 1, pp. 220–222; the three 'mher Victoors van Vlaenderen kindren lande' boundary clauses at p. 221; index entry 'Van Vlaenderen, Victor — 221.' Transcribes the 17 July 1441 koopbrief from the original deed held at the Rijksarchief Gent ('Staetsarchiven te Gent'). The same attestation is independently cited in K. de Flou, ",
-          /* @__PURE__ */ jsx("em", { children: "Woordenboek der Toponymie van Westelijk Vlaanderen" }),
-          ", Vol. 16 col. 554 ('Gesch. Middelb., 221')."
-        ] })
+          /* @__PURE__ */ jsx(
+            "a",
+            {
+              href: `#fnref-${n}`,
+              className: researchStyles.refLink,
+              "aria-label": "Back to text",
+              title: "Back to text",
+              children: "↩"
+            }
+          )
+        ] }, n))
       ] }),
       /* @__PURE__ */ jsxs("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: [
         /* @__PURE__ */ jsx(
@@ -9070,6 +9325,78 @@ function VictorDossierPage() {
     ] })
   ] });
 }
+const notes$3 = [
+  {
+    n: 1,
+    short: "Vredius, Genealogia Comitum Flandriae, Pars secunda (Bruges, 1643). Direct reading April 2026.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Vredius, Olivarius (Olivier de Wree). ",
+      /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum." }),
+      " Bruges: J.B. & Lucas Kerchovios, 1643. Vol. 2 of 2. [496 pp.] Direct reading conducted April 2026 (Tabula XVI, pp. 275–289; Tabula XIX, pp. 387–388). Not freely digitised; held at major European research libraries.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://www.rct.uk/collection/1021446", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Royal Collection Trust catalogue entry" })
+    ] })
+  },
+  {
+    n: 2,
+    short: "Espinoy, Recherche des antiquitez et noblesse de Flandres (Douai, 1631). BnF shelfmark M-1432.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Espinoy, Philippe de l'Espinoy. ",
+      /* @__PURE__ */ jsx("em", { children: "Recherche des antiquitez et noblesse de Flandres." }),
+      " Douai: veuve M. Wyon, 1631. Livre 2, Chapitre XXXI. BnF shelfmark M-1432.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://gallica.bnf.fr/ark:/12148/bpt6k1180858", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Free access (Gallica / BnF)" })
+    ] })
+  },
+  {
+    n: 3,
+    short: "FMG, MedLands: Flanders, Hainaut — tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier. ",
+      /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Foundation for Medieval Genealogy, MedLands: Flanders & Hainaut" })
+    ] })
+  },
+  {
+    n: 4,
+    short: "Pattou, Etienne. Batards de Flandres. 2014. Tertiary compilation; cited only as the origin of the c. 1350 birth estimate.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Pattou, Etienne. Batards de Flandres. 2014. Tertiary compilation consulted as a pointer to primary sources; cited above only as the origin of the c. 1350 birth estimate. ",
+      /* @__PURE__ */ jsx("a", { href: "https://docplayer.fr/21492316-Batards-de-flandres.html", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Pattou, Batards de Flandres (2014)" })
+    ] })
+  },
+  {
+    n: 5,
+    short: "Lauwens, Patrik. Verhalen uit de genealogie Van Praet. September 2010.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Lauwens, Patrik. Verhalen uit de genealogie Van Praet. September 2010. ",
+      /* @__PURE__ */ jsx("a", { href: "https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Lauwens, Verhalen uit de genealogie Van Praet (2010)" })
+    ] })
+  },
+  {
+    n: 6,
+    short: "Despars, Cronijcke van den lande ende graefscepe van Vlaenderen, ed. De Jonghe (Brugge, 1840–1842).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Despars, Nicolaes. ",
+      /* @__PURE__ */ jsx("em", { children: "Cronijcke van den lande ende graefscepe van Vlaenderen (405–1492)." }),
+      " Ed. J. De Jonghe. Brugge, 1840–1842. 4 vols."
+    ] })
+  },
+  {
+    n: 7,
+    short: "de Lichtervelde, Les Bâtards de Louis de Male, HvGG 78 (1935), pp. 48–58.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Lichtervelde, P. de. ",
+      /* @__PURE__ */ jsx("em", { children: "Les Bâtards de Louis de Male." }),
+      " Handelingen van het Genootschap voor Geschiedenis 78 (1935), pp. 48–58.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://doi.org/10.21825/gvg.92141", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "DOI (open access)" })
+    ] })
+  }
+];
+const CITES$3 = {};
+notes$3.forEach((nt) => {
+  CITES$3[nt.n] = nt.short;
+});
 function PraetDossierPage() {
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
     /* @__PURE__ */ jsxs(Helmet, { children: [
@@ -9147,27 +9474,28 @@ function PraetDossierPage() {
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           "Louis Friese van Vlaenderen — also styled Lodewijk de Fries, Louis le Frison, and Louis le Friese de Flandre — was an illegitimate son of Louis II de Male, Count of Flanders (1330-1384). The comital-bastard ancestry of the entire Praet branch runs through him: Vredius's Tabula XVI and the manuscript extracts printed in his Probationes carry the descent from Louis Friese to the lords of Praet, and Espinoy independently records the founding grant.",
-          /* @__PURE__ */ jsx("sup", { children: "[1][2]" })
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$3[1] }),
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$3[2] })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "Vredius (1643), Pars secunda, p. 276, quoting Damhouder's manuscript memoir, preserves the following verbatim extract: ",
+          "Quoting Damhouder's manuscript memoir, the following verbatim extract is preserved: ",
           /* @__PURE__ */ jsx("em", { children: "messire Loys de Frise fils bastard de Loys de Male conte de Flandre, lequel il eut d une fille de Monsieur de Borre." }),
-          " This passage directly attests Louis Friese's name, his bastard status, his father Louis de Male, and his maternal descent from the family of Monsieur de Borre.",
-          /* @__PURE__ */ jsx("sup", { children: "[1]" })
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$3[1], loc: "Pars secunda, p. 276 (Damhouder manuscript memoir)", repeat: true }),
+          " This passage directly attests Louis Friese's name, his bastard status, his father Louis de Male, and his maternal descent from the family of Monsieur de Borre."
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "Espinoy (1631), Livre 2, Ch. XXXI, p. 68, records that the lands and baronies of Praet and La Woestine — ",
+          "The lands and baronies of Praet and La Woestine — ",
           /* @__PURE__ */ jsx("em", { children: "les terres et Baronies de Praet et de la Woestine" }),
           " — were conveyed by Louis de Male ",
           /* @__PURE__ */ jsx("em", { children: "en avancement de son mariage" }),
           " to his illegitimate son, styled ",
           /* @__PURE__ */ jsx("em", { children: "Messire Louys de Flandres dit le Frizon." }),
-          " This passage directly attests his territorial grant and the variant surname le Frizon.",
-          /* @__PURE__ */ jsx("sup", { children: "[2]" })
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$3[2], loc: "Livre 2, Ch. XXXI, p. 68", repeat: true }),
+          " This passage directly attests his territorial grant and the variant surname le Frizon."
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           "The birth estimate of c. 1350 used in this dossier derives from Etienne Pattou's 'Batards de Flandres' compilation (2014) — a tertiary register consulted as a pointer, not a documentary authority. It is a chronological inference, not a documented date.",
-          /* @__PURE__ */ jsx("sup", { children: "[4]" })
+          /* @__PURE__ */ jsx(Cite, { n: 4, text: CITES$3[4] })
         ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
@@ -9178,9 +9506,18 @@ function PraetDossierPage() {
         /* @__PURE__ */ jsxs("p", { children: [
           "Louis Friese was killed at the Battle of Nicopolis on 25 September 1396 alongside his half-brothers Loys “le Hase” (lord of Wessegem) and Jan sans terre (lord of Drincham) — three of Louis II's nine documented bastard sons fallen on a single day. The death is preserved in narrative attestation in Despars's ",
           /* @__PURE__ */ jsx("em", { children: "Cronijcke" }),
-          " Vol. III p. 173 (Despars compendium B.7) and is corroborated by the Latin chronicle witness of Heuterus, transmitted via Vredius A.7. Lichtervelde 1935 p. 50 names Le Frison specifically as ",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES$3[6], loc: "Vol. III p. 173 (Despars compendium B.7)" }),
+          " and is corroborated by the Latin chronicle witness of Heuterus, transmitted via Vredius.",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$3[1], loc: "Probationes A.7 (transmitting Heuterus)", repeat: true }),
+          " Lichtervelde names Le Frison specifically as ",
           /* @__PURE__ */ jsx("em", { children: "auteur de la Maison de Flandre dite de Praet" }),
-          ". The standard scholarship date is 25 September; Despars dates the battle to 27 September and Lichtervelde to 28 September, with the variants treated as transmission errors per the Despars compendium F.2. The Nicopolis death is the founding moment of the Praet line as a research subject: Le Frison's widow Marie van Ghistelle survived him and raised their son Jean de Praet, and the surname-bearing descent runs through them."
+          ".",
+          /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$3[7], loc: "1935, p. 50" }),
+          " The standard scholarship date is 25 September; Despars dates the battle to 27 September",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES$3[6], loc: "Despars compendium F.2", repeat: true }),
+          " and Lichtervelde to 28 September,",
+          /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$3[7], repeat: true }),
+          " with the variants treated as transmission errors. The Nicopolis death is the founding moment of the Praet line as a research subject: Le Frison's widow Marie van Ghistelle survived him and raised their son Jean de Praet, and the surname-bearing descent runs through them."
         ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
@@ -9189,14 +9526,15 @@ function PraetDossierPage() {
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "The Heerlijkheid Praet is documented as having ancient roots in Oedelem (now Beernem, West Flanders), held by the original van Praet baronial family from at least the twelfth century. A published genealogical study of the van Praet family (Lauwens, 2010) records that in 1373 the leengoed of Praet in Oedelem was sold to Louis de Male, after which it passed as a grant to Louis Friese.",
-          /* @__PURE__ */ jsx("sup", { children: "[5]" })
+          "The Heerlijkheid Praet is documented as having ancient roots in Oedelem (now Beernem, West Flanders), held by the original van Praet baronial family from at least the twelfth century. A published genealogical study of the van Praet family records that in 1373 the leengoed of Praet in Oedelem was sold to Louis de Male, after which it passed as a grant to Louis Friese.",
+          /* @__PURE__ */ jsx(Cite, { n: 5, text: CITES$3[5] })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "The Woestine lordship (Woesten, West Flanders) accompanied Praet. Louis Friese's second wife, Maria van Ghistelles, held the lordships of Zweveghem and Rosebeke in her own right — Espinoy styles her ",
+          "The Woestine lordship (Woesten, West Flanders) accompanied Praet. Louis Friese's second wife, Maria van Ghistelles, held the lordships of Zweveghem and Rosebeke in her own right, styled ",
           /* @__PURE__ */ jsx("em", { children: "Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke" }),
-          " — strengthening the Praet branch's position in western Flanders.",
-          /* @__PURE__ */ jsx("sup", { children: "[2]" })
+          ",",
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$3[2], repeat: true }),
+          " strengthening the Praet branch's position in western Flanders."
         ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
@@ -9205,12 +9543,15 @@ function PraetDossierPage() {
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "Two marriages are attested. The first wife is connected to La Woestine but is unnamed in the accessible sources. The second wife, Maria van Ghistelles, is named in the manuscript extracts printed by Vredius — ",
+          "Two marriages are attested. The first wife is connected to La Woestine but is unnamed in the accessible sources. The second wife, Maria van Ghistelles, is named in the manuscript extracts — ",
           /* @__PURE__ */ jsx("em", { children: "dame Marie de Guistelles fille de messire Rogier" }),
-          " — and by Espinoy, whose record of the founding grant ",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$3[1], repeat: true }),
+          " — and the record of the founding grant ",
           /* @__PURE__ */ jsx("em", { children: "en avancement de son mariage avec Dame Marie de Guistelles" }),
-          " ties the marriage to the 25 December 1373 donation. From these marriages Louis Friese left at least one son, Johan I van Vlaenderen (lord of Praet), whose marriage to Johanna van Reygersvliet is recorded in the Van Hecke manuscript annotations printed by Vredius (p. 277).",
-          /* @__PURE__ */ jsx("sup", { children: "[1][2]" })
+          " ties the marriage to the 25 December 1373 donation.",
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$3[2], repeat: true }),
+          " From these marriages Louis Friese left at least one son, Johan I van Vlaenderen (lord of Praet), whose marriage to Johanna van Reygersvliet is recorded in the Van Hecke manuscript annotations.",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$3[1], loc: "p. 277 (Van Hecke manuscript annotations)", repeat: true })
         ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
@@ -9218,44 +9559,28 @@ function PraetDossierPage() {
           "The Surname van Vlaenderen ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
-        /* @__PURE__ */ jsxs("p", { children: [
-          "The consistent use of van Vlaenderen by Louis Friese and his descendants is the central genealogical point for this project. Like his half-brother Victor, Louis Friese bore the surname in a period when it functioned not as a geographic descriptor but as a marker of comital illegitimate descent — crystallising as a hereditary identifier at the precise moment the Dampierre line's hold on Flanders ended with Louis de Male's death in 1384. The van Vlaenderen styling is documented through six further generations of the Praet line in the tomb inscriptions and charters printed by Vredius and set out in the lineage dossier.",
-          /* @__PURE__ */ jsx("sup", { children: "[1]" })
-        ] })
+        /* @__PURE__ */ jsx("p", { children: "The consistent use of van Vlaenderen by Louis Friese and his descendants is the central genealogical point for this project. Like his half-brother Victor, Louis Friese bore the surname in a period when it functioned not as a geographic descriptor but as a marker of comital illegitimate descent — crystallising as a hereditary identifier at the precise moment the Dampierre line's hold on Flanders ended with Louis de Male's death in 1384. The van Vlaenderen styling is documented through six further generations of the Praet line in the tomb inscriptions and charters printed by Vredius and set out in the lineage dossier." })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: researchStyles.referenceList, children: [
         /* @__PURE__ */ jsx("h3", { children: "Notes & Bibliography" }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "1." }),
-          "Vredius, Olivarius (Olivier de Wree). ",
-          /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum." }),
-          " Bruges: J.B. & Lucas Kerchovios, 1643. Vol. 2 of 2. [496 pp.] Direct reading conducted April 2026 (Tabula XVI, pp. 275–289; Tabula XIX, pp. 387–388). Not freely digitised; held at major European research libraries.",
+        notes$3.map(({ n, full }) => /* @__PURE__ */ jsxs("div", { id: `fn-${n}`, className: researchStyles.refItem, style: { scrollMarginTop: "6rem" }, children: [
+          /* @__PURE__ */ jsxs("span", { className: researchStyles.refNumber, children: [
+            n,
+            "."
+          ] }),
+          full,
           " ",
-          /* @__PURE__ */ jsx("a", { href: "https://www.rct.uk/collection/1021446", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Royal Collection Trust catalogue entry" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "2." }),
-          "Espinoy, Philippe de l'Espinoy. ",
-          /* @__PURE__ */ jsx("em", { children: "Recherche des antiquitez et noblesse de Flandres." }),
-          " Douai: veuve M. Wyon, 1631. Livre 2, Chapitre XXXI. BnF shelfmark M-1432.",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://gallica.bnf.fr/ark:/12148/bpt6k1180858", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Free access (Gallica / BnF)" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "3." }),
-          "Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier. ",
-          /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Foundation for Medieval Genealogy, MedLands: Flanders & Hainaut" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "4." }),
-          "Pattou, Etienne. Batards de Flandres. 2014. Tertiary compilation consulted as a pointer to primary sources; cited above only as the origin of the c. 1350 birth estimate. ",
-          /* @__PURE__ */ jsx("a", { href: "https://docplayer.fr/21492316-Batards-de-flandres.html", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Pattou, Batards de Flandres (2014)" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "5." }),
-          "Lauwens, Patrik. Verhalen uit de genealogie Van Praet. September 2010. ",
-          /* @__PURE__ */ jsx("a", { href: "https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Lauwens, Verhalen uit de genealogie Van Praet (2010)" })
-        ] })
+          /* @__PURE__ */ jsx(
+            "a",
+            {
+              href: `#fnref-${n}`,
+              className: researchStyles.refLink,
+              "aria-label": "Back to text",
+              title: "Back to text",
+              children: "↩"
+            }
+          )
+        ] }, n))
       ] }),
       /* @__PURE__ */ jsxs("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: [
         /* @__PURE__ */ jsx(
@@ -9293,6 +9618,153 @@ function PraetDossierPage() {
     ] })
   ] });
 }
+const notes$2 = [
+  {
+    n: 1,
+    short: "Vredius, Olivarius (Olivier de Wree). Genealogia Comitum Flandriae…, Pars Secunda: Continens Probationes XII posteriorum tabularum. Bruges: J.B. & Lucas Kerchovios, 1642–43.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Vredius, Olivarius (Olivier de Wree). ",
+      /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem" }),
+      ", Pars Secunda: ",
+      /* @__PURE__ */ jsx("em", { children: "Continens Probationes XII posteriorum tabularum" }),
+      ". Bruges: J.B. & Lucas Kerchovios, 1642–43. Tabula XVI, pp. 275–289 (Louis II de Male bastard cohort, including Louis Friese and the Praet descent through Lodewijk III); Tabula XIX, pp. 387–388 (Lodewijk IV, Jossine van Praet, and Jan II at Aalter). Direct reading of the 1643 print conducted April 2026. All tomb-inscription quotations in this dossier are verified against the Vredius print."
+    ] })
+  },
+  {
+    n: 2,
+    short: "Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025. Section B: Heeren van Praet.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025. Section B: Heeren van Praet. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Foundation for Medieval Genealogy, MedLands: Flanders & Hainaut" })
+    ] })
+  },
+  {
+    n: 3,
+    short: "Bethune, J.B. de. Epitaphes et monuments des eglises de la Flandre. Third part. 1900.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Bethune, J.B. de. ",
+      /* @__PURE__ */ jsx("em", { children: "Epitaphes et monuments des eglises de la Flandre." }),
+      " Third part. 1900. Epitaph transcriptions for Aeltere, Beveren bij Roeselare, Languemarc, and Veere. Print only — not digitised; not yet consulted directly by the project (only the second part's p. 233 is in hand). Cited above solely in the transparent as-cited-in form. Held at KBR Brussels and Ghent University Library."
+    ] })
+  },
+  {
+    n: 4,
+    short: "Lauwens, Patrik. Verhalen uit de genealogie Van Praet. 2010.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Lauwens, Patrik. ",
+      /* @__PURE__ */ jsx("em", { children: "Verhalen uit de genealogie Van Praet." }),
+      " 2010.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Lauwens, Verhalen uit de genealogie Van Praet (2010)" })
+    ] })
+  },
+  {
+    n: 5,
+    short: "Nederland’s Adelsboek. Vol. 6 (1908). ’s-Gravenhage: W.P. van Stockum en Zoon. Van Boetzelaer entry.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Nederland’s Adelsboek. Vol. 6 (1908). ’s-Gravenhage: W.P. van Stockum en Zoon. Van Boetzelaer entry.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://archive.org/details/nederlandsadelsb28unse_4", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Internet Archive (1908 volume)" })
+    ] })
+  },
+  {
+    n: 6,
+    short: "Buylaert, Frederik. Repertorium van de Vlaamse adel (ca. 1350–ca. 1500). Gent: Academia Press, 2011.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Buylaert, Frederik. ",
+      /* @__PURE__ */ jsx("em", { children: "Repertorium van de Vlaamse adel (ca. 1350–ca. 1500)." }),
+      " Gent: Academia Press, 2011. Prosopographical register of Flemish noble families 1350–1500; p. 747 documents Josse de Flandre and the cadet Praet branch (within the project's pp. 736–759 direct reading). See also by the same author: ",
+      /* @__PURE__ */ jsx("em", { children: "Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen" }),
+      " (Brussels: Royal Academy, 2010), the accompanying narrative history.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://lib.ugent.be/nl/catalog/rug01:001699683", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library catalogue" })
+    ] })
+  },
+  {
+    n: 7,
+    short: "Verhoustraete, Arthur. ‘De heren van Praet te Oedelem.’ Jaarboek 1967 (Bos en Beverveld).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Verhoustraete, Arthur. ‘De heren van Praet te Oedelem.’ ",
+      /* @__PURE__ */ jsx("em", { children: "Jaarboek 1967" }),
+      " (Bos en Beverveld), pp. 101–113. The full van Vlaenderen–Praet genealogy: the 1545 senior-line failure, the collateral continuation via Joos → Jacob → Lodewijk V, the 1591 sonless terminus, and the post-1591 title succession through female links (pp. 109–112)."
+    ] })
+  },
+  {
+    n: 8,
+    short: "Serrure, C.P., ed. Vaderlandsch Museum, Deel 5. Gent, 1863. ‘De geslachten Van Praet, Van Moerkercke…’",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Serrure, C.P., ed. ",
+      /* @__PURE__ */ jsx("em", { children: "Vaderlandsch Museum" }),
+      ", Deel 5. Gent, 1863. ‘De geslachten Van Praet, Van Moerkercke…,’ pp. 295–310 — the published edition of a 17th-century Praet-Moerkercke family compilation; names Joos’s children Jacob, Philips, and Philippote and anchors Joos to Lodewijk II via the Gruuthuse marriage."
+    ] })
+  },
+  {
+    n: 9,
+    short: "Valkeneers, Nina & Soen, Violet. ‘Praet, Bronkhorst en Boetzelaer…’ (2014).",
+    full: /* @__PURE__ */ jsx(Fragment$1, { children: "Valkeneers, Nina & Soen, Violet. ‘Praet, Bronkhorst en Boetzelaer. Adellijke weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566–1567)’ (2014), pp. 265–284. Documents Jacob van Vlaanderen × Catharina van Boetzelaer and the post-1545 generation at the Vrijhof, Aalter." })
+  },
+  {
+    n: 10,
+    short: "Rijksarchief Brugge, Brugse Vrije, TBO 184. The Honnelede wardship file.",
+    full: /* @__PURE__ */ jsx(Fragment$1, { children: "Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300–21302 (1545–49). The Honnelede wardship file: Joos’s sons Jacob and Philips as minor wards." })
+  },
+  {
+    n: 11,
+    short: "Gailliard. Bruges et le Franc. Tome I.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Gailliard. ",
+      /* @__PURE__ */ jsx("em", { children: "Bruges et le Franc." }),
+      " Tome I, p. 261 — the Aalter tombstone transcription ",
+      /* @__PURE__ */ jsx("em", { children: "‘obiit MDLVIII’" }),
+      " for Lodewijk IV (the 1558 reading of the death-year cross-flag)."
+    ] })
+  },
+  {
+    n: 12,
+    short: "de Smet, ed. Recueil des chroniques de Flandre.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "de Smet, ed. ",
+      /* @__PURE__ */ jsx("em", { children: "Recueil des chroniques de Flandre." }),
+      " Tome III, p. 39 (Kronyk van Jan van Dixmude) — ‘Jan van Vlaendren, de heere Van Praet’ at the battle of Brouwershaven, 13 January 1426. Independently: Despars, ",
+      /* @__PURE__ */ jsx("em", { children: "Cronijcke van den lande… van Vlaenderen" }),
+      ", Vol. III, pp. 298–299."
+    ] })
+  },
+  {
+    n: 13,
+    short: "Espinoy, Recherche des antiquitez et noblesse de Flandres (Douai, 1631).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Espinoy, Philippe de l'. ",
+      /* @__PURE__ */ jsx("em", { children: "Recherche des antiquitez et noblesse de Flandres." }),
+      " Douai, 1631.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://gallica.bnf.fr/ark:/12148/bpt6k1180858", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Free access (Gallica / BnF)" })
+    ] })
+  },
+  {
+    n: 14,
+    short: "De Raadt, Sceaux armoriés des Pays-Bas (Brussels, 1897).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "De Raadt, J.-Th. ",
+      /* @__PURE__ */ jsx("em", { children: "Sceaux armoriés des Pays-Bas et des pays avoisinants." }),
+      " Brussels: Société belge de librairie / Oscar Schepens, T.I 1897."
+    ] })
+  },
+  {
+    n: 15,
+    short: "Despars, Cronijcke van den lande ende graefscepe van Vlaenderen, ed. De Jonghe (Brugge, 1840–1842).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Despars, Nicolaes. ",
+      /* @__PURE__ */ jsx("em", { children: "Cronijcke van den lande ende graefscepe van Vlaenderen (405–1492)." }),
+      " Ed. J. De Jonghe. Brugge, 1840–1842. 4 vols."
+    ] })
+  }
+];
+const CITES$2 = {};
+notes$2.forEach((nt) => {
+  CITES$2[nt.n] = nt.short;
+});
 function PraetLineageDossierPage() {
   const lineageData = [
     { gen: "1", name: "Louis Friese van Vlaenderen", dates: "c.1350 – 25 Sep 1396", role: "Bastard of Flanders; Lord of Praet & Woestine", spouse: "1) Unknown (La Woestine) 2) Marie van Gistel", sources: "Vredius (1643), Pars secunda, pp. 276–277 (Damhouder & Grimarez MSS); Espinoy (1631), Livre 2, Ch. XXXI, p. 68", level: "Directly attested", levelClass: researchStyles.levelAttested },
@@ -9378,57 +9850,96 @@ function PraetLineageDossierPage() {
             "Louis Friese van Vlaenderen (c.1350 – 25 Sep 1396) ",
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
           ] }),
-          /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "Vredius (1643), Pars secunda, p. 276, quotes Damhouder's manuscript memoir: 'messire Loys de Frise fils bastard de...Loys de Male conte de Flandre, lequel il eut dune fille de Monsieur de Borre.' His grant of Praet is recorded by Espinoy (1631), Livre 2, Ch. XXXI, p. 68: Louis de Male 'en avancement de son mariage avec Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke' granted 'les terres et Baronies de Praet et de la Woestine' to his illegitimate son 'Messire Louys de Flandres dit le Frizon' (no source cited). Vredius p. 277, quoting Grimarez's memoir, records that Louis 'eut en partage [la Wostine] par acte du 25 de septembre 1373' and died at Nicopolis. (On the day of the 1373 act: the Grimarez memoir reads '25 de septembre'; the donation letters printed in Vredius's Probationes — direct reading, April 2026 — are dated 25 December 1373, the date carried throughout this research and corroborated by Serrure 1863 and Lauwens.)" })
+          /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
+            "Damhouder's manuscript memoir, quoted by Vredius, reads: 'messire Loys de Frise fils bastard de...Loys de Male conte de Flandre, lequel il eut dune fille de Monsieur de Borre.'",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 276 (Damhouder memoir)" }),
+            " His grant of Praet is recorded by Espinoy:",
+            /* @__PURE__ */ jsx(Cite, { n: 13, text: CITES$2[13], loc: "Livre 2, Ch. XXXI, p. 68" }),
+            " Louis de Male 'en avancement de son mariage avec Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke' granted 'les terres et Baronies de Praet et de la Woestine' to his illegitimate son 'Messire Louys de Flandres dit le Frizon' (no source cited). Grimarez's memoir records that Louis 'eut en partage [la Wostine] par acte du 25 de septembre 1373' and died at Nicopolis.",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 277 (Grimarez memoir)", repeat: true }),
+            " (On the day of the 1373 act: the Grimarez memoir reads '25 de septembre'; the donation letters printed in Vredius's Probationes — direct reading, April 2026 — are dated 25 December 1373, the date carried throughout this research and corroborated by Serrure",
+            /* @__PURE__ */ jsx(Cite, { n: 8, text: CITES$2[8], repeat: true }),
+            " and Lauwens.",
+            /* @__PURE__ */ jsx(Cite, { n: 4, text: CITES$2[4], repeat: true }),
+            ")"
+          ] })
         ] }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2.5rem" }, children: [
           /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.5rem" }, children: [
             "Johan I van Vlaenderen (d. after 10 Sep 1439) ",
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
           ] }),
-          /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "A charter dated 10 Sep 1439, preserved in Vredius (1643), Pars secunda, p. 277 (quoting the Collecta Damhouderii, fol. 276 T), is directly issued by 'Ian van Vlaenderen Heere van Praet ande vander Woestine ende Burghemeesters ende Schepenen vanden selven Heerschepe van Praet.' This is Johan I's own charter — directly attested. His marriage to Johanna van Reygersvliet is recorded in the Van Hecke manuscript annotations quoted on the same Vredius page: 'Iean de Flandre Seign. de Praet et de la Woestine' married 'Ieanne de Reyghersvliet fille de Henry, fils de Gautier.' No primary source confirming her parentage and marriage has been identified — the marriage itself is therefore strongly corroborated, her parentage probable. Espinoy (1631), Livre 2, Ch. XXXI, p. 68, records the 1431 settlement of 'messire Louys son pere en son vivant Seigneur de Praet et de la Woestine' between Johan I and his mother." }),
+          /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
+            "A charter dated 10 Sep 1439, quoting the Collecta Damhouderii, fol. 276 T, is directly issued by 'Ian van Vlaenderen Heere van Praet ande vander Woestine ende Burghemeesters ende Schepenen vanden selven Heerschepe van Praet.'",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 277 (Collecta Damhouderii, fol. 276 T)", repeat: true }),
+            " This is Johan I's own charter — directly attested. His marriage to Johanna van Reygersvliet is recorded in the Van Hecke manuscript annotations: 'Iean de Flandre Seign. de Praet et de la Woestine' married 'Ieanne de Reyghersvliet fille de Henry, fils de Gautier.'",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 277 (Van Hecke annotations)", repeat: true }),
+            " No primary source confirming her parentage and marriage has been identified — the marriage itself is therefore strongly corroborated, her parentage probable. Espinoy records the 1431 settlement of 'messire Louys son pere en son vivant Seigneur de Praet et de la Woestine' between Johan I and his mother.",
+            /* @__PURE__ */ jsx(Cite, { n: 13, text: CITES$2[13], loc: "Livre 2, Ch. XXXI, p. 68", repeat: true })
+          ] }),
           /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
             /* @__PURE__ */ jsx("strong", { children: "Brouwershaven, 13 January 1426" }),
             " ",
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" }),
             " — a dated military-service fixpoint between the 1420 and 1439 anchors. The Kronyk van Jan van Dixmude, narrating Philip the Good's Holland-Zeeland campaign, names among those at the battle of Brouwershaven: ",
             /* @__PURE__ */ jsx("em", { children: "‘Jan van Vlaendren, de heere Van Praet, Jan van Eghemond ende zomeghe andere’" }),
-            " (de Smet, ",
-            /* @__PURE__ */ jsx("em", { children: "Recueil des chroniques de Flandre" }),
-            ", Tome III, p. 39). Despars carries the same 1426 Brouwershaven roll independently: ",
+            ".",
+            /* @__PURE__ */ jsx(Cite, { n: 12, text: CITES$2[12], loc: "Tome III, p. 39 (Kronyk van Jan van Dixmude)" }),
+            " Despars carries the same 1426 Brouwershaven roll independently: ",
             /* @__PURE__ */ jsx("em", { children: "‘Jan van Vlaenderen, die heere van Praet ende van der Woestijne’" }),
-            " (",
-            /* @__PURE__ */ jsx("em", { children: "Cronijcke van den lande… van Vlaenderen" }),
-            ", Vol. III, pp. 298–299). The identification of this lord of Praet with Johan I — whose documented window comfortably brackets the date — is strongly corroborated."
+            ".",
+            /* @__PURE__ */ jsx(Cite, { n: 15, text: CITES$2[15], loc: "Vol. III, pp. 298–299" }),
+            " The identification of this lord of Praet with Johan I — whose documented window comfortably brackets the date — is strongly corroborated."
           ] }),
           /* @__PURE__ */ jsx("h4", { style: { color: "var(--text-primary)", fontSize: "1rem", marginTop: "1.5rem", marginBottom: "0.75rem" }, children: "Johan I’s Five Documented Children" }),
           /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.9rem", lineHeight: "1.7", color: "var(--text-muted)" }, children: [
             "(a) ",
             /* @__PURE__ */ jsx("strong", { children: "Lodewijk II" }),
-            " — the heir; Aalter tomb attested (Vredius pp. 277–278); (b) ",
+            " — the heir; Aalter tomb attested;",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, pp. 277–278", repeat: true }),
+            " (b) ",
             /* @__PURE__ */ jsx("strong", { children: "Ioanna (Jeanne) de Flandre" }),
-            " — m. Jean, Lord of Pouques; 1446 partition record, Vredius p. 278 (a further marriage-contract document of 24 Jan 1441 is known to the project only through Buylaert (2011) p. 567, as cited in C. Cawley, 'Medieval Lands', FMG); (c) ",
+            " — m. Jean, Lord of Pouques; 1446 partition record",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 278", repeat: true }),
+            " (a further marriage-contract document of 24 Jan 1441 is known to the project only through Buylaert,",
+            /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES$2[6], loc: "p. 567" }),
+            " as cited in C. Cawley, 'Medieval Lands', FMG",
+            /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$2[2] }),
+            "); (c) ",
             /* @__PURE__ */ jsx("strong", { children: "Margareta (Marguerite) de Flandre" }),
-            " — m. Louis de Bailleul; Grimarez and Van Hecke extracts, Vredius p. 278 (attribution structurally inferential, see note below); (d) ",
+            " — m. Louis de Bailleul; Grimarez and Van Hecke extracts",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 278 (Grimarez & Van Hecke extracts)", repeat: true }),
+            " (attribution structurally inferential, see note below); (d) ",
             /* @__PURE__ */ jsx("strong", { children: "Lisbette (Isabelle) de Flandre" }),
-            " — m. Waleran, Lord of Landas and Warlain; Vredius p. 279; (e) ",
+            " — m. Waleran, Lord of Landas and Warlain;",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 279", repeat: true }),
+            " (e) ",
             /* @__PURE__ */ jsx("strong", { children: "Landrada de Flandre" }),
-            " — Canoness at St. Waudru, Mons; never married; Vredius p. 279. A March 1442 Ghent partition records the three minor children (Lodewijk II, Lisbette, and Landrada) under guardianship after Johan I’s death; Ioanna and Margareta were by then already married."
+            " — Canoness at St. Waudru, Mons; never married.",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 279", repeat: true }),
+            " A March 1442 Ghent partition records the three minor children (Lodewijk II, Lisbette, and Landrada) under guardianship after Johan I’s death; Ioanna and Margareta were by then already married."
           ] }),
           /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.85rem", lineHeight: "1.7", color: "var(--text-muted)", marginTop: "0.75rem", fontStyle: "italic" }, children: [
             /* @__PURE__ */ jsx("strong", { children: "Correction noted." }),
-            " An earlier version of this dossier attributed seven children to Johan I, including Jean de Flandre (d. 1523, Heer van Onlede en Beveren, Grand Bailiff of Bruges) and Josse de Flandre (d. after 1526). Direct reading of Vredius in April 2026 resolves these two figures as sons of Lodewijk II, not of Johan I: the Beveren tomb inscription on Vredius p. 280 explicitly identifies Jean’s father as ‘Messire ",
+            " An earlier version of this dossier attributed seven children to Johan I, including Jean de Flandre (d. 1523, Heer van Onlede en Beveren, Grand Bailiff of Bruges) and Josse de Flandre (d. after 1526). Direct reading of Vredius in April 2026 resolves these two figures as sons of Lodewijk II, not of Johan I: the Beveren tomb inscription explicitly identifies Jean’s father as ‘Messire ",
             /* @__PURE__ */ jsx("strong", { children: "Loys" }),
-            " de Flandres, Chevalier, Saigneur de Praet’ (i.e., Lodewijk II, d. 1488). Damhouder’s list of Lodewijk II’s six children by Louise de Bruges on Vredius p. 278 confirms both Jean and Josse as Lodewijk II’s sons. Margareta de Flandre’s attribution to Johan I is structurally inferential (from the ‘sorores Ludovici Patris’ heading on Vredius p. 278) rather than directly textual, and is treated here as probable. Buylaert 2011 (not yet consulted directly) is the definitive arbiter on these attributions."
+            " de Flandres, Chevalier, Saigneur de Praet’ (i.e., Lodewijk II, d. 1488).",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 280 (Beveren tomb inscription)", repeat: true }),
+            " Damhouder’s list of Lodewijk II’s six children by Louise de Bruges confirms both Jean and Josse as Lodewijk II’s sons.",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 278 (Damhouder list)", repeat: true }),
+            " Margareta de Flandre’s attribution to Johan I is structurally inferential (from the ‘sorores Ludovici Patris’ heading) rather than directly textual, and is treated here as probable.",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 278 (‘sorores Ludovici Patris’ heading)", repeat: true }),
+            " Buylaert 2011 (not yet consulted directly) is the definitive arbiter on these attributions.",
+            /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES$2[6], repeat: true })
           ] })
         ] }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2.5rem", background: "rgba(96, 165, 250, 0.06)", border: "1px solid rgba(96, 165, 250, 0.15)", borderRadius: "4px", padding: "1.25rem" }, children: [
           /* @__PURE__ */ jsx("h4", { style: { color: "#60a5fa", fontSize: "1rem", marginBottom: "0.5rem" }, children: "Note on Joos (Josse) van Vlaenderen (cadet branch — the line’s continuation)" }),
           /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.9rem", lineHeight: "1.7", color: "var(--text-muted)" }, children: [
-            "Joos (Josse) van Vlaenderen (d. before 30 November 1545) heads the documented cadet branch of the Praet line, descending from Lodewijk II (not Johan I as earlier framed). He is distinct from Victor’s grandson Josse, son of Lodewyc by Jacqueline de Wilde, who died young at Oostburg (Oostborch). This Joos married Martina van Moerkerke; when the senior line failed in 1545, the lordship and the surname passed to his branch — his son Jacob received Praet and Woestijne in 1550, and Jacob’s son Lodewijk V carried the line to its 1591 terminus (see ‘The 1545 Senior Failure, the Collateral Continuation, and the 1591 Terminus’ below). Sources: Verhoustraete, ‘De heren van Praet te Oedelem,’ ",
-            /* @__PURE__ */ jsx("em", { children: "Jaarboek 1967" }),
-            " (Bos en Beverveld), pp. 101–113; Serrure 1863 (",
-            /* @__PURE__ */ jsx("em", { children: "Vaderlandsch Museum" }),
-            " Deel 5); RAB TBO 184 nrs. 21300–21302 (1545–49)."
+            "Joos (Josse) van Vlaenderen (d. before 30 November 1545) heads the documented cadet branch of the Praet line, descending from Lodewijk II (not Johan I as earlier framed). He is distinct from Victor’s grandson Josse, son of Lodewyc by Jacqueline de Wilde, who died young at Oostburg (Oostborch). This Joos married Martina van Moerkerke; when the senior line failed in 1545, the lordship and the surname passed to his branch — his son Jacob received Praet and Woestijne in 1550, and Jacob’s son Lodewijk V carried the line to its 1591 terminus (see ‘The 1545 Senior Failure, the Collateral Continuation, and the 1591 Terminus’ below).",
+            /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$2[7], loc: "pp. 101–113" }),
+            /* @__PURE__ */ jsx(Cite, { n: 8, text: CITES$2[8], loc: "pp. 295–310" }),
+            /* @__PURE__ */ jsx(Cite, { n: 10, text: CITES$2[10], loc: "nrs. 21300–21302 (1545–49)" })
           ] })
         ] }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2.5rem" }, children: [
@@ -9436,14 +9947,24 @@ function PraetLineageDossierPage() {
             "Lodewijk II van Vlaenderen (d. 1488) ",
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
           ] }),
-          /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "Two primary sources agree on the year (1488) but disagree on the day. The Aalter tomb inscription, quoted in Vredius p. 277, reads: ‘Voor den hooghen autaer light M’her LODEWYC van Vlaenderen/ Heere van Praet/ ende vanden lande van Woestine/ Bevere/ ende Ornlede/ fs. M’her Jans/ Rudder/ Heere van Praet… die starf 1488. op S. Baefs dach’ — St. Bavo’s day, 1 October 1488. De l’Espinoy, quoted by Vredius p. 278, reads: ‘lequel Messire Loys de Flandre, mourut en l’an 1488, le jour de S. Berthelemy’ — St. Bartholomew’s day, 24 August 1488. Both sources agree he married ‘vrau Loije van Brugghe fs mijns heeren Jans heere van Gruuthuuse’ — Louise de Bruges, daughter of Jan van de Aa dit de Bruges, Heer van Gruuthuse en Grimbergen." }),
+          /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
+            "Two primary sources agree on the year (1488) but disagree on the day. The Aalter tomb inscription reads: ‘Voor den hooghen autaer light M’her LODEWYC van Vlaenderen/ Heere van Praet/ ende vanden lande van Woestine/ Bevere/ ende Ornlede/ fs. M’her Jans/ Rudder/ Heere van Praet… die starf 1488. op S. Baefs dach’ — St. Bavo’s day, 1 October 1488.",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 277 (Aalter tomb inscription)", repeat: true }),
+            " De l’Espinoy, quoted by Vredius, reads: ‘lequel Messire Loys de Flandre, mourut en l’an 1488, le jour de S. Berthelemy’ — St. Bartholomew’s day, 24 August 1488.",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 278 (de l’Espinoy, quoted by Vredius)", repeat: true }),
+            " Both sources agree he married ‘vrau Loije van Brugghe fs mijns heeren Jans heere van Gruuthuuse’ — Louise de Bruges, daughter of Jan van de Aa dit de Bruges, Heer van Gruuthuse en Grimbergen."
+          ] }),
           /* @__PURE__ */ jsx("h4", { style: { color: "var(--text-primary)", fontSize: "1rem", marginTop: "1.5rem", marginBottom: "0.75rem" }, children: "Lodewijk II’s Six Documented Children" }),
           /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.9rem", lineHeight: "1.7", color: "var(--text-muted)" }, children: [
-            "Damhouder’s extract, quoted in Vredius p. 278, names six children by Louise de Bruges: ‘Loys, Iean, Iaques, Ioffe, Loyfe, & Iehenne de Flandre.’ (a) ",
+            "Damhouder’s extract names six children by Louise de Bruges: ‘Loys, Iean, Iaques, Ioffe, Loyfe, & Iehenne de Flandre.’",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 278 (Damhouder extract)", repeat: true }),
+            " (a) ",
             /* @__PURE__ */ jsx("strong", { children: "Lodewijk III (Loys)" }),
             " — the heir, see below; (b) ",
             /* @__PURE__ */ jsx("strong", { children: "Jean de Flandre" }),
-            " (d. 6 September 1523), Heer van Onlede en Beveren bij Roeselare, Grand Bailiff of Bruges and the Brugse Vrije; Beveren tomb inscription (Vredius p. 280); (c) ",
+            " (d. 6 September 1523), Heer van Onlede en Beveren bij Roeselare, Grand Bailiff of Bruges and the Brugse Vrije; Beveren tomb inscription;",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 280 (Beveren tomb inscription)", repeat: true }),
+            " (c) ",
             /* @__PURE__ */ jsx("strong", { children: "Jaques (Jacques) de Flandre" }),
             " — named only in Damhouder’s list; no further biographical detail in Vredius, and his identification is not established. He did not inherit Praet (it passed to his brother Lodewijk III), and he must not be confused with ",
             /* @__PURE__ */ jsx("strong", { children: "Jacob van Vlaanderen" }),
@@ -9451,7 +9972,10 @@ function PraetLineageDossierPage() {
             /* @__PURE__ */ jsx("em", { children: "did" }),
             " inherit — receiving Praet and Woestijne in 1550 (see the collateral continuation below); (d) ",
             /* @__PURE__ */ jsx("strong", { children: "Josse (Ioffe) de Flandre" }),
-            " — Joos van Vlaenderen (d. before 30 Nov 1545), inherited Onlede, Beveren, and Wijchuize after his brother Jean; married Martina van Moerkerke; the cadet branch through which the line continued after 1545 [Buylaert (2011) p. 747; Verhoustraete 1967]; (e) ",
+            " — Joos van Vlaenderen (d. before 30 Nov 1545), inherited Onlede, Beveren, and Wijchuize after his brother Jean; married Martina van Moerkerke; the cadet branch through which the line continued after 1545;",
+            /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES$2[6], loc: "p. 747", repeat: true }),
+            /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$2[7], repeat: true }),
+            " (e) ",
             /* @__PURE__ */ jsx("strong", { children: "Louise (Loyfe) de Flandre" }),
             "; (f) ",
             /* @__PURE__ */ jsx("strong", { children: "Iehenne (Jeanne) de Flandre" }),
@@ -9463,32 +9987,53 @@ function PraetLineageDossierPage() {
             "Lodewijk III van Vlaenderen (d. New Year’s 1490) ",
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
           ] }),
-          /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "The Aalter tomb inscription quoted in Vredius p. 279 reads: ‘Op den Maendagh 1490 starf M’her LOYS van Vlaendren/ heere van Praet/ die ghetrauwt hadde Vrauwe ISABELLE van Bourgongnen; hy light alhier by zijnen Vader’ — a Monday in 1490, buried beside his father. His death is dated to New Year’s 1490. Grimarez’s reading ‘1488. 1. Ianvier,’ quoted on the same Vredius page, is a conflation with his father Lodewijk II’s death year (1488) — a logged known error, not a competing date. His marriage to Isabelle de Bourgogne, daughter of Jean bâtard de Bourgogne Heer van Elverdinghe en Vlamertinghe and Marie d’Halluin, is confirmed by the same tomb (Vredius p. 279). Isabelle died ‘12 Nov 1504’ and was buried ‘te Gent, te Galilee.’" })
+          /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
+            "The Aalter tomb inscription reads: ‘Op den Maendagh 1490 starf M’her LOYS van Vlaendren/ heere van Praet/ die ghetrauwt hadde Vrauwe ISABELLE van Bourgongnen; hy light alhier by zijnen Vader’ — a Monday in 1490, buried beside his father.",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 279 (Aalter tomb inscription)", repeat: true }),
+            " His death is dated to New Year’s 1490. Grimarez’s reading ‘1488. 1. Ianvier’ is a conflation with his father Lodewijk II’s death year (1488) — a logged known error, not a competing date.",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 279 (Grimarez reading)", repeat: true }),
+            " His marriage to Isabelle de Bourgogne, daughter of Jean bâtard de Bourgogne Heer van Elverdinghe en Vlamertinghe and Marie d’Halluin, is confirmed by the same tomb.",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 279 (Aalter tomb inscription)", repeat: true }),
+            " Isabelle died ‘12 Nov 1504’ and was buried ‘te Gent, te Galilee.’"
+          ] })
         ] }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2.5rem" }, children: [
           /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.5rem" }, children: [
             "Lodewijk IV van Vlaenderen / Louis of Praet (d. 1555 or 1558) ",
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
           ] }),
-          /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "The Aalter tomb inscription, quoted in Vredius p. 387, records his full titulature: ‘M’her LODEWYC van Vlaendren/ Rudder vander Ordre vanden Gulden Vliese/ Heere van Praet/ vanden lande vander Woestyne/ Elverdijnghe/ Vlamertijnghe/ Spiete/ ende vander Mersch/ Raed/ Upper-camerlinck/ Chief vande Financien van de K.M. Carolus den V. ende sijnen Hoogh-Bailliu van Brugghe/ ende van ’t Brughsche Vrije/ te sijnen overlijden Gouverneur ende Capitain van Vlaendren/ die starf 1555.’ Knight of the Golden Fleece (1531); Grand Bailiff of Ghent and Bruges; Stadtholder of Holland, Zeeland and Utrecht (1544–1546); Advisor to Emperor Charles V." }),
-          /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "Married Jossine van Praet, daughter of Charles van Praet Heer van Moerkercke, heiress of the original Praet baronial family. The same Aalter tomb inscription records her death: ‘Ende Me-vrauwe IOSYNE van Praet/ Vrauwe van Moerkercke/ M’her Charles van Praet/ Heere van Moerkercke dochter was/ M’her LODEWYCX ghesselnede/ die starf 1546. den 10. December’ — died 10 December 1546, buried beside her husband at Aalter (Vredius p. 387)." }),
+          /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
+            "The Aalter tomb inscription records his full titulature: ‘M’her LODEWYC van Vlaendren/ Rudder vander Ordre vanden Gulden Vliese/ Heere van Praet/ vanden lande vander Woestyne/ Elverdijnghe/ Vlamertijnghe/ Spiete/ ende vander Mersch/ Raed/ Upper-camerlinck/ Chief vande Financien van de K.M. Carolus den V. ende sijnen Hoogh-Bailliu van Brugghe/ ende van ’t Brughsche Vrije/ te sijnen overlijden Gouverneur ende Capitain van Vlaendren/ die starf 1555.’",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 387 (Aalter tomb inscription)", repeat: true }),
+            " Knight of the Golden Fleece (1531); Grand Bailiff of Ghent and Bruges; Stadtholder of Holland, Zeeland and Utrecht (1544–1546); Advisor to Emperor Charles V."
+          ] }),
+          /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
+            "Married Jossine van Praet, daughter of Charles van Praet Heer van Moerkercke, heiress of the original Praet baronial family. The same Aalter tomb inscription records her death: ‘Ende Me-vrauwe IOSYNE van Praet/ Vrauwe van Moerkercke/ M’her Charles van Praet/ Heere van Moerkercke dochter was/ M’her LODEWYCX ghesselnede/ die starf 1546. den 10. December’ — died 10 December 1546, buried beside her husband at Aalter.",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 387 (Aalter tomb inscription)", repeat: true })
+          ] }),
           /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
             /* @__PURE__ */ jsx("strong", { children: "Death-year cross-flag" }),
             " ",
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelProbable}`, children: "Probable" }),
-            " — Lodewijk IV’s death year is attested two ways. Vredius’s print of the Aalter inscription reads ‘die starf 1555,’ and Verhoustraete likewise carries 1555. Gailliard, however, reports the tombstone itself as ",
+            " — Lodewijk IV’s death year is attested two ways. Vredius’s print of the Aalter inscription reads ‘die starf 1555,’",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 387 (Aalter tomb inscription)", repeat: true }),
+            " and Verhoustraete likewise carries 1555.",
+            /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$2[7], repeat: true }),
+            " Gailliard, however, reports the tombstone itself as ",
             /* @__PURE__ */ jsx("em", { children: "‘obiit MDLVIII’" }),
-            " — 1558 (",
-            /* @__PURE__ */ jsx("em", { children: "Bruges et le Franc" }),
-            ", Tome I, p. 261). The project’s working preference is 1558, weighting the epigraphic transcription over the secondary print tradition, held at Probable pending a re-examination of the Aalter monument."
+            " — 1558.",
+            /* @__PURE__ */ jsx(Cite, { n: 11, text: CITES$2[11], loc: "Tome I, p. 261" }),
+            " The project’s working preference is 1558, weighting the epigraphic transcription over the secondary print tradition, held at Probable pending a re-examination of the Aalter monument."
           ] })
         ] }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2.5rem", background: "rgba(212, 168, 48, 0.06)", border: "1px solid rgba(212, 168, 48, 0.15)", borderRadius: "4px", padding: "1.25rem" }, children: [
           /* @__PURE__ */ jsx("h4", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem" }, children: "The 1517 Knesselare Charter — Research Significance" }),
           /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.9rem", lineHeight: "1.7", color: "var(--text-muted)" }, children: [
-            "A charter of 1517 — known to the project through De Raadt, ",
-            /* @__PURE__ */ jsx("em", { children: "Sceaux armoriés des Pays-Bas" }),
-            ", vol. I (1898), p. 456, as cited in C. Cawley, 'Medieval Lands' (FMG); the De Raadt volume has not yet been read directly — records Lodewijk IV holding six fiefs at Knesselare from the seigneurie of Wessegem in 1517. Knesselare is one of the parishes in the active research coverage, and it sits geographically between the Praet lordship (Oedelem/Beernem) and the core Van Vlaenderen cluster in the Meetjesland. This charter does not establish a family connection between the Praet van Vlaenderens and the commoner Van Vlaenderens who later appear in Knesselare parish records. But it confirms that the Praet branch had territorial interests in the precise geographic area where your ancestors lived — which is relevant to the branch-control problem identified in the research design."
+            "A charter of 1517 — known to the project through De Raadt,",
+            /* @__PURE__ */ jsx(Cite, { n: 14, text: CITES$2[14], loc: "vol. I, p. 456" }),
+            " as cited in C. Cawley, 'Medieval Lands' (FMG);",
+            /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$2[2], repeat: true }),
+            " the De Raadt volume has not yet been read directly — records Lodewijk IV holding six fiefs at Knesselare from the seigneurie of Wessegem in 1517. Knesselare is one of the parishes in the active research coverage, and it sits geographically between the Praet lordship (Oedelem/Beernem) and the core Van Vlaenderen cluster in the Meetjesland. This charter does not establish a family connection between the Praet van Vlaenderens and the commoner Van Vlaenderens who later appear in Knesselare parish records. But it confirms that the Praet branch had territorial interests in the precise geographic area where your ancestors lived — which is relevant to the branch-control problem identified in the research design."
           ] })
         ] }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2.5rem" }, children: [
@@ -9497,11 +10042,19 @@ function PraetLineageDossierPage() {
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
           ] }),
           /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
-            "The Aalter tomb inscription, quoted in Vredius p. 388, reads: ‘Inde selve tombe light Jo. IAN van Vlaendren/ Heere van Woestine/ Elverdinghe/ ende Vlamertinghe/ fil. mijns Heeren Lodewijc/ Heere van Praet/ ende van Vrauw’ Josijne voorseyt/ die starf 1545. den 10. December; hy hadde ghetrauwt Vrauw’ IAQVELINE van Bourgongnen/ fil. M’her Adolf/ Heere van Bevere/ starf sonder generatie.’ Grimarez on the same page adds that he ‘mourut, sans generation, avant son pere, en l’an 1545’ — he predeceased his father Lodewijk IV, dying without issue. His death ends the ",
+            "The Aalter tomb inscription reads: ‘Inde selve tombe light Jo. IAN van Vlaendren/ Heere van Woestine/ Elverdinghe/ ende Vlamertinghe/ fil. mijns Heeren Lodewijc/ Heere van Praet/ ende van Vrauw’ Josijne voorseyt/ die starf 1545. den 10. December; hy hadde ghetrauwt Vrauw’ IAQVELINE van Bourgongnen/ fil. M’her Adolf/ Heere van Bevere/ starf sonder generatie.’",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 388 (Aalter tomb inscription)", repeat: true }),
+            " Grimarez adds that he ‘mourut, sans generation, avant son pere, en l’an 1545’ — he predeceased his father Lodewijk IV, dying without issue.",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 388 (Grimarez)", repeat: true }),
+            " His death ends the ",
             /* @__PURE__ */ jsx("strong", { children: "senior direct male line only" }),
             ": the lordship and the surname passed to the collateral branch of Joos van Vlaenderen, whose son Jacob received Praet and Woestijne at Aalter in 1550 (see below). A separate epitaph at Veere — Béthune, ",
             /* @__PURE__ */ jsx("em", { children: "Epitaphes" }),
-            " (third part, 1900), p. 392, as cited in C. Cawley, 'Medieval Lands' (FMG); not yet read directly — records that his widow Jacqueline de Bourgogne remarried Jan Heer van Cruijningen and died ‘van haer laetste kint’ at Beveren in 1556 — in childbirth with her last child by her second husband — and that she was childless by Jan van Vlaenderen."
+            " (third part, 1900), p. 392,",
+            /* @__PURE__ */ jsx(Cite, { n: 3, text: CITES$2[3], loc: "third part, 1900, p. 392 (Veere epitaph)" }),
+            " as cited in C. Cawley, 'Medieval Lands' (FMG);",
+            /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$2[2], repeat: true }),
+            " not yet read directly — records that his widow Jacqueline de Bourgogne remarried Jan Heer van Cruijningen and died ‘van haer laetste kint’ at Beveren in 1556 — in childbirth with her last child by her second husband — and that she was childless by Jan van Vlaenderen."
           ] })
         ] })
       ] }),
@@ -9514,15 +10067,27 @@ function PraetLineageDossierPage() {
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
           ] }),
           /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
-            "Named as Lodewijk II’s son ‘Ioffe de Flandre’ in Damhouder’s list of the six children on Vredius p. 278; documented by Buylaert (2011, p. 747) and Verhoustraete (1967). After the death in 1523 of his brother Jean de Flandre Heer van Onlede, Joos inherited ‘de heerlijkheden Onlede, Beveren en Wijchuize.’ He married Martina van Moerkerke and had ‘verschillende kinderen’; Serrure 1863 (",
-            /* @__PURE__ */ jsx("em", { children: "Vaderlandsch Museum" }),
-            " Deel 5) names his children Jacob, Philips, and Philippote, and his sons Jacob and Philips appear as minor wards in the Honnelede wardship file (RAB TBO 184 nrs. 21300–21302, 1545–49). He died ",
+            "Named as Lodewijk II’s son ‘Ioffe de Flandre’ in Damhouder’s list of the six children;",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "Pars secunda, p. 278 (Damhouder list)", repeat: true }),
+            " documented by Buylaert",
+            /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES$2[6], loc: "p. 747", repeat: true }),
+            " and Verhoustraete.",
+            /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$2[7], repeat: true }),
+            " After the death in 1523 of his brother Jean de Flandre Heer van Onlede, Joos inherited ‘de heerlijkheden Onlede, Beveren en Wijchuize.’ He married Martina van Moerkerke and had ‘verschillende kinderen’; Serrure 1863 names his children Jacob, Philips, and Philippote,",
+            /* @__PURE__ */ jsx(Cite, { n: 8, text: CITES$2[8], repeat: true }),
+            " and his sons Jacob and Philips appear as minor wards in the Honnelede wardship file.",
+            /* @__PURE__ */ jsx(Cite, { n: 10, text: CITES$2[10], loc: "nrs. 21300–21302 (1545–49)", repeat: true }),
+            " He died ",
             /* @__PURE__ */ jsx("strong", { children: "before 30 November 1545" }),
             " ",
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" }),
             ": the wardship file names him posthumously (",
             /* @__PURE__ */ jsx("em", { children: "‘Joncher Joost van Vlaendren, in syn leven heere van Honnelede’" }),
-            "), with its earliest account year beginning on St. Andrew’s Day, 30 November 1545 (RAB, Brugse Vrije, Staten van Goed, TBO 184 nrs. 21300–21302, 1545–49). The older printed death-year 1553 (Verhoustraete) rests on the same bundle and is corrected against the original. This is the cadet branch through which the Praet line continued after the 1545 senior failure."
+            "), with its earliest account year beginning on St. Andrew’s Day, 30 November 1545.",
+            /* @__PURE__ */ jsx(Cite, { n: 10, text: CITES$2[10], loc: "Staten van Goed, nrs. 21300–21302 (1545–49)", repeat: true }),
+            " The older printed death-year 1553 (Verhoustraete) rests on the same bundle and is corrected against the original.",
+            /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$2[7], repeat: true }),
+            " This is the cadet branch through which the Praet line continued after the 1545 senior failure."
           ] })
         ] }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2rem" }, children: [
@@ -9530,28 +10095,48 @@ function PraetLineageDossierPage() {
             "Jacob van Vlaanderen (son of Joos, d. 17 Aug 1566) ",
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
           ] }),
-          /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "Joos’s elder son, and Lodewijk IV’s nearest heir after the senior line failed. He received Woestijne and Praet at Aalter by act of 25 September 1550, married Catharina van Boetzelaer in 1551/52, and died on 17 August 1566, buried at Beveren (Verhoustraete 1967; Valkeneers & Soen, ‘Praet, Bronkhorst en Boetzelaer,’ 2014). He is a different man from the 15th-century ‘Jaques de Flandre’ of Damhouder’s list (a son of Lodewijk II who did not inherit, and whose identification is not established) — the two must not be conflated." })
+          /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
+            "Joos’s elder son, and Lodewijk IV’s nearest heir after the senior line failed. He received Woestijne and Praet at Aalter by act of 25 September 1550, married Catharina van Boetzelaer in 1551/52, and died on 17 August 1566, buried at Beveren.",
+            /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$2[7], repeat: true }),
+            /* @__PURE__ */ jsx(Cite, { n: 9, text: CITES$2[9], loc: "pp. 265–284" }),
+            " He is a different man from the 15th-century ‘Jaques de Flandre’ of Damhouder’s list (a son of Lodewijk II who did not inherit, and whose identification is not established) — the two must not be conflated."
+          ] })
         ] }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2rem" }, children: [
           /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.5rem" }, children: [
             "Lodewijk V van Vlaanderen (son of Jacob, b. 1559 – d. 31 Oct 1591) ",
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
           ] }),
-          /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "Jacob’s son and the last male of the line. A Calvinist, he married Maria van Marnix, who died childless in 1580; he sold the encumbered Praet/Aalter estate before his death and died sonless on All Saints’ Eve, 31 October 1591, in exile (Verhoustraete 1967, pp. 101–113; Valkeneers & Soen 2014). With his death the surname ‘van Vlaenderen’ in this branch ends — see the terminus section below." })
+          /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
+            "Jacob’s son and the last male of the line. A Calvinist, he married Maria van Marnix, who died childless in 1580; he sold the encumbered Praet/Aalter estate before his death and died sonless on All Saints’ Eve, 31 October 1591, in exile.",
+            /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$2[7], loc: "pp. 101–113", repeat: true }),
+            /* @__PURE__ */ jsx(Cite, { n: 9, text: CITES$2[9], repeat: true }),
+            " With his death the surname ‘van Vlaenderen’ in this branch ends — see the terminus section below."
+          ] })
         ] }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2rem" }, children: [
           /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.5rem" }, children: [
             "Francoise van Praet van Moerkerke (fl. c.1519) ",
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
           ] }),
-          /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "Documented in two independent published sources. Nederland's Adelsboek (1908) records Wessel van Boetzelaer married c.1519 'Francina van Praet.' The Lauwens genealogical study (2010) records 'Francoise van Praet van Moerkerken, vrouwe van Carnesse, huwde Wessel van den Boetzelaer, heer van Langerak en Asperen.' Her precise generation within the Praet-Moerkerke line requires further investigation." })
+          /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
+            "Documented in two independent published sources. Nederland's Adelsboek (1908)",
+            /* @__PURE__ */ jsx(Cite, { n: 5, text: CITES$2[5] }),
+            " records Wessel van Boetzelaer married c.1519 'Francina van Praet.' The Lauwens genealogical study (2010)",
+            /* @__PURE__ */ jsx(Cite, { n: 4, text: CITES$2[4] }),
+            " records 'Francoise van Praet van Moerkerken, vrouwe van Carnesse, huwde Wessel van den Boetzelaer, heer van Langerak en Asperen.' Her precise generation within the Praet-Moerkerke line requires further investigation."
+          ] })
         ] }),
         /* @__PURE__ */ jsxs("div", { style: { marginBottom: "2rem" }, children: [
           /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginBottom: "0.5rem" }, children: [
             "Margareta van Vlaenderen (dau. of Lodewyc, Victor's son) ",
             /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
           ] }),
-          /* @__PURE__ */ jsx("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: "Charters dated 1478 and 1486, preserved in Vredius (1643) p. 287 (Grimarez, from the Ghent partition registers), record that 'Marguerite de Flandres' (daughter of Lodewyc van Vlaenderen, Victor's son) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe. This is from Victor's line, not the Praet line — noted here to distinguish the two Margaretha van Vlaenderens documented in the 15th century." })
+          /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.95rem", lineHeight: "1.7" }, children: [
+            "Charters dated 1478 and 1486 record that 'Marguerite de Flandres' (daughter of Lodewyc van Vlaenderen, Victor's son) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe.",
+            /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$2[1], loc: "p. 287 (Grimarez, Ghent partition registers)", repeat: true }),
+            " This is from Victor's line, not the Praet line — noted here to distinguish the two Margaretha van Vlaenderens documented in the 15th century."
+          ] })
         ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
@@ -9569,19 +10154,31 @@ function PraetLineageDossierPage() {
           /* @__PURE__ */ jsx("strong", { children: "Jacob van Vlaanderen" }),
           " (received Praet and Woestijne at Aalter by act of 25 September 1550; married Catharina van Boetzelaer 1551/52; d. 17 August 1566) → ",
           /* @__PURE__ */ jsx("strong", { children: "Lodewijk V van Vlaanderen" }),
-          " (b. 1559; married Maria van Marnix, who died childless in 1580). Verhoustraete’s genealogy of the lords of Praet, Serrure’s 1863 edition of the Praet-Moerkercke compilation, the Valkeneers/Soen study of the Boetzelaer marriage, and the Honnelede wardship file (RAB TBO 184 nrs. 21300–21302, 1545–49) converge on this chain."
+          " (b. 1559; married Maria van Marnix, who died childless in 1580). Verhoustraete’s genealogy of the lords of Praet,",
+          /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$2[7], repeat: true }),
+          " Serrure’s 1863 edition of the Praet-Moerkercke compilation,",
+          /* @__PURE__ */ jsx(Cite, { n: 8, text: CITES$2[8], repeat: true }),
+          " the Valkeneers/Soen study of the Boetzelaer marriage,",
+          /* @__PURE__ */ jsx(Cite, { n: 9, text: CITES$2[9], repeat: true }),
+          " and the Honnelede wardship file",
+          /* @__PURE__ */ jsx(Cite, { n: 10, text: CITES$2[10], loc: "nrs. 21300–21302 (1545–49)", repeat: true }),
+          " converge on this chain."
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "The line ends in 1591." }),
           " Lodewijk V died sonless on All Saints’ Eve, 31 October 1591, in exile — the last male of the line. With his death the surname ‘van Vlaenderen’ in this branch ends. (The project records this as a ",
           /* @__PURE__ */ jsx("em", { children: "Line Ends" }),
-          " determination for the surname-bearing titled line, on Verhoustraete’s narrative and its archival apparatus.)"
+          " determination for the surname-bearing titled line, on Verhoustraete’s narrative and its archival apparatus.",
+          /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$2[7], repeat: true }),
+          ")"
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "After 1591 the title leaves the surname" }),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" }),
-          ". The lordship of Praet-Woestijne did not die with Lodewijk V: it descended by proximity of blood, through female links, to a succession of men of entirely different surnames — Baudry van Roisin (1592), then de Longueval → de Mouchy → Thesart → von Salm → de Lalaing → de Rubempré (Verhoustraete 1967, pp. 109–112). Every successor kept his own patrilineal surname; none became ‘van Vlaenderen.’ This is the documented demonstration that ",
+          ". The lordship of Praet-Woestijne did not die with Lodewijk V: it descended by proximity of blood, through female links, to a succession of men of entirely different surnames — Baudry van Roisin (1592), then de Longueval → de Mouchy → Thesart → von Salm → de Lalaing → de Rubempré.",
+          /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$2[7], loc: "pp. 109–112", repeat: true }),
+          " Every successor kept his own patrilineal surname; none became ‘van Vlaenderen.’ This is the documented demonstration that ",
           /* @__PURE__ */ jsx("strong", { children: "the surname tracks the patriline while the title passes freely through women" }),
           " — the cleanest case study in the research for the surname-versus-title distinction."
         ] }),
@@ -9608,86 +10205,24 @@ function PraetLineageDossierPage() {
       ] }),
       /* @__PURE__ */ jsxs("section", { className: researchStyles.referenceList, children: [
         /* @__PURE__ */ jsx("h3", { children: "Notes & Bibliography" }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "1." }),
-          "Vredius, Olivarius (Olivier de Wree). ",
-          /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem" }),
-          ", Pars Secunda: ",
-          /* @__PURE__ */ jsx("em", { children: "Continens Probationes XII posteriorum tabularum" }),
-          ". Bruges: J.B. & Lucas Kerchovios, 1642–43. Tabula XVI, pp. 275–289 (Louis II de Male bastard cohort, including Louis Friese and the Praet descent through Lodewijk III); Tabula XIX, pp. 387–388 (Lodewijk IV, Jossine van Praet, and Jan II at Aalter). Direct reading of the 1643 print conducted April 2026. All tomb-inscription quotations in this dossier are verified against the Vredius print."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "2." }),
-          "Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025. Section B: Heeren van Praet. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier.",
+        notes$2.map(({ n, full }) => /* @__PURE__ */ jsxs("div", { id: `fn-${n}`, className: researchStyles.refItem, style: { scrollMarginTop: "6rem" }, children: [
+          /* @__PURE__ */ jsxs("span", { className: researchStyles.refNumber, children: [
+            n,
+            "."
+          ] }),
+          full,
           " ",
-          /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Foundation for Medieval Genealogy, MedLands: Flanders & Hainaut" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "3." }),
-          "Bethune, J.B. de. ",
-          /* @__PURE__ */ jsx("em", { children: "Epitaphes et monuments des eglises de la Flandre." }),
-          " Third part. 1900. Epitaph transcriptions for Aeltere, Beveren bij Roeselare, Languemarc, and Veere. Print only — not digitised; not yet consulted directly by the project (only the second part's p. 233 is in hand). Cited above solely in the transparent as-cited-in form. Held at KBR Brussels and Ghent University Library."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "4." }),
-          "Lauwens, Patrik. ",
-          /* @__PURE__ */ jsx("em", { children: "Verhalen uit de genealogie Van Praet." }),
-          " 2010.",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Lauwens, Verhalen uit de genealogie Van Praet (2010)" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "5." }),
-          "Nederland’s Adelsboek. Vol. 6 (1908). ’s-Gravenhage: W.P. van Stockum en Zoon. Van Boetzelaer entry.",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://archive.org/details/nederlandsadelsb28unse_4", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Internet Archive (1908 volume)" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "6." }),
-          "Buylaert, Frederik. ",
-          /* @__PURE__ */ jsx("em", { children: "Repertorium van de Vlaamse adel (ca. 1350–ca. 1500)." }),
-          " Gent: Academia Press, 2011. Prosopographical register of Flemish noble families 1350–1500; p. 747 documents Josse de Flandre and the cadet Praet branch (within the project's pp. 736–759 direct reading). See also by the same author: ",
-          /* @__PURE__ */ jsx("em", { children: "Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen" }),
-          " (Brussels: Royal Academy, 2010), the accompanying narrative history.",
-          " ",
-          /* @__PURE__ */ jsx("a", { href: "https://lib.ugent.be/nl/catalog/rug01:001699683", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "Ghent University Library catalogue" })
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "7." }),
-          "Verhoustraete, Arthur. ‘De heren van Praet te Oedelem.’ ",
-          /* @__PURE__ */ jsx("em", { children: "Jaarboek 1967" }),
-          " (Bos en Beverveld), pp. 101–113. The full van Vlaenderen–Praet genealogy: the 1545 senior-line failure, the collateral continuation via Joos → Jacob → Lodewijk V, the 1591 sonless terminus, and the post-1591 title succession through female links (pp. 109–112)."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "8." }),
-          "Serrure, C.P., ed. ",
-          /* @__PURE__ */ jsx("em", { children: "Vaderlandsch Museum" }),
-          ", Deel 5. Gent, 1863. ‘De geslachten Van Praet, Van Moerkercke…,’ pp. 295–310 — the published edition of a 17th-century Praet-Moerkercke family compilation; names Joos’s children Jacob, Philips, and Philippote and anchors Joos to Lodewijk II via the Gruuthuse marriage."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "9." }),
-          "Valkeneers, Nina & Soen, Violet. ‘Praet, Bronkhorst en Boetzelaer. Adellijke weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566–1567)’ (2014), pp. 265–284. Documents Jacob van Vlaanderen × Catharina van Boetzelaer and the post-1545 generation at the Vrijhof, Aalter."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "10." }),
-          "Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300–21302 (1545–49). The Honnelede wardship file: Joos’s sons Jacob and Philips as minor wards."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "11." }),
-          "Gailliard. ",
-          /* @__PURE__ */ jsx("em", { children: "Bruges et le Franc." }),
-          " Tome I, p. 261 — the Aalter tombstone transcription ",
-          /* @__PURE__ */ jsx("em", { children: "‘obiit MDLVIII’" }),
-          " for Lodewijk IV (the 1558 reading of the death-year cross-flag)."
-        ] }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-          /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "12." }),
-          "de Smet, ed. ",
-          /* @__PURE__ */ jsx("em", { children: "Recueil des chroniques de Flandre." }),
-          " Tome III, p. 39 (Kronyk van Jan van Dixmude) — ‘Jan van Vlaendren, de heere Van Praet’ at the battle of Brouwershaven, 13 January 1426. Independently: Despars, ",
-          /* @__PURE__ */ jsx("em", { children: "Cronijcke van den lande… van Vlaenderen" }),
-          ", Vol. III, pp. 298–299."
-        ] })
+          /* @__PURE__ */ jsx(
+            "a",
+            {
+              href: `#fnref-${n}`,
+              className: researchStyles.refLink,
+              "aria-label": "Back to text",
+              title: "Back to text",
+              children: "↩"
+            }
+          )
+        ] }, n))
       ] }),
       /* @__PURE__ */ jsxs("div", { style: { textAlign: "center", marginTop: "40px", paddingTop: "20px", borderTop: "1px solid rgba(232, 184, 48, 0.2)" }, children: [
         /* @__PURE__ */ jsx(
@@ -10321,7 +10856,7 @@ const detailValue = "_detailValue_6h410_312";
 const detailComment = "_detailComment_6h410_316";
 const archiveLink = "_archiveLink_6h410_328";
 const sourceNote = "_sourceNote_6h410_339";
-const styles$2 = {
+const styles$1 = {
   page: page$1,
   header: header$1,
   title,
@@ -10370,7 +10905,7 @@ function RecordBadge({
   const { t } = useTranslation();
   if (!record) return null;
   const label = t(`lineage.record_${type}`);
-  const content2 = /* @__PURE__ */ jsx("span", { className: `${styles$2.badge} ${styles$2[`badge_${type}`]}`, children: label });
+  const content2 = /* @__PURE__ */ jsx("span", { className: `${styles$1.badge} ${styles$1[`badge_${type}`]}`, children: label });
   if (record.url) {
     return /* @__PURE__ */ jsxs(
       "a",
@@ -10378,12 +10913,12 @@ function RecordBadge({
         href: record.url,
         target: "_blank",
         rel: "noopener noreferrer",
-        className: styles$2.badgeLink,
+        className: styles$1.badgeLink,
         title: `${t("lineage.view_archive")}: ${record.label}`,
         "aria-label": `${label}: ${record.label} — ${t("lineage.view_archive")}`,
         children: [
           content2,
-          /* @__PURE__ */ jsx("span", { className: styles$2.badgeLinkIcon, "aria-hidden": "true", children: "↗" })
+          /* @__PURE__ */ jsx("span", { className: styles$1.badgeLinkIcon, "aria-hidden": "true", children: "↗" })
         ]
       }
     );
@@ -10400,17 +10935,17 @@ function DetailPanel({ ancestor }) {
     { label: t("lineage.detail_death"), value: ancestor.deathRecord?.label },
     { label: t("lineage.detail_status"), value: t(`lineage.status_${ancestor.status}`) }
   ].filter((r) => r.value);
-  return /* @__PURE__ */ jsxs("div", { className: styles$2.detail, role: "region", "aria-label": ancestor.name, children: [
-    /* @__PURE__ */ jsx("h3", { className: styles$2.detailName, children: ancestor.name }),
-    /* @__PURE__ */ jsx("dl", { className: styles$2.detailGrid, children: rows.map((row2) => /* @__PURE__ */ jsxs("div", { className: styles$2.detailRow, children: [
-      /* @__PURE__ */ jsx("dt", { className: styles$2.detailLabel, children: row2.label }),
-      /* @__PURE__ */ jsx("dd", { className: styles$2.detailValue, children: row2.url ? /* @__PURE__ */ jsxs(
+  return /* @__PURE__ */ jsxs("div", { className: styles$1.detail, role: "region", "aria-label": ancestor.name, children: [
+    /* @__PURE__ */ jsx("h3", { className: styles$1.detailName, children: ancestor.name }),
+    /* @__PURE__ */ jsx("dl", { className: styles$1.detailGrid, children: rows.map((row2) => /* @__PURE__ */ jsxs("div", { className: styles$1.detailRow, children: [
+      /* @__PURE__ */ jsx("dt", { className: styles$1.detailLabel, children: row2.label }),
+      /* @__PURE__ */ jsx("dd", { className: styles$1.detailValue, children: row2.url ? /* @__PURE__ */ jsxs(
         "a",
         {
           href: row2.url,
           target: "_blank",
           rel: "noopener noreferrer",
-          className: styles$2.archiveLink,
+          className: styles$1.archiveLink,
           children: [
             row2.value,
             /* @__PURE__ */ jsx("span", { "aria-hidden": "true", children: " ↗" })
@@ -10418,7 +10953,7 @@ function DetailPanel({ ancestor }) {
         }
       ) : row2.value })
     ] }, row2.label)) }),
-    ancestor.comment && /* @__PURE__ */ jsx("p", { className: styles$2.detailComment, children: ancestor.comment })
+    ancestor.comment && /* @__PURE__ */ jsx("p", { className: styles$1.detailComment, children: ancestor.comment })
   ] });
 }
 function LineagePage() {
@@ -10428,10 +10963,10 @@ function LineagePage() {
   const handleSelect = (id) => {
     setActiveId((prev) => prev === id ? null : id);
   };
-  return /* @__PURE__ */ jsxs("main", { className: styles$2.page, children: [
-    /* @__PURE__ */ jsxs("header", { className: styles$2.header, children: [
-      /* @__PURE__ */ jsx("h1", { className: styles$2.title, children: t("lineage.page_title") }),
-      /* @__PURE__ */ jsx("p", { className: styles$2.intro, children: t("lineage.page_intro") })
+  return /* @__PURE__ */ jsxs("main", { className: styles$1.page, children: [
+    /* @__PURE__ */ jsxs("header", { className: styles$1.header, children: [
+      /* @__PURE__ */ jsx("h1", { className: styles$1.title, children: t("lineage.page_title") }),
+      /* @__PURE__ */ jsx("p", { className: styles$1.intro, children: t("lineage.page_intro") })
     ] }),
     /* @__PURE__ */ jsxs("div", { style: {
       maxWidth: "780px",
@@ -10452,30 +10987,30 @@ function LineagePage() {
       " ",
       /* @__PURE__ */ jsx("span", { style: { fontStyle: "italic", opacity: 0.75 }, children: 'Nieus, "Aristocratic seal ownership in twelfth-century Flanders," 2021, pp. 23–26.' })
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: styles$2.legend, role: "list", "aria-label": t("lineage.legend_label"), children: [
-      ["documented", "partial", "inferred", "modern"].map((s) => /* @__PURE__ */ jsxs("div", { className: styles$2.legendItem, role: "listitem", children: [
+    /* @__PURE__ */ jsxs("div", { className: styles$1.legend, role: "list", "aria-label": t("lineage.legend_label"), children: [
+      ["documented", "partial", "inferred", "modern"].map((s) => /* @__PURE__ */ jsxs("div", { className: styles$1.legendItem, role: "listitem", children: [
         /* @__PURE__ */ jsx(
           "span",
           {
-            className: styles$2.legendDot,
+            className: styles$1.legendDot,
             style: { background: STATUS_COLOR[s] },
             "aria-hidden": "true"
           }
         ),
         /* @__PURE__ */ jsx("span", { children: t(`lineage.status_${s}`) })
       ] }, s)),
-      /* @__PURE__ */ jsx("span", { className: styles$2.legendHint, children: t("lineage.click_hint") })
+      /* @__PURE__ */ jsx("span", { className: styles$1.legendHint, children: t("lineage.click_hint") })
     ] }),
-    /* @__PURE__ */ jsx("div", { className: styles$2.tree, role: "list", "aria-label": t("lineage.tree_label"), children: vanVlaenderenLineage.map((ancestor, index) => {
+    /* @__PURE__ */ jsx("div", { className: styles$1.tree, role: "list", "aria-label": t("lineage.tree_label"), children: vanVlaenderenLineage.map((ancestor, index) => {
       const isActive = activeId === ancestor.id;
       const isFirst = index === 0;
       const isLast = index === vanVlaenderenLineage.length - 1;
-      return /* @__PURE__ */ jsxs("div", { className: styles$2.row, role: "listitem", children: [
-        /* @__PURE__ */ jsx("span", { className: styles$2.genLabel, "aria-label": `${t("lineage.generation")} ${ancestor.generation}`, children: ancestor.generation }),
+      return /* @__PURE__ */ jsxs("div", { className: styles$1.row, role: "listitem", children: [
+        /* @__PURE__ */ jsx("span", { className: styles$1.genLabel, "aria-label": `${t("lineage.generation")} ${ancestor.generation}`, children: ancestor.generation }),
         /* @__PURE__ */ jsx(
           "div",
           {
-            className: styles$2.connector,
+            className: styles$1.connector,
             "aria-hidden": "true",
             "data-first": isFirst || void 0,
             "data-last": isLast || void 0
@@ -10484,21 +11019,21 @@ function LineagePage() {
         /* @__PURE__ */ jsxs(
           "button",
           {
-            className: `${styles$2.card} ${isActive ? styles$2.cardActive : ""}`,
+            className: `${styles$1.card} ${isActive ? styles$1.cardActive : ""}`,
             style: { "--status-color": STATUS_COLOR[ancestor.status] },
             onClick: () => handleSelect(ancestor.id),
             "aria-pressed": isActive,
             "aria-expanded": isActive,
             "aria-controls": isActive ? `detail-${ancestor.id}` : void 0,
             children: [
-              /* @__PURE__ */ jsx("span", { className: styles$2.cardName, children: ancestor.name }),
-              ancestor.born && /* @__PURE__ */ jsxs("span", { className: styles$2.cardDate, children: [
+              /* @__PURE__ */ jsx("span", { className: styles$1.cardName, children: ancestor.name }),
+              ancestor.born && /* @__PURE__ */ jsxs("span", { className: styles$1.cardDate, children: [
                 t("lineage.born_prefix"),
                 " ",
                 ancestor.born
               ] }),
-              /* @__PURE__ */ jsx("span", { className: styles$2.cardParish, children: ancestor.parish }),
-              /* @__PURE__ */ jsxs("span", { className: styles$2.badgeRow, "aria-label": t("lineage.records_available"), children: [
+              /* @__PURE__ */ jsx("span", { className: styles$1.cardParish, children: ancestor.parish }),
+              /* @__PURE__ */ jsxs("span", { className: styles$1.badgeRow, "aria-label": t("lineage.records_available"), children: [
                 /* @__PURE__ */ jsx(RecordBadge, { type: "birth", record: ancestor.birthRecord }),
                 /* @__PURE__ */ jsx(RecordBadge, { type: "marriage", record: ancestor.marriageRecord }),
                 /* @__PURE__ */ jsx(RecordBadge, { type: "death", record: ancestor.deathRecord })
@@ -10509,7 +11044,7 @@ function LineagePage() {
       ] }, ancestor.id);
     }) }),
     activeAncestor && /* @__PURE__ */ jsx("div", { id: `detail-${activeAncestor.id}`, children: /* @__PURE__ */ jsx(DetailPanel, { ancestor: activeAncestor }) }),
-    /* @__PURE__ */ jsxs("p", { className: styles$2.sourceNote, children: [
+    /* @__PURE__ */ jsxs("p", { className: styles$1.sourceNote, children: [
       t("lineage.source_note"),
       " ",
       /* @__PURE__ */ jsx(
@@ -10518,7 +11053,7 @@ function LineagePage() {
           href: "https://agatha.arch.be",
           target: "_blank",
           rel: "noopener noreferrer",
-          className: styles$2.archiveLink,
+          className: styles$1.archiveLink,
           children: "Rijksarchief Gent (AGATHA)"
         }
       ),
@@ -10823,111 +11358,7 @@ function MethodologyPage() {
   ] });
 }
 const meetjeslandMap = "/assets/meetjesland-map-D7thb5CK.jpg";
-const wrap = "_wrap_cs2e6_6";
-const sup = "_sup_cs2e6_12";
-const ref = "_ref_cs2e6_16";
-const popover = "_popover_cs2e6_32";
-const popNum = "_popNum_cs2e6_64";
-const popText = "_popText_cs2e6_70";
-const popJump = "_popJump_cs2e6_74";
-const styles$1 = {
-  wrap,
-  sup,
-  ref,
-  popover,
-  popNum,
-  popText,
-  popJump
-};
-function Cite({ n, text }) {
-  const [open, setOpen] = useState(false);
-  const [pinned, setPinned] = useState(false);
-  const wrapRef = useRef(null);
-  const hideTimer = useRef(null);
-  const show = useCallback(() => {
-    if (hideTimer.current) clearTimeout(hideTimer.current);
-    setOpen(true);
-  }, []);
-  const scheduleHide = useCallback(() => {
-    if (pinned) return;
-    if (hideTimer.current) clearTimeout(hideTimer.current);
-    hideTimer.current = setTimeout(() => setOpen(false), 140);
-  }, [pinned]);
-  useEffect(() => {
-    if (!pinned) return;
-    const onDown = (e) => {
-      if (wrapRef.current && !wrapRef.current.contains(e.target)) {
-        setPinned(false);
-        setOpen(false);
-      }
-    };
-    const onKey = (e) => {
-      if (e.key === "Escape") {
-        setPinned(false);
-        setOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", onDown);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onDown);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [pinned]);
-  useEffect(() => () => {
-    if (hideTimer.current) clearTimeout(hideTimer.current);
-  }, []);
-  return /* @__PURE__ */ jsxs(
-    "span",
-    {
-      ref: wrapRef,
-      className: styles$1.wrap,
-      onMouseEnter: show,
-      onMouseLeave: scheduleHide,
-      children: [
-        /* @__PURE__ */ jsx("sup", { className: styles$1.sup, children: /* @__PURE__ */ jsx(
-          "a",
-          {
-            href: `#fn-${n}`,
-            id: `fnref-${n}`,
-            className: styles$1.ref,
-            "aria-describedby": open ? `fn-pop-${n}` : void 0,
-            onFocus: show,
-            onBlur: scheduleHide,
-            onClick: (e) => {
-              e.preventDefault();
-              setPinned((p) => {
-                const next = !p;
-                setOpen(next);
-                return next;
-              });
-            },
-            children: n
-          }
-        ) }),
-        open && /* @__PURE__ */ jsxs(
-          "span",
-          {
-            role: "tooltip",
-            id: `fn-pop-${n}`,
-            className: styles$1.popover,
-            onMouseEnter: show,
-            onMouseLeave: scheduleHide,
-            children: [
-              /* @__PURE__ */ jsxs("span", { children: [
-                /* @__PURE__ */ jsx("span", { className: styles$1.popNum, children: n }),
-                /* @__PURE__ */ jsx("span", { className: styles$1.popText, children: text })
-              ] }),
-              /* @__PURE__ */ jsx("br", {}),
-              /* @__PURE__ */ jsx("a", { href: `#fn-${n}`, className: styles$1.popJump, children: "full note ↓" })
-            ]
-          }
-        )
-      ]
-    }
-  );
-}
-const notes = [
+const notes$1 = [
   {
     n: 1,
     short: "Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300–21302 (1545–49) — the Honnelede wardship file. Consulted April 2026 (case 2026/0451).",
@@ -11041,9 +11472,9 @@ const notes = [
     ] })
   }
 ];
-const CITES = {};
-notes.forEach((nt) => {
-  CITES[nt.n] = nt.short;
+const CITES$1 = {};
+notes$1.forEach((nt) => {
+  CITES$1[nt.n] = nt.short;
 });
 function GapDossierPage() {
   return /* @__PURE__ */ jsxs("div", { className: styles$4.page, children: [
@@ -11117,9 +11548,9 @@ function GapDossierPage() {
           " Louis Friese van Vlaenderen (d. Nicopolis, 1396) founded a parallel comital-bastard branch whose surname use is documented across seven generations. The",
           /* @__PURE__ */ jsx("strong", { children: " senior direct line" }),
           " failed when Jan II van Vlaenderen died without issue on 10 December 1545, predeceasing his father Lodewijk IV — but the line did not end there. The lordship and the surname passed to a documented collateral branch: Joos (Josse) van Vlaenderen, son of Lodewijk II (d. before 30 Nov 1545, m. Martina van Moerkerke) → his son Jacob van Vlaanderen (d. 1566), who received Praet and Woestijne at Aalter by act of 25 September 1550 and married Catharina van Boetzelaer → Lodewijk V van Vlaanderen, who died sonless on 31 October 1591, in Calvinist exile — the last male of the titled line, with whom the surname in that branch ends (Verhoustraete 1967, pp. 101–113",
-          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES[2] }),
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$1[2] }),
           "; Serrure 1863",
-          /* @__PURE__ */ jsx(Cite, { n: 3, text: CITES[3] }),
+          /* @__PURE__ */ jsx(Cite, { n: 3, text: CITES$1[3] }),
           "). The titled Praet line is therefore documented to 1591, directly overlapping the first parish-record generation of the Meetjesland cluster."
         ] }),
         /* @__PURE__ */ jsx("p", { children: "The gap, precisely stated, is not a single span but a structural problem: two comital lines bearing the surname are documented above the gap — Victor's to 1447, the Praet line to 1591; a commoner cluster bearing the surname is documented in the parish registers from the 1580s; and no record has yet been located connecting either upper line to the lower cluster." })
@@ -11137,7 +11568,7 @@ function GapDossierPage() {
           " known to the project through De Raadt, ",
           /* @__PURE__ */ jsx("em", { children: "Sceaux armoriés des Pays-Bas" }),
           ", vol. I (1897), p. 456, as cited in C. Cawley, ‘Medieval Lands’ (FMG).",
-          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES[6] }),
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES$1[6] }),
           "Neither the De Raadt volume nor the underlying archive has yet been directly consulted."
         ] })
       ] }),
@@ -11149,11 +11580,15 @@ function GapDossierPage() {
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           "Wardship and estate records naming Joos van Vlaenderen and his minor sons Jacob and Phillip (Phelips).",
-          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES[1] }),
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$1[1] }),
           " An earlier version of this page read these bundles as the earliest attestations of the Meetjesland commoner cluster, with ‘no connection to either comital line established.’ That reading is superseded: the family of this file is now identified as the ",
           /* @__PURE__ */ jsx("strong", { children: "Praet line's cadet branch" }),
-          ". Serrure 1863 names Joos's children Jacob, Philips, and Philippote; the Gruuthuse marriage anchors Joos as a son of Lodewijk II; and the ward Jacob is the same Jacob van Vlaanderen who received Praet and Woestijne at Aalter by act of 25 September 1550 (Verhoustraete 1967). The identification is Strongly Corroborated.",
-          /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES[7] }),
+          ". Serrure names Joos's children Jacob, Philips, and Philippote;",
+          /* @__PURE__ */ jsx(Cite, { n: 3, text: CITES$1[3], repeat: true }),
+          " the Gruuthuse marriage anchors Joos as a son of Lodewijk II; and the ward Jacob is the same Jacob van Vlaanderen who received Praet and Woestijne at Aalter by act of 25 September 1550.",
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$1[2], repeat: true }),
+          " The identification is Strongly Corroborated.",
+          /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES$1[7] }),
           "These records therefore belong to the gap's ",
           /* @__PURE__ */ jsx("em", { children: "upper" }),
           " (comital) anchor, not its lower (commoner) one."
@@ -11161,7 +11596,9 @@ function GapDossierPage() {
         /* @__PURE__ */ jsxs("p", { children: [
           "The file also preserves the single most consequential gap-period datapoint for the cadet question: a 1547–48 entry concerning the younger ward, ",
           /* @__PURE__ */ jsx("em", { children: "‘nopende Phelipe van Vlaendren … In Lande van Hollandt ende Zeelandt’" }),
-          " — a legal matter in Holland-Zeeland concerning Philips (RAB TBO 184 nr. 21300, Rekening B, fol. 16r). Philips is last attested there, around 1547–48; see the cadet-frontier section below."
+          " — a legal matter in Holland-Zeeland concerning Philips (RAB TBO 184 nr. 21300, Rekening B, fol. 16r).",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$1[1], repeat: true }),
+          " Philips is last attested there, around 1547–48; see the cadet-frontier section below."
         ] }),
         /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }, children: [
           /* @__PURE__ */ jsx("strong", { children: "Archival signature:" }),
@@ -11179,15 +11616,19 @@ function GapDossierPage() {
           /* @__PURE__ */ jsx("strong", { children: "Cadet survival is a demonstrated mechanism in this family" }),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" }),
-          ". When the senior Praet line failed in 1545 (Jan II dying before his father), the lordship and the surname did not die: they passed to the collateral branch of Joos van Vlaenderen, whose son Jacob received Praet and Woestijne in 1550 and whose grandson Lodewijk V carried the line to 1591 (Verhoustraete 1967; Serrure 1863; RAB TBO 184 nrs. 21300–21302). The line demonstrably survived a senior failure once, through a cadet. That the cadet branch then also went sonless does not retract the mechanism — it means the question moves one cadet-degree further out."
+          ". When the senior Praet line failed in 1545 (Jan II dying before his father), the lordship and the surname did not die: they passed to the collateral branch of Joos van Vlaenderen, whose son Jacob received Praet and Woestijne in 1550 and whose grandson Lodewijk V carried the line to 1591.",
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$1[2], repeat: true }),
+          /* @__PURE__ */ jsx(Cite, { n: 3, text: CITES$1[3], repeat: true }),
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$1[1], repeat: true }),
+          " The line demonstrably survived a senior failure once, through a cadet. That the cadet branch then also went sonless does not retract the mechanism — it means the question moves one cadet-degree further out."
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "The 1591 end was over-determined" }),
           " ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" }),
-          ". Lodewijk V's sonless death coincided with childlessness (Maria van Marnix died childless in 1580), debt (the forced sale of the Praet/Aalter estate), confiscation (the lordships sequestered during Catharina van Boetzelaer's Calvinist banishment), and religious exile (Lodewijk V was a Calvinist who died abroad). A title leaving a surname under that confluence carries no information about whether agnatic cadets survived elsewhere — a poorer, untitled, possibly Protestant cadet would have had neither the standing nor the confessional eligibility to claim a Flemish Catholic fief in 1591 (Verhoustraete 1967; Valkeneers & Soen 2014",
-          /* @__PURE__ */ jsx(Cite, { n: 5, text: CITES[5] }),
-          ")."
+          ". Lodewijk V's sonless death coincided with childlessness (Maria van Marnix died childless in 1580), debt (the forced sale of the Praet/Aalter estate), confiscation (the lordships sequestered during Catharina van Boetzelaer's Calvinist banishment), and religious exile (Lodewijk V was a Calvinist who died abroad). A title leaving a surname under that confluence carries no information about whether agnatic cadets survived elsewhere — a poorer, untitled, possibly Protestant cadet would have had neither the standing nor the confessional eligibility to claim a Flemish Catholic fief in 1591.",
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$1[2], repeat: true }),
+          /* @__PURE__ */ jsx(Cite, { n: 5, text: CITES$1[5] })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "The named frontier." }),
@@ -11195,11 +11636,15 @@ function GapDossierPage() {
           /* @__PURE__ */ jsx("strong", { children: "Philips van Vlaenderen" }),
           ", Joos's younger son, a ward of the Honnelede file, last attested around 1547–48 in a legal matter ",
           /* @__PURE__ */ jsx("em", { children: "'In Lande van Hollandt ende Zeelandt'" }),
-          " (RAB TBO 184 nr. 21300, Rekening B, fol. 16r) — plausibly connected, through his maternal van Moerckercke line, to the Mijnsheerenland van Moerkerken interests the senior line litigated before the Hof van Holland (Lauwens 2021",
-          /* @__PURE__ */ jsx(Cite, { n: 4, text: CITES[4] }),
-          "); (2) the",
+          " (RAB TBO 184 nr. 21300, Rekening B, fol. 16r)",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$1[1], repeat: true }),
+          " — plausibly connected, through his maternal van Moerckercke line, to the Mijnsheerenland van Moerkerken interests the senior line litigated before the Hof van Holland",
+          /* @__PURE__ */ jsx(Cite, { n: 4, text: CITES$1[4] }),
+          "; (2) the",
           /* @__PURE__ */ jsx("strong", { children: " three unnamed children of Lodewijk II" }),
-          " — Verhoustraete records six children but names only three; and (3) the issue of Joos's daughter",
+          " — Verhoustraete records six children but names only three;",
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$1[2], repeat: true }),
+          " and (3) the issue of Joos's daughter",
           " ",
           /* @__PURE__ */ jsx("strong", { children: "Philippote" }),
           " (female-line, so not surname-bearing, noted for completeness). Philips is the prime untraced-cadet lead."
@@ -11235,7 +11680,7 @@ function GapDossierPage() {
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           "Searched in full. One attestation in Zeeland (Aardenburg, 1309–10) refers to Count Robert de Béthune himself — Bucket 2 titular usage, not a surname bearer. No hereditary van Vlaenderen cluster in Zeeland. Strengthens East Flanders as the surname's geographic core.",
-          /* @__PURE__ */ jsx(Cite, { n: 9, text: CITES[9] })
+          /* @__PURE__ */ jsx(Cite, { n: 9, text: CITES$1[9] })
         ] }),
         /* @__PURE__ */ jsxs("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: [
           "Debrabandere, ",
@@ -11244,7 +11689,7 @@ function GapDossierPage() {
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           "Van Vlaenderen entry read via CBG Familienamenbank. Pure place-name classification; three attestations (1280, 1376, 1426), all pre-cluster, none in the Meetjesland. Entry uncorrected in 2010 and 2019 corrigenda. Does not engage with the East Flanders parish-record concentration.",
-          /* @__PURE__ */ jsx(Cite, { n: 8, text: CITES[8] })
+          /* @__PURE__ */ jsx(Cite, { n: 8, text: CITES$1[8] })
         ] }),
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "AGATHA portal — Staten van Goed searches, March 2026" }),
         /* @__PURE__ */ jsx("p", { children: "Searched Ambacht Assenede I & II, Boekhoute I–III, Waarschoot/Oostwinkel/Ronsele, and Heerlijkheid Praet met Oedelem for Van Vlaenderen entries to build the Rijksarchief Gent request list. Results being processed." }),
@@ -11265,11 +11710,15 @@ function GapDossierPage() {
           " ",
           /* @__PURE__ */ jsx("a", { href: "https://openjournals.ugent.be/hctd", target: "_blank", rel: "noopener noreferrer", className: researchStyles.refLink, children: "openjournals.ugent.be/hctd" }),
           ". The single highest-priority unread source.",
-          /* @__PURE__ */ jsx(Cite, { n: 10, text: CITES[10] })
+          /* @__PURE__ */ jsx(Cite, { n: 10, text: CITES$1[10] })
         ] }),
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1rem", marginBottom: "0.5rem", marginTop: "1.5rem" }, children: "2. The non-inheriting Praet cadets — Philips and the unnamed children of Lodewijk II" }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "The titled continuation of Joos's branch is now traced to its 1591 terminus (Verhoustraete 1967), so the live target is the untitled cadets the title-record never follows: Philips van Vlaenderen (last attested 1547–48, with the Holland-Zeeland legal matter of RAB TBO 184 nr. 21300, Rekening B, fol. 16r), the three unnamed children of Lodewijk II, and Philippote's issue. For Philips, the decisive series are the Hof van Holland litigation records and the Mijnsheerenland van Moerkerken succession register (neither name-indexed online); for the Flemish cadets, parish, estate, and leenhof records 1545–1620, whether under",
+          "The titled continuation of Joos's branch is now traced to its 1591 terminus,",
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$1[2], repeat: true }),
+          "so the live target is the untitled cadets the title-record never follows: Philips van Vlaenderen (last attested 1547–48, with the Holland-Zeeland legal matter of RAB TBO 184 nr. 21300, Rekening B, fol. 16r),",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES$1[1], repeat: true }),
+          " the three unnamed children of Lodewijk II, and Philippote's issue. For Philips, the decisive series are the Hof van Holland litigation records and the Mijnsheerenland van Moerkerken succession register (neither name-indexed online); for the Flemish cadets, parish, estate, and leenhof records 1545–1620, whether under",
           " ",
           /* @__PURE__ */ jsx("em", { children: "van Vlaenderen" }),
           ", ",
@@ -11292,7 +11741,7 @@ function GapDossierPage() {
           " ",
           /* @__PURE__ */ jsx("a", { href: "http://lib.ugent.be/catalog/rug01:002005149", target: "_blank", rel: "noopener noreferrer", className: researchStyles.refLink, children: "Ghent University Library" }),
           ". Most direct route to additional 14th-century charter evidence for either comital line.",
-          /* @__PURE__ */ jsx(Cite, { n: 11, text: CITES[11] })
+          /* @__PURE__ */ jsx(Cite, { n: 11, text: CITES$1[11] })
         ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
@@ -11314,7 +11763,10 @@ function GapDossierPage() {
           " Praet cadets: Philips, the unnamed children of Lodewijk II, or a less-documented Aalter-area cadet (see the cadet-frontier section above). The gap would be closed by tracing those cadets into parish, estate, or leenhof records 1545–1620."
         ] }),
         /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.85rem", fontStyle: "italic", color: "var(--text-muted)" }, children: [
-          "Current status: substantially strengthened by the April 2026 Vredius direct-reading and reframed by the June 2026 Verhoustraete reading. Aalter is an attested Praet residence for the period 1516–1590, eliminating the previous “Brabant-only” framing of the Praet line. The post-1545 generation is now resolved: Jacob is Joos's son and inherited in 1550; his son Lodewijk V died sonless in 1591 (Verhoustraete 1967; Valkeneers & Soen 2014). The open territory is the non-inheriting cadets — and the load-bearing caveat from the cadet-frontier section applies: a surviving Philips line would be a separate comital-agnatic survival, not automatically the Meetjesland line. Note: in late medieval and early modern records, the alternation between ",
+          "Current status: substantially strengthened by the April 2026 Vredius direct-reading and reframed by the June 2026 Verhoustraete reading. Aalter is an attested Praet residence for the period 1516–1590, eliminating the previous “Brabant-only” framing of the Praet line. The post-1545 generation is now resolved: Jacob is Joos's son and inherited in 1550; his son Lodewijk V died sonless in 1591.",
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES$1[2], repeat: true }),
+          /* @__PURE__ */ jsx(Cite, { n: 5, text: CITES$1[5], repeat: true }),
+          " The open territory is the non-inheriting cadets — and the load-bearing caveat from the cadet-frontier section applies: a surviving Philips line would be a separate comital-agnatic survival, not automatically the Meetjesland line. Note: in late medieval and early modern records, the alternation between ",
           /* @__PURE__ */ jsx("em", { children: "de Flandre" }),
           "and ",
           /* @__PURE__ */ jsx("em", { children: "van Vlaenderen" }),
@@ -11361,7 +11813,7 @@ function GapDossierPage() {
       ] }),
       /* @__PURE__ */ jsxs("section", { className: researchStyles.referenceList, children: [
         /* @__PURE__ */ jsx("h2", { children: "Notes & Bibliography" }),
-        notes.map(({ n, full }) => /* @__PURE__ */ jsxs("div", { id: `fn-${n}`, className: researchStyles.refItem, style: { scrollMarginTop: "6rem" }, children: [
+        notes$1.map(({ n, full }) => /* @__PURE__ */ jsxs("div", { id: `fn-${n}`, className: researchStyles.refItem, style: { scrollMarginTop: "6rem" }, children: [
           /* @__PURE__ */ jsxs("span", { className: researchStyles.refNumber, children: [
             n,
             "."
@@ -12682,6 +13134,91 @@ function NieusSealPage() {
     ] })
   ] });
 }
+const notes = [
+  {
+    n: 1,
+    short: "Vredius, Olivarius (Olivier de Wrée). Genealogia Comitum Flandriae, Pars Secunda. Bruges: J.B. & Lucas Kerchovios, 1642–43. Tabula XVI, foll. 281–283 (PDF pp. 291–293).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Vredius, Olivarius (Olivier de Wrée). ",
+      /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem" }),
+      ", Pars Secunda: ",
+      /* @__PURE__ */ jsx("em", { children: "Continens Probationes XII posteriorum tabularum" }),
+      ". Bruges: J.B. & Lucas Kerchovios, 1642–43. Tabula XVI, foll. 281–283 (PDF pp. 291–293). Direct reading conducted April 2026. Principal source for all four generations and the 1383 land grant text."
+    ] })
+  },
+  {
+    n: 2,
+    short: "De l'Espinoy, Philippe. Recherche des antiquitez et noblesse de Flandres. Douai, 1631.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "De l'Espinoy, Philippe. ",
+      /* @__PURE__ */ jsx("em", { children: "Recherche des antiquitez et noblesse de Flandres" }),
+      ". Douai, 1631. Cited in Vredius as the source for the identification of Jan as the fifth bastard son and for the land grant details. Not accessed directly."
+    ] })
+  },
+  {
+    n: 3,
+    short: "Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut, v5.0, updated January 2025.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Foundation for Medieval Genealogy. ",
+      /* @__PURE__ */ jsx("em", { children: "MedLands: Flanders, Hainaut" }),
+      ", v5.0, updated January 2025. ",
+      /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS.htm", style: { color: "var(--gold)" }, target: "_blank", rel: "noopener noreferrer", children: "fmg.ac/Projects/MedLands/FLANDERS.htm" }),
+      ". Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority."
+    ] })
+  },
+  {
+    n: 4,
+    short: "Gaillard (cited in Vredius). Middle Dutch text naming Loys le Hase, Loys le Frison, and Jan sans terre as Van Vlaenderen at Nicopolis 1396. Tabula XVI.",
+    full: /* @__PURE__ */ jsx(Fragment$1, { children: "Gaillard (cited in Vredius). Middle Dutch text naming Loys le Hase, Loys le Frison, and Jan sans terre as Van Vlaenderen at Nicopolis 1396. Tabula XVI. Direct quotation transcribed April 2026." })
+  },
+  {
+    n: 5,
+    short: "Epitaph of Jacques de Drincham, Veurne church, as preserved in Gaillard and quoted in Vredius, Tabula XVI.",
+    full: /* @__PURE__ */ jsx(Fragment$1, { children: "Epitaph of Jacques de Drincham, Veurne church, as preserved in Gaillard and quoted in Vredius, Tabula XVI. Confirms death date 10 April 1459 and offices held." })
+  },
+  {
+    n: 6,
+    short: "Donche. 'De Familie Van Drincham, gezegd van Vlaanderen.' Vlaamse Stam 42/6 (2006), pp. 548–580.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Donche. 'De Familie Van Drincham, gezegd van Vlaanderen.' ",
+      /* @__PURE__ */ jsx("em", { children: "Vlaamse Stam" }),
+      " 42/6 (2006), pp. 548–580. Records-based six-generation reconstruction of the line. Source for the 1393 Broekburg relief waiver (p. 556, citing ADN Lille, Chambres des Comptes, B 421), the 1466 Houtem tomb verbatim (p. 567), the fifth- and sixth-generation members Simon and Margareta (pp. 574–578), and the 1551 Praet purchase attempt (pp. 569–570)."
+    ] })
+  },
+  {
+    n: 7,
+    short: "Buylaert, Frederik. Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Buylaert, Frederik. ",
+      /* @__PURE__ */ jsx("em", { children: "Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500)" }),
+      ". Pages 753 (the line's founder as a bastard of Louis de Male) and 756 (the 1503 attestation of 'joncvrouwe Margriete van Vlaendren gheseit van Drincham')."
+    ] })
+  },
+  {
+    n: 8,
+    short: "de Lichtervelde, Les Bâtards de Louis de Male, HvGG 78 (1935), pp. 48–58.",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Lichtervelde, P. de. ",
+      /* @__PURE__ */ jsx("em", { children: "Les Bâtards de Louis de Male." }),
+      " Handelingen van het Genootschap voor Geschiedenis 78 (1935), pp. 48–58.",
+      " ",
+      /* @__PURE__ */ jsx("a", { href: "https://doi.org/10.21825/gvg.92141", className: researchStyles.refLink, target: "_blank", rel: "noopener noreferrer", children: "DOI (open access)" })
+    ] })
+  },
+  {
+    n: 9,
+    short: "Gailliard, Bruges et le Franc (Bruges, 1857–1864).",
+    full: /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      "Gailliard, J. ",
+      /* @__PURE__ */ jsx("em", { children: "Bruges et le Franc, ou leur magistrature et leur noblesse." }),
+      " Bruges, 1857–1864."
+    ] })
+  }
+];
+const CITES = {};
+notes.forEach((nt) => {
+  CITES[nt.n] = nt.short;
+});
 const tdStyle = {
   padding: "9px 12px",
   borderBottom: "1px solid rgba(255,255,255,0.06)",
@@ -12768,9 +13305,12 @@ function DrinchamDossierPage() {
           /* @__PURE__ */ jsx("strong", { children: "Primary source:" }),
           " Olivarius Vredius (Olivier de Wrée), ",
           /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae" }),
-          ", Pars Secunda, Tabula XVI, foll. 281–283 (PDF pp. 291–293), Bruges: J.B. & Lucas Kerchovios, 1642–43. Direct reading conducted April 2026. Collateral attestation from de l'Espinoy, ",
+          ", Pars Secunda, Tabula XVI, foll. 281–283 (PDF pp. 291–293), Bruges: J.B. & Lucas Kerchovios, 1642–43.",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES[1] }),
+          " Direct reading conducted April 2026. Collateral attestation from de l'Espinoy, ",
           /* @__PURE__ */ jsx("em", { children: "Recherche des antiquitez et noblesse de Flandres" }),
-          " (Douai, 1631), Livre 2, Chapitre XXXI."
+          " (Douai, 1631), Livre 2, Chapitre XXXI.",
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES[2] })
         ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
@@ -12781,12 +13321,18 @@ function DrinchamDossierPage() {
         /* @__PURE__ */ jsxs("p", { children: [
           "Jan van Vlaenderen, surnamed ",
           /* @__PURE__ */ jsx("em", { children: "sans terre" }),
-          ` ("without land"), was a natural son of Louis II de Male, Count of Flanders (1330–1384). De l'Espinoy identifies him as the fifth natural son of Louis de Male. His mother is not securely identified: the secondary literature offers Petronella de la Val (per Donche, citing De Herckenrode and Van Hille), but no source examined by this project names her directly; the question remains open.`
+          ` ("without land"), was a natural son of Louis II de Male, Count of Flanders (1330–1384). De l'Espinoy identifies him as the fifth natural son of Louis de Male.`,
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES[2], repeat: true }),
+          " His mother is not securely identified: the secondary literature offers Petronella de la Val,",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES[6], loc: "citing De Herckenrode and Van Hille", repeat: true }),
+          " but no source examined by this project names her directly; the question remains open."
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           "The surname ",
           /* @__PURE__ */ jsx("em", { children: "van Vlaenderen" }),
-          " — used by Jan and his descendants — is confirmed as a shared marker of comital bastard identity in the Gaillard text quoted by Vredius, which names all three brothers killed at Nicopolis explicitly under the Van Vlaenderen name:"
+          " — used by Jan and his descendants — is confirmed as a shared marker of comital bastard identity in the Gaillard text quoted by Vredius,",
+          /* @__PURE__ */ jsx(Cite, { n: 4, text: CITES[4] }),
+          " which names all three brothers killed at Nicopolis explicitly under the Van Vlaenderen name:"
         ] }),
         /* @__PURE__ */ jsxs("div", { style: {
           margin: "1.25rem 0",
@@ -12823,7 +13369,10 @@ function DrinchamDossierPage() {
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "The founding event for the Drincham line is documented in Vredius from de l'Espinoy. On ",
+          "The founding event for the Drincham line is documented in Vredius from de l'Espinoy.",
+          /* @__PURE__ */ jsx(Cite, { n: 1, text: CITES[1], repeat: true }),
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES[2], repeat: true }),
+          " On ",
           /* @__PURE__ */ jsx("strong", { children: "22 November 1383" }),
           ", Louis de Male granted Jan the castle and lordship of Drincham, near Cassel in French Flanders, confiscated from Jean de Scheurvelde. The verbatim French from de l'Espinoy as quoted in Vredius:"
         ] }),
@@ -12960,7 +13509,11 @@ function DrinchamDossierPage() {
           "The Veurne Epitaph of Jacques de Drincham ",
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`, children: "Directly Attested" })
         ] }),
-        /* @__PURE__ */ jsx("p", { children: "The most concrete physical evidence for the Drincham line is the epitaph of Jacques de Flandres dict de Drincham at the church in Veurne (Furnes), West Flanders, preserved in Gaillard and quoted in Vredius. The original French:" }),
+        /* @__PURE__ */ jsxs("p", { children: [
+          "The most concrete physical evidence for the Drincham line is the epitaph of Jacques de Flandres dict de Drincham at the church in Veurne (Furnes), West Flanders, preserved in Gaillard and quoted in Vredius.",
+          /* @__PURE__ */ jsx(Cite, { n: 5, text: CITES[5] }),
+          " The original French:"
+        ] }),
         /* @__PURE__ */ jsxs("div", { style: {
           margin: "1.25rem 0",
           padding: "1rem 1.5rem",
@@ -12993,17 +13546,18 @@ function DrinchamDossierPage() {
           /* @__PURE__ */ jsx("span", { className: `${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`, children: "Strongly Corroborated" })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
-          "Donche's records-based study of the line — 'De Familie Van Drincham, gezegd van Vlaanderen,' ",
-          /* @__PURE__ */ jsx("em", { children: "Vlaamse Stam" }),
-          " 42/6 (2006), pp. 548–580 — extends the reconstruction past Vredius's c. 1473 horizon to ",
+          "Donche's records-based study of the line",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES[6] }),
+          " extends the reconstruction past Vredius's c. 1473 horizon to ",
           /* @__PURE__ */ jsx("strong", { children: "six generations" }),
           ', from the founding c. 1388 to the mid-sixteenth century, and establishes the line as the structural twin of the Praet branch: both founded by natural sons of Louis II de Male, both carrying the dynastic house-name in the bridged "van Vlaenderen gezegd van Drincham" form alongside the lordship name, both integrated into Burgundian-noble office across five and more generations, and both intermarrying the same noble kindreds (Gistel, Sint-Omaars, Halewijn, Bambeke). The bridged form is monumentally attested: the 1466 tomb at Houtem names the second-generation Jan, as father of Maria, ',
           /* @__PURE__ */ jsx("em", { children: '"Mer Jans van Vlandres gheseit Drincham"' }),
-          " (Donche p. 567), and Margareta, the line's sixth and last generation, is attested in 1503 as ",
+          ",",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES[6], loc: "p. 567", repeat: true }),
+          " and Margareta, the line's sixth and last generation, is attested in 1503 as ",
           /* @__PURE__ */ jsx("em", { children: '"joncvrouwe Margriete van Vlaendren gheseit van Drincham"' }),
-          " (Buylaert, ",
-          /* @__PURE__ */ jsx("em", { children: "Repertorium van de Vlaamse adel" }),
-          ", p. 756)."
+          ".",
+          /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES[7], loc: "p. 756" })
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "The 1393 Broekburg relief waiver." }),
@@ -13011,26 +13565,45 @@ function DrinchamDossierPage() {
           /* @__PURE__ */ jsx("em", { children: "Messire de Drincham" }),
           " — taking up two fiefs, the inheritances of Jacob van Drincham and Jan van Schuurvelde, both deceased, and owing the count's treasury the relief on each. The verso annotation records that Margareta van Male, Louis II's legitimate daughter and reigning heiress, personally ordered the receiver not to collect: ",
           /* @__PURE__ */ jsx("em", { children: '"me commanda que je ne prinsse point argent de mans.r de Drincham"' }),
-          " (Donche p. 556, citing ADN Lille, Chambres des Comptes, B 421). A relief was owed to the count; its remission is a grace only the comital house could grant, and Margareta granted it to her half-brother — a contemporary administrative act predicated on the kinship, entered in the count's own accounts. A direct reading of the Lille original remains an open archival action; the waiver evidences half-sibling recognition, consistent with but not independently proving the specific paternity."
+          ".",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES[6], loc: "p. 556, citing ADN Lille, Chambres des Comptes, B 421", repeat: true }),
+          " A relief was owed to the count; its remission is a grace only the comital house could grant, and Margareta granted it to her half-brother — a contemporary administrative act predicated on the kinship, entered in the count's own accounts. A direct reading of the Lille original remains an open archival action; the waiver evidences half-sibling recognition, consistent with but not independently proving the specific paternity."
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "Marriage and escheat reconciled." }),
-          " The same 1393 account resolves the apparent conflict between the two acquisition traditions — the 1383 escheat grant of the confiscated Scheurvelde-Drincham holdings (de l'Espinoy, quoted above) and the acquisition by marriage to the heiress Willemine, who brought the original Drincham patrimony (Donche, Buylaert). The account has Jan paying reliefs on the two inheritances, Drincham and Schuurvelde: marriage to the heiress and a comital re-grant of escheated holdings are not mutually exclusive, and both describe how the bundle of Drincham and Schuurvelde rights consolidated in Jan's hands."
+          " The same 1393 account resolves the apparent conflict between the two acquisition traditions — the 1383 escheat grant of the confiscated Scheurvelde-Drincham holdings, quoted above,",
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES[2], repeat: true }),
+          " and the acquisition by marriage to the heiress Willemine, who brought the original Drincham patrimony.",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES[6], repeat: true }),
+          /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES[7], loc: "p. 753", repeat: true }),
+          " The account has Jan paying reliefs on the two inheritances, Drincham and Schuurvelde: marriage to the heiress and a comital re-grant of escheated holdings are not mutually exclusive, and both describe how the bundle of Drincham and Schuurvelde rights consolidated in Jan's hands."
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "The later generations." }),
-          " In Donche's fourth generation the line divides: a senior branch under a further Jan van Drincham, whose heiress Judoca carried the seat out of the surname to the de Jauche and Vilain families, and a cadet under Jacob van Drincham — the Jacques of the Veurne epitaph above, bailiff of Veurne from 1453 to his death in office in 1459. Simon van Drincham, échanson at Mary of Burgundy's court in 1474 and bailiff of Veurne 1477–1486, carries the fifth generation (Donche pp. 574–577). The sixth and last is Margareta van Drincham, gezegd van Vlaanderen, who married Denijs van Sint-Omaars gezegd van Moerbeke, lord of Hondecouter, in 1496, then Karel van Halewijn, lord of Piennes, and died c. 1529–30 (Donche pp. 577–578). In 1551 the two cadet branches converge: Lodewijk van Vlaanderen, lord of Praet — descendant of another natural son of Louis II de Male — bought the Drincham seat from Gabriel de Jauche, only to be pre-empted by Francisca de Jauche exercising a kinship right (Donche pp. 569–570). A descendant of one bastard line attempting, a century and a half on, to buy the seat of the other is the first documented instance of the late Maleani kindred acting across its branches."
+          " In Donche's fourth generation the line divides: a senior branch under a further Jan van Drincham, whose heiress Judoca carried the seat out of the surname to the de Jauche and Vilain families, and a cadet under Jacob van Drincham — the Jacques of the Veurne epitaph above, bailiff of Veurne from 1453 to his death in office in 1459. Simon van Drincham, échanson at Mary of Burgundy's court in 1474 and bailiff of Veurne 1477–1486, carries the fifth generation.",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES[6], loc: "pp. 574–577", repeat: true }),
+          " The sixth and last is Margareta van Drincham, gezegd van Vlaanderen, who married Denijs van Sint-Omaars gezegd van Moerbeke, lord of Hondecouter, in 1496, then Karel van Halewijn, lord of Piennes, and died c. 1529–30.",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES[6], loc: "pp. 577–578", repeat: true }),
+          " In 1551 the two cadet branches converge: Lodewijk van Vlaanderen, lord of Praet — descendant of another natural son of Louis II de Male — bought the Drincham seat from Gabriel de Jauche, only to be pre-empted by Francisca de Jauche exercising a kinship right.",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES[6], loc: "pp. 569–570", repeat: true }),
+          " A descendant of one bastard line attempting, a century and a half on, to buy the seat of the other is the first documented instance of the late Maleani kindred acting across its branches."
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "Two disambiguations." }),
-          ' First, "Jeanne de Flandre dite Drincham" (Gailliard, ',
-          /* @__PURE__ */ jsx("em", { children: "Bruges et le Franc" }),
-          ", Tome I p. 258, married to Jean van Poucke) is a different person — Le Frison's granddaughter through her Praet-side father Jean de Praet, carrying the Drincham epithet by toponym, not a member of this line. Second, the original, pre-cadet de Drincham family — from a Jacob van Drincham sealing in 1312 down to the heiress Willemine c. 1385–88 — is distinct from the post-1396 cadet line that took the seat and its name; the discontinuity is heraldic as well as genealogical, the original family bearing checky argent and azure with a bordure gules against the cadet line's Gistel arms with a free-quarter of Flanders."
+          ' First, "Jeanne de Flandre dite Drincham" (married to Jean van Poucke)',
+          /* @__PURE__ */ jsx(Cite, { n: 9, text: CITES[9], loc: "Tome I, p. 258" }),
+          " is a different person — Le Frison's granddaughter through her Praet-side father Jean de Praet, carrying the Drincham epithet by toponym, not a member of this line. Second, the original, pre-cadet de Drincham family — from a Jacob van Drincham sealing in 1312 down to the heiress Willemine c. 1385–88 — is distinct from the post-1396 cadet line that took the seat and its name; the discontinuity is heraldic as well as genealogical, the original family bearing checky argent and azure with a bordure gules against the cadet line's Gistel arms with a free-quarter of Flanders."
         ] }),
         /* @__PURE__ */ jsxs("p", { style: { fontSize: "0.9rem", fontStyle: "italic", color: "var(--text-muted)" }, children: [
-          "Evidence note: the line's existence, comital-bastard origin, and six-generation institutional continuity are Strongly Corroborated across Donche (2006), Buylaert (",
-          /* @__PURE__ */ jsx("em", { children: "Repertorium" }),
-          ", pp. 753 and 756), de l'Espinoy (1631, ch. XXXI), and de Lichtervelde (1935). The founding filiation — Jan sans terre to the second-generation Jan — is graded Probable pending the ADN Lille B-series record of the lordship's descent after 1396 (see the generations table above)."
+          "Evidence note: the line's existence, comital-bastard origin, and six-generation institutional continuity are Strongly Corroborated across Donche,",
+          /* @__PURE__ */ jsx(Cite, { n: 6, text: CITES[6], repeat: true }),
+          " Buylaert,",
+          /* @__PURE__ */ jsx(Cite, { n: 7, text: CITES[7], loc: "pp. 753 and 756", repeat: true }),
+          " de l'Espinoy,",
+          /* @__PURE__ */ jsx(Cite, { n: 2, text: CITES[2], loc: "1631, ch. XXXI", repeat: true }),
+          " and de Lichtervelde.",
+          /* @__PURE__ */ jsx(Cite, { n: 8, text: CITES[8] }),
+          " The founding filiation — Jan sans terre to the second-generation Jan — is graded Probable pending the ADN Lille B-series record of the lordship's descent after 1396 (see the generations table above)."
         ] })
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
@@ -13069,50 +13642,24 @@ function DrinchamDossierPage() {
       ] }),
       /* @__PURE__ */ jsxs("section", { className: styles$4.section, children: [
         /* @__PURE__ */ jsx("h2", { children: "Notes and Sources" }),
-        /* @__PURE__ */ jsxs("div", { className: researchStyles.referenceList, children: [
-          /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-            /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "1." }),
-            "Vredius, Olivarius (Olivier de Wrée). ",
-            /* @__PURE__ */ jsx("em", { children: "Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem" }),
-            ", Pars Secunda: ",
-            /* @__PURE__ */ jsx("em", { children: "Continens Probationes XII posteriorum tabularum" }),
-            ". Bruges: J.B. & Lucas Kerchovios, 1642–43. Tabula XVI, foll. 281–283 (PDF pp. 291–293). Direct reading conducted April 2026. Principal source for all four generations and the 1383 land grant text."
+        /* @__PURE__ */ jsx("div", { className: researchStyles.referenceList, children: notes.map(({ n, full }) => /* @__PURE__ */ jsxs("div", { id: `fn-${n}`, className: researchStyles.refItem, style: { scrollMarginTop: "6rem" }, children: [
+          /* @__PURE__ */ jsxs("span", { className: researchStyles.refNumber, children: [
+            n,
+            "."
           ] }),
-          /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-            /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "2." }),
-            "De l'Espinoy, Philippe. ",
-            /* @__PURE__ */ jsx("em", { children: "Recherche des antiquitez et noblesse de Flandres" }),
-            ". Douai, 1631. Cited in Vredius as the source for the identification of Jan as the fifth bastard son and for the land grant details. Not accessed directly."
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-            /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "3." }),
-            "Foundation for Medieval Genealogy. ",
-            /* @__PURE__ */ jsx("em", { children: "MedLands: Flanders, Hainaut" }),
-            ", v5.0, updated January 2025. ",
-            /* @__PURE__ */ jsx("a", { href: "https://fmg.ac/Projects/MedLands/FLANDERS.htm", style: { color: "var(--gold)" }, target: "_blank", rel: "noopener noreferrer", children: "fmg.ac/Projects/MedLands/FLANDERS.htm" }),
-            ". Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority."
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-            /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "4." }),
-            "Gaillard (cited in Vredius). Middle Dutch text naming Loys le Hase, Loys le Frison, and Jan sans terre as Van Vlaenderen at Nicopolis 1396. Tabula XVI. Direct quotation transcribed April 2026."
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-            /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "5." }),
-            "Epitaph of Jacques de Drincham, Veurne church, as preserved in Gaillard and quoted in Vredius, Tabula XVI. Confirms death date 10 April 1459 and offices held."
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-            /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "6." }),
-            "Donche. 'De Familie Van Drincham, gezegd van Vlaanderen.' ",
-            /* @__PURE__ */ jsx("em", { children: "Vlaamse Stam" }),
-            " 42/6 (2006), pp. 548–580. Records-based six-generation reconstruction of the line. Source for the 1393 Broekburg relief waiver (p. 556, citing ADN Lille, Chambres des Comptes, B 421), the 1466 Houtem tomb verbatim (p. 567), the fifth- and sixth-generation members Simon and Margareta (pp. 574–578), and the 1551 Praet purchase attempt (pp. 569–570)."
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: researchStyles.refItem, children: [
-            /* @__PURE__ */ jsx("span", { className: researchStyles.refNumber, children: "7." }),
-            "Buylaert, Frederik. ",
-            /* @__PURE__ */ jsx("em", { children: "Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500)" }),
-            ". Pages 753 (the line's founder as a bastard of Louis de Male) and 756 (the 1503 attestation of 'joncvrouwe Margriete van Vlaendren gheseit van Drincham')."
-          ] })
-        ] })
+          full,
+          " ",
+          /* @__PURE__ */ jsx(
+            "a",
+            {
+              href: `#fnref-${n}`,
+              className: researchStyles.refLink,
+              "aria-label": "Back to text",
+              title: "Back to text",
+              children: "↩"
+            }
+          )
+        ] }, n)) })
       ] }),
       /* @__PURE__ */ jsxs("div", { style: { borderTop: "1px solid rgba(232,184,48,0.15)", paddingTop: "1.5rem", marginTop: "1rem", display: "flex", gap: "1.5rem", fontSize: "0.875rem", flexWrap: "wrap" }, children: [
         /* @__PURE__ */ jsx(Link, { to: "/research", style: { color: "var(--gold)", textDecoration: "underline", fontSize: "inherit" }, children: "← Research" }),
