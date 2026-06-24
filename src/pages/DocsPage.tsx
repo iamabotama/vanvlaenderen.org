@@ -231,9 +231,50 @@ function MarkdownDoc({ source }: { source: string }) {
   );
 }
 
+// ── Records database tab ──────────────────────────────────────────────────────
+
+function DatabaseTab() {
+  return (
+    <div style={mdWrap}>
+      <h1 style={{ color: '#e8b830', borderBottom: '1px solid rgba(232,184,48,0.3)', paddingBottom: '0.4rem' }}>
+        Records Database
+      </h1>
+      <p>
+        Live editor over the Van Vlaenderen records database — persons, events, attestations, and
+        relationships, hosted on Supabase. Browse and search the corpus, track research coverage by
+        municipality, and add or propose new records.
+      </p>
+      <p style={{ color: '#c2c7d0', fontSize: '0.88rem' }}>
+        Supabase login required. Access is role-gated: the curator writes directly; contributors
+        submit proposals for review. The page shows nothing until you sign in.
+      </p>
+      <p style={{ marginTop: '1.5rem' }}>
+        <a
+          href="/r/e1e3b0852b/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-block',
+            background: 'rgba(232,184,48,0.15)',
+            border: '1px solid rgba(232,184,48,0.4)',
+            color: '#e8b830',
+            padding: '0.6rem 1.2rem',
+            borderRadius: '6px',
+            textDecoration: 'none',
+            fontWeight: 'bold',
+          }}
+        >
+          Open the records editor →
+        </a>
+      </p>
+    </div>
+  );
+}
+
 // ── Page component ──────────────────────────────────────────────────────────
 
 const TABS = [
+  { id: 'database',  label: 'Database' },
   { id: 'research',  label: 'Research To-Do' },
   { id: 'sources',   label: 'Sources & Reading' },
   { id: 'analysis',  label: 'Analysis Log' },
@@ -244,7 +285,7 @@ const TABS = [
 type TabId = typeof TABS[number]['id'];
 
 export default function DocsPage() {
-  const [active, setActive] = useState<TabId>('research');
+  const [active, setActive] = useState<TabId>('database');
 
   return (
     <div style={page}>
@@ -253,17 +294,8 @@ export default function DocsPage() {
           Van Vlaenderen · Working Documents
         </div>
         <h1 style={{ margin: 0, fontSize: '1.4rem', color: '#e6e6e6' }}>Research &amp; Project Files</h1>
-        <p style={{ margin: '0.35rem 0 0', fontSize: '0.82rem', color: '#666' }}>
+        <p style={{ margin: '0.35rem 0 0', fontSize: '0.82rem', color: '#9ca3af' }}>
           Private — not indexed or linked from the public site. Share URL directly with collaborators.
-        </p>
-        <p style={{ margin: '0.6rem 0 0', fontSize: '0.85rem' }}>
-          <a
-            href="/r/e1e3b0852b/"
-            style={{ color: '#e8b830', textDecoration: 'none', borderBottom: '1px solid rgba(232,184,48,0.4)' }}
-          >
-            → Records database (live editor)
-          </a>
-          <span style={{ color: '#666', marginLeft: '0.6rem' }}>Supabase login required.</span>
         </p>
       </div>
 
@@ -276,6 +308,7 @@ export default function DocsPage() {
       </div>
 
       <div style={content}>
+        {active === 'database'  && <DatabaseTab />}
         {active === 'research'  && <MarkdownDoc source={researchTodo} />}
         {active === 'sources'   && <MarkdownDoc source={readingList} />}
         {active === 'analysis'  && <MarkdownDoc source={analysisSessions} />}
