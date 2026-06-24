@@ -3,6 +3,23 @@ import researchStyles from './ResearchPage.module.css';
 import meetjeslandMap from '../assets/images/heraldic/meetjesland-map.jpg';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { Cite } from '../components/Footnote';
+
+// Short citation text shown in the inline footnote popovers. The full notes
+// live in the "Notes & Bibliography" section at the foot of the page (#fn-N).
+const CITES: Record<number, string> = {
+  1: 'Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300–21302 (1545–49) — the Honnelede wardship file. Consulted April 2026 (case 2026/0451).',
+  2: "Verhoustraete, 'De heren van Praet te Oedelem,' Jaarboek 1967 (Bos en Beverveld), pp. 101–113.",
+  3: 'Serrure (ed.), Vaderlandsch Museum, Deel 5 (Gent, 1863), pp. 295–310.',
+  4: 'Lauwens, Verhalen uit de genealogie Van Praet (2021).',
+  5: "Valkeneers & Soen, 'Praet, Bronkhorst en Boetzelaer…' (2014), pp. 265–284.",
+  6: 'FMG, MedLands: Flanders, Hainaut (v5.0, 2025) — the tertiary pointer that carries the De Raadt citation.',
+  7: 'Buylaert, Repertorium van de Vlaamse adel (ca. 1350–1500) (Gent, 2011), p. 747.',
+  8: 'Debrabandere, Woordenboek van de familienamen in België en Noord-Frankrijk (WFB2, 2003), via CBG Familienamenbank.',
+  9: 'Debrabandere, Woordenboek van de familienamen in Zeeland (WFZ, 2009) — searched in full; no hereditary bearers.',
+  10: 'Gysseling & Debrabandere, Persoonsnamen in de Vier Ambachten, 14e–15e eeuw, KCTD 71 (1999), pp. 491–588 — not yet read.',
+  11: 'Limburg-Stirum, Cartulaire de Louis de Male (Bruges, 1898–1901) — not yet consulted.',
+};
 
 export default function GapDossierPage() {
   return (
@@ -100,7 +117,7 @@ export default function GapDossierPage() {
             Vlaanderen (d. 1566), who received Praet and Woestijne at Aalter by act of 25 September 1550 and married
             Catharina van Boetzelaer &rarr; Lodewijk V van Vlaanderen, who died sonless on
             31 October 1591, in Calvinist exile &mdash; the last male of the titled line, with whom the
-            surname in that branch ends (Verhoustraete 1967, pp. 101&ndash;113; Serrure 1863). The titled
+            surname in that branch ends (Verhoustraete 1967, pp. 101&ndash;113<Cite n={2} text={CITES[2]} />; Serrure 1863<Cite n={3} text={CITES[3]} />). The titled
             Praet line is therefore documented to 1591, directly overlapping the first parish-record
             generation of the Meetjesland cluster.
           </p>
@@ -138,7 +155,7 @@ export default function GapDossierPage() {
           </p>
           <p style={{ fontSize: '0.85rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
             <strong>Archival note:</strong> known to the project through De Raadt, <em>Sceaux armori&eacute;s
-            des Pays-Bas</em>, vol. I (1898), p. 456, as cited in C. Cawley, &lsquo;Medieval Lands&rsquo; (FMG).
+            des Pays-Bas</em>, vol. I (1897), p. 456, as cited in C. Cawley, &lsquo;Medieval Lands&rsquo; (FMG).<Cite n={6} text={CITES[6]} />
             Neither the De Raadt volume nor the underlying archive has yet been directly consulted.
           </p>
         </section>
@@ -152,13 +169,13 @@ export default function GapDossierPage() {
           </h3>
           <p>
             Wardship and estate records naming Joos van Vlaenderen and his minor sons Jacob and Phillip
-            (Phelips). An earlier version of this page read these bundles as the earliest attestations
+            (Phelips).<Cite n={1} text={CITES[1]} /> An earlier version of this page read these bundles as the earliest attestations
             of the Meetjesland commoner cluster, with &lsquo;no connection to either comital line
             established.&rsquo; That reading is superseded: the family of this file is now identified as
             the <strong>Praet line's cadet branch</strong>. Serrure 1863 names Joos's children Jacob,
             Philips, and Philippote; the Gruuthuse marriage anchors Joos as a son of Lodewijk II; and the
             ward Jacob is the same Jacob van Vlaanderen who received Praet and Woestijne at Aalter by act
-            of 25 September 1550 (Verhoustraete 1967). The identification is Strongly Corroborated.
+            of 25 September 1550 (Verhoustraete 1967). The identification is Strongly Corroborated.<Cite n={7} text={CITES[7]} />
             These records therefore belong to the gap's <em>upper</em> (comital) anchor, not its lower
             (commoner) one.
           </p>
@@ -203,7 +220,7 @@ export default function GapDossierPage() {
             carries no information about whether agnatic cadets survived elsewhere &mdash; a poorer,
             untitled, possibly Protestant cadet would have had neither the standing nor the confessional
             eligibility to claim a Flemish Catholic fief in 1591 (Verhoustraete 1967; Valkeneers &amp;
-            Soen 2014).
+            Soen 2014<Cite n={5} text={CITES[5]} />).
           </p>
           <p>
             <strong>The named frontier.</strong> The title-focused sources follow only the title-holder
@@ -212,7 +229,7 @@ export default function GapDossierPage() {
             Honnelede file, last attested around 1547&ndash;48 in a legal matter <em>'In Lande van
             Hollandt ende Zeelandt'</em> (RAB TBO 184 nr. 21300, Rekening B, fol. 16r) &mdash; plausibly
             connected, through his maternal van Moerckercke line, to the Mijnsheerenland van Moerkerken
-            interests the senior line litigated before the Hof van Holland (Lauwens 2021); (2) the
+            interests the senior line litigated before the Hof van Holland (Lauwens 2021<Cite n={4} text={CITES[4]} />); (2) the
             <strong> three unnamed children of Lodewijk II</strong> &mdash; Verhoustraete records six
             children but names only three; and (3) the issue of Joos's daughter{' '}
             <strong>Philippote</strong> (female-line, so not surname-bearing, noted for completeness).
@@ -255,14 +272,14 @@ export default function GapDossierPage() {
           <p>
             Searched in full. One attestation in Zeeland (Aardenburg, 1309&ndash;10) refers to Count Robert
             de Béthune himself &mdash; Bucket 2 titular usage, not a surname bearer. No hereditary
-            van Vlaenderen cluster in Zeeland. Strengthens East Flanders as the surname's geographic core.
+            van Vlaenderen cluster in Zeeland. Strengthens East Flanders as the surname's geographic core.<Cite n={9} text={CITES[9]} />
           </p>
 
           <h3 style={{ color: 'var(--gold)', fontSize: '1rem', marginBottom: '0.5rem', marginTop: '1.5rem' }}>Debrabandere, <em>Woordenboek van de familienamen in België en Noord-Frankrijk</em> (WFB2), 2003</h3>
           <p>
             Van Vlaenderen entry read via CBG Familienamenbank. Pure place-name classification; three
             attestations (1280, 1376, 1426), all pre-cluster, none in the Meetjesland. Entry uncorrected
-            in 2010 and 2019 corrigenda. Does not engage with the East Flanders parish-record concentration.
+            in 2010 and 2019 corrigenda. Does not engage with the East Flanders parish-record concentration.<Cite n={8} text={CITES[8]} />
           </p>
 
           <h3 style={{ color: 'var(--gold)', fontSize: '1rem', marginBottom: '0.5rem', marginTop: '1.5rem' }}>AGATHA portal &mdash; Staten van Goed searches, March 2026</h3>
@@ -295,7 +312,7 @@ export default function GapDossierPage() {
             Personal names in Boekhoute, Assenede, Axel, and Hulst &mdash; the heart of the research zone &mdash;
             in the 14th and 15th centuries. Free via the KCTD portal at{' '}
             <a href="https://openjournals.ugent.be/hctd" target="_blank" rel="noopener noreferrer" className={researchStyles.refLink}>openjournals.ugent.be/hctd</a>.
-            The single highest-priority unread source.
+            The single highest-priority unread source.<Cite n={10} text={CITES[10]} />
           </p>
 
           <h3 style={{ color: 'var(--gold)', fontSize: '1rem', marginBottom: '0.5rem', marginTop: '1.5rem' }}>
@@ -348,7 +365,7 @@ export default function GapDossierPage() {
             Primary cartulary for Louis II de Male's reign with an alphabetical personal names index.
             Explicitly cited in the WFB2 apparatus. Held at{' '}
             <a href="http://lib.ugent.be/catalog/rug01:002005149" target="_blank" rel="noopener noreferrer" className={researchStyles.refLink}>Ghent University Library</a>.
-            Most direct route to additional 14th-century charter evidence for either comital line.
+            Most direct route to additional 14th-century charter evidence for either comital line.<Cite n={11} text={CITES[11]} />
           </p>
         </section>
 
@@ -490,7 +507,7 @@ export default function GapDossierPage() {
         <section className={researchStyles.referenceList}>
           <h2>Notes &amp; Bibliography</h2>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>1.</span>
+            <span id="fn-1" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>1.</span>
             Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300&ndash;21302 (1545&ndash;49). The
             Honnelede wardship file: Joos van Vlaenderen's minor sons Jacob and Philips as wards;
             the 1547&ndash;48 entry <em>&lsquo;nopende Phelipe van Vlaendren &hellip; In Lande van
@@ -498,33 +515,33 @@ export default function GapDossierPage() {
             Reference: case 2026/0451.
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>2.</span>
+            <span id="fn-2" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>2.</span>
             Verhoustraete, Arthur. &lsquo;De heren van Praet te Oedelem.&rsquo; <em>Jaarboek 1967</em>{' '}
             (Bos en Beverveld), pp. 101&ndash;113. The 1545 senior-line failure, the collateral
             continuation (Joos &rarr; Jacob &rarr; Lodewijk V), the 1591 sonless terminus, and the
             post-1591 title succession (pp. 109&ndash;112).
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>3.</span>
+            <span id="fn-3" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>3.</span>
             Serrure, C.P., ed. <em>Vaderlandsch Museum</em>, Deel 5. Gent, 1863. &lsquo;De geslachten
             Van Praet, Van Moerkercke&hellip;,&rsquo; pp. 295&ndash;310 &mdash; names Joos's children
             Jacob, Philips, and Philippote; anchors Joos to Lodewijk II via the Gruuthuse marriage.
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>4.</span>
+            <span id="fn-4" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>4.</span>
             Lauwens, Patrik. <em>Verhalen uit de genealogie Van Praet.</em> 2021. The senior line's
             Mijnsheerenland van Moerkerken / Hof van Holland litigation context for Philips's maternal
             van Moerckercke standing.
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>5.</span>
+            <span id="fn-5" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>5.</span>
             Valkeneers, Nina &amp; Soen, Violet. &lsquo;Praet, Bronkhorst en Boetzelaer. Adellijke
             weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566&ndash;1567)&rsquo;
             (2014), pp. 265&ndash;284. Jacob van Vlaanderen &times; Catharina van Boetzelaer; the
             Calvinist banishment and confiscation behind the over-determined 1591 terminus.
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>6.</span>
+            <span id="fn-6" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>6.</span>
             Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025.
             Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level
             authority. The De Raadt citation above is taken from its footnote apparatus.{' '}
@@ -533,13 +550,13 @@ export default function GapDossierPage() {
             </a>
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>7.</span>
+            <span id="fn-7" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>7.</span>
             Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350&ndash;ca. 1500).</em>{' '}
             Gent: Academia Press, 2011. P. 747 (Josse de Flandre and the cadet Praet branch), read
             directly within the project&rsquo;s pp. 736&ndash;759 pass.
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>8.</span>
+            <span id="fn-8" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>8.</span>
             Debrabandere, Frans. <em>Woordenboek van de familienamen in België en Noord-Frankrijk.</em>{' '}
             LJ Veen, 2003. Van Vlaenderen entry via CBG Familienamenbank.{' '}
             <a href="https://www.cbgfamilienamen.nl" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
@@ -547,7 +564,7 @@ export default function GapDossierPage() {
             </a>
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>9.</span>
+            <span id="fn-9" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>9.</span>
             Debrabandere, Frans. <em>Woordenboek van de familienamen in Zeeland.</em> 2009.
             Searched in full &mdash; no hereditary surname bearers.{' '}
             <a href="https://www.naamkunde.net/wp-content/uploads/2010/01/WZF-Debrabandere.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
@@ -555,7 +572,7 @@ export default function GapDossierPage() {
             </a>
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>10.</span>
+            <span id="fn-10" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>10.</span>
             Gysseling, M. &amp; Debrabandere, F. <em>Persoonsnamen in de Vier Ambachten, 14e en 15e eeuw.</em>{' '}
             KCTD vol. 71 (1999), pp. 491&ndash;588.{' '}
             <a href="https://openjournals.ugent.be/hctd" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
@@ -564,7 +581,7 @@ export default function GapDossierPage() {
             &mdash; not yet read.
           </div>
           <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>11.</span>
+            <span id="fn-11" className={researchStyles.refNumber} style={{ scrollMarginTop: '6rem' }}>11.</span>
             Limburg-Stirum, Th. de. <em>Cartulaire de Louis de Male, comte de Flandre.</em>{' '}
             Bruges, 1898&ndash;1901. Held at{' '}
             <a href="http://lib.ugent.be/catalog/rug01:002005149" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">

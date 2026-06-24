@@ -1,0 +1,101 @@
+/* Footnote / inline-citation popover.
+   Progressive enhancement: the <a> is a real in-page anchor to the bottom
+   note (works with no JS, keyboard-accessible). When JS is on, hover / focus
+   / tap shows the note in place instead of jumping. */
+
+.wrap {
+  position: relative;
+  display: inline;
+  white-space: nowrap;
+}
+
+.sup {
+  line-height: 0;
+}
+
+.ref {
+  color: var(--gold, #e8b830);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.72em;
+  padding: 0 0.12em;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.ref:hover,
+.ref:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+.popover {
+  position: absolute;
+  bottom: 1.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  width: max-content;
+  max-width: min(340px, 82vw);
+  background: #11161f;
+  color: var(--text, #e6e6e6);
+  border: 1px solid rgba(232, 184, 48, 0.35);
+  border-radius: 6px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.5);
+  padding: 0.6rem 0.7rem;
+  font-size: 0.82rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  white-space: normal;
+}
+
+.popover::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(232, 184, 48, 0.35);
+}
+
+.popNum {
+  color: var(--gold, #e8b830);
+  font-weight: 700;
+  margin-right: 0.4em;
+}
+
+.popText {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.popJump {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--gold, #e8b830);
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.popJump:hover {
+  text-decoration: underline;
+}
+
+/* On narrow screens, dock the popover to the bottom of the viewport
+   (the touch-friendly pattern littlefoot uses on mobile). */
+@media (max-width: 600px) {
+  .popover {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    transform: none;
+    max-width: none;
+    width: auto;
+  }
+  .popover::after {
+    display: none;
+  }
+}
