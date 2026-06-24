@@ -75,6 +75,24 @@ const notes = [
       </>
     ),
   },
+  {
+    n: 8,
+    short: 'de Lichtervelde, Les Bâtards de Louis de Male, HvGG 78 (1935), pp. 48–58.',
+    full: (
+      <>
+        Lichtervelde, P. de. <em>Les B&acirc;tards de Louis de Male.</em> Handelingen van het Genootschap voor Geschiedenis 78 (1935), pp. 48&ndash;58.{' '}<a href="https://doi.org/10.21825/gvg.92141" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DOI (open access)</a>
+      </>
+    ),
+  },
+  {
+    n: 9,
+    short: 'Gailliard, Bruges et le Franc (Bruges, 1857–1864).',
+    full: (
+      <>
+        Gailliard, J. <em>Bruges et le Franc, ou leur magistrature et leur noblesse.</em> Bruges, 1857&ndash;1864.
+      </>
+    ),
+  },
 ];
 
 const CITES: Record<number, string> = {};
@@ -360,10 +378,10 @@ export default function DrinchamDossierPage() {
             <strong>The later generations.</strong> In Donche's fourth generation the line divides: a senior branch under a further Jan van Drincham, whose heiress Judoca carried the seat out of the surname to the de Jauche and Vilain families, and a cadet under Jacob van Drincham — the Jacques of the Veurne epitaph above, bailiff of Veurne from 1453 to his death in office in 1459. Simon van Drincham, échanson at Mary of Burgundy's court in 1474 and bailiff of Veurne 1477–1486, carries the fifth generation.<Cite n={6} text={CITES[6]} loc="pp. 574–577" repeat /> The sixth and last is Margareta van Drincham, gezegd van Vlaanderen, who married Denijs van Sint-Omaars gezegd van Moerbeke, lord of Hondecouter, in 1496, then Karel van Halewijn, lord of Piennes, and died c. 1529–30.<Cite n={6} text={CITES[6]} loc="pp. 577–578" repeat /> In 1551 the two cadet branches converge: Lodewijk van Vlaanderen, lord of Praet — descendant of another natural son of Louis II de Male — bought the Drincham seat from Gabriel de Jauche, only to be pre-empted by Francisca de Jauche exercising a kinship right.<Cite n={6} text={CITES[6]} loc="pp. 569–570" repeat /> A descendant of one bastard line attempting, a century and a half on, to buy the seat of the other is the first documented instance of the late Maleani kindred acting across its branches.
           </p>
           <p>
-            <strong>Two disambiguations.</strong> First, "Jeanne de Flandre dite Drincham" (Gailliard, <em>Bruges et le Franc</em>, Tome I p. 258, married to Jean van Poucke) is a different person — Le Frison's granddaughter through her Praet-side father Jean de Praet, carrying the Drincham epithet by toponym, not a member of this line. Second, the original, pre-cadet de Drincham family — from a Jacob van Drincham sealing in 1312 down to the heiress Willemine c. 1385–88 — is distinct from the post-1396 cadet line that took the seat and its name; the discontinuity is heraldic as well as genealogical, the original family bearing checky argent and azure with a bordure gules against the cadet line's Gistel arms with a free-quarter of Flanders.
+            <strong>Two disambiguations.</strong> First, "Jeanne de Flandre dite Drincham" (married to Jean van Poucke)<Cite n={9} text={CITES[9]} loc="Tome I, p. 258" /> is a different person — Le Frison's granddaughter through her Praet-side father Jean de Praet, carrying the Drincham epithet by toponym, not a member of this line. Second, the original, pre-cadet de Drincham family — from a Jacob van Drincham sealing in 1312 down to the heiress Willemine c. 1385–88 — is distinct from the post-1396 cadet line that took the seat and its name; the discontinuity is heraldic as well as genealogical, the original family bearing checky argent and azure with a bordure gules against the cadet line's Gistel arms with a free-quarter of Flanders.
           </p>
           <p style={{ fontSize: '0.9rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
-            Evidence note: the line's existence, comital-bastard origin, and six-generation institutional continuity are Strongly Corroborated across Donche,<Cite n={6} text={CITES[6]} repeat /> Buylaert,<Cite n={7} text={CITES[7]} loc="pp. 753 and 756" repeat /> de l'Espinoy,<Cite n={2} text={CITES[2]} loc="1631, ch. XXXI" repeat /> and de Lichtervelde (1935). The founding filiation — Jan sans terre to the second-generation Jan — is graded Probable pending the ADN Lille B-series record of the lordship's descent after 1396 (see the generations table above).
+            Evidence note: the line's existence, comital-bastard origin, and six-generation institutional continuity are Strongly Corroborated across Donche,<Cite n={6} text={CITES[6]} repeat /> Buylaert,<Cite n={7} text={CITES[7]} loc="pp. 753 and 756" repeat /> de l'Espinoy,<Cite n={2} text={CITES[2]} loc="1631, ch. XXXI" repeat /> and de Lichtervelde.<Cite n={8} text={CITES[8]} /> The founding filiation — Jan sans terre to the second-generation Jan — is graded Probable pending the ADN Lille B-series record of the lordship's descent after 1396 (see the generations table above).
           </p>
         </section>
 

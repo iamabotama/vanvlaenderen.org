@@ -62,6 +62,16 @@ const notes = [
       </>
     ),
   },
+  {
+    n: 6,
+    short: 'Espinoy, Recherche des antiquitez et noblesse de Flandres (Douai, 1631).',
+    full: (
+      <>
+        Espinoy, Philippe de l'. <em>Recherche des antiquitez et noblesse de Flandres.</em> Douai, 1631.{' '}
+        <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>
+      </>
+    ),
+  },
 ];
 
 const CITES: Record<number, string> = {};
@@ -111,7 +121,7 @@ export default function VictorLineagePage() {
         <section className={styles.section}>
           <h2>Identity and Parentage <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
           <p>
-            Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders (1330&ndash;1384). Espinoy (1631), Livre 2, Ch. XXXI, p. 69, records his parentage among the natural sons of Louis II. His mother is identified in the 12 May 1427 charter as Mergriete Haelfhuuts (Heinricx Mayen&hellip;wijf). Victor is styled Seigneur d'Ursele et de Wesseghem and is documented as a Burgundian admiral and captain of Biervliet.
+            Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders (1330&ndash;1384). Espinoy records his parentage among the natural sons of Louis II.<Cite n={6} text={CITES[6]} loc="Livre 2, Ch. XXXI, p. 69" /> His mother is identified in the 12 May 1427 charter as Mergriete Haelfhuuts (Heinricx Mayen&hellip;wijf). Victor is styled Seigneur d'Ursele et de Wesseghem and is documented as a Burgundian admiral and captain of Biervliet.
           </p>
         </section>
 

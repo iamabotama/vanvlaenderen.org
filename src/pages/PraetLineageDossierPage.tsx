@@ -123,6 +123,34 @@ const notes = [
       </>
     ),
   },
+  {
+    n: 13,
+    short: 'Espinoy, Recherche des antiquitez et noblesse de Flandres (Douai, 1631).',
+    full: (
+      <>
+        Espinoy, Philippe de l'. <em>Recherche des antiquitez et noblesse de Flandres.</em> Douai, 1631.{' '}
+        <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>
+      </>
+    ),
+  },
+  {
+    n: 14,
+    short: 'De Raadt, Sceaux armoriés des Pays-Bas (Brussels, 1897).',
+    full: (
+      <>
+        De Raadt, J.-Th. <em>Sceaux armoriés des Pays-Bas et des pays avoisinants.</em> Brussels: Société belge de librairie / Oscar Schepens, T.I 1897.
+      </>
+    ),
+  },
+  {
+    n: 15,
+    short: 'Despars, Cronijcke van den lande ende graefscepe van Vlaenderen, ed. De Jonghe (Brugge, 1840–1842).',
+    full: (
+      <>
+        Despars, Nicolaes. <em>Cronijcke van den lande ende graefscepe van Vlaenderen (405&ndash;1492).</em> Ed. J. De Jonghe. Brugge, 1840&ndash;1842. 4 vols.
+      </>
+    ),
+  },
 ];
 
 const CITES: Record<number, string> = {};
@@ -231,17 +259,17 @@ export default function PraetLineageDossierPage() {
           <div style={{ marginBottom: '2.5rem' }}>
             <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Louis Friese van Vlaenderen (c.1350 &ndash; 25 Sep 1396) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h3>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              Damhouder's manuscript memoir, quoted by Vredius, reads: 'messire Loys de Frise fils bastard de...Loys de Male conte de Flandre, lequel il eut dune fille de Monsieur de Borre.'<Cite n={1} text={CITES[1]} loc="Pars secunda, p. 276 (Damhouder memoir)" /> His grant of Praet is recorded by Espinoy (1631), Livre 2, Ch. XXXI, p. 68: Louis de Male 'en avancement de son mariage avec Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke' granted 'les terres et Baronies de Praet et de la Woestine' to his illegitimate son 'Messire Louys de Flandres dit le Frizon' (no source cited). Grimarez's memoir records that Louis 'eut en partage [la Wostine] par acte du 25 de septembre 1373' and died at Nicopolis.<Cite n={1} text={CITES[1]} loc="Pars secunda, p. 277 (Grimarez memoir)" repeat /> (On the day of the 1373 act: the Grimarez memoir reads '25 de septembre'; the donation letters printed in Vredius's Probationes — direct reading, April 2026 — are dated 25 December 1373, the date carried throughout this research and corroborated by Serrure<Cite n={8} text={CITES[8]} repeat /> and Lauwens.<Cite n={4} text={CITES[4]} repeat />)
+              Damhouder's manuscript memoir, quoted by Vredius, reads: 'messire Loys de Frise fils bastard de...Loys de Male conte de Flandre, lequel il eut dune fille de Monsieur de Borre.'<Cite n={1} text={CITES[1]} loc="Pars secunda, p. 276 (Damhouder memoir)" /> His grant of Praet is recorded by Espinoy:<Cite n={13} text={CITES[13]} loc="Livre 2, Ch. XXXI, p. 68" /> Louis de Male 'en avancement de son mariage avec Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke' granted 'les terres et Baronies de Praet et de la Woestine' to his illegitimate son 'Messire Louys de Flandres dit le Frizon' (no source cited). Grimarez's memoir records that Louis 'eut en partage [la Wostine] par acte du 25 de septembre 1373' and died at Nicopolis.<Cite n={1} text={CITES[1]} loc="Pars secunda, p. 277 (Grimarez memoir)" repeat /> (On the day of the 1373 act: the Grimarez memoir reads '25 de septembre'; the donation letters printed in Vredius's Probationes — direct reading, April 2026 — are dated 25 December 1373, the date carried throughout this research and corroborated by Serrure<Cite n={8} text={CITES[8]} repeat /> and Lauwens.<Cite n={4} text={CITES[4]} repeat />)
             </p>
           </div>
 
           <div style={{ marginBottom: '2.5rem' }}>
             <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Johan I van Vlaenderen (d. after 10 Sep 1439) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h3>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              A charter dated 10 Sep 1439, quoting the Collecta Damhouderii, fol. 276 T, is directly issued by 'Ian van Vlaenderen Heere van Praet ande vander Woestine ende Burghemeesters ende Schepenen vanden selven Heerschepe van Praet.'<Cite n={1} text={CITES[1]} loc="Pars secunda, p. 277 (Collecta Damhouderii, fol. 276 T)" repeat /> This is Johan I's own charter &mdash; directly attested. His marriage to Johanna van Reygersvliet is recorded in the Van Hecke manuscript annotations: 'Iean de Flandre Seign. de Praet et de la Woestine' married 'Ieanne de Reyghersvliet fille de Henry, fils de Gautier.'<Cite n={1} text={CITES[1]} loc="Pars secunda, p. 277 (Van Hecke annotations)" repeat /> No primary source confirming her parentage and marriage has been identified &mdash; the marriage itself is therefore strongly corroborated, her parentage probable. Espinoy (1631), Livre 2, Ch. XXXI, p. 68, records the 1431 settlement of 'messire Louys son pere en son vivant Seigneur de Praet et de la Woestine' between Johan I and his mother.
+              A charter dated 10 Sep 1439, quoting the Collecta Damhouderii, fol. 276 T, is directly issued by 'Ian van Vlaenderen Heere van Praet ande vander Woestine ende Burghemeesters ende Schepenen vanden selven Heerschepe van Praet.'<Cite n={1} text={CITES[1]} loc="Pars secunda, p. 277 (Collecta Damhouderii, fol. 276 T)" repeat /> This is Johan I's own charter &mdash; directly attested. His marriage to Johanna van Reygersvliet is recorded in the Van Hecke manuscript annotations: 'Iean de Flandre Seign. de Praet et de la Woestine' married 'Ieanne de Reyghersvliet fille de Henry, fils de Gautier.'<Cite n={1} text={CITES[1]} loc="Pars secunda, p. 277 (Van Hecke annotations)" repeat /> No primary source confirming her parentage and marriage has been identified &mdash; the marriage itself is therefore strongly corroborated, her parentage probable. Espinoy records the 1431 settlement of 'messire Louys son pere en son vivant Seigneur de Praet et de la Woestine' between Johan I and his mother.<Cite n={13} text={CITES[13]} loc="Livre 2, Ch. XXXI, p. 68" repeat />
             </p>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              <strong>Brouwershaven, 13 January 1426</strong> <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span> &mdash; a dated military-service fixpoint between the 1420 and 1439 anchors. The Kronyk van Jan van Dixmude, narrating Philip the Good's Holland-Zeeland campaign, names among those at the battle of Brouwershaven: <em>&lsquo;Jan van Vlaendren, de heere Van Praet, Jan van Eghemond ende zomeghe andere&rsquo;</em>.<Cite n={12} text={CITES[12]} loc="Tome III, p. 39 (Kronyk van Jan van Dixmude)" /> Despars carries the same 1426 Brouwershaven roll independently: <em>&lsquo;Jan van Vlaenderen, die heere van Praet ende van der Woestijne&rsquo;</em> (Despars, <em>Cronijcke van den lande&hellip; van Vlaenderen</em>, Vol. III, pp. 298&ndash;299). The identification of this lord of Praet with Johan I &mdash; whose documented window comfortably brackets the date &mdash; is strongly corroborated.
+              <strong>Brouwershaven, 13 January 1426</strong> <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span> &mdash; a dated military-service fixpoint between the 1420 and 1439 anchors. The Kronyk van Jan van Dixmude, narrating Philip the Good's Holland-Zeeland campaign, names among those at the battle of Brouwershaven: <em>&lsquo;Jan van Vlaendren, de heere Van Praet, Jan van Eghemond ende zomeghe andere&rsquo;</em>.<Cite n={12} text={CITES[12]} loc="Tome III, p. 39 (Kronyk van Jan van Dixmude)" /> Despars carries the same 1426 Brouwershaven roll independently: <em>&lsquo;Jan van Vlaenderen, die heere van Praet ende van der Woestijne&rsquo;</em>.<Cite n={15} text={CITES[15]} loc="Vol. III, pp. 298–299" /> The identification of this lord of Praet with Johan I &mdash; whose documented window comfortably brackets the date &mdash; is strongly corroborated.
             </p>
             <h4 style={{ color: 'var(--text-primary)', fontSize: '1rem', marginTop: '1.5rem', marginBottom: '0.75rem' }}>Johan I&rsquo;s Five Documented Children</h4>
             <p style={{ fontSize: '0.9rem', lineHeight: '1.7', color: 'var(--text-muted)' }}>
@@ -293,7 +321,7 @@ export default function PraetLineageDossierPage() {
           <div style={{ marginBottom: '2.5rem', background: 'rgba(212, 168, 48, 0.06)', border: '1px solid rgba(212, 168, 48, 0.15)', borderRadius: '4px', padding: '1.25rem' }}>
             <h4 style={{ color: 'var(--gold)', fontSize: '1rem', marginBottom: '0.5rem' }}>The 1517 Knesselare Charter &mdash; Research Significance</h4>
             <p style={{ fontSize: '0.9rem', lineHeight: '1.7', color: 'var(--text-muted)' }}>
-              A charter of 1517 &mdash; known to the project through De Raadt, <em>Sceaux armori&eacute;s des Pays-Bas</em>, vol. I (1898), p. 456, as cited in C. Cawley, 'Medieval Lands' (FMG);<Cite n={2} text={CITES[2]} repeat /> the De Raadt volume has not yet been read directly &mdash; records Lodewijk IV holding six fiefs at Knesselare from the seigneurie of Wessegem in 1517. Knesselare is one of the parishes in the active research coverage, and it sits geographically between the Praet lordship (Oedelem/Beernem) and the core Van Vlaenderen cluster in the Meetjesland. This charter does not establish a family connection between the Praet van Vlaenderens and the commoner Van Vlaenderens who later appear in Knesselare parish records. But it confirms that the Praet branch had territorial interests in the precise geographic area where your ancestors lived &mdash; which is relevant to the branch-control problem identified in the research design.
+              A charter of 1517 &mdash; known to the project through De Raadt,<Cite n={14} text={CITES[14]} loc="vol. I, p. 456" /> as cited in C. Cawley, 'Medieval Lands' (FMG);<Cite n={2} text={CITES[2]} repeat /> the De Raadt volume has not yet been read directly &mdash; records Lodewijk IV holding six fiefs at Knesselare from the seigneurie of Wessegem in 1517. Knesselare is one of the parishes in the active research coverage, and it sits geographically between the Praet lordship (Oedelem/Beernem) and the core Van Vlaenderen cluster in the Meetjesland. This charter does not establish a family connection between the Praet van Vlaenderens and the commoner Van Vlaenderens who later appear in Knesselare parish records. But it confirms that the Praet branch had territorial interests in the precise geographic area where your ancestors lived &mdash; which is relevant to the branch-control problem identified in the research design.
             </p>
           </div>
 

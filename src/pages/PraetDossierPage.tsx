@@ -59,6 +59,24 @@ const notes = [
       </>
     ),
   },
+  {
+    n: 6,
+    short: 'Despars, Cronijcke van den lande ende graefscepe van Vlaenderen, ed. De Jonghe (Brugge, 1840–1842).',
+    full: (
+      <>
+        Despars, Nicolaes. <em>Cronijcke van den lande ende graefscepe van Vlaenderen (405&ndash;1492).</em> Ed. J. De Jonghe. Brugge, 1840&ndash;1842. 4 vols.
+      </>
+    ),
+  },
+  {
+    n: 7,
+    short: 'de Lichtervelde, Les Bâtards de Louis de Male, HvGG 78 (1935), pp. 48–58.',
+    full: (
+      <>
+        Lichtervelde, P. de. <em>Les B&acirc;tards de Louis de Male.</em> Handelingen van het Genootschap voor Geschiedenis 78 (1935), pp. 48&ndash;58.{' '}<a href="https://doi.org/10.21825/gvg.92141" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DOI (open access)</a>
+      </>
+    ),
+  },
 ];
 
 const CITES: Record<number, string> = {};
@@ -151,7 +169,7 @@ export default function PraetDossierPage() {
         <section className={styles.section}>
           <h2>Battle of Nicopolis and Death <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            Louis Friese was killed at the Battle of Nicopolis on 25 September 1396 alongside his half-brothers Loys &ldquo;le Hase&rdquo; (lord of Wessegem) and Jan sans terre (lord of Drincham) &mdash; three of Louis II's nine documented bastard sons fallen on a single day. The death is preserved in narrative attestation in Despars's <em>Cronijcke</em> Vol. III p. 173 (Despars compendium B.7) and is corroborated by the Latin chronicle witness of Heuterus, transmitted via Vredius A.7. Lichtervelde 1935 p. 50 names Le Frison specifically as <em>auteur de la Maison de Flandre dite de Praet</em>. The standard scholarship date is 25 September; Despars dates the battle to 27 September and Lichtervelde to 28 September, with the variants treated as transmission errors per the Despars compendium F.2. The Nicopolis death is the founding moment of the Praet line as a research subject: Le Frison's widow Marie van Ghistelle survived him and raised their son Jean de Praet, and the surname-bearing descent runs through them.
+            Louis Friese was killed at the Battle of Nicopolis on 25 September 1396 alongside his half-brothers Loys &ldquo;le Hase&rdquo; (lord of Wessegem) and Jan sans terre (lord of Drincham) &mdash; three of Louis II's nine documented bastard sons fallen on a single day. The death is preserved in narrative attestation in Despars's <em>Cronijcke</em><Cite n={6} text={CITES[6]} loc="Vol. III p. 173 (Despars compendium B.7)" /> and is corroborated by the Latin chronicle witness of Heuterus, transmitted via Vredius.<Cite n={1} text={CITES[1]} loc="Probationes A.7 (transmitting Heuterus)" repeat /> Lichtervelde names Le Frison specifically as <em>auteur de la Maison de Flandre dite de Praet</em>.<Cite n={7} text={CITES[7]} loc="1935, p. 50" /> The standard scholarship date is 25 September; Despars dates the battle to 27 September<Cite n={6} text={CITES[6]} loc="Despars compendium F.2" repeat /> and Lichtervelde to 28 September,<Cite n={7} text={CITES[7]} repeat /> with the variants treated as transmission errors. The Nicopolis death is the founding moment of the Praet line as a research subject: Le Frison's widow Marie van Ghistelle survived him and raised their son Jean de Praet, and the surname-bearing descent runs through them.
           </p>
         </section>
 

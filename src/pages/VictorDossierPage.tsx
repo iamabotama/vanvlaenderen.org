@@ -88,6 +88,16 @@ const notes = [
       </>
     ),
   },
+  {
+    n: 9,
+    short: 'Espinoy, Recherche des antiquitez et noblesse de Flandres (Douai, 1631).',
+    full: (
+      <>
+        Espinoy, Philippe de l'. <em>Recherche des antiquitez et noblesse de Flandres.</em> Douai, 1631.{' '}
+        <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>
+      </>
+    ),
+  },
 ];
 
 const CITES: Record<number, string> = {};
@@ -166,7 +176,7 @@ export default function VictorDossierPage() {
         <section className={styles.section}>
           <h2>Identity and Parentage <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
           <p>
-            Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders. Espinoy (1631), Livre 2, Ch. XXXI, p. 69, records his parentage among the natural sons of Louis II (without citing a source), and his mother is named in her own charter of 12 May 1427 (see the charter nucleus below). He is identified as Seigneur d'Ursele et de Wesseghem and as a Burgundian admiral.
+            Victor van Vlaanderen, also styled Victor de Flandre, belongs to the illegitimate comital line descending from Louis II de Male, Count of Flanders. His parentage among the natural sons of Louis II is recorded (without citing a source)<Cite n={9} text={CITES[9]} loc="Livre 2, Ch. XXXI, p. 69" />, and his mother is named in her own charter of 12 May 1427 (see the charter nucleus below). He is identified as Seigneur d'Ursele et de Wesseghem and as a Burgundian admiral.
           </p>
         </section>
 
