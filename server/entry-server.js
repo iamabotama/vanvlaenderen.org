@@ -10166,7 +10166,7 @@ const vanVlaenderenLineage = [
     parish: "Fort Wayne, IN",
     status: "partial",
     birthRecord: { label: "1881 Fort Wayne, IN" },
-    comment: "First generation born in America, the year Charles Louis emigrated."
+    comment: "First generation born in America."
   },
   {
     id: 4,
@@ -10178,7 +10178,7 @@ const vanVlaenderenLineage = [
     birthRecord: { label: "1854 Bassevelde (Assenede)" },
     marriageRecord: { label: "Ancestry.com" },
     deathRecord: { label: "Ancestry.com" },
-    comment: "Emigrated from Bassevelde to America in 1881. Married Jacqueline Vermaas."
+    comment: "Emigrated from Bassevelde to America in 1875. Married Jacqueline Vermaas."
   },
   {
     id: 5,
@@ -10878,7 +10878,7 @@ function GapDossierPage() {
         /* @__PURE__ */ jsx("p", { children: "The Van Vlaenderen research has two well-documented clusters separated by a substantial chronological gap." }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "The lower anchor" }),
-          " — the Meetjesland parish cluster — is well established from the 1580s onward. The earliest generation in the documented American line is Jeremiah van Vlaenderen, born approximately 1575 in the Meetjesland. The cluster concentrates in Waarschoot, Oostwinkel, Bassevelde, and adjacent parishes, with continuous parish-record coverage from the 1580s through Charles Louis van Vlaenderen's emigration in 1881. (The 1547 Bruges records in TBO 184, formerly read on this page as an early extension of this commoner anchor, are now identified as the wardship file of the Praet line's cadet branch and belong to the upper anchor instead — see the evidence section below.)"
+          " — the Meetjesland parish cluster — is well established from the 1580s onward. The earliest generation in the documented American line is Jeremiah van Vlaenderen, born approximately 1575 in the Meetjesland. The cluster concentrates in Waarschoot, Oostwinkel, Bassevelde, and adjacent parishes, with continuous parish-record coverage from the 1580s through Charles Louis van Vlaenderen's emigration in 1875. (The 1547 Bruges records in TBO 184, formerly read on this page as an early extension of this commoner anchor, are now identified as the wardship file of the Praet line's cadet branch and belong to the upper anchor instead — see the evidence section below.)"
         ] }),
         /* @__PURE__ */ jsxs("p", { children: [
           /* @__PURE__ */ jsx("strong", { children: "The upper anchor is not a single line but two" }),
