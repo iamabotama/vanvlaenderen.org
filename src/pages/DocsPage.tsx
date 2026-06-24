@@ -256,6 +256,15 @@ export default function DocsPage() {
         <p style={{ margin: '0.35rem 0 0', fontSize: '0.82rem', color: '#666' }}>
           Private — not indexed or linked from the public site. Share URL directly with collaborators.
         </p>
+        <p style={{ margin: '0.6rem 0 0', fontSize: '0.85rem' }}>
+          <a
+            href="/r/e1e3b0852b/"
+            style={{ color: '#e8b830', textDecoration: 'none', borderBottom: '1px solid rgba(232,184,48,0.4)' }}
+          >
+            → Records database (live editor)
+          </a>
+          <span style={{ color: '#666', marginLeft: '0.6rem' }}>Supabase login required.</span>
+        </p>
       </div>
 
       <div style={tabBar}>

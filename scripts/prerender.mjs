@@ -256,6 +256,8 @@ function writeSitemap(PAGE_META) {
 function writeRobots() {
   fs.writeFileSync(path.join(distDir, 'robots.txt'), `User-agent: *
 Allow: /
+Disallow: /docs
+Disallow: /r/
 
 User-agent: GPTBot
 Allow: /research/

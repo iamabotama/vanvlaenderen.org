@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /docs
+Disallow: /r/
 
 # Explicitly allow research content for AI crawlers
 User-agent: GPTBot
