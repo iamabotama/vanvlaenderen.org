@@ -307,10 +307,10 @@ export default function GapDossierPage() {
             (Phelips).<Cite n={1} text={CITES[1]} /> An earlier version of this page read these bundles as the earliest attestations
             of the Meetjesland commoner cluster, with &lsquo;no connection to either comital line
             established.&rsquo; That reading is superseded: the family of this file is now identified as
-            the <strong>Praet line's cadet branch</strong>. Serrure 1863 names Joos's children Jacob,
-            Philips, and Philippote; the Gruuthuse marriage anchors Joos as a son of Lodewijk II; and the
+            the <strong>Praet line's cadet branch</strong>. Serrure names Joos's children Jacob,
+            Philips, and Philippote;<Cite n={3} text={CITES[3]} repeat /> the Gruuthuse marriage anchors Joos as a son of Lodewijk II; and the
             ward Jacob is the same Jacob van Vlaanderen who received Praet and Woestijne at Aalter by act
-            of 25 September 1550 (Verhoustraete 1967). The identification is Strongly Corroborated.<Cite n={7} text={CITES[7]} />
+            of 25 September 1550.<Cite n={2} text={CITES[2]} repeat /> The identification is Strongly Corroborated.<Cite n={7} text={CITES[7]} />
             These records therefore belong to the gap's <em>upper</em> (comital) anchor, not its lower
             (commoner) one.
           </p>
@@ -318,7 +318,7 @@ export default function GapDossierPage() {
             The file also preserves the single most consequential gap-period datapoint for the cadet
             question: a 1547&ndash;48 entry concerning the younger ward, <em>&lsquo;nopende Phelipe van
             Vlaendren &hellip; In Lande van Hollandt ende Zeelandt&rsquo;</em> &mdash; a legal matter in
-            Holland-Zeeland concerning Philips (RAB TBO 184 nr. 21300, Rekening B, fol. 16r). Philips is
+            Holland-Zeeland concerning Philips (RAB TBO 184 nr. 21300, Rekening B, fol. 16r).<Cite n={1} text={CITES[1]} repeat /> Philips is
             last attested there, around 1547&ndash;48; see the cadet-frontier section below.
           </p>
           <p style={{ fontSize: '0.85rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
@@ -340,7 +340,7 @@ export default function GapDossierPage() {
             When the senior Praet line failed in 1545 (Jan II dying before his father), the lordship and
             the surname did not die: they passed to the collateral branch of Joos van Vlaenderen, whose
             son Jacob received Praet and Woestijne in 1550 and whose grandson Lodewijk V carried the line
-            to 1591 (Verhoustraete 1967; Serrure 1863; RAB TBO 184 nrs. 21300&ndash;21302). The line
+            to 1591.<Cite n={2} text={CITES[2]} repeat /><Cite n={3} text={CITES[3]} repeat /><Cite n={1} text={CITES[1]} repeat /> The line
             demonstrably survived a senior failure once, through a cadet. That the cadet branch then also
             went sonless does not retract the mechanism &mdash; it means the question moves one
             cadet-degree further out.
@@ -354,19 +354,18 @@ export default function GapDossierPage() {
             (Lodewijk V was a Calvinist who died abroad). A title leaving a surname under that confluence
             carries no information about whether agnatic cadets survived elsewhere &mdash; a poorer,
             untitled, possibly Protestant cadet would have had neither the standing nor the confessional
-            eligibility to claim a Flemish Catholic fief in 1591 (Verhoustraete 1967; Valkeneers &amp;
-            Soen 2014<Cite n={5} text={CITES[5]} />).
+            eligibility to claim a Flemish Catholic fief in 1591.<Cite n={2} text={CITES[2]} repeat /><Cite n={5} text={CITES[5]} />
           </p>
           <p>
             <strong>The named frontier.</strong> The title-focused sources follow only the title-holder
             and are silent &mdash; not negative &mdash; on the non-inheriting cadets. Three stand
             untraced: (1) <strong>Philips van Vlaenderen</strong>, Joos's younger son, a ward of the
             Honnelede file, last attested around 1547&ndash;48 in a legal matter <em>'In Lande van
-            Hollandt ende Zeelandt'</em> (RAB TBO 184 nr. 21300, Rekening B, fol. 16r) &mdash; plausibly
+            Hollandt ende Zeelandt'</em> (RAB TBO 184 nr. 21300, Rekening B, fol. 16r)<Cite n={1} text={CITES[1]} repeat /> &mdash; plausibly
             connected, through his maternal van Moerckercke line, to the Mijnsheerenland van Moerkerken
-            interests the senior line litigated before the Hof van Holland (Lauwens 2021<Cite n={4} text={CITES[4]} />); (2) the
+            interests the senior line litigated before the Hof van Holland<Cite n={4} text={CITES[4]} />; (2) the
             <strong> three unnamed children of Lodewijk II</strong> &mdash; Verhoustraete records six
-            children but names only three; and (3) the issue of Joos's daughter{' '}
+            children but names only three;<Cite n={2} text={CITES[2]} repeat /> and (3) the issue of Joos's daughter{' '}
             <strong>Philippote</strong> (female-line, so not surname-bearing, noted for completeness).
             Philips is the prime untraced-cadet lead.
           </p>
@@ -454,10 +453,10 @@ export default function GapDossierPage() {
             2. The non-inheriting Praet cadets &mdash; Philips and the unnamed children of Lodewijk II
           </h3>
           <p>
-            The titled continuation of Joos's branch is now traced to its 1591 terminus (Verhoustraete 1967),
+            The titled continuation of Joos's branch is now traced to its 1591 terminus,<Cite n={2} text={CITES[2]} repeat />
             so the live target is the untitled cadets the title-record never follows: Philips van Vlaenderen
             (last attested 1547&ndash;48, with the Holland-Zeeland legal matter of RAB TBO 184 nr. 21300,
-            Rekening B, fol. 16r), the three unnamed children of Lodewijk II, and Philippote's issue.
+            Rekening B, fol. 16r),<Cite n={1} text={CITES[1]} repeat /> the three unnamed children of Lodewijk II, and Philippote's issue.
             For Philips, the decisive series are the Hof van Holland litigation records and the
             Mijnsheerenland van Moerkerken succession register (neither name-indexed online); for the
             Flemish cadets, parish, estate, and leenhof records 1545&ndash;1620, whether under{' '}
@@ -553,8 +552,7 @@ export default function GapDossierPage() {
             reframed by the June 2026 Verhoustraete reading. Aalter is an attested Praet residence
             for the period 1516&ndash;1590, eliminating the previous &ldquo;Brabant-only&rdquo;
             framing of the Praet line. The post-1545 generation is now resolved: Jacob is Joos's son
-            and inherited in 1550; his son Lodewijk V died sonless in 1591 (Verhoustraete 1967;
-            Valkeneers &amp; Soen 2014). The open territory is the non-inheriting cadets &mdash; and
+            and inherited in 1550; his son Lodewijk V died sonless in 1591.<Cite n={2} text={CITES[2]} repeat /><Cite n={5} text={CITES[5]} repeat /> The open territory is the non-inheriting cadets &mdash; and
             the load-bearing caveat from the cadet-frontier section applies: a surviving Philips line
             would be a separate comital-agnatic survival, not automatically the Meetjesland line. Note:
             in late medieval and early modern records, the alternation between <em>de Flandre</em>

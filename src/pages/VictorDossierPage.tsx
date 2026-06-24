@@ -13,7 +13,7 @@ import { Cite } from '../components/Footnote';
 const notes = [
   {
     n: 1,
-    short: 'Vredius, Olivarius (Olivier de Wree). Genealogia Comitum Flandriae…, Pars Secunda. Bruges: J.B. & Lucas Kerchovios, 1642–43. Tabula XVI, pp. 285–287.',
+    short: 'Vredius, Olivarius (Olivier de Wree). Genealogia Comitum Flandriae…, Pars Secunda. Bruges: J.B. & Lucas Kerchovios, 1642–43.',
     full: (
       <>
         Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642&ndash;43. Tabula XVI, pp. 285&ndash;287 (charter transcriptions for Victor&rsquo;s three sons) and pp. 267&ndash;275 (Louis I de Cressy bastard cohort) and pp. 275&ndash;289 (Louis II de Male bastard cohort). Direct reading of the 1643 print conducted April 2026. Vredius transcribes the three charters from the Ghent partition court registers (<em>In actis curiae partitionum Gandensium, Ex regist. part.</em> f.56). The underlying RAG register has not yet been independently verified; <em>Curiae partitionum Gandensium</em> may correspond to the RAG Jaarregisters van de Keure or Staten van Goed series.
@@ -52,7 +52,7 @@ const notes = [
   },
   {
     n: 5,
-    short: 'Bethune, J.B. de. Epitaphes et monuments des eglises de la Flandre. Third part. 1900. p.356.',
+    short: 'Bethune, J.B. de. Epitaphes et monuments des eglises de la Flandre. Third part. 1900.',
     full: (
       <>
         Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. Oostborch (Oostburg, Zeeuws-Vlaanderen) epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286&ndash;287, from which it is cited above. Print only &mdash; not digitised; not yet consulted directly by the project. Held at KBR Brussels (Royal Library of Belgium) and Ghent University Library.
@@ -81,7 +81,7 @@ const notes = [
   },
   {
     n: 8,
-    short: 'Verschelde, Karel. Geschiedenis van Middelburg in Vlaenderen. Brugge, 1867. Bewysstukken N° 1, pp. 220–222.',
+    short: 'Verschelde, Karel. Geschiedenis van Middelburg in Vlaenderen. Brugge, 1867.',
     full: (
       <>
         Verschelde, Karel. <em>Geschiedenis van Middelburg in Vlaenderen</em>. Brugge, 1867. Bewysstukken N&deg; 1, pp. 220&ndash;222; the three 'mher Victoors van Vlaenderen kindren lande' boundary clauses at p. 221; index entry 'Van Vlaenderen, Victor &mdash; 221.' Transcribes the 17 July 1441 koopbrief from the original deed held at the Rijksarchief Gent ('Staetsarchiven te Gent'). The same attestation is independently cited in K. de Flou, <em>Woordenboek der Toponymie van Westelijk Vlaanderen</em>, Vol. 16 col. 554 ('Gesch. Middelb., 221').
@@ -180,7 +180,7 @@ export default function VictorDossierPage() {
             A local Ursel history<Cite n={4} text={CITES[4]} /> states that in 1399 Wessegem passed to Victor van Vlaanderen, 'another bastard son of Louis van Male,' and that he often resided there.
           </p>
           <p style={{ fontSize: '0.9rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
-            Note on spelling: the Vredius print (1643, p. 286)<Cite n={1} text={CITES[1]} /> renders the 1441 charter&rsquo;s lordship designation as &lsquo;Orsele ende van Wesseghem&rsquo; &mdash; an alternative spelling of &lsquo;Ursele.&rsquo; The 1446 charter on the following page uses &lsquo;Orsele en van Wesseghem&rsquo; again. The form &lsquo;Desele&rsquo; sometimes appearing in secondary OCR transcriptions of the charter is an artifact: the Middle Dutch blackletter capital &lsquo;U&rsquo;/&lsquo;V&rsquo; is easily misread as &lsquo;D.&rsquo; All references in Vredius point consistently to Ursel (the parish) and Wessegem (the seigneurie within it).
+            Note on spelling: the Vredius print (1643, p. 286)<Cite n={1} text={CITES[1]} loc="p. 286" /> renders the 1441 charter&rsquo;s lordship designation as &lsquo;Orsele ende van Wesseghem&rsquo; &mdash; an alternative spelling of &lsquo;Ursele.&rsquo; The 1446 charter on the following page uses &lsquo;Orsele en van Wesseghem&rsquo; again. The form &lsquo;Desele&rsquo; sometimes appearing in secondary OCR transcriptions of the charter is an artifact: the Middle Dutch blackletter capital &lsquo;U&rsquo;/&lsquo;V&rsquo; is easily misread as &lsquo;D.&rsquo; All references in Vredius point consistently to Ursel (the parish) and Wessegem (the seigneurie within it).
           </p>
         </section>
 
@@ -188,7 +188,7 @@ export default function VictorDossierPage() {
         <section className={styles.section}>
           <h2>Victor's Testament (1430) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            The testament of 'her Victor van Vlaendren', dated 1430, named executors 'mher Robert van Vlaendren heere van Elverdinghe, Vlamertinghe, Burggrave van Ypre en Karle van Vlaendren beede sijn broeders.' This is preserved in Vredius (1643) <em>Pars secunda</em> p.285, citing the Vander Strate manuscript. It confirms Victor was alive in 1430 and had at least two brothers &mdash; Robert [Roeland] and Karel van Vlaenderen.
+            The testament of 'her Victor van Vlaendren', dated 1430, named executors 'mher Robert van Vlaendren heere van Elverdinghe, Vlamertinghe, Burggrave van Ypre en Karle van Vlaendren beede sijn broeders.'<Cite n={1} text={CITES[1]} loc="p. 285 (citing the Vander Strate MS)" repeat /> It confirms Victor was alive in 1430 and had at least two brothers &mdash; Robert [Roeland] and Karel van Vlaenderen.
           </p>
         </section>
 
@@ -198,7 +198,7 @@ export default function VictorDossierPage() {
 
           <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '1.5rem' }}>Charter 1: 12 May 1427</h3>
           <p>
-            Vredius (1643), <em>Pars secunda</em> p.285, transcribes a charter from the Ghent partition court records (<em>In actis curiae partitionum Gandensium, Ex regist. part.</em> f.56): 'Joncfr. Mergriete Haelfhuuts Heinricx Mayen...wijf, moeder van Mer Victoere van Vlaenderen' donated property to 'Lodekinen ende Hannekinen mher Victoers hears soens naturlicke kinderen die by heeft by Alyssen van Boyeghem' and 'Adaemkine svoorsz mer Victoers natuerlick zone die hy heeft by Gertruden Liendekins.'
+            A charter from the Ghent partition court records transcribes:<Cite n={1} text={CITES[1]} loc="p. 285 (In actis curiae partitionum Gandensium, Ex regist. part. f.56)" repeat /> 'Joncfr. Mergriete Haelfhuuts Heinricx Mayen...wijf, moeder van Mer Victoere van Vlaenderen' donated property to 'Lodekinen ende Hannekinen mher Victoers hears soens naturlicke kinderen die by heeft by Alyssen van Boyeghem' and 'Adaemkine svoorsz mer Victoers natuerlick zone die hy heeft by Gertruden Liendekins.'
           </p>
           <p>
             This charter directly attests: (1) Mergriete Haelfhuuts as Victor's mother; (2) Lodewyc and Janne as Victor's natural sons by Alix van Boyeghem; (3) Adam as Victor's natural son by Gertrud Lindekens; (4) the distinction between the two mothers.
@@ -206,7 +206,7 @@ export default function VictorDossierPage() {
 
           <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '2rem' }}>Charter 2: 10 March 1441 O.S. (= 10 March 1442 N.S.)</h3>
           <p>
-            Vredius (1643) transcribes a charter from the same Ghent partition records: &lsquo;Joncfr. Mergriete Aelfhuuts Heindricx Maye&hellip;wijf&rsquo; donated property to &lsquo;Lodewyc, Janne ende Adam van Vlaendren natuerliche sonen van wijlen edelen&hellip;mer Victor van Vlaendren heere was van Orsele ende van Wesseghem&hellip;zone was vande voorz Joncf. Mergriete.&rsquo; Direct inspection of the Vredius print (p. 286) confirms the spelling as &lsquo;Orsele&rsquo; &mdash; an alternative rendering of Ursele, not a separate place name.
+            A charter from the same Ghent partition records transcribes:<Cite n={1} text={CITES[1]} loc="p. 286" repeat /> &lsquo;Joncfr. Mergriete Aelfhuuts Heindricx Maye&hellip;wijf&rsquo; donated property to &lsquo;Lodewyc, Janne ende Adam van Vlaendren natuerliche sonen van wijlen edelen&hellip;mer Victor van Vlaendren heere was van Orsele ende van Wesseghem&hellip;zone was vande voorz Joncf. Mergriete.&rsquo; Direct inspection of the print confirms the spelling as &lsquo;Orsele&rsquo; &mdash; an alternative rendering of Ursele, not a separate place name.
           </p>
           <p>
             This charter directly attests: (1) all three sons named together; (2) Victor described as deceased (&lsquo;wijlen&rsquo;); (3) the lordship spelled &lsquo;Orsele ende van Wesseghem&rsquo;; (4) Mergriete as Victor&rsquo;s mother.
@@ -214,7 +214,7 @@ export default function VictorDossierPage() {
 
           <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '2rem' }}>Charter 3: 18 March 1446 O.S. (= 18 March 1447 N.S.)</h3>
           <p>
-            Vredius (1643), <em>Pars secunda</em> pp.286&ndash;7, transcribes a charter: 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem' donated money from 'joncfr Margriete Aelhuuts zijn groete vrauwe' to 'Christiane van Rouse fil Gheerarts.'
+            A charter transcribes:<Cite n={1} text={CITES[1]} loc="pp. 286&ndash;287" repeat /> 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem' donated money from 'joncfr Margriete Aelhuuts zijn groete vrauwe' to 'Christiane van Rouse fil Gheerarts.'
           </p>
           <p>
             This charter directly attests: (1) Adam is alive as late as 18 March 1447 N.S. &mdash; his death terminus, previously set at 1442, is now extended five years; (2) Adam explicitly names Victor as 'Rudder, Heer van Orsele en van Wesseghem' &mdash; Knight, Lord of Ursel and Wessegem; (3) Margriete Aelfhuuts remains Adam's active patroness in 1446, four years after the previous donation; (4) the lordship now spelled 'Orsele' &mdash; confirming Ursel and Wessegem as a paired designation.
@@ -241,14 +241,14 @@ export default function VictorDossierPage() {
           }}>
             "Item bet oost van daer, inden zeluen polre, zesse ende tsestich ghemeten eene line ende achte ende tachtentich roeden tusschen pieter clamps lande an de westzide, ende mher Victoors van Vlaenderen kindren lande an de oostzide."
             <div style={{ fontSize: '0.8rem', marginTop: '0.5rem', fontStyle: 'normal' }}>
-              Verschelde, <em>Geschiedenis van Middelburg in Vlaenderen</em> (Brugge, 1867), Bewysstukken N&deg; 1, p. 221.<Cite n={8} text={CITES[8]} /> Translation: "Item, further east from there, in the same polder, sixty-six gemeten one line and eighty-eight roeden, between Pieter Clamp's land on the west side, and the land of mher Victor van Vlaenderen's children on the east side."
+              From the 1441 Cadzand koopbrief.<Cite n={8} text={CITES[8]} loc="Bewysstukken N&deg; 1, p. 221" /> Translation: "Item, further east from there, in the same polder, sixty-six gemeten one line and eighty-eight roeden, between Pieter Clamp's land on the west side, and the land of mher Victor van Vlaenderen's children on the east side."
             </div>
           </div>
           <p>
             The third of the three clauses places the children's land <em>an beeden ziden</em> &mdash; on both sides &mdash; of a parcel of roughly 49 gemeten, indicating a substantial contiguous block of their holding in this polder. This is the first known post-1431 territorial attestation of Victor's children as a body. It places their holding in the West-Flemish coastal zone &mdash; the same Aardenburg&ndash;Cadzand orbit as the line's other coastal holdings, adjacent to Bladelin's land assembly for Middelburg-in-Vlaanderen &mdash; and it ties the Praet-Moerkerke line, as vendor, into the same transaction. The neighbouring landholders named alongside (Pieter Clamp, Adriaen van Borssele) situate the holding in the seigneurial-coastal milieu of the Brugse Vrije.
           </p>
           <p>
-            The landholding itself is Directly Attested: the deed is transcribed verbatim in Karel Verschelde, <em>Geschiedenis van Middelburg in Vlaenderen</em> (Brugge, 1867), Bewysstukken N&deg; 1, p. 221, from the original deed held at the Rijksarchief Gent, and independently confirmed by Verschelde's own names-index ('Van Vlaenderen, Victor &mdash; 221'). The deed names the children only collectively. Identifying the 1441 <em>kindren</em> with Victor's three documented natural sons &mdash; Lodewyc, Janne, and Adam, named in the 12 May 1427 charter above &mdash; is <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span> rather than Directly Attested: the 1441 deed supplies the territorial fact but no personal names, the 1427 charter supplies the names but not the holding, and no competing set of children of Victor is attested.
+            The landholding itself is Directly Attested: the deed is transcribed verbatim from the original held at the Rijksarchief Gent, and independently confirmed by the source's own names-index ('Van Vlaenderen, Victor &mdash; 221').<Cite n={8} text={CITES[8]} loc="Bewysstukken N&deg; 1, p. 221 (orig. deed, Rijksarchief Gent)" repeat /> The deed names the children only collectively. Identifying the 1441 <em>kindren</em> with Victor's three documented natural sons &mdash; Lodewyc, Janne, and Adam, named in the 12 May 1427 charter above &mdash; is <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span> rather than Directly Attested: the 1441 deed supplies the territorial fact but no personal names, the 1427 charter supplies the names but not the holding, and no competing set of children of Victor is attested.
           </p>
         </section>
 
@@ -323,7 +323,7 @@ export default function VictorDossierPage() {
         <section className={styles.section}>
           <h2>Lodewyc van Vlaenderen &mdash; Documented Descendants <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            Lodewyc (also Louis) van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch,<Cite n={5} text={CITES[5]} /> preserved in Vredius (1643) <em>Pars secunda</em> pp.286&ndash;287 (Gaillard MS), records the burial of 'Jacquemine de Wilde, ghesellenede van Lodewijc van Vlaenderen, fs Victor...naturelicken zone van...Lodewijc van Male' who died 1482, and nearby 'haer Joos van Vlaenderen fs Lodewijcx.'
+            Lodewyc (also Louis) van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch,<Cite n={5} text={CITES[5]} loc="p. 356" /> also preserved in Vredius,<Cite n={1} text={CITES[1]} loc="pp. 286&ndash;287 (Gaillard MS)" repeat /> records the burial of 'Jacquemine de Wilde, ghesellenede van Lodewijc van Vlaenderen, fs Victor...naturelicken zone van...Lodewijc van Male' who died 1482, and nearby 'haer Joos van Vlaenderen fs Lodewijcx.'
           </p>
           <p>
             Lodewyc and Jacqueline had two documented children:
@@ -332,7 +332,7 @@ export default function VictorDossierPage() {
             <strong>(1) Josse van Vlaenderen</strong> (-young, bur Oostborch). Documented by the same Oostborch epitaph. Died young &mdash; cannot be the Joos van Vlaenderen appearing in the 1547 Brugse Vrije probate record. His existence does, however, confirm that the name Josse/Joos was in active use within Victor's direct line in the mid-to-late 15th century.
           </p>
           <p>
-            <strong>(2) Margareta van Vlaenderen.</strong> Charters dated 1478 and 1486, preserved in Vredius (1643) p.287 (Grimarez, from the Ghent partition registers), record that 'Marguerite de Flandres' married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe.
+            <strong>(2) Margareta van Vlaenderen.</strong> Charters dated 1478 and 1486 record that 'Marguerite de Flandres' married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe.<Cite n={1} text={CITES[1]} loc="p. 287 (Grimarez, Ghent partition registers)" repeat />
           </p>
           <p style={{ fontSize: '0.9rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
             Note on Oostborch: this is an older spelling of Oostburg, in Zeeuws-Vlaanderen (south of Sluis, now the Netherlands). It sits roughly 12&nbsp;km north of the Meetjesland border and was part of the medieval Franc de Bruges. The Oostburg church burial places Lodewyc&rsquo;s wife Jacqueline de Wilde and their son Joos firmly in the coastal Zeeuws-Vlaanderen orbit &mdash; not in the inland Meetjesland parishes where the later Van Vlaenderen surname cluster concentrates. A systematic onomastic sweep of Gysseling&rsquo;s Vier Ambachten corpus (c.&nbsp;1240&ndash;1500) returned no Bucket&nbsp;4 attestations of the surname in Zeeuws-Vlaanderen, confirming it arrived there from elsewhere.

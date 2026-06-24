@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, useId } from 'react';
 import styles from './Footnote.module.css';
 
 interface CiteProps {
@@ -6,6 +6,14 @@ interface CiteProps {
   n: number;
   /** Short citation text shown in the hover/tap popover. */
   text: string;
+  /** Optional page/locator for this specific citation, shown in the popover (e.g. "p. 287"). */
+  loc?: string;
+  /**
+   * Set on every citation of a note AFTER its first on the page. The first
+   * citation owns `id="fnref-{n}"` (the back-link target); repeats omit it so
+   * the id stays unique. All markers still link to `#fn-{n}`.
+   */
+  repeat?: boolean;
 }
 
 /**
@@ -19,11 +27,12 @@ interface CiteProps {
  * SSR-safe: the popover starts closed on both server and client, so there is
  * no hydration mismatch.
  */
-export function Cite({ n, text }: CiteProps) {
+export function Cite({ n, text, loc, repeat }: CiteProps) {
   const [open, setOpen] = useState(false);
   const [pinned, setPinned] = useState(false);
   const wrapRef = useRef<HTMLSpanElement>(null);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const popId = useId();
 
   const show = useCallback(() => {
     if (hideTimer.current) clearTimeout(hideTimer.current);
@@ -72,9 +81,9 @@ export function Cite({ n, text }: CiteProps) {
       <sup className={styles.sup}>
         <a
           href={`#fn-${n}`}
-          id={`fnref-${n}`}
+          id={repeat ? undefined : `fnref-${n}`}
           className={styles.ref}
-          aria-describedby={open ? `fn-pop-${n}` : undefined}
+          aria-describedby={open ? popId : undefined}
           onFocus={show}
           onBlur={scheduleHide}
           onClick={(e) => {
@@ -93,14 +102,14 @@ export function Cite({ n, text }: CiteProps) {
       {open && (
         <span
           role="tooltip"
-          id={`fn-pop-${n}`}
+          id={popId}
           className={styles.popover}
           onMouseEnter={show}
           onMouseLeave={scheduleHide}
         >
           <span>
             <span className={styles.popNum}>{n}</span>
-            <span className={styles.popText}>{text}</span>
+            <span className={styles.popText}>{loc ? `${text} — ${loc}` : text}</span>
           </span>
           <br />
           <a href={`#fn-${n}`} className={styles.popJump}>full note ↓</a>

@@ -15,7 +15,7 @@ import { Cite } from '../components/Footnote';
 const notes = [
   {
     n: 1,
-    short: 'Vredius, Olivarius (Olivier de Wree). Genealogia Comitum Flandriae, Pars secunda. Bruges, 1643. Pp.285–287.',
+    short: 'Vredius, Olivarius (Olivier de Wree). Genealogia Comitum Flandriae. Bruges, 1643.',
     full: (
       <>
         Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae</em>, Pars secunda. Bruges, 1643. Pp.285&ndash;287: the three Ghent partition-court charters and the Oostborch epitaph; direct reading April 2026. FMG MedLands: Flanders, Hainaut (v5.0, January 2025) was consulted as a tertiary pointer to these pages.{' '}
@@ -35,7 +35,7 @@ const notes = [
   },
   {
     n: 3,
-    short: 'Bethune, J.B. de. Epitaphes et monuments des églises de la Flandre. Third part. 1900. p.356.',
+    short: 'Bethune, J.B. de. Epitaphes et monuments des églises de la Flandre. Third part. 1900.',
     full: (
       <>
         Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286&ndash;287, from which it is cited above. Not yet consulted directly by the project.
@@ -127,16 +127,16 @@ export default function VictorLineagePage() {
         <section className={styles.section}>
           <h2>The Three-Charter Nucleus <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            Three charters from the Ghent partition court records, preserved in Vredius (1643) <em>Pars secunda</em> pp.285&ndash;287 (direct reading, April 2026)<Cite n={1} text={CITES[1]} />, form the documentary nucleus of Victor's line. Together they span twenty years (1427&ndash;1447) and name all three of Victor's acknowledged natural sons.
+            Three charters from the Ghent partition court records form the documentary nucleus of Victor's line.<Cite n={1} text={CITES[1]} loc="Pars secunda, pp. 285&ndash;287; direct reading, April 2026" /> Together they span twenty years (1427&ndash;1447) and name all three of Victor's acknowledged natural sons.
           </p>
           <p>
-            <strong>Charter 1 (12 May 1427):</strong> Mergriete Haelfhuuts, Victor's mother, donates property to 'Lodekinen ende Hannekinen' (Lodewyc and Janne), Victor's natural sons by Alix van Boyeghem, and to 'Adaemkine' (Adam), his natural son by Gertrud Lindekens (Vredius p.285).
+            <strong>Charter 1 (12 May 1427):</strong> Mergriete Haelfhuuts, Victor's mother, donates property to 'Lodekinen ende Hannekinen' (Lodewyc and Janne), Victor's natural sons by Alix van Boyeghem, and to 'Adaemkine' (Adam), his natural son by Gertrud Lindekens.<Cite n={1} text={CITES[1]} loc="p. 285" repeat />
           </p>
           <p>
-            <strong>Charter 2 (10 March 1441 O.S. = 1442 N.S.):</strong> Mergriete donates to 'Lodewyc, Janne ende Adam van Vlaendren natuerliche sonen van wijlen edelen&hellip;mer Victor van Vlaendren heere was van Orsele ende van Wesseghem.' Victor is now described as deceased ('wijlen') (Vredius pp.285&ndash;286).
+            <strong>Charter 2 (10 March 1441 O.S. = 1442 N.S.):</strong> Mergriete donates to 'Lodewyc, Janne ende Adam van Vlaendren natuerliche sonen van wijlen edelen&hellip;mer Victor van Vlaendren heere was van Orsele ende van Wesseghem.' Victor is now described as deceased ('wijlen').<Cite n={1} text={CITES[1]} loc="pp. 285&ndash;286" repeat />
           </p>
           <p>
-            <strong>Charter 3 (18 March 1446 O.S. = 1447 N.S.):</strong> 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem' donates money from 'joncfr Margriete Aelhuuts zijn groete vrauwe' to Christiane van Rouse. Adam is the active donor &mdash; the only charter where he acts independently (Vredius pp.286&ndash;287).
+            <strong>Charter 3 (18 March 1446 O.S. = 1447 N.S.):</strong> 'Adam van Vlandren natuerlicke sone va mer Victor van Vlaendren, Rudder, Heer van Orsele en van Wesseghem' donates money from 'joncfr Margriete Aelhuuts zijn groete vrauwe' to Christiane van Rouse. Adam is the active donor &mdash; the only charter where he acts independently.<Cite n={1} text={CITES[1]} loc="pp. 286&ndash;287" repeat />
           </p>
         </section>
 
@@ -164,10 +164,10 @@ export default function VictorLineagePage() {
         <section className={styles.section}>
           <h2>Lodewyc's Descendants <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            Lodewyc van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch, preserved in Vredius (1643) pp.286&ndash;287 (Gaillard MS), records the burial of Jacqueline and nearby 'haer Joos van Vlaenderen fs Lodewijcx.'<Cite n={3} text={CITES[3]} /> Josse died young and cannot be the Joos van Vlaenderen of the 1545&ndash;49 Brugse Vrije wardship records (the Praet cadet) &mdash; but his existence confirms the name Josse/Joos was in active use in Victor's direct line.
+            Lodewyc van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch records the burial of Jacqueline and nearby 'haer Joos van Vlaenderen fs Lodewijcx.'<Cite n={3} text={CITES[3]} loc="Vredius (1643) pp. 286&ndash;287, Gaillard MS" /> Josse died young and cannot be the Joos van Vlaenderen of the 1545&ndash;49 Brugse Vrije wardship records (the Praet cadet) &mdash; but his existence confirms the name Josse/Joos was in active use in Victor's direct line.
           </p>
           <p>
-            Lodewyc's daughter Margareta van Vlaenderen (fl. 1478&ndash;1486) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe (charters of 1478 and 1486, Vredius p.287).
+            Lodewyc's daughter Margareta van Vlaenderen (fl. 1478&ndash;1486) married firstly Lodewijk van Baenst Heer van Santvelde and secondly Adriaan van Schouteten Heer van Erpe (charters of 1478 and 1486).<Cite n={1} text={CITES[1]} loc="p. 287" repeat />
           </p>
         </section>
 

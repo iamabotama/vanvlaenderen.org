@@ -14,7 +14,7 @@ import { Cite } from '../components/Footnote';
 const notes = [
   {
     n: 1,
-    short: 'Vredius, Genealogia Comitum Flandriae, Pars secunda (Bruges, 1643). Direct reading April 2026 (Tabula XVI, pp. 275–289; Tabula XIX, pp. 387–388).',
+    short: 'Vredius, Genealogia Comitum Flandriae, Pars secunda (Bruges, 1643). Direct reading April 2026.',
     full: (
       <>
         Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum.</em> Bruges: J.B. &amp; Lucas Kerchovios, 1643. Vol. 2 of 2. [496 pp.] Direct reading conducted April 2026 (Tabula XVI, pp. 275&ndash;289; Tabula XIX, pp. 387&ndash;388). Not freely digitised; held at major European research libraries.{' '}
@@ -24,7 +24,7 @@ const notes = [
   },
   {
     n: 2,
-    short: "Espinoy, Recherche des antiquitez et noblesse de Flandres (Douai, 1631). Livre 2, Chapitre XXXI. BnF shelfmark M-1432.",
+    short: "Espinoy, Recherche des antiquitez et noblesse de Flandres (Douai, 1631). BnF shelfmark M-1432.",
     full: (
       <>
         Espinoy, Philippe de l'Espinoy. <em>Recherche des antiquitez et noblesse de Flandres.</em> Douai: veuve M. Wyon, 1631. Livre 2, Chapitre XXXI. BnF shelfmark M-1432.{' '}
@@ -138,10 +138,10 @@ export default function PraetDossierPage() {
             Louis Friese van Vlaenderen — also styled Lodewijk de Fries, Louis le Frison, and Louis le Friese de Flandre — was an illegitimate son of Louis II de Male, Count of Flanders (1330-1384). The comital-bastard ancestry of the entire Praet branch runs through him: Vredius's Tabula XVI and the manuscript extracts printed in his Probationes carry the descent from Louis Friese to the lords of Praet, and Espinoy independently records the founding grant.<Cite n={1} text={CITES[1]} /><Cite n={2} text={CITES[2]} />
           </p>
           <p>
-            Vredius (1643), Pars secunda, p. 276, quoting Damhouder's manuscript memoir, preserves the following verbatim extract: <em>messire Loys de Frise fils bastard de Loys de Male conte de Flandre, lequel il eut d une fille de Monsieur de Borre.</em> This passage directly attests Louis Friese's name, his bastard status, his father Louis de Male, and his maternal descent from the family of Monsieur de Borre.
+            Quoting Damhouder's manuscript memoir, the following verbatim extract is preserved: <em>messire Loys de Frise fils bastard de Loys de Male conte de Flandre, lequel il eut d une fille de Monsieur de Borre.</em><Cite n={1} text={CITES[1]} loc="Pars secunda, p. 276 (Damhouder manuscript memoir)" repeat /> This passage directly attests Louis Friese's name, his bastard status, his father Louis de Male, and his maternal descent from the family of Monsieur de Borre.
           </p>
           <p>
-            Espinoy (1631), Livre 2, Ch. XXXI, p. 68, records that the lands and baronies of Praet and La Woestine — <em>les terres et Baronies de Praet et de la Woestine</em> — were conveyed by Louis de Male <em>en avancement de son mariage</em> to his illegitimate son, styled <em>Messire Louys de Flandres dit le Frizon.</em> This passage directly attests his territorial grant and the variant surname le Frizon.
+            The lands and baronies of Praet and La Woestine — <em>les terres et Baronies de Praet et de la Woestine</em> — were conveyed by Louis de Male <em>en avancement de son mariage</em> to his illegitimate son, styled <em>Messire Louys de Flandres dit le Frizon.</em><Cite n={2} text={CITES[2]} loc="Livre 2, Ch. XXXI, p. 68" repeat /> This passage directly attests his territorial grant and the variant surname le Frizon.
           </p>
           <p>
             The birth estimate of c. 1350 used in this dossier derives from Etienne Pattou's 'Batards de Flandres' compilation (2014) — a tertiary register consulted as a pointer, not a documentary authority. It is a chronological inference, not a documented date.<Cite n={4} text={CITES[4]} />
@@ -158,17 +158,17 @@ export default function PraetDossierPage() {
         <section className={styles.section}>
           <h2>Territorial Holdings: Praet and Woestine <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
           <p>
-            The Heerlijkheid Praet is documented as having ancient roots in Oedelem (now Beernem, West Flanders), held by the original van Praet baronial family from at least the twelfth century. A published genealogical study of the van Praet family (Lauwens, 2010) records that in 1373 the leengoed of Praet in Oedelem was sold to Louis de Male, after which it passed as a grant to Louis Friese.<Cite n={5} text={CITES[5]} />
+            The Heerlijkheid Praet is documented as having ancient roots in Oedelem (now Beernem, West Flanders), held by the original van Praet baronial family from at least the twelfth century. A published genealogical study of the van Praet family records that in 1373 the leengoed of Praet in Oedelem was sold to Louis de Male, after which it passed as a grant to Louis Friese.<Cite n={5} text={CITES[5]} />
           </p>
           <p>
-            The Woestine lordship (Woesten, West Flanders) accompanied Praet. Louis Friese's second wife, Maria van Ghistelles, held the lordships of Zweveghem and Rosebeke in her own right — Espinoy styles her <em>Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke</em> — strengthening the Praet branch's position in western Flanders.
+            The Woestine lordship (Woesten, West Flanders) accompanied Praet. Louis Friese's second wife, Maria van Ghistelles, held the lordships of Zweveghem and Rosebeke in her own right, styled <em>Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke</em>,<Cite n={2} text={CITES[2]} repeat /> strengthening the Praet branch's position in western Flanders.
           </p>
         </section>
 
         <section className={styles.section}>
           <h2>Marriage and Descent <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
           <p>
-            Two marriages are attested. The first wife is connected to La Woestine but is unnamed in the accessible sources. The second wife, Maria van Ghistelles, is named in the manuscript extracts printed by Vredius — <em>dame Marie de Guistelles fille de messire Rogier</em> — and by Espinoy, whose record of the founding grant <em>en avancement de son mariage avec Dame Marie de Guistelles</em> ties the marriage to the 25 December 1373 donation. From these marriages Louis Friese left at least one son, Johan I van Vlaenderen (lord of Praet), whose marriage to Johanna van Reygersvliet is recorded in the Van Hecke manuscript annotations printed by Vredius (p. 277).
+            Two marriages are attested. The first wife is connected to La Woestine but is unnamed in the accessible sources. The second wife, Maria van Ghistelles, is named in the manuscript extracts — <em>dame Marie de Guistelles fille de messire Rogier</em><Cite n={1} text={CITES[1]} repeat /> — and the record of the founding grant <em>en avancement de son mariage avec Dame Marie de Guistelles</em> ties the marriage to the 25 December 1373 donation.<Cite n={2} text={CITES[2]} repeat /> From these marriages Louis Friese left at least one son, Johan I van Vlaenderen (lord of Praet), whose marriage to Johanna van Reygersvliet is recorded in the Van Hecke manuscript annotations.<Cite n={1} text={CITES[1]} loc="p. 277 (Van Hecke manuscript annotations)" repeat />
           </p>
         </section>
 
