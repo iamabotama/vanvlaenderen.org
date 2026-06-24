@@ -3,6 +3,97 @@ import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { Cite } from '../components/Footnote';
+
+// Single source for this page's footnotes. Each note carries a concise `short`
+// form (shown in the inline hover/tap popover) and the `full` citation (rendered
+// in the Notes & Bibliography list at the foot of the page). Editing a note in
+// one place keeps the popover and the bottom note in sync. `CITES` is derived
+// from the array so the inline <Cite> markers need no separate map.
+const notes = [
+  {
+    n: 1,
+    short: 'Vredius, Olivarius (Olivier de Wree). Genealogia Comitum Flandriae…, Pars Secunda. Bruges: J.B. & Lucas Kerchovios, 1642–43. Tabula XVI, pp. 285–287.',
+    full: (
+      <>
+        Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642&ndash;43. Tabula XVI, pp. 285&ndash;287 (charter transcriptions for Victor&rsquo;s three sons) and pp. 267&ndash;275 (Louis I de Cressy bastard cohort) and pp. 275&ndash;289 (Louis II de Male bastard cohort). Direct reading of the 1643 print conducted April 2026. Vredius transcribes the three charters from the Ghent partition court registers (<em>In actis curiae partitionum Gandensium, Ex regist. part.</em> f.56). The underlying RAG register has not yet been independently verified; <em>Curiae partitionum Gandensium</em> may correspond to the RAG Jaarregisters van de Keure or Staten van Goed series.
+      </>
+    ),
+  },
+  {
+    n: 2,
+    short: 'Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut. v5.0, January 2025.',
+    full: (
+      <>
+        Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut. v5.0, January 2025. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier.{' '}
+        <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
+      </>
+    ),
+  },
+  {
+    n: 3,
+    short: 'Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem.',
+    full: (
+      <>
+        Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem. Quote: &lsquo;Eind 14de eeuw vinden we Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male, als heren van Wessegem; in 1431 terug bij het kroondomein gevoegd.&rsquo;{' '}
+        <a href="https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Inventaris Onroerend Erfgoed, Erfgoedobject 33384</a>
+      </>
+    ),
+  },
+  {
+    n: 4,
+    short: 'Ursel, een Meetjeslands dorp.',
+    full: (
+      <>
+        Ursel, een Meetjeslands dorp. States that in 1399 Wessegem passed to Victor van Vlaanderen, another bastard son of Louis van Male.{' '}
+        <a href="https://mijnplatteland.com/meetjesland/ursel/" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ursel, een Meetjeslands dorp</a>
+      </>
+    ),
+  },
+  {
+    n: 5,
+    short: 'Bethune, J.B. de. Epitaphes et monuments des eglises de la Flandre. Third part. 1900. p.356.',
+    full: (
+      <>
+        Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. Oostborch (Oostburg, Zeeuws-Vlaanderen) epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286&ndash;287, from which it is cited above. Print only &mdash; not digitised; not yet consulted directly by the project. Held at KBR Brussels (Royal Library of Belgium) and Ghent University Library.
+      </>
+    ),
+  },
+  {
+    n: 6,
+    short: 'Degryse, R. Willem Beukel(s) van Hughevliet. De Vlaamse Gids 38 (1954).',
+    full: (
+      <>
+        Degryse, R. Willem Beukel(s) van Hughevliet. <em>De Vlaamse Gids</em> 38 (1954).{' '}
+        <a href="https://www.dbnl.org/tekst/_vla001195401_01/_vla001195401_01_0055.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DBNL, Vlaamse Stam (1954)</a>
+      </>
+    ),
+  },
+  {
+    n: 7,
+    short: 'Tailler, Margaux. Corvers en zeeschuimers van den Vlaemsche zeecoste… Master of Arts in History, Ghent University, 2011.',
+    full: (
+      <>
+        Tailler, Margaux. <em>Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees.</em> Master of Arts in History, Ghent University, 2011. Supervised by Jan Dumolyn. Notes the appointment of &lsquo;een nieuwe admiraal: Victor van Vlaanderen.&rsquo;{' '}
+        <a href="https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library, Thesis RUG01-001786522 (2012)</a>
+      </>
+    ),
+  },
+  {
+    n: 8,
+    short: 'Verschelde, Karel. Geschiedenis van Middelburg in Vlaenderen. Brugge, 1867. Bewysstukken N° 1, pp. 220–222.',
+    full: (
+      <>
+        Verschelde, Karel. <em>Geschiedenis van Middelburg in Vlaenderen</em>. Brugge, 1867. Bewysstukken N&deg; 1, pp. 220&ndash;222; the three 'mher Victoors van Vlaenderen kindren lande' boundary clauses at p. 221; index entry 'Van Vlaenderen, Victor &mdash; 221.' Transcribes the 17 July 1441 koopbrief from the original deed held at the Rijksarchief Gent ('Staetsarchiven te Gent'). The same attestation is independently cited in K. de Flou, <em>Woordenboek der Toponymie van Westelijk Vlaanderen</em>, Vol. 16 col. 554 ('Gesch. Middelb., 221').
+      </>
+    ),
+  },
+];
+
+const CITES: Record<number, string> = {};
+notes.forEach((nt) => {
+  CITES[nt.n] = nt.short;
+});
 
 export default function VictorDossierPage() {
   return (
@@ -83,13 +174,13 @@ export default function VictorDossierPage() {
         <section className={styles.section}>
           <h2>Territorial Setting: Wessegem and Ursel <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            The Flemish heritage inventory for the Hof van Wessegem states that by the end of the fourteenth century 'Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male,' were lords of Wessegem, and that the property reverted to the comital domain in 1431.
+            The Flemish heritage inventory for the Hof van Wessegem<Cite n={3} text={CITES[3]} /> states that by the end of the fourteenth century 'Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male,' were lords of Wessegem, and that the property reverted to the comital domain in 1431.
           </p>
           <p>
-            A local Ursel history states that in 1399 Wessegem passed to Victor van Vlaanderen, 'another bastard son of Louis van Male,' and that he often resided there.
+            A local Ursel history<Cite n={4} text={CITES[4]} /> states that in 1399 Wessegem passed to Victor van Vlaanderen, 'another bastard son of Louis van Male,' and that he often resided there.
           </p>
           <p style={{ fontSize: '0.9rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
-            Note on spelling: the Vredius print (1643, p. 286) renders the 1441 charter&rsquo;s lordship designation as &lsquo;Orsele ende van Wesseghem&rsquo; &mdash; an alternative spelling of &lsquo;Ursele.&rsquo; The 1446 charter on the following page uses &lsquo;Orsele en van Wesseghem&rsquo; again. The form &lsquo;Desele&rsquo; sometimes appearing in secondary OCR transcriptions of the charter is an artifact: the Middle Dutch blackletter capital &lsquo;U&rsquo;/&lsquo;V&rsquo; is easily misread as &lsquo;D.&rsquo; All references in Vredius point consistently to Ursel (the parish) and Wessegem (the seigneurie within it).
+            Note on spelling: the Vredius print (1643, p. 286)<Cite n={1} text={CITES[1]} /> renders the 1441 charter&rsquo;s lordship designation as &lsquo;Orsele ende van Wesseghem&rsquo; &mdash; an alternative spelling of &lsquo;Ursele.&rsquo; The 1446 charter on the following page uses &lsquo;Orsele en van Wesseghem&rsquo; again. The form &lsquo;Desele&rsquo; sometimes appearing in secondary OCR transcriptions of the charter is an artifact: the Middle Dutch blackletter capital &lsquo;U&rsquo;/&lsquo;V&rsquo; is easily misread as &lsquo;D.&rsquo; All references in Vredius point consistently to Ursel (the parish) and Wessegem (the seigneurie within it).
           </p>
         </section>
 
@@ -150,7 +241,7 @@ export default function VictorDossierPage() {
           }}>
             "Item bet oost van daer, inden zeluen polre, zesse ende tsestich ghemeten eene line ende achte ende tachtentich roeden tusschen pieter clamps lande an de westzide, ende mher Victoors van Vlaenderen kindren lande an de oostzide."
             <div style={{ fontSize: '0.8rem', marginTop: '0.5rem', fontStyle: 'normal' }}>
-              Verschelde, <em>Geschiedenis van Middelburg in Vlaenderen</em> (Brugge, 1867), Bewysstukken N&deg; 1, p. 221. Translation: "Item, further east from there, in the same polder, sixty-six gemeten one line and eighty-eight roeden, between Pieter Clamp's land on the west side, and the land of mher Victor van Vlaenderen's children on the east side."
+              Verschelde, <em>Geschiedenis van Middelburg in Vlaenderen</em> (Brugge, 1867), Bewysstukken N&deg; 1, p. 221.<Cite n={8} text={CITES[8]} /> Translation: "Item, further east from there, in the same polder, sixty-six gemeten one line and eighty-eight roeden, between Pieter Clamp's land on the west side, and the land of mher Victor van Vlaenderen's children on the east side."
             </div>
           </div>
           <p>
@@ -232,7 +323,7 @@ export default function VictorDossierPage() {
         <section className={styles.section}>
           <h2>Lodewyc van Vlaenderen &mdash; Documented Descendants <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            Lodewyc (also Louis) van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch, preserved in Vredius (1643) <em>Pars secunda</em> pp.286&ndash;287 (Gaillard MS), records the burial of 'Jacquemine de Wilde, ghesellenede van Lodewijc van Vlaenderen, fs Victor...naturelicken zone van...Lodewijc van Male' who died 1482, and nearby 'haer Joos van Vlaenderen fs Lodewijcx.'
+            Lodewyc (also Louis) van Vlaenderen married Jacqueline de Wilde (-Apr 1482, bur Oostborch). An epitaph at Oostborch,<Cite n={5} text={CITES[5]} /> preserved in Vredius (1643) <em>Pars secunda</em> pp.286&ndash;287 (Gaillard MS), records the burial of 'Jacquemine de Wilde, ghesellenede van Lodewijc van Vlaenderen, fs Victor...naturelicken zone van...Lodewijc van Male' who died 1482, and nearby 'haer Joos van Vlaenderen fs Lodewijcx.'
           </p>
           <p>
             Lodewyc and Jacqueline had two documented children:
@@ -252,7 +343,7 @@ export default function VictorDossierPage() {
         <section className={styles.section}>
           <h2>Naval and Military Activity <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
           <p>
-            A DBNL article states: 'Victor was, en dit is belangrijk, kapitein van de vesting Biervliet.' A UGent-hosted study on Flemish corsair warfare notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.' These sources support Victor's coastal and naval command role.
+            A DBNL article<Cite n={6} text={CITES[6]} /> states: 'Victor was, en dit is belangrijk, kapitein van de vesting Biervliet.' A UGent-hosted study on Flemish corsair warfare<Cite n={7} text={CITES[7]} /> notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.' These sources support Victor's coastal and naval command role.
           </p>
         </section>
 
@@ -276,43 +367,21 @@ export default function VictorDossierPage() {
         {/* ── Notes & Bibliography ────────────────────────────────── */}
         <section className={researchStyles.referenceList}>
           <h3>Notes &amp; Bibliography</h3>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>1.</span>
-            Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642&ndash;43. Tabula XVI, pp. 285&ndash;287 (charter transcriptions for Victor&rsquo;s three sons) and pp. 267&ndash;275 (Louis I de Cressy bastard cohort) and pp. 275&ndash;289 (Louis II de Male bastard cohort). Direct reading of the 1643 print conducted April 2026. Vredius transcribes the three charters from the Ghent partition court registers (<em>In actis curiae partitionum Gandensium, Ex regist. part.</em> f.56). The underlying RAG register has not yet been independently verified; <em>Curiae partitionum Gandensium</em> may correspond to the RAG Jaarregisters van de Keure or Staten van Goed series.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>2.</span>
-            Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut. v5.0, January 2025. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier.{' '}
-            <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>3.</span>
-            Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem. Quote: &lsquo;Eind 14de eeuw vinden we Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male, als heren van Wessegem; in 1431 terug bij het kroondomein gevoegd.&rsquo;{' '}
-            <a href="https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Inventaris Onroerend Erfgoed, Erfgoedobject 33384</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>4.</span>
-            Ursel, een Meetjeslands dorp. States that in 1399 Wessegem passed to Victor van Vlaanderen, another bastard son of Louis van Male.{' '}
-            <a href="https://mijnplatteland.com/meetjesland/ursel/" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ursel, een Meetjeslands dorp</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>5.</span>
-            Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. Oostborch (Oostburg, Zeeuws-Vlaanderen) epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286&ndash;287, from which it is cited above. Print only &mdash; not digitised; not yet consulted directly by the project. Held at KBR Brussels (Royal Library of Belgium) and Ghent University Library.
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>6.</span>
-            Degryse, R. Willem Beukel(s) van Hughevliet. <em>De Vlaamse Gids</em> 38 (1954).{' '}
-            <a href="https://www.dbnl.org/tekst/_vla001195401_01/_vla001195401_01_0055.php" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DBNL, Vlaamse Stam (1954)</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>7.</span>
-            Tailler, Margaux. <em>Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees.</em> Master of Arts in History, Ghent University, 2011. Supervised by Jan Dumolyn. Notes the appointment of &lsquo;een nieuwe admiraal: Victor van Vlaanderen.&rsquo;{' '}
-            <a href="https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library, Thesis RUG01-001786522 (2012)</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>8.</span>
-            Verschelde, Karel. <em>Geschiedenis van Middelburg in Vlaenderen</em>. Brugge, 1867. Bewysstukken N&deg; 1, pp. 220&ndash;222; the three 'mher Victoors van Vlaenderen kindren lande' boundary clauses at p. 221; index entry 'Van Vlaenderen, Victor &mdash; 221.' Transcribes the 17 July 1441 koopbrief from the original deed held at the Rijksarchief Gent ('Staetsarchiven te Gent'). The same attestation is independently cited in K. de Flou, <em>Woordenboek der Toponymie van Westelijk Vlaanderen</em>, Vol. 16 col. 554 ('Gesch. Middelb., 221').
-          </div>
+          {notes.map(({ n, full }) => (
+            <div key={n} id={`fn-${n}`} className={researchStyles.refItem} style={{ scrollMarginTop: '6rem' }}>
+              <span className={researchStyles.refNumber}>{n}.</span>
+              {full}
+              {' '}
+              <a
+                href={`#fnref-${n}`}
+                className={researchStyles.refLink}
+                aria-label="Back to text"
+                title="Back to text"
+              >
+                ↩
+              </a>
+            </div>
+          ))}
         </section>
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
