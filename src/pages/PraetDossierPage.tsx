@@ -4,6 +4,67 @@ import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { Cite } from '../components/Footnote';
+
+// Single source for this page's footnotes. Each note carries a concise `short`
+// form (shown in the inline hover/tap popover) and the `full` citation (rendered
+// in the Notes & Bibliography list at the foot of the page). Editing a note in
+// one place keeps the popover and the bottom note in sync. `CITES` is derived
+// from the array so the inline <Cite> markers need no separate map.
+const notes = [
+  {
+    n: 1,
+    short: 'Vredius, Genealogia Comitum Flandriae, Pars secunda (Bruges, 1643). Direct reading April 2026 (Tabula XVI, pp. 275–289; Tabula XIX, pp. 387–388).',
+    full: (
+      <>
+        Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum.</em> Bruges: J.B. &amp; Lucas Kerchovios, 1643. Vol. 2 of 2. [496 pp.] Direct reading conducted April 2026 (Tabula XVI, pp. 275&ndash;289; Tabula XIX, pp. 387&ndash;388). Not freely digitised; held at major European research libraries.{' '}
+        <a href="https://www.rct.uk/collection/1021446" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Royal Collection Trust catalogue entry</a>
+      </>
+    ),
+  },
+  {
+    n: 2,
+    short: "Espinoy, Recherche des antiquitez et noblesse de Flandres (Douai, 1631). Livre 2, Chapitre XXXI. BnF shelfmark M-1432.",
+    full: (
+      <>
+        Espinoy, Philippe de l'Espinoy. <em>Recherche des antiquitez et noblesse de Flandres.</em> Douai: veuve M. Wyon, 1631. Livre 2, Chapitre XXXI. BnF shelfmark M-1432.{' '}
+        <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>
+      </>
+    ),
+  },
+  {
+    n: 3,
+    short: 'FMG, MedLands: Flanders, Hainaut — tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority.',
+    full: (
+      <>
+        Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier. <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
+      </>
+    ),
+  },
+  {
+    n: 4,
+    short: 'Pattou, Etienne. Batards de Flandres. 2014. Tertiary compilation; cited only as the origin of the c. 1350 birth estimate.',
+    full: (
+      <>
+        Pattou, Etienne. Batards de Flandres. 2014. Tertiary compilation consulted as a pointer to primary sources; cited above only as the origin of the c. 1350 birth estimate. <a href="https://docplayer.fr/21492316-Batards-de-flandres.html" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Pattou, Batards de Flandres (2014)</a>
+      </>
+    ),
+  },
+  {
+    n: 5,
+    short: 'Lauwens, Patrik. Verhalen uit de genealogie Van Praet. September 2010.',
+    full: (
+      <>
+        Lauwens, Patrik. Verhalen uit de genealogie Van Praet. September 2010. <a href="https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Lauwens, Verhalen uit de genealogie Van Praet (2010)</a>
+      </>
+    ),
+  },
+];
+
+const CITES: Record<number, string> = {};
+notes.forEach((nt) => {
+  CITES[nt.n] = nt.short;
+});
 
 export default function PraetDossierPage() {
   return (
@@ -74,16 +135,16 @@ export default function PraetDossierPage() {
         <section className={styles.section}>
           <h2>Identity and Parentage <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelAttested}`}>Directly Attested</span></h2>
           <p>
-            Louis Friese van Vlaenderen — also styled Lodewijk de Fries, Louis le Frison, and Louis le Friese de Flandre — was an illegitimate son of Louis II de Male, Count of Flanders (1330-1384). The comital-bastard ancestry of the entire Praet branch runs through him: Vredius's Tabula XVI and the manuscript extracts printed in his Probationes carry the descent from Louis Friese to the lords of Praet, and Espinoy independently records the founding grant.<sup>[1][2]</sup>
+            Louis Friese van Vlaenderen — also styled Lodewijk de Fries, Louis le Frison, and Louis le Friese de Flandre — was an illegitimate son of Louis II de Male, Count of Flanders (1330-1384). The comital-bastard ancestry of the entire Praet branch runs through him: Vredius's Tabula XVI and the manuscript extracts printed in his Probationes carry the descent from Louis Friese to the lords of Praet, and Espinoy independently records the founding grant.<Cite n={1} text={CITES[1]} /><Cite n={2} text={CITES[2]} />
           </p>
           <p>
-            Vredius (1643), Pars secunda, p. 276, quoting Damhouder's manuscript memoir, preserves the following verbatim extract: <em>messire Loys de Frise fils bastard de Loys de Male conte de Flandre, lequel il eut d une fille de Monsieur de Borre.</em> This passage directly attests Louis Friese's name, his bastard status, his father Louis de Male, and his maternal descent from the family of Monsieur de Borre.<sup>[1]</sup>
+            Vredius (1643), Pars secunda, p. 276, quoting Damhouder's manuscript memoir, preserves the following verbatim extract: <em>messire Loys de Frise fils bastard de Loys de Male conte de Flandre, lequel il eut d une fille de Monsieur de Borre.</em> This passage directly attests Louis Friese's name, his bastard status, his father Louis de Male, and his maternal descent from the family of Monsieur de Borre.
           </p>
           <p>
-            Espinoy (1631), Livre 2, Ch. XXXI, p. 68, records that the lands and baronies of Praet and La Woestine — <em>les terres et Baronies de Praet et de la Woestine</em> — were conveyed by Louis de Male <em>en avancement de son mariage</em> to his illegitimate son, styled <em>Messire Louys de Flandres dit le Frizon.</em> This passage directly attests his territorial grant and the variant surname le Frizon.<sup>[2]</sup>
+            Espinoy (1631), Livre 2, Ch. XXXI, p. 68, records that the lands and baronies of Praet and La Woestine — <em>les terres et Baronies de Praet et de la Woestine</em> — were conveyed by Louis de Male <em>en avancement de son mariage</em> to his illegitimate son, styled <em>Messire Louys de Flandres dit le Frizon.</em> This passage directly attests his territorial grant and the variant surname le Frizon.
           </p>
           <p>
-            The birth estimate of c. 1350 used in this dossier derives from Etienne Pattou's 'Batards de Flandres' compilation (2014) — a tertiary register consulted as a pointer, not a documentary authority. It is a chronological inference, not a documented date.<sup>[4]</sup>
+            The birth estimate of c. 1350 used in this dossier derives from Etienne Pattou's 'Batards de Flandres' compilation (2014) — a tertiary register consulted as a pointer, not a documentary authority. It is a chronological inference, not a documented date.<Cite n={4} text={CITES[4]} />
           </p>
         </section>
 
@@ -97,51 +158,44 @@ export default function PraetDossierPage() {
         <section className={styles.section}>
           <h2>Territorial Holdings: Praet and Woestine <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
           <p>
-            The Heerlijkheid Praet is documented as having ancient roots in Oedelem (now Beernem, West Flanders), held by the original van Praet baronial family from at least the twelfth century. A published genealogical study of the van Praet family (Lauwens, 2010) records that in 1373 the leengoed of Praet in Oedelem was sold to Louis de Male, after which it passed as a grant to Louis Friese.<sup>[5]</sup>
+            The Heerlijkheid Praet is documented as having ancient roots in Oedelem (now Beernem, West Flanders), held by the original van Praet baronial family from at least the twelfth century. A published genealogical study of the van Praet family (Lauwens, 2010) records that in 1373 the leengoed of Praet in Oedelem was sold to Louis de Male, after which it passed as a grant to Louis Friese.<Cite n={5} text={CITES[5]} />
           </p>
           <p>
-            The Woestine lordship (Woesten, West Flanders) accompanied Praet. Louis Friese's second wife, Maria van Ghistelles, held the lordships of Zweveghem and Rosebeke in her own right — Espinoy styles her <em>Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke</em> — strengthening the Praet branch's position in western Flanders.<sup>[2]</sup>
+            The Woestine lordship (Woesten, West Flanders) accompanied Praet. Louis Friese's second wife, Maria van Ghistelles, held the lordships of Zweveghem and Rosebeke in her own right — Espinoy styles her <em>Dame Marie de Guistelles, Dame de Zweueghem et de Rosebeke</em> — strengthening the Praet branch's position in western Flanders.
           </p>
         </section>
 
         <section className={styles.section}>
           <h2>Marriage and Descent <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
           <p>
-            Two marriages are attested. The first wife is connected to La Woestine but is unnamed in the accessible sources. The second wife, Maria van Ghistelles, is named in the manuscript extracts printed by Vredius — <em>dame Marie de Guistelles fille de messire Rogier</em> — and by Espinoy, whose record of the founding grant <em>en avancement de son mariage avec Dame Marie de Guistelles</em> ties the marriage to the 25 December 1373 donation. From these marriages Louis Friese left at least one son, Johan I van Vlaenderen (lord of Praet), whose marriage to Johanna van Reygersvliet is recorded in the Van Hecke manuscript annotations printed by Vredius (p. 277).<sup>[1][2]</sup>
+            Two marriages are attested. The first wife is connected to La Woestine but is unnamed in the accessible sources. The second wife, Maria van Ghistelles, is named in the manuscript extracts printed by Vredius — <em>dame Marie de Guistelles fille de messire Rogier</em> — and by Espinoy, whose record of the founding grant <em>en avancement de son mariage avec Dame Marie de Guistelles</em> ties the marriage to the 25 December 1373 donation. From these marriages Louis Friese left at least one son, Johan I van Vlaenderen (lord of Praet), whose marriage to Johanna van Reygersvliet is recorded in the Van Hecke manuscript annotations printed by Vredius (p. 277).
           </p>
         </section>
 
         <section className={styles.section}>
           <h2>The Surname van Vlaenderen <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
           <p>
-            The consistent use of van Vlaenderen by Louis Friese and his descendants is the central genealogical point for this project. Like his half-brother Victor, Louis Friese bore the surname in a period when it functioned not as a geographic descriptor but as a marker of comital illegitimate descent — crystallising as a hereditary identifier at the precise moment the Dampierre line's hold on Flanders ended with Louis de Male's death in 1384. The van Vlaenderen styling is documented through six further generations of the Praet line in the tomb inscriptions and charters printed by Vredius and set out in the lineage dossier.<sup>[1]</sup>
+            The consistent use of van Vlaenderen by Louis Friese and his descendants is the central genealogical point for this project. Like his half-brother Victor, Louis Friese bore the surname in a period when it functioned not as a geographic descriptor but as a marker of comital illegitimate descent — crystallising as a hereditary identifier at the precise moment the Dampierre line's hold on Flanders ended with Louis de Male's death in 1384. The van Vlaenderen styling is documented through six further generations of the Praet line in the tomb inscriptions and charters printed by Vredius and set out in the lineage dossier.
           </p>
         </section>
 
         <section className={researchStyles.referenceList}>
           <h3>Notes & Bibliography</h3>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>1.</span>
-            Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum.</em> Bruges: J.B. &amp; Lucas Kerchovios, 1643. Vol. 2 of 2. [496 pp.] Direct reading conducted April 2026 (Tabula XVI, pp. 275&ndash;289; Tabula XIX, pp. 387&ndash;388). Not freely digitised; held at major European research libraries.{' '}
-            <a href="https://www.rct.uk/collection/1021446" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Royal Collection Trust catalogue entry</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>2.</span>
-            Espinoy, Philippe de l'Espinoy. <em>Recherche des antiquitez et noblesse de Flandres.</em> Douai: veuve M. Wyon, 1631. Livre 2, Chapitre XXXI. BnF shelfmark M-1432.{' '}
-            <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>3.</span>
-            Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier. <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>4.</span>
-            Pattou, Etienne. Batards de Flandres. 2014. Tertiary compilation consulted as a pointer to primary sources; cited above only as the origin of the c. 1350 birth estimate. <a href="https://docplayer.fr/21492316-Batards-de-flandres.html" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Pattou, Batards de Flandres (2014)</a>
-          </div>
-          <div className={researchStyles.refItem}>
-            <span className={researchStyles.refNumber}>5.</span>
-            Lauwens, Patrik. Verhalen uit de genealogie Van Praet. September 2010. <a href="https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Lauwens, Verhalen uit de genealogie Van Praet (2010)</a>
-          </div>
+          {notes.map(({ n, full }) => (
+            <div key={n} id={`fn-${n}`} className={researchStyles.refItem} style={{ scrollMarginTop: '6rem' }}>
+              <span className={researchStyles.refNumber}>{n}.</span>
+              {full}
+              {' '}
+              <a
+                href={`#fnref-${n}`}
+                className={researchStyles.refLink}
+                aria-label="Back to text"
+                title="Back to text"
+              >
+                ↩
+              </a>
+            </div>
+          ))}
         </section>
 
         <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(232, 184, 48, 0.2)' }}>
