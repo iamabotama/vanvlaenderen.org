@@ -1,5 +1,5 @@
 # vanvlaenderen.org — Website To-Do & Changelog
-*Last updated: June 14, 2026*
+*Last updated: June 25, 2026*
 *Repository: github.com/iamabotama/vanvlaenderen.org · Branch: main*
 
 ---
@@ -81,6 +81,22 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 ---
 
 ## 📋 CHANGELOG
+
+### June 25, 2026 — Records editor: paste-record pipeline (full multi-participant records) *(DB live; editor STAGED on mvf — pending gates + push approval)*
+Built the paste-record pipeline per `docs/records-editor-paste-pipeline-spec-2026-06-25.md` so a full, multi-participant, transcribed record can be submitted from a single fenced-JSON paste field, routed through the `proposals` queue, and applied atomically.
+
+Database (applied live to Supabase as tracked migration `paste_pipeline_apply_full_record`):
+- Widened `proposals_kind_check` to add `full_record` and `progress_update`.
+- `apply_full_record(payload jsonb)` — `SECURITY DEFINER`, asserts `app_role()='curator'`, re-checks the §2 min-bar, resolves municipality (by id/name, never auto-created), parish (by id/name, **creates** `PAR_` if missing), and sources (by `inventory_reference`/`short_citation`, **creates** `SRC_` if missing); mints the next `EVT_` and inserts `events` + `event_participants[]` + `event_sources[]` + optional `research_progress` set/coverage, all in one transaction. Returns the new event id + created-id flags. The existing `reject_living_event` trigger still guards births/marriages <100y.
+- `apply_progress_update(payload jsonb)` — curator-applied tracker-only update (contributor-submitted `progress_update` proposals).
+- Helpers `next_padded_id()` and `_apply_tracker()` (the latter `SECURITY INVOKER`, so a direct contributor call is RLS-blocked).
+- Verified live (all rolled back, no test rows committed): Afsnee marriage round-trip = EVT-equivalent with 5 participants + 2 sources + tracker coverage merge; min-bar rejection; index-only lead (`needs_source=1`) accepted; parish auto-create; contributor `apply_full_record` raises.
+
+Editor (`public/r/e1e3b0852b/index.html`, on mvf):
+- New **Paste a full record (JSON)** card on the Add tab (legacy single-field quick form kept). Parse → min-bar re-validation → read-only preview (event line, participant table, source list, tracker change) → Submit.
+- Curator Submit = insert-then-apply (`apply_full_record` RPC, proposal row marked `applied` for the audit trail); contributor Submit = `proposals` row (`kind='full_record'`). `applyProposal`/`reviewProp` extended for `full_record` + `progress_update`; legacy `new_record`/`correction` paths unchanged.
+- **Master sync caveat:** edits were made to the repo copy. The canonical master is `…/Database/supabase/records-editor.html` (Drive); back-port the repo copy to it so a future `update-records-editor.sh` run does not revert the feature. Run `node scripts/check-static-assets.mjs` + `pnpm build` on the local machine before merge (the Cowork sandbox mount serves torn reads of this large file).
+- Skill §5 (`vanvlaenderen-record-collection`) "Output format" addition drafted for Michael to apply (skill cache is read-only in-session).
 
 ### June 23, 2026 — Records database portal published + torn-file mitigations + corpus integrity sweep
 Published the auth-gated records editor on the site and hardened the pipeline against a recurring silent file-truncation problem.
