@@ -436,7 +436,9 @@ function trSel(cls,val){const opts=[...new Set([val,...STATUS_OPTS].filter(Boole
   return `<select class="stsel" data-cls="${cls}">`+opts.map(o=>`<option${o===val?' selected':''}>${esc(o)}</option>`).join("")+`</select>`;}
 function stc(v,muni,etype){const k=STMAP[v]||"n";const act=muni&&etype?`onclick="cellJump('${esc(muni)}','${etype}','${esc(v||'')}')" style="cursor:pointer" title="${DONEISH.has(v)?'Browse this set':'Add for this set'}"`:"";
   return `<span class="st ${k}" ${act}></span>`;}
-function midForName(name){return (MUNIS.find(m=>norm(m.canonical_name)===norm(name))||{}).municipality_id||"";}
+function midForName(name){const n=norm(name),b=norm(String(name||"").replace(/\s*\(.*\)\s*$/,""));
+  const m=MUNIS.find(x=>norm(x.canonical_name)===n)||MUNIS.find(x=>norm(x.canonical_name)===b);
+  return m?m.municipality_id:"";}
 function renderTracker(){
   const q=$("#g_q").value.trim().toLowerCase(),ar=$("#g_arr").value,novv=$("#g_novv").checked;
   let rows=PROGRESS.filter(r=>(!ar||r.arrondissement===ar)&&(!q||((r.municipality||"")+" "+(r.arrondissement||"")).toLowerCase().includes(q)));
@@ -473,7 +475,11 @@ window.editTrackerRow=editTrackerRow;window.cancelTrackerEdit=cancelTrackerEdit;
 function cellJump(muni,etype,status){
   const mid=midForName(muni);
   if(DONEISH.has(status)){ // browse this set
-    gotoTab("browse");$("#b_muni").value=mid;fillBrowseParish();$("#b_type").value=etype;runBrowse();
+    gotoTab("browse");
+    if(mid){$("#b_muni").value=mid;fillBrowseParish();$("#b_q").value="";}
+    else{ // tracker municipality not in the municipalities table: fall back to place-name search, never an unfiltered browse
+      $("#b_muni").value="";fillBrowseParish();$("#b_q").value=String(muni).replace(/\s*\(.*\)\s*$/,"").trim();$("#b_match").value="contains";}
+    $("#b_type").value=etype;runBrowse();
   }else{ // add for this set
     gotoTab("add");if(mid){$("#a_muni").value=mid;fillAddParish();}$("#a_type").value=etype;$("#a_name").focus();
   }
