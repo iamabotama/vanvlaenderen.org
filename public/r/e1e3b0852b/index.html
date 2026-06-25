@@ -42,7 +42,7 @@
   h3{margin:4px 0 2px;font-size:14px}
   .hintgate{font-size:11.5px;color:var(--warn);margin-top:4px}
   .st{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:3px}
-  .st.c{background:var(--ok)}.st.p{background:#9bb8c9}.st.i{background:var(--warn)}.st.n{background:#d8d2c4}
+  .st.c{background:var(--ok)}.st.z{background:#5b6470}.st.p{background:#9bb8c9}.st.i{background:var(--warn)}.st.n{background:#d8d2c4}
   .overlay{position:fixed;inset:0;background:#0008;display:none;align-items:flex-start;justify-content:center;z-index:60;padding:30px 16px;overflow:auto}
   .overlay.open{display:flex}
   .modal{background:#fff;border-radius:12px;max-width:760px;width:100%;box-shadow:0 20px 60px #0006}
@@ -100,10 +100,11 @@
 
     <!-- TRACKER -->
     <section id="tab-tracker">
-      <p class="muted" style="font-size:11.5px;margin:0 0 8px"><span class="st c"></span>Complete <span class="st p"></span>Present <span class="st i"></span>In progress <span class="st n"></span>Not started &nbsp;·&nbsp; "Held" = event records in the DB for that place. &nbsp;·&nbsp; "Add here" prefills the add form.</p>
+      <p class="muted" style="font-size:11.5px;margin:0 0 8px"><span class="st c"></span>Complete (found) <span class="st z"></span>Complete (0 found) <span class="st p"></span>Present <span class="st i"></span>In progress <span class="st n"></span>Not started &nbsp;·&nbsp; "Held" = event records in the DB for that place. &nbsp;·&nbsp; "Add here" prefills the add form.</p>
       <div class="controls">
         <div><label>Search</label><input type="text" id="g_q" placeholder="municipality / arrondissement"></div>
         <div><label>Arrondissement</label><select id="g_arr"></select></div>
+        <div><label>Show</label><label style="flex-direction:row;align-items:center;gap:6px;font-size:12px;white-space:nowrap;font-weight:400"><input type="checkbox" id="g_novv" style="width:auto;margin:0">Exclude municipalities without Van&nbsp;Vlaenderen</label></div>
         <button class="ghost" id="g_run">Filter</button>
       </div>
       <div class="count" id="g_count"></div>
@@ -373,7 +374,7 @@ function initUI(){
   $("#pp_per").onchange=()=>setPer("people",$("#pp_per").value);
   document.querySelectorAll("#tab-browse th.sortable").forEach(th=>th.onclick=()=>setSort("browse",th.dataset.key));
   document.querySelectorAll("#tab-people th.sortable").forEach(th=>th.onclick=()=>setSort("people",th.dataset.key));
-  $("#g_run").onclick=renderTracker;$("#g_q").addEventListener("input",renderTracker);$("#g_arr").addEventListener("change",renderTracker);
+  $("#g_run").onclick=renderTracker;$("#g_q").addEventListener("input",renderTracker);$("#g_arr").addEventListener("change",renderTracker);$("#g_novv").addEventListener("change",renderTracker);
   $("#a_save").onclick=()=>submitRecord(false);$("#a_save_more").onclick=()=>submitRecord(true);
   $("#a_date").addEventListener("input",deriveYear);
   [$("#a_type"),$("#a_year")].forEach(el=>el.addEventListener("input",updateGateHint));
@@ -421,14 +422,21 @@ async function loadTracker(){
   $("#g_arr").innerHTML='<option value="">all arrondissements</option>'+arrs.map(a=>`<option>${esc(a)}</option>`).join("");
   renderTracker();
 }
-const STMAP={"Complete":"c","present":"p","Present":"p","In progress":"i"};
-const DONEISH=new Set(["Complete","present","Present","In progress"]);
+const STMAP={"Complete":"c","Complete (found)":"c","Complete (0 found)":"z","present":"p","Present":"p","In progress":"i"};
+const DONEISH=new Set(["Complete","Complete (found)","Complete (0 found)","present","Present","In progress"]);
+const DEADEND=new Set(["Complete (0 found)","None Listed"]);
+function isDeadEnd(r){
+  if((HELD[norm(r.municipality)]||0)>0)return false;
+  return [r.parish_birth,r.parish_marriage,r.parish_death,r.civil_birth,r.civil_marriage,r.civil_death].every(v=>DEADEND.has(v));
+}
 function stc(v,muni,etype){const k=STMAP[v]||"n";const act=muni&&etype?`onclick="cellJump('${esc(muni)}','${etype}','${esc(v||'')}')" style="cursor:pointer" title="${DONEISH.has(v)?'Browse this set':'Add for this set'}"`:"";
   return `<span class="st ${k}" ${act}></span>`;}
 function midForName(name){return (MUNIS.find(m=>norm(m.canonical_name)===norm(name))||{}).municipality_id||"";}
 function renderTracker(){
-  const q=$("#g_q").value.trim().toLowerCase(),ar=$("#g_arr").value;
+  const q=$("#g_q").value.trim().toLowerCase(),ar=$("#g_arr").value,novv=$("#g_novv").checked;
   let rows=PROGRESS.filter(r=>(!ar||r.arrondissement===ar)&&(!q||((r.municipality||"")+" "+(r.arrondissement||"")).toLowerCase().includes(q)));
+  if(novv)rows=rows.filter(r=>!isDeadEnd(r));
+  rows=rows.slice().sort((a,b)=>(a.municipality||"").localeCompare(b.municipality||"",undefined,{sensitivity:"base"}));
   $("#g_count").textContent=`${rows.length} municipalit${rows.length===1?"y":"ies"}`;
   $("#g_body").innerHTML=rows.map(r=>{
     const k=norm(r.municipality),fv=FV[k],held=HELD[k]||0,mu=r.municipality;
