@@ -43,6 +43,7 @@
   .hintgate{font-size:11.5px;color:var(--warn);margin-top:4px}
   .st{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:3px}
   .st.c{background:var(--ok)}.st.z{background:#5b6470}.st.p{background:#9bb8c9}.st.i{background:var(--warn)}.st.n{background:#d8d2c4}
+  .stsel{font-size:11px;padding:1px 2px;width:auto;margin:0 2px 0 0;vertical-align:middle}
   .overlay{position:fixed;inset:0;background:#0008;display:none;align-items:flex-start;justify-content:center;z-index:60;padding:30px 16px;overflow:auto}
   .overlay.open{display:flex}
   .modal{background:#fff;border-radius:12px;max-width:760px;width:100%;box-shadow:0 20px 60px #0006}
@@ -425,10 +426,14 @@ async function loadTracker(){
 const STMAP={"Complete":"c","Complete (found)":"c","Complete (0 found)":"z","present":"p","Present":"p","In progress":"i"};
 const DONEISH=new Set(["Complete","Complete (found)","Complete (0 found)","present","Present","In progress"]);
 const DEADEND=new Set(["Complete (0 found)","None Listed"]);
+const STATUS_OPTS=["Not Started","In progress","present","None Listed","Complete (found)","Complete (0 found)"];
+let EDIT_PID=null;
 function isDeadEnd(r){
   if((HELD[norm(r.municipality)]||0)>0)return false;
   return [r.parish_birth,r.parish_marriage,r.parish_death,r.civil_birth,r.civil_marriage,r.civil_death].every(v=>DEADEND.has(v));
 }
+function trSel(cls,val){const opts=[...new Set([val,...STATUS_OPTS].filter(Boolean))];
+  return `<select class="stsel" data-cls="${cls}">`+opts.map(o=>`<option${o===val?' selected':''}>${esc(o)}</option>`).join("")+`</select>`;}
 function stc(v,muni,etype){const k=STMAP[v]||"n";const act=muni&&etype?`onclick="cellJump('${esc(muni)}','${etype}','${esc(v||'')}')" style="cursor:pointer" title="${DONEISH.has(v)?'Browse this set':'Add for this set'}"`:"";
   return `<span class="st ${k}" ${act}></span>`;}
 function midForName(name){return (MUNIS.find(m=>norm(m.canonical_name)===norm(name))||{}).municipality_id||"";}
@@ -441,14 +446,30 @@ function renderTracker(){
   $("#g_body").innerHTML=rows.map(r=>{
     const k=norm(r.municipality),fv=FV[k],held=HELD[k]||0,mu=r.municipality;
     const fvp=fv?`<span class="pill ${(fv.b||fv.m||fv.d)?'ok':''}">${[fv.b?'B':'',fv.m?'M':'',fv.d?'D':''].filter(Boolean).join('')||'—'}</span>`:'<span class="muted">—</span>';
-    const mid=midForName(mu);
-    return `<tr><td>${esc(mu)}</td><td class="muted">${esc(r.arrondissement||"")}</td>
-      <td>${stc(r.parish_birth,mu,'baptism')}${stc(r.parish_marriage,mu,'marriage')}${stc(r.parish_death,mu,'burial')}</td>
-      <td>${stc(r.civil_birth,mu,'civil_birth')}${stc(r.civil_marriage,mu,'civil_marriage')}${stc(r.civil_death,mu,'civil_death')}</td>
+    const mid=midForName(mu),editing=(EDIT_PID===r.progress_id);
+    const pcell=editing?`${trSel('parish_birth',r.parish_birth)}${trSel('parish_marriage',r.parish_marriage)}${trSel('parish_death',r.parish_death)}`
+                       :`${stc(r.parish_birth,mu,'baptism')}${stc(r.parish_marriage,mu,'marriage')}${stc(r.parish_death,mu,'burial')}`;
+    const ccell=editing?`${trSel('civil_birth',r.civil_birth)}${trSel('civil_marriage',r.civil_marriage)}${trSel('civil_death',r.civil_death)}`
+                       :`${stc(r.civil_birth,mu,'civil_birth')}${stc(r.civil_marriage,mu,'civil_marriage')}${stc(r.civil_death,mu,'civil_death')}`;
+    const act=editing?`<button class="act" onclick="saveTrackerRow('${esc(r.progress_id)}')">Save</button> <button class="ghost" onclick="cancelTrackerEdit()">Cancel</button>`
+                     :`<button class="ghost" onclick="addHere('${esc(mid)}')">Add here</button>${ROLE==='curator'?` <button class="ghost" title="Edit status" onclick="editTrackerRow('${esc(r.progress_id)}')">&#9998;</button>`:''}`;
+    return `<tr data-pid="${esc(r.progress_id)}"><td>${esc(mu)}</td><td class="muted">${esc(r.arrondissement||"")}</td>
+      <td>${pcell}</td><td>${ccell}</td>
       <td>${fvp}</td><td><b>${held}</b></td>
-      <td><button class="ghost" onclick="addHere('${esc(mid)}')">Add here</button></td></tr>`;
+      <td>${act}</td></tr>`;
   }).join("");
 }
+function editTrackerRow(pid){EDIT_PID=pid;renderTracker();}
+function cancelTrackerEdit(){EDIT_PID=null;renderTracker();}
+async function saveTrackerRow(pid){
+  const tr=document.querySelector(`#g_body tr[data-pid="${pid}"]`);if(!tr)return;
+  const upd={};tr.querySelectorAll("select[data-cls]").forEach(s=>{upd[s.dataset.cls]=s.value;});
+  const {error}=await sb.from("research_progress").update(upd).eq("progress_id",pid);
+  if(error){flash($("#flash"),"Status save failed: "+esc(error.message),"err");return;}
+  const row=PROGRESS.find(r=>r.progress_id===pid);if(row)Object.assign(row,upd);
+  EDIT_PID=null;renderTracker();flash($("#flash"),"Tracker updated.","good");
+}
+window.editTrackerRow=editTrackerRow;window.cancelTrackerEdit=cancelTrackerEdit;window.saveTrackerRow=saveTrackerRow;
 function cellJump(muni,etype,status){
   const mid=midForName(muni);
   if(DONEISH.has(status)){ // browse this set
