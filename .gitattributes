@@ -1,0 +1,2 @@
+# Shell scripts must stay LF or git bash fails with $'\r' errors on Windows.
+*.sh text eol=lf
