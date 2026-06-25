@@ -444,4 +444,297 @@ function renderTracker(){
 function cellJump(muni,etype,status){
   const mid=midForName(muni);
   if(DONEISH.has(status)){ // browse this set
-    gotoTab("browse");$("#b_muni").value=mid;fillBrowseParish();$("#b_type").value=etype;runBrow
+    gotoTab("browse");$("#b_muni").value=mid;fillBrowseParish();$("#b_type").value=etype;runBrowse();
+  }else{ // add for this set
+    gotoTab("add");if(mid){$("#a_muni").value=mid;fillAddParish();}$("#a_type").value=etype;$("#a_name").focus();
+  }
+}
+window.cellJump=cellJump;
+function addHere(mid){gotoTab("add");if(mid){$("#a_muni").value=mid;fillAddParish();}$("#a_name").focus();}
+window.addHere=addHere;
+
+/* ---------- browse ---------- */
+async function runBrowse(){
+  flash($("#flash"),"");
+  const ty=$("#b_type").value,su=$("#b_surname").value,mid=$("#b_muni").value,
+        pid=$("#b_parish").value,y0=parseInt($("#b_y0").value||"",10),y1=parseInt($("#b_y1").value||"",10),
+        src=$("#b_src").value,q=$("#b_q").value.trim(),match=$("#b_match").value;
+  const sel=su?'event_id,event_type,year,municipality_id,needs_source,fully_sourced,event_participants!inner(role,name_as_written,canonical_surname)'
+             :'event_id,event_type,year,municipality_id,needs_source,fully_sourced,event_participants(role,name_as_written)';
+  const makeQuery=()=>{
+    let query=sb.from("events").select(sel).order("year",{ascending:false}).order("event_id");
+    if(ty) query=query.eq("event_type",ty);
+    if(su) query=query.eq("event_participants.canonical_surname",su);
+    if(mid) query=query.eq("municipality_id",mid);
+    if(pid) query=query.eq("parish_id",pid);
+    if(!isNaN(y0)) query=query.gte("year",y0);
+    if(!isNaN(y1)) query=query.lte("year",y1);
+    if(src==="sourced") query=query.eq("needs_source",0);
+    if(src==="needs") query=query.eq("needs_source",1);
+    if(src==="full") query=query.eq("fully_sourced",1);
+    return query;
+  };
+  let rows;
+  try{rows=await fetchAll(makeQuery);}
+  catch(err){flash($("#flash"),"Browse error: "+esc(err.message||err),"err");return;}
+  if(q){const ql=q.toLowerCase();
+    rows=rows.filter(e=>{const fields=[e.event_id,muniName(e.municipality_id),...(e.event_participants||[]).map(p=>p.name_as_written)].filter(Boolean).map(x=>String(x).toLowerCase());
+      return match==="exact"?fields.includes(ql):fields.some(f=>f.includes(ql));});}
+  PAGE.browse.rows=rows;PAGE.browse.page=1;renderPage("browse");
+}
+function drawBrowseRows(rows){
+  $("#b_body").innerHTML=rows.map(e=>{
+    const pr=(e.event_participants||[]).map(p=>esc(p.name_as_written)).join(" / ")||'<span class="muted">—</span>';
+    const s=e.fully_sourced?'<span class="pill ok">full</span>':(e.needs_source?'<span class="pill bad">needs</span>':'<span class="pill ok">ok</span>');
+    return `<tr class="click" onclick="openRecord('${esc(e.event_id)}')"><td><span class="link mono">${esc(e.event_id)}</span></td><td>${e.year??""}</td><td>${esc(e.event_type||"")}</td><td>${pr}</td><td>${esc(muniName(e.municipality_id))}</td><td>${s}</td></tr>`;
+  }).join("")||`<tr><td colspan="6" class="muted">No records.</td></tr>`;
+}
+
+/* ---------- people ---------- */
+async function runPeople(){
+  const su=$("#pp_surname").value,src=$("#pp_src").value,q=$("#pp_q").value.trim();
+  const makeQuery=()=>{
+    let query=sb.from("persons").select("person_id,given,surname,canonical_surname,birth_year,death_year,residence,needs_source").order("person_id");
+    if(su) query=query.eq("canonical_surname",su);
+    if(src==="sourced") query=query.eq("needs_source",0);
+    if(src==="needs") query=query.eq("needs_source",1);
+    return query;
+  };
+  let rows;
+  try{rows=await fetchAll(makeQuery);}
+  catch(err){flash($("#flash"),"People error: "+esc(err.message||err),"err");return;}
+  if(q){const ql=q.toLowerCase();rows=rows.filter(p=>((p.given||"")+" "+(p.surname||"")+" "+p.person_id+" "+(p.residence||"")).toLowerCase().includes(ql));}
+  PAGE.people.rows=rows;PAGE.people.page=1;renderPage("people");
+}
+function drawPeopleRows(rows){
+  $("#pp_body").innerHTML=rows.map(p=>{
+    const gv=esc(p.given||"")||'<span class="muted">—</span>';
+    const sn=esc(p.surname||"")||'<span class="muted">—</span>';
+    return `<tr class="click" onclick="openPerson('${esc(p.person_id)}')"><td><span class="link mono">${esc(p.person_id)}</span></td><td>${gv}</td><td>${sn} ${p.needs_source?'<span class="pill bad">needs src</span>':''}</td><td>${p.birth_year??""}</td><td>${p.death_year??""}</td><td>${esc(p.residence||"")}</td><td></td></tr>`;
+  }).join("")||`<tr><td colspan="7" class="muted">No people.</td></tr>`;
+}
+async function openPerson(pid){
+  const {data:p,error}=await sb.from("persons").select("*").eq("person_id",pid).single();
+  if(error){flash($("#flash"),"Open error: "+esc(error.message),"err");return;}
+  const {data:parts}=await sb.from("event_participants").select("role,event_id,events(event_type,year,municipality_id)").eq("person_id",pid);
+  $("#m_title").textContent=pid+" · "+([p.given,p.surname].filter(Boolean).join(" ")||"person");
+  const evs=(parts||[]).map(pe=>`<li><span class="role-tag">${esc(pe.role)}</span><span class="mono">${esc(pe.event_id)}</span> <span class="link" onclick="openRecord('${esc(pe.event_id)}')">open</span> ${esc((pe.events||{}).event_type||"")} ${(pe.events||{}).year||""} ${esc(muniName((pe.events||{}).municipality_id))}</li>`).join("")||'<li class="muted">none</li>';
+  $("#m_body").innerHTML=`
+    <div class="kv"><b>Canonical surname:</b> ${esc(p.canonical_surname||"")} &nbsp; <b>Sex:</b> ${esc(p.sex||"")} &nbsp; <b>Confidence:</b> ${esc(p.confidence||"")}</div>
+    <div class="kv"><b>Born:</b> ${esc(p.birth_date_text||p.birth_year||"")} &nbsp; <b>Died:</b> ${esc(p.death_date_text||p.death_year||"")}</div>
+    ${p.residence?`<div class="kv"><b>Residence:</b> ${esc(p.residence)}</div>`:""}
+    ${p.notes?`<div class="kv"><b>Notes:</b> ${esc(p.notes)}</div>`:""}
+    <h4>Appears in (${(parts||[]).length})</h4><ul class="plain">${evs}</ul><div id="m_form"></div>`;
+  const foot=$("#m_foot");foot.innerHTML="";
+  if(ROLE==="curator"){const b=document.createElement("button");b.className="act";b.textContent="Edit person";b.onclick=()=>personEditForm(p);foot.appendChild(b);}
+  const pb=document.createElement("button");pb.className="ghost";pb.textContent="Propose a change";pb.onclick=()=>personProposeForm(p);foot.appendChild(pb);
+  const cl=document.createElement("button");cl.className="ghost";cl.textContent="Close";cl.onclick=closeModal;foot.appendChild(cl);
+  $("#overlay").classList.add("open");
+}
+window.openPerson=openPerson;
+function personEditForm(p){
+  $("#m_form").innerHTML=`<h4>Edit person</h4>
+    <div class="row"><div><label>Given</label><input type="text" id="ep_given" value="${esc(p.given||"")}"></div>
+    <div><label>Surname</label><input type="text" id="ep_surname" value="${esc(p.surname||"")}"></div></div>
+    <label>Canonical surname<input type="text" id="ep_canon" value="${esc(p.canonical_surname||"")}"></label>
+    <div class="row"><div><label>Birth year</label><input type="number" id="ep_by" value="${p.birth_year??""}"></div>
+    <div><label>Death year</label><input type="number" id="ep_dy" value="${p.death_year??""}"></div></div>
+    <label>Residence<input type="text" id="ep_res" value="${esc(p.residence||"")}"></label>
+    <label>Notes<textarea id="ep_notes" rows="2">${esc(p.notes||"")}</textarea></label>
+    <div style="margin-top:8px"><button class="act" id="ep_save">Save changes</button> <span class="msg" id="ep_msg" style="display:inline-block;margin:0"></span></div>`;
+  $("#ep_save").onclick=async()=>{
+    const by=parseInt($("#ep_by").value||"",10),dy=parseInt($("#ep_dy").value||"",10);
+    if(!isNaN(by)&&by>NOW-100&&isNaN(dy)){flash($("#ep_msg"),`Blocked: birth year ${by} is within 100 years with no death recorded (living-person rule).`,"err");return;}
+    const patch={given:$("#ep_given").value.trim()||null,surname:$("#ep_surname").value.trim()||null,
+      canonical_surname:$("#ep_canon").value.trim()||null,birth_year:isNaN(by)?null:by,death_year:isNaN(dy)?null:dy,
+      residence:$("#ep_res").value.trim()||null,notes:$("#ep_notes").value.trim()||null};
+    const {error}=await sb.from("persons").update(patch).eq("person_id",p.person_id);
+    if(error){flash($("#ep_msg"),"Save failed: "+esc(error.message),"err");return;}
+    flash($("#ep_msg"),"Saved.","good");runPeople();setTimeout(()=>openPerson(p.person_id),400);};
+}
+function personProposeForm(p){
+  $("#m_form").innerHTML=`<h4>Propose a change to ${esc(p.person_id)}</h4>
+    <div class="row"><div><label>Field (optional)</label><input type="text" id="ppf_field" placeholder="e.g. given, surname"></div>
+    <div><label>Proposed value (optional)</label><input type="text" id="ppf_val"></div></div>
+    <label>What should change and why<textarea id="ppf_note" rows="3"></textarea></label>
+    <div style="margin-top:8px"><button class="act" id="ppf_send">Submit proposal</button> <span class="msg" id="ppf_msg" style="display:inline-block;margin:0"></span></div>`;
+  $("#ppf_send").onclick=async()=>{
+    const note=$("#ppf_note").value.trim();
+    if(!note&&!$("#ppf_val").value.trim()){flash($("#ppf_msg"),"Add a note or a value.","err");return;}
+    const payload={field:$("#ppf_field").value.trim()||null,new_value:$("#ppf_val").value.trim()||null,note:note||null};
+    const {error}=await sb.from("proposals").insert({kind:"correction",target_table:"persons",target_id:p.person_id,payload});
+    if(error){flash($("#ppf_msg"),"Submit failed: "+esc(error.message),"err");return;}
+    flash($("#ppf_msg"),"Proposal submitted.","good");loadProposals();};
+}
+
+/* ---------- record modal ---------- */
+async function openRecord(id){
+  const {data:e,error}=await sb.from("events").select("*,event_participants(*),event_sources(*)").eq("event_id",id).single();
+  if(error){flash($("#flash"),"Open error: "+esc(error.message),"err");return;}
+  $("#m_title").textContent=id+" · "+(e.event_type||"");
+  const parts=(e.event_participants||[]).map(p=>`<li><span class="role-tag">${esc(p.role)}</span>${esc(p.name_as_written||"")} ${p.person_id?'<span class="link mono" onclick="openPerson(\''+esc(p.person_id)+'\')">'+esc(p.person_id)+'</span>':''}</li>`).join("")||'<li class="muted">none</li>';
+  const srcs=(e.event_sources||[]).map(s=>{
+    const lvl=s.url_level?`<span class="lvl">${esc(s.url_level)}</span>`:"";
+    const link=s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">open</a>`:'<span class="muted">no url</span>';
+    return `<li><span class="role-tag">${esc(s.role||"")}</span>${lvl}${link}${s.locator?' <span class="muted">('+esc(s.locator)+')</span>':''}</li>`;
+  }).join("")||'<li class="muted">no sources — needs source</li>';
+  $("#m_body").innerHTML=`
+    <div class="kv"><b>Type:</b> ${esc(e.event_type||"")} &nbsp; <b>Date:</b> ${esc(e.date_text||e.date_iso||"")} <span class="muted">(${esc(e.date_precision||"")}; year ${e.year??"—"})</span></div>
+    <div class="kv"><b>Place:</b> ${esc(muniName(e.municipality_id))}${e.parish_id?" / "+esc(parishName(e.parish_id)):""}</div>
+    ${e.summary?`<div class="kv"><b>Summary:</b> ${esc(e.summary)}</div>`:""}
+    ${e.notes?`<div class="kv"><b>Notes:</b> ${esc(e.notes)}</div>`:""}
+    <h4>Participants</h4><ul class="plain">${parts}</ul>
+    <h4>Sources</h4><ul class="plain">${srcs}</ul>
+    ${e.transcription?`<h4>Transcription</h4><div class="transc">${esc(e.transcription)}</div>`:""}
+    ${e.translation?`<h4>Translation</h4><div class="transc">${esc(e.translation)}</div>`:""}
+    <div id="m_form"></div>`;
+  const foot=$("#m_foot");foot.innerHTML="";
+  if(ROLE==="curator"){const b=document.createElement("button");b.className="act";b.textContent="Edit record";b.onclick=()=>editForm(e);foot.appendChild(b);}
+  const pb=document.createElement("button");pb.className="ghost";pb.textContent="Propose a change";pb.onclick=()=>proposeForm(e);foot.appendChild(pb);
+  const cl=document.createElement("button");cl.className="ghost";cl.textContent="Close";cl.onclick=closeModal;foot.appendChild(cl);
+  $("#overlay").classList.add("open");
+}
+window.openRecord=openRecord;
+function closeModal(){$("#overlay").classList.remove("open");}
+window.closeModal=closeModal;
+
+function editForm(e){
+  $("#m_form").innerHTML=`<h4>Edit</h4>
+    <div class="row"><div><label>Event type</label><select id="e_type">${EVENT_TYPES.map(t=>`<option ${t===e.event_type?'selected':''}>${t}</option>`).join("")}</select></div>
+    <div><label>Year</label><input type="number" id="e_year" value="${e.year??""}"></div></div>
+    <label>Date as written<input type="text" id="e_date" value="${esc(e.date_text||"")}"></label>
+    <label>Summary<textarea id="e_sum" rows="2">${esc(e.summary||"")}</textarea></label>
+    <div style="margin-top:8px"><button class="act" id="e_save">Save changes</button> <span class="msg" id="e_msg" style="display:inline-block;margin:0"></span></div>`;
+  $("#e_save").onclick=async()=>{
+    const patch={event_type:$("#e_type").value,year:parseInt($("#e_year").value||"0",10)||null,date_text:$("#e_date").value.trim()||null,summary:$("#e_sum").value.trim()||null};
+    const {error}=await sb.from("events").update(patch).eq("event_id",e.event_id);
+    if(error){flash($("#e_msg"),"Save failed: "+esc(error.message),"err");return;}
+    flash($("#e_msg"),"Saved.","good");runBrowse();setTimeout(()=>openRecord(e.event_id),400);};
+}
+function proposeForm(e){
+  $("#m_form").innerHTML=`<h4>Propose a change to ${esc(e.event_id)}</h4>
+    <div class="row"><div><label>Field (optional)</label><input type="text" id="pf_field" placeholder="e.g. year, summary"></div>
+    <div><label>Proposed value (optional)</label><input type="text" id="pf_val"></div></div>
+    <label>What should change and why<textarea id="pf_note" rows="3"></textarea></label>
+    <div style="margin-top:8px"><button class="act" id="pf_send">Submit proposal</button> <span class="msg" id="pf_msg" style="display:inline-block;margin:0"></span></div>`;
+  $("#pf_send").onclick=async()=>{
+    const note=$("#pf_note").value.trim();
+    if(!note&&!$("#pf_val").value.trim()){flash($("#pf_msg"),"Add a note or a value.","err");return;}
+    const payload={field:$("#pf_field").value.trim()||null,new_value:$("#pf_val").value.trim()||null,note:note||null};
+    const {error}=await sb.from("proposals").insert({kind:"correction",target_table:"events",target_id:e.event_id,payload});
+    if(error){flash($("#pf_msg"),"Submit failed: "+esc(error.message),"err");return;}
+    flash($("#pf_msg"),"Proposal submitted.","good");loadProposals();};
+}
+
+/* ---------- add ---------- */
+function gatecheck(type,year){return (BIRTHISH.has(type)&&year&&year>NOW-100)?`a ${type} in ${year} is within 100 years (living-person rule). Only death/burial records are allowed that recent.`:null;}
+async function nextEventId(){
+  const {data}=await sb.from("events").select("event_id").like("event_id","EVT_%").order("event_id",{ascending:false}).limit(1);
+  let n=0;if(data&&data[0]){const m=/EVT_(\d+)/.exec(data[0].event_id);if(m)n=parseInt(m[1],10);}
+  return "EVT_"+String(n+1).padStart(4,"0");
+}
+async function submitRecord(keep){
+  flash($("#addMsg"),"");
+  const type=$("#a_type").value,year=parseInt($("#a_year").value||"0",10)||null,name=$("#a_name").value.trim();
+  if(!name){flash($("#addMsg"),"Principal name is required.","err");return;}
+  const gate=gatecheck(type,year);if(gate){flash($("#addMsg"),"Blocked: "+gate,"err");return;}
+  const reg=$("#a_regurl").value.trim(),fol=$("#a_folurl").value.trim();
+  const f={type,year,date_text:$("#a_date").value.trim()||null,date_precision:$("#a_prec").value||null,
+    municipality_id:$("#a_muni").value||null,parish_id:$("#a_parish").value||null,name_as_written:name,
+    role:$("#a_role").value,canonical_surname:$("#a_surname").value.trim()||null,reg_url:reg||null,fol_url:fol||null,
+    summary:$("#a_summary").value.trim()||null};
+  if(ROLE==="curator"){
+    try{
+      const eid=await nextEventId();
+      let {error}=await sb.from("events").insert({event_id:eid,event_type:type,date_text:f.date_text,date_precision:f.date_precision,year,municipality_id:f.municipality_id,parish_id:f.parish_id,summary:f.summary,needs_source:(reg||fol)?0:1});
+      if(error) throw error;
+      ({error}=await sb.from("event_participants").insert({event_id:eid,role:f.role,name_as_written:name,canonical_surname:f.canonical_surname}));
+      if(error) throw error;
+      const srcRows=[];
+      if(reg) srcRows.push({event_id:eid,role:"original_record",url:reg,url_level:"register"});
+      if(fol) srcRows.push({event_id:eid,role:"original_record",url:fol,url_level:"folio"});
+      if(srcRows.length){({error}=await sb.from("event_sources").insert(srcRows));if(error) throw error;}
+      flash($("#addMsg"),"Saved as "+eid+".","good");afterAdd(keep);
+    }catch(err){flash($("#addMsg"),"Save failed: "+esc(err.message||err),"err");}
+  }else if(ROLE==="contributor"){
+    const {error}=await sb.from("proposals").insert({kind:"new_record",target_table:"events",payload:f});
+    if(error){flash($("#addMsg"),"Submit failed: "+esc(error.message),"err");return;}
+    flash($("#addMsg"),"Proposal submitted for review.","good");afterAdd(keep);loadProposals();
+  }else flash($("#addMsg"),"No role assigned — cannot submit.","err");
+}
+function afterAdd(keep){
+  if(keep){$("#a_name").value="";$("#a_name").focus();}
+  else{["a_year","a_date","a_name","a_surname","a_regurl","a_folurl","a_summary"].forEach(id=>$("#"+id).value="");$("#a_gate").textContent="";}
+  runBrowse();loadTracker();
+}
+
+/* ---------- proposals ---------- */
+async function loadProposals(){
+  const {data,error}=await sb.from("proposals").select("*").order("submitted_at",{ascending:false});
+  if(error){flash($("#propMsg"),"Load error: "+esc(error.message),"err");return;}
+  const rows=data||[];$("#propCount").textContent=rows.filter(p=>p.status==="pending").length;
+  const curator=ROLE==="curator";
+  $("#prop_body").innerHTML=rows.map(p=>{
+    const pl=p.payload||{},sum=esc((pl.name_as_written||pl.note||pl.new_value||"")+(pl.field?(" ["+pl.field+"]"):"")+" "+(pl.type||pl.year||""));
+    const tgt=p.target_id?`<span class="mono link" onclick="openRecord('${esc(p.target_id)}')">${esc(p.target_id)}</span>`:esc(p.target_table||"");
+    const act=curator&&p.status==="pending"?`<button class="ghost" onclick="reviewProp(${p.id},'approved')">approve</button> <button class="ghost" onclick="reviewProp(${p.id},'rejected')">reject</button>`:"";
+    return `<tr><td class="muted">${esc((p.submitted_at||"").slice(0,16).replace("T"," "))}</td><td>${esc(p.kind)}</td><td>${tgt}</td><td>${sum}</td><td><span class="pill ${p.status==='pending'?'':p.status==='rejected'?'bad':'ok'}">${esc(p.status)}</span></td><td>${act}</td></tr>`;
+  }).join("")||`<tr><td colspan="6" class="muted">No proposals.</td></tr>`;
+}
+const APPLY_FIELDS=new Set(["event_type","year","date_text","date_precision","summary","needs_source","municipality_id","parish_id"]);
+const PERSON_APPLY_FIELDS=new Set(["given","surname","canonical_surname","birth_year","death_year","residence","notes"]);
+async function applyProposal(p){
+  const f=p.payload||{};
+  if(p.kind==="new_record"){
+    const type=f.type||f.event_type;
+    if(BIRTHISH.has(type)&&f.year&&f.year>NOW-100) throw new Error("living-person guard ("+type+" "+f.year+")");
+    const eid=await nextEventId();
+    let {error}=await sb.from("events").insert({event_id:eid,event_type:type,date_text:f.date_text||null,date_precision:f.date_precision||null,year:f.year||null,municipality_id:f.municipality_id||null,parish_id:f.parish_id||null,summary:f.summary||null,needs_source:(f.reg_url||f.fol_url||f.url)?0:1});
+    if(error) throw error;
+    ({error}=await sb.from("event_participants").insert({event_id:eid,role:f.role||"subject",name_as_written:f.name_as_written||f.name,canonical_surname:f.canonical_surname||null}));
+    if(error) throw error;
+    const sr=[];
+    if(f.reg_url) sr.push({event_id:eid,role:"original_record",url:f.reg_url,url_level:"register"});
+    if(f.fol_url) sr.push({event_id:eid,role:"original_record",url:f.fol_url,url_level:"folio"});
+    if(f.url) sr.push({event_id:eid,role:"original_record",url:f.url,url_level:f.url_level||null});
+    if(sr.length){({error}=await sb.from("event_sources").insert(sr));if(error) throw error;}
+    return "applied as new "+eid;
+  }
+  if(p.kind==="correction"&&p.target_id&&f.field&&f.new_value!=null){
+    const isPerson=p.target_table==="persons";
+    const allow=isPerson?PERSON_APPLY_FIELDS:APPLY_FIELDS;
+    if(allow.has(f.field)){
+      let val=f.new_value;
+      if(["year","needs_source","birth_year","death_year"].includes(f.field))val=parseInt(val,10);
+      const patch={};patch[f.field]=val;
+      const {error}=isPerson
+        ? await sb.from("persons").update(patch).eq("person_id",p.target_id)
+        : await sb.from("events").update(patch).eq("event_id",p.target_id);
+      if(error) throw error;
+      return "applied to "+p.target_id;
+    }
+  }
+  return null; // not auto-appliable (free-form correction, progress note, bulk) — curator applies manually
+}
+async function reviewProp(id,status){
+  if(status==="rejected"){
+    const {error}=await sb.from("proposals").update({status,reviewed_by:USER.id,reviewed_at:new Date().toISOString()}).eq("id",id);
+    if(error){flash($("#propMsg"),"Update failed: "+esc(error.message),"err");return;}
+    flash($("#propMsg"),`Proposal ${id} rejected.`,"good");loadProposals();return;
+  }
+  const {data:p,error:le}=await sb.from("proposals").select("*").eq("id",id).single();
+  if(le){flash($("#propMsg"),"Load failed: "+esc(le.message),"err");return;}
+  let applied=null;
+  try{applied=await applyProposal(p);}
+  catch(err){flash($("#propMsg"),`Could not apply proposal ${id}: ${esc(err.message||err)}. Left pending — fix and re-try, or apply manually.`,"err");return;}
+  const {error}=await sb.from("proposals").update({status:applied?"applied":"approved",reviewed_by:USER.id,reviewed_at:new Date().toISOString()}).eq("id",id);
+  if(error){flash($("#propMsg"),"Status update failed: "+esc(error.message),"err");return;}
+  flash($("#propMsg"),applied?`Proposal ${id} ${applied}.`:`Proposal ${id} approved. This kind isn't auto-applied — apply it manually via Edit record.`,"good");
+  loadProposals();runBrowse();loadTracker();
+}
+window.reviewProp=reviewProp;
+
+boot();
+</script>
+</body>
+</html>
