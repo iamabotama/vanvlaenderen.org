@@ -67,6 +67,13 @@
   .pager button:disabled{opacity:.4;cursor:default}
   .pager select{width:auto;padding:3px 6px}
   .pager .pinfo{color:var(--muted);margin-right:4px}
+  .cvcaret{cursor:pointer;color:var(--accent);margin-left:5px;font-size:11px;user-select:none}
+  .cov-amber td{background:#fbeed8}
+  .cov-mute td{color:var(--muted);background:#f3f1ec}
+  .covrow td{background:#fff;padding:6px 9px}
+  .dupbox{background:#fdf3e3;color:#8a5a18;border:1px solid #ecd6ad;border-radius:8px;padding:10px 12px;margin-top:10px;font-size:13px}
+  .pcard{max-width:none;margin:0 0 12px}
+  .pcard h4{margin:8px 0 2px;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--accent)}
 </style>
 </head>
 <body>
@@ -170,9 +177,9 @@
         <legend>Paste a full record (JSON)</legend>
         <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record with sources and an optional tracker update. The <code>```json</code> fences are optional.</p>
         <textarea id="pj_text" rows="9" placeholder='{"event":{…},"participants":[…],"sources":[…],"tracker":{…}}' style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px"></textarea>
+        <label style="margin-top:8px">Note to curator (optional)<textarea id="pj_note" rows="2" placeholder="Context for the curator about this submission. Stored with the proposal — never written into the record itself."></textarea></label>
         <div style="margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
           <button class="ghost" id="pj_parse">Parse &amp; preview</button>
-          <button class="act" id="pj_submit" disabled>Submit</button>
           <button class="ghost" id="pj_clear">Clear</button>
         </div>
         <div class="msg" id="pj_msg"></div>
@@ -217,8 +224,7 @@
       <h3>Proposals</h3>
       <p class="muted" id="propMode" style="font-size:12.5px"></p>
       <div class="msg" id="propMsg"></div>
-      <table><thead><tr><th>When</th><th>Kind</th><th>Target</th><th>Summary</th><th>Status</th><th id="propActHead"></th></tr></thead>
-        <tbody id="prop_body"></tbody></table>
+      <div id="prop_body"></div>
     </section>
   </main>
 </div>
@@ -394,13 +400,12 @@ function initUI(){
   $("#a_save").onclick=()=>submitRecord(false);$("#a_save_more").onclick=()=>submitRecord(true);
   $("#a_date").addEventListener("input",deriveYear);
   [$("#a_type"),$("#a_year")].forEach(el=>el.addEventListener("input",updateGateHint));
-  $("#pj_parse").onclick=pjParse;$("#pj_submit").onclick=pjSubmit;$("#pj_clear").onclick=()=>{pjReset();flash($("#pj_msg"),"");};
+  $("#pj_parse").onclick=pjParse;$("#pj_clear").onclick=()=>{pjReset();flash($("#pj_msg"),"");};
+  $("#pj_text").addEventListener("input",pjResetPreview); // #12: editing JSON after preview collapses Submit (can't submit unvalidated)
   const curator=ROLE==="curator";
   $("#addMode").textContent=curator?"You are the curator — this writes directly to the database.":"Your change will be submitted to the proposal queue for the curator to review.";
   $("#a_save").textContent=curator?"Save record":"Submit proposal";
-  $("#pj_submit").textContent=curator?"Apply record":"Submit to queue";
-  $("#propMode").textContent=curator?"Pending proposals from contributors. Approve or reject.":"Your submitted proposals.";
-  $("#propActHead").textContent=curator?"Action":"";
+  $("#propMode").textContent=curator?"Pending proposals from contributors. Approve, reject, or edit.":"Your submitted proposals.";
 }
 function gotoTab(name){document.querySelector(`nav button.tab[data-tab="${name}"]`).click();}
 function deriveYear(){const m=/(1[0-9]{3}|20[0-2][0-9])/.exec($("#a_date").value);if(m&&!$("#a_year").value)$("#a_year").value=m[1];updateGateHint();}
@@ -449,6 +454,41 @@ function isDeadEnd(r){
   if((HELD[norm(r.municipality)]||0)>0)return false;
   return [r.parish_birth,r.parish_marriage,r.parish_death,r.civil_birth,r.civil_marriage,r.civil_death].every(v=>DEADEND.has(v));
 }
+/* ---------- #16: per-segment coverage disclosure (read-only) ---------- */
+const COV_LABEL={parish_birth:"Parish baptism",parish_marriage:"Parish marriage",parish_death:"Parish burial",civil_birth:"Civil birth",civil_marriage:"Civil marriage",civil_death:"Civil death"};
+function covDetail(c){return !!(c&&(Array.isArray(c.indexes)||Array.isArray(c.registers)));} // per-segment shape only; old {index,record_gaps} shape => no detail
+function rowCov(r,keys){const c=r.coverage||{};return keys.some(k=>covDetail(c[k]));}
+function covCaret(pid,scope){return `<span class="cvcaret" data-k="${esc(pid)}_${scope}" onclick="toggleCov('${esc(pid)}','${scope}')" title="Show coverage detail">▸</span>`;}
+function covTables(r,keys){
+  const c=r.coverage||{};let out="";
+  keys.forEach(k=>{
+    const cls=c[k];if(!covDetail(cls))return;
+    out+=`<div style="margin:6px 0"><div class="kv"><b>${esc(COV_LABEL[k]||k)}</b></div>`;
+    if(Array.isArray(cls.indexes)&&cls.indexes.length){
+      out+=`<table style="margin:4px 0"><thead><tr><th>Index span</th><th>Checked</th><th>Result</th></tr></thead><tbody>`
+        +cls.indexes.map(ix=>`<tr><td>${esc(ix.span||"")}</td><td>${ix.checked?"yes":"no"}</td><td>${esc(ix.result||"")}${ix.hit?` <span class="muted">(${esc(ix.hit)})</span>`:""}${ix.note?` <span class="muted">${esc(ix.note)}</span>`:""}</td></tr>`).join("")
+        +`</tbody></table>`;
+    }
+    if(Array.isArray(cls.registers)&&cls.registers.length){
+      out+=`<table style="margin:4px 0"><thead><tr><th>Register span</th><th>Available</th><th>Indexed</th><th>Cleared</th><th>Note</th></tr></thead><tbody>`
+        +cls.registers.map(rg=>{
+          const amber=rg.available&&!rg.cleared,mute=rg.available===false;
+          const cl=amber?' class="cov-amber"':(mute?' class="cov-mute"':'');
+          const cleared=rg.cleared?("yes"+(rg.via?` <span class="muted">(${esc(rg.via)})</span>`:"")):"no";
+          const indexed=rg.indexed===true?"yes":(rg.indexed===false?"no":"—");
+          return `<tr${cl}><td>${esc(rg.span||"")}</td><td>${rg.available===false?"no":"yes"}</td><td>${indexed}</td><td>${cleared}</td><td>${esc(rg.note||rg.result||"")}</td></tr>`;
+        }).join("")
+        +`</tbody></table>`;
+    }
+    out+=`</div>`;
+  });
+  return `<div style="background:#faf8f3;border:1px solid var(--line);border-radius:6px;padding:8px">${out||'<span class="muted">no detail</span>'}</div>`;
+}
+function toggleCov(pid,scope){
+  const el=$("#cov_"+pid+"_"+scope);if(!el)return;el.classList.toggle("hide");
+  const cv=document.querySelector('.cvcaret[data-k="'+pid+'_'+scope+'"]');if(cv)cv.textContent=el.classList.contains("hide")?"▸":"▾";
+}
+window.toggleCov=toggleCov;
 function trSel(cls,val){const opts=[...new Set([val,...STATUS_OPTS].filter(Boolean))];
   return `<select class="stsel" data-cls="${cls}">`+opts.map(o=>`<option${o===val?' selected':''}>${esc(o)}</option>`).join("")+`</select>`;}
 function stc(v,muni,etype){const k=STMAP[v]||"n";const act=muni&&etype?`onclick="cellJump('${esc(muni)}','${etype}','${esc(v||'')}')" style="cursor:pointer" title="${DONEISH.has(v)?'Browse this set':'Add for this set'}"`:"";
@@ -466,16 +506,21 @@ function renderTracker(){
     const k=norm(r.municipality),fv=FV[k],held=HELD[k]||0,mu=r.municipality;
     const fvp=fv?`<span class="pill ${(fv.b||fv.m||fv.d)?'ok':''}">${[fv.b?'B':'',fv.m?'M':'',fv.d?'D':''].filter(Boolean).join('')||'—'}</span>`:'<span class="muted">—</span>';
     const mid=midForName(mu),editing=(EDIT_PID===r.progress_id);
-    const pcell=editing?`${trSel('parish_birth',r.parish_birth)}${trSel('parish_marriage',r.parish_marriage)}${trSel('parish_death',r.parish_death)}`
-                       :`${stc(r.parish_birth,mu,'baptism')}${stc(r.parish_marriage,mu,'marriage')}${stc(r.parish_death,mu,'burial')}`;
-    const ccell=editing?`${trSel('civil_birth',r.civil_birth)}${trSel('civil_marriage',r.civil_marriage)}${trSel('civil_death',r.civil_death)}`
-                       :`${stc(r.civil_birth,mu,'civil_birth')}${stc(r.civil_marriage,mu,'civil_marriage')}${stc(r.civil_death,mu,'civil_death')}`;
+    const pid=r.progress_id;
+    const pKeys=['parish_birth','parish_marriage','parish_death'],cKeys=['civil_birth','civil_marriage','civil_death'];
+    const pcov=!editing&&rowCov(r,pKeys),ccov=!editing&&rowCov(r,cKeys); // #16: caret only when per-segment detail exists
+    const pcell=(editing?`${trSel('parish_birth',r.parish_birth)}${trSel('parish_marriage',r.parish_marriage)}${trSel('parish_death',r.parish_death)}`
+                       :`${stc(r.parish_birth,mu,'baptism')}${stc(r.parish_marriage,mu,'marriage')}${stc(r.parish_death,mu,'burial')}`)+(pcov?covCaret(pid,'parish'):'');
+    const ccell=(editing?`${trSel('civil_birth',r.civil_birth)}${trSel('civil_marriage',r.civil_marriage)}${trSel('civil_death',r.civil_death)}`
+                       :`${stc(r.civil_birth,mu,'civil_birth')}${stc(r.civil_marriage,mu,'civil_marriage')}${stc(r.civil_death,mu,'civil_death')}`)+(ccov?covCaret(pid,'civil'):'');
     const act=editing?`<button class="act" onclick="saveTrackerRow('${esc(r.progress_id)}')">Save</button> <button class="ghost" onclick="cancelTrackerEdit()">Cancel</button>`
                      :`<button class="ghost" onclick="addHere('${esc(mid)}')">Add here</button>${ROLE==='curator'?` <button class="ghost" title="Edit status" onclick="editTrackerRow('${esc(r.progress_id)}')">&#9998;</button>`:''}`;
     return `<tr data-pid="${esc(r.progress_id)}"><td>${esc(mu)}</td><td class="muted">${esc(r.arrondissement||"")}</td>
       <td>${pcell}</td><td>${ccell}</td>
       <td>${fvp}</td><td><b>${held}</b></td>
-      <td>${act}</td></tr>`;
+      <td>${act}</td></tr>`
+      +(pcov?`<tr id="cov_${esc(pid)}_parish" class="hide covrow"><td colspan="7">${covTables(r,pKeys)}</td></tr>`:"")
+      +(ccov?`<tr id="cov_${esc(pid)}_civil" class="hide covrow"><td colspan="7">${covTables(r,cKeys)}</td></tr>`:"");
   }).join("");
 }
 function editTrackerRow(pid){EDIT_PID=pid;renderTracker();}
@@ -721,7 +766,12 @@ function afterAdd(keep){
 }
 
 /* ---------- paste a full record (JSON) ---------- */
-let PJ=null; // last successfully-parsed payload
+const CONTRACT_VERSION=1;                 // #10: paste-contract version this editor understands
+let PJ=null;                              // last successfully-parsed payload
+let PJ_EDIT_ORIG=null;                    // #15: proposal id being curator-edited (apply resolves it, no dup row)
+let PJ_DUPS=[];                           // #14: scored duplicate candidates for the current preview
+const pjSubmitLabel=()=>ROLE==="curator"?"Apply record":"Submit to queue";
+function pjPayloadForRpc(o){const c=Object.assign({},o);delete c.contract_version;return c;} // #10: strip before RPC
 function stripFences(t){t=(t||"").trim();const m=/^```[a-zA-Z]*\s*([\s\S]*?)\s*```$/.exec(t);return m?m[1].trim():t;}
 function pjYear(ev){if(ev.year)return parseInt(ev.year,10)||0;const m=/(1[0-9]{3}|20[0-2][0-9])/.exec(ev.date_text||"");return m?parseInt(m[1],10):0;}
 function pjMinBar(o){
@@ -737,17 +787,33 @@ function pjMinBar(o){
   return errs;
 }
 function pjParse(){
-  flash($("#pj_msg"),"");$("#pj_preview").innerHTML="";$("#pj_submit").disabled=true;PJ=null;
+  flash($("#pj_msg"),"");$("#pj_preview").innerHTML="";PJ=null;PJ_DUPS=[];
   const raw=stripFences($("#pj_text").value);
   if(!raw){flash($("#pj_msg"),"Paste a JSON record first.","err");return;}
   let o;try{o=JSON.parse(raw);}catch(e){flash($("#pj_msg"),"JSON parse error: "+esc(e.message),"err");return;}
   if(!o||typeof o!=="object"||Array.isArray(o)||!o.event){flash($("#pj_msg"),'Expected an object with an "event" key.',"err");return;}
+  // #10: contract_version guard (before the min-bar). missing => 1 (back-compat).
+  const cv=(o.contract_version==null)?1:parseInt(o.contract_version,10);
+  if(isNaN(cv)){flash($("#pj_msg"),"Invalid contract_version in the record.","err");return;}
+  if(cv>CONTRACT_VERSION){flash($("#pj_msg"),`This record uses paste-contract v${cv} but the editor understands v${CONTRACT_VERSION} — the editor is out of date. Refresh; if it persists, the editor needs updating.`,"err");return;}
+  if(cv<CONTRACT_VERSION){flash($("#pj_msg"),`This record uses an older paste-contract (v${cv}) — re-sync the record-collection skill from Drive and re-export.`,"err");return;}
   const errs=pjMinBar(o);
   pjPreview(o,errs);
-  if(errs.length){flash($("#pj_msg"),"Cannot submit — fix: "+errs.map(esc).join("; "),"err");return;}
-  PJ=o;$("#pj_submit").disabled=false;
+  if(errs.length){flash($("#pj_msg"),"Cannot submit — fix: "+errs.map(esc).join("; "),"err");return;} // #12: invalid => no Submit injected
+  PJ=o;
+  pjInjectSubmit(); // #12: Submit exists only because the bar passed
   flash($("#pj_msg"),ROLE==="curator"?"Looks good. Review the preview, then Apply.":"Looks good. Review the preview, then Submit to the queue.","good");
+  pjDupCheck(o); // #14: advisory, async — appends to the preview if anything looks like a dup
 }
+function pjInjectSubmit(){
+  const wrap=document.createElement("div");
+  wrap.style.cssText="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap";
+  wrap.innerHTML=`<button class="act" id="pj_submit">${esc(pjSubmitLabel())}</button>`
+    +(PJ_EDIT_ORIG?`<span class="muted" style="font-size:11.5px">Applying resolves proposal #${esc(String(PJ_EDIT_ORIG))} (approved with curator edits).</span>`:"");
+  $("#pj_preview").appendChild(wrap);
+  $("#pj_submit").onclick=pjSubmit;
+}
+function pjResetPreview(){PJ=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";flash($("#pj_msg"),"");} // #12: collapse on edit (keeps text/note + edit-target)
 function pjPreview(o,errs){
   const ev=o.event||{},parts=Array.isArray(o.participants)?o.participants:[],srcs=Array.isArray(o.sources)?o.sources:[],trk=o.tracker;
   const place=esc((ev.municipality_name||ev.municipality_id||"")+(ev.parish_name?(" / "+ev.parish_name):ev.parish_id?(" / "+ev.parish_id):""));
@@ -773,24 +839,37 @@ function pjPreview(o,errs){
       ${ev.translation?`<h4>Translation</h4><div class="transc">${esc(ev.translation)}</div>`:""}
     </div>`;
 }
-function pjReset(){$("#pj_text").value="";$("#pj_preview").innerHTML="";$("#pj_submit").disabled=true;PJ=null;}
+function pjReset(){$("#pj_text").value="";if($("#pj_note"))$("#pj_note").value="";$("#pj_preview").innerHTML="";PJ=null;PJ_DUPS=[];PJ_EDIT_ORIG=null;}
 async function pjSubmit(){
   if(!PJ)return;
-  $("#pj_submit").disabled=true;
+  const btn=$("#pj_submit");if(btn)btn.disabled=true;
   const curator=ROLE==="curator";
+  const note=($("#pj_note")&&$("#pj_note").value.trim())||null; // #13: review metadata only — never into the payload
+  const clean=pjPayloadForRpc(PJ);                              // #10: strip contract_version before the RPC
   try{
     if(curator){
-      // insert-then-apply: every applied record keeps a proposal row for the audit trail
-      const {data:ins,error:ie}=await sb.from("proposals").insert({kind:"full_record",target_table:"events",payload:PJ}).select("id").single();
-      if(ie) throw ie;
-      const {data:res,error:re}=await sb.rpc("apply_full_record",{payload:PJ});
-      if(re) throw re;
-      await sb.from("proposals").update({status:"applied",reviewed_by:USER.id,reviewed_at:new Date().toISOString()}).eq("id",ins.id);
-      const fl=(res&&res.flags&&res.flags.length)?" ("+res.flags.map(esc).join("; ")+")":"";
-      flash($("#pj_msg"),"Applied as "+esc((res&&res.event_id)||"?")+fl+".","good");
-      pjReset();runBrowse();loadTracker();loadProposals();
+      if(PJ_EDIT_ORIG){
+        // #15: applying a curator-edited proposal — apply, then resolve the ORIGINAL (no dup row)
+        const {data:res,error:re}=await sb.rpc("apply_full_record",{payload:clean});
+        if(re) throw re;
+        const {error:ue}=await sb.from("proposals").update({status:"applied",reviewed_by:USER.id,reviewed_at:new Date().toISOString(),review_notes:"approved with curator edits",target_id:(res&&res.event_id)||null,submitter_note:note}).eq("id",PJ_EDIT_ORIG);
+        if(ue) throw ue;
+        const fl=(res&&res.flags&&res.flags.length)?" ("+res.flags.map(esc).join("; ")+")":"";
+        flash($("#pj_msg"),"Applied as "+esc((res&&res.event_id)||"?")+fl+" — proposal #"+esc(String(PJ_EDIT_ORIG))+" resolved.","good");
+        pjReset();runBrowse();loadTracker();loadProposals();gotoTab("proposals");
+      }else{
+        // insert-then-apply: every applied record keeps a proposal row for the audit trail
+        const {data:ins,error:ie}=await sb.from("proposals").insert({kind:"full_record",target_table:"events",payload:PJ,submitter_note:note}).select("id").single();
+        if(ie) throw ie;
+        const {data:res,error:re}=await sb.rpc("apply_full_record",{payload:clean});
+        if(re) throw re;
+        await sb.from("proposals").update({status:"applied",reviewed_by:USER.id,reviewed_at:new Date().toISOString(),target_id:(res&&res.event_id)||null}).eq("id",ins.id); // #15 polish: backfill target_id
+        const fl=(res&&res.flags&&res.flags.length)?" ("+res.flags.map(esc).join("; ")+")":"";
+        flash($("#pj_msg"),"Applied as "+esc((res&&res.event_id)||"?")+fl+".","good");
+        pjReset();runBrowse();loadTracker();loadProposals();
+      }
     }else if(ROLE==="contributor"){
-      const {error}=await sb.from("proposals").insert({kind:"full_record",target_table:"events",payload:PJ});
+      const {error}=await sb.from("proposals").insert({kind:"full_record",target_table:"events",payload:PJ,submitter_note:note}); // #13
       if(error) throw error;
       flash($("#pj_msg"),"Submitted to the proposal queue for curator review.","good");
       pjReset();loadProposals();
@@ -798,9 +877,85 @@ async function pjSubmit(){
       flash($("#pj_msg"),"No role assigned — cannot submit.","err");
     }
   }catch(err){
-    flash($("#pj_msg"),"Submit failed: "+esc(err.message||err),"err");$("#pj_submit").disabled=false;
+    flash($("#pj_msg"),"Submit failed: "+esc(err.message||err),"err");const b=$("#pj_submit");if(b)b.disabled=false;
   }
 }
+/* ---------- #14: advisory duplicate check ---------- */
+const PRINCIPAL_ROLES=new Set(["child","deceased","subject","bride","groom"]);
+function pjFirstGiven(p){return (p.given||(p.name_as_written||p.name||"").trim().split(/\s+/)[0]||"");}
+function lev(a,b){a=a||"";b=b||"";const m=a.length,n=b.length;if(!m)return n;if(!n)return m;
+  let prev=Array.from({length:n+1},(_,j)=>j),cur=new Array(n+1);
+  for(let i=1;i<=m;i++){cur[0]=i;for(let j=1;j<=n;j++){const c=a[i-1]===b[j-1]?0:1;cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+c);}[prev,cur]=[cur,prev];}
+  return prev[n];}
+function simRatio(a,b){a=(a||"").toLowerCase().trim();b=(b||"").toLowerCase().trim();if(!a||!b)return 0;if(a===b)return 1;const L=Math.max(a.length,b.length);return 1-lev(a,b)/L;}
+async function pjDupCheck(o){
+  try{
+    const ev=o.event||{},parts=Array.isArray(o.participants)?o.participants:[];
+    const yr=pjYear(ev);if(!ev.event_type||!yr)return;
+    const pool=parts.filter(p=>PRINCIPAL_ROLES.has((p.role||"").toLowerCase()));
+    const principals=pool.length?pool:parts;
+    const surns=[...new Set(principals.map(p=>(p.canonical_surname||p.surname||"").trim().toLowerCase()).filter(Boolean))];
+    if(!surns.length)return;
+    // candidate identity: same type, year ±1, a participant whose canonical/surname matches a proposed principal surname
+    const {data,error}=await sb.from("events")
+      .select("event_id,event_type,year,date_text,municipality_id,parish_id,event_participants(role,name_as_written,given,surname,canonical_surname),event_sources(role,url,url_level)")
+      .eq("event_type",ev.event_type).gte("year",yr-1).lte("year",yr+1);
+    if(error)return;
+    // proposed strong-link urls (folio / original_record) — booster only, NEVER a trigger (AGATHA urls are page-level)
+    const propUrls=new Set((Array.isArray(o.sources)?o.sources:[]).filter(s=>s.url&&(s.url_level==="folio"||s.role==="original_record")).map(s=>s.url));
+    const cand=[];
+    (data||[]).forEach(e=>{
+      const eps=e.event_participants||[];
+      if(!eps.some(p=>surns.includes((p.canonical_surname||p.surname||"").toLowerCase())))return; // identity gate
+      let score=1;const why=[];
+      let gbest=0;
+      principals.forEach(pp=>{const g=pjFirstGiven(pp);eps.forEach(ep=>{gbest=Math.max(gbest,simRatio(g,ep.given||(ep.name_as_written||"").split(/\s+/)[0]));});});
+      if(gbest>=0.85){score+=1;why.push("same given name");}else if(gbest>=0.6){score+=0.5;why.push("similar given name");}
+      if(ev.date_text&&e.date_text&&ev.date_text.trim().toLowerCase()===e.date_text.trim().toLowerCase()){score+=0.6;why.push("same date");}
+      else if(ev.year&&e.year===Number(ev.year)){score+=0.2;}
+      if(principals.length>1){const names=eps.map(p=>(p.name_as_written||"").toLowerCase());
+        principals.slice(1).forEach(pp=>{const nm=(pp.name_as_written||pp.name||"").toLowerCase();if(nm&&names.some(n=>n&&(n===nm||simRatio(n,nm)>=0.8))){score+=0.5;why.push("second principal matches");}});}
+      const esrcs=e.event_sources||[];
+      if(propUrls.size&&esrcs.some(s=>s.url&&propUrls.has(s.url))){score+=0.5;why.push("shared folio/record link (advisory — page-level)");}
+      cand.push({event_id:e.event_id,year:e.year,score,why:[...new Set(why)],e});
+    });
+    cand.sort((a,b)=>b.score-a.score);
+    PJ_DUPS=cand.filter(c=>c.score>=1.6).slice(0,5);
+    if(PJ_DUPS.length)pjShowDups();
+  }catch(e){/* advisory only — never blocks submit */}
+}
+function pjShowDups(){
+  if(!PJ_DUPS.length||!$("#pj_preview").firstChild)return;
+  const items=PJ_DUPS.map(c=>`<li><b>Possible duplicate of</b> <span class="mono">${esc(c.event_id)}</span>${c.year!=null?` <span class="muted">(${esc(String(c.year))})</span>`:""}${c.why.length?` — ${c.why.map(esc).join(", ")}`:""} · <span class="link" onclick="compareDup('${esc(c.event_id)}')">compare</span></li>`).join("");
+  const box=document.createElement("div");box.className="dupbox";
+  box.innerHTML=`<b>Advisory:</b> this resembles existing record(s). Review before submitting — this does not block.<ul class="plain" style="margin-top:6px">${items}</ul>`;
+  $("#pj_preview").appendChild(box);
+}
+function compareDup(eid){
+  const c=PJ_DUPS.find(x=>x.event_id===eid);if(!c||!PJ)return;
+  const ev=PJ.event||{},pp=Array.isArray(PJ.participants)?PJ.participants:[],ps=Array.isArray(PJ.sources)?PJ.sources:[];
+  const e=c.e,ep=e.event_participants||[],es=e.event_sources||[];
+  const cmpRow=(label,a,b)=>{const same=(a||"")!==""&&String(a||"")===String(b||"");return `<tr><td class="muted">${esc(label)}</td><td${same?' style="background:#e7f3eb"':''}>${esc(a||"—")}</td><td${same?' style="background:#e7f3eb"':''}>${esc(b||"—")}</td></tr>`;};
+  const plistP=pp.map(x=>esc((x.role||"")+": "+(x.name_as_written||x.name||""))).join("<br>")||"—";
+  const plistE=ep.map(x=>esc((x.role||"")+": "+(x.name_as_written||""))).join("<br>")||"—";
+  const slistP=ps.map(s=>esc((s.url_level||s.role||"")+" "+(s.url||s.register||""))).join("<br>")||"—";
+  const slistE=es.map(s=>esc((s.url_level||s.role||"")+" "+(s.url||""))).join("<br>")||"—";
+  $("#m_title").textContent="Compare — proposed vs "+eid;
+  $("#m_body").innerHTML=`<p class="muted" style="font-size:12px">Advisory comparison. AGATHA links are page-level, so a shared link alone does not prove a duplicate — use judgment.</p>
+    <table><thead><tr><th></th><th>Proposed</th><th>${esc(eid)}</th></tr></thead><tbody>
+    ${cmpRow("Type",ev.event_type,e.event_type)}
+    ${cmpRow("Date",ev.date_text||ev.date_iso,e.date_text)}
+    ${cmpRow("Year",ev.year!=null?String(ev.year):"",e.year!=null?String(e.year):"")}
+    ${cmpRow("Place",ev.municipality_name||ev.municipality_id,muniName(e.municipality_id))}
+    <tr><td class="muted">Participants</td><td>${plistP}</td><td>${plistE}</td></tr>
+    <tr><td class="muted">Sources</td><td>${slistP}</td><td>${slistE}</td></tr>
+    </tbody></table>`;
+  const foot=$("#m_foot");foot.innerHTML="";
+  const open=document.createElement("button");open.className="ghost";open.textContent="Open "+eid;open.onclick=()=>{closeModal();openRecord(eid);};foot.appendChild(open);
+  const cl=document.createElement("button");cl.className="ghost";cl.textContent="Close";cl.onclick=closeModal;foot.appendChild(cl);
+  $("#overlay").classList.add("open");
+}
+window.compareDup=compareDup;
 
 /* ---------- proposals ---------- */
 async function loadProposals(){
@@ -808,25 +963,83 @@ async function loadProposals(){
   if(error){flash($("#propMsg"),"Load error: "+esc(error.message),"err");return;}
   const rows=data||[];$("#propCount").textContent=rows.filter(p=>p.status==="pending").length;
   const curator=ROLE==="curator";
-  $("#prop_body").innerHTML=rows.map(p=>{
-    const pl=p.payload||{};
-    let sum;
-    if(p.kind==="full_record"){const ev=pl.event||{},np=(pl.participants||[]).length,ns=(pl.sources||[]).length;
-      sum=esc((ev.event_type||"record")+" "+(ev.year||ev.date_text||"")+" — "+np+" participant"+(np===1?"":"s")+", "+ns+" source"+(ns===1?"":"s"));}
-    else if(p.kind==="progress_update"){sum=esc("tracker: "+(pl.municipality_id||"")+(pl.set?(" "+Object.keys(pl.set).join(",")):""));}
-    else{sum=esc((pl.name_as_written||pl.note||pl.new_value||"")+(pl.field?(" ["+pl.field+"]"):"")+" "+(pl.type||pl.year||""));}
-    const tgt=p.target_id?`<span class="mono link" onclick="openRecord('${esc(p.target_id)}')">${esc(p.target_id)}</span>`:esc(p.target_table||"");
-    const act=curator&&p.status==="pending"?`<button class="ghost" onclick="reviewProp(${p.id},'approved')">approve</button> <button class="ghost" onclick="reviewProp(${p.id},'rejected')">reject</button>`:"";
-    return `<tr><td class="muted">${esc((p.submitted_at||"").slice(0,16).replace("T"," "))}</td><td>${esc(p.kind)}</td><td>${tgt}</td><td>${sum}</td><td><span class="pill ${p.status==='pending'?'':p.status==='rejected'?'bad':'ok'}">${esc(p.status)}</span></td><td>${act}</td></tr>`;
-  }).join("")||`<tr><td colspan="6" class="muted">No proposals.</td></tr>`;
+  $("#prop_body").innerHTML=rows.map(p=>renderProposalCard(p,curator)).join("")||`<p class="muted">No proposals.</p>`;
 }
+function propStatusPill(s){return `<span class="pill ${s==='pending'?'':s==='rejected'?'bad':'ok'}">${esc(s)}</span>`;}
+function renderProposalCard(p,curator){
+  const pl=p.payload||{};
+  let body="";
+  if(p.kind==="full_record"){
+    const ev=pl.event||{},parts=Array.isArray(pl.participants)?pl.participants:[],srcs=Array.isArray(pl.sources)?pl.sources:[],trk=pl.tracker;
+    const place=esc((ev.municipality_name||ev.municipality_id||"")+(ev.parish_name?(" / "+ev.parish_name):ev.parish_id?(" / "+ev.parish_id):""));
+    const plist=parts.map(x=>`<li><span class="role-tag">${esc(x.role||"")}</span>${esc(x.name_as_written||x.name||"")}${x.canonical_surname?` <span class="muted">(${esc(x.canonical_surname)})</span>`:""}</li>`).join("")||'<li class="muted">none</li>';
+    const slist=srcs.map(s=>`<li><span class="role-tag">${esc(s.role||"")}</span>${s.url_level?`<span class="lvl">${esc(s.url_level)}</span>`:""}${s.register?`<span class="mono">${esc(s.register)}</span> `:""}${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">link</a>`:'<span class="muted">no url</span>'}</li>`).join("")||(ev.needs_source===1?'<li class="muted">none — index-only lead</li>':'<li class="muted">none</li>');
+    let trkHtml="";
+    if(trk){const sets=trk.set?Object.entries(trk.set).map(([k,v])=>`${esc(k)} → ${esc(v)}`).join(", "):"";
+      trkHtml=`<div class="kv"><b>Tracker:</b> ${esc(trk.municipality_name||trk.municipality_id||"")}${sets?` — ${sets}`:""}</div>`;}
+    body=`<div class="kv"><b>${esc(ev.event_type||"?")}</b> · ${esc(ev.date_text||ev.date_iso||"")} ${ev.year?`<span class="muted">(year ${esc(String(ev.year))})</span>`:""}</div>
+      <div class="kv"><b>Place:</b> ${place||'<span class="muted">—</span>'}</div>
+      ${ev.summary?`<div class="kv"><b>Summary:</b> ${esc(ev.summary)}</div>`:""}
+      <h4>Participants (${parts.length})</h4><ul class="plain">${plist}</ul>
+      <h4>Sources (${srcs.length})</h4><ul class="plain">${slist}</ul>
+      ${trkHtml}`;
+  }else if(p.kind==="progress_update"){
+    const sets=pl.set?Object.entries(pl.set).map(([k,v])=>`${esc(k)} → ${esc(v)}`).join(", "):"";
+    body=`<div class="kv"><b>Tracker update:</b> ${esc(pl.municipality_name||pl.municipality_id||"")}${sets?` — ${sets}`:""}</div>`;
+  }else if(p.kind==="correction"){
+    body=`<div class="kv">${pl.field?`<b>${esc(pl.field)}</b> → `:""}${esc(pl.new_value||"")}</div>${pl.note?`<div class="kv"><b>Why:</b> ${esc(pl.note)}</div>`:""}`;
+  }else{
+    body=`<div class="kv mono" style="font-size:12px">${esc(JSON.stringify(pl).slice(0,400))}</div>`;
+  }
+  const noteBlock=curator
+    ? `<label style="margin-top:8px">Note from submitter (editable)</label>
+       <textarea id="pn_${p.id}" rows="2">${esc(p.submitter_note||"")}</textarea>
+       <div style="margin-top:4px"><button class="ghost" onclick="saveProposalNote(${p.id})">Save note</button> <span class="msg" id="pnm_${p.id}" style="display:inline-block;margin:0"></span></div>`
+    : (p.submitter_note?`<div class="kv"><b>Your note:</b> ${esc(p.submitter_note)}</div>`:"");
+  let actions="";
+  if(curator&&p.status==="pending"){
+    actions=`<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="act" onclick="reviewProp(${p.id},'approved')">Approve</button>
+      <button class="ghost" onclick="reviewProp(${p.id},'rejected')">Reject</button>
+      ${p.kind==="full_record"?`<button class="ghost" onclick="editProposal(${p.id})">Edit…</button>`:""}</div>`;
+  }
+  const tgt=p.target_id?`· <span class="mono link" onclick="openRecord('${esc(p.target_id)}')">${esc(p.target_id)}</span>`:(p.target_table?`· <span class="muted">${esc(p.target_table)}</span>`:"");
+  return `<div class="card pcard">
+    <div class="kv" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <b>#${esc(String(p.id))}</b> <span class="pill">${esc(p.kind)}</span> ${propStatusPill(p.status)}
+      <span class="muted" style="font-size:11.5px">${esc((p.submitted_at||"").slice(0,16).replace("T"," "))}</span> ${tgt}</div>
+    ${body}
+    ${noteBlock}
+    ${actions}
+  </div>`;
+}
+async function saveProposalNote(id){
+  const ta=$("#pn_"+id);if(!ta)return;
+  const {error}=await sb.from("proposals").update({submitter_note:ta.value.trim()||null}).eq("id",id);
+  flash($("#pnm_"+id),error?("Failed: "+esc(error.message)):"Saved.",error?"err":"good");
+}
+window.saveProposalNote=saveProposalNote;
+async function editProposal(id){
+  const {data:p,error}=await sb.from("proposals").select("*").eq("id",id).single();
+  if(error){flash($("#propMsg"),"Load failed: "+esc(error.message),"err");return;}
+  if(p.kind!=="full_record"){flash($("#propMsg"),"Only full-record proposals can be edited this way. Use Approve/Reject.","err");return;}
+  gotoTab("add");
+  $("#pj_text").value=JSON.stringify(p.payload||{},null,2);
+  if($("#pj_note"))$("#pj_note").value=p.submitter_note||"";
+  PJ_EDIT_ORIG=p.id;          // set AFTER loading text (programmatic value set doesn't fire the input listener)
+  pjParse();                  // re-validate + preview; Submit (if valid) shows the resolve hint
+  $("#pj_text").scrollIntoView({behavior:"smooth",block:"center"});
+}
+window.editProposal=editProposal;
 const APPLY_FIELDS=new Set(["event_type","year","date_text","date_precision","summary","needs_source","municipality_id","parish_id"]);
 const PERSON_APPLY_FIELDS=new Set(["given","surname","canonical_surname","birth_year","death_year","residence","notes"]);
 async function applyProposal(p){
   const f=p.payload||{};
   if(p.kind==="full_record"){
-    const {data:res,error}=await sb.rpc("apply_full_record",{payload:f});
+    const clean=Object.assign({},f);delete clean.contract_version; // #10: strip before RPC; #15: tolerate unknown payload keys
+    const {data:res,error}=await sb.rpc("apply_full_record",{payload:clean});
     if(error) throw error;
+    if(res&&res.event_id&&p.id){await sb.from("proposals").update({target_id:res.event_id}).eq("id",p.id);} // #15 polish: backfill target_id
     const fl=(res&&res.flags&&res.flags.length)?" ("+res.flags.join("; ")+")":"";
     return "applied as "+((res&&res.event_id)||"?")+fl;
   }
