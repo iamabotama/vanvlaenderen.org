@@ -74,6 +74,36 @@
   .dupbox{background:#fdf3e3;color:#8a5a18;border:1px solid #ecd6ad;border-radius:8px;padding:10px 12px;margin-top:10px;font-size:13px}
   .pcard{max-width:none;margin:0 0 12px}
   .pcard h4{margin:8px 0 2px;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--accent)}
+  /* coverage tab (v2 research_coverage viewer, read-only) */
+  .cv-metrics{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 12px}
+  .cv-metric{background:#faf8f3;border:1px solid var(--line);border-radius:8px;padding:8px 12px;min-width:130px}
+  .cv-metric .lbl{font-size:11px;color:var(--muted)}
+  .cv-metric .val{font-size:20px;font-weight:600;margin-top:2px}
+  .cv-legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:11px;color:var(--muted);margin:0 0 10px}
+  .cv-muni{border-bottom:1px solid var(--line)}
+  .cv-mhead{display:flex;align-items:center;gap:10px;padding:9px 4px;cursor:pointer}
+  .cv-mhead:hover{background:#faf7f0}
+  .cv-name{font-weight:600}
+  .cv-sub{font-size:11px;color:var(--muted)}
+  .cv-chips{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;margin-left:auto}
+  .cvchip{font-size:11px;padding:2px 8px;border-radius:11px;white-space:nowrap;background:var(--chip);border:1px solid var(--line);color:#5b5648}
+  .cvchip.found{background:#e7f3eb;border-color:#bfe0cb;color:var(--ok)}
+  .cvchip.prog{background:#fbeed8;border-color:#ecd6ad;color:var(--warn)}
+  .cvchip.none{background:#f1efe9;border-color:var(--line);color:#8a8575}
+  .cv-caret{color:var(--accent);font-size:11px;width:12px;display:inline-block;transition:transform .12s}
+  .cv-units{padding:0 0 8px 26px}
+  .cv-unit{border-top:1px dotted var(--line)}
+  .cv-uhead{display:flex;align-items:center;gap:8px;padding:7px 4px;cursor:pointer}
+  .cv-uhead:hover{background:#faf7f0}
+  .cv-utype{font-size:11px;color:var(--muted)}
+  .cv-civ{display:flex;align-items:center;gap:8px;padding:7px 4px;border-top:1px dotted var(--line);background:#fcfbf7}
+  .cv-seg-wrap{padding:4px 0 10px 22px}
+  .cv-seg-lbl{font-size:11px;color:#5b5648;margin:6px 0 3px}
+  .cv-segs{display:flex;gap:4px;flex-wrap:wrap}
+  .cvseg{font-size:11px;font-family:ui-monospace,Menlo,Consolas,monospace;padding:1px 6px;border-radius:5px;background:#faf8f3;border:1px solid var(--line);color:#5b5648}
+  .cvseg.na{color:#a59f8f;border-style:dashed;text-decoration:line-through}
+  .cvseg.mx{background:#efe9fb;border-color:#d6ccf2;color:#5b4a9b}
+  .cv-src{font-size:11px;color:var(--muted);margin-top:6px}
 </style>
 </head>
 <body>
@@ -98,6 +128,7 @@
 <div id="appView" class="hide">
   <nav>
     <button class="tab active" data-tab="tracker">Research tracker</button>
+    <button class="tab" data-tab="coverage">Coverage</button>
     <button class="tab" data-tab="browse">Browse</button>
     <button class="tab" data-tab="people">People</button>
     <button class="tab" data-tab="add">Add record</button>
@@ -118,6 +149,28 @@
       <div class="count" id="g_count"></div>
       <table><thead><tr><th>Municipality</th><th>Arr.</th><th>Parish B/M/D</th><th>Civil B/M/D</th><th>FV</th><th>Held</th><th></th></tr></thead>
         <tbody id="g_body"></tbody></table>
+    </section>
+
+    <!-- COVERAGE (v2 research_coverage viewer, read-only) -->
+    <section id="tab-coverage" class="hide">
+      <p class="muted" style="font-size:11.5px;margin:0 0 8px">Register-level coverage from <span class="mono">research_coverage</span>. Two progress ideas: <b>inventory mapped</b> = AGATHA register list harvested for the unit; <b>search cleared</b> = the Van&nbsp;Vlaenderen surname pass is done. Most units are inventoried but not yet searched. Read-only.</p>
+      <div class="cv-metrics" id="c_metrics"></div>
+      <div class="controls">
+        <div><label>Search</label><input type="text" id="c_q" placeholder="municipality"></div>
+        <div><label>Arrondissement</label><select id="c_arr"></select></div>
+        <div><label>Show</label><label style="flex-direction:row;align-items:center;gap:6px;font-size:12px;white-space:nowrap;font-weight:400"><input type="checkbox" id="c_vv" style="width:auto;margin:0">Only with Van&nbsp;Vlaenderen</label></div>
+        <div><label>&nbsp;</label><label style="flex-direction:row;align-items:center;gap:6px;font-size:12px;white-space:nowrap;font-weight:400"><input type="checkbox" id="c_prog" style="width:auto;margin:0">Only in progress</label></div>
+        <div><label>&nbsp;</label><label style="flex-direction:row;align-items:center;gap:6px;font-size:12px;white-space:nowrap;font-weight:400"><input type="checkbox" id="c_dead" style="width:auto;margin:0">Hide dead-ends</label></div>
+      </div>
+      <div class="cv-legend">
+        <span class="cvchip">&#9675; inventory known</span><span>search pending</span>
+        <span class="cvchip prog">&#9680; in progress</span>
+        <span class="cvchip found">&#10003; found</span>
+        <span class="cvchip none">&#10003; searched &middot; none</span>
+        <span class="cvseg mx">Mixed</span><span>one register, all classes</span>
+      </div>
+      <div class="count" id="c_count"></div>
+      <div id="c_body" style="border-top:1px solid var(--line)"></div>
     </section>
 
     <!-- BROWSE -->
@@ -373,14 +426,14 @@ async function boot(){
   if(!ROLE) flash($("#flash"),"Your account has no role yet. The curator must add your row to public.profiles before you can browse or submit.","err");
   initUI();
   await loadRefs();
-  await Promise.all([loadTracker(),runBrowse(),runPeople(),loadProposals()]);
+  await Promise.all([loadTracker(),loadCoverage(),runBrowse(),runPeople(),loadProposals()]);
 }
 
 /* ---------- UI ---------- */
 function initUI(){
   document.querySelectorAll("nav button.tab").forEach(b=>b.onclick=()=>{
     document.querySelectorAll("nav button.tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");
-    ["tracker","browse","people","add","proposals"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
+    ["tracker","coverage","browse","people","add","proposals"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
   });
   $("#b_type").innerHTML='<option value="">all types</option>'+EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
   $("#a_type").innerHTML=EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
@@ -415,16 +468,16 @@ function updateGateHint(){const t=$("#a_type").value,y=parseInt($("#a_year").val
 /* ---------- reference data ---------- */
 async function loadRefs(){
   const {data:m}=await sb.from("municipalities").select("municipality_id,canonical_name,arrondissement").order("canonical_name");MUNIS=m||[];
-  const {data:p}=await sb.from("parishes").select("parish_id,parish_name,municipality_id").order("parish_name");PARISHES=p||[];
+  const {data:p}=await sb.from("parishes").select("parish_id,parish_name,municipality_id,unit_type").order("parish_name");PARISHES=p||[];
   const muniOpts='<option value="">all municipalities</option>'+MUNIS.map(x=>`<option value="${esc(x.municipality_id)}">${esc(x.canonical_name)}</option>`).join("");
   $("#b_muni").innerHTML=muniOpts;
   $("#a_muni").innerHTML='<option value="">—</option>'+MUNIS.map(x=>`<option value="${esc(x.municipality_id)}">${esc(x.canonical_name)}</option>`).join("");
   $("#a_muni").onchange=fillAddParish;fillAddParish();fillBrowseParish();
   // surnames for record filter (from participants) and people filter (from persons)
-  const {data:ps}=await sb.from("event_participants").select("canonical_surname").not("canonical_surname","is",null).limit(5000);
+  const ps=await fetchAll(()=>sb.from("event_participants").select("canonical_surname").not("canonical_surname","is",null).order("participant_id")); // fetchAll, not .limit(5000): 1000-row server cap
   SURNAMES=tally(ps.map(r=>r.canonical_surname));
   $("#b_surname").innerHTML='<option value="">all surnames</option>'+SURNAMES.map(([s,n])=>`<option value="${esc(s)}">${esc(s)} (${n})</option>`).join("");
-  const {data:pp}=await sb.from("persons").select("canonical_surname").not("canonical_surname","is",null).limit(5000);
+  const pp=await fetchAll(()=>sb.from("persons").select("canonical_surname").not("canonical_surname","is",null).order("person_id")); // fetchAll, not .limit(5000): 1000-row server cap
   PSURNAMES=tally(pp.map(r=>r.canonical_surname));
   $("#pp_surname").innerHTML='<option value="">all surnames</option>'+PSURNAMES.map(([s,n])=>`<option value="${esc(s)}">${esc(s)} (${n})</option>`).join("");
 }
@@ -439,7 +492,7 @@ async function loadTracker(){
   const {data:prog}=await sb.from("research_progress").select("*").order("arrondissement").order("municipality");PROGRESS=prog||[];
   const {data:fv}=await sb.from("fv_index").select("parish_canonical,has_baptism,has_marriage,has_burial");
   FV={};(fv||[]).forEach(r=>{const k=norm(r.parish_canonical),d=FV[k]||(FV[k]={b:false,m:false,d:false});if(r.has_baptism==='Y')d.b=true;if(r.has_marriage==='Y')d.m=true;if(r.has_burial==='Y')d.d=true;});
-  const {data:evs}=await sb.from("events").select("municipality_id").not("municipality_id","is",null).limit(5000);
+  const evs=await fetchAll(()=>sb.from("events").select("municipality_id").not("municipality_id","is",null).order("event_id")); // fetchAll, not .limit(5000): PostgREST caps a single query at 1000 rows
   HELD={};(evs||[]).forEach(e=>{const k=norm(muniName(e.municipality_id));if(k)HELD[k]=(HELD[k]||0)+1;});
   const arrs=[...new Set(PROGRESS.map(r=>r.arrondissement).filter(Boolean))].sort();
   $("#g_arr").innerHTML='<option value="">all arrondissements</option>'+arrs.map(a=>`<option>${esc(a)}</option>`).join("");
@@ -1198,6 +1251,150 @@ async function reviewProp(id,status){
   loadProposals();runBrowse();loadTracker();
 }
 window.reviewProp=reviewProp;
+
+/* ---------- coverage (v2 research_coverage viewer, read-only) ---------- */
+let COV_BY_MUNI=[], COV_UNITS={}, COV_OPEN={}, COV_UNIT_COUNT=0;
+const CV_PARISH_LABEL={birth:"Baptism",marriage:"Marriage",death:"Burial"};
+const CV_CIVIL_LABEL={birth:"Birth",marriage:"Marriage",death:"Death"};
+const CV_DEAD=new Set(["Complete (0 found)","Complete (none)","None Listed"]);
+const CV_FOUND=new Set(["Complete (found)"]);
+const CV_ORDER=["birth","marriage","death"];
+function cvClass(st){if(CV_FOUND.has(st))return"found";if(st==="In progress")return"prog";if(CV_DEAD.has(st))return"none";return"";}
+function cvIcon(st){if(CV_FOUND.has(st))return"&#10003;";if(st==="In progress")return"&#9680;";if(CV_DEAD.has(st))return"&#10003;";return"&#9675;";}
+function cvChip(label,st,extra){return `<span class="cvchip ${cvClass(st)}">${cvIcon(st)} ${esc(label)}${extra?" "+esc(extra):""}</span>`;}
+function parishType(id){const p=PARISHES.find(x=>x.parish_id===id);return p&&p.unit_type?p.unit_type:"parish";}
+function segCount(seg){return ((seg&&seg.registers)||[]).length;}
+
+async function loadCoverage(){
+  const {data,error}=await sb.from("research_coverage_rollup").select("*");
+  if(error){$("#c_body").innerHTML=`<p class="msg err show">Coverage load failed: ${esc(error.message)}</p>`;return;}
+  const by={};
+  (data||[]).forEach(r=>{const m=by[r.municipality_id]||(by[r.municipality_id]={id:r.municipality_id,name:r.municipality,arr:r.arrondissement,region:r.region,has_civil:r.has_civil,cls:{}});m.cls[r.record_class]=r;});
+  COV_BY_MUNI=Object.values(by).sort((a,b)=>(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
+  const {data:u}=await sb.from("research_coverage").select("parish_id").eq("scope_kind","parish").not("parish_id","is",null);
+  COV_UNIT_COUNT=new Set((u||[]).map(x=>x.parish_id)).size;
+  const arrs=[...new Set(COV_BY_MUNI.map(m=>m.arr).filter(Boolean))].sort();
+  $("#c_arr").innerHTML='<option value="">all arrondissements</option>'+arrs.map(a=>`<option>${esc(a)}</option>`).join("");
+  ["c_q","c_arr","c_vv","c_prog","c_dead"].forEach(id=>{const el=$("#"+id);el.addEventListener(el.type==="text"?"input":"change",renderCoverage);});
+  renderMetrics();renderCoverage();
+}
+function metric(l,v){return `<div class="cv-metric"><div class="lbl">${esc(l)}</div><div class="val">${esc(String(v))}</div></div>`;}
+function renderMetrics(){
+  let invRows=0,invMapped=0,clrTotal=0,clrDone=0;
+  COV_BY_MUNI.forEach(m=>Object.values(m.cls).forEach(r=>{
+    invRows++;if((r.parish_registers||0)>0||(r.civil_registers||0)>0)invMapped++;
+    clrTotal++;if(r.parish_rollup_status&&r.parish_rollup_status!=="Not Started")clrDone++;
+  }));
+  $("#c_metrics").innerHTML=
+    metric("Municipalities",COV_BY_MUNI.length)+
+    metric("Register-keeping units",COV_UNIT_COUNT)+
+    metric("Inventory mapped",(invRows?Math.round(100*invMapped/invRows):0)+"%")+
+    metric("Search cleared",(clrTotal?Math.round(100*clrDone/clrTotal):0)+"%");
+}
+function cvMuniFlags(m){
+  let hasVV=false,inProg=false,allDead=true;
+  Object.values(m.cls).forEach(r=>{
+    if((r.parish_units_found||0)>0||CV_FOUND.has(r.civil_status))hasVV=true;
+    if(r.parish_rollup_status==="In progress"||r.civil_status==="In progress")inProg=true;
+    const pd=CV_DEAD.has(r.parish_rollup_status)||r.parish_rollup_status==null;
+    const cd=!m.has_civil||CV_DEAD.has(r.civil_status);
+    if(!(pd&&cd))allDead=false;
+  });
+  return {hasVV,inProg,allDead};
+}
+function renderCoverage(){
+  const q=$("#c_q").value.trim().toLowerCase(),ar=$("#c_arr").value,
+        onlyVV=$("#c_vv").checked,onlyProg=$("#c_prog").checked,hideDead=$("#c_dead").checked;
+  const rows=COV_BY_MUNI.filter(m=>{
+    if(ar&&m.arr!==ar)return false;
+    if(q&&!((m.name||"").toLowerCase().includes(q)))return false;
+    const f=cvMuniFlags(m);
+    if(onlyVV&&!f.hasVV)return false;
+    if(onlyProg&&!f.inProg)return false;
+    if(hideDead&&f.allDead&&!f.hasVV)return false;
+    return true;
+  });
+  $("#c_count").textContent=`${rows.length} municipalit${rows.length===1?"y":"ies"}`;
+  $("#c_body").innerHTML=rows.map(cvMuniRow).join("")||'<p class="muted" style="padding:10px">No municipalities match.</p>';
+}
+function cvMuniRow(m){
+  const open=!!COV_OPEN["m_"+m.id];
+  const chips=CV_ORDER.map(c=>{const r=m.cls[c];if(!r)return"";
+    const frac=r.parish_units?`${r.parish_units_found||0}/${r.parish_units}`:"";
+    return cvChip(CV_PARISH_LABEL[c],r.parish_rollup_status,frac);}).join("");
+  let civ="";
+  if(m.has_civil){
+    const cs=CV_ORDER.map(c=>m.cls[c]&&m.cls[c].civil_status).filter(Boolean);
+    const st=cs.includes("In progress")?"In progress":(cs.some(s=>CV_FOUND.has(s))?"Complete (found)":(cs.length&&cs.every(s=>CV_DEAD.has(s))?"Complete (0 found)":"Not Started"));
+    civ=`<span class="cvchip ${cvClass(st)}">${cvIcon(st)} Civil 1796+</span>`;
+  }
+  const pu=Math.max(0,...CV_ORDER.map(c=>m.cls[c]?(m.cls[c].parish_units||0):0));
+  const sub=`${esc(m.region||m.arr||"")} &middot; ${pu} parish unit${pu===1?"":"s"}`;
+  let html=`<div class="cv-muni"><div class="cv-mhead" onclick="cvToggleMuni('${esc(m.id)}')">`
+    +`<span class="cv-caret" style="transform:rotate(${open?90:0}deg)">&#9656;</span>`
+    +`<div><div class="cv-name">${esc(m.name)}</div><div class="cv-sub">${sub}</div></div>`
+    +`<div class="cv-chips">${chips}${civ}</div></div>`;
+  if(open)html+=`<div class="cv-units">${cvUnitsHtml(m.id)}</div>`;
+  html+=`</div>`;
+  return html;
+}
+function cvToggleMuni(id){
+  COV_OPEN["m_"+id]=!COV_OPEN["m_"+id];
+  renderCoverage();
+  if(COV_OPEN["m_"+id]&&!COV_UNITS[id])cvLoadUnits(id);
+}
+window.cvToggleMuni=cvToggleMuni;
+async function cvLoadUnits(id){
+  const {data,error}=await sb.from("research_coverage").select("*").eq("municipality_id",id);
+  COV_UNITS[id]=error?[]:(data||[]);
+  renderCoverage();
+}
+function cvUnitsHtml(id){
+  const rows=COV_UNITS[id];
+  if(!rows)return `<div class="muted" style="padding:6px 4px">Loading&hellip;</div>`;
+  let out="";
+  const parish=rows.filter(r=>r.scope_kind==="parish"),byUnit={};
+  parish.forEach(r=>{(byUnit[r.parish_id]||(byUnit[r.parish_id]=[])).push(r);});
+  Object.keys(byUnit).sort((a,b)=>parishName(a).localeCompare(parishName(b),undefined,{sensitivity:"base"})).forEach(pid=>{
+    const urows=byUnit[pid],uopen=!!COV_OPEN["u_"+pid];
+    const chips=CV_ORDER.map(c=>{const r=urows.find(x=>x.record_class===c);if(!r)return"";
+      const n=segCount(r.segments),extra=CV_FOUND.has(r.status)?`&middot; ${r.found_count} found`:(n?`&middot; ${n} reg`:"");
+      return cvChip(CV_PARISH_LABEL[c],r.status,extra);}).join("");
+    out+=`<div class="cv-unit"><div class="cv-uhead" onclick="cvToggleUnit('${esc(pid)}')">`
+      +`<span class="cv-caret" style="transform:rotate(${uopen?90:0}deg)">&#9656;</span>`
+      +`<div><span class="cv-name">${esc(parishName(pid))}</span> <span class="cv-utype">${esc(parishType(pid))}</span></div>`
+      +`<div class="cv-chips">${chips}</div></div>`;
+    if(uopen)out+=`<div class="cv-seg-wrap">${cvSegHtml(urows)}</div>`;
+    out+=`</div>`;
+  });
+  const civil=rows.filter(r=>r.scope_kind==="civil");
+  if(civil.length){
+    const chips=CV_ORDER.map(c=>{const r=civil.find(x=>x.record_class===c);if(!r)return"";
+      const n=segCount(r.segments),extra=CV_FOUND.has(r.status)?`&middot; ${r.found_count} found`:(n?`&middot; ${n} reg`:"");
+      return cvChip(CV_CIVIL_LABEL[c],r.status,extra);}).join("");
+    out+=`<div class="cv-civ"><span style="width:12px"></span>`
+      +`<div><span class="cv-name">Civil registration</span> <span class="cv-utype">commune &middot; 1796+</span></div>`
+      +`<div class="cv-chips">${chips}</div></div>`;
+  }
+  return out||'<div class="muted" style="padding:6px 4px">No units recorded.</div>';
+}
+function cvToggleUnit(pid){COV_OPEN["u_"+pid]=!COV_OPEN["u_"+pid];renderCoverage();}
+window.cvToggleUnit=cvToggleUnit;
+function cvSegPill(s){
+  const na=s.available===false,mx=s.mixed===true;
+  return `<span class="cvseg${na?" na":""}${mx?" mx":""}">${esc(s.span||"")}${mx?" &middot; Mixed":""}</span>`;
+}
+function cvSegHtml(urows){
+  let out="";
+  CV_ORDER.forEach(c=>{
+    const r=urows.find(x=>x.record_class===c);if(!r||!r.segments)return;
+    const lbl=CV_PARISH_LABEL[c],idx=(r.segments.indexes||[]),reg=(r.segments.registers||[]);
+    if(idx.length)out+=`<div class="cv-seg-lbl">${esc(lbl)} &mdash; indexes</div><div class="cv-segs">${idx.map(cvSegPill).join("")}</div>`;
+    if(reg.length)out+=`<div class="cv-seg-lbl">${esc(lbl)} &mdash; registers <span class="muted">(${reg.length})</span></div><div class="cv-segs">${reg.map(cvSegPill).join("")}</div>`;
+  });
+  out+=`<div class="cv-src">Source: Rijksarchief Belgi&euml;, AGATHA &mdash; register inventory for this unit.</div>`;
+  return out;
+}
 
 boot();
 </script>
