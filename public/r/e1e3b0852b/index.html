@@ -174,8 +174,8 @@
       <div class="msg" id="addMsg"></div>
 
       <fieldset style="max-width:760px">
-        <legend>Paste a full record (JSON)</legend>
-        <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record with sources and an optional tracker update. The <code>```json</code> fences are optional.</p>
+        <legend>Paste a record or tracker update (JSON)</legend>
+        <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: either a full multi-participant record (with an <code>event</code>), or a tracker-only update (<code>set</code> and/or <code>coverage</code>, no event). The <code>```json</code> fences are optional.</p>
         <textarea id="pj_text" rows="9" placeholder='{"event":{…},"participants":[…],"sources":[…],"tracker":{…}}' style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px"></textarea>
         <label style="margin-top:8px">Note to curator (optional)<textarea id="pj_note" rows="2" placeholder="Context for the curator about this submission. Stored with the proposal — never written into the record itself."></textarea></label>
         <div style="margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
@@ -767,7 +767,8 @@ function afterAdd(keep){
 
 /* ---------- paste a full record (JSON) ---------- */
 const CONTRACT_VERSION=1;                 // #10: paste-contract version this editor understands
-let PJ=null;                              // last successfully-parsed payload
+let PJ=null;                              // last successfully-parsed payload (full record OR normalized tracker)
+let PJ_MODE=null;                         // "full" | "tracker" — set by pjParse, read by pjSubmit
 let PJ_EDIT_ORIG=null;                    // #15: proposal id being curator-edited (apply resolves it, no dup row)
 let PJ_DUPS=[];                           // #14: scored duplicate candidates for the current preview
 const pjSubmitLabel=()=>ROLE==="curator"?"Apply record":"Submit to queue";
@@ -786,24 +787,105 @@ function pjMinBar(o){
   if(BIRTHISH.has(ev.event_type)&&yr&&yr>NOW-100)errs.push(`living-person gate: a ${ev.event_type} in ${yr} is within 100 years (only death/burial allowed)`);
   return errs;
 }
+/* ---------- tracker-only (progress_update) helpers ---------- */
+const TRK_COLS=["parish_birth","parish_marriage","parish_death","civil_birth","civil_marriage","civil_death"];
+function pjUnwrapTracker(o){
+  // tracker-only payload: no event, set/coverage at top level or under a tracker/progress_update wrapper
+  if(o.event)return null;
+  let trk=o;
+  if(o.tracker&&typeof o.tracker==="object"&&!Array.isArray(o.tracker))trk=o.tracker;
+  else if(o.progress_update&&typeof o.progress_update==="object"&&!Array.isArray(o.progress_update))trk=o.progress_update;
+  const hasSet=trk.set&&typeof trk.set==="object";
+  const hasCov=trk.coverage&&typeof trk.coverage==="object";
+  return (hasSet||hasCov)?trk:null;
+}
+function pjContractError(o,trk){ // #10: reused by both modes
+  const raw=(o.contract_version!=null)?o.contract_version:(trk&&trk.contract_version!=null?trk.contract_version:null);
+  const cv=(raw==null)?1:parseInt(raw,10);
+  if(isNaN(cv))return "Invalid contract_version in the record.";
+  if(cv>CONTRACT_VERSION)return `This record uses paste-contract v${cv} but the editor understands v${CONTRACT_VERSION} — the editor is out of date. Refresh; if it persists, the editor needs updating.`;
+  if(cv<CONTRACT_VERSION)return `This record uses an older paste-contract (v${cv}) — re-sync the record-collection skill from Drive and re-export.`;
+  return null;
+}
+function pjNormTracker(trk){ // normalize to the bare {municipality_*, set, coverage} _apply_tracker reads
+  const n={};
+  if(trk.municipality_id)n.municipality_id=trk.municipality_id;
+  if(trk.municipality_name)n.municipality_name=trk.municipality_name;
+  if(trk.set&&typeof trk.set==="object")n.set=trk.set;
+  if(trk.coverage&&typeof trk.coverage==="object")n.coverage=trk.coverage;
+  return n;
+}
+function pjTrackerMinBar(n){
+  const errs=[];
+  if(!n.municipality_id&&!n.municipality_name)errs.push("municipality_id or municipality_name is required");
+  if(!n.set&&!n.coverage)errs.push('a "set" (status) and/or "coverage" object is required');
+  if(n.set){const bad=Object.keys(n.set).filter(k=>!TRK_COLS.includes(k));if(bad.length)errs.push("unknown status column(s): "+bad.join(", "));}
+  return errs;
+}
+function pjResolveProgress(n){ // best-effort client-side resolve to the research_progress row (for preview + target_id)
+  const strip=s=>String(s||"").replace(/\s*\(.*\)\s*$/,"").trim().toLowerCase();
+  let name=n.municipality_name;
+  if(!name&&n.municipality_id){const m=MUNIS.find(x=>x.municipality_id===n.municipality_id);if(m)name=m.canonical_name;}
+  if(!name)return null;
+  const t=strip(name);
+  return PROGRESS.find(r=>strip(r.municipality)===t)||PROGRESS.find(r=>String(r.municipality||"").toLowerCase()===String(name).toLowerCase())||null;
+}
+function pjPreviewTracker(n,errs){
+  const row=pjResolveProgress(n);
+  const name=n.municipality_name||(row&&row.municipality)||n.municipality_id||"";
+  const resolved=row?`<span class="pill ok">${esc(row.municipality)}</span> <span class="mono muted">${esc(row.progress_id)}</span>`
+                    :`<span class="pill bad">not in loaded tracker</span> <span class="muted">${esc(name)} — the server will resolve it on apply</span>`;
+  let setHtml="";
+  if(n.set){
+    const rows=Object.entries(n.set).map(([k,v])=>{
+      const old=row?(row[k]||"—"):"?";const known=TRK_COLS.includes(k);
+      return `<tr${known?"":' class="cov-amber"'}><td>${esc(k)}</td><td class="muted">${esc(old)}</td><td><b>${esc(v)}</b></td></tr>`;
+    }).join("");
+    setHtml=`<h4>Status changes</h4><table><thead><tr><th>Column</th><th>Current</th><th>New</th></tr></thead><tbody>${rows}</tbody></table>`;
+  }
+  let covHtml="";
+  if(n.coverage){
+    const keys=Object.keys(n.coverage),existing=(row&&row.coverage)?Object.keys(row.coverage):[];
+    const items=keys.map(k=>`<li><b>${esc(k)}</b> — ${existing.includes(k)?"replaces existing segment":"adds new segment"}</li>`).join("");
+    const untouched=existing.filter(k=>!keys.includes(k));
+    covHtml=`<h4>Coverage segments (per-key merge)</h4><ul class="plain">${items}</ul>
+      <div class="kv muted" style="font-size:11.5px">${untouched.length?`Preserved untouched: ${untouched.map(esc).join(", ")}.`:"Only the listed segment(s) are written."} Unlisted coverage keys are never wiped — the merge is per top-level key.</div>`;
+  }
+  const errHtml=errs&&errs.length?`<div class="msg err show" style="margin-top:8px">Fix: ${errs.map(esc).join("; ")}</div>`:"";
+  $("#pj_preview").innerHTML=`${errHtml}
+    <div class="card" style="max-width:none;margin-top:10px">
+      <div class="kv"><b>Tracker update</b> <span class="muted">(no event record)</span></div>
+      <div class="kv"><b>Municipality:</b> ${resolved}</div>
+      ${setHtml}${covHtml}
+    </div>`;
+}
 function pjParse(){
-  flash($("#pj_msg"),"");$("#pj_preview").innerHTML="";PJ=null;PJ_DUPS=[];
+  flash($("#pj_msg"),"");$("#pj_preview").innerHTML="";PJ=null;PJ_MODE=null;PJ_DUPS=[];
   const raw=stripFences($("#pj_text").value);
   if(!raw){flash($("#pj_msg"),"Paste a JSON record first.","err");return;}
   let o;try{o=JSON.parse(raw);}catch(e){flash($("#pj_msg"),"JSON parse error: "+esc(e.message),"err");return;}
-  if(!o||typeof o!=="object"||Array.isArray(o)||!o.event){flash($("#pj_msg"),'Expected an object with an "event" key.',"err");return;}
-  // #10: contract_version guard (before the min-bar). missing => 1 (back-compat).
-  const cv=(o.contract_version==null)?1:parseInt(o.contract_version,10);
-  if(isNaN(cv)){flash($("#pj_msg"),"Invalid contract_version in the record.","err");return;}
-  if(cv>CONTRACT_VERSION){flash($("#pj_msg"),`This record uses paste-contract v${cv} but the editor understands v${CONTRACT_VERSION} — the editor is out of date. Refresh; if it persists, the editor needs updating.`,"err");return;}
-  if(cv<CONTRACT_VERSION){flash($("#pj_msg"),`This record uses an older paste-contract (v${cv}) — re-sync the record-collection skill from Drive and re-export.`,"err");return;}
-  const errs=pjMinBar(o);
-  pjPreview(o,errs);
-  if(errs.length){flash($("#pj_msg"),"Cannot submit — fix: "+errs.map(esc).join("; "),"err");return;} // #12: invalid => no Submit injected
-  PJ=o;
-  pjInjectSubmit(); // #12: Submit exists only because the bar passed
-  flash($("#pj_msg"),ROLE==="curator"?"Looks good. Review the preview, then Apply.":"Looks good. Review the preview, then Submit to the queue.","good");
-  pjDupCheck(o); // #14: advisory, async — appends to the preview if anything looks like a dup
+  if(!o||typeof o!=="object"||Array.isArray(o)){flash($("#pj_msg"),"Expected a JSON object.","err");return;}
+  const trk=pjUnwrapTracker(o);
+  if(!o.event&&!trk){flash($("#pj_msg"),'Paste a full record (needs "event") or a tracker update (needs "set"/"coverage").',"err");return;}
+  const cverr=pjContractError(o,trk); // #10: same guard, both modes
+  if(cverr){flash($("#pj_msg"),cverr,"err");return;}
+  if(o.event){
+    const errs=pjMinBar(o);
+    pjPreview(o,errs);
+    if(errs.length){flash($("#pj_msg"),"Cannot submit — fix: "+errs.map(esc).join("; "),"err");return;} // #12: invalid => no Submit injected
+    PJ=o;PJ_MODE="full";
+    pjInjectSubmit(); // #12: Submit exists only because the bar passed
+    flash($("#pj_msg"),ROLE==="curator"?"Looks good. Review the preview, then Apply.":"Looks good. Review the preview, then Submit to the queue.","good");
+    pjDupCheck(o); // #14: advisory, async
+  }else{
+    const n=pjNormTracker(trk);
+    const errs=pjTrackerMinBar(n);
+    pjPreviewTracker(n,errs);
+    if(errs.length){flash($("#pj_msg"),"Cannot submit — fix: "+errs.map(esc).join("; "),"err");return;}
+    PJ=n;PJ_MODE="tracker";
+    pjInjectSubmit();
+    flash($("#pj_msg"),ROLE==="curator"?"Tracker update looks good. Review the preview, then Apply.":"Tracker update looks good. Review the preview, then Submit to the queue.","good");
+  }
 }
 function pjInjectSubmit(){
   const wrap=document.createElement("div");
@@ -813,7 +895,7 @@ function pjInjectSubmit(){
   $("#pj_preview").appendChild(wrap);
   $("#pj_submit").onclick=pjSubmit;
 }
-function pjResetPreview(){PJ=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";flash($("#pj_msg"),"");} // #12: collapse on edit (keeps text/note + edit-target)
+function pjResetPreview(){PJ=null;PJ_MODE=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";flash($("#pj_msg"),"");} // #12: collapse on edit (keeps text/note + edit-target)
 function pjPreview(o,errs){
   const ev=o.event||{},parts=Array.isArray(o.participants)?o.participants:[],srcs=Array.isArray(o.sources)?o.sources:[],trk=o.tracker;
   const place=esc((ev.municipality_name||ev.municipality_id||"")+(ev.parish_name?(" / "+ev.parish_name):ev.parish_id?(" / "+ev.parish_id):""));
@@ -839,7 +921,7 @@ function pjPreview(o,errs){
       ${ev.translation?`<h4>Translation</h4><div class="transc">${esc(ev.translation)}</div>`:""}
     </div>`;
 }
-function pjReset(){$("#pj_text").value="";if($("#pj_note"))$("#pj_note").value="";$("#pj_preview").innerHTML="";PJ=null;PJ_DUPS=[];PJ_EDIT_ORIG=null;}
+function pjReset(){$("#pj_text").value="";if($("#pj_note"))$("#pj_note").value="";$("#pj_preview").innerHTML="";PJ=null;PJ_MODE=null;PJ_DUPS=[];PJ_EDIT_ORIG=null;}
 async function pjSubmit(){
   if(!PJ)return;
   const btn=$("#pj_submit");if(btn)btn.disabled=true;
@@ -847,6 +929,24 @@ async function pjSubmit(){
   const note=($("#pj_note")&&$("#pj_note").value.trim())||null; // #13: review metadata only — never into the payload
   const clean=pjPayloadForRpc(PJ);                              // #10: strip contract_version before the RPC
   try{
+    if(ROLE!=="curator"&&ROLE!=="contributor"){flash($("#pj_msg"),"No role assigned — cannot submit.","err");const b=$("#pj_submit");if(b)b.disabled=false;return;}
+    if(PJ_MODE==="tracker"){
+      // tracker-only path: same curator-vs-contributor gate as records
+      if(curator){
+        const {data:res,error:re}=await sb.rpc("apply_progress_update",{payload:clean}); // curator-gated server-side
+        if(re) throw re;
+        const pgid=(res&&res.progress_id)||"";
+        flash($("#pj_msg"),"Tracker updated"+(pgid?` (${esc(pgid)})`:"")+".","good");
+        pjReset();loadTracker();loadProposals();
+      }else{
+        const row=pjResolveProgress(PJ);
+        const {error}=await sb.from("proposals").insert({kind:"progress_update",target_table:"research_progress",target_id:row?row.progress_id:null,payload:PJ,submitter_note:note});
+        if(error) throw error;
+        flash($("#pj_msg"),"Tracker update submitted to the proposal queue for curator review.","good");
+        pjReset();loadProposals();
+      }
+      return;
+    }
     if(curator){
       if(PJ_EDIT_ORIG){
         // #15: applying a curator-edited proposal — apply, then resolve the ORIGINAL (no dup row)
@@ -1044,8 +1144,10 @@ async function applyProposal(p){
     return "applied as "+((res&&res.event_id)||"?")+fl;
   }
   if(p.kind==="progress_update"){
-    const {data:res,error}=await sb.rpc("apply_progress_update",{payload:f});
+    const clean=Object.assign({},f);delete clean.contract_version; // #10: strip before RPC
+    const {data:res,error}=await sb.rpc("apply_progress_update",{payload:clean});
     if(error) throw error;
+    if(res&&res.progress_id&&p.id&&!p.target_id){await sb.from("proposals").update({target_id:res.progress_id}).eq("id",p.id);}
     return "tracker updated"+(res&&res.progress_id?(" ("+res.progress_id+")"):"");
   }
   if(p.kind==="new_record"){
