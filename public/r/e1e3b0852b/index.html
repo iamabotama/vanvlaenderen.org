@@ -122,6 +122,7 @@
   .vbadge.verify{background:#efe9fb;color:#5b4a9b}
   .vbadge.gap{background:#f7e6d4;color:var(--warn)}
   button.cvst.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .cv-add{flex:none;font-size:11px;padding:3px 9px;margin-left:6px;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -145,8 +146,7 @@
 <!-- APP -->
 <div id="appView" class="hide">
   <nav>
-    <button class="tab active" data-tab="tracker">Research tracker</button>
-    <button class="tab" data-tab="coverage">Coverage</button>
+    <button class="tab active" data-tab="coverage">Research tracker</button>
     <button class="tab" data-tab="browse">Browse</button>
     <button class="tab" data-tab="people">People</button>
     <button class="tab" data-tab="add">Add record</button>
@@ -156,22 +156,9 @@
     <div class="msg" id="flash"></div>
 
     <!-- TRACKER -->
-    <section id="tab-tracker">
-      <p class="muted" style="font-size:11.5px;margin:0 0 8px"><span class="st c"></span>Complete (found) <span class="st z"></span>Complete (0 found) <span class="st p"></span>Present <span class="st i"></span>In progress <span class="st n"></span>Not started &nbsp;·&nbsp; "Held" = event records in the DB for that place. &nbsp;·&nbsp; "Add here" prefills the add form.</p>
-      <div class="controls">
-        <div><label>Search</label><input type="text" id="g_q" placeholder="municipality / arrondissement"></div>
-        <div><label>Arrondissement</label><select id="g_arr"></select></div>
-        <div><label>Show</label><label style="flex-direction:row;align-items:center;gap:6px;font-size:12px;white-space:nowrap;font-weight:400"><input type="checkbox" id="g_novv" style="width:auto;margin:0">Exclude municipalities without Van&nbsp;Vlaenderen</label></div>
-        <button class="ghost" id="g_run">Filter</button>
-      </div>
-      <div class="count" id="g_count"></div>
-      <table><thead><tr><th>Municipality</th><th>Arr.</th><th>Parish B/M/D</th><th>Civil B/M/D</th><th>FV</th><th>Held</th><th></th></tr></thead>
-        <tbody id="g_body"></tbody></table>
-    </section>
-
-    <!-- COVERAGE (v2 research_coverage viewer, read-only) -->
-    <section id="tab-coverage" class="hide">
-      <p class="muted" style="font-size:11.5px;margin:0 0 8px">Register-level coverage from <span class="mono">research_coverage</span>. Two progress ideas: <b>inventory mapped</b> = AGATHA register list harvested for the unit; <b>search cleared</b> = the Van&nbsp;Vlaenderen surname pass is done. Most units are inventoried but not yet searched. Read-only.</p>
+    <!-- RESEARCH TRACKER (v2 research_coverage viewer + per-volume editor) -->
+    <section id="tab-coverage">
+      <p class="muted" style="font-size:11.5px;margin:0 0 8px">Research tracker over <span class="mono">research_coverage</span>. Expand a municipality &rarr; register-keeping unit &rarr; its index books and registers; click a volume to set search status (curator writes directly; contributors propose). <b>Inventory mapped</b> = AGATHA register list harvested; <b>search cleared</b> = the Van&nbsp;Vlaenderen surname pass is done. <b>Held</b> = records in the DB for that place; <b>+ Add</b> prefills the add form.</p>
       <div class="cv-metrics" id="c_metrics"></div>
       <div class="controls">
         <div><label>Search</label><input type="text" id="c_q" placeholder="municipality"></div>
@@ -453,7 +440,7 @@ async function boot(){
 function initUI(){
   document.querySelectorAll("nav button.tab").forEach(b=>b.onclick=()=>{
     document.querySelectorAll("nav button.tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");
-    ["tracker","coverage","browse","people","add","proposals"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
+    ["coverage","browse","people","add","proposals"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
   });
   $("#b_type").innerHTML='<option value="">all types</option>'+EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
   $("#a_type").innerHTML=EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
@@ -469,7 +456,6 @@ function initUI(){
   $("#pp_per").onchange=()=>setPer("people",$("#pp_per").value);
   document.querySelectorAll("#tab-browse th.sortable").forEach(th=>th.onclick=()=>setSort("browse",th.dataset.key));
   document.querySelectorAll("#tab-people th.sortable").forEach(th=>th.onclick=()=>setSort("people",th.dataset.key));
-  $("#g_run").onclick=renderTracker;$("#g_q").addEventListener("input",renderTracker);$("#g_arr").addEventListener("change",renderTracker);$("#g_novv").addEventListener("change",renderTracker);
   $("#a_save").onclick=()=>submitRecord(false);$("#a_save_more").onclick=()=>submitRecord(true);
   $("#a_date").addEventListener("input",deriveYear);
   [$("#a_type"),$("#a_year")].forEach(el=>el.addEventListener("input",updateGateHint));
@@ -507,16 +493,13 @@ function fillAddParish(){const mid=$("#a_muni").value,list=mid?PARISHES.filter(p
 function fillBrowseParish(){const mid=$("#b_muni").value,list=mid?PARISHES.filter(p=>p.municipality_id===mid):PARISHES;
   $("#b_parish").innerHTML='<option value="">all parishes</option>'+list.map(p=>`<option value="${esc(p.parish_id)}">${esc(p.parish_name)}</option>`).join("");}
 
-/* ---------- tracker ---------- */
+/* ---------- tracker side-signals (Held + FamilySearch); the tracker view itself is the v2 coverage viewer ---------- */
 async function loadTracker(){
-  const {data:prog}=await sb.from("research_progress").select("*").order("arrondissement").order("municipality");PROGRESS=prog||[];
   const {data:fv}=await sb.from("fv_index").select("parish_canonical,has_baptism,has_marriage,has_burial");
   FV={};(fv||[]).forEach(r=>{const k=norm(r.parish_canonical),d=FV[k]||(FV[k]={b:false,m:false,d:false});if(r.has_baptism==='Y')d.b=true;if(r.has_marriage==='Y')d.m=true;if(r.has_burial==='Y')d.d=true;});
-  const evs=await fetchAll(()=>sb.from("events").select("municipality_id").not("municipality_id","is",null).order("event_id")); // fetchAll, not .limit(5000): PostgREST caps a single query at 1000 rows
+  const evs=await fetchAll(()=>sb.from("events").select("municipality_id").not("municipality_id","is",null).order("event_id")); // 1000-row cap -> fetchAll
   HELD={};(evs||[]).forEach(e=>{const k=norm(muniName(e.municipality_id));if(k)HELD[k]=(HELD[k]||0)+1;});
-  const arrs=[...new Set(PROGRESS.map(r=>r.arrondissement).filter(Boolean))].sort();
-  $("#g_arr").innerHTML='<option value="">all arrondissements</option>'+arrs.map(a=>`<option>${esc(a)}</option>`).join("");
-  renderTracker();
+  if(typeof COV_BY_MUNI!=="undefined"&&COV_BY_MUNI.length)renderCoverage(); // repaint so Held/FV land once events are tallied
 }
 const STMAP={"Complete":"c","Complete (found)":"c","Complete (0 found)":"z","present":"p","Present":"p","In progress":"i"};
 const DONEISH=new Set(["Complete","Complete (found)","Complete (0 found)","present","Present","In progress"]);
@@ -1365,11 +1348,15 @@ function cvMuniRow(m){
     civ=cvChip2("Civil 1796+",cst,cFound,false,"");
   }
   const pu=Math.max(0,...CV_ORDER.map(c=>m.cls[c]?(m.cls[c].parish_units||0):0));
-  const sub=`${esc(m.region||m.arr||"")} &middot; ${pu} parish unit${pu===1?"":"s"}`;
+  const held=(typeof HELD!=="undefined"&&HELD[norm(m.name)])||0;
+  const fvd=(typeof FV!=="undefined")?FV[norm(m.name)]:null;
+  const fvStr=fvd?` &middot; FV ${[fvd.b?"B":"",fvd.m?"M":"",fvd.d?"D":""].filter(Boolean).join("")||"-"}`:"";
+  const sub=`${esc(m.region||m.arr||"")} &middot; ${pu} parish unit${pu===1?"":"s"} &middot; Held ${held}${fvStr}`;
   let html=`<div class="cv-muni"><div class="cv-mhead" onclick="cvToggleMuni('${esc(m.id)}')">`
     +`<span class="cv-caret" style="transform:rotate(${open?90:0}deg)">&#9656;</span>`
-    +`<div><div class="cv-name">${esc(m.name)}</div><div class="cv-sub">${sub}</div></div>`
-    +`<div class="cv-chips">${chips}${civ}</div></div>`;
+    +`<div style="min-width:0"><div class="cv-name">${esc(m.name)}</div><div class="cv-sub">${sub}</div></div>`
+    +`<div class="cv-chips">${chips}${civ}</div>`
+    +`<button class="ghost cv-add" onclick="event.stopPropagation();addHere('${esc(m.id)}')" title="Prefill the add form for this municipality">+ Add</button></div>`;
   if(open)html+=`<div class="cv-units">${cvUnitsHtml(m.id)}</div>`;
   html+=`</div>`;
   return html;
