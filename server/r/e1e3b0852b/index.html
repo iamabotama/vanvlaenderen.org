@@ -104,6 +104,24 @@
   .cvseg.na{color:#a59f8f;border-style:dashed;text-decoration:line-through}
   .cvseg.mx{background:#efe9fb;border-color:#d6ccf2;color:#5b4a9b}
   .cv-src{font-size:11px;color:var(--muted);margin-top:6px}
+  .cvchip.idx{background:#e7eef6;border-color:#c2d4e6;color:#2b5a86}
+  .cvchip.avail{background:#e7f3eb;border-color:#bfe0cb;color:#2f7d4f}
+  .cvchip.done{background:#dff0e4;border-color:#a9d3b8;color:#1f6b3f}
+  .cv-found{font-size:10px;color:#8a6d1a;margin-left:4px}
+  .cv-gap{font-size:11px;color:var(--warn);margin-left:3px}
+  .cv-vols{display:flex;flex-direction:column;gap:2px;margin:2px 0 6px}
+  .cv-vol{display:flex;align-items:center;gap:8px;padding:3px 6px;border-radius:6px;cursor:pointer}
+  .cv-vol:hover{background:#faf7f0}
+  .cv-vol .vspan{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;min-width:90px;color:#5b5648}
+  .vstate{font-size:11px;padding:1px 8px;border-radius:10px;border:1px solid var(--line)}
+  .vstate.s0{background:#f1efe9;color:#8a8575}
+  .vstate.s1{background:#fbeed8;color:var(--warn)}
+  .vstate.s2{background:#dff0e4;color:#1f6b3f}
+  .vbadge{font-size:10px;padding:0 6px;border-radius:8px;margin-left:2px;border:1px solid transparent}
+  .vbadge.found{background:#f6edcf;color:#8a6d1a}
+  .vbadge.verify{background:#efe9fb;color:#5b4a9b}
+  .vbadge.gap{background:#f7e6d4;color:var(--warn)}
+  button.cvst.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 </style>
 </head>
 <body>
@@ -163,11 +181,13 @@
         <div><label>&nbsp;</label><label style="flex-direction:row;align-items:center;gap:6px;font-size:12px;white-space:nowrap;font-weight:400"><input type="checkbox" id="c_dead" style="width:auto;margin:0">Hide dead-ends</label></div>
       </div>
       <div class="cv-legend">
-        <span class="cvchip">&#9675; inventory known</span><span>search pending</span>
-        <span class="cvchip prog">&#9680; in progress</span>
-        <span class="cvchip found">&#10003; found</span>
-        <span class="cvchip none">&#10003; searched &middot; none</span>
-        <span class="cvseg mx">Mixed</span><span>one register, all classes</span>
+        <span class="cvchip">&#9675; Not started</span>
+        <span class="cvchip prog">&#9680; In progress</span>
+        <span class="cvchip idx">&#9681; Index complete</span>
+        <span class="cvchip done">&#10003; All complete</span>
+        <span><span class="cv-found">&#10003;found</span> VV record</span>
+        <span><span class="cv-gap">&#9888;</span> undigitized gap</span>
+        <span class="muted">click a volume to set its status</span>
       </div>
       <div class="count" id="c_count"></div>
       <div id="c_body" style="border-top:1px solid var(--line)"></div>
@@ -1139,6 +1159,8 @@ function renderProposalCard(p,curator){
   }else if(p.kind==="progress_update"){
     const sets=pl.set?Object.entries(pl.set).map(([k,v])=>`${esc(k)} → ${esc(v)}`).join(", "):"";
     body=`<div class="kv"><b>Tracker update:</b> ${esc(pl.municipality_name||pl.municipality_id||"")}${sets?` — ${sets}`:""}</div>`;
+  }else if(p.kind==="coverage_update"){
+    body=`<div class="kv"><b>Coverage:</b> <span class="mono">${esc(pl.coverage_id||"")}</span> vol <span class="mono">${esc(pl.vid||"")}</span> &rarr; ${esc(pl.searched||"")}${pl.found!=null?` &middot; found ${pl.found?"yes":"no"}`:""}</div>`;
   }else if(p.kind==="correction"){
     body=`<div class="kv">${pl.field?`<b>${esc(pl.field)}</b> → `:""}${esc(pl.new_value||"")}</div>${pl.note?`<div class="kv"><b>Why:</b> ${esc(pl.note)}</div>`:""}`;
   }else{
@@ -1203,6 +1225,11 @@ async function applyProposal(p){
     if(res&&res.progress_id&&p.id&&!p.target_id){await sb.from("proposals").update({target_id:res.progress_id}).eq("id",p.id);}
     return "tracker updated"+(res&&res.progress_id?(" ("+res.progress_id+")"):"");
   }
+  if(p.kind==="coverage_update"){
+    const {data:res,error}=await sb.rpc("apply_coverage_update",{payload:f});
+    if(error) throw error;
+    return "coverage updated"+(res&&res.rollup_status?(" ("+res.rollup_status+")"):"");
+  }
   if(p.kind==="new_record"){
     const type=f.type||f.event_type;
     if(BIRTHISH.has(type)&&f.year&&f.year>NOW-100) throw new Error("living-person guard ("+type+" "+f.year+")");
@@ -1249,56 +1276,64 @@ async function reviewProp(id,status){
   if(error){flash($("#propMsg"),"Status update failed: "+esc(error.message),"err");return;}
   flash($("#propMsg"),applied?`Proposal ${id} ${applied}.`:`Proposal ${id} approved. This kind isn't auto-applied — apply it manually via Edit record.`,"good");
   loadProposals();runBrowse();loadTracker();
+  if(p&&p.kind==="coverage_update"){
+    if(typeof loadCoverage==="function")loadCoverage();
+    const _cid=p.payload&&p.payload.coverage_id;
+    if(_cid&&COV_ROWS[_cid]&&COV_OPEN["m_"+COV_ROWS[_cid].muni])cvLoadUnits(COV_ROWS[_cid].muni);
+  }
 }
 window.reviewProp=reviewProp;
 
-/* ---------- coverage (v2 research_coverage viewer, read-only) ---------- */
-let COV_BY_MUNI=[], COV_UNITS={}, COV_OPEN={}, COV_UNIT_COUNT=0;
+/* ---------- coverage (v2 per-volume editor over research_coverage) ---------- */
+let COV_BY_MUNI=[], COV_UNITS={}, COV_OPEN={}, COV_UNIT_COUNT=0, COV_ROWS={}, COV_WIRED=false;
 const CV_PARISH_LABEL={birth:"Baptism",marriage:"Marriage",death:"Burial"};
 const CV_CIVIL_LABEL={birth:"Birth",marriage:"Marriage",death:"Death"};
-const CV_DEAD=new Set(["Complete (0 found)","Complete (none)","None Listed"]);
-const CV_FOUND=new Set(["Complete (found)"]);
 const CV_ORDER=["birth","marriage","death"];
-function cvClass(st){if(CV_FOUND.has(st))return"found";if(st==="In progress")return"prog";if(CV_DEAD.has(st))return"none";return"";}
-function cvIcon(st){if(CV_FOUND.has(st))return"&#10003;";if(st==="In progress")return"&#9680;";if(CV_DEAD.has(st))return"&#10003;";return"&#9675;";}
-function cvChip(label,st,extra){return `<span class="cvchip ${cvClass(st)}">${cvIcon(st)} ${esc(label)}${extra?" "+esc(extra):""}</span>`;}
+const CV2_RANK={"No registers":0,"Not started":1,"In progress":2,"index complete":3,"all available years complete":4,"all volumes complete":5};
+const CV2_STYLE={"No registers":{c:"none",i:"&ndash;"},"Not started":{c:"",i:"&#9675;"},"In progress":{c:"prog",i:"&#9680;"},"index complete":{c:"idx",i:"&#9681;"},"all available years complete":{c:"avail",i:"&#9685;"},"all volumes complete":{c:"done",i:"&#10003;"}};
+const VSTATE={not_started:{c:"s0",t:"Not started"},in_progress:{c:"s1",t:"In progress"},complete:{c:"s2",t:"Complete"}};
+function cv2(st){return CV2_STYLE[st]||CV2_STYLE["Not started"];}
+function cvChip2(label,st,found,gap,extra){const s=cv2(st);
+  return `<span class="cvchip ${s.c}">${s.i} ${esc(label)}${extra?" "+esc(extra):""}`
+    +`${found?'<span class="cv-found" title="Van Vlaenderen record found">&#10003;found</span>':''}`
+    +`${gap?'<span class="cv-gap" title="Has an undigitized gap">&#9888;</span>':''}</span>`;}
 function parishType(id){const p=PARISHES.find(x=>x.parish_id===id);return p&&p.unit_type?p.unit_type:"parish";}
-function segCount(seg){return ((seg&&seg.registers)||[]).length;}
+function segTotal(seg){return (((seg&&seg.indexes)||[]).length)+(((seg&&seg.registers)||[]).length);}
 
 async function loadCoverage(){
-  const {data,error}=await sb.from("research_coverage_rollup").select("*");
+  const {data,error}=await sb.from("research_coverage_rollup_v2").select("*");
   if(error){$("#c_body").innerHTML=`<p class="msg err show">Coverage load failed: ${esc(error.message)}</p>`;return;}
   const by={};
-  (data||[]).forEach(r=>{const m=by[r.municipality_id]||(by[r.municipality_id]={id:r.municipality_id,name:r.municipality,arr:r.arrondissement,region:r.region,has_civil:r.has_civil,cls:{}});m.cls[r.record_class]=r;});
+  (data||[]).forEach(r=>{const m=by[r.municipality_id]||(by[r.municipality_id]={id:r.municipality_id,name:r.municipality,arr:r.arrondissement,region:r.region,cls:{}});m.cls[r.record_class]=r;});
   COV_BY_MUNI=Object.values(by).sort((a,b)=>(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
   const {data:u}=await sb.from("research_coverage").select("parish_id").eq("scope_kind","parish").not("parish_id","is",null);
   COV_UNIT_COUNT=new Set((u||[]).map(x=>x.parish_id)).size;
   const arrs=[...new Set(COV_BY_MUNI.map(m=>m.arr).filter(Boolean))].sort();
   $("#c_arr").innerHTML='<option value="">all arrondissements</option>'+arrs.map(a=>`<option>${esc(a)}</option>`).join("");
-  ["c_q","c_arr","c_vv","c_prog","c_dead"].forEach(id=>{const el=$("#"+id);el.addEventListener(el.type==="text"?"input":"change",renderCoverage);});
-  renderMetrics();renderCoverage();
+  if(!COV_WIRED){COV_WIRED=true;["c_q","c_arr","c_vv","c_prog","c_dead"].forEach(id=>{const el=$("#"+id);el.addEventListener(el.type==="text"?"input":"change",renderCoverage);});}
+  cvEnsurePop();renderMetrics();renderCoverage();
 }
 function metric(l,v){return `<div class="cv-metric"><div class="lbl">${esc(l)}</div><div class="val">${esc(String(v))}</div></div>`;}
 function renderMetrics(){
-  let invRows=0,invMapped=0,clrTotal=0,clrDone=0;
+  let idxDone=0,foundN=0;
   COV_BY_MUNI.forEach(m=>Object.values(m.cls).forEach(r=>{
-    invRows++;if((r.parish_registers||0)>0||(r.civil_registers||0)>0)invMapped++;
-    clrTotal++;if(r.parish_rollup_status&&r.parish_rollup_status!=="Not Started")clrDone++;
+    if((CV2_RANK[r.parish_rollup]||0)>=3)idxDone++;
+    if(r.parish_found)foundN++;
   }));
   $("#c_metrics").innerHTML=
     metric("Municipalities",COV_BY_MUNI.length)+
     metric("Register-keeping units",COV_UNIT_COUNT)+
-    metric("Inventory mapped",(invRows?Math.round(100*invMapped/invRows):0)+"%")+
-    metric("Search cleared",(clrTotal?Math.round(100*clrDone/clrTotal):0)+"%");
+    metric("Index-complete (parish)",idxDone)+
+    metric("With VV found",foundN);
 }
 function cvMuniFlags(m){
   let hasVV=false,inProg=false,allDead=true;
   Object.values(m.cls).forEach(r=>{
-    if((r.parish_units_found||0)>0||CV_FOUND.has(r.civil_status))hasVV=true;
-    if(r.parish_rollup_status==="In progress"||r.civil_status==="In progress")inProg=true;
-    const pd=CV_DEAD.has(r.parish_rollup_status)||r.parish_rollup_status==null;
-    const cd=!m.has_civil||CV_DEAD.has(r.civil_status);
-    if(!(pd&&cd))allDead=false;
+    if(r.parish_found||r.civil_found)hasVV=true;
+    const pr=CV2_RANK[r.parish_rollup]??1;
+    if(pr>=2&&pr<5)inProg=true;
+    const pDead=r.parish_rollup==="No registers"||(r.parish_rollup==="all volumes complete"&&!r.parish_found);
+    if(!pDead)allDead=false;
   });
   return {hasVV,inProg,allDead};
 }
@@ -1320,13 +1355,14 @@ function renderCoverage(){
 function cvMuniRow(m){
   const open=!!COV_OPEN["m_"+m.id];
   const chips=CV_ORDER.map(c=>{const r=m.cls[c];if(!r)return"";
-    const frac=r.parish_units?`${r.parish_units_found||0}/${r.parish_units}`:"";
-    return cvChip(CV_PARISH_LABEL[c],r.parish_rollup_status,frac);}).join("");
+    const frac=(r.parish_units&&r.parish_rollup!=="No registers")?`${r.parish_index_complete||0}/${r.parish_units} idx`:"";
+    return cvChip2(CV_PARISH_LABEL[c],r.parish_rollup,r.parish_found,r.parish_has_gap,frac);}).join("");
   let civ="";
-  if(m.has_civil){
-    const cs=CV_ORDER.map(c=>m.cls[c]&&m.cls[c].civil_status).filter(Boolean);
-    const st=cs.includes("In progress")?"In progress":(cs.some(s=>CV_FOUND.has(s))?"Complete (found)":(cs.length&&cs.every(s=>CV_DEAD.has(s))?"Complete (0 found)":"Not Started"));
-    civ=`<span class="cvchip ${cvClass(st)}">${cvIcon(st)} Civil 1796+</span>`;
+  const cr=CV_ORDER.map(c=>m.cls[c]).filter(Boolean);
+  if(cr.length){
+    const withReg=cr.filter(r=>r.civil_rollup!=="No registers"),cFound=cr.some(r=>r.civil_found);
+    const cst=withReg.length?withReg.reduce((a,r)=>((CV2_RANK[r.civil_rollup]??1)<(CV2_RANK[a]??1)?r.civil_rollup:a),withReg[0].civil_rollup):"No registers";
+    civ=cvChip2("Civil 1796+",cst,cFound,false,"");
   }
   const pu=Math.max(0,...CV_ORDER.map(c=>m.cls[c]?(m.cls[c].parish_units||0):0));
   const sub=`${esc(m.region||m.arr||"")} &middot; ${pu} parish unit${pu===1?"":"s"}`;
@@ -1345,10 +1381,18 @@ function cvToggleMuni(id){
 }
 window.cvToggleMuni=cvToggleMuni;
 async function cvLoadUnits(id){
-  const {data,error}=await sb.from("research_coverage").select("*").eq("municipality_id",id);
-  COV_UNITS[id]=error?[]:(data||[]);
+  const [rc,vs]=await Promise.all([
+    sb.from("research_coverage").select("coverage_id,municipality_id,parish_id,scope_kind,record_class,segments,found_count").eq("municipality_id",id),
+    sb.from("v_coverage_status").select("coverage_id,rollup_status,found_any,has_gap").eq("municipality_id",id)
+  ]);
+  const st={};(vs.data||[]).forEach(v=>{st[v.coverage_id]=v;});
+  const rows=(rc.data||[]).map(r=>{const v=st[r.coverage_id]||{};return Object.assign({},r,{rollup_status:v.rollup_status,found_any:v.found_any,has_gap:v.has_gap,muni:id});});
+  rows.forEach(r=>{COV_ROWS[r.coverage_id]=r;});
+  COV_UNITS[id]=rows;
   renderCoverage();
 }
+function cvUnitChips(r){const extra=segTotal(r.segments)?`${segTotal(r.segments)} vol`:"";
+  return cvChip2(r.scope_kind==="civil"?CV_CIVIL_LABEL[r.record_class]:CV_PARISH_LABEL[r.record_class],r.rollup_status||"Not started",r.found_any,r.has_gap,extra);}
 function cvUnitsHtml(id){
   const rows=COV_UNITS[id];
   if(!rows)return `<div class="muted" style="padding:6px 4px">Loading&hellip;</div>`;
@@ -1357,43 +1401,113 @@ function cvUnitsHtml(id){
   parish.forEach(r=>{(byUnit[r.parish_id]||(byUnit[r.parish_id]=[])).push(r);});
   Object.keys(byUnit).sort((a,b)=>parishName(a).localeCompare(parishName(b),undefined,{sensitivity:"base"})).forEach(pid=>{
     const urows=byUnit[pid],uopen=!!COV_OPEN["u_"+pid];
-    const chips=CV_ORDER.map(c=>{const r=urows.find(x=>x.record_class===c);if(!r)return"";
-      const n=segCount(r.segments),extra=CV_FOUND.has(r.status)?`&middot; ${r.found_count} found`:(n?`&middot; ${n} reg`:"");
-      return cvChip(CV_PARISH_LABEL[c],r.status,extra);}).join("");
+    const chips=CV_ORDER.map(c=>{const r=urows.find(x=>x.record_class===c);return r?cvUnitChips(r):"";}).join("");
     out+=`<div class="cv-unit"><div class="cv-uhead" onclick="cvToggleUnit('${esc(pid)}')">`
       +`<span class="cv-caret" style="transform:rotate(${uopen?90:0}deg)">&#9656;</span>`
       +`<div><span class="cv-name">${esc(parishName(pid))}</span> <span class="cv-utype">${esc(parishType(pid))}</span></div>`
       +`<div class="cv-chips">${chips}</div></div>`;
-    if(uopen)out+=`<div class="cv-seg-wrap">${cvSegHtml(urows)}</div>`;
+    if(uopen)out+=`<div class="cv-seg-wrap">${cvVolsHtml(urows)}</div>`;
     out+=`</div>`;
   });
   const civil=rows.filter(r=>r.scope_kind==="civil");
   if(civil.length){
-    const chips=CV_ORDER.map(c=>{const r=civil.find(x=>x.record_class===c);if(!r)return"";
-      const n=segCount(r.segments),extra=CV_FOUND.has(r.status)?`&middot; ${r.found_count} found`:(n?`&middot; ${n} reg`:"");
-      return cvChip(CV_CIVIL_LABEL[c],r.status,extra);}).join("");
-    out+=`<div class="cv-civ"><span style="width:12px"></span>`
+    const copen=!!COV_OPEN["u_civil_"+id];
+    const chips=CV_ORDER.map(c=>{const r=civil.find(x=>x.record_class===c);return r?cvUnitChips(r):"";}).join("");
+    out+=`<div class="cv-unit"><div class="cv-uhead cv-civ" onclick="cvToggleUnit('civil_${esc(id)}')">`
+      +`<span class="cv-caret" style="transform:rotate(${copen?90:0}deg)">&#9656;</span>`
       +`<div><span class="cv-name">Civil registration</span> <span class="cv-utype">commune &middot; 1796+</span></div>`
       +`<div class="cv-chips">${chips}</div></div>`;
+    if(copen)out+=`<div class="cv-seg-wrap">${cvVolsHtml(civil)}</div>`;
+    out+=`</div>`;
   }
   return out||'<div class="muted" style="padding:6px 4px">No units recorded.</div>';
 }
 function cvToggleUnit(pid){COV_OPEN["u_"+pid]=!COV_OPEN["u_"+pid];renderCoverage();}
 window.cvToggleUnit=cvToggleUnit;
-function cvSegPill(s){
-  const na=s.available===false,mx=s.mixed===true;
-  return `<span class="cvseg${na?" na":""}${mx?" mx":""}">${esc(s.span||"")}${mx?" &middot; Mixed":""}</span>`;
+function cvVolPill(cid,vol){
+  const st=VSTATE[vol.searched||"not_started"]||VSTATE.not_started,na=vol.available===false;
+  return `<div class="cv-vol" onclick="cvOpenVol('${esc(cid)}','${esc(vol.vid)}')">`
+    +`<span class="vspan">${esc(vol.span||"")}</span>`
+    +`<span class="vstate ${st.c}">${esc(st.t)}</span>`
+    +`${vol.found?'<span class="vbadge found">&#10003; found</span>':''}`
+    +`${na?'<span class="vbadge gap">not digitized</span>':''}`
+    +`${vol.derived?'<span class="vbadge verify" title="Reconstructed — verify">verify</span>':''}`
+    +`${vol.url?'<span class="vbadge" title="AGATHA link available">&#128279;</span>':''}`
+    +`</div>`;
 }
-function cvSegHtml(urows){
+function cvVolsHtml(urows){
   let out="";
   CV_ORDER.forEach(c=>{
     const r=urows.find(x=>x.record_class===c);if(!r||!r.segments)return;
-    const lbl=CV_PARISH_LABEL[c],idx=(r.segments.indexes||[]),reg=(r.segments.registers||[]);
-    if(idx.length)out+=`<div class="cv-seg-lbl">${esc(lbl)} &mdash; indexes</div><div class="cv-segs">${idx.map(cvSegPill).join("")}</div>`;
-    if(reg.length)out+=`<div class="cv-seg-lbl">${esc(lbl)} &mdash; registers <span class="muted">(${reg.length})</span></div><div class="cv-segs">${reg.map(cvSegPill).join("")}</div>`;
+    const lbl=(r.scope_kind==="civil"?CV_CIVIL_LABEL:CV_PARISH_LABEL)[c];
+    const idx=(r.segments.indexes||[]),reg=(r.segments.registers||[]);
+    if(idx.length)out+=`<div class="cv-seg-lbl">${esc(lbl)} &mdash; index books <span class="muted">(${idx.length})</span></div><div class="cv-vols">${idx.map(v=>cvVolPill(r.coverage_id,v)).join("")}</div>`;
+    if(reg.length)out+=`<div class="cv-seg-lbl">${esc(lbl)} &mdash; registers <span class="muted">(${reg.length})</span></div><div class="cv-vols">${reg.map(v=>cvVolPill(r.coverage_id,v)).join("")}</div>`;
   });
-  out+=`<div class="cv-src">Source: Rijksarchief Belgi&euml;, AGATHA &mdash; register inventory for this unit.</div>`;
+  out+=`<div class="cv-src">Source: Rijksarchief Belgi&euml;, AGATHA &mdash; register inventory for this unit. Click a volume to set its search status.</div>`;
   return out;
+}
+function cvEnsurePop(){
+  if($("#cvpop"))return;
+  const d=document.createElement("div");d.className="overlay";d.id="cvpop";
+  d.innerHTML=`<div class="modal" style="max-width:430px"><header style="padding:10px 14px"><b id="cvpop_ttl" style="font-size:14px"></b> <button style="margin-left:auto" onclick="cvClosePop()">Close</button></header><div class="body" id="cvpop_body"></div></div>`;
+  d.addEventListener("click",e=>{if(e.target===d)cvClosePop();});
+  document.body.appendChild(d);
+}
+function cvClosePop(){const d=$("#cvpop");if(d)d.classList.remove("open");}
+window.cvClosePop=cvClosePop;
+function cvFindVol(cid,vid){const r=COV_ROWS[cid];if(!r||!r.segments)return null;
+  const arr=vid[0]==="i"?(r.segments.indexes||[]):(r.segments.registers||[]);return arr.find(v=>v.vid===vid)||null;}
+function cvOpenVol(cid,vid){
+  cvEnsurePop();
+  const r=COV_ROWS[cid],vol=cvFindVol(cid,vid);if(!r||!vol)return;
+  const isIdx=vid[0]==="i",canWrite=(ROLE==="curator"||ROLE==="contributor"),curator=ROLE==="curator";
+  const cls=(r.scope_kind==="civil"?CV_CIVIL_LABEL:CV_PARISH_LABEL)[r.record_class];
+  const place=r.scope_kind==="civil"?(muniName(r.muni)+" — civil"):parishName(r.parish_id);
+  $("#cvpop_ttl").innerHTML=`${esc(place)} &middot; ${esc(cls)} ${isIdx?"index":"register"} ${esc(vol.span||"")}`;
+  const cur=vol.searched||"not_started";
+  const meta=`${vol.derived?'<span class="vbadge verify">reconstructed — verify</span> ':''}${vol.available===false?'<span class="vbadge gap">not digitized</span> ':''}`;
+  const note=vol.note?`<div class="kv" style="margin-top:6px"><b>Note:</b> ${esc(vol.note)}</div>`:"";
+  const agatha=vol.url?`<div style="margin:8px 0"><a href="${esc(vol.url)}" target="_blank" rel="noopener">View on AGATHA &#8599;</a></div>`:`<div class="muted" style="margin:8px 0;font-size:12px">No direct AGATHA link stored for this volume.</div>`;
+  let controls="";
+  if(canWrite){
+    const stateBtns=Object.keys(VSTATE).map(k=>`<button type="button" class="ghost cvst${k===cur?' on':''}" data-s="${k}" onclick="cvPickState(this)">${esc(VSTATE[k].t)}</button>`).join(" ");
+    const foundBox=isIdx?`<label style="flex-direction:row;align-items:center;gap:6px;font-weight:400;margin-top:10px"><input type="checkbox" id="cvpop_found" style="width:auto;margin:0" ${vol.found?"checked":""}> Van Vlaenderen record found in this index</label>`:"";
+    const noteField=curator?"":`<label style="margin-top:8px">Note to curator (optional)<textarea id="cvpop_note" rows="2"></textarea></label>`;
+    controls=`<div style="margin-top:10px"><div class="muted" style="font-size:12px;margin-bottom:4px">Search status</div>`
+      +`<div class="cvst-row" style="display:flex;gap:6px;flex-wrap:wrap">${stateBtns}</div>${foundBox}${noteField}`
+      +`<div style="margin-top:12px"><button class="act" onclick="cvSubmitVol('${esc(cid)}','${esc(vid)}',${curator?'true':'false'})">${curator?"Save":"Submit proposal"}</button>`
+      +`<span class="msg" id="cvpop_msg" style="display:inline-block;margin:0 0 0 8px"></span></div></div>`;
+  }else{controls=`<div class="muted" style="font-size:12px;margin-top:8px">Sign in as curator or contributor to update search status.</div>`;}
+  $("#cvpop_body").innerHTML=`<div class="kv">${meta}</div>${note}${agatha}${controls}`;
+  $("#cvpop").dataset.state=cur;$("#cvpop").classList.add("open");
+}
+window.cvOpenVol=cvOpenVol;
+function cvPickState(btn){document.querySelectorAll(".cvst-row .cvst").forEach(b=>b.classList.remove("on"));btn.classList.add("on");$("#cvpop").dataset.state=btn.dataset.s;}
+window.cvPickState=cvPickState;
+async function cvSubmitVol(cid,vid,curator){
+  const searched=$("#cvpop").dataset.state||"not_started",isIdx=vid[0]==="i";
+  const payload={coverage_id:cid,vid,searched};
+  if(isIdx&&$("#cvpop_found"))payload.found=$("#cvpop_found").checked;
+  if(curator){
+    const {error}=await sb.rpc("apply_coverage_update",{payload});
+    if(error){flash($("#cvpop_msg"),esc(error.message),"err");return;}
+    cvClosePop();await cvRefreshMuni((COV_ROWS[cid]||{}).muni);flash($("#flash"),"Coverage updated.","good");
+  }else{
+    const note=($("#cvpop_note")&&$("#cvpop_note").value.trim())||null;
+    const {error}=await sb.from("proposals").insert({kind:"coverage_update",target_table:"research_coverage",target_id:cid,payload,submitter_note:note});
+    if(error){flash($("#cvpop_msg"),esc(error.message),"err");return;}
+    cvClosePop();flash($("#flash"),"Coverage change submitted to the proposal queue for curator review.","good");loadProposals();
+  }
+}
+window.cvSubmitVol=cvSubmitVol;
+async function cvRefreshMuni(id){
+  if(!id)return;
+  const {data}=await sb.from("research_coverage_rollup_v2").select("*").eq("municipality_id",id);
+  const m=COV_BY_MUNI.find(x=>x.id===id);
+  if(m&&data){m.cls={};data.forEach(r=>{m.cls[r.record_class]=r;});}
+  await cvLoadUnits(id);
+  renderMetrics();
 }
 
 boot();
