@@ -1276,6 +1276,11 @@ function cvUnitsHtml(id){
 }
 function cvToggleUnit(pid){COV_OPEN["u_"+pid]=!COV_OPEN["u_"+pid];renderCoverage();}
 window.cvToggleUnit=cvToggleUnit;
+function cvAgathaUrl(vol){
+  return (vol && (vol.url || (vol.bookpart_id
+    ? 'https://agatha.arch.be/en/search/genealogie/'+encodeURIComponent(vol.bookpart_id)
+    : null))) || null;
+}
 function cvVolPill(cid,vol){
   const st=VSTATE[vol.searched||"not_started"]||VSTATE.not_started,na=vol.available===false;
   return `<div class="cv-vol" onclick="cvOpenVol('${esc(cid)}','${esc(vol.vid)}')">`
@@ -1284,7 +1289,7 @@ function cvVolPill(cid,vol){
     +`${vol.found?'<span class="vbadge found">&#10003; found</span>':''}`
     +`${na?'<span class="vbadge gap">not digitized</span>':''}`
     +`${vol.derived?'<span class="vbadge verify" title="Reconstructed — verify">verify</span>':''}`
-    +`${vol.url?'<span class="vbadge" title="AGATHA link available">&#128279;</span>':''}`
+    +`${cvAgathaUrl(vol)?'<span class="vbadge" title="Open on AGATHA">&#128279;</span>':''}`
     +`</div>`;
 }
 function cvVolsHtml(urows){
@@ -1320,7 +1325,8 @@ function cvOpenVol(cid,vid){
   const cur=vol.searched||"not_started";
   const meta=`${vol.derived?'<span class="vbadge verify">reconstructed — verify</span> ':''}${vol.available===false?'<span class="vbadge gap">not digitized</span> ':''}`;
   const note=vol.note?`<div class="kv" style="margin-top:6px"><b>Note:</b> ${esc(vol.note)}</div>`:"";
-  const agatha=vol.url?`<div style="margin:8px 0"><a href="${esc(vol.url)}" target="_blank" rel="noopener">View on AGATHA &#8599;</a></div>`:`<div class="muted" style="margin:8px 0;font-size:12px">No direct AGATHA link stored for this volume.</div>`;
+  const _au=cvAgathaUrl(vol);
+  const agatha=_au?`<div style="margin:8px 0"><a href="${esc(_au)}" target="_blank" rel="noopener">View on AGATHA &#8599;</a></div>`:`<div class="muted" style="margin:8px 0;font-size:12px">No AGATHA link for this volume.</div>`;
   let controls="";
   if(canWrite){
     const stateBtns=Object.keys(VSTATE).map(k=>`<button type="button" class="ghost cvst${k===cur?' on':''}" data-s="${k}" onclick="cvPickState(this)">${esc(VSTATE[k].t)}</button>`).join(" ");
