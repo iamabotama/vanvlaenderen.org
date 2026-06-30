@@ -233,6 +233,15 @@
       <p class="muted" id="addMode" style="font-size:12.5px"></p>
       <div class="msg" id="addMsg"></div>
 
+      <details id="cskill" style="max-width:760px;margin:0 0 14px;border:1px solid var(--line);border-radius:8px;padding:6px 10px">
+        <summary style="cursor:pointer;font-weight:600">Collection skill (current) <span class="muted" id="cskill_synced" style="font-weight:400;font-size:12px"></span></summary>
+        <div style="margin-top:8px">
+          <button class="ghost" id="cskill_copy">Copy skill text</button>
+          <span class="msg" id="cskill_msg" style="display:inline-block;margin-left:8px"></span>
+          <pre id="cskill_body" style="margin-top:8px;max-height:340px;overflow:auto;white-space:pre-wrap;font-size:11.5px;background:var(--chip);padding:10px;border-radius:6px">Open to load…</pre>
+        </div>
+      </details>
+
       <fieldset style="max-width:760px">
         <legend>Paste a record or tracker update (JSON)</legend>
         <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record (with an <code>event</code>). The <code>```json</code> fences are optional. Search status is set per-volume in the tracker, not here.</p>
@@ -462,12 +471,31 @@ function initUI(){
   [$("#a_type"),$("#a_year")].forEach(el=>el.addEventListener("input",updateGateHint));
   $("#pj_parse").onclick=pjParse;$("#pj_clear").onclick=()=>{pjReset();flash($("#pj_msg"),"");};
   $("#pj_text").addEventListener("input",pjResetPreview); // #12: editing JSON after preview collapses Submit (can't submit unvalidated)
+  if($("#cskill_copy"))$("#cskill_copy").onclick=copyCollectionSkill;
+  if($("#cskill"))$("#cskill").addEventListener("toggle",e=>{if(e.target.open)loadCollectionSkill();});
   const curator=ROLE==="curator";
   $("#addMode").textContent=curator?"You are the curator — this writes directly to the database.":"Your change will be submitted to the proposal queue for the curator to review.";
   $("#a_save").textContent=curator?"Save record":"Submit proposal";
   $("#propMode").textContent=curator?"Pending proposals from contributors. Approve, reject, or edit.":"Your submitted proposals.";
 }
 function gotoTab(name){document.querySelector(`nav button.tab[data-tab="${name}"]`).click();}
+let CSKILL_TEXT="";
+async function loadCollectionSkill(){
+  const body=$("#cskill_body");if(!body||CSKILL_TEXT)return;
+  try{
+    const res=await fetch("collection-skill.md",{cache:"no-cache"});
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    const t=await res.text();CSKILL_TEXT=t;
+    const m=/last synced (\d{4}-\d{2}-\d{2})/i.exec(t);
+    if($("#cskill_synced"))$("#cskill_synced").textContent=m?("· last synced "+m[1]):"";
+    body.textContent=t;
+  }catch(e){body.textContent="Could not load the skill snapshot ("+(e.message||e)+"). It deploys with the site — try on the live editor.";}
+}
+function copyCollectionSkill(){
+  const txt=CSKILL_TEXT||($("#cskill_body")?$("#cskill_body").textContent:"")||"";
+  if(!txt||txt==="Open to load…"){flash($("#cskill_msg"),"Open the panel first.","err");return;}
+  navigator.clipboard.writeText(txt).then(()=>flash($("#cskill_msg"),"Copied — paste into a collection thread.","good"),()=>flash($("#cskill_msg"),"Copy failed.","err"));
+}
 function deriveYear(){const m=/(1[0-9]{3}|20[0-2][0-9])/.exec($("#a_date").value);if(m&&!$("#a_year").value)$("#a_year").value=m[1];updateGateHint();}
 function updateGateHint(){const t=$("#a_type").value,y=parseInt($("#a_year").value||"0",10);
   $("#a_gate").textContent=(BIRTHISH.has(t)&&y&&y>NOW-100)?`Blocked: a ${t} in ${y} is within 100 years and implies a living person. Only death/burial records are allowed that recent.`:"";}
