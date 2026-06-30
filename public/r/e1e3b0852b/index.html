@@ -191,7 +191,7 @@
         <div><label>Parish</label><select id="b_parish"></select></div>
         <div><label>Year from</label><input type="number" id="b_y0" style="width:90px"></div>
         <div><label>Year to</label><input type="number" id="b_y1" style="width:90px"></div>
-        <div><label>Sourcing</label><select id="b_src"><option value="">all</option><option value="sourced">sourced</option><option value="needs">needs source</option><option value="full">fully sourced</option></select></div>
+        <div><label>Sourcing</label><select id="b_src"><option value="">all</option><option value="ok">ok (extracted + folio)</option><option value="needs">needs</option></select></div>
         <div><label>Per page</label><select id="b_per"><option>25</option><option selected>50</option><option>100</option><option>200</option><option value="all">All</option></select></div>
         <button class="ghost" id="b_run">Search</button>
         <button class="ghost" id="b_reset">Reset</button>
@@ -511,8 +511,8 @@ async function runBrowse(){
   const ty=$("#b_type").value,su=$("#b_surname").value,mid=$("#b_muni").value,
         pid=$("#b_parish").value,y0=parseInt($("#b_y0").value||"",10),y1=parseInt($("#b_y1").value||"",10),
         src=$("#b_src").value,q=$("#b_q").value.trim(),match=$("#b_match").value;
-  const sel=su?'event_id,event_type,year,municipality_id,needs_source,fully_sourced,event_participants!inner(role,name_as_written,canonical_surname)'
-             :'event_id,event_type,year,municipality_id,needs_source,fully_sourced,event_participants(role,name_as_written)';
+  const sel=su?'event_id,event_type,year,municipality_id,needs_source,fully_sourced,transcription,translation,event_sources(url_level),event_participants!inner(role,name_as_written,canonical_surname)'
+             :'event_id,event_type,year,municipality_id,needs_source,fully_sourced,transcription,translation,event_sources(url_level),event_participants(role,name_as_written)';
   const makeQuery=()=>{
     let query=sb.from("events").select(sel).order("year",{ascending:false}).order("event_id");
     if(ty) query=query.eq("event_type",ty);
@@ -521,23 +521,37 @@ async function runBrowse(){
     if(pid) query=query.eq("parish_id",pid);
     if(!isNaN(y0)) query=query.gte("year",y0);
     if(!isNaN(y1)) query=query.lte("year",y1);
-    if(src==="sourced") query=query.eq("needs_source",0);
-    if(src==="needs") query=query.eq("needs_source",1);
-    if(src==="full") query=query.eq("fully_sourced",1);
+    // src ('ok'|'needs') is filtered client-side from the computed status (content + folio), not needs_source
     return query;
   };
   let rows;
   try{rows=await fetchAll(makeQuery);}
   catch(err){flash($("#flash"),"Browse error: "+esc(err.message||err),"err");return;}
+  if(src==="ok") rows=rows.filter(e=>bSrcStatus(e)==="ok");
+  else if(src==="needs") rows=rows.filter(e=>bSrcStatus(e)==="needs");
   if(q){const ql=q.toLowerCase();
     rows=rows.filter(e=>{const fields=[e.event_id,muniName(e.municipality_id),...(e.event_participants||[]).map(p=>p.name_as_written)].filter(Boolean).map(x=>String(x).toLowerCase());
       return match==="exact"?fields.includes(ql):fields.some(f=>f.includes(ql));});}
   PAGE.browse.rows=rows;PAGE.browse.page=1;renderPage("browse");
 }
+function bSrcStatus(e){
+  // ok = act content extracted (transcription or translation) AND a page-level (folio) source; else needs
+  const hasContent=!!String(e.transcription||"").trim()||!!String(e.translation||"").trim();
+  const hasFolio=(e.event_sources||[]).some(s=>s&&s.url_level==="folio");
+  return (hasContent&&hasFolio)?"ok":"needs";
+}
+const SUPPORT_ROLES=new Set(["father","mother","godfather","godmother","godparent","witness","officiant"]);
+function principalNames(e){
+  const ps=(e.event_participants||[]);
+  let pr=ps.filter(p=>!SUPPORT_ROLES.has(p.role)&&String(p.name_as_written||"").trim());
+  if(!pr.length) pr=ps.filter(p=>String(p.name_as_written||"").trim()); // fallback so a row is never empty
+  return pr.map(p=>p.name_as_written);
+}
 function drawBrowseRows(rows){
   $("#b_body").innerHTML=rows.map(e=>{
-    const pr=(e.event_participants||[]).map(p=>esc(p.name_as_written)).join(" / ")||'<span class="muted">—</span>';
-    const s=e.fully_sourced?'<span class="pill ok">full</span>':(e.needs_source?'<span class="pill bad">needs</span>':'<span class="pill ok">ok</span>');
+    const _pn=principalNames(e);
+    const pr=_pn.length?_pn.map(esc).join(" / "):'<span class="muted">—</span>';
+    const s=bSrcStatus(e)==="ok"?'<span class="pill ok">ok</span>':'<span class="pill bad">needs</span>';
     return `<tr class="click" onclick="openRecord('${esc(e.event_id)}')"><td><span class="link mono">${esc(e.event_id)}</span></td><td>${e.year??""}</td><td>${esc(e.event_type||"")}</td><td>${pr}</td><td>${esc(muniName(e.municipality_id))}</td><td>${s}</td></tr>`;
   }).join("")||`<tr><td colspan="6" class="muted">No records.</td></tr>`;
 }
@@ -624,17 +638,32 @@ async function openRecord(id){
   const {data:e,error}=await sb.from("events").select("*,event_participants(*),event_sources(*)").eq("event_id",id).single();
   if(error){flash($("#flash"),"Open error: "+esc(error.message),"err");return;}
   $("#m_title").textContent=id+" · "+(e.event_type||"");
-  const parts=(e.event_participants||[]).map(p=>`<li><span class="role-tag">${esc(p.role)}</span>${esc(p.name_as_written||"")} ${p.person_id?'<span class="link mono" onclick="openPerson(\''+esc(p.person_id)+'\')">'+esc(p.person_id)+'</span>':''}</li>`).join("")||'<li class="muted">none</li>';
+  const parts=(e.event_participants||[]).map(p=>{
+    const nm=String(p.name_as_written||"").trim()?esc(p.name_as_written):(p.canonical_surname?'<i class="muted">'+esc(p.canonical_surname)+'</i>':'<span class="muted">—</span>');
+    return `<li><span class="role-tag">${esc(p.role)}</span>${nm} ${p.person_id?'<span class="link mono" onclick="openPerson(\''+esc(p.person_id)+'\')">'+esc(p.person_id)+'</span>':''}</li>`;
+  }).join("")||'<li class="muted">none</li>';
   const srcs=(e.event_sources||[]).map(s=>{
     const lvl=s.url_level?`<span class="lvl">${esc(s.url_level)}</span>`:"";
-    const link=s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">open</a>`:'<span class="muted">no url</span>';
-    return `<li><span class="role-tag">${esc(s.role||"")}</span>${lvl}${link}${s.locator?' <span class="muted">('+esc(s.locator)+')</span>':''}</li>`;
+    const link=s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">open &#8599;</a>`:'<span class="muted">no url</span>';
+    const loc=s.locator?' <span class="muted">&mdash; '+esc(s.locator)+'</span>':'';
+    const nt=s.notes?' <span class="muted">['+esc(s.notes)+']</span>':'';
+    return `<li><span class="role-tag">${esc(s.role||"?")}</span>${lvl} ${link}${loc}${nt}</li>`;
   }).join("")||'<li class="muted">no sources — needs source</li>';
+  // Find & extract: the index link, the register-folio link, and the locating/position clue
+  const _idx=(e.event_sources||[]).find(s=>s.role==="index"&&s.url);
+  const _fol=(e.event_sources||[]).find(s=>s.url_level==="folio"&&s.url)||(e.event_sources||[]).find(s=>s.role==="original_record"&&s.url);
+  const _clue=e.source_locator||(_fol&&_fol.locator)||(_idx&&_idx.locator)||"";
+  const findExtract=`<h4>Find &amp; extract</h4><ul class="plain">`
+    +`<li><b>Index:</b> ${_idx?'<a href="'+esc(_idx.url)+'" target="_blank" rel="noopener">open index &#8599;</a>'+(_idx.locator?' <span class="muted">('+esc(_idx.locator)+')</span>':''):'<span class="muted">none</span>'}</li>`
+    +`<li><b>Register folio:</b> ${_fol?'<a href="'+esc(_fol.url)+'" target="_blank" rel="noopener">open folio &#8599;</a>':'<span class="muted">not located yet</span>'}</li>`
+    +(_clue?'<li><b>Position:</b> <span class="muted">'+esc(_clue)+'</span></li>':'')
+    +`</ul>`;
   $("#m_body").innerHTML=`
     <div class="kv"><b>Type:</b> ${esc(e.event_type||"")} &nbsp; <b>Date:</b> ${esc(e.date_text||e.date_iso||"")} <span class="muted">(${esc(e.date_precision||"")}; year ${e.year??"—"})</span></div>
     <div class="kv"><b>Place:</b> ${esc(muniName(e.municipality_id))}${e.parish_id?" / "+esc(parishName(e.parish_id)):""}</div>
     ${e.summary?`<div class="kv"><b>Summary:</b> ${esc(e.summary)}</div>`:""}
     ${e.notes?`<div class="kv"><b>Notes:</b> ${esc(e.notes)}</div>`:""}
+    ${findExtract}
     <h4>Participants</h4><ul class="plain">${parts}</ul>
     <h4>Sources</h4><ul class="plain">${srcs}</ul>
     ${e.transcription?`<h4>Transcription</h4><div class="transc">${esc(e.transcription)}</div>`:""}
