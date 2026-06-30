@@ -244,7 +244,7 @@
 
       <fieldset style="max-width:760px">
         <legend>Paste a record or tracker update (JSON)</legend>
-        <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record (with an <code>event</code>). The <code>```json</code> fences are optional. Search status is set per-volume in the tracker, not here.</p>
+        <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record (with an <code>event</code>), <b>or a JSON array <code>[ {…}, {…} ]</code> of records for bulk entry</b>. The <code>```json</code> fences are optional. Search status is set per-volume in the tracker, not here.</p>
         <div id="cv_ctx" class="hide"></div>
         <textarea id="pj_text" rows="9" placeholder='{"event":{…},"participants":[…],"sources":[…],"tracker":{…}}' style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px"></textarea>
         <label style="margin-top:8px">Note to curator (optional)<textarea id="pj_note" rows="2" placeholder="Context for the curator about this submission. Stored with the proposal — never written into the record itself."></textarea></label>
@@ -784,6 +784,7 @@ let PJ=null;                              // last successfully-parsed payload (f
 let PJ_MODE=null;                         // "full" | "tracker" — set by pjParse, read by pjSubmit
 let PJ_EDIT_ORIG=null;                    // #15: proposal id being curator-edited (apply resolves it, no dup row)
 let PJ_DUPS=[];                           // #14: scored duplicate candidates for the current preview
+let PJ_BATCH=null;                        // bulk paste: validated array of full records
 const pjSubmitLabel=()=>ROLE==="curator"?"Apply record":"Submit to queue";
 function pjPayloadForRpc(o){const c=Object.assign({},o);delete c.contract_version;return c;} // #10: strip before RPC
 function stripFences(t){t=(t||"").trim();const m=/^```[a-zA-Z]*\s*([\s\S]*?)\s*```$/.exec(t);return m?m[1].trim():t;}
@@ -877,7 +878,8 @@ function pjParse(){
   const raw=stripFences($("#pj_text").value);
   if(!raw){flash($("#pj_msg"),"Paste a JSON record first.","err");return;}
   let o;try{o=JSON.parse(raw);}catch(e){flash($("#pj_msg"),"JSON parse error: "+esc(e.message),"err");return;}
-  if(!o||typeof o!=="object"||Array.isArray(o)){flash($("#pj_msg"),"Expected a JSON object.","err");return;}
+  if(Array.isArray(o))return pjParseBatch(o); // bulk paste: an array of full records
+  if(!o||typeof o!=="object"){flash($("#pj_msg"),"Expected a JSON object, or an array of records for bulk entry.","err");return;}
   if(!o.event){flash($("#pj_msg"),'Paste a full record (needs an "event"). Search status is now set per-volume in the tracker, not via paste.',"err");return;}
   if("tracker" in o)delete o.tracker; // tracker block retired: coverage/search status is set per-volume in the tracker editor
   const ctxFilled=cvApplyCtx(o); // P1: pinned-volume defaults fill only blank fields, never override
@@ -899,7 +901,68 @@ function pjInjectSubmit(){
   $("#pj_preview").appendChild(wrap);
   $("#pj_submit").onclick=pjSubmit;
 }
-function pjResetPreview(){PJ=null;PJ_MODE=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";flash($("#pj_msg"),"");} // #12: collapse on edit (keeps text/note + edit-target)
+function pjParseBatch(arr){
+  PJ=null;PJ_MODE=null;PJ_BATCH=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";
+  if(!arr.length){flash($("#pj_msg"),"The array is empty.","err");return;}
+  const recs=[],probs=[];
+  arr.forEach((o,i)=>{
+    if(!o||typeof o!=="object"||Array.isArray(o)||!o.event){probs.push((i+1)+": not a record (needs an \"event\")");return;}
+    if("tracker" in o)delete o.tracker;
+    cvApplyCtx(o); // pinned-volume defaults apply to every record in the batch
+    const cverr=pjContractError(o,null); if(cverr){probs.push((i+1)+": "+cverr);return;}
+    const errs=pjMinBar(o); if(errs.length){probs.push((i+1)+": "+errs.join("; "));return;}
+    recs.push(o);
+  });
+  const rows=arr.map((o,i)=>{
+    const ev=(o&&o.event)||{},okrec=recs.indexOf(o)>=0;
+    const who=(Array.isArray(o&&o.participants)?o.participants:[]).map(p=>p&&(p.name_as_written||p.name)).filter(Boolean)[0]||"—";
+    return `<tr><td>${i+1}</td><td>${esc(ev.event_type||"?")}</td><td>${esc(String(ev.year||ev.date_text||""))}</td><td>${esc(who)}</td><td>${okrec?'<span class="pill ok">ok</span>':'<span class="pill bad">fix</span>'}</td></tr>`;
+  }).join("");
+  const errHtml=probs.length?`<div class="msg err show" style="margin-top:8px">${probs.length} record(s) need fixing: ${probs.map(esc).join(" | ")}</div>`:"";
+  $("#pj_preview").innerHTML=`${errHtml}<div class="card" style="max-width:none;margin-top:10px">
+    <div class="kv"><b>Batch:</b> ${arr.length} record(s), ${recs.length} ready${probs.length?(", "+probs.length+" to fix"):""}.</div>
+    <table><thead><tr><th>#</th><th>Type</th><th>Year</th><th>Principal</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="kv muted" style="font-size:11.5px;margin-top:6px">Duplicate-scan is skipped in batch mode &mdash; review the list before submitting.</div></div>`;
+  if(probs.length){flash($("#pj_msg"),"Every record must be valid to submit the batch. Fix the flagged ones and Parse again.","err");return;}
+  PJ_BATCH=recs;PJ_MODE="batch";
+  pjInjectBatchSubmit();
+  flash($("#pj_msg"),ROLE==="curator"?(recs.length+" records ready. Review, then Apply all."):(recs.length+" records ready. Review, then Submit all to the queue."),"good");
+}
+function pjInjectBatchSubmit(){
+  const wrap=document.createElement("div");
+  wrap.style.cssText="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap";
+  wrap.innerHTML=`<button class="act" id="pj_submit">${ROLE==="curator"?("Apply all "+PJ_BATCH.length):("Submit all "+PJ_BATCH.length+" to queue")}</button>`;
+  $("#pj_preview").appendChild(wrap);
+  $("#pj_submit").onclick=pjSubmitBatch;
+}
+async function pjSubmitBatch(){
+  if(!PJ_BATCH||!PJ_BATCH.length)return;
+  const btn=$("#pj_submit");if(btn)btn.disabled=true;
+  if(ROLE!=="curator"&&ROLE!=="contributor"){flash($("#pj_msg"),"No role assigned — cannot submit.","err");if(btn)btn.disabled=false;return;}
+  const note=($("#pj_note")&&$("#pj_note").value.trim())||null;
+  const curator=ROLE==="curator";
+  let done=0;const fails=[];
+  for(let i=0;i<PJ_BATCH.length;i++){
+    const rec=PJ_BATCH[i],clean=pjPayloadForRpc(rec);
+    try{
+      if(curator){
+        const {data:ins,error:ie}=await sb.from("proposals").insert({kind:"full_record",target_table:"events",payload:rec,submitter_note:note}).select("id").single();
+        if(ie) throw ie;
+        const {data:res,error:re}=await sb.rpc("apply_full_record",{payload:clean});
+        if(re) throw re;
+        await sb.from("proposals").update({status:"applied",reviewed_by:USER.id,reviewed_at:new Date().toISOString(),target_id:(res&&res.event_id)||null}).eq("id",ins.id);
+      }else{
+        const {error}=await sb.from("proposals").insert({kind:"full_record",target_table:"events",payload:rec,submitter_note:note});
+        if(error) throw error;
+      }
+      done++;flash($("#pj_msg"),"Working… "+done+"/"+PJ_BATCH.length,"good");
+    }catch(e){fails.push((i+1)+": "+esc(e.message||String(e)));}
+  }
+  runBrowse();loadTracker();loadProposals();
+  if(fails.length){flash($("#pj_msg"),done+" "+(curator?"applied":"queued")+", "+fails.length+" failed — "+fails.join(" | "),"err");if(btn)btn.disabled=false;}
+  else{flash($("#pj_msg"),done+" record(s) "+(curator?"applied":"submitted to the queue")+".","good");pjReset();}
+}
+function pjResetPreview(){PJ=null;PJ_MODE=null;PJ_BATCH=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";flash($("#pj_msg"),"");} // #12: collapse on edit (keeps text/note + edit-target)
 function pjPreview(o,errs){
   const ev=o.event||{},parts=Array.isArray(o.participants)?o.participants:[],srcs=Array.isArray(o.sources)?o.sources:[],trk=o.tracker;
   const place=esc((ev.municipality_name||ev.municipality_id||"")+(ev.parish_name?(" / "+ev.parish_name):ev.parish_id?(" / "+ev.parish_id):""));
@@ -925,7 +988,7 @@ function pjPreview(o,errs){
       ${ev.translation?`<h4>Translation</h4><div class="transc">${esc(ev.translation)}</div>`:""}
     </div>`;
 }
-function pjReset(){$("#pj_text").value="";if($("#pj_note"))$("#pj_note").value="";$("#pj_preview").innerHTML="";PJ=null;PJ_MODE=null;PJ_DUPS=[];PJ_EDIT_ORIG=null;}
+function pjReset(){$("#pj_text").value="";if($("#pj_note"))$("#pj_note").value="";$("#pj_preview").innerHTML="";PJ=null;PJ_MODE=null;PJ_BATCH=null;PJ_DUPS=[];PJ_EDIT_ORIG=null;}
 async function pjSubmit(){
   if(!PJ)return;
   const btn=$("#pj_submit");if(btn)btn.disabled=true;
