@@ -236,6 +236,7 @@
       <fieldset style="max-width:760px">
         <legend>Paste a record or tracker update (JSON)</legend>
         <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record (with an <code>event</code>). The <code>```json</code> fences are optional. Search status is set per-volume in the tracker, not here.</p>
+        <div id="cv_ctx" class="hide"></div>
         <textarea id="pj_text" rows="9" placeholder='{"event":{…},"participants":[…],"sources":[…],"tracker":{…}}' style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px"></textarea>
         <label style="margin-top:8px">Note to curator (optional)<textarea id="pj_note" rows="2" placeholder="Context for the curator about this submission. Stored with the proposal — never written into the record itself."></textarea></label>
         <div style="margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
@@ -851,6 +852,7 @@ function pjParse(){
   if(!o||typeof o!=="object"||Array.isArray(o)){flash($("#pj_msg"),"Expected a JSON object.","err");return;}
   if(!o.event){flash($("#pj_msg"),'Paste a full record (needs an "event"). Search status is now set per-volume in the tracker, not via paste.',"err");return;}
   if("tracker" in o)delete o.tracker; // tracker block retired: coverage/search status is set per-volume in the tracker editor
+  const ctxFilled=cvApplyCtx(o); // P1: pinned-volume defaults fill only blank fields, never override
   const cverr=pjContractError(o,null);
   if(cverr){flash($("#pj_msg"),cverr,"err");return;}
   const errs=pjMinBar(o);
@@ -858,7 +860,7 @@ function pjParse(){
   if(errs.length){flash($("#pj_msg"),"Cannot submit — fix: "+errs.map(esc).join("; "),"err");return;} // #12: invalid => no Submit injected
   PJ=o;PJ_MODE="full";
   pjInjectSubmit(); // #12: Submit exists only because the bar passed
-  flash($("#pj_msg"),ROLE==="curator"?"Looks good. Review the preview, then Apply.":"Looks good. Review the preview, then Submit to the queue.","good");
+  flash($("#pj_msg"),(ctxFilled.length?"Filled from pinned volume: "+ctxFilled.join(", ")+". ":"")+(ROLE==="curator"?"Looks good. Review the preview, then Apply.":"Looks good. Review the preview, then Submit to the queue."),"good");
   pjDupCheck(o); // #14: advisory, async
 }
 function pjInjectSubmit(){
@@ -1366,10 +1368,67 @@ function cvOpenVol(cid,vid){
       +`<div style="margin-top:12px"><button class="act" onclick="cvSubmitVol('${esc(cid)}','${esc(vid)}',${curator?'true':'false'})">${curator?"Save":"Submit proposal"}</button>`
       +`<span class="msg" id="cvpop_msg" style="display:inline-block;margin:0 0 0 8px"></span></div></div>`;
   }else{controls=`<div class="muted" style="font-size:12px;margin-top:8px">Sign in as curator or contributor to update search status.</div>`;}
-  $("#cvpop_body").innerHTML=`<div class="kv">${meta}</div>${note}${agatha}${controls}`;
+  const recsBox=`<div id="cvpop_recs" class="muted" style="margin:10px 0;font-size:12px">Loading records…</div>`;
+  const addBtn=canWrite?`<div><button class="ghost" onclick="cvAddHere('${esc(cid)}','${esc(vid)}')">+ Add record here</button></div>`:"";
+  $("#cvpop_body").innerHTML=`<div class="kv">${meta}</div>${note}${agatha}${recsBox}${addBtn}${controls}`;
   $("#cvpop").dataset.state=cur;$("#cvpop").classList.add("open");
+  cvLoadVolEvents(cid,vid);
 }
 window.cvOpenVol=cvOpenVol;
+let CV_ADD_CTX=null;
+function cvSpan(span){
+  const s=String(span||""); const m=/(\d{3,4})\s*[-–]\s*(\d{3,4})/.exec(s);
+  if(m) return [parseInt(m[1],10),parseInt(m[2],10)];
+  const y=/(\d{3,4})/.exec(s); return y?[parseInt(y[1],10),parseInt(y[1],10)]:[null,null];
+}
+async function cvLoadVolEvents(cid,vid){
+  const r=COV_ROWS[cid],vol=cvFindVol(cid,vid),box=$("#cvpop_recs");
+  if(!r||!vol||!box)return;
+  const sp=cvSpan(vol.span);
+  let qy=sb.from("v_coverage_events").select("event_id,event_type,year,summary,needs_register").eq("record_class",r.record_class);
+  qy=(r.scope_kind==="parish"&&r.parish_id)?qy.eq("parish_id",r.parish_id):qy.eq("municipality_id",r.muni);
+  if(sp[0]!=null)qy=qy.gte("year",sp[0]); if(sp[1]!=null)qy=qy.lte("year",sp[1]);
+  const {data,error}=await qy.order("year");
+  if(!$("#cvpop_recs"))return; // popover closed meanwhile
+  if(error){box.className="muted";box.innerHTML="Could not load records.";return;}
+  if(!data||!data.length){box.className="muted";box.innerHTML="No records extracted from this volume yet.";return;}
+  box.className="";
+  box.innerHTML=`<div style="font-weight:600;font-size:12px;margin:4px 0">Records in this volume (${data.length})</div>`
+    +data.map(e=>{const b=e.needs_register?'<span class="vbadge gap">needs extraction</span>':'<span class="vbadge found">&#10003; extracted</span>';
+      return `<div class="cv-vol" onclick="openRecord('${esc(e.event_id)}')"><span class="vspan">${e.year||""}</span> <span>${esc(String(e.summary||e.event_type||"").slice(0,72))}</span> ${b}</div>`;}).join("");
+}
+function cvAddHere(cid,vid){
+  const r=COV_ROWS[cid],vol=cvFindVol(cid,vid);if(!r||!vol)return;
+  const ev2type={birth:"baptism",death:"burial",marriage:"marriage"};
+  const place=r.scope_kind==="civil"?(muniName(r.muni)+" — civil"):parishName(r.parish_id);
+  const clsLabel=(r.scope_kind==="civil"?CV_CIVIL_LABEL:CV_PARISH_LABEL)[r.record_class];
+  CV_ADD_CTX={municipality_id:r.muni,parish_id:(r.scope_kind==="parish"?r.parish_id:null),
+    event_type:ev2type[r.record_class]||r.record_class,record_class:r.record_class,
+    span:vol.span||"",register_url:cvAgathaUrl(vol),bookpart_id:vol.bookpart_id||null,
+    place:place,class_label:clsLabel};
+  cvClosePop();gotoTab("add");cvRenderCtx();const t=$("#pj_text");if(t)t.focus();
+}
+function cvRenderCtx(){
+  const el=$("#cv_ctx");if(!el)return;
+  if(!CV_ADD_CTX){el.className="hide";el.innerHTML="";return;}
+  const c=CV_ADD_CTX;
+  const link=c.register_url?`<a href="${esc(c.register_url)}" target="_blank" rel="noopener">open register &#8599;</a>`:'<span class="muted">no register link</span>';
+  el.className="";
+  el.style.cssText="margin:0 0 8px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--chip)";
+  el.innerHTML=`<div style="font-size:12px"><b>Adding to:</b> ${esc(c.place)} &middot; ${esc(c.class_label||"")} ${esc(c.span||"")} &nbsp; ${link} `
+    +`<button class="ghost" style="padding:1px 8px;margin-left:6px" onclick="cvClearCtx()">clear</button></div>`
+    +`<div class="muted" style="font-size:11px;margin-top:4px">Pinned location/class fill any of those fields your pasted record leaves blank; they never override values the record states.</div>`;
+}
+function cvClearCtx(){CV_ADD_CTX=null;cvRenderCtx();}
+function cvApplyCtx(o){
+  const filled=[];if(!CV_ADD_CTX||!o||!o.event)return filled;
+  const c=CV_ADD_CTX,ev=o.event;
+  if(!ev.municipality_id&&c.municipality_id){ev.municipality_id=c.municipality_id;filled.push("municipality_id");}
+  if(!ev.parish_id&&c.parish_id){ev.parish_id=c.parish_id;filled.push("parish_id");}
+  if(!ev.event_type&&c.event_type){ev.event_type=c.event_type;filled.push("event_type");}
+  return filled;
+}
+window.cvAddHere=cvAddHere;window.cvClearCtx=cvClearCtx;
 function cvPickState(btn){document.querySelectorAll(".cvst-row .cvst").forEach(b=>b.classList.remove("on"));btn.classList.add("on");$("#cvpop").dataset.state=btn.dataset.s;}
 window.cvPickState=cvPickState;
 async function cvSubmitVol(cid,vid,curator){
