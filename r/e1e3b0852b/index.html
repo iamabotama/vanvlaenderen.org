@@ -235,7 +235,7 @@
 
       <fieldset style="max-width:760px">
         <legend>Paste a record or tracker update (JSON)</legend>
-        <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: either a full multi-participant record (with an <code>event</code>), or a tracker-only update (<code>set</code> and/or <code>coverage</code>, no event). The <code>```json</code> fences are optional.</p>
+        <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record (with an <code>event</code>). The <code>```json</code> fences are optional. Search status is set per-volume in the tracker, not here.</p>
         <textarea id="pj_text" rows="9" placeholder='{"event":{…},"participants":[…],"sources":[…],"tracker":{…}}' style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px"></textarea>
         <label style="margin-top:8px">Note to curator (optional)<textarea id="pj_note" rows="2" placeholder="Context for the curator about this submission. Stored with the proposal — never written into the record itself."></textarea></label>
         <div style="margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
@@ -820,27 +820,17 @@ function pjParse(){
   if(!raw){flash($("#pj_msg"),"Paste a JSON record first.","err");return;}
   let o;try{o=JSON.parse(raw);}catch(e){flash($("#pj_msg"),"JSON parse error: "+esc(e.message),"err");return;}
   if(!o||typeof o!=="object"||Array.isArray(o)){flash($("#pj_msg"),"Expected a JSON object.","err");return;}
-  const trk=pjUnwrapTracker(o);
-  if(!o.event&&!trk){flash($("#pj_msg"),'Paste a full record (needs "event") or a tracker update (needs "set"/"coverage").',"err");return;}
-  const cverr=pjContractError(o,trk); // #10: same guard, both modes
+  if(!o.event){flash($("#pj_msg"),'Paste a full record (needs an "event"). Search status is now set per-volume in the tracker, not via paste.',"err");return;}
+  if("tracker" in o)delete o.tracker; // tracker block retired: coverage/search status is set per-volume in the tracker editor
+  const cverr=pjContractError(o,null);
   if(cverr){flash($("#pj_msg"),cverr,"err");return;}
-  if(o.event){
-    const errs=pjMinBar(o);
-    pjPreview(o,errs);
-    if(errs.length){flash($("#pj_msg"),"Cannot submit — fix: "+errs.map(esc).join("; "),"err");return;} // #12: invalid => no Submit injected
-    PJ=o;PJ_MODE="full";
-    pjInjectSubmit(); // #12: Submit exists only because the bar passed
-    flash($("#pj_msg"),ROLE==="curator"?"Looks good. Review the preview, then Apply.":"Looks good. Review the preview, then Submit to the queue.","good");
-    pjDupCheck(o); // #14: advisory, async
-  }else{
-    const n=pjNormTracker(trk);
-    const errs=pjTrackerMinBar(n);
-    pjPreviewTracker(n,errs);
-    if(errs.length){flash($("#pj_msg"),"Cannot submit — fix: "+errs.map(esc).join("; "),"err");return;}
-    PJ=n;PJ_MODE="tracker";
-    pjInjectSubmit();
-    flash($("#pj_msg"),ROLE==="curator"?"Tracker update looks good. Review the preview, then Apply.":"Tracker update looks good. Review the preview, then Submit to the queue.","good");
-  }
+  const errs=pjMinBar(o);
+  pjPreview(o,errs);
+  if(errs.length){flash($("#pj_msg"),"Cannot submit — fix: "+errs.map(esc).join("; "),"err");return;} // #12: invalid => no Submit injected
+  PJ=o;PJ_MODE="full";
+  pjInjectSubmit(); // #12: Submit exists only because the bar passed
+  flash($("#pj_msg"),ROLE==="curator"?"Looks good. Review the preview, then Apply.":"Looks good. Review the preview, then Submit to the queue.","good");
+  pjDupCheck(o); // #14: advisory, async
 }
 function pjInjectSubmit(){
   const wrap=document.createElement("div");
@@ -885,23 +875,6 @@ async function pjSubmit(){
   const clean=pjPayloadForRpc(PJ);                              // #10: strip contract_version before the RPC
   try{
     if(ROLE!=="curator"&&ROLE!=="contributor"){flash($("#pj_msg"),"No role assigned — cannot submit.","err");const b=$("#pj_submit");if(b)b.disabled=false;return;}
-    if(PJ_MODE==="tracker"){
-      // tracker-only path: same curator-vs-contributor gate as records
-      if(curator){
-        const {data:res,error:re}=await sb.rpc("apply_progress_update",{payload:clean}); // curator-gated server-side
-        if(re) throw re;
-        const pgid=(res&&res.progress_id)||"";
-        flash($("#pj_msg"),"Tracker updated"+(pgid?` (${esc(pgid)})`:"")+".","good");
-        pjReset();loadTracker();loadProposals();
-      }else{
-        const row=pjResolveProgress(PJ);
-        const {error}=await sb.from("proposals").insert({kind:"progress_update",target_table:"research_progress",target_id:row?row.progress_id:null,payload:PJ,submitter_note:note});
-        if(error) throw error;
-        flash($("#pj_msg"),"Tracker update submitted to the proposal queue for curator review.","good");
-        pjReset();loadProposals();
-      }
-      return;
-    }
     if(curator){
       if(PJ_EDIT_ORIG){
         // #15: applying a curator-edited proposal — apply, then resolve the ORIGINAL (no dup row)
@@ -1099,13 +1072,6 @@ async function applyProposal(p){
     if(res&&res.event_id&&p.id){await sb.from("proposals").update({target_id:res.event_id}).eq("id",p.id);} // #15 polish: backfill target_id
     const fl=(res&&res.flags&&res.flags.length)?" ("+res.flags.join("; ")+")":"";
     return "applied as "+((res&&res.event_id)||"?")+fl;
-  }
-  if(p.kind==="progress_update"){
-    const clean=Object.assign({},f);delete clean.contract_version; // #10: strip before RPC
-    const {data:res,error}=await sb.rpc("apply_progress_update",{payload:clean});
-    if(error) throw error;
-    if(res&&res.progress_id&&p.id&&!p.target_id){await sb.from("proposals").update({target_id:res.progress_id}).eq("id",p.id);}
-    return "tracker updated"+(res&&res.progress_id?(" ("+res.progress_id+")"):"");
   }
   if(p.kind==="coverage_update"){
     const {data:res,error}=await sb.rpc("apply_coverage_update",{payload:f});
