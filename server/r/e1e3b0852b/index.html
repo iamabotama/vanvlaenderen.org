@@ -147,6 +147,7 @@
 <div id="appView" class="hide">
   <nav>
     <button class="tab active" data-tab="coverage">Research tracker</button>
+    <button class="tab" data-tab="worklist">Worklist</button>
     <button class="tab" data-tab="browse">Browse</button>
     <button class="tab" data-tab="people">People</button>
     <button class="tab" data-tab="add">Add record</button>
@@ -228,14 +229,35 @@
     </section>
 
     <!-- ADD -->
+    <section id="tab-worklist" class="hide">
+      <h3>Worklist</h3>
+      <p class="muted" style="font-size:12.5px;margin:0 0 8px">Next actions, ranked: scan indexes &rarr; page-scan pre-1650 gaps &rarr; pull register acts &rarr; page-scan later gaps. Parish before civil; baptism, then marriage, then burial. Click a task to jump to it.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:8px 0">
+        <div><label>Search</label><input type="text" id="wl_q" placeholder="municipality or parish"></div>
+        <div><label>Arrondissement</label><select id="wl_arr"><option value="">all arrondissements</option></select></div>
+        <div class="muted" id="wl_count" style="align-self:center"></div>
+      </div>
+      <table><thead><tr><th>Task</th><th>Items</th><th>Municipality</th><th>Unit</th><th>Class</th></tr></thead><tbody id="wl_body"><tr><td colspan="5" class="muted">Loading&hellip;</td></tr></tbody></table>
+    </section>
+
     <section id="tab-add" class="hide">
       <h3>Add a record</h3>
       <p class="muted" id="addMode" style="font-size:12.5px"></p>
       <div class="msg" id="addMsg"></div>
 
+      <details id="cskill" style="max-width:760px;margin:0 0 14px;border:1px solid var(--line);border-radius:8px;padding:6px 10px">
+        <summary style="cursor:pointer;font-weight:600">Collection skill (current) <span class="muted" id="cskill_synced" style="font-weight:400;font-size:12px"></span></summary>
+        <div style="margin-top:8px">
+          <button class="ghost" id="cskill_copy">Copy skill text</button>
+          <span class="msg" id="cskill_msg" style="display:inline-block;margin-left:8px"></span>
+          <pre id="cskill_body" style="margin-top:8px;max-height:340px;overflow:auto;white-space:pre-wrap;font-size:11.5px;background:var(--chip);padding:10px;border-radius:6px">Open to load…</pre>
+        </div>
+      </details>
+
       <fieldset style="max-width:760px">
         <legend>Paste a record or tracker update (JSON)</legend>
-        <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record (with an <code>event</code>). The <code>```json</code> fences are optional. Search status is set per-volume in the tracker, not here.</p>
+        <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record (with an <code>event</code>), <b>or a JSON array <code>[ {…}, {…} ]</code> of records for bulk entry</b>. The <code>```json</code> fences are optional. Search status is set per-volume in the tracker, not here.</p>
+        <div id="cv_ctx" class="hide"></div>
         <textarea id="pj_text" rows="9" placeholder='{"event":{…},"participants":[…],"sources":[…],"tracker":{…}}' style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px"></textarea>
         <label style="margin-top:8px">Note to curator (optional)<textarea id="pj_note" rows="2" placeholder="Context for the curator about this submission. Stored with the proposal — never written into the record itself."></textarea></label>
         <div style="margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
@@ -440,7 +462,7 @@ async function boot(){
 function initUI(){
   document.querySelectorAll("nav button.tab").forEach(b=>b.onclick=()=>{
     document.querySelectorAll("nav button.tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");
-    ["coverage","browse","people","add","proposals"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
+    ["coverage","worklist","browse","people","add","proposals"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
   });
   $("#b_type").innerHTML='<option value="">all types</option>'+EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
   $("#a_type").innerHTML=EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
@@ -461,12 +483,34 @@ function initUI(){
   [$("#a_type"),$("#a_year")].forEach(el=>el.addEventListener("input",updateGateHint));
   $("#pj_parse").onclick=pjParse;$("#pj_clear").onclick=()=>{pjReset();flash($("#pj_msg"),"");};
   $("#pj_text").addEventListener("input",pjResetPreview); // #12: editing JSON after preview collapses Submit (can't submit unvalidated)
+  if($("#cskill_copy"))$("#cskill_copy").onclick=copyCollectionSkill;
+  if($("#cskill"))$("#cskill").addEventListener("toggle",e=>{if(e.target.open)loadCollectionSkill();});
+  if($("#wl_arr"))$("#wl_arr").onchange=renderWorklist;
+  if($("#wl_q"))$("#wl_q").addEventListener("input",renderWorklist);
+  loadWorklist();
   const curator=ROLE==="curator";
   $("#addMode").textContent=curator?"You are the curator — this writes directly to the database.":"Your change will be submitted to the proposal queue for the curator to review.";
   $("#a_save").textContent=curator?"Save record":"Submit proposal";
   $("#propMode").textContent=curator?"Pending proposals from contributors. Approve, reject, or edit.":"Your submitted proposals.";
 }
 function gotoTab(name){document.querySelector(`nav button.tab[data-tab="${name}"]`).click();}
+let CSKILL_TEXT="";
+async function loadCollectionSkill(){
+  const body=$("#cskill_body");if(!body||CSKILL_TEXT)return;
+  try{
+    const res=await fetch("collection-skill.md",{cache:"no-cache"});
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    const t=await res.text();CSKILL_TEXT=t;
+    const m=/last synced (\d{4}-\d{2}-\d{2})/i.exec(t);
+    if($("#cskill_synced"))$("#cskill_synced").textContent=m?("· last synced "+m[1]):"";
+    body.textContent=t;
+  }catch(e){body.textContent="Could not load the skill snapshot ("+(e.message||e)+"). It deploys with the site — try on the live editor.";}
+}
+function copyCollectionSkill(){
+  const txt=CSKILL_TEXT||($("#cskill_body")?$("#cskill_body").textContent:"")||"";
+  if(!txt||txt==="Open to load…"){flash($("#cskill_msg"),"Open the panel first.","err");return;}
+  navigator.clipboard.writeText(txt).then(()=>flash($("#cskill_msg"),"Copied — paste into a collection thread.","good"),()=>flash($("#cskill_msg"),"Copy failed.","err"));
+}
 function deriveYear(){const m=/(1[0-9]{3}|20[0-2][0-9])/.exec($("#a_date").value);if(m&&!$("#a_year").value)$("#a_year").value=m[1];updateGateHint();}
 function updateGateHint(){const t=$("#a_type").value,y=parseInt($("#a_year").value||"0",10);
   $("#a_gate").textContent=(BIRTHISH.has(t)&&y&&y>NOW-100)?`Blocked: a ${t} in ${y} is within 100 years and implies a living person. Only death/burial records are allowed that recent.`:"";}
@@ -755,6 +799,7 @@ let PJ=null;                              // last successfully-parsed payload (f
 let PJ_MODE=null;                         // "full" | "tracker" — set by pjParse, read by pjSubmit
 let PJ_EDIT_ORIG=null;                    // #15: proposal id being curator-edited (apply resolves it, no dup row)
 let PJ_DUPS=[];                           // #14: scored duplicate candidates for the current preview
+let PJ_BATCH=null;                        // bulk paste: validated array of full records
 const pjSubmitLabel=()=>ROLE==="curator"?"Apply record":"Submit to queue";
 function pjPayloadForRpc(o){const c=Object.assign({},o);delete c.contract_version;return c;} // #10: strip before RPC
 function stripFences(t){t=(t||"").trim();const m=/^```[a-zA-Z]*\s*([\s\S]*?)\s*```$/.exec(t);return m?m[1].trim():t;}
@@ -848,9 +893,11 @@ function pjParse(){
   const raw=stripFences($("#pj_text").value);
   if(!raw){flash($("#pj_msg"),"Paste a JSON record first.","err");return;}
   let o;try{o=JSON.parse(raw);}catch(e){flash($("#pj_msg"),"JSON parse error: "+esc(e.message),"err");return;}
-  if(!o||typeof o!=="object"||Array.isArray(o)){flash($("#pj_msg"),"Expected a JSON object.","err");return;}
+  if(Array.isArray(o))return pjParseBatch(o); // bulk paste: an array of full records
+  if(!o||typeof o!=="object"){flash($("#pj_msg"),"Expected a JSON object, or an array of records for bulk entry.","err");return;}
   if(!o.event){flash($("#pj_msg"),'Paste a full record (needs an "event"). Search status is now set per-volume in the tracker, not via paste.',"err");return;}
   if("tracker" in o)delete o.tracker; // tracker block retired: coverage/search status is set per-volume in the tracker editor
+  const ctxFilled=cvApplyCtx(o); // P1: pinned-volume defaults fill only blank fields, never override
   const cverr=pjContractError(o,null);
   if(cverr){flash($("#pj_msg"),cverr,"err");return;}
   const errs=pjMinBar(o);
@@ -858,7 +905,7 @@ function pjParse(){
   if(errs.length){flash($("#pj_msg"),"Cannot submit — fix: "+errs.map(esc).join("; "),"err");return;} // #12: invalid => no Submit injected
   PJ=o;PJ_MODE="full";
   pjInjectSubmit(); // #12: Submit exists only because the bar passed
-  flash($("#pj_msg"),ROLE==="curator"?"Looks good. Review the preview, then Apply.":"Looks good. Review the preview, then Submit to the queue.","good");
+  flash($("#pj_msg"),(ctxFilled.length?"Filled from pinned volume: "+ctxFilled.join(", ")+". ":"")+(ROLE==="curator"?"Looks good. Review the preview, then Apply.":"Looks good. Review the preview, then Submit to the queue."),"good");
   pjDupCheck(o); // #14: advisory, async
 }
 function pjInjectSubmit(){
@@ -869,7 +916,68 @@ function pjInjectSubmit(){
   $("#pj_preview").appendChild(wrap);
   $("#pj_submit").onclick=pjSubmit;
 }
-function pjResetPreview(){PJ=null;PJ_MODE=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";flash($("#pj_msg"),"");} // #12: collapse on edit (keeps text/note + edit-target)
+function pjParseBatch(arr){
+  PJ=null;PJ_MODE=null;PJ_BATCH=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";
+  if(!arr.length){flash($("#pj_msg"),"The array is empty.","err");return;}
+  const recs=[],probs=[];
+  arr.forEach((o,i)=>{
+    if(!o||typeof o!=="object"||Array.isArray(o)||!o.event){probs.push((i+1)+": not a record (needs an \"event\")");return;}
+    if("tracker" in o)delete o.tracker;
+    cvApplyCtx(o); // pinned-volume defaults apply to every record in the batch
+    const cverr=pjContractError(o,null); if(cverr){probs.push((i+1)+": "+cverr);return;}
+    const errs=pjMinBar(o); if(errs.length){probs.push((i+1)+": "+errs.join("; "));return;}
+    recs.push(o);
+  });
+  const rows=arr.map((o,i)=>{
+    const ev=(o&&o.event)||{},okrec=recs.indexOf(o)>=0;
+    const who=(Array.isArray(o&&o.participants)?o.participants:[]).map(p=>p&&(p.name_as_written||p.name)).filter(Boolean)[0]||"—";
+    return `<tr><td>${i+1}</td><td>${esc(ev.event_type||"?")}</td><td>${esc(String(ev.year||ev.date_text||""))}</td><td>${esc(who)}</td><td>${okrec?'<span class="pill ok">ok</span>':'<span class="pill bad">fix</span>'}</td></tr>`;
+  }).join("");
+  const errHtml=probs.length?`<div class="msg err show" style="margin-top:8px">${probs.length} record(s) need fixing: ${probs.map(esc).join(" | ")}</div>`:"";
+  $("#pj_preview").innerHTML=`${errHtml}<div class="card" style="max-width:none;margin-top:10px">
+    <div class="kv"><b>Batch:</b> ${arr.length} record(s), ${recs.length} ready${probs.length?(", "+probs.length+" to fix"):""}.</div>
+    <table><thead><tr><th>#</th><th>Type</th><th>Year</th><th>Principal</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="kv muted" style="font-size:11.5px;margin-top:6px">Duplicate-scan is skipped in batch mode &mdash; review the list before submitting.</div></div>`;
+  if(probs.length){flash($("#pj_msg"),"Every record must be valid to submit the batch. Fix the flagged ones and Parse again.","err");return;}
+  PJ_BATCH=recs;PJ_MODE="batch";
+  pjInjectBatchSubmit();
+  flash($("#pj_msg"),ROLE==="curator"?(recs.length+" records ready. Review, then Apply all."):(recs.length+" records ready. Review, then Submit all to the queue."),"good");
+}
+function pjInjectBatchSubmit(){
+  const wrap=document.createElement("div");
+  wrap.style.cssText="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap";
+  wrap.innerHTML=`<button class="act" id="pj_submit">${ROLE==="curator"?("Apply all "+PJ_BATCH.length):("Submit all "+PJ_BATCH.length+" to queue")}</button>`;
+  $("#pj_preview").appendChild(wrap);
+  $("#pj_submit").onclick=pjSubmitBatch;
+}
+async function pjSubmitBatch(){
+  if(!PJ_BATCH||!PJ_BATCH.length)return;
+  const btn=$("#pj_submit");if(btn)btn.disabled=true;
+  if(ROLE!=="curator"&&ROLE!=="contributor"){flash($("#pj_msg"),"No role assigned — cannot submit.","err");if(btn)btn.disabled=false;return;}
+  const note=($("#pj_note")&&$("#pj_note").value.trim())||null;
+  const curator=ROLE==="curator";
+  let done=0;const fails=[];
+  for(let i=0;i<PJ_BATCH.length;i++){
+    const rec=PJ_BATCH[i],clean=pjPayloadForRpc(rec);
+    try{
+      if(curator){
+        const {data:ins,error:ie}=await sb.from("proposals").insert({kind:"full_record",target_table:"events",payload:rec,submitter_note:note}).select("id").single();
+        if(ie) throw ie;
+        const {data:res,error:re}=await sb.rpc("apply_full_record",{payload:clean});
+        if(re) throw re;
+        await sb.from("proposals").update({status:"applied",reviewed_by:USER.id,reviewed_at:new Date().toISOString(),target_id:(res&&res.event_id)||null}).eq("id",ins.id);
+      }else{
+        const {error}=await sb.from("proposals").insert({kind:"full_record",target_table:"events",payload:rec,submitter_note:note});
+        if(error) throw error;
+      }
+      done++;flash($("#pj_msg"),"Working… "+done+"/"+PJ_BATCH.length,"good");
+    }catch(e){fails.push((i+1)+": "+esc(e.message||String(e)));}
+  }
+  runBrowse();loadTracker();loadProposals();
+  if(fails.length){flash($("#pj_msg"),done+" "+(curator?"applied":"queued")+", "+fails.length+" failed — "+fails.join(" | "),"err");if(btn)btn.disabled=false;}
+  else{flash($("#pj_msg"),done+" record(s) "+(curator?"applied":"submitted to the queue")+".","good");pjReset();}
+}
+function pjResetPreview(){PJ=null;PJ_MODE=null;PJ_BATCH=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";flash($("#pj_msg"),"");} // #12: collapse on edit (keeps text/note + edit-target)
 function pjPreview(o,errs){
   const ev=o.event||{},parts=Array.isArray(o.participants)?o.participants:[],srcs=Array.isArray(o.sources)?o.sources:[],trk=o.tracker;
   const place=esc((ev.municipality_name||ev.municipality_id||"")+(ev.parish_name?(" / "+ev.parish_name):ev.parish_id?(" / "+ev.parish_id):""));
@@ -895,7 +1003,7 @@ function pjPreview(o,errs){
       ${ev.translation?`<h4>Translation</h4><div class="transc">${esc(ev.translation)}</div>`:""}
     </div>`;
 }
-function pjReset(){$("#pj_text").value="";if($("#pj_note"))$("#pj_note").value="";$("#pj_preview").innerHTML="";PJ=null;PJ_MODE=null;PJ_DUPS=[];PJ_EDIT_ORIG=null;}
+function pjReset(){$("#pj_text").value="";if($("#pj_note"))$("#pj_note").value="";$("#pj_preview").innerHTML="";PJ=null;PJ_MODE=null;PJ_BATCH=null;PJ_DUPS=[];PJ_EDIT_ORIG=null;}
 async function pjSubmit(){
   if(!PJ)return;
   const btn=$("#pj_submit");if(btn)btn.disabled=true;
@@ -1366,10 +1474,67 @@ function cvOpenVol(cid,vid){
       +`<div style="margin-top:12px"><button class="act" onclick="cvSubmitVol('${esc(cid)}','${esc(vid)}',${curator?'true':'false'})">${curator?"Save":"Submit proposal"}</button>`
       +`<span class="msg" id="cvpop_msg" style="display:inline-block;margin:0 0 0 8px"></span></div></div>`;
   }else{controls=`<div class="muted" style="font-size:12px;margin-top:8px">Sign in as curator or contributor to update search status.</div>`;}
-  $("#cvpop_body").innerHTML=`<div class="kv">${meta}</div>${note}${agatha}${controls}`;
+  const recsBox=`<div id="cvpop_recs" class="muted" style="margin:10px 0;font-size:12px">Loading records…</div>`;
+  const addBtn=canWrite?`<div><button class="ghost" onclick="cvAddHere('${esc(cid)}','${esc(vid)}')">+ Add record here</button></div>`:"";
+  $("#cvpop_body").innerHTML=`<div class="kv">${meta}</div>${note}${agatha}${recsBox}${addBtn}${controls}`;
   $("#cvpop").dataset.state=cur;$("#cvpop").classList.add("open");
+  cvLoadVolEvents(cid,vid);
 }
 window.cvOpenVol=cvOpenVol;
+let CV_ADD_CTX=null;
+function cvSpan(span){
+  const s=String(span||""); const m=/(\d{3,4})\s*[-–]\s*(\d{3,4})/.exec(s);
+  if(m) return [parseInt(m[1],10),parseInt(m[2],10)];
+  const y=/(\d{3,4})/.exec(s); return y?[parseInt(y[1],10),parseInt(y[1],10)]:[null,null];
+}
+async function cvLoadVolEvents(cid,vid){
+  const r=COV_ROWS[cid],vol=cvFindVol(cid,vid),box=$("#cvpop_recs");
+  if(!r||!vol||!box)return;
+  const sp=cvSpan(vol.span);
+  let qy=sb.from("v_coverage_events").select("event_id,event_type,year,summary,needs_register").eq("record_class",r.record_class);
+  qy=(r.scope_kind==="parish"&&r.parish_id)?qy.eq("parish_id",r.parish_id):qy.eq("municipality_id",r.muni);
+  if(sp[0]!=null)qy=qy.gte("year",sp[0]); if(sp[1]!=null)qy=qy.lte("year",sp[1]);
+  const {data,error}=await qy.order("year");
+  if(!$("#cvpop_recs"))return; // popover closed meanwhile
+  if(error){box.className="muted";box.innerHTML="Could not load records.";return;}
+  if(!data||!data.length){box.className="muted";box.innerHTML="No records extracted from this volume yet.";return;}
+  box.className="";
+  box.innerHTML=`<div style="font-weight:600;font-size:12px;margin:4px 0">Records in this volume (${data.length})</div>`
+    +data.map(e=>{const b=e.needs_register?'<span class="vbadge gap">needs extraction</span>':'<span class="vbadge found">&#10003; extracted</span>';
+      return `<div class="cv-vol" onclick="openRecord('${esc(e.event_id)}')"><span class="vspan">${e.year||""}</span> <span>${esc(String(e.summary||e.event_type||"").slice(0,72))}</span> ${b}</div>`;}).join("");
+}
+function cvAddHere(cid,vid){
+  const r=COV_ROWS[cid],vol=cvFindVol(cid,vid);if(!r||!vol)return;
+  const ev2type={birth:"baptism",death:"burial",marriage:"marriage"};
+  const place=r.scope_kind==="civil"?(muniName(r.muni)+" — civil"):parishName(r.parish_id);
+  const clsLabel=(r.scope_kind==="civil"?CV_CIVIL_LABEL:CV_PARISH_LABEL)[r.record_class];
+  CV_ADD_CTX={municipality_id:r.muni,parish_id:(r.scope_kind==="parish"?r.parish_id:null),
+    event_type:ev2type[r.record_class]||r.record_class,record_class:r.record_class,
+    span:vol.span||"",register_url:cvAgathaUrl(vol),bookpart_id:vol.bookpart_id||null,
+    place:place,class_label:clsLabel};
+  cvClosePop();gotoTab("add");cvRenderCtx();const t=$("#pj_text");if(t)t.focus();
+}
+function cvRenderCtx(){
+  const el=$("#cv_ctx");if(!el)return;
+  if(!CV_ADD_CTX){el.className="hide";el.innerHTML="";return;}
+  const c=CV_ADD_CTX;
+  const link=c.register_url?`<a href="${esc(c.register_url)}" target="_blank" rel="noopener">open register &#8599;</a>`:'<span class="muted">no register link</span>';
+  el.className="";
+  el.style.cssText="margin:0 0 8px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--chip)";
+  el.innerHTML=`<div style="font-size:12px"><b>Adding to:</b> ${esc(c.place)} &middot; ${esc(c.class_label||"")} ${esc(c.span||"")} &nbsp; ${link} `
+    +`<button class="ghost" style="padding:1px 8px;margin-left:6px" onclick="cvClearCtx()">clear</button></div>`
+    +`<div class="muted" style="font-size:11px;margin-top:4px">Pinned location/class fill any of those fields your pasted record leaves blank; they never override values the record states.</div>`;
+}
+function cvClearCtx(){CV_ADD_CTX=null;cvRenderCtx();}
+function cvApplyCtx(o){
+  const filled=[];if(!CV_ADD_CTX||!o||!o.event)return filled;
+  const c=CV_ADD_CTX,ev=o.event;
+  if(!ev.municipality_id&&c.municipality_id){ev.municipality_id=c.municipality_id;filled.push("municipality_id");}
+  if(!ev.parish_id&&c.parish_id){ev.parish_id=c.parish_id;filled.push("parish_id");}
+  if(!ev.event_type&&c.event_type){ev.event_type=c.event_type;filled.push("event_type");}
+  return filled;
+}
+window.cvAddHere=cvAddHere;window.cvClearCtx=cvClearCtx;
 function cvPickState(btn){document.querySelectorAll(".cvst-row .cvst").forEach(b=>b.classList.remove("on"));btn.classList.add("on");$("#cvpop").dataset.state=btn.dataset.s;}
 window.cvPickState=cvPickState;
 async function cvSubmitVol(cid,vid,curator){
@@ -1379,7 +1544,17 @@ async function cvSubmitVol(cid,vid,curator){
   if(curator){
     const {error}=await sb.rpc("apply_coverage_update",{payload});
     if(error){flash($("#cvpop_msg"),esc(error.message),"err");return;}
-    cvClosePop();await cvRefreshMuni((COV_ROWS[cid]||{}).muni);flash($("#flash"),"Coverage updated.","good");
+    let extra="";
+    if(isIdx){
+      if(searched==="complete"){
+        const {data:ic,error:ie}=await sb.rpc("apply_index_clear",{payload:{coverage_id:cid,index_vid:vid}});
+        if(ie){flash($("#cvpop_msg"),"Status saved, but the register cascade failed: "+esc(ie.message),"err");}
+        else if(ic){extra=" Cleared "+(ic.registers_none||0)+" register-year(s) via index"+(ic.registers_phaseB?(", "+ic.registers_phaseB+" Phase-B lead(s) flagged"):"")+".";}
+      }else{
+        await sb.rpc("revert_index_clear",{payload:{coverage_id:cid,index_vid:vid}}); // un-marking Complete reverts the register cascade
+      }
+    }
+    cvClosePop();await cvRefreshMuni((COV_ROWS[cid]||{}).muni);flash($("#flash"),"Coverage updated."+extra,"good");
   }else{
     const note=($("#cvpop_note")&&$("#cvpop_note").value.trim())||null;
     const {error}=await sb.from("proposals").insert({kind:"coverage_update",target_table:"research_coverage",target_id:cid,payload,submitter_note:note});
@@ -1397,6 +1572,50 @@ async function cvRefreshMuni(id){
   renderMetrics();
 }
 
+let WL_ROWS=[];
+async function loadWorklist(){
+  const {data,error}=await sb.from("v_worklist").select("municipality_id,municipality,arrondissement,parish_name,scope_kind,record_class,task_type,era,item_count,rank").order("rank").order("item_count",{ascending:false});
+  const b=$("#wl_body");
+  if(error){if(b)b.innerHTML='<tr><td colspan="5" class="muted">Could not load worklist: '+esc(error.message)+'</td></tr>';return;}
+  WL_ROWS=data||[];fillWorklistFilter();renderWorklist();
+}
+function wlTaskLabel(r){
+  if(r.task_type==="scan_index")return "Scan index for VV";
+  if(r.task_type==="page_scan")return (r.era==="pre1650"?"Page-scan (pre-1650)":"Page-scan (later)");
+  if(r.task_type==="pull_act")return "Pull register act";
+  return r.task_type;
+}
+function wlTaskClass(r){return r.task_type==="scan_index"?"idx":(r.task_type==="pull_act"?"found":"prog");}
+function fillWorklistFilter(){
+  const sel=$("#wl_arr");if(!sel||sel.dataset.filled)return;
+  const arrs=[...new Set(WL_ROWS.map(r=>r.arrondissement).filter(Boolean))].sort();
+  sel.innerHTML='<option value="">all arrondissements</option>'+arrs.map(a=>`<option>${esc(a)}</option>`).join("");
+  sel.dataset.filled="1";
+}
+function renderWorklist(){
+  const arr=$("#wl_arr")?$("#wl_arr").value:"",q=$("#wl_q")?$("#wl_q").value.trim().toLowerCase():"";
+  let rows=WL_ROWS;
+  if(arr)rows=rows.filter(r=>r.arrondissement===arr);
+  if(q)rows=rows.filter(r=>String(r.municipality||"").toLowerCase().includes(q)||String(r.parish_name||"").toLowerCase().includes(q));
+  if($("#wl_count"))$("#wl_count").textContent=rows.length+" tasks";
+  const body=$("#wl_body");if(!body)return;
+  body.innerHTML=rows.slice(0,500).map(r=>{
+    const unit=r.parish_name||(r.scope_kind==="civil"?"civil registration":"—");
+    const cls=(r.scope_kind==="civil"?CV_CIVIL_LABEL:CV_PARISH_LABEL)[r.record_class]||r.record_class;
+    const act=r.task_type==="pull_act"?`wlGoBrowse('${esc(r.municipality_id)}','${esc(r.record_class)}')`:`wlGoTracker('${esc(r.municipality_id)}')`;
+    return `<tr class="click" onclick="${act}"><td><span class="cvchip ${wlTaskClass(r)}">${esc(wlTaskLabel(r))}</span></td><td><b>${r.item_count}</b></td><td>${esc(r.municipality||"")}</td><td>${esc(unit)}</td><td>${esc(cls)}</td></tr>`;
+  }).join("")||'<tr><td colspan="5" class="muted">No pending tasks for this filter.</td></tr>';
+}
+function wlGoTracker(mid){gotoTab("coverage");if(!COV_OPEN["m_"+mid])cvToggleMuni(mid);}
+function wlGoBrowse(mid,cls){
+  gotoTab("browse");
+  const ev={birth:"baptism",death:"burial",marriage:"marriage"}[cls]||"";
+  if($("#b_muni"))$("#b_muni").value=mid;
+  if($("#b_type"))$("#b_type").value=ev;
+  if($("#b_src"))$("#b_src").value="needs";
+  fillBrowseParish();runBrowse();
+}
+window.wlGoTracker=wlGoTracker;window.wlGoBrowse=wlGoBrowse;
 boot();
 </script>
 </body>
