@@ -734,13 +734,14 @@ function editForm(e){
     <label>Transcription (verbatim)<textarea id="e_transc" rows="3">${esc(e.transcription||"")}</textarea></label>
     <label>Translation (English)<textarea id="e_transl" rows="2">${esc(e.translation||"")}</textarea></label>
     <label>Register folio URL <span class="muted" style="font-weight:400">&mdash; adds an original_record folio source (Phase B)</span><input type="text" id="e_folurl" placeholder="https://agatha.arch.be/en/data/images/…"></label>
+    <label style="flex-direction:row;align-items:center;gap:6px;font-weight:400;margin-top:6px"><input type="checkbox" id="e_offreg" style="width:auto;margin:0" ${e.off_register?"checked":""}> Non-parish-register source (institutional / staten van goed &mdash; excludes from parish coverage &amp; worklist)</label>
     <div style="margin-top:8px"><button class="act" id="e_save">Save changes</button> <span class="msg" id="e_msg" style="display:inline-block;margin:0"></span></div>`;
   const fillEP=(sel)=>{const mid=$("#e_muni").value,list=PARISHES.filter(p=>p.municipality_id===mid);$("#e_parish").innerHTML='<option value="">&mdash; none (e.g. civil) &mdash;</option>'+list.map(p=>`<option value="${esc(p.parish_id)}" ${p.parish_id===sel?'selected':''}>${esc(p.parish_name)}</option>`).join("");};
   fillEP(e.parish_id);
   $("#e_muni").onchange=()=>fillEP(null);
   $("#e_save").onclick=async()=>{
     const fol=$("#e_folurl").value.trim();
-    const patch={event_type:$("#e_type").value,year:parseInt($("#e_year").value||"0",10)||null,date_text:$("#e_date").value.trim()||null,summary:$("#e_sum").value.trim()||null,municipality_id:$("#e_muni").value||null,parish_id:$("#e_parish").value||null,transcription:$("#e_transc").value.trim()||null,translation:$("#e_transl").value.trim()||null};
+    const patch={event_type:$("#e_type").value,year:parseInt($("#e_year").value||"0",10)||null,date_text:$("#e_date").value.trim()||null,summary:$("#e_sum").value.trim()||null,municipality_id:$("#e_muni").value||null,parish_id:$("#e_parish").value||null,transcription:$("#e_transc").value.trim()||null,translation:$("#e_transl").value.trim()||null,off_register:$("#e_offreg").checked};
     if(fol)patch.needs_source=0;
     const {error}=await sb.from("events").update(patch).eq("event_id",e.event_id);
     if(error){flash($("#e_msg"),"Save failed: "+esc(error.message),"err");return;}
@@ -1512,7 +1513,7 @@ async function cvLoadVolEvents(cid,vid){
   if(!r||!vol||!box)return;
   const sp=cvSpan(vol.span);
   let qy=sb.from("v_coverage_events").select("event_id,event_type,year,summary,needs_register").eq("record_class",r.record_class);
-  qy=(r.scope_kind==="parish"&&r.parish_id)?qy.eq("parish_id",r.parish_id):qy.eq("municipality_id",r.muni);
+  qy=(r.scope_kind==="parish"&&r.parish_id)?qy.eq("parish_id",r.parish_id):qy.eq("municipality_id",r.muni).is("parish_id",null);
   if(sp[0]!=null)qy=qy.gte("year",sp[0]); if(sp[1]!=null)qy=qy.lte("year",sp[1]);
   const {data,error}=await qy.order("year");
   if(!$("#cvpop_recs"))return; // popover closed meanwhile
