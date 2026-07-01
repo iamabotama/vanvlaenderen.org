@@ -731,14 +731,20 @@ function editForm(e){
     <div class="row"><div><label>Municipality</label><select id="e_muni">${MUNIS.map(m=>`<option value="${esc(m.municipality_id)}" ${m.municipality_id===e.municipality_id?'selected':''}>${esc(m.canonical_name)}</option>`).join("")}</select></div>
     <div><label>Parish</label><select id="e_parish"></select></div></div>
     <label>Summary<textarea id="e_sum" rows="2">${esc(e.summary||"")}</textarea></label>
+    <label>Transcription (verbatim)<textarea id="e_transc" rows="3">${esc(e.transcription||"")}</textarea></label>
+    <label>Translation (English)<textarea id="e_transl" rows="2">${esc(e.translation||"")}</textarea></label>
+    <label>Register folio URL <span class="muted" style="font-weight:400">&mdash; adds an original_record folio source (Phase B)</span><input type="text" id="e_folurl" placeholder="https://agatha.arch.be/en/data/images/…"></label>
     <div style="margin-top:8px"><button class="act" id="e_save">Save changes</button> <span class="msg" id="e_msg" style="display:inline-block;margin:0"></span></div>`;
   const fillEP=(sel)=>{const mid=$("#e_muni").value,list=PARISHES.filter(p=>p.municipality_id===mid);$("#e_parish").innerHTML='<option value="">&mdash; none (e.g. civil) &mdash;</option>'+list.map(p=>`<option value="${esc(p.parish_id)}" ${p.parish_id===sel?'selected':''}>${esc(p.parish_name)}</option>`).join("");};
   fillEP(e.parish_id);
   $("#e_muni").onchange=()=>fillEP(null);
   $("#e_save").onclick=async()=>{
-    const patch={event_type:$("#e_type").value,year:parseInt($("#e_year").value||"0",10)||null,date_text:$("#e_date").value.trim()||null,summary:$("#e_sum").value.trim()||null,municipality_id:$("#e_muni").value||null,parish_id:$("#e_parish").value||null};
+    const fol=$("#e_folurl").value.trim();
+    const patch={event_type:$("#e_type").value,year:parseInt($("#e_year").value||"0",10)||null,date_text:$("#e_date").value.trim()||null,summary:$("#e_sum").value.trim()||null,municipality_id:$("#e_muni").value||null,parish_id:$("#e_parish").value||null,transcription:$("#e_transc").value.trim()||null,translation:$("#e_transl").value.trim()||null};
+    if(fol)patch.needs_source=0;
     const {error}=await sb.from("events").update(patch).eq("event_id",e.event_id);
     if(error){flash($("#e_msg"),"Save failed: "+esc(error.message),"err");return;}
+    if(fol){const {error:se}=await sb.from("event_sources").insert({event_id:e.event_id,role:"original_record",url:fol,url_level:"folio"});if(se){flash($("#e_msg"),"Saved, but the folio source failed: "+esc(se.message),"err");return;}}
     flash($("#e_msg"),"Saved.","good");runBrowse();loadWorklist();setTimeout(()=>openRecord(e.event_id),400);};
 }
 function proposeForm(e){
@@ -1514,8 +1520,17 @@ async function cvLoadVolEvents(cid,vid){
   if(!data||!data.length){box.className="muted";box.innerHTML="No records extracted from this volume yet.";return;}
   box.className="";
   box.innerHTML=`<div style="font-weight:600;font-size:12px;margin:4px 0">Records in this volume (${data.length})</div>`
-    +data.map(e=>{const b=e.needs_register?'<span class="vbadge gap">needs extraction</span>':'<span class="vbadge found">&#10003; extracted</span>';
-      return `<div class="cv-vol" onclick="openRecord('${esc(e.event_id)}')"><span class="vspan">${e.year||""}</span> <span>${esc(String(e.summary||e.event_type||"").slice(0,72))}</span> ${b}</div>`;}).join("");
+    +data.map(ev=>{
+      const need=ev.needs_register;
+      const b=need?'<span class="vbadge gap">needs extraction</span>':'<span class="vbadge found">&#10003; extracted</span>';
+      let reg="";
+      if(need){
+        const rv=(r.segments.registers||[]).find(v=>{const sp=cvSpan(v.span);return sp[0]!=null&&ev.year>=sp[0]&&ev.year<=sp[1];});
+        const rurl=rv&&cvAgathaUrl(rv);
+        if(rurl)reg=` <a href="${esc(rurl)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Open the register that should hold this act (then open the record and add register details)">register &#8599;</a>`;
+      }
+      return `<div class="cv-vol" onclick="openRecord('${esc(ev.event_id)}')"><span class="vspan">${ev.year||""}</span> <span>${esc(String(ev.summary||ev.event_type||"").slice(0,60))}</span> ${b}${reg}</div>`;
+    }).join("");
 }
 function cvAddHere(cid,vid){
   const r=COV_ROWS[cid],vol=cvFindVol(cid,vid);if(!r||!vol)return;
