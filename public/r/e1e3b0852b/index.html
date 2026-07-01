@@ -1529,7 +1529,17 @@ async function cvSubmitVol(cid,vid,curator){
   if(curator){
     const {error}=await sb.rpc("apply_coverage_update",{payload});
     if(error){flash($("#cvpop_msg"),esc(error.message),"err");return;}
-    cvClosePop();await cvRefreshMuni((COV_ROWS[cid]||{}).muni);flash($("#flash"),"Coverage updated.","good");
+    let extra="";
+    if(isIdx){
+      if(searched==="complete"){
+        const {data:ic,error:ie}=await sb.rpc("apply_index_clear",{payload:{coverage_id:cid,index_vid:vid}});
+        if(ie){flash($("#cvpop_msg"),"Status saved, but the register cascade failed: "+esc(ie.message),"err");}
+        else if(ic){extra=" Cleared "+(ic.registers_none||0)+" register-year(s) via index"+(ic.registers_phaseB?(", "+ic.registers_phaseB+" Phase-B lead(s) flagged"):"")+".";}
+      }else{
+        await sb.rpc("revert_index_clear",{payload:{coverage_id:cid,index_vid:vid}}); // un-marking Complete reverts the register cascade
+      }
+    }
+    cvClosePop();await cvRefreshMuni((COV_ROWS[cid]||{}).muni);flash($("#flash"),"Coverage updated."+extra,"good");
   }else{
     const note=($("#cvpop_note")&&$("#cvpop_note").value.trim())||null;
     const {error}=await sb.from("proposals").insert({kind:"coverage_update",target_table:"research_coverage",target_id:cid,payload,submitter_note:note});
