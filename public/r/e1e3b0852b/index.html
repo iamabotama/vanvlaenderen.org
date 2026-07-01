@@ -1374,7 +1374,7 @@ function cvMuniRow(m){
   const fvd=(typeof FV!=="undefined")?FV[norm(m.name)]:null;
   const fvStr=fvd?` &middot; FV ${[fvd.b?"B":"",fvd.m?"M":"",fvd.d?"D":""].filter(Boolean).join("")||"-"}`:"";
   const sub=`${esc(m.region||m.arr||"")} &middot; ${pu} parish unit${pu===1?"":"s"} &middot; Held ${held}${fvStr}`;
-  let html=`<div class="cv-muni"><div class="cv-mhead" onclick="cvToggleMuni('${esc(m.id)}')">`
+  let html=`<div class="cv-muni" id="m_${esc(m.id)}"><div class="cv-mhead" onclick="cvToggleMuni('${esc(m.id)}')">`
     +`<span class="cv-caret" style="transform:rotate(${open?90:0}deg)">&#9656;</span>`
     +`<div style="min-width:0"><div class="cv-name">${esc(m.name)}</div><div class="cv-sub">${sub}</div>`
     +`<div class="cv-covchips" style="margin-top:3px;opacity:.7;font-size:10.5px">${chips}${civ}</div></div>`
@@ -1412,7 +1412,7 @@ function cvUnitsHtml(id){
   Object.keys(byUnit).sort((a,b)=>parishName(a).localeCompare(parishName(b),undefined,{sensitivity:"base"})).forEach(pid=>{
     const urows=byUnit[pid],uopen=!!COV_OPEN["u_"+pid];
     const chips=CV_ORDER.map(c=>{const r=urows.find(x=>x.record_class===c);return r?cvUnitChips(r):"";}).join("");
-    out+=`<div class="cv-unit"><div class="cv-uhead" onclick="cvToggleUnit('${esc(pid)}')">`
+    out+=`<div class="cv-unit" id="u_${esc(pid)}"><div class="cv-uhead" onclick="cvToggleUnit('${esc(pid)}')">`
       +`<span class="cv-caret" style="transform:rotate(${uopen?90:0}deg)">&#9656;</span>`
       +`<div><span class="cv-name">${esc(parishName(pid))}</span> <span class="cv-utype">${esc(parishType(pid))}</span></div>`
       +`<div class="cv-chips">${chips}</div></div>`;
@@ -1450,13 +1450,25 @@ function cvVolPill(cid,vol){
     +`${cvAgathaUrl(vol)?'<span class="vbadge" title="Open on AGATHA">&#128279;</span>':''}`
     +`</div>`;
 }
+async function cvBulkIndexComplete(cid){
+  if(ROLE!=="curator")return;
+  if(!confirm("Mark every index book in this class as Complete (scanned for Van Vlaenderen) and clear the registers they cover? Use only when the whole index has been searched."))return;
+  const {data,error}=await sb.rpc("mark_all_indexes_complete",{payload:{coverage_id:cid}});
+  if(error){flash($("#flash"),"Bulk complete failed: "+esc(error.message),"err");return;}
+  const mid=(COV_ROWS[cid]||{}).muni;
+  if(mid)await cvRefreshMuni(mid);
+  loadWorklist();
+  flash($("#flash"),"All index books marked Complete"+(data&&data.registers_cleared?"; "+data.registers_cleared+" register-year(s) cleared via index":"")+".","good");
+}
+window.cvBulkIndexComplete=cvBulkIndexComplete;
 function cvVolsHtml(urows){
   let out="";
   CV_ORDER.forEach(c=>{
     const r=urows.find(x=>x.record_class===c);if(!r||!r.segments)return;
     const lbl=(r.scope_kind==="civil"?CV_CIVIL_LABEL:CV_PARISH_LABEL)[c];
     const idx=(r.segments.indexes||[]),reg=(r.segments.registers||[]);
-    if(idx.length)out+=`<div class="cv-seg-lbl">${esc(lbl)} &mdash; index books <span class="muted">(${idx.length})</span></div><div class="cv-vols">${idx.map(v=>cvVolPill(r.coverage_id,v)).join("")}</div>`;
+    if(idx.length){const allc=idx.every(v=>v.searched==="complete");const bulk=(ROLE==="curator"&&!allc)?` <button class="ghost" style="font-size:11px;padding:1px 8px" onclick="cvBulkIndexComplete('${esc(r.coverage_id)}')" title="Mark every index book scanned (Complete) and cascade to the registers they cover">Mark all ${idx.length} Complete</button>`:"";
+      out+=`<div class="cv-seg-lbl">${esc(lbl)} &mdash; index books <span class="muted">(${idx.length})</span>${bulk}</div><div class="cv-vols">${idx.map(v=>cvVolPill(r.coverage_id,v)).join("")}</div>`;}
     if(reg.length)out+=`<div class="cv-seg-lbl">${esc(lbl)} &mdash; registers <span class="muted">(${reg.length})</span></div><div class="cv-vols">${reg.map(v=>cvVolPill(r.coverage_id,v)).join("")}</div>`;
   });
   out+=`<div class="cv-src">Source: Rijksarchief Belgi&euml;, AGATHA &mdash; register inventory for this unit. Click a volume to set its search status.</div>`;
@@ -1604,7 +1616,7 @@ async function cvRefreshMuni(id){
 
 let WL_ROWS=[],WL_BY_MUNI={};
 async function loadWorklist(){
-  const {data,error}=await sb.from("v_worklist").select("municipality_id,municipality,arrondissement,parish_name,scope_kind,record_class,task_type,era,item_count,rank").order("rank").order("item_count",{ascending:false});
+  const {data,error}=await sb.from("v_worklist").select("municipality_id,municipality,arrondissement,parish_id,parish_name,scope_kind,record_class,task_type,era,item_count,rank").order("rank").order("item_count",{ascending:false});
   const b=$("#wl_body");
   if(error){if(b)b.innerHTML='<tr><td colspan="5" class="muted">Could not load worklist: '+esc(error.message)+'</td></tr>';return;}
   WL_ROWS=data||[];
@@ -1639,11 +1651,16 @@ function renderWorklist(){
   body.innerHTML=rows.slice(0,500).map(r=>{
     const unit=r.parish_name||(r.scope_kind==="civil"?"civil registration":"—");
     const cls=(r.scope_kind==="civil"?CV_CIVIL_LABEL:CV_PARISH_LABEL)[r.record_class]||r.record_class;
-    const act=r.task_type==="pull_act"?`wlGoBrowse('${esc(r.municipality_id)}','${esc(r.record_class)}')`:`wlGoTracker('${esc(r.municipality_id)}')`;
+    const act=r.task_type==="pull_act"?`wlGoBrowse('${esc(r.municipality_id)}','${esc(r.record_class)}')`:`wlGoTracker('${esc(r.municipality_id)}','${esc(r.parish_id||"")}')`;
     return `<tr class="click" onclick="${act}"><td><span class="cvchip ${wlTaskClass(r)}">${esc(wlTaskLabel(r))}</span></td><td><b>${r.item_count}</b></td><td>${esc(r.municipality||"")}</td><td>${esc(unit)}</td><td>${esc(cls)}</td></tr>`;
   }).join("")||'<tr><td colspan="5" class="muted">No pending tasks for this filter.</td></tr>';
 }
-function wlGoTracker(mid){gotoTab("coverage");if(!COV_OPEN["m_"+mid])cvToggleMuni(mid);}
+async function wlGoTracker(mid,pid){
+  gotoTab("coverage");
+  COV_OPEN["m_"+mid]=true; if(pid)COV_OPEN["u_"+pid]=true;
+  if(!COV_UNITS[mid])await cvLoadUnits(mid); else renderCoverage();
+  setTimeout(()=>{const el=document.getElementById(pid?("u_"+pid):("m_"+mid));if(el){el.scrollIntoView({behavior:"smooth",block:"start"});el.style.transition="outline .3s";el.style.outline="2px solid #7a1f2b";setTimeout(()=>{el.style.outline="";},1800);}},120);
+}
 function wlGoBrowse(mid,cls){
   gotoTab("browse");
   const ev={birth:"baptism",death:"burial",marriage:"marriage"}[cls]||"";
