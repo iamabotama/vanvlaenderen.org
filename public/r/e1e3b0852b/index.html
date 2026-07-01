@@ -147,6 +147,7 @@
 <div id="appView" class="hide">
   <nav>
     <button class="tab active" data-tab="coverage">Research tracker</button>
+    <button class="tab" data-tab="worklist">Worklist</button>
     <button class="tab" data-tab="browse">Browse</button>
     <button class="tab" data-tab="people">People</button>
     <button class="tab" data-tab="add">Add record</button>
@@ -228,6 +229,17 @@
     </section>
 
     <!-- ADD -->
+    <section id="tab-worklist" class="hide">
+      <h3>Worklist</h3>
+      <p class="muted" style="font-size:12.5px;margin:0 0 8px">Next actions, ranked: scan indexes &rarr; page-scan pre-1650 gaps &rarr; pull register acts &rarr; page-scan later gaps. Parish before civil; baptism, then marriage, then burial. Click a task to jump to it.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:8px 0">
+        <div><label>Search</label><input type="text" id="wl_q" placeholder="municipality or parish"></div>
+        <div><label>Arrondissement</label><select id="wl_arr"><option value="">all arrondissements</option></select></div>
+        <div class="muted" id="wl_count" style="align-self:center"></div>
+      </div>
+      <table><thead><tr><th>Task</th><th>Items</th><th>Municipality</th><th>Unit</th><th>Class</th></tr></thead><tbody id="wl_body"><tr><td colspan="5" class="muted">Loading&hellip;</td></tr></tbody></table>
+    </section>
+
     <section id="tab-add" class="hide">
       <h3>Add a record</h3>
       <p class="muted" id="addMode" style="font-size:12.5px"></p>
@@ -450,7 +462,7 @@ async function boot(){
 function initUI(){
   document.querySelectorAll("nav button.tab").forEach(b=>b.onclick=()=>{
     document.querySelectorAll("nav button.tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");
-    ["coverage","browse","people","add","proposals"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
+    ["coverage","worklist","browse","people","add","proposals"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
   });
   $("#b_type").innerHTML='<option value="">all types</option>'+EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
   $("#a_type").innerHTML=EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
@@ -473,6 +485,9 @@ function initUI(){
   $("#pj_text").addEventListener("input",pjResetPreview); // #12: editing JSON after preview collapses Submit (can't submit unvalidated)
   if($("#cskill_copy"))$("#cskill_copy").onclick=copyCollectionSkill;
   if($("#cskill"))$("#cskill").addEventListener("toggle",e=>{if(e.target.open)loadCollectionSkill();});
+  if($("#wl_arr"))$("#wl_arr").onchange=renderWorklist;
+  if($("#wl_q"))$("#wl_q").addEventListener("input",renderWorklist);
+  loadWorklist();
   const curator=ROLE==="curator";
   $("#addMode").textContent=curator?"You are the curator — this writes directly to the database.":"Your change will be submitted to the proposal queue for the curator to review.";
   $("#a_save").textContent=curator?"Save record":"Submit proposal";
@@ -1557,6 +1572,50 @@ async function cvRefreshMuni(id){
   renderMetrics();
 }
 
+let WL_ROWS=[];
+async function loadWorklist(){
+  const {data,error}=await sb.from("v_worklist").select("municipality_id,municipality,arrondissement,parish_name,scope_kind,record_class,task_type,era,item_count,rank").order("rank").order("item_count",{ascending:false});
+  const b=$("#wl_body");
+  if(error){if(b)b.innerHTML='<tr><td colspan="5" class="muted">Could not load worklist: '+esc(error.message)+'</td></tr>';return;}
+  WL_ROWS=data||[];fillWorklistFilter();renderWorklist();
+}
+function wlTaskLabel(r){
+  if(r.task_type==="scan_index")return "Scan index for VV";
+  if(r.task_type==="page_scan")return (r.era==="pre1650"?"Page-scan (pre-1650)":"Page-scan (later)");
+  if(r.task_type==="pull_act")return "Pull register act";
+  return r.task_type;
+}
+function wlTaskClass(r){return r.task_type==="scan_index"?"idx":(r.task_type==="pull_act"?"found":"prog");}
+function fillWorklistFilter(){
+  const sel=$("#wl_arr");if(!sel||sel.dataset.filled)return;
+  const arrs=[...new Set(WL_ROWS.map(r=>r.arrondissement).filter(Boolean))].sort();
+  sel.innerHTML='<option value="">all arrondissements</option>'+arrs.map(a=>`<option>${esc(a)}</option>`).join("");
+  sel.dataset.filled="1";
+}
+function renderWorklist(){
+  const arr=$("#wl_arr")?$("#wl_arr").value:"",q=$("#wl_q")?$("#wl_q").value.trim().toLowerCase():"";
+  let rows=WL_ROWS;
+  if(arr)rows=rows.filter(r=>r.arrondissement===arr);
+  if(q)rows=rows.filter(r=>String(r.municipality||"").toLowerCase().includes(q)||String(r.parish_name||"").toLowerCase().includes(q));
+  if($("#wl_count"))$("#wl_count").textContent=rows.length+" tasks";
+  const body=$("#wl_body");if(!body)return;
+  body.innerHTML=rows.slice(0,500).map(r=>{
+    const unit=r.parish_name||(r.scope_kind==="civil"?"civil registration":"—");
+    const cls=(r.scope_kind==="civil"?CV_CIVIL_LABEL:CV_PARISH_LABEL)[r.record_class]||r.record_class;
+    const act=r.task_type==="pull_act"?`wlGoBrowse('${esc(r.municipality_id)}','${esc(r.record_class)}')`:`wlGoTracker('${esc(r.municipality_id)}')`;
+    return `<tr class="click" onclick="${act}"><td><span class="cvchip ${wlTaskClass(r)}">${esc(wlTaskLabel(r))}</span></td><td><b>${r.item_count}</b></td><td>${esc(r.municipality||"")}</td><td>${esc(unit)}</td><td>${esc(cls)}</td></tr>`;
+  }).join("")||'<tr><td colspan="5" class="muted">No pending tasks for this filter.</td></tr>';
+}
+function wlGoTracker(mid){gotoTab("coverage");if(!COV_OPEN["m_"+mid])cvToggleMuni(mid);}
+function wlGoBrowse(mid,cls){
+  gotoTab("browse");
+  const ev={birth:"baptism",death:"burial",marriage:"marriage"}[cls]||"";
+  if($("#b_muni"))$("#b_muni").value=mid;
+  if($("#b_type"))$("#b_type").value=ev;
+  if($("#b_src"))$("#b_src").value="needs";
+  fillBrowseParish();runBrowse();
+}
+window.wlGoTracker=wlGoTracker;window.wlGoBrowse=wlGoBrowse;
 boot();
 </script>
 </body>
