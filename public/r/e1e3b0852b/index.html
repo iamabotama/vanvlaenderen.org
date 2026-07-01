@@ -728,13 +728,18 @@ function editForm(e){
     <div class="row"><div><label>Event type</label><select id="e_type">${EVENT_TYPES.map(t=>`<option ${t===e.event_type?'selected':''}>${t}</option>`).join("")}</select></div>
     <div><label>Year</label><input type="number" id="e_year" value="${e.year??""}"></div></div>
     <label>Date as written<input type="text" id="e_date" value="${esc(e.date_text||"")}"></label>
+    <div class="row"><div><label>Municipality</label><select id="e_muni">${MUNIS.map(m=>`<option value="${esc(m.municipality_id)}" ${m.municipality_id===e.municipality_id?'selected':''}>${esc(m.canonical_name)}</option>`).join("")}</select></div>
+    <div><label>Parish</label><select id="e_parish"></select></div></div>
     <label>Summary<textarea id="e_sum" rows="2">${esc(e.summary||"")}</textarea></label>
     <div style="margin-top:8px"><button class="act" id="e_save">Save changes</button> <span class="msg" id="e_msg" style="display:inline-block;margin:0"></span></div>`;
+  const fillEP=(sel)=>{const mid=$("#e_muni").value,list=PARISHES.filter(p=>p.municipality_id===mid);$("#e_parish").innerHTML='<option value="">&mdash; none (e.g. civil) &mdash;</option>'+list.map(p=>`<option value="${esc(p.parish_id)}" ${p.parish_id===sel?'selected':''}>${esc(p.parish_name)}</option>`).join("");};
+  fillEP(e.parish_id);
+  $("#e_muni").onchange=()=>fillEP(null);
   $("#e_save").onclick=async()=>{
-    const patch={event_type:$("#e_type").value,year:parseInt($("#e_year").value||"0",10)||null,date_text:$("#e_date").value.trim()||null,summary:$("#e_sum").value.trim()||null};
+    const patch={event_type:$("#e_type").value,year:parseInt($("#e_year").value||"0",10)||null,date_text:$("#e_date").value.trim()||null,summary:$("#e_sum").value.trim()||null,municipality_id:$("#e_muni").value||null,parish_id:$("#e_parish").value||null};
     const {error}=await sb.from("events").update(patch).eq("event_id",e.event_id);
     if(error){flash($("#e_msg"),"Save failed: "+esc(error.message),"err");return;}
-    flash($("#e_msg"),"Saved.","good");runBrowse();setTimeout(()=>openRecord(e.event_id),400);};
+    flash($("#e_msg"),"Saved.","good");runBrowse();loadWorklist();setTimeout(()=>openRecord(e.event_id),400);};
 }
 function proposeForm(e){
   $("#m_form").innerHTML=`<h4>Propose a change to ${esc(e.event_id)}</h4>
