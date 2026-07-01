@@ -1305,16 +1305,14 @@ async function loadCoverage(){
 }
 function metric(l,v){return `<div class="cv-metric"><div class="lbl">${esc(l)}</div><div class="val">${esc(String(v))}</div></div>`;}
 function renderMetrics(){
-  let idxDone=0,foundN=0;
-  COV_BY_MUNI.forEach(m=>Object.values(m.cls).forEach(r=>{
-    if((CV2_RANK[r.parish_rollup]||0)>=3)idxDone++;
-    if(r.parish_found)foundN++;
-  }));
+  let held=0,pull=0,scan=0;
+  if(typeof HELD!=="undefined")Object.values(HELD).forEach(v=>held+=v||0);
+  Object.values(WL_BY_MUNI).forEach(w=>{pull+=w.pull||0;scan+=w.scan||0;});
   $("#c_metrics").innerHTML=
     metric("Municipalities",COV_BY_MUNI.length)+
-    metric("Register-keeping units",COV_UNIT_COUNT)+
-    metric("Index-complete (parish)",idxDone)+
-    metric("With VV found",foundN);
+    metric("Records held",held)+
+    metric("Leads to pull",pull)+
+    metric("Indexes to scan",scan);
 }
 function cvMuniFlags(m){
   let hasVV=false,inProg=false,allDead=true;
@@ -1342,6 +1340,16 @@ function renderCoverage(){
   $("#c_count").textContent=`${rows.length} municipalit${rows.length===1?"y":"ies"}`;
   $("#c_body").innerHTML=rows.map(cvMuniRow).join("")||'<p class="muted" style="padding:10px">No municipalities match.</p>';
 }
+function cvWorkSummary(mid){
+  const w=WL_BY_MUNI[mid];
+  if(!w||!(w.scan||w.page_pre||w.pull||w.page_post))return '<span class="cvchip done" title="No pending work">&#10003; clear</span>';
+  const p=[];
+  if(w.scan)p.push(`<span class="cvchip idx" title="Index volumes still to scan for Van Vlaenderen">${w.scan} to scan</span>`);
+  if(w.page_pre)p.push(`<span class="cvchip prog" title="Pre-1650 unindexed years to page-scan (high value)">${w.page_pre} pre-1650</span>`);
+  if(w.pull)p.push(`<span class="cvchip" style="background:#f6edcf;border-color:#e2cf8f;color:#8a6d1a" title="Index leads: register act still to pull (Phase B)">${w.pull} to pull</span>`);
+  if(w.page_post)p.push(`<span class="cvchip" title="Later unindexed years to page-scan">${w.page_post} gaps</span>`);
+  return p.join("");
+}
 function cvMuniRow(m){
   const open=!!COV_OPEN["m_"+m.id];
   const chips=CV_ORDER.map(c=>{const r=m.cls[c];if(!r)return"";
@@ -1361,8 +1369,9 @@ function cvMuniRow(m){
   const sub=`${esc(m.region||m.arr||"")} &middot; ${pu} parish unit${pu===1?"":"s"} &middot; Held ${held}${fvStr}`;
   let html=`<div class="cv-muni"><div class="cv-mhead" onclick="cvToggleMuni('${esc(m.id)}')">`
     +`<span class="cv-caret" style="transform:rotate(${open?90:0}deg)">&#9656;</span>`
-    +`<div style="min-width:0"><div class="cv-name">${esc(m.name)}</div><div class="cv-sub">${sub}</div></div>`
-    +`<div class="cv-chips">${chips}${civ}</div>`
+    +`<div style="min-width:0"><div class="cv-name">${esc(m.name)}</div><div class="cv-sub">${sub}</div>`
+    +`<div class="cv-covchips" style="margin-top:3px;opacity:.7;font-size:10.5px">${chips}${civ}</div></div>`
+    +`<div class="cv-chips">${cvWorkSummary(m.id)}</div>`
     +`<button class="ghost cv-add" onclick="event.stopPropagation();addHere('${esc(m.id)}')" title="Prefill the add form for this municipality">+ Add</button></div>`;
   if(open)html+=`<div class="cv-units">${cvUnitsHtml(m.id)}</div>`;
   html+=`</div>`;
@@ -1577,12 +1586,19 @@ async function cvRefreshMuni(id){
   renderMetrics();
 }
 
-let WL_ROWS=[];
+let WL_ROWS=[],WL_BY_MUNI={};
 async function loadWorklist(){
   const {data,error}=await sb.from("v_worklist").select("municipality_id,municipality,arrondissement,parish_name,scope_kind,record_class,task_type,era,item_count,rank").order("rank").order("item_count",{ascending:false});
   const b=$("#wl_body");
   if(error){if(b)b.innerHTML='<tr><td colspan="5" class="muted">Could not load worklist: '+esc(error.message)+'</td></tr>';return;}
-  WL_ROWS=data||[];fillWorklistFilter();renderWorklist();
+  WL_ROWS=data||[];
+  WL_BY_MUNI={};
+  WL_ROWS.forEach(r=>{const w=WL_BY_MUNI[r.municipality_id]||(WL_BY_MUNI[r.municipality_id]={scan:0,page_pre:0,pull:0,page_post:0});
+    if(r.task_type==="scan_index")w.scan+=r.item_count;
+    else if(r.task_type==="pull_act")w.pull+=r.item_count;
+    else if(r.task_type==="page_scan")w[r.era==="pre1650"?"page_pre":"page_post"]+=r.item_count;});
+  fillWorklistFilter();renderWorklist();
+  if(typeof COV_BY_MUNI!=="undefined"&&COV_BY_MUNI.length){renderCoverage();renderMetrics();} // repaint tracker rows + KPIs with worklist data
 }
 function wlTaskLabel(r){
   if(r.task_type==="scan_index")return "Scan index for VV";
