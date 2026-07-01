@@ -18,11 +18,13 @@ description: >
   structured vital-records layer only.
 ---
 
-<!-- Revised 2026-06-26: paste pipeline is canonical for both roles; contributors
-use NAMES not IDs; per-segment coverage shape + rollup; min-bar requires
-municipality/parish name + source url on found records; Phase A requires the
-register-list screenshot; status-table vs worked-example conflict resolved;
-tracker block uses municipality_name (RPC resolves it). -->
+<!-- Revised 2026-06-30: bulk-array output (paste [ {…}, … ] for a whole sweep);
+tracker block RETIRED (search status is set per-volume in the tracker, and index
+scans cascade to registers via apply_index_clear — never via paste); preserve
+SOURCE ORDER when transcribing a list for validation (never reorder). Prior
+(2026-06-26): paste pipeline canonical for both roles; contributors use NAMES not
+IDs; per-segment coverage shape; min-bar requires municipality/parish name +
+source url on found records; Phase A requires the register-list screenshot. -->
 
 # Van Vlaenderen record collection
 
@@ -140,14 +142,16 @@ values). Supply NAMES, not IDs:
   "sources": [
     {"role":"index","register":"BE-A0514 / 1075 / 000 / 01355","url":"https://…/0_0040_r","url_level":"folio","notes":"…"},
     {"role":"original_record","register":"BE-A0514 / 1075 / 000 / 01357","url":"https://…/0_0147","url_level":"folio","notes":"…"}
-  ],
-  "tracker": {
-    "municipality_name": "Aalter",
-    "set": {"parish_marriage":"Complete (found)"},
-    "coverage": {"parish_marriage": { … see "Coverage shape" … }}
-  }
+  ]
 }
 ```
+
+**Bulk entry (a whole index sweep in one paste).** To submit many records at once,
+emit a JSON **array** of these record objects — `[ { …record… }, { …record… }, … ]` —
+and paste it once. The editor validates every record, previews them as a list, and
+applies them all in one go. Keep the array in the **same order as the source index**
+(see Discipline rails — never reorder). A single record may still be pasted as one
+object.
 
 `contract_version` (integer) stamps the record-contract version; the editor
 validates it on paste and warns/rejects on mismatch so a stale skill can't
@@ -157,12 +161,15 @@ changes.
 Resolution is server-side in the RPC: prefer `*_name` fields. A
 `municipality_name` is resolved to its id and a missing municipality is rejected,
 never auto-created; a `parish_name` missing under that municipality is created
-and reported. The `tracker` block resolves `municipality_name` the same way
-(supply the name, not `municipality_id`). A `sources[].register` shelfmark is
-matched to `sources` by `inventory_reference`; absent, a `SRC_` row is created
-(category `parish`, repository `Rijksarchief Belgie (AGATHA)`). `tracker` is
-optional. A contributor's tracker-only change is emitted as a `progress_update`
-payload (`{municipality_name, set, coverage}`) and applied the same way.
+and reported. A `sources[].register` shelfmark is matched to `sources` by
+`inventory_reference`; absent, a `SRC_` row is created (category `parish`,
+repository `Rijksarchief Belgie (AGATHA)`).
+
+**No tracker block.** Do NOT emit a `tracker` / `progress_update` block — it is
+retired and the editor ignores it. Search status is set per volume in the tracker
+(the curator toggles an index or register), and marking an index `complete`
+cascades to the registers it covers automatically (`apply_index_clear`). Coverage
+is never written through the record paste.
 
 ### Min bar - refuse to emit an incomplete record
 
@@ -235,6 +242,11 @@ hit, update the tracker. A zero-found sweep is a valid, valuable result.
    the index, `needs_source=1`, `fully_sourced=0`; an `event_sources` row with
    `role='index'`, the index image `url`, the register shelfmark; and
    `event_participants` for the names the index gives, `status='unreconciled'`.
+   Emit ALL the hits from one index as a single JSON **array** in the index's row
+   order (bulk entry — one paste, one Submit). If the curator used the volume's
+   **"Add record here"** in the tracker, the municipality, parish, class, span and
+   register link are already pinned, so the pasted records need only carry what
+   those leave blank.
 5. Update the tracker per the status table below.
 
 ### Phase B - record extraction (per lead)
@@ -342,6 +354,10 @@ municipalities without Van Vlaenderen" filter.
 8. Submitter notes are not record content. A note to the curator rides on the
    proposal (`submitter_note`), never inside the event; promote anything worth
    keeping into the record's own `notes` consciously.
+9. Preserve source order. When transcribing a list or index for the human to
+   validate, keep the EXACT order of the source image — never sort by name, year,
+   or anything. They validate row-by-row against the scan, so reordering breaks
+   that. Carry that same order through to the record array you emit (bulk entry).
 
 ## Record types (v1 scope + extension hooks)
 
