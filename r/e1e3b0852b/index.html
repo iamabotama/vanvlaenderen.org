@@ -1452,13 +1452,17 @@ function cvVolPill(cid,vol){
 }
 async function cvBulkIndexComplete(cid){
   if(ROLE!=="curator")return;
-  if(!confirm("Mark every index book in this class as Complete (scanned for Van Vlaenderen) and clear the registers they cover? Use only when the whole index has been searched."))return;
-  const {data,error}=await sb.rpc("mark_all_indexes_complete",{payload:{coverage_id:cid}});
+  const y=prompt("Mark index books ending on or before which year as Complete (scanned for Van Vlaenderen)?\n\nLeave BLANK to mark all. The post-1796 yearly (civil-era) index is usually a separate index, so 1796 stops before it.","1796");
+  if(y===null)return;
+  const through=y.trim()===""?null:parseInt(y.trim(),10);
+  if(y.trim()!==""&&(isNaN(through)||through<1000||through>2100)){flash($("#flash"),"Enter a 4-digit year, or leave blank for all.","err");return;}
+  const payload=through!==null?{coverage_id:cid,through_year:through}:{coverage_id:cid};
+  const {data,error}=await sb.rpc("mark_all_indexes_complete",{payload});
   if(error){flash($("#flash"),"Bulk complete failed: "+esc(error.message),"err");return;}
   const mid=(COV_ROWS[cid]||{}).muni;
   if(mid)await cvRefreshMuni(mid);
   loadWorklist();
-  flash($("#flash"),"All index books marked Complete"+(data&&data.registers_cleared?"; "+data.registers_cleared+" register-year(s) cleared via index":"")+".","good");
+  flash($("#flash"),((data&&data.indexes_complete)||"")+" index book(s) Complete"+(through!==null?" (through "+through+")":"")+(data&&data.registers_cleared?"; "+data.registers_cleared+" register-year(s) cleared via index":"")+".","good");
 }
 window.cvBulkIndexComplete=cvBulkIndexComplete;
 function cvVolsHtml(urows){
