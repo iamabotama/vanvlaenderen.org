@@ -221,6 +221,7 @@ function writeSitemap(PAGE_META) {
     '/research/victor-dossier':        { priority: '0.9', changefreq: 'weekly'  },
     '/research/praet-dossier':         { priority: '0.8', changefreq: 'monthly' },
     '/research/praet-lineage-dossier': { priority: '0.7', changefreq: 'monthly' },
+    '/research/gap-dossier':           { priority: '0.8', changefreq: 'monthly' },
     '/lineage':                        { priority: '0.8', changefreq: 'monthly' },
     '/about':                          { priority: '0.6', changefreq: 'yearly'  },
     '/contact':                        { priority: '0.5', changefreq: 'yearly'  },

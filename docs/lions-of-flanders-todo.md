@@ -115,7 +115,7 @@ The family's standing across centuries constitutes a distinct argument strand:
 ## 🟢 BACKLOG / LONGER TERM
 
 ### Documentary Chain to Build
-> **1376 Ypres / 1426 Kortrijk → 1547–49 Bruges land records → 1600s Meetjesland → 1800s Bassevelde/Boekhoute → Charles Louis (1854, emigrated 1881)**
+> **1376 Ypres / 1426 Kortrijk → 1547–49 Bruges land records → 1600s Meetjesland → 1800s Bassevelde/Boekhoute → Charles Louis (1854, emigrated 1875)**
 
 - [ ] Map all known attestations onto this chain with source citations
 - [ ] Identify remaining gaps and assign archival targets
