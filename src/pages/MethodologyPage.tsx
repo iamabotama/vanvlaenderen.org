@@ -130,7 +130,7 @@ const READING_LIST: { group: string; entries: ReadingEntry[] }[] = [
         author: 'Cawley, C.',
         year: '2025 (v5.0)',
         title: 'MedLands: Flanders, Hainaut (online)',
-        note: 'The Foundation for Medieval Genealogy\'s encyclopaedia of territories and noble families in the medieval western world. The primary reference for all comital and bastard-line citations in this project. Free to access online. Version 5.0 updated January 2025.',
+        note: 'The Foundation for Medieval Genealogy\'s encyclopaedia of territories and noble families in the medieval western world. A tertiary compilation used for orientation and cross-checking, not as a fact-level authority — claims on this site are cited to primary sources and critical editions (see the dossier notes). Free to access online. Version 5.0 updated January 2025.',
         links: [
           { label: 'Free access (FMG)', url: 'https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm' },
         ],
