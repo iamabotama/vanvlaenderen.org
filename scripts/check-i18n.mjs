@@ -19,6 +19,11 @@
  *      "Sterk gecorroboreerd", "Waarschijnlijk", "Hypothese". English labels
  *      left untranslated, or Dutch synonyms, are flagged.
  *
+ *   4. Duplicate keys within the same object - JSON.parse silently keeps the
+ *      LAST occurrence, so an earlier duplicate key is a silently dead string
+ *      (the name.notes_source_5 Anselme-note incident, fixed 2026-07-02).
+ *      Detected by a minimal raw-text JSON walk, since parsing can't see it.
+ *
  * Background: memory/skill "nl-i18n-canonical-names". Run by `pnpm build` and
  * by the deploy CI, so drift cannot reach main. Pure ESM, no dependencies.
  */
@@ -75,6 +80,52 @@ for (const token of NAME_TOKENS) {
       `Name drift: "${token}" in nl.json key(s) where en.json uses the canonical form -> ${nlOnly.join(', ')}`
     )
   }
+}
+
+// --- 4. duplicate keys within the same object (raw-text walk) ---
+function findDuplicateKeys(raw, fileLabel) {
+  // Minimal JSON walker: tracks object nesting + key sets per object.
+  // Assumes valid JSON (JSON.parse above already guarantees it).
+  const dups = []
+  const stack = []            // one Set of seen keys per open object
+  const pathStack = []        // key path to current position
+  let i = 0, pendingKey = null
+  const n = raw.length
+  while (i < n) {
+    const c = raw[i]
+    if (c === '"') {
+      // read string
+      let j = i + 1, s = ''
+      while (j < n) {
+        if (raw[j] === '\\') { s += raw[j] + raw[j + 1]; j += 2; continue }
+        if (raw[j] === '"') break
+        s += raw[j]; j++
+      }
+      // is it a key? next non-ws char is ':'
+      let k = j + 1
+      while (k < n && /\s/.test(raw[k])) k++
+      if (raw[k] === ':' && stack.length) {
+        const seen = stack[stack.length - 1]
+        const p = pathStack.concat(s).filter(Boolean).join('.')
+        if (seen.has(s)) dups.push(`${fileLabel}: duplicate key "${p}" (earlier occurrence is silently dead)`)
+        seen.add(s)
+        pendingKey = s
+        i = k + 1
+        continue
+      }
+      i = j + 1
+      continue
+    }
+    if (c === '{') { stack.push(new Set()); pathStack.push(pendingKey ?? ''); pendingKey = null }
+    else if (c === '}') { stack.pop(); pathStack.pop() }
+    else if (c === '[') { pendingKey = null }
+    i++
+  }
+  return dups
+}
+for (const [label, file] of [['en.json', 'en.json'], ['nl.json', 'nl.json']]) {
+  const raw = fs.readFileSync(path.join(localesDir, file), 'utf8')
+  errors.push(...findDuplicateKeys(raw, label))
 }
 
 // --- 3. non-canonical evidence-tier wording in NL ---
