@@ -13767,7 +13767,7 @@ const styles = {
   attributionDim,
   licenseLink
 };
-const buildDate = "2026-07-03";
+const buildDate = "2026-07-05";
 function formatBuildDate(iso, locale) {
   try {
     const d = /* @__PURE__ */ new Date(iso + "T00:00:00Z");
