@@ -34,6 +34,7 @@
   .link{color:var(--accent);cursor:pointer;text-decoration:underline}
   .pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11px;background:var(--chip);border:1px solid var(--line)}
   .pill.bad{background:#f6e3e3;color:var(--bad);border-color:#e6c2c2}.pill.ok{background:#e7f3eb;color:var(--ok);border-color:#bfe0cb}
+  .pill.warn{background:#fdf3e3;color:#8a5a18;border-color:#ecd6ad}
   .msg{padding:10px 12px;border-radius:8px;margin:10px 0;font-size:13px;display:none}
   .msg.show{display:block}.msg.err{background:#f6e3e3;color:#7a1f1f;border:1px solid #e6c2c2}.msg.good{background:#e7f3eb;color:#1f5c39;border:1px solid #bfe0cb}
   .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
@@ -812,6 +813,7 @@ let PJ_MODE=null;                         // "full" | "tracker" — set by pjPar
 let PJ_EDIT_ORIG=null;                    // #15: proposal id being curator-edited (apply resolves it, no dup row)
 let PJ_DUPS=[];                           // #14: scored duplicate candidates for the current preview
 let PJ_BATCH=null;                        // bulk paste: validated array of full records
+let PJ_BATCH_SRC=null;                    // bulk paste: ALL pasted rows (incl. invalid), for the dup advisory's compare
 const pjSubmitLabel=()=>ROLE==="curator"?"Apply record":"Submit to queue";
 function pjPayloadForRpc(o){const c=Object.assign({},o);delete c.contract_version;return c;} // #10: strip before RPC
 function stripFences(t){t=(t||"").trim();const m=/^```[a-zA-Z]*\s*([\s\S]*?)\s*```$/.exec(t);return m?m[1].trim():t;}
@@ -929,7 +931,7 @@ function pjInjectSubmit(){
   $("#pj_submit").onclick=pjSubmit;
 }
 function pjParseBatch(arr){
-  PJ=null;PJ_MODE=null;PJ_BATCH=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";
+  PJ=null;PJ_MODE=null;PJ_BATCH=null;PJ_BATCH_SRC=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";
   if(!arr.length){flash($("#pj_msg"),"The array is empty.","err");return;}
   const recs=[],probs=[];
   arr.forEach((o,i)=>{
@@ -942,14 +944,15 @@ function pjParseBatch(arr){
   });
   const rows=arr.map((o,i)=>{
     const ev=(o&&o.event)||{},okrec=recs.indexOf(o)>=0;
-    const who=(Array.isArray(o&&o.participants)?o.participants:[]).map(p=>p&&(p.name_as_written||p.name)).filter(Boolean)[0]||"—";
-    return `<tr><td>${i+1}</td><td>${esc(ev.event_type||"?")}</td><td>${esc(String(ev.year||ev.date_text||""))}</td><td>${esc(who)}</td><td>${okrec?'<span class="pill ok">ok</span>':'<span class="pill bad">fix</span>'}</td></tr>`;
+    return `<tr><td>${i+1}</td><td>${esc(ev.event_type||"?")}</td><td>${esc(String(ev.year||ev.date_text||""))}</td><td>${esc(pjBatchWho(o))}</td><td>${okrec?'<span class="pill ok">ok</span>':'<span class="pill bad">fix</span>'}</td><td id="pjb_dup_${i}" class="muted">&mdash;</td></tr>`;
   }).join("");
   const errHtml=probs.length?`<div class="msg err show" style="margin-top:8px">${probs.length} record(s) need fixing: ${probs.map(esc).join(" | ")}</div>`:"";
   $("#pj_preview").innerHTML=`${errHtml}<div class="card" style="max-width:none;margin-top:10px">
     <div class="kv"><b>Batch:</b> ${arr.length} record(s), ${recs.length} ready${probs.length?(", "+probs.length+" to fix"):""}.</div>
-    <table><thead><tr><th>#</th><th>Type</th><th>Year</th><th>Principal</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>
-    <div class="kv muted" style="font-size:11.5px;margin-top:6px">Duplicate-scan is skipped in batch mode &mdash; review the list before submitting.</div></div>`;
+    <table><thead><tr><th>#</th><th>Type</th><th>Year</th><th>Principal</th><th>Status</th><th>Dup?</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="kv muted" id="pjb_dupnote" style="font-size:11.5px;margin-top:6px">Duplicate-scan running&hellip;</div></div>`;
+  PJ_BATCH_SRC=arr;              // keep the pasted rows addressable for compareBatchDup()
+  pjDupCheckBatch(arr);          // advisory, async — scans every row, incl. the ones needing a fix
   if(probs.length){flash($("#pj_msg"),"Every record must be valid to submit the batch. Fix the flagged ones and Parse again.","err");return;}
   PJ_BATCH=recs;PJ_MODE="batch";
   pjInjectBatchSubmit();
@@ -1065,39 +1068,64 @@ function lev(a,b){a=a||"";b=b||"";const m=a.length,n=b.length;if(!m)return n;if(
   for(let i=1;i<=m;i++){cur[0]=i;for(let j=1;j<=n;j++){const c=a[i-1]===b[j-1]?0:1;cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+c);}[prev,cur]=[cur,prev];}
   return prev[n];}
 function simRatio(a,b){a=(a||"").toLowerCase().trim();b=(b||"").toLowerCase().trim();if(!a||!b)return 0;if(a===b)return 1;const L=Math.max(a.length,b.length);return 1-lev(a,b)/L;}
+const DUP_SELECT="event_id,event_type,year,date_text,municipality_id,parish_id,event_participants(role,name_as_written,given,surname,canonical_surname),event_sources(role,url,url_level)";
+// One fetch serves a whole batch: all events of the pasted types within the pasted year span (±1).
+async function pjDupPool(types,ymin,ymax){
+  try{
+    const {data,error}=await sb.from("events").select(DUP_SELECT).in("event_type",types).gte("year",ymin).lte("year",ymax);
+    if(error)return[];return data||[];
+  }catch(e){return[];}
+}
+// Resolve a pasted record's place to ids. Parish names repeat across municipalities, so gate on the municipality.
+function pjPropPlace(ev){
+  let mid=ev.municipality_id||null,pid=ev.parish_id||null;
+  if(!mid&&ev.municipality_name){const m=MUNIS.find(x=>(x.canonical_name||"").toLowerCase()===String(ev.municipality_name).toLowerCase());if(m)mid=m.municipality_id;}
+  if(!pid&&ev.parish_name){const c=PARISHES.filter(x=>(x.parish_name||"").toLowerCase()===String(ev.parish_name).toLowerCase()&&(!mid||x.municipality_id===mid));if(c.length===1)pid=c[0].parish_id;}
+  return{mid,pid};
+}
+// Score one proposed record against a pool of existing (or pasted) records. Pure — no fetch, no render.
+// NOTE: every record in this corpus is a Van Vlaenderen, so surname is an entry gate, not evidence.
+// Place does the discriminating work: same parish boosts hard, a different municipality suppresses.
+const DUP_THRESHOLD=2.0;
+function pjDupScore(o,pool){
+  const ev=o&&o.event||{},parts=Array.isArray(o&&o.participants)?o.participants:[];
+  const yr=pjYear(ev);if(!ev.event_type||!yr)return[];
+  const pr=parts.filter(p=>PRINCIPAL_ROLES.has((p.role||"").toLowerCase()));
+  const principals=pr.length?pr:parts;
+  const surns=[...new Set(principals.map(p=>(p.canonical_surname||p.surname||"").trim().toLowerCase()).filter(Boolean))];
+  if(!surns.length)return[];
+  // proposed strong-link urls (folio / original_record) — booster only, NEVER a trigger (AGATHA urls are page-level)
+  const propUrls=new Set((Array.isArray(o.sources)?o.sources:[]).filter(s=>s.url&&(s.url_level==="folio"||s.role==="original_record")).map(s=>s.url));
+  const place=pjPropPlace(ev);
+  const cand=[];
+  (pool||[]).forEach(e=>{
+    if(e.event_type!==ev.event_type)return;                       // same class
+    if(e.year==null||Math.abs(Number(e.year)-yr)>1)return;        // year ±1
+    const eps=e.event_participants||[];
+    if(!eps.some(p=>surns.includes((p.canonical_surname||p.surname||"").toLowerCase())))return; // entry gate only
+    let score=1;const why=[];
+    if(place.pid&&e.parish_id&&place.pid===e.parish_id){score+=0.75;why.push("same parish");}
+    else if(place.mid&&e.municipality_id&&place.mid===e.municipality_id){score+=0.35;why.push("same municipality");}
+    else if(place.mid&&e.municipality_id&&place.mid!==e.municipality_id){score-=0.5;} // different place — much less likely the same act
+    let gbest=0;
+    principals.forEach(pp=>{const g=pjFirstGiven(pp);eps.forEach(ep=>{gbest=Math.max(gbest,simRatio(g,ep.given||(ep.name_as_written||"").split(/\s+/)[0]));});});
+    if(gbest>=0.85){score+=1;why.push("same given name");}else if(gbest>=0.6){score+=0.5;why.push("similar given name");}
+    if(ev.date_text&&e.date_text&&ev.date_text.trim().toLowerCase()===e.date_text.trim().toLowerCase()){score+=0.6;why.push("same date");}
+    else if(ev.year&&e.year===Number(ev.year)){score+=0.2;}
+    if(principals.length>1){const names=eps.map(p=>(p.name_as_written||"").toLowerCase());
+      principals.slice(1).forEach(pp=>{const nm=(pp.name_as_written||pp.name||"").toLowerCase();if(nm&&names.some(n=>n&&(n===nm||simRatio(n,nm)>=0.8))){score+=0.5;why.push("second principal matches");}});}
+    const esrcs=e.event_sources||[];
+    if(propUrls.size&&esrcs.some(s=>s.url&&propUrls.has(s.url))){score+=0.5;why.push("shared folio/record link (advisory — page-level)");}
+    cand.push({event_id:e.event_id,year:e.year,score,why:[...new Set(why)],e});
+  });
+  cand.sort((a,b)=>b.score-a.score);
+  return cand.filter(c=>c.score>=DUP_THRESHOLD).slice(0,5);
+}
 async function pjDupCheck(o){
   try{
-    const ev=o.event||{},parts=Array.isArray(o.participants)?o.participants:[];
-    const yr=pjYear(ev);if(!ev.event_type||!yr)return;
-    const pool=parts.filter(p=>PRINCIPAL_ROLES.has((p.role||"").toLowerCase()));
-    const principals=pool.length?pool:parts;
-    const surns=[...new Set(principals.map(p=>(p.canonical_surname||p.surname||"").trim().toLowerCase()).filter(Boolean))];
-    if(!surns.length)return;
-    // candidate identity: same type, year ±1, a participant whose canonical/surname matches a proposed principal surname
-    const {data,error}=await sb.from("events")
-      .select("event_id,event_type,year,date_text,municipality_id,parish_id,event_participants(role,name_as_written,given,surname,canonical_surname),event_sources(role,url,url_level)")
-      .eq("event_type",ev.event_type).gte("year",yr-1).lte("year",yr+1);
-    if(error)return;
-    // proposed strong-link urls (folio / original_record) — booster only, NEVER a trigger (AGATHA urls are page-level)
-    const propUrls=new Set((Array.isArray(o.sources)?o.sources:[]).filter(s=>s.url&&(s.url_level==="folio"||s.role==="original_record")).map(s=>s.url));
-    const cand=[];
-    (data||[]).forEach(e=>{
-      const eps=e.event_participants||[];
-      if(!eps.some(p=>surns.includes((p.canonical_surname||p.surname||"").toLowerCase())))return; // identity gate
-      let score=1;const why=[];
-      let gbest=0;
-      principals.forEach(pp=>{const g=pjFirstGiven(pp);eps.forEach(ep=>{gbest=Math.max(gbest,simRatio(g,ep.given||(ep.name_as_written||"").split(/\s+/)[0]));});});
-      if(gbest>=0.85){score+=1;why.push("same given name");}else if(gbest>=0.6){score+=0.5;why.push("similar given name");}
-      if(ev.date_text&&e.date_text&&ev.date_text.trim().toLowerCase()===e.date_text.trim().toLowerCase()){score+=0.6;why.push("same date");}
-      else if(ev.year&&e.year===Number(ev.year)){score+=0.2;}
-      if(principals.length>1){const names=eps.map(p=>(p.name_as_written||"").toLowerCase());
-        principals.slice(1).forEach(pp=>{const nm=(pp.name_as_written||pp.name||"").toLowerCase();if(nm&&names.some(n=>n&&(n===nm||simRatio(n,nm)>=0.8))){score+=0.5;why.push("second principal matches");}});}
-      const esrcs=e.event_sources||[];
-      if(propUrls.size&&esrcs.some(s=>s.url&&propUrls.has(s.url))){score+=0.5;why.push("shared folio/record link (advisory — page-level)");}
-      cand.push({event_id:e.event_id,year:e.year,score,why:[...new Set(why)],e});
-    });
-    cand.sort((a,b)=>b.score-a.score);
-    PJ_DUPS=cand.filter(c=>c.score>=1.6).slice(0,5);
+    const ev=o.event||{},yr=pjYear(ev);if(!ev.event_type||!yr)return;
+    const pool=await pjDupPool([ev.event_type],yr-1,yr+1);
+    PJ_DUPS=pjDupScore(o,pool);
     if(PJ_DUPS.length)pjShowDups();
   }catch(e){/* advisory only — never blocks submit */}
 }
@@ -1108,18 +1136,80 @@ function pjShowDups(){
   box.innerHTML=`<b>Advisory:</b> this resembles existing record(s). Review before submitting — this does not block.<ul class="plain" style="margin-top:6px">${items}</ul>`;
   $("#pj_preview").appendChild(box);
 }
-function compareDup(eid){
-  const c=PJ_DUPS.find(x=>x.event_id===eid);if(!c||!PJ)return;
-  const ev=PJ.event||{},pp=Array.isArray(PJ.participants)?PJ.participants:[],ps=Array.isArray(PJ.sources)?PJ.sources:[];
+
+/* ---------- batch duplicate advisory (one pool fetch, scores every pasted row) ---------- */
+// Turn a pasted record into a pool-shaped row so the same scorer can find within-paste duplicates.
+function pjAsPoolRow(o,i){
+  const ev=o&&o.event||{};
+  return {event_id:"#"+(i+1),event_type:ev.event_type,year:pjYear(ev),date_text:ev.date_text,
+    municipality_id:null,parish_id:null,_batch_i:i,
+    event_participants:(Array.isArray(o&&o.participants)?o.participants:[]).map(p=>({role:p.role,name_as_written:p.name_as_written||p.name,given:p.given,surname:p.surname,canonical_surname:p.canonical_surname})),
+    event_sources:(Array.isArray(o&&o.sources)?o.sources:[])};
+}
+async function pjDupCheckBatch(arr){
+  try{
+    const idx=arr.map((o,i)=>({o,i})).filter(x=>x.o&&x.o.event&&x.o.event.event_type&&pjYear(x.o.event));
+    if(!idx.length)return;
+    const types=[...new Set(idx.map(x=>x.o.event.event_type))];
+    const yrs=idx.map(x=>pjYear(x.o.event));
+    const pool=await pjDupPool(types,Math.min(...yrs)-1,Math.max(...yrs)+1);
+    PJ_DUPS=[];                       // flat, so compareDup() can resolve any candidate
+    const hits=[];                    // [{i, cands}] — pasted row resembles a live record
+    idx.forEach(({o,i})=>{
+      const c=pjDupScore(o,pool);
+      if(c.length){hits.push({i,cands:c});c.forEach(x=>{if(!PJ_DUPS.some(y=>y.event_id===x.event_id))PJ_DUPS.push(x);});}
+    });
+    const intra=[];                   // [{i,j,why}] — two rows in THIS paste look like the same record
+    idx.forEach(({o,i},n)=>{
+      const later=idx.slice(n+1).map(x=>pjAsPoolRow(x.o,x.i));
+      pjDupScore(o,later).forEach(c=>intra.push({i,j:c.e._batch_i,why:c.why}));
+    });
+    pjShowBatchDups(hits,intra,arr);
+  }catch(e){/* advisory only — never blocks submit */}
+}
+function pjBatchWho(o){
+  return (Array.isArray(o&&o.participants)?o.participants:[]).map(p=>p&&(p.name_as_written||p.name)).filter(Boolean)[0]||"—";
+}
+function pjShowBatchDups(hits,intra,arr){
+  // per-row marker in the batch table
+  hits.forEach(h=>{const cell=$("#pjb_dup_"+h.i);if(cell){cell.innerHTML='<span class="pill warn">check</span>';cell.className="";}});
+  const flagged=new Set(hits.map(h=>h.i));
+  intra.forEach(p=>{[p.i,p.j].forEach(i=>{const cell=$("#pjb_dup_"+i);if(cell&&!flagged.has(i)){cell.innerHTML='<span class="pill warn">in-paste</span>';cell.className="";}});});
+  const note=$("#pjb_dupnote");
+  if(!hits.length&&!intra.length){if(note)note.innerHTML='Duplicate-scan: no matches against existing records. <span class="muted">Still your call — the scan is advisory.</span>';return;}
+  if(note)note.textContent="";
+  const liveItems=hits.map(h=>{
+    const o=arr[h.i],ev=o.event||{};
+    const cs=h.cands.map(c=>`<span class="mono">${esc(c.event_id)}</span>${c.year!=null?` <span class="muted">(${esc(String(c.year))})</span>`:""}${c.why.length?` — ${c.why.map(esc).join(", ")}`:""} · <span class="link" onclick="compareBatchDup(${h.i},'${esc(c.event_id)}')">compare</span>`).join("<br>");
+    return `<li><b>#${h.i+1}</b> ${esc(pjBatchWho(o))} <span class="muted">(${esc(ev.event_type||"?")}, ${esc(String(ev.year||ev.date_text||"?"))})</span> resembles:<br>${cs}</li>`;
+  }).join("");
+  const intraItems=intra.map(p=>`<li><b>#${p.i+1}</b> and <b>#${p.j+1}</b> in this paste look like the same record${p.why.length?` — ${p.why.map(esc).join(", ")}`:""}.</li>`).join("");
+  const box=document.createElement("div");box.className="dupbox";
+  box.innerHTML=`<b>Advisory:</b> ${hits.length} of ${arr.length} pasted record(s) resemble existing records${intra.length?`, and ${intra.length} pair(s) may repeat within the paste`:""}. Review before submitting — this does not block.`
+    +(liveItems?`<ul class="plain" style="margin-top:6px">${liveItems}</ul>`:"")
+    +(intraItems?`<div style="margin-top:6px"><b>Within this paste:</b><ul class="plain">${intraItems}</ul></div>`:"");
+  $("#pj_preview").appendChild(box);
+}
+function compareBatchDup(i,eid){
+  if(!Array.isArray(PJ_BATCH_SRC)||!PJ_BATCH_SRC[i])return;
+  compareDup(eid,PJ_BATCH_SRC[i],"#"+(i+1));
+}
+window.compareBatchDup=compareBatchDup;
+
+function compareDup(eid,rec,label){
+  const PROP=rec||PJ;
+  const c=PJ_DUPS.find(x=>x.event_id===eid);if(!c||!PROP)return;
+  const ev=PROP.event||{},pp=Array.isArray(PROP.participants)?PROP.participants:[],ps=Array.isArray(PROP.sources)?PROP.sources:[];
   const e=c.e,ep=e.event_participants||[],es=e.event_sources||[];
   const cmpRow=(label,a,b)=>{const same=(a||"")!==""&&String(a||"")===String(b||"");return `<tr><td class="muted">${esc(label)}</td><td${same?' style="background:#e7f3eb"':''}>${esc(a||"—")}</td><td${same?' style="background:#e7f3eb"':''}>${esc(b||"—")}</td></tr>`;};
   const plistP=pp.map(x=>esc((x.role||"")+": "+(x.name_as_written||x.name||""))).join("<br>")||"—";
   const plistE=ep.map(x=>esc((x.role||"")+": "+(x.name_as_written||""))).join("<br>")||"—";
   const slistP=ps.map(s=>esc((s.url_level||s.role||"")+" "+(s.url||s.register||""))).join("<br>")||"—";
   const slistE=es.map(s=>esc((s.url_level||s.role||"")+" "+(s.url||""))).join("<br>")||"—";
-  $("#m_title").textContent="Compare — proposed vs "+eid;
+  const propLabel=label?("Proposed "+label):"Proposed";
+  $("#m_title").textContent="Compare — "+propLabel.toLowerCase()+" vs "+eid;
   $("#m_body").innerHTML=`<p class="muted" style="font-size:12px">Advisory comparison. AGATHA links are page-level, so a shared link alone does not prove a duplicate — use judgment.</p>
-    <table><thead><tr><th></th><th>Proposed</th><th>${esc(eid)}</th></tr></thead><tbody>
+    <table><thead><tr><th></th><th>${esc(propLabel)}</th><th>${esc(eid)}</th></tr></thead><tbody>
     ${cmpRow("Type",ev.event_type,e.event_type)}
     ${cmpRow("Date",ev.date_text||ev.date_iso,e.date_text)}
     ${cmpRow("Year",ev.year!=null?String(ev.year):"",e.year!=null?String(e.year):"")}
