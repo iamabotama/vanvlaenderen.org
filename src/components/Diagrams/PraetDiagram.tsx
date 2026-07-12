@@ -110,7 +110,7 @@ const diagram: DiagramDef = {
         dates: 'Count of Flanders · 1330–1384',
         tag: 'HOUSE OF DAMPIERRE',
         body: "In 1373 purchased the leengoed of Praet in Oedelem from the van Praet family, then granted it to his natural son Louis Friese. His death in 1384 marks the generation in which van Vlaenderen crystallises as a heritable surname among his bastard descendants.",
-        src: 'Vredius, Tab. XVI; Lauwens (2010)',
+        src: 'Vredius, Tab. XVI; Lauwens (2021)',
         color: C.root,
         ev: 'direct',
         w: 152,

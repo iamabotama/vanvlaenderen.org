@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-24",
+  "lastUpdated": "2026-07-12",
   "sections": {
     "primarySources": {
       "label": "I. Primary Sources and Finding Aids",
@@ -111,6 +111,28 @@
               "publisher": "Liège: Bassompierre, 1791.",
               "note": "A Liège/Hesbaye nobility genealogy; project relevance centres on comital-Flanders bastards who married into Liège families. p. 71 fn.(d): Rufflar de Flandres, natural son of Louis I de Nevers (de Crécy), died at Crécy 26 Aug 1346 — the source MedLands cites for the Nevers bastard Ruflard. p. 206 fn.(b): Elisabeth de Flandre, dame de Somerghem, 'fille aînée naturelle' of Louis de Crécy, widow of Simon de Mirabello, remarried Arnoul de Montferant. Cross-flags the Three-Elisabeths disambiguation. Consulted 13 Jun 2026.",
               "status": "consulted"
+            },
+            {
+              "id": "nederlands-adelsboek-1908",
+              "source_type": "primary_print",
+              "type": "Primary Source",
+              "author": "Nederland's Adelsboek",
+              "year": "1908",
+              "title": "Nederland's Adelsboek, Vol. 6 (1908) — Van Boetzelaer entry",
+              "publisher": "'s-Gravenhage: W.P. van Stockum en Zoon, 1908.",
+              "note": "The standard Dutch peerage register. Cited in the Praet-lineage dossier for the Van Boetzelaer entry, which records Wessel van Boetzelaer's marriage c. 1519 to 'Francina van Praet' — one of two independent published witnesses to the Praet-Moerkerke / Boetzelaer connection (the other being Lauwens 2021). Her precise generation within the Praet-Moerkerke line remains open.",
+              "status": "consulted"
+            },
+            {
+              "id": "limburg-stirum-cartulaire-1898",
+              "source_type": "edited_collection",
+              "type": "Primary Source",
+              "author": "Limburg-Stirum, Thierry de",
+              "year": "1898–1901",
+              "title": "Cartulaire de Louis de Male, comte de Flandre",
+              "publisher": "Bruges, 1898–1901. 2 vols.",
+              "note": "The published cartulary of the acts of Louis II de Male. Flagged in the gap dossier as a priority acquisition: the comital chancery acts are where any grant, legitimation, or provision made to the count's natural children would surface, including the 1373 Praet transaction. Not yet consulted.",
+              "status": "acquisition_pending"
             }
           ]
         },
@@ -313,7 +335,7 @@
               "author": "Van Vlaenderen American-line primary documents (1854–1913)",
               "year": "1854–1913",
               "title": "Primary records for Charles Louis Van Vlaenderen (b. Bassevelde 1854, d. Covington KY 1913), emigrant ancestor of the American branch",
-              "publisher": "Belgian civil registers (Bassevelde, Oost-Vlaanderen) and American civil, court, and ecclesiastical records (Indiana, Ohio, Kentucky). Specific records consulted include: Bassevelde geboorteakte no. 52, 14 June 1854 (son of Engelbertus van Vlaenderen and Marie Catherine De Clerck); Allen County (Indiana) naturalization declaration, 5 October 1880; Lucas County (Ohio) Probate Court naturalization affidavit, 5 April 1884; Kenton County (Kentucky) death certificate no. 2793 and probate file, October 1913.",
+              "publisher": "Belgian civil registers (Bassevelde, Oost-Vlaanderen) and American civil, court, and ecclesiastical records (Indiana, Ohio, Kentucky). Specific records consulted include: Bassevelde geboorteakte no. 52, registered 14 June 1854 for a birth on 13 June 1854 (the father declared the child the following morning; son of Engelbertus van Vlaenderen and Marie Catherine De Clerck); Allen County (Indiana) naturalization declaration, 5 October 1880; Lucas County (Ohio) Probate Court naturalization affidavit, 5 April 1884; Kenton County (Kentucky) death certificate no. 2793 and probate file, October 1913.",
               "note": "The documentary chain anchoring the project's direct American line to the Bassevelde civil register. Charles Louis was born in Bassevelde (Oost-Vlaanderen) on 13 June 1854 and emigrated via Antwerp–New York in 1875 (per 1880 naturalization declaration; a later 1900 census entry gives 1877). The Bassevelde 1854 geboorteakte is the critical primary-source join between the European parish-record dossier and the American branch that prompted the Lions of Flanders project; all subsequent American records cohere with the Belgian origin despite orthographic drift (Van Vlaenderen, Van Vlanderen, Van Flandern, Van Vanderen, Van Flanderen) across U.S. records. Full evidence trail compiled in the project research record.",
               "status": "consulted"
             },
@@ -831,6 +853,19 @@
               "publisher": "Appeltjes van het Meetjesland, vol. 19 (1968), pp. 252–253.",
               "note": "Cited on the Loys de Haze and Louis Friese pages for Loys's second-generation children (p. 252 fns 70–71, citing the Desplanque and Dehaisnes-Finot ADN inventories) and for Marie van Ghistelle's prior marriage to Jan van Halewijn (Ghent civic record S.A.G. JJ3K 1424-25 fol. 73). Distinct from Rogghé's 1964 Meetjesland historical geography (see rogghe-1964). Reached via the published text; the underlying primary folios not yet read directly. (Article title within vol. 19 to be confirmed.)",
               "status": "cited_via_intermediary"
+            },
+            {
+              "id": "mijnplatteland-ursel",
+              "source_type": "tertiary_compilation",
+              "type": "Meetjesland",
+              "author": "Mijn Platteland (Meetjesland heritage portal)",
+              "year": "n.d.",
+              "title": "Ursel, een Meetjeslands dorp",
+              "publisher": "mijnplatteland.com, local-heritage portal for the Meetjesland.",
+              "note": "Unfootnoted local-heritage compilation on Ursel, cited in the Victor dossier for village context. Tertiary: treated as a pointer to the underlying parish and land records, not as independent evidence.",
+              "url": "https://mijnplatteland.com/meetjesland/ursel/",
+              "urlLabel": "Free access (website)",
+              "status": "consulted"
             }
           ]
         },
@@ -1126,6 +1161,35 @@
               "publisher": "Vereniging voor de geschiedenis van het Belgisch Protestantisme, vol. 5 (1969), pp. 151-171.",
               "note": "Primary-source-grounded study of Catharina van Boetzelaer's Calvinist activities during the Wonderyear 1566, distinct from the 2004 Decavele chapter (decavele-2004) on the same subject in a different venue. Acquisition would upgrade the Calvinist-sympathies layer of the Van Vlaenderen-Praet terminal-generation narrative; not yet in hand.",
               "status": "acquisition_pending"
+            }
+          ]
+        },
+        {
+          "heading": "I. Maritime Flanders — Privateering, Convoys, and the Admiralty",
+          "entries": [
+            {
+              "id": "degryse-1954",
+              "source_type": "scholarly_article",
+              "type": "Belgian Historiography",
+              "author": "Degryse, Roger",
+              "year": "1954",
+              "title": "Willem Beukel(s) van Hughevliet",
+              "publisher": "De Vlaamse Gids, jg. 38 (1954).",
+              "note": "Cited in the Victor dossier for the statement that Victor van Vlaenderen was 'kapitein van de vesting Biervliet' (captain of the stronghold of Biervliet). Quoted from the project's clipping of the article; the printed volume has not yet been re-collated, so the page locator is still open.",
+              "status": "cited_via_intermediary"
+            },
+            {
+              "id": "tailler-2011",
+              "source_type": "scholarly_monograph",
+              "type": "Belgian Historiography",
+              "author": "Tailler, Margaux",
+              "year": "2011",
+              "title": "Corvers en zeeschuimers van den Vlaemsche zeecoste: Kaapvaart en piraterij onder Jan zonder Vrees",
+              "publisher": "Unpublished MA thesis, Ghent University, 2011 (supervisor: Jan Dumolyn). 90 pp.",
+              "note": "A study of Flemish privateering and piracy under John the Fearless. Directly relevant to Victor van Vlaenderen: Tailler places him and his brother Robert among the captains armed for Margaret of Male in the 1380s–90s, and records that in 1419 John the Fearless 'benoemde … een nieuwe admiraal: Victor van Vlaanderen' (appointed a new admiral: Victor van Vlaanderen), the first admiral of Flanders named in that reign. Tailler uses the modern Dutch spelling 'van Vlaanderen' throughout. Full text verified from the UGent repository copy, July 2026.",
+              "url": "https://libstore.ugent.be/fulltxt/RUG01/001/786/522/RUG01-001786522_2012_0001_AC.pdf",
+              "urlLabel": "Free access (UGent, full-text PDF)",
+              "status": "consulted"
             }
           ]
         }
