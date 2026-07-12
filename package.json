@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/check-i18n.mjs && node scripts/check-static-assets.mjs && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && node scripts/prerender.mjs",
+    "build": "node scripts/check-i18n.mjs && node scripts/check-static-assets.mjs && node scripts/check-collection-skill.mjs && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && node scripts/prerender.mjs",
     "build:client": "tsc -b && vite build",
     "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "prerender": "node scripts/prerender.mjs",
     "check:i18n": "node scripts/check-i18n.mjs",
     "check:assets": "node scripts/check-static-assets.mjs",
+    "check:skill": "node scripts/check-collection-skill.mjs",
+    "sync:skill": "node scripts/check-collection-skill.mjs --sync",
     "lint": "eslint .",
     "preview": "vite preview"
   },
