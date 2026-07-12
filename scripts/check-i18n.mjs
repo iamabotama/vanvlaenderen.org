@@ -19,6 +19,16 @@
  *      "Sterk gecorroboreerd", "Waarschijnlijk", "Hypothese". English labels
  *      left untranslated, or Dutch synonyms, are flagged.
  *
+ *   5. HTML markup in a string rendered as plain text - a value containing
+ *      <em>, <a>, &ldquo; etc. only renders as markup when the call site uses
+ *      dangerouslySetInnerHTML={{ __html: t(key) }}. A bare {t(key)} in JSX
+ *      text position escapes it, so the visitor sees the literal tags. Three
+ *      keys were shipping that way (victor.military_p1 showed "<em>De Vlaamse
+ *      Gids</em>"; louis_friese.questions_cadet_body rendered an entire <a>
+ *      link as text), fixed 2026-07-12. Only JSX text position is flagged: a
+ *      t() in an object literal (e.g. the cohort-sidebar tiles) is passed to
+ *      DiagramEngine, which does render it via __html, and is not an error.
+ *
  *   4. Duplicate keys within the same object - JSON.parse silently keeps the
  *      LAST occurrence, so an earlier duplicate key is a silently dead string
  *      (the name.notes_source_5 Anselme-note incident, fixed 2026-07-02).
@@ -145,9 +155,40 @@ for (const bad of BANNED_NL_TIER) {
   }
 }
 
+// --- 5. HTML markup in a string that the call site renders as plain text ---
+// A value with tags/entities only renders as markup through
+// dangerouslySetInnerHTML={{ __html: t(key) }}. A bare {t(key)} sitting in JSX
+// text position escapes it and the tags show literally.
+const HAS_MARKUP = /<\/?[a-z][a-z0-9]*\s*[^>]*>|&[a-z]+;/
+const srcDir = path.resolve(__dirname, '../src')
+const tsxFiles = []
+;(function walk(dir) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, e.name)
+    if (e.isDirectory()) walk(p)
+    else if (e.name.endsWith('.tsx')) tsxFiles.push(p)
+  }
+})(srcDir)
+
+for (const file of tsxFiles) {
+  const src = fs.readFileSync(file, 'utf8')
+  for (const m of src.matchAll(/\{\s*t\('([A-Za-z0-9_.]+)'\)\s*\}/g)) {
+    // JSX text position only: the preceding non-whitespace char closes a tag.
+    // (`__html: t(key)` and `expanded: t(key)` are both excluded by this test.)
+    if (!src.slice(0, m.index).trimEnd().endsWith('>')) continue
+    const value = EN[m[1]]
+    if (typeof value === 'string' && HAS_MARKUP.test(value)) {
+      errors.push(
+        `Escaped markup: ${path.basename(file)} renders "${m[1]}" as plain text, but the string contains HTML `
+        + `-- the tags will show literally. Use <p dangerouslySetInnerHTML={{ __html: t('${m[1]}') }} /> or strip the markup.`
+      )
+    }
+  }
+}
+
 if (errors.length) {
   console.error('\n✗ i18n check FAILED:\n' + errors.map(e => '  - ' + e).join('\n'))
   console.error('\nSee nl-i18n-canonical-names. Localized name forms are allowed only in keys where en.json also uses them (glosses, verbatim quotes, enumerated lists).\n')
   process.exit(1)
 }
-console.log(`✓ i18n check passed (${enKeys.size} keys; EN/NL parity, canonical names, tier vocabulary OK)`)
+console.log(`✓ i18n check passed (${enKeys.size} keys; EN/NL parity, canonical names, tier vocabulary, no escaped markup)`)

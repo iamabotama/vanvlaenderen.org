@@ -156,7 +156,7 @@ export default function LouisFrieseLineagePage() {
           <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginTop: '1.5rem', marginBottom: '0.5rem' }}>
             {t('louis_friese.questions_cadet_heading')}
           </h3>
-          <p>{t('louis_friese.questions_cadet_body')}</p>
+          <p dangerouslySetInnerHTML={{ __html: t('louis_friese.questions_cadet_body') }} />
         </section>
 
         {/* ── Dossier Links ──────────────────────────────── */}

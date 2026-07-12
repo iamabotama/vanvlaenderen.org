@@ -97,7 +97,7 @@ export default function DesparsCompendiumPage() {
       <div className={innerStyles.content}>
         <h1>{t('despars_compendium.heading')}</h1>
 
-        <p>{t('despars_compendium.intro')}</p>
+        <p dangerouslySetInnerHTML={{ __html: t('despars_compendium.intro') }} />
 
         <div className={styles.downloadStrip}>
           <span className={styles.version}>

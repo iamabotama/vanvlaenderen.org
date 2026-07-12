@@ -136,9 +136,7 @@ export default function HomePage() {
             <div className={styles.hypothesisBlock}>
               <div className={styles.hypothesisLabel}>{t('home.hypothesis_two_label')}</div>
               <div className={styles.hypothesisTitle}>{t('home.hypothesis_two_title')}</div>
-              <p>
-                {t('home.hypothesis_two_body')}
-              </p>
+              <p dangerouslySetInnerHTML={{ __html: t('home.hypothesis_two_body') }} />
             </div>
 
             <p className={styles.hypothesesBridge}>
