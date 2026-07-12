@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-07-11 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; refresh this snapshot (and bump the date above) whenever the skill changes — git history then makes the drift visible.
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-07-12 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:14e102b69178cf49`
 
 ---
 name: vanvlaenderen-record-collection
