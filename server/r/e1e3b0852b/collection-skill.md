@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-06-30 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; refresh this snapshot (and bump the date above) whenever the skill changes — git history then makes the drift visible.
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-07-11 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; refresh this snapshot (and bump the date above) whenever the skill changes — git history then makes the drift visible.
 
 ---
 name: vanvlaenderen-record-collection
@@ -18,13 +18,16 @@ description: >
   structured vital-records layer only.
 ---
 
-<!-- Revised 2026-06-30: bulk-array output (paste [ {…}, … ] for a whole sweep);
-tracker block RETIRED (search status is set per-volume in the tracker, and index
-scans cascade to registers via apply_index_clear — never via paste); preserve
-SOURCE ORDER when transcribing a list for validation (never reorder). Prior
-(2026-06-26): paste pipeline canonical for both roles; contributors use NAMES not
-IDs; per-segment coverage shape; min-bar requires municipality/parish name +
-source url on found records; Phase A requires the register-list screenshot. -->
+<!-- Revised 2026-07-11 after the Ertvelde repair, which found 74 people in the
+database who never existed, 17 wrong records, and 2 baptisms missing. Four rails
+added (rails 10-13): TRANSCRIBE ONLY THE COLUMNS THE SOURCE HAS (never invent a
+godparent); the register citation is page + BOOK, never page alone; date_text is
+verbatim and date_iso is derived (Roman months land two months later than the
+digit); a participant is never blank - use [illegible] or [not recorded]. Also:
+fully_sourced now means exactly one thing, WE HAVE THE ACT. Prior (2026-06-30):
+bulk-array output; tracker block RETIRED; preserve SOURCE ORDER (never reorder).
+Prior (2026-06-26): paste pipeline canonical for both roles; contributors use
+NAMES not IDs; per-segment coverage shape. -->
 
 # Van Vlaenderen record collection
 
@@ -140,11 +143,19 @@ values). Supply NAMES, not IDs:
     {"role":"groom","name_as_written":"Joannes van Vlaenderen","given":"Joannes","surname":"van Vlaenderen","canonical_surname":"Van Vlaenderen","notes":null}
   ],
   "sources": [
-    {"role":"index","register":"BE-A0514 / 1075 / 000 / 01355","url":"https://…/0_0040_r","url_level":"folio","notes":"…"},
-    {"role":"original_record","register":"BE-A0514 / 1075 / 000 / 01357","url":"https://…/0_0147","url_level":"folio","notes":"…"}
+    {"role":"index","register":"BE-A0514 / 1075 / 000 / 01355","locator":"p. 141, reg. 6","url":"https://…/0_0040_r","url_level":"folio","notes":"…"},
+    {"role":"original_record","register":"BE-A0514 / 1075 / 000 / 01357","locator":"f. 23v","url":"https://…/0_0147","url_level":"folio","notes":"…"}
   ]
 }
 ```
+
+**`fully_sourced` means exactly one thing: WE HAVE THE ACT.** Set it to `1` only
+when BOTH are true — a folio-level source with a real `url`, AND a
+`transcription` or `translation`. An index link is not the act. A shelfmark with
+no locator and no url is not a citation. If you do not have the act, the record is
+`needs_source: 1, fully_sourced: 0`, and that is an honest, valuable row.
+(This was recomputed corpus-wide on 2026-07-11: 570 records claimed
+`fully_sourced`; only 137 actually had the act.)
 
 **Bulk entry (a whole index sweep in one paste).** To submit many records at once,
 emit a JSON **array** of these record objects — `[ { …record… }, { …record… }, … ]` —
@@ -181,9 +192,13 @@ require all of:
 - `event.municipality_name` (or `municipality_id`) AND `event.parish_name`
   (or `parish_id`) on any FOUND record, so the pasted block is self-contained
   for name resolution.
-- at least one participant with `role` + `name_as_written`.
+- at least one participant with `role` + `name_as_written` — and every participant
+  row named, `[illegible]`, or `[not recorded]`. Never blank (rail 13).
+- every participant role corresponds to a column the source actually has (rail 10).
 - at least one source with a `url`, OR `event.needs_source` set to `1` (an
   index-only lead with no record yet is allowed, but must say so explicitly).
+- on an index source, a `locator` carrying page AND register book (rail 11).
+- `fully_sourced: 1` ONLY with a folio url AND a transcription/translation.
 - living-person gate: if the type is birth-ish (baptism/civil_birth/marriage/
   civil_marriage) and the year is within ~100 years, do not emit (deaths/burials
   are exempt).
@@ -233,10 +248,13 @@ hit, update the tracker. A zero-found sweep is a valid, valuable result.
    `tracker.coverage` (see "Coverage shape"). Reserve `notes` for prose that does
    not fit the structured shape. Absence of records is NOT absence of Van
    Vlaenderens - capture the gap so later searches revisit.
-3. Scan the index for the surname and every variant (Van Vlaenderen, Vlaenderen,
+3. **Read the column headers first** and write them down (see "Reading an index").
+   Then scan for the surname and every variant (Van Vlaenderen, Vlaenderen,
    Vlaenders, etc. - consult `surname_variants`). Indexes may be one volume or
-   split by year/decade; scan every interval. Per hit capture: name as written,
-   spouse/partner if shown, date, page number, book number, index image URL.
+   split by year/decade, and several volumes may split the ALPHABET across the same
+   years; scan every interval. Per hit capture: name as written, the other names the
+   columns actually give (father's given, mother's surname+given — and no more),
+   date, **page number AND its superscript register book**, index image URL.
 4. Seed one event per hit at index level: `event_type`, `date_text`/`year` from
    the index, `municipality_name`, `parish_name`, a `summary` noting it is from
    the index, `needs_source=1`, `fully_sourced=0`; an `event_sources` row with
@@ -258,17 +276,22 @@ Goal: enrich each lead into a complete, transcribed record.
 2. Produce a transcription AND an English translation. Zoom on uncertain words
    and reconcile letter by letter. Preserve the Latin/Middle-Dutch verbatim;
    mark illegible/uncertain readings explicitly (`[surname lost]`, `Petrus(?)`).
-3. Extract the full participant list - every person and role (marriage: groom,
-   bride, both witnesses, officiant; baptism: child, father, mother, godfather,
-   godmother, officiant). This is the step the add form cannot do.
+3. Extract the full participant list - every person and role the ACT records
+   (marriage: groom, bride, both witnesses, officiant; baptism: child, father,
+   mother, godfather, godmother, officiant). This is the step the add form cannot
+   do, and it is the step where the register — unlike the index — genuinely does
+   give you godparents. Any role the act does not record gets `[not recorded]`,
+   not a blank and not a guess.
 4. Reconcile index against record. Where they disagree, the record (the original
    act) governs; note the index version in `notes`. Where the record is
    illegible but the index is clear, keep the index value and flag it.
 5. Amend the event: set `transcription`, `translation`, a clean `summary`; add an
    `event_sources` row `role='original_record'`, page image `url`,
-   `url_level='folio'`; set `needs_source=0`, `fully_sourced=1`; insert the full
-   participant set (replacing thin index-only participants). Mark the matching
-   register segment `cleared:true, via:"page-by-page"` in coverage.
+   `url_level='folio'`, a real `locator`; set `needs_source=0`, `fully_sourced=1`
+   — this is the moment, and the ONLY moment, that flag becomes true, because it
+   is the moment we have the act. Insert the full participant set (replacing thin
+   index-only participants). Mark the matching register segment
+   `cleared:true, via:"page-by-page"` in coverage.
 6. Update the tracker status. Repeat for each lead.
 
 ## Coverage shape (per-segment)
@@ -329,6 +352,62 @@ A municipality whose every cell is `Complete (0 found)`/`None Listed` with zero
 held records is a confirmed dead-end and drops out of the tracker's "exclude
 municipalities without Van Vlaenderen" filter.
 
+## Reading an index (the four ways it goes wrong)
+
+An alphabetical index is a TABLE. Before reading a single name, read the **column
+headers** and write them down. Everything below follows from getting that right.
+
+### 1. Transcribe only the columns the source actually has
+
+If the index has columns *child · father's given name · mother's surname + given
+name · date · register page*, then it records **no godparent**. If a godparent
+appears in your output, you have shifted a column.
+
+This is not hypothetical. The Ertvelde ingest split the mother's cell in two: her
+surname stayed on the `mother` row and her **given name was spun off into a
+phantom `godparent`** — and then stamped `canonical_surname: "Van Vlaenderen"`.
+That put **74 people into the database who never existed**, each of them actually
+some other family's mother wearing our surname, and compiled them into 74 false
+`godparent_of` relationships.
+
+**Rule: a role you emit must correspond to a column the source has.** If the index
+gives you three names, emit three participants — not four. When a cell is empty,
+that is a fact about the source; see rail 13.
+
+### 2. The register citation is page + BOOK
+
+The last column is usually a page number **with a small superscript**. The
+superscript identifies **which register volume**. A page number alone is not a
+citation, because page 141 exists in every book.
+
+Ertvelde has two children both indexed at "page 141": one at **141⁶**, one at
+**141¹**. Different fathers, different mothers, different registers, a year apart
+— two children. Stored as bare "141", they looked like a duplicate of each other.
+Meanwhile two entries at **91³ and 91³** *were* one act indexed twice.
+
+**Rule: capture the superscript.** Put it in `locator` as `p. 141, reg. 6`. If you
+cannot read the superscript, say so — do not drop it and do not infer it from the
+year.
+
+### 3. Ditto marks (`id`) are a decision, not a transcription
+
+`id` means "same as the row above" and it appears in every column, sometimes
+several to a row (`id id id` in a mother column repeats all three of her names).
+Resolving them is where parentage errors are born: two Ertvelde children had been
+attached to the wrong father by a mis-resolved ditto, and nothing in the database
+would ever have flagged it, because a wrong father is perfectly well-formed data.
+
+**Rule: when presenting an index back to the human, show BOTH** — the literal cell
+(`id`) and your resolved value, marked as resolved. Let them check the chain.
+
+### 4. The clerk's hand beats yours
+
+On the Ertvelde validation, Michael's reading of the *dates* was right and mine was
+wrong six times out of six (1-vs-7, 4-vs-5, 8-vs-3). Where an existing record and
+your reading disagree on a **number**, assume you are wrong and ask. Where they
+disagree on **structure** — who is the child, which register — the record is the
+weaker party, because that is where ingest bugs live.
+
 ## Discipline rails (non-negotiable)
 
 1. Never invent. Names, dates, shelfmarks, URLs come only from what is in front
@@ -358,6 +437,26 @@ municipalities without Van Vlaenderen" filter.
    validate, keep the EXACT order of the source image — never sort by name, year,
    or anything. They validate row-by-row against the scan, so reordering breaks
    that. Carry that same order through to the record array you emit (bulk entry).
+10. Emit only the roles the source records. A participant role must correspond to
+   a column the source actually has. If the index has no godparent column, emit
+   no godparent. See "Reading an index" §1 — this rail exists because breaking it
+   put 74 fictional people in the database.
+11. Cite page AND book. `locator` reads `p. 141, reg. 6`. A bare page number is not
+   a citation and must never be used to judge whether two records are the same act.
+12. `date_text` is verbatim; `date_iso` is derived. Put exactly what the clerk
+   wrote in `date_text` (`19 8ber 1787`) and the machine date in `date_iso`
+   (`1787-10-19`). **The Roman-numeral months are Latin ordinals from a calendar
+   that began in March, so they land TWO months later than the digit suggests:
+   7ber = September, 8ber = October, 9ber = November, Xber/10ber = December.**
+   Read naively as July/August/September/October, every one is two months early.
+   Set `date_precision` to `day`/`month`/`year` — never pad a date you do not have.
+13. A participant is never blank. If a name cannot be supplied, say which kind of
+   nothing it is:
+   - `"name_as_written": "[illegible]"` — the name IS in the act, but unreadable.
+   - `"name_as_written": "[not recorded]"` — the act names nobody in this role.
+   A blank row asserts neither and is indistinguishable from "nobody has looked
+   yet". These two literals are the only acceptable placeholders; the editor and
+   the integrity check both know them.
 
 ## Record types (v1 scope + extension hooks)
 
