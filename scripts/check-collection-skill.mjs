@@ -67,16 +67,20 @@ if (SYNC) {
 
 // ---------------------------------------------------------------- check
 if (!fs.existsSync(SNAPSHOT)) die(`snapshot missing at ${SNAPSHOT}`)
-const snap = fs.readFileSync(SNAPSHOT, 'utf8')
+// Normalise FIRST, then match and strip. Git checks this file out with CRLF on
+// Windows (core.autocrlf), and HDR_RE ends in `\s*\n\n` — which cannot match raw
+// `\r\n\r\n`. Stripping the header from the raw string therefore silently left it
+// in the body, inflating it by the header's length and failing every check.
+const snap = norm(fs.readFileSync(SNAPSHOT, 'utf8'))
 
-const m = HDR_RE.exec(norm(snap))
+const m = HDR_RE.exec(snap)
 if (!m) {
   die('the snapshot has no sync header, or it is malformed.\n'
     + '   Expected a leading blockquote with "Last synced YYYY-MM-DD" and a `sha256:…` digest.\n'
     + '   Run `pnpm sync:skill` to regenerate it from Drive.')
 }
 const [, syncedOn, recordedDigest] = m
-const snapBody = norm(snap.replace(HDR_RE, ''))
+const snapBody = norm(snap.replace(HDR_RE, ''))   // snap is already normalised above
 
 if (fs.existsSync(CANONICAL)) {
   // DRIFT MODE — the real check.
