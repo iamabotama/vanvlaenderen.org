@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-07-12 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:14e102b69178cf49`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-07-12 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:393e909ddb4d0292`
 
 ---
 name: vanvlaenderen-record-collection
@@ -457,6 +457,29 @@ weaker party, because that is where ingest bugs live.
    A blank row asserts neither and is indistinguishable from "nobody has looked
    yet". These two literals are the only acceptable placeholders; the editor and
    the integrity check both know them.
+14. French Republican dates are dates. Records from **an 1 to an 14** (1792-1805)
+   are dated in the Republican calendar: `an 5`, `5 Vendémiaire an 8`,
+   `1er Brumaire an 10`. Months run **Vendémiaire, Brumaire, Frimaire, Nivôse,
+   Pluviôse, Ventôse, Germinal, Floréal, Prairial, Messidor, Thermidor,
+   Fructidor**. Each year begins around **22 September**, so *an 8* straddles 1799
+   and 1800 — a Republican year is NOT a calendar year.
+   - Put the Republican date verbatim in `date_text`; put the Gregorian conversion
+     in `date_iso`. If only the year is given (`an 5`), set `date_precision: year`
+     and **leave `date_iso` null** rather than inventing a day.
+   - **`an 5` is not a page number and 1691 is not a year.** A past ingest read the
+     Kaprijke page column as the year and produced three "17th-century" baptisms
+     that were actually 1797-1801. If a "year" looks like a page number, check the
+     column.
+   - **AGATHA classifies Napoleonic-era registers as PARISH records** (Michael,
+     2026-07-11). Do NOT reclassify them as civil, and do not move them out of
+     parish coverage.
+15. Distrust your own digits. On this project's hands, Claude's reading of NUMBERS
+   is measurably worse than the stored value: twelve straight disagreements on
+   dates and pages resolved against Claude and for the human/workbook. Names run
+   the other way — Claude is the better reader there.
+   **Rule: when a stored number and your reading disagree, the stored value wins
+   until a human looks. When a NAME disagrees, your reading is the better bet.**
+   Do not build a finding on a digit you read.
 
 ## Record types (v1 scope + extension hooks)
 
