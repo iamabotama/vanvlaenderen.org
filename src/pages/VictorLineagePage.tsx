@@ -19,7 +19,7 @@ const notes = [
     full: (
       <>
         Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae</em>, Pars secunda. Bruges, 1643. Pp.285&ndash;287: the three Ghent partition-court charters and the Oostborch epitaph; direct reading April 2026. FMG MedLands: Flanders, Hainaut (v5.0, January 2025) was consulted as a tertiary pointer to these pages.{' '}
-        <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
+        <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>{' '}<Link to="/research/bibliography#vredius-1643" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -29,7 +29,7 @@ const notes = [
     full: (
       <>
         Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem.{' '}
-        <a href="https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Inventaris Onroerend Erfgoed, Erfgoedobject 33384</a>
+        <a href="https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Inventaris Onroerend Erfgoed, Erfgoedobject 33384</a>{' '}<Link to="/research/bibliography#inventaris-wessegem-33384" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -38,7 +38,7 @@ const notes = [
     short: 'Bethune, J.B. de. Epitaphes et monuments des églises de la Flandre. Third part. 1900.',
     full: (
       <>
-        Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286&ndash;287, from which it is cited above. Not yet consulted directly by the project.
+        Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. Oostborch epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286&ndash;287, from which it is cited above. Not yet consulted directly by the project.{' '}<Link to="/research/bibliography#bethune-1900" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -68,7 +68,7 @@ const notes = [
     full: (
       <>
         Espinoy, Philippe de l'. <em>Recherche des antiquitez et noblesse de Flandres.</em> Douai, 1631.{' '}
-        <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>
+        <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>{' '}<Link to="/research/bibliography#espinoy-1631" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },

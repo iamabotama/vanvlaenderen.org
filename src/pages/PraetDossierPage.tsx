@@ -18,7 +18,7 @@ const notes = [
     full: (
       <>
         Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae, Pars secunda: continens probationes XII posteriorum tabularum.</em> Bruges: J.B. &amp; Lucas Kerchovios, 1643. Vol. 2 of 2. [496 pp.] Direct reading conducted April 2026 (Tabula XVI, pp. 275&ndash;289; Tabula XIX, pp. 387&ndash;388). Not freely digitised; held at major European research libraries.{' '}
-        <a href="https://www.rct.uk/collection/1021446" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Royal Collection Trust catalogue entry</a>
+        <a href="https://www.rct.uk/collection/1021446" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Royal Collection Trust catalogue entry</a>{' '}<Link to="/research/bibliography#vredius-1643" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -28,7 +28,7 @@ const notes = [
     full: (
       <>
         Espinoy, Philippe de l'Espinoy. <em>Recherche des antiquitez et noblesse de Flandres.</em> Douai: veuve M. Wyon, 1631. Livre 2, Chapitre XXXI. BnF shelfmark M-1432.{' '}
-        <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>
+        <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>{' '}<Link to="/research/bibliography#espinoy-1631" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -37,7 +37,7 @@ const notes = [
     short: 'FMG, MedLands: Flanders, Hainaut — tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority.',
     full: (
       <>
-        Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier. <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
+        Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier. <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>{' '}<Link to="/research/bibliography#fmg-medlands" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -46,16 +46,16 @@ const notes = [
     short: 'Pattou, Etienne. Batards de Flandres. 2014. Tertiary compilation; cited only as the origin of the c. 1350 birth estimate.',
     full: (
       <>
-        Pattou, Etienne. Batards de Flandres. 2014. Tertiary compilation consulted as a pointer to primary sources; cited above only as the origin of the c. 1350 birth estimate. <a href="https://docplayer.fr/21492316-Batards-de-flandres.html" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Pattou, Batards de Flandres (2014)</a>
+        Pattou, Etienne. Batards de Flandres. 2014. Tertiary compilation consulted as a pointer to primary sources; cited above only as the origin of the c. 1350 birth estimate. <a href="https://docplayer.fr/21492316-Batards-de-flandres.html" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Pattou, Batards de Flandres (2014)</a>{' '}<Link to="/research/bibliography#pattou-2014" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
   {
     n: 5,
-    short: 'Lauwens, Patrik. Verhalen uit de genealogie Van Praet. September 2010.',
+    short: 'Lauwens, Patrik. Verhalen uit de genealogie Van Praet. 2021.',
     full: (
       <>
-        Lauwens, Patrik. Verhalen uit de genealogie Van Praet. September 2010. <a href="https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Lauwens, Verhalen uit de genealogie Van Praet (2010)</a>
+        Lauwens, Patrik. Verhalen uit de genealogie Van Praet. 2021. <a href="https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Lauwens, Verhalen uit de genealogie Van Praet (2021)</a>{' '}<Link to="/research/bibliography#lauwens-2010" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -64,7 +64,7 @@ const notes = [
     short: 'Despars, Cronijcke van den lande ende graefscepe van Vlaenderen, ed. De Jonghe (Brugge, 1840–1842).',
     full: (
       <>
-        Despars, Nicolaes. <em>Cronijcke van den lande ende graefscepe van Vlaenderen (405&ndash;1492).</em> Ed. J. De Jonghe. Brugge, 1840&ndash;1842. 4 vols.
+        Despars, Nicolaes. <em>Cronijcke van den lande ende graefscepe van Vlaenderen (405&ndash;1492).</em> Ed. J. De Jonghe. Brugge, 1840&ndash;1842. 4 vols.{' '}<Link to="/research/bibliography#despars-cronijcke" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -73,7 +73,7 @@ const notes = [
     short: 'de Lichtervelde, Les Bâtards de Louis de Male, HvGG 78 (1935), pp. 48–58.',
     full: (
       <>
-        Lichtervelde, P. de. <em>Les B&acirc;tards de Louis de Male.</em> Handelingen van het Genootschap voor Geschiedenis 78 (1935), pp. 48&ndash;58.{' '}<a href="https://doi.org/10.21825/gvg.92141" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DOI (open access)</a>
+        Lichtervelde, P. de. <em>Les B&acirc;tards de Louis de Male.</em> Handelingen van het Genootschap voor Geschiedenis 78 (1935), pp. 48&ndash;58.{' '}<a href="https://doi.org/10.21825/gvg.92141" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DOI (open access)</a>{' '}<Link to="/research/bibliography#lichtervelde-1935" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },

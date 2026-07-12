@@ -16,7 +16,7 @@ const notes = [
     short: 'Vredius, Olivarius (Olivier de Wree). Genealogia Comitum Flandriae…, Pars Secunda. Bruges: J.B. & Lucas Kerchovios, 1642–43.',
     full: (
       <>
-        Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642&ndash;43. Tabula XVI, pp. 285&ndash;287 (charter transcriptions for Victor&rsquo;s three sons) and pp. 267&ndash;275 (Louis I de Cressy bastard cohort) and pp. 275&ndash;289 (Louis II de Male bastard cohort). Direct reading of the 1643 print conducted April 2026. Vredius transcribes the three charters from the Ghent partition court registers (<em>In actis curiae partitionum Gandensium, Ex regist. part.</em> f.56). The underlying RAG register has not yet been independently verified; <em>Curiae partitionum Gandensium</em> may correspond to the RAG Jaarregisters van de Keure or Staten van Goed series.
+        Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642&ndash;43. Tabula XVI, pp. 285&ndash;287 (charter transcriptions for Victor&rsquo;s three sons) and pp. 267&ndash;275 (Louis I de Cressy bastard cohort) and pp. 275&ndash;289 (Louis II de Male bastard cohort). Direct reading of the 1643 print conducted April 2026. Vredius transcribes the three charters from the Ghent partition court registers (<em>In actis curiae partitionum Gandensium, Ex regist. part.</em> f.56). The underlying RAG register has not yet been independently verified; <em>Curiae partitionum Gandensium</em> may correspond to the RAG Jaarregisters van de Keure or Staten van Goed series.{' '}<Link to="/research/bibliography#vredius-1643" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -26,7 +26,7 @@ const notes = [
     full: (
       <>
         Foundation for Medieval Genealogy, MedLands: Flanders, Hainaut. v5.0, January 2025. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier.{' '}
-        <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
+        <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>{' '}<Link to="/research/bibliography#fmg-medlands" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -36,7 +36,7 @@ const notes = [
     full: (
       <>
         Inventaris Onroerend Erfgoed. Hoeve Hof van Wessegem. Quote: &lsquo;Eind 14de eeuw vinden we Lodewijk de Haze en Victor van Vlaanderen, bastaardzoons van Lodewijk van Male, als heren van Wessegem; in 1431 terug bij het kroondomein gevoegd.&rsquo;{' '}
-        <a href="https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Inventaris Onroerend Erfgoed, Erfgoedobject 33384</a>
+        <a href="https://inventaris.onroerenderfgoed.be/erfgoedobjecten/33384" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Inventaris Onroerend Erfgoed, Erfgoedobject 33384</a>{' '}<Link to="/research/bibliography#inventaris-wessegem-33384" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -55,7 +55,7 @@ const notes = [
     short: 'Bethune, J.B. de. Epitaphes et monuments des eglises de la Flandre. Third part. 1900.',
     full: (
       <>
-        Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. Oostborch (Oostburg, Zeeuws-Vlaanderen) epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286&ndash;287, from which it is cited above. Print only &mdash; not digitised; not yet consulted directly by the project. Held at KBR Brussels (Royal Library of Belgium) and Ghent University Library.
+        Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. p.356. Oostborch (Oostburg, Zeeuws-Vlaanderen) epitaph for Jacqueline de Wilde and Josse van Vlaenderen, also preserved in Vredius (1643) pp.286&ndash;287, from which it is cited above. Print only &mdash; not digitised; not yet consulted directly by the project. Held at KBR Brussels (Royal Library of Belgium) and Ghent University Library.{' '}<Link to="/research/bibliography#bethune-1900" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -84,7 +84,7 @@ const notes = [
     short: 'Verschelde, Karel. Geschiedenis van Middelburg in Vlaenderen. Brugge, 1867.',
     full: (
       <>
-        Verschelde, Karel. <em>Geschiedenis van Middelburg in Vlaenderen</em>. Brugge, 1867. Bewysstukken N&deg; 1, pp. 220&ndash;222; the three 'mher Victoors van Vlaenderen kindren lande' boundary clauses at p. 221; index entry 'Van Vlaenderen, Victor &mdash; 221.' Transcribes the 17 July 1441 koopbrief from the original deed held at the Rijksarchief Gent ('Staetsarchiven te Gent'). The same attestation is independently cited in K. de Flou, <em>Woordenboek der Toponymie van Westelijk Vlaanderen</em>, Vol. 16 col. 554 ('Gesch. Middelb., 221').
+        Verschelde, Karel. <em>Geschiedenis van Middelburg in Vlaenderen</em>. Brugge, 1867. Bewysstukken N&deg; 1, pp. 220&ndash;222; the three 'mher Victoors van Vlaenderen kindren lande' boundary clauses at p. 221; index entry 'Van Vlaenderen, Victor &mdash; 221.' Transcribes the 17 July 1441 koopbrief from the original deed held at the Rijksarchief Gent ('Staetsarchiven te Gent'). The same attestation is independently cited in K. de Flou, <em>Woordenboek der Toponymie van Westelijk Vlaanderen</em>, Vol. 16 col. 554 ('Gesch. Middelb., 221').{' '}<Link to="/research/bibliography#verschelde-1867" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -94,7 +94,7 @@ const notes = [
     full: (
       <>
         Espinoy, Philippe de l'. <em>Recherche des antiquitez et noblesse de Flandres.</em> Douai, 1631.{' '}
-        <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>
+        <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>{' '}<Link to="/research/bibliography#espinoy-1631" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },

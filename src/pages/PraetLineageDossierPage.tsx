@@ -16,7 +16,7 @@ const notes = [
     short: 'Vredius, Olivarius (Olivier de Wree). Genealogia Comitum Flandriae…, Pars Secunda: Continens Probationes XII posteriorum tabularum. Bruges: J.B. & Lucas Kerchovios, 1642–43.',
     full: (
       <>
-        Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642&ndash;43. Tabula XVI, pp. 275&ndash;289 (Louis II de Male bastard cohort, including Louis Friese and the Praet descent through Lodewijk III); Tabula XIX, pp. 387&ndash;388 (Lodewijk IV, Jossine van Praet, and Jan II at Aalter). Direct reading of the 1643 print conducted April 2026. All tomb-inscription quotations in this dossier are verified against the Vredius print.
+        Vredius, Olivarius (Olivier de Wree). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642&ndash;43. Tabula XVI, pp. 275&ndash;289 (Louis II de Male bastard cohort, including Louis Friese and the Praet descent through Lodewijk III); Tabula XIX, pp. 387&ndash;388 (Lodewijk IV, Jossine van Praet, and Jan II at Aalter). Direct reading of the 1643 print conducted April 2026. All tomb-inscription quotations in this dossier are verified against the Vredius print.{' '}<Link to="/research/bibliography#vredius-1643" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -26,7 +26,7 @@ const notes = [
     full: (
       <>
         Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut. v5.0, January 2025. Section B: Heeren van Praet. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority in this dossier.{' '}
-        <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>
+        <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut</a>{' '}<Link to="/research/bibliography#fmg-medlands" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -35,17 +35,17 @@ const notes = [
     short: 'Bethune, J.B. de. Epitaphes et monuments des eglises de la Flandre. Third part. 1900.',
     full: (
       <>
-        Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. Epitaph transcriptions for Aeltere, Beveren bij Roeselare, Languemarc, and Veere. Print only &mdash; not digitised; not yet consulted directly by the project (only the second part's p. 233 is in hand). Cited above solely in the transparent as-cited-in form. Held at KBR Brussels and Ghent University Library.
+        Bethune, J.B. de. <em>Epitaphes et monuments des eglises de la Flandre.</em> Third part. 1900. Epitaph transcriptions for Aeltere, Beveren bij Roeselare, Languemarc, and Veere. Print only &mdash; not digitised; not yet consulted directly by the project (only the second part's p. 233 is in hand). Cited above solely in the transparent as-cited-in form. Held at KBR Brussels and Ghent University Library.{' '}<Link to="/research/bibliography#bethune-1900" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
   {
     n: 4,
-    short: 'Lauwens, Patrik. Verhalen uit de genealogie Van Praet. 2010.',
+    short: 'Lauwens, Patrik. Verhalen uit de genealogie Van Praet. 2021.',
     full: (
       <>
-        Lauwens, Patrik. <em>Verhalen uit de genealogie Van Praet.</em> 2010.{' '}
-        <a href="https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Lauwens, Verhalen uit de genealogie Van Praet (2010)</a>
+        Lauwens, Patrik. <em>Verhalen uit de genealogie Van Praet.</em> 2021.{' '}
+        <a href="https://www.laurentii.be/Verhalen%20uit%20de%20genealogie%20Van%20Praet.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Lauwens, Verhalen uit de genealogie Van Praet (2021)</a>{' '}<Link to="/research/bibliography#lauwens-2010" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -65,7 +65,7 @@ const notes = [
     full: (
       <>
         Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350&ndash;ca. 1500).</em> Gent: Academia Press, 2011. Prosopographical register of Flemish noble families 1350&ndash;1500; p. 747 documents Josse de Flandre and the cadet Praet branch (within the project's pp. 736&ndash;759 direct reading). See also by the same author: <em>Eeuwen van ambitie: De adel in laatmiddeleeuws Vlaanderen</em> (Brussels: Royal Academy, 2010), the accompanying narrative history.{' '}
-        <a href="https://lib.ugent.be/nl/catalog/rug01:001699683" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library catalogue</a>
+        <a href="https://lib.ugent.be/nl/catalog/rug01:001699683" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Ghent University Library catalogue</a>{' '}<Link to="/research/bibliography#buylaert-2011-repertorium" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -74,7 +74,7 @@ const notes = [
     short: 'Verhoustraete, Arthur. ‘De heren van Praet te Oedelem.’ Jaarboek 1967 (Bos en Beverveld).',
     full: (
       <>
-        Verhoustraete, Arthur. &lsquo;De heren van Praet te Oedelem.&rsquo; <em>Jaarboek 1967</em> (Bos en Beverveld), pp. 101&ndash;113. The full van Vlaenderen&ndash;Praet genealogy: the 1545 senior-line failure, the collateral continuation via Joos &rarr; Jacob &rarr; Lodewijk V, the 1591 sonless terminus, and the post-1591 title succession through female links (pp. 109&ndash;112).
+        Verhoustraete, Arthur. &lsquo;De heren van Praet te Oedelem.&rsquo; <em>Jaarboek 1967</em> (Bos en Beverveld), pp. 101&ndash;113. The full van Vlaenderen&ndash;Praet genealogy: the 1545 senior-line failure, the collateral continuation via Joos &rarr; Jacob &rarr; Lodewijk V, the 1591 sonless terminus, and the post-1591 title succession through female links (pp. 109&ndash;112).{' '}<Link to="/research/bibliography#verhoustraete-1967" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -83,7 +83,7 @@ const notes = [
     short: 'Serrure, C.P., ed. Vaderlandsch Museum, Deel 5. Gent, 1863. ‘De geslachten Van Praet, Van Moerkercke…’',
     full: (
       <>
-        Serrure, C.P., ed. <em>Vaderlandsch Museum</em>, Deel 5. Gent, 1863. &lsquo;De geslachten Van Praet, Van Moerkercke&hellip;,&rsquo; pp. 295&ndash;310 &mdash; the published edition of a 17th-century Praet-Moerkercke family compilation; names Joos&rsquo;s children Jacob, Philips, and Philippote and anchors Joos to Lodewijk II via the Gruuthuse marriage.
+        Serrure, C.P., ed. <em>Vaderlandsch Museum</em>, Deel 5. Gent, 1863. &lsquo;De geslachten Van Praet, Van Moerkercke&hellip;,&rsquo; pp. 295&ndash;310 &mdash; the published edition of a 17th-century Praet-Moerkercke family compilation; names Joos&rsquo;s children Jacob, Philips, and Philippote and anchors Joos to Lodewijk II via the Gruuthuse marriage.{' '}<Link to="/research/bibliography#serrure-1863" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -92,7 +92,7 @@ const notes = [
     short: 'Valkeneers, Nina & Soen, Violet. ‘Praet, Bronkhorst en Boetzelaer…’ (2014).',
     full: (
       <>
-        Valkeneers, Nina &amp; Soen, Violet. &lsquo;Praet, Bronkhorst en Boetzelaer. Adellijke weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566&ndash;1567)&rsquo; (2014), pp. 265&ndash;284. Documents Jacob van Vlaanderen &times; Catharina van Boetzelaer and the post-1545 generation at the Vrijhof, Aalter.
+        Valkeneers, Nina &amp; Soen, Violet. &lsquo;Praet, Bronkhorst en Boetzelaer. Adellijke weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566&ndash;1567)&rsquo; (2014), pp. 265&ndash;284. Documents Jacob van Vlaanderen &times; Catharina van Boetzelaer and the post-1545 generation at the Vrijhof, Aalter.{' '}<Link to="/research/bibliography#valkeneers-soen-2014" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -101,7 +101,7 @@ const notes = [
     short: 'Rijksarchief Brugge, Brugse Vrije, TBO 184. The Honnelede wardship file.',
     full: (
       <>
-        Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300&ndash;21302 (1545&ndash;49). The Honnelede wardship file: Joos&rsquo;s sons Jacob and Philips as minor wards.
+        Rijksarchief Brugge, Brugse Vrije, TBO 184, nrs. 21300&ndash;21302 (1545&ndash;49). The Honnelede wardship file: Joos&rsquo;s sons Jacob and Philips as minor wards.{' '}<Link to="/research/bibliography#rab-tbo184-1547" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -110,7 +110,7 @@ const notes = [
     short: 'Gailliard. Bruges et le Franc. Tome I.',
     full: (
       <>
-        Gailliard. <em>Bruges et le Franc.</em> Tome I, p. 261 &mdash; the Aalter tombstone transcription <em>&lsquo;obiit MDLVIII&rsquo;</em> for Lodewijk IV (the 1558 reading of the death-year cross-flag).
+        Gailliard. <em>Bruges et le Franc.</em> Tome I, p. 261 &mdash; the Aalter tombstone transcription <em>&lsquo;obiit MDLVIII&rsquo;</em> for Lodewijk IV (the 1558 reading of the death-year cross-flag).{' '}<Link to="/research/bibliography#gailliard-bruges-et-le-franc" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -119,7 +119,7 @@ const notes = [
     short: 'de Smet, ed. Recueil des chroniques de Flandre.',
     full: (
       <>
-        de Smet, ed. <em>Recueil des chroniques de Flandre.</em> Tome III, p. 39 (Kronyk van Jan van Dixmude) &mdash; &lsquo;Jan van Vlaendren, de heere Van Praet&rsquo; at the battle of Brouwershaven, 13 January 1426. Independently: Despars, <em>Cronijcke van den lande&hellip; van Vlaenderen</em>, Vol. III, pp. 298&ndash;299.
+        de Smet, ed. <em>Recueil des chroniques de Flandre.</em> Tome III, p. 39 (Kronyk van Jan van Dixmude) &mdash; &lsquo;Jan van Vlaendren, de heere Van Praet&rsquo; at the battle of Brouwershaven, 13 January 1426. Independently: Despars, <em>Cronijcke van den lande&hellip; van Vlaenderen</em>, Vol. III, pp. 298&ndash;299.{' '}<Link to="/research/bibliography#de-smet-recueil-chroniques" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -129,7 +129,7 @@ const notes = [
     full: (
       <>
         Espinoy, Philippe de l'. <em>Recherche des antiquitez et noblesse de Flandres.</em> Douai, 1631.{' '}
-        <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>
+        <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1180858" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">Free access (Gallica / BnF)</a>{' '}<Link to="/research/bibliography#espinoy-1631" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -138,7 +138,7 @@ const notes = [
     short: 'De Raadt, Sceaux armoriés des Pays-Bas (Brussels, 1897).',
     full: (
       <>
-        De Raadt, J.-Th. <em>Sceaux armoriés des Pays-Bas et des pays avoisinants.</em> Brussels: Société belge de librairie / Oscar Schepens, T.I 1897.
+        De Raadt, J.-Th. <em>Sceaux armoriés des Pays-Bas et des pays avoisinants.</em> Brussels: Société belge de librairie / Oscar Schepens, T.I 1897.{' '}<Link to="/research/bibliography#de-raadt-1897-sceaux-armories" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -147,7 +147,7 @@ const notes = [
     short: 'Despars, Cronijcke van den lande ende graefscepe van Vlaenderen, ed. De Jonghe (Brugge, 1840–1842).',
     full: (
       <>
-        Despars, Nicolaes. <em>Cronijcke van den lande ende graefscepe van Vlaenderen (405&ndash;1492).</em> Ed. J. De Jonghe. Brugge, 1840&ndash;1842. 4 vols.
+        Despars, Nicolaes. <em>Cronijcke van den lande ende graefscepe van Vlaenderen (405&ndash;1492).</em> Ed. J. De Jonghe. Brugge, 1840&ndash;1842. 4 vols.{' '}<Link to="/research/bibliography#despars-cronijcke" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -364,7 +364,7 @@ export default function PraetLineageDossierPage() {
           <div style={{ marginBottom: '2rem' }}>
             <h3 style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Francoise van Praet van Moerkerke (fl. c.1519) <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h3>
             <p style={{ fontSize: '0.95rem', lineHeight: '1.7' }}>
-              Documented in two independent published sources. Nederland's Adelsboek (1908)<Cite n={5} text={CITES[5]} /> records Wessel van Boetzelaer married c.1519 'Francina van Praet.' The Lauwens genealogical study (2010)<Cite n={4} text={CITES[4]} /> records 'Francoise van Praet van Moerkerken, vrouwe van Carnesse, huwde Wessel van den Boetzelaer, heer van Langerak en Asperen.' Her precise generation within the Praet-Moerkerke line requires further investigation.
+              Documented in two independent published sources. Nederland's Adelsboek (1908)<Cite n={5} text={CITES[5]} /> records Wessel van Boetzelaer married c.1519 'Francina van Praet.' The Lauwens genealogical study (2021)<Cite n={4} text={CITES[4]} /> records 'Francoise van Praet van Moerkerken, vrouwe van Carnesse, huwde Wessel van den Boetzelaer, heer van Langerak en Asperen.' Her precise generation within the Praet-Moerkerke line requires further investigation.
             </p>
           </div>
 

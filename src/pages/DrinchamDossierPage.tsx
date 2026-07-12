@@ -17,7 +17,7 @@ const notes = [
     short: 'Vredius, Olivarius (Olivier de Wrée). Genealogia Comitum Flandriae, Pars Secunda. Bruges: J.B. & Lucas Kerchovios, 1642–43. Tabula XVI, foll. 281–283 (PDF pp. 291–293).',
     full: (
       <>
-        Vredius, Olivarius (Olivier de Wrée). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642–43. Tabula XVI, foll. 281–283 (PDF pp. 291–293). Direct reading conducted April 2026. Principal source for all four generations and the 1383 land grant text.
+        Vredius, Olivarius (Olivier de Wrée). <em>Genealogia Comitum Flandriae a Balduino Ferreo usque ad Philippum IV. Hisp. Regem</em>, Pars Secunda: <em>Continens Probationes XII posteriorum tabularum</em>. Bruges: J.B. &amp; Lucas Kerchovios, 1642–43. Tabula XVI, foll. 281–283 (PDF pp. 291–293). Direct reading conducted April 2026. Principal source for all four generations and the 1383 land grant text.{' '}<Link to="/research/bibliography#vredius-1643" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -26,7 +26,7 @@ const notes = [
     short: "De l'Espinoy, Philippe. Recherche des antiquitez et noblesse de Flandres. Douai, 1631.",
     full: (
       <>
-        De l'Espinoy, Philippe. <em>Recherche des antiquitez et noblesse de Flandres</em>. Douai, 1631. Cited in Vredius as the source for the identification of Jan as the fifth bastard son and for the land grant details. Not accessed directly.
+        De l'Espinoy, Philippe. <em>Recherche des antiquitez et noblesse de Flandres</em>. Douai, 1631. Cited in Vredius as the source for the identification of Jan as the fifth bastard son and for the land grant details. Not accessed directly.{' '}<Link to="/research/bibliography#espinoy-1631" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -35,7 +35,7 @@ const notes = [
     short: 'Foundation for Medieval Genealogy. MedLands: Flanders, Hainaut, v5.0, updated January 2025.',
     full: (
       <>
-        Foundation for Medieval Genealogy. <em>MedLands: Flanders, Hainaut</em>, v5.0, updated January 2025. <a href="https://fmg.ac/Projects/MedLands/FLANDERS.htm" style={{ color: 'var(--gold)' }} target="_blank" rel="noopener noreferrer">fmg.ac/Projects/MedLands/FLANDERS.htm</a>. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority.
+        Foundation for Medieval Genealogy. <em>MedLands: Flanders, Hainaut</em>, v5.0, updated January 2025. <a href="https://fmg.ac/Projects/MedLands/FLANDERS.htm" style={{ color: 'var(--gold)' }} target="_blank" rel="noopener noreferrer">fmg.ac/Projects/MedLands/FLANDERS.htm</a>. Tertiary compilation consulted as a pointer to primary sources; not used as a fact-level authority.{' '}<Link to="/research/bibliography#fmg-medlands" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -44,7 +44,7 @@ const notes = [
     short: 'Gaillard (cited in Vredius). Middle Dutch text naming Loys le Hase, Loys le Frison, and Jan sans terre as Van Vlaenderen at Nicopolis 1396. Tabula XVI.',
     full: (
       <>
-        Gaillard (cited in Vredius). Middle Dutch text naming Loys le Hase, Loys le Frison, and Jan sans terre as Van Vlaenderen at Nicopolis 1396. Tabula XVI. Direct quotation transcribed April 2026.
+        Gaillard (cited in Vredius). Middle Dutch text naming Loys le Hase, Loys le Frison, and Jan sans terre as Van Vlaenderen at Nicopolis 1396. Tabula XVI. Direct quotation transcribed April 2026.{' '}<Link to="/research/bibliography#gaillard-ms" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -53,7 +53,7 @@ const notes = [
     short: 'Epitaph of Jacques de Drincham, Veurne church, as preserved in Gaillard and quoted in Vredius, Tabula XVI.',
     full: (
       <>
-        Epitaph of Jacques de Drincham, Veurne church, as preserved in Gaillard and quoted in Vredius, Tabula XVI. Confirms death date 10 April 1459 and offices held.
+        Epitaph of Jacques de Drincham, Veurne church, as preserved in Gaillard and quoted in Vredius, Tabula XVI. Confirms death date 10 April 1459 and offices held.{' '}<Link to="/research/bibliography#gaillard-ms" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -62,7 +62,7 @@ const notes = [
     short: "Donche. 'De Familie Van Drincham, gezegd van Vlaanderen.' Vlaamse Stam 42/6 (2006), pp. 548–580.",
     full: (
       <>
-        Donche. 'De Familie Van Drincham, gezegd van Vlaanderen.' <em>Vlaamse Stam</em> 42/6 (2006), pp. 548–580. Records-based six-generation reconstruction of the line. Source for the 1393 Broekburg relief waiver (p. 556, citing ADN Lille, Chambres des Comptes, B 421), the 1466 Houtem tomb verbatim (p. 567), the fifth- and sixth-generation members Simon and Margareta (pp. 574–578), and the 1551 Praet purchase attempt (pp. 569–570).
+        Donche. 'De Familie Van Drincham, gezegd van Vlaanderen.' <em>Vlaamse Stam</em> 42/6 (2006), pp. 548–580. Records-based six-generation reconstruction of the line. Source for the 1393 Broekburg relief waiver (p. 556, citing ADN Lille, Chambres des Comptes, B 421), the 1466 Houtem tomb verbatim (p. 567), the fifth- and sixth-generation members Simon and Margareta (pp. 574–578), and the 1551 Praet purchase attempt (pp. 569–570).{' '}<Link to="/research/bibliography#donche-2006" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -71,7 +71,7 @@ const notes = [
     short: 'Buylaert, Frederik. Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500).',
     full: (
       <>
-        Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500)</em>. Pages 753 (the line's founder as a bastard of Louis de Male) and 756 (the 1503 attestation of 'joncvrouwe Margriete van Vlaendren gheseit van Drincham').
+        Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350 – ca. 1500)</em>. Pages 753 (the line's founder as a bastard of Louis de Male) and 756 (the 1503 attestation of 'joncvrouwe Margriete van Vlaendren gheseit van Drincham').{' '}<Link to="/research/bibliography#buylaert-2011-repertorium" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -80,7 +80,7 @@ const notes = [
     short: 'de Lichtervelde, Les Bâtards de Louis de Male, HvGG 78 (1935), pp. 48–58.',
     full: (
       <>
-        Lichtervelde, P. de. <em>Les B&acirc;tards de Louis de Male.</em> Handelingen van het Genootschap voor Geschiedenis 78 (1935), pp. 48&ndash;58.{' '}<a href="https://doi.org/10.21825/gvg.92141" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DOI (open access)</a>
+        Lichtervelde, P. de. <em>Les B&acirc;tards de Louis de Male.</em> Handelingen van het Genootschap voor Geschiedenis 78 (1935), pp. 48&ndash;58.{' '}<a href="https://doi.org/10.21825/gvg.92141" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">DOI (open access)</a>{' '}<Link to="/research/bibliography#lichtervelde-1935" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -89,7 +89,7 @@ const notes = [
     short: 'Gailliard, Bruges et le Franc (Bruges, 1857–1864).',
     full: (
       <>
-        Gailliard, J. <em>Bruges et le Franc, ou leur magistrature et leur noblesse.</em> Bruges, 1857&ndash;1864.
+        Gailliard, J. <em>Bruges et le Franc, ou leur magistrature et leur noblesse.</em> Bruges, 1857&ndash;1864.{' '}<Link to="/research/bibliography#gailliard-bruges-et-le-franc" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },

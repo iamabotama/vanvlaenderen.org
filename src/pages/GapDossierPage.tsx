@@ -20,7 +20,7 @@ const notes = [
         Honnelede wardship file: Joos van Vlaenderen's minor sons Jacob and Philips as wards;
         the 1547&ndash;48 entry <em>&lsquo;nopende Phelipe van Vlaendren &hellip; In Lande van
         Hollandt ende Zeelandt&rsquo;</em> at nr. 21300, Rekening B, fol. 16r. Consulted April 2026.
-        Reference: case 2026/0451.
+        Reference: case 2026/0451.{' '}<Link to="/research/bibliography#rab-tbo184-1547" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -32,7 +32,7 @@ const notes = [
         Verhoustraete, Arthur. &lsquo;De heren van Praet te Oedelem.&rsquo; <em>Jaarboek 1967</em>{' '}
         (Bos en Beverveld), pp. 101&ndash;113. The 1545 senior-line failure, the collateral
         continuation (Joos &rarr; Jacob &rarr; Lodewijk V), the 1591 sonless terminus, and the
-        post-1591 title succession (pp. 109&ndash;112).
+        post-1591 title succession (pp. 109&ndash;112).{' '}<Link to="/research/bibliography#verhoustraete-1967" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -43,7 +43,7 @@ const notes = [
       <>
         Serrure, C.P., ed. <em>Vaderlandsch Museum</em>, Deel 5. Gent, 1863. &lsquo;De geslachten
         Van Praet, Van Moerkercke&hellip;,&rsquo; pp. 295&ndash;310 &mdash; names Joos's children
-        Jacob, Philips, and Philippote; anchors Joos to Lodewijk II via the Gruuthuse marriage.
+        Jacob, Philips, and Philippote; anchors Joos to Lodewijk II via the Gruuthuse marriage.{' '}<Link to="/research/bibliography#serrure-1863" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -54,7 +54,7 @@ const notes = [
       <>
         Lauwens, Patrik. <em>Verhalen uit de genealogie Van Praet.</em> 2021. The senior line's
         Mijnsheerenland van Moerkerken / Hof van Holland litigation context for Philips's maternal
-        van Moerckercke standing.
+        van Moerckercke standing.{' '}<Link to="/research/bibliography#lauwens-2010" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -66,7 +66,7 @@ const notes = [
         Valkeneers, Nina &amp; Soen, Violet. &lsquo;Praet, Bronkhorst en Boetzelaer. Adellijke
         weduwes in de bres voor het calvinisme tijdens en na de Beeldenstorm (1566&ndash;1567)&rsquo;
         (2014), pp. 265&ndash;284. Jacob van Vlaanderen &times; Catharina van Boetzelaer; the
-        Calvinist banishment and confiscation behind the over-determined 1591 terminus.
+        Calvinist banishment and confiscation behind the over-determined 1591 terminus.{' '}<Link to="/research/bibliography#valkeneers-soen-2014" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -80,7 +80,7 @@ const notes = [
         authority. The De Raadt citation above is taken from its footnote apparatus.{' '}
         <a href="https://fmg.ac/Projects/MedLands/FLANDERS,%20HAINAUT.htm" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
           Foundation for Medieval Genealogy, MedLands: Flanders &amp; Hainaut
-        </a>
+        </a>{' '}<Link to="/research/bibliography#fmg-medlands" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -91,7 +91,7 @@ const notes = [
       <>
         Buylaert, Frederik. <em>Repertorium van de Vlaamse adel (ca. 1350&ndash;ca. 1500).</em>{' '}
         Gent: Academia Press, 2011. P. 747 (Josse de Flandre and the cadet Praet branch), read
-        directly within the project&rsquo;s pp. 736&ndash;759 pass.
+        directly within the project&rsquo;s pp. 736&ndash;759 pass.{' '}<Link to="/research/bibliography#buylaert-2011-repertorium" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -104,7 +104,7 @@ const notes = [
         LJ Veen, 2003. Van Vlaenderen entry via CBG Familienamenbank.{' '}
         <a href="https://www.cbgfamilienamen.nl" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
           cbgfamilienamen.nl
-        </a>
+        </a>{' '}<Link to="/research/bibliography#debrabandere-wfb2" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -117,7 +117,7 @@ const notes = [
         Searched in full &mdash; no hereditary surname bearers.{' '}
         <a href="https://www.naamkunde.net/wp-content/uploads/2010/01/WZF-Debrabandere.pdf" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
           Free PDF, naamkunde.net
-        </a>
+        </a>{' '}<Link to="/research/bibliography#debrabandere-wfz-2009" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
@@ -131,7 +131,7 @@ const notes = [
         <a href="https://openjournals.ugent.be/hctd" className={researchStyles.refLink} target="_blank" rel="noopener noreferrer">
           Free via KCTD portal
         </a>{' '}
-        &mdash; not yet read.
+        &mdash; not yet read.{' '}<Link to="/research/bibliography#gysseling-debrabandere-1999-vier-ambachten" className={researchStyles.refLink}>Bibliography entry →</Link>
       </>
     ),
   },
