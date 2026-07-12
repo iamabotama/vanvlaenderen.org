@@ -153,6 +153,7 @@
     <button class="tab" data-tab="people">People</button>
     <button class="tab" data-tab="add">Add record</button>
     <button class="tab" data-tab="proposals">Proposals <span class="pill" id="propCount">0</span></button>
+    <button class="tab hide" id="tabbtn-integrity" data-tab="integrity">Integrity <span class="pill" id="intCount">&mdash;</span></button>
   </nav>
   <main>
     <div class="msg" id="flash"></div>
@@ -239,6 +240,17 @@
         <div class="muted" id="wl_count" style="align-self:center"></div>
       </div>
       <table><thead><tr><th>Task</th><th>Items</th><th>Municipality</th><th>Unit</th><th>Class</th></tr></thead><tbody id="wl_body"><tr><td colspan="5" class="muted">Loading&hellip;</td></tr></tbody></table>
+    </section>
+
+    <section id="tab-integrity" class="hide">
+      <h3>Integrity</h3>
+      <p class="muted" style="font-size:12.5px;max-width:760px">Every check runs in the database (<code>run_integrity_checks()</code>), so this page and a chat session audit the same definitions &mdash; they cannot drift apart. Curator only.</p>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
+        <button class="act" id="int_run">Run checks</button>
+        <button class="ghost" id="int_recalc" title="Recompute fully_sourced / needs_source from the honest rule">Recompute source flags&hellip;</button>
+        <span class="msg" id="int_msg" style="display:inline-block;margin:0"></span>
+      </div>
+      <div id="int_body"><p class="muted">Press <b>Run checks</b>.</p></div>
     </section>
 
     <section id="tab-add" class="hide">
@@ -463,7 +475,8 @@ async function boot(){
 function initUI(){
   document.querySelectorAll("nav button.tab").forEach(b=>b.onclick=()=>{
     document.querySelectorAll("nav button.tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");
-    ["coverage","worklist","browse","people","add","proposals"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
+    ["coverage","worklist","browse","people","add","proposals","integrity"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
+    if(b.dataset.tab==="integrity")loadIntegrity();
   });
   $("#b_type").innerHTML='<option value="">all types</option>'+EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
   $("#a_type").innerHTML=EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
@@ -484,6 +497,9 @@ function initUI(){
   [$("#a_type"),$("#a_year")].forEach(el=>el.addEventListener("input",updateGateHint));
   $("#pj_parse").onclick=pjParse;$("#pj_clear").onclick=()=>{pjReset();flash($("#pj_msg"),"");};
   $("#pj_text").addEventListener("input",pjResetPreview); // #12: editing JSON after preview collapses Submit (can't submit unvalidated)
+  if($("#int_run"))$("#int_run").onclick=loadIntegrity;
+  if($("#int_recalc"))$("#int_recalc").onclick=integrityRecalc;
+  if(ROLE==="curator"&&$("#tabbtn-integrity"))$("#tabbtn-integrity").classList.remove("hide"); // curator-only: the RPC refuses anyone else anyway
   if($("#cskill_copy"))$("#cskill_copy").onclick=copyCollectionSkill;
   if($("#cskill"))$("#cskill").addEventListener("toggle",e=>{if(e.target.open)loadCollectionSkill();});
   if($("#wl_arr"))$("#wl_arr").onchange=renderWorklist;
@@ -684,8 +700,11 @@ async function openRecord(id){
   if(error){flash($("#flash"),"Open error: "+esc(error.message),"err");return;}
   $("#m_title").textContent=id+" · "+(e.event_type||"");
   const parts=(e.event_participants||[]).map(p=>{
-    const nm=String(p.name_as_written||"").trim()?esc(p.name_as_written):(p.canonical_surname?'<i class="muted">'+esc(p.canonical_surname)+'</i>':'<span class="muted">—</span>');
-    return `<li><span class="role-tag">${esc(p.role)}</span>${nm} ${p.person_id?'<span class="link mono" onclick="openPerson(\''+esc(p.person_id)+'\')">'+esc(p.person_id)+'</span>':''}</li>`;
+    const raw=String(p.name_as_written||"").trim();
+    const nm=isPlaceholderName(raw)?'<i class="muted">'+esc(raw)+'</i>'
+      :(raw?esc(raw):(p.canonical_surname?'<i class="muted">'+esc(p.canonical_surname)+'</i>':'<span class="muted">&mdash;</span>'));
+    const fix=(ROLE==="curator")?` <span class="link" style="font-size:11.5px" onclick="partEdit(${p.participant_id},'${esc(e.event_id)}')">edit</span>`:"";
+    return `<li id="pt_${p.participant_id}"><span class="role-tag">${esc(p.role)}</span>${nm} ${p.person_id?'<span class="link mono" onclick="openPerson(\''+esc(p.person_id)+'\')">'+esc(p.person_id)+'</span>':''}${fix}</li>`;
   }).join("")||'<li class="muted">none</li>';
   const srcs=(e.event_sources||[]).map(s=>{
     const lvl=s.url_level?`<span class="lvl">${esc(s.url_level)}</span>`:"";
@@ -724,6 +743,48 @@ window.openRecord=openRecord;
 function closeModal(){$("#overlay").classList.remove("open");}
 window.closeModal=closeModal;
 
+/* ---------- participant repair: name it, or say WHY there is no name ----------
+   Two literals, because they are two different facts:
+     [illegible]     the name IS in the act, but cannot be read.
+     [not recorded]  the act names no such person at all.
+   A blank row asserts neither and is the worst of the three — it is indistinguishable from
+   "nobody has looked yet". The integrity check counts a row as named once either literal is set,
+   so the count only clears when a human has actually decided which it is. */
+const NAME_ILLEGIBLE="[illegible]", NAME_ABSENT="[not recorded]";
+function isPlaceholderName(s){return s===NAME_ILLEGIBLE||s===NAME_ABSENT;}
+function partEdit(pid,eid){
+  const li=$("#pt_"+pid); if(!li) return;
+  const roleTag=li.querySelector(".role-tag"); const role=roleTag?roleTag.textContent:"";
+  const cur=(li.dataset.orig!==undefined)?li.dataset.orig:(li.textContent.replace(role,"").replace(/\bedit\b|\bPER_\d+\b/g,"").trim());
+  const val=isPlaceholderName(cur)?"":cur;
+  li.dataset.orig=cur;
+  li.innerHTML=`<span class="role-tag">${esc(role)}</span>`
+    +`<input type="text" id="pe_${pid}" value="${esc(val)}" placeholder="name as written in the act" style="width:230px;display:inline-block;height:28px;font-size:12.5px;margin:0 6px 0 0">`
+    +`<button class="ghost" style="font-size:11.5px;padding:2px 8px" onclick="partSet(${pid},'${esc(eid)}','${NAME_ILLEGIBLE}')">illegible</button> `
+    +`<button class="ghost" style="font-size:11.5px;padding:2px 8px" onclick="partSet(${pid},'${esc(eid)}','${NAME_ABSENT}')">not recorded</button> `
+    +`<button class="act" style="font-size:11.5px;padding:2px 8px" onclick="partSave(${pid},'${esc(eid)}')">save</button> `
+    +`<span class="link" style="font-size:11.5px" onclick="openRecord('${esc(eid)}')">cancel</span>`
+    +`<div class="muted" style="font-size:11px;margin:3px 0 0 4px">“illegible” = the name is in the act but unreadable. “not recorded” = the act names nobody in this role.</div>`;
+  const inp=$("#pe_"+pid); if(inp){inp.focus();inp.onkeydown=(ev)=>{if(ev.key==="Enter")partSave(pid,eid);};}
+}
+window.partEdit=partEdit;
+async function partSet(pid,eid,literal){ await partWrite(pid,eid,literal); }
+window.partSet=partSet;
+async function partSave(pid,eid){
+  const inp=$("#pe_"+pid); const v=inp?inp.value.trim():"";
+  if(!v){flash($("#flash"),"Type a name, or press illegible / not recorded — don't leave it blank.","err");return;}
+  await partWrite(pid,eid,v);
+}
+window.partSave=partSave;
+async function partWrite(pid,eid,name){
+  const patch={name_as_written:name};
+  if(isPlaceholderName(name)){ patch.given=null; patch.status="not_tracked"; }
+  const {error}=await sb.from("event_participants").update(patch).eq("participant_id",pid);
+  if(error){flash($("#flash"),"Save failed: "+esc(error.message),"err");return;}
+  flash($("#flash"),"Participant updated.","good");
+  openRecord(eid);
+}
+
 function editForm(e){
   $("#m_form").innerHTML=`<h4>Edit</h4>
     <div class="row"><div><label>Event type</label><select id="e_type">${EVENT_TYPES.map(t=>`<option ${t===e.event_type?'selected':''}>${t}</option>`).join("")}</select></div>
@@ -742,7 +803,9 @@ function editForm(e){
   $("#e_muni").onchange=()=>fillEP(null);
   $("#e_save").onclick=async()=>{
     const fol=$("#e_folurl").value.trim();
-    const patch={event_type:$("#e_type").value,year:parseInt($("#e_year").value||"0",10)||null,date_text:$("#e_date").value.trim()||null,summary:$("#e_sum").value.trim()||null,municipality_id:$("#e_muni").value||null,parish_id:$("#e_parish").value||null,transcription:$("#e_transc").value.trim()||null,translation:$("#e_transl").value.trim()||null,off_register:$("#e_offreg").checked};
+    const patch=withDate({event_type:$("#e_type").value,year:parseInt($("#e_year").value||"0",10)||null,date_text:$("#e_date").value.trim()||null,summary:$("#e_sum").value.trim()||null,municipality_id:$("#e_muni").value||null,parish_id:$("#e_parish").value||null,transcription:$("#e_transc").value.trim()||null,translation:$("#e_transl").value.trim()||null,off_register:$("#e_offreg").checked});
+    // re-derive iso+precision whenever the written date changed, so the two can never drift apart
+    if(patch.date_text && patch.date_text!==(e.date_text||"")){const n=normDate(patch.date_text);patch.date_iso=n.iso;patch.date_precision=n.precision;if(n.year)patch.year=n.year;}
     if(fol)patch.needs_source=0;
     const {error}=await sb.from("events").update(patch).eq("event_id",e.event_id);
     if(error){flash($("#e_msg"),"Save failed: "+esc(error.message),"err");return;}
@@ -762,6 +825,51 @@ function proposeForm(e){
     const {error}=await sb.from("proposals").insert({kind:"correction",target_table:"events",target_id:e.event_id,payload});
     if(error){flash($("#pf_msg"),"Submit failed: "+esc(error.message),"err");return;}
     flash($("#pf_msg"),"Proposal submitted.","good");loadProposals();};
+}
+
+/* ---------- date normalisation ----------
+   date_text is VERBATIM (what the clerk wrote). date_iso is the machine date. year derives from iso.
+   The Roman-numeral months are Latin ordinals from the old calendar, which began in MARCH — so they
+   land TWO months later than the digit suggests: 7ber=Sep, 8ber=Oct, 9ber=Nov, Xber/10ber=Dec.
+   Read naively as July/Aug/Sep/Oct, every one is two months early. */
+const MONTHS={jan:1,januar:1,january:1,januarij:1,feb:2,febr:2,february:2,februarij:2,
+  mar:3,maart:3,maert:3,march:3,martii:3,apr:4,april:4,aprilis:4,mei:5,may:5,maij:5,
+  jun:6,juni:6,june:6,junij:6,junii:6,juny:6,jul:7,juli:7,july:7,julij:7,julii:7,julyi:7,
+  aug:8,augustus:8,augusti:8,sep:9,sept:9,september:9,oct:10,okt:10,october:10,
+  nov:11,november:11,dec:12,december:12,
+  "7ber":9,"7bris":9,"7br":9,"8ber":10,"8bris":10,"8br":10,
+  "9ber":11,"9bris":11,"9br":11,"xber":12,"xbris":12,"xbr":12,"10ber":12,"10br":12};
+function normDate(txt){
+  const s=String(txt||"").trim(); if(!s)return {iso:null,precision:null,year:null};
+  let m;
+  // already ISO
+  if((m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s)))  return {iso:s,precision:"day",year:+m[1]};
+  if((m=/^(\d{4})-(\d{2})$/.exec(s)))          return {iso:s,precision:"month",year:+m[1]};
+  if((m=/^(\d{4})$/.exec(s)))                  return {iso:s,precision:"year",year:+m[1]};
+  // dd/mm/yyyy
+  if((m=/^(\d{1,2})[\/.](\d{1,2})[\/.](\d{4})$/.exec(s)))
+    return {iso:`${m[3]}-${String(+m[2]).padStart(2,"0")}-${String(+m[1]).padStart(2,"0")}`,precision:"day",year:+m[3]};
+  const yM=/(1[0-9]{3}|20[0-2][0-9])/.exec(s); if(!yM)return {iso:null,precision:null,year:null};
+  const yr=+yM[1];
+  const mo=(()=>{const t=s.toLowerCase();
+    for(const k of Object.keys(MONTHS).sort((a,b)=>b.length-a.length)){
+      if(new RegExp("(^|[^a-z0-9])"+k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"([^a-z0-9]|$)","i").test(t))return MONTHS[k];
+    } return null;})();
+  if(!mo)return {iso:String(yr),precision:"year",year:yr};
+  const dM=/(^|[^0-9])([0-3]?[0-9])(?![0-9])/.exec(s.replace(String(yr),""));
+  const d=dM?+dM[2]:null;
+  if(!d||d<1||d>31)return {iso:`${yr}-${String(mo).padStart(2,"0")}`,precision:"month",year:yr};
+  return {iso:`${yr}-${String(mo).padStart(2,"0")}-${String(d).padStart(2,"0")}`,precision:"day",year:yr};
+}
+// Apply the normaliser to a patch/insert object that carries a date_text. Never overrides an
+// explicitly-supplied date_iso — a transcriber who states the ISO date outranks the parser.
+function withDate(o){
+  if(!o||!o.date_text)return o;
+  const n=normDate(o.date_text);
+  if(!o.date_iso && n.iso) o.date_iso=n.iso;
+  if(!o.date_precision && n.precision) o.date_precision=n.precision;
+  if((o.year===null||o.year===undefined) && n.year) o.year=n.year;
+  return o;
 }
 
 /* ---------- add ---------- */
@@ -784,7 +892,7 @@ async function submitRecord(keep){
   if(ROLE==="curator"){
     try{
       const eid=await nextEventId();
-      let {error}=await sb.from("events").insert({event_id:eid,event_type:type,date_text:f.date_text,date_precision:f.date_precision,year,municipality_id:f.municipality_id,parish_id:f.parish_id,summary:f.summary,needs_source:(reg||fol)?0:1});
+      let {error}=await sb.from("events").insert(withDate({event_id:eid,event_type:type,date_text:f.date_text,date_iso:null,date_precision:f.date_precision,year,municipality_id:f.municipality_id,parish_id:f.parish_id,summary:f.summary,needs_source:(reg||fol)?0:1}));
       if(error) throw error;
       ({error}=await sb.from("event_participants").insert({event_id:eid,role:f.role,name_as_written:name,canonical_surname:f.canonical_surname}));
       if(error) throw error;
@@ -1224,6 +1332,45 @@ function compareDup(eid,rec,label){
 }
 window.compareDup=compareDup;
 
+/* ---------- integrity ----------
+   Renders run_integrity_checks(). The definitions live in the DB on purpose: the same SQL backs
+   this tab and any audit run from a chat session, so what gets displayed and what gets audited
+   can never diverge. */
+let INT_ROWS=[];
+async function loadIntegrity(){
+  const body=$("#int_body"); body.innerHTML='<p class="muted">Running&hellip;</p>';
+  const {data,error}=await sb.rpc("run_integrity_checks");
+  if(error){body.innerHTML=`<div class="msg err show">${esc(error.message)}</div>`;return;}
+  INT_ROWS=data||[];
+  const rank={error:1,warn:2,info:3};
+  INT_ROWS.sort((a,b)=>(rank[a.severity]||9)-(rank[b.severity]||9)||b.n-a.n);
+  const errs=INT_ROWS.filter(r=>r.severity==="error").reduce((s,r)=>s+Number(r.n),0);
+  if($("#intCount"))$("#intCount").textContent=errs?String(errs):"clean";
+  if(!INT_ROWS.length){body.innerHTML='<div class="msg good show">Every check passed. Nothing to fix.</div>';return;}
+  const pill=s=>s==="error"?'<span class="pill bad">error</span>':s==="warn"?'<span class="pill warn">warn</span>':'<span class="pill">info</span>';
+  body.innerHTML=`<table><thead><tr><th></th><th>Check</th><th>Count</th><th>What it means</th><th>Sample</th></tr></thead><tbody>`
+    + INT_ROWS.map(r=>{
+        const ids=(r.sample||[]).map(s=>/^EVT_/.test(s)
+          ? `<span class="link mono" onclick="openRecord('${esc(s)}')">${esc(s)}</span>`
+          : (/^PER_/.test(s) ? `<span class="link mono" onclick="openPerson('${esc(s)}')">${esc(s)}</span>` : `<span class="mono">${esc(s)}</span>`)).join(", ");
+        return `<tr><td>${pill(r.severity)}</td><td><b>${esc(r.title)}</b><div class="muted mono" style="font-size:11px">${esc(r.check_id)}</div></td>`
+          +`<td style="font-weight:600">${esc(String(r.n))}</td>`
+          +`<td style="max-width:340px"><span class="muted" style="font-size:12px">${esc(r.detail)}</span>`
+          +(r.fixable?`<div style="margin-top:4px"><span class="pill ok">fixable: ${esc(r.fixable)}</span></div>`:"")+`</td>`
+          +`<td style="font-size:11.5px">${ids}${Number(r.n)>(r.sample||[]).length?' <span class="muted">…</span>':''}</td></tr>`;
+      }).join("")
+    + `</tbody></table>`;
+}
+async function integrityRecalc(){
+  const {data:dry,error:e1}=await sb.rpc("recompute_source_flags",{dry_run:true});
+  if(e1){flash($("#int_msg"),esc(e1.message),"err");return;}
+  const lines=(dry||[]).filter(r=>r.before_count!==null).map(r=>`${r.metric}: ${r.before_count} → ${r.after_count}`).join("\n");
+  if(!confirm("Recompute fully_sourced / needs_source?\n\nfully_sourced will mean exactly one thing: WE HAVE THE ACT\n(folio citation with a URL AND a transcription or translation).\n\n"+lines+"\n\nApply?"))return;
+  const {error:e2}=await sb.rpc("recompute_source_flags",{dry_run:false});
+  if(e2){flash($("#int_msg"),esc(e2.message),"err");return;}
+  flash($("#int_msg"),"Flags recomputed.","good");loadIntegrity();runBrowse();loadWorklist();
+}
+
 /* ---------- proposals ---------- */
 async function loadProposals(){
   const {data,error}=await sb.from("proposals").select("*").order("submitted_at",{ascending:false});
@@ -1300,7 +1447,7 @@ async function editProposal(id){
   $("#pj_text").scrollIntoView({behavior:"smooth",block:"center"});
 }
 window.editProposal=editProposal;
-const APPLY_FIELDS=new Set(["event_type","year","date_text","date_precision","summary","needs_source","municipality_id","parish_id"]);
+const APPLY_FIELDS=new Set(["event_type","year","date_text","date_iso","date_precision","summary","needs_source","municipality_id","parish_id"]);
 const PERSON_APPLY_FIELDS=new Set(["given","surname","canonical_surname","birth_year","death_year","residence","notes"]);
 async function applyProposal(p){
   const f=p.payload||{};
@@ -1321,7 +1468,7 @@ async function applyProposal(p){
     const type=f.type||f.event_type;
     if(BIRTHISH.has(type)&&f.year&&f.year>NOW-100) throw new Error("living-person guard ("+type+" "+f.year+")");
     const eid=await nextEventId();
-    let {error}=await sb.from("events").insert({event_id:eid,event_type:type,date_text:f.date_text||null,date_precision:f.date_precision||null,year:f.year||null,municipality_id:f.municipality_id||null,parish_id:f.parish_id||null,summary:f.summary||null,needs_source:(f.reg_url||f.fol_url||f.url)?0:1});
+    let {error}=await sb.from("events").insert(withDate({event_id:eid,event_type:type,date_text:f.date_text||null,date_iso:f.date_iso||null,date_precision:f.date_precision||null,year:f.year||null,municipality_id:f.municipality_id||null,parish_id:f.parish_id||null,summary:f.summary||null,needs_source:(f.reg_url||f.fol_url||f.url)?0:1}));
     if(error) throw error;
     ({error}=await sb.from("event_participants").insert({event_id:eid,role:f.role||"subject",name_as_written:f.name_as_written||f.name,canonical_surname:f.canonical_surname||null}));
     if(error) throw error;
