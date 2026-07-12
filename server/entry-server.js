@@ -1768,7 +1768,7 @@ function HomePage() {
         /* @__PURE__ */ jsxs("div", { className: styles$5.hypothesisBlock, children: [
           /* @__PURE__ */ jsx("div", { className: styles$5.hypothesisLabel, children: t("home.hypothesis_two_label") }),
           /* @__PURE__ */ jsx("div", { className: styles$5.hypothesisTitle, children: t("home.hypothesis_two_title") }),
-          /* @__PURE__ */ jsx("p", { children: t("home.hypothesis_two_body") })
+          /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("home.hypothesis_two_body") } })
         ] }),
         /* @__PURE__ */ jsx("p", { className: styles$5.hypothesesBridge, children: /* @__PURE__ */ jsx("em", { children: t("home.hypotheses_bridge") }) }),
         /* @__PURE__ */ jsx("div", { className: styles$5.hypothesesCta, children: /* @__PURE__ */ jsxs(Link, { className: styles$5.primaryBtn, to: "/research", children: [
@@ -6539,7 +6539,7 @@ function LouisFrieseLineagePage() {
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginTop: "1.5rem", marginBottom: "0.5rem" }, children: t("louis_friese.questions_marie_heading") }),
         /* @__PURE__ */ jsx("p", { children: t("louis_friese.questions_marie_body") }),
         /* @__PURE__ */ jsx("h3", { style: { color: "var(--gold)", fontSize: "1.1rem", marginTop: "1.5rem", marginBottom: "0.5rem" }, children: t("louis_friese.questions_cadet_heading") }),
-        /* @__PURE__ */ jsx("p", { children: t("louis_friese.questions_cadet_body") })
+        /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("louis_friese.questions_cadet_body") } })
       ] }),
       /* @__PURE__ */ jsx("section", { className: styles$4.section, style: { marginTop: "3rem", borderTop: "1px solid rgba(232, 184, 48, 0.2)", paddingTop: "2rem" }, children: /* @__PURE__ */ jsxs("div", { className: researchStyles.branchCards, children: [
         /* @__PURE__ */ jsxs(
@@ -8848,7 +8848,7 @@ function DesparsCompendiumPage() {
   }, [i18n2.language]);
   return /* @__PURE__ */ jsx("div", { className: styles$4.page, children: /* @__PURE__ */ jsxs("div", { className: styles$4.content, children: [
     /* @__PURE__ */ jsx("h1", { children: t("despars_compendium.heading") }),
-    /* @__PURE__ */ jsx("p", { children: t("despars_compendium.intro") }),
+    /* @__PURE__ */ jsx("p", { dangerouslySetInnerHTML: { __html: t("despars_compendium.intro") } }),
     /* @__PURE__ */ jsxs("div", { className: styles$2.downloadStrip, children: [
       /* @__PURE__ */ jsx("span", { className: styles$2.version, children: t("despars_compendium.version_line", { version: COMPENDIUM_VERSION }) }),
       /* @__PURE__ */ jsx(
