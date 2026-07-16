@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-07-12 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:393e909ddb4d0292`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-07-16 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:a5af49fd4c6b0f2b`
 
 ---
 name: vanvlaenderen-record-collection
@@ -250,7 +250,10 @@ hit, update the tracker. A zero-found sweep is a valid, valuable result.
    Vlaenderens - capture the gap so later searches revisit.
 3. **Read the column headers first** and write them down (see "Reading an index").
    Then scan for the surname and every variant (Van Vlaenderen, Vlaenderen,
-   Vlaenders, etc. - consult `surname_variants`). Indexes may be one volume or
+   Vlaenders, etc. - consult `surname_variants`; for pre-1600 or French/Latin-register
+   material also run the grep block in
+   `Research Findings/companion-memos/name-variant-search-register.md` - the
+   de Flandre(s)/de Flandria forms are in tracked scope). Indexes may be one volume or
    split by year/decade, and several volumes may split the ALPHABET across the same
    years; scan every interval. Per hit capture: name as written, the other names the
    columns actually give (father's given, mother's surname+given — and no more),
