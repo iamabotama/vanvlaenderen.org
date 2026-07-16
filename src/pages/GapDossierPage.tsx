@@ -3,6 +3,7 @@ import researchStyles from './ResearchPage.module.css';
 import meetjeslandMap from '../assets/images/heraldic/meetjesland-map.jpg';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import FamilyCallout from '../components/FamilyCallout';
 import { Cite } from '../components/Footnote';
 
 // Single source for this page's footnotes. Each note carries a concise `short`
@@ -190,6 +191,8 @@ export default function GapDossierPage() {
       </div>
 
       <div className={styles.content}>
+        <FamilyCallout textKey="family_callout.gap_dossier" />
+
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Research Dossier</h2>
           <div className={researchStyles.dossierMeta}>Updated June 2026</div>

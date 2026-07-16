@@ -5,6 +5,7 @@ import researchStyles from './ResearchPage.module.css';
 import manuscriptKnight from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
 import { LoysDeHazeDiagram } from '../components/Diagrams';
 import { Helmet } from 'react-helmet-async';
+import FamilyCallout from '../components/FamilyCallout';
 
 export default function LoysDeHazeLineagePage() {
   const { t } = useTranslation();
@@ -38,6 +39,8 @@ export default function LoysDeHazeLineagePage() {
       </div>
 
       <div className={styles.content}>
+        <FamilyCallout textKey="loys.family_callout" />
+
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Loys &ldquo;le Hase&rdquo; van Vlaenderen Dossier</h2>
           <div className={researchStyles.dossierMeta}>Updated June 2026</div>

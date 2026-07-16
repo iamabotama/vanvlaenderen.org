@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 import type { Components } from 'react-markdown';
 import innerStyles from './InnerPage.module.css';
 import styles from './DesparsCompendiumPage.module.css';
+import FamilyCallout from '../components/FamilyCallout';
 
 // Build-time imports — markdown bundled into the JS so prerender outputs full HTML.
 import compendiumEN from '../content/despars-compendium.en.md?raw';
@@ -98,6 +99,8 @@ export default function DesparsCompendiumPage() {
         <h1>{t('despars_compendium.heading')}</h1>
 
         <p dangerouslySetInnerHTML={{ __html: t('despars_compendium.intro') }} />
+
+        <FamilyCallout textKey="despars_compendium.family_callout" />
 
         <div className={styles.downloadStrip}>
           <span className={styles.version}>

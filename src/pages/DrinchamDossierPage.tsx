@@ -4,6 +4,7 @@ import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-phili
 import { JanDrinchamDiagram } from '../components/Diagrams';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import FamilyCallout from '../components/FamilyCallout';
 import { Cite } from '../components/Footnote';
 
 // Single source for this page's footnotes. Each note carries a concise `short`
@@ -150,6 +151,8 @@ export default function DrinchamDossierPage() {
       </div>
 
       <div className={styles.content}>
+
+        <FamilyCallout textKey="family_callout.dossier" />
 
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Archival Dossier</h2>

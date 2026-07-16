@@ -5,6 +5,7 @@ import researchStyles from './ResearchPage.module.css';
 import manuscriptHeraldry from '../assets/images/heraldic/cronike-van-vlaenderen-counts-heraldry.jpg';
 import { JanDrinchamDiagram } from '../components/Diagrams';
 import { Helmet } from 'react-helmet-async';
+import FamilyCallout from '../components/FamilyCallout';
 
 export default function JanSansTerreLineagePage() {
   const { t } = useTranslation();
@@ -38,6 +39,8 @@ export default function JanSansTerreLineagePage() {
       </div>
 
       <div className={styles.content}>
+        <FamilyCallout textKey="jan_sans_terre.family_callout" />
+
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Jan &ldquo;sans terre&rdquo; van Vlaenderen Dossier</h2>
           <div className={researchStyles.dossierMeta}>Updated June 2026</div>

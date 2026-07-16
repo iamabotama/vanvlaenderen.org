@@ -2,6 +2,7 @@ import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import FamilyCallout from '../components/FamilyCallout';
 import { useTranslation } from 'react-i18next';
 import knightPhilip from '../assets/images/heraldic/cronike-van-vlaenderen-philip-of-alsace-knight.jpg';
 import heatmap1500 from '../assets/images/heatmap-1500.png';
@@ -141,6 +142,8 @@ export default function SurnameOriginsPage() {
       </div>
 
       <div className={styles.content}>
+        <FamilyCallout textKey="surname_origins.family_callout" />
+
 
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>{SO('dossier_title')}</h2>

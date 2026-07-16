@@ -5,6 +5,7 @@ import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { PraetDiagram } from '../components/Diagrams';
 import { Helmet } from 'react-helmet-async';
+import FamilyCallout from '../components/FamilyCallout';
 
 export default function LouisFrieseLineagePage() {
   const { t } = useTranslation();
@@ -38,6 +39,8 @@ export default function LouisFrieseLineagePage() {
       </div>
 
       <div className={styles.content}>
+        <FamilyCallout textKey="louis_friese.family_callout" />
+
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Louis Friese van Vlaenderen Dossier</h2>
           <div className={researchStyles.dossierMeta}>Updated June 2026</div>

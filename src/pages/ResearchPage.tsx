@@ -6,6 +6,7 @@ import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaender
 import { OverviewDiagram } from '../components/Diagrams';
 import TimelineClusterMap from '../components/TimelineClusterMap';
 import { Helmet } from 'react-helmet-async';
+import FamilyCallout from '../components/FamilyCallout';
 
 export default function ResearchPage() {
   const { t } = useTranslation();
@@ -42,6 +43,8 @@ export default function ResearchPage() {
       </div>
 
       <div className={styles.content}>
+        <FamilyCallout textKey="research.family_callout" />
+
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>{t('research.dossier_title')}</h2>
           <div className={researchStyles.dossierMeta}>{t('research.dossier_updated')}</div>

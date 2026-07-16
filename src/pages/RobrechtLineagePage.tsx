@@ -5,6 +5,7 @@ import researchStyles from './ResearchPage.module.css';
 import manuscriptNoblewoman from '../assets/images/heraldic/cronike-van-vlaenderen-countess-of-flanders.jpg';
 import { RobrechtDiagram } from '../components/Diagrams';
 import { Helmet } from 'react-helmet-async';
+import FamilyCallout from '../components/FamilyCallout';
 
 export default function RobrechtLineagePage() {
   const { t } = useTranslation();
@@ -40,6 +41,8 @@ export default function RobrechtLineagePage() {
       </div>
 
       <div className={styles.content}>
+        <FamilyCallout textKey="robrecht.family_callout" />
+
         <div className={researchStyles.dossierHeader}>
           <h2 className={researchStyles.dossierTitle}>Robrecht van Vlaenderen Dossier</h2>
           <div className={researchStyles.dossierMeta}>Updated June 2026</div>
