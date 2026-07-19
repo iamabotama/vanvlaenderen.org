@@ -198,8 +198,23 @@ async function prerender() {
   }
 
   console.log(`\n✅  Prerendered ${ok}/${ROUTES.length} routes.`)
+  copyBibliographyJson()
   writeSitemap(PAGE_META)
   writeRobots()
+}
+
+// ── Machine-readable bibliography endpoint ─────────────────────────────────
+// The canonical bibliography lives in src/data/bibliography.json so the
+// BibliographyPage can import it statically (fully prerendered entries).
+// Copy it into dist/data/ so /data/bibliography.json stays available as a
+// machine-readable endpoint for external consumers.
+
+function copyBibliographyJson() {
+  const src = path.resolve(__dirname, '../src/data/bibliography.json')
+  const outDir = path.join(distDir, 'data')
+  fs.mkdirSync(outDir, { recursive: true })
+  fs.copyFileSync(src, path.join(outDir, 'bibliography.json'))
+  console.log('\n📚  data/bibliography.json copied to dist')
 }
 
 // ── Sitemap ────────────────────────────────────────────────────────────────

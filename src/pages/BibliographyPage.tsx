@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import styles from './InnerPage.module.css';
 import researchStyles from './ResearchPage.module.css';
+import bibliographyJson from '../data/bibliography.json';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface BibEntry {
@@ -116,31 +117,29 @@ function EntryCard({ e }: { e: BibEntry }) {
   );
 }
 
+// ── Data ───────────────────────────────────────────────────────────────────
+// Statically imported (not fetched at runtime) so the SSR prerender renders
+// every entry into the static HTML — crawlers, screen readers, and no-script
+// readers see the full bibliography. The build also copies this file to
+// dist/data/bibliography.json (see scripts/prerender.mjs) so the
+// machine-readable /data/bibliography.json endpoint stays live.
+const data = bibliographyJson as unknown as BibData;
+
 // ── Page ───────────────────────────────────────────────────────────────────
 export default function BibliographyPage() {
-  const [data, setData] = useState<BibData | null>(null);
-  const [error, setError] = useState(false);
   const location = useLocation();
 
+  // Scroll to hash anchor. Required because react-router-dom v6 nav() does
+  // not auto-scroll to hash targets.
   useEffect(() => {
-    fetch('/data/bibliography.json')
-      .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-      .then(setData)
-      .catch(() => setError(true));
-  }, []);
-
-  // Scroll to hash anchor once data has loaded and entries are in the DOM.
-  // Required because react-router-dom v6 nav() does not auto-scroll to hash,
-  // and a direct page load with hash fires before async data arrives.
-  useEffect(() => {
-    if (data && location.hash) {
+    if (location.hash) {
       const id = location.hash.slice(1);
       requestAnimationFrame(() => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     }
-  }, [data, location.hash]);
+  }, [location.hash]);
 
   return (
     <div className={styles.page}>
@@ -159,12 +158,7 @@ export default function BibliographyPage() {
           historiographical context.
         </p>
 
-        {error && (
-          <p style={{ color: '#f87171' }}>Bibliography data could not be loaded.</p>
-        )}
-
-        {data && (
-          <>
+        <>
             {/* ── I. Primary Sources ── */}
             <section className={styles.section}>
               <h2>{data.sections.primarySources.label}</h2>
@@ -198,8 +192,7 @@ export default function BibliographyPage() {
             <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.75rem', marginTop: '2rem' }}>
               Last updated: {data.lastUpdated}
             </p>
-          </>
-        )}
+        </>
       </div>
     </div>
   );

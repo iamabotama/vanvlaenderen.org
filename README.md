@@ -88,9 +88,9 @@ Every push to `main` triggers the GitHub Actions build and deploys automatically
 
 ### Adding a Source to the Bibliography
 
-The bibliography data lives in **`public/data/bibliography.json`** — not in the page component. Adding a new source requires no knowledge of React or TypeScript.
+The bibliography data lives in **`src/data/bibliography.json`** — not in the page component. Adding a new source requires no knowledge of React or TypeScript.
 
-1. Open `public/data/bibliography.json`
+1. Open `src/data/bibliography.json`
 2. Find the correct section:
    - `sections.primarySources.subsections.*` for primary sources and finding aids
    - `sections.scholarlyLiterature.groups[n].entries` for scholarly literature
