@@ -24,6 +24,7 @@ import GapDossierPage from './pages/GapDossierPage';
 import DocsPage from './pages/DocsPage';
 import BibliographyPage from './pages/BibliographyPage';
 import SurnameOriginsPage from './pages/SurnameOriginsPage';
+import BearersPage from './pages/BearersPage';
 import NieusSealPage from './pages/NieusSealPage';
 import DrinchamDossierPage from './pages/DrinchamDossierPage';
 import LicensePage from './pages/LicensePage';
@@ -71,6 +72,7 @@ export default function App() {
           <Route path="/research/gap-dossier"              element={<GapDossierPage />} />
           <Route path="/research/bibliography"             element={<BibliographyPage />} />
           <Route path="/name/surname-origins"              element={<SurnameOriginsPage />} />
+          <Route path="/name/bearers"                     element={<BearersPage />} />
           <Route path="/research/nieus-seals"              element={<NieusSealPage />} />
           <Route path="/research/drincham-dossier"          element={<DrinchamDossierPage />} />
           <Route path="/lineage"                       element={<LineagePage />} />

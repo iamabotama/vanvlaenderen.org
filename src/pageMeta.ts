@@ -52,6 +52,14 @@ export const PAGE_META: Record<string, PageMeta> = {
     ogDescription: 'Distributional and documentary analysis testing the toponymic and bastard-line hypotheses for the Van Vlaenderen surname origin.',
     ogType: 'article',
   },
+  '/name/bearers': {
+    title: 'Notable Bearers — Eight Centuries of the Name | vanvlaenderen.org',
+    description: 'Eight centuries of people who carried the Van Vlaenderen name — admirals and prioresses, lawyers and millers, an emigrant and an executed résistant — and the countesses whose comital title the surname may descend from.',
+    canonical: 'https://vanvlaenderen.org/name/bearers/',
+    ogTitle: 'Notable Bearers — Eight Centuries of the Name',
+    ogDescription: 'Eight centuries of people who carried the Van Vlaenderen name, and the open question of who is family.',
+    ogType: 'article',
+  },
   '/research/nieus-seals': {
     title: 'Seals, Lions, and the Politics of a Surname | vanvlaenderen.org',
     description: 'How twelfth-century Flemish noble seal culture illuminates the political and dynastic weight of territorial designations — and what that means for the Van Vlaenderen surname.',

@@ -285,7 +285,7 @@ export default function NamePage() {
         </section>
 
         <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontStyle: 'italic', marginTop: '-0.5rem', marginBottom: '1.5rem', paddingLeft: '0.25rem' }}>
-          {t('name.notable_forthcoming')}
+          <Link to="/name/bearers" style={{ color: 'var(--gold)' }}>{t('name.notable_forthcoming')}</Link>
         </p>
 
         <section className={styles.section}>
