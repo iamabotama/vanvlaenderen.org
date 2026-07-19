@@ -101,7 +101,7 @@ export default function SurnameOriginsPage() {
     { name: 'Victor van Vlaenderen', dates: '1399–1430', base: 'tier1_r1' },
     { name: "Loys 'le Frison' van Vlaenderen", dates: '1373–1396', base: 'tier1_r2' },
     { name: "Jan 'sans terre' van Vlaenderen", dates: '1383–1396', base: 'tier1_r3' },
-    { name: "Loys 'le Hase' van Vlaenderen", dates: '1370–1396', base: 'tier1_r4' },
+    { name: "Loys 'le Hase' van Vlaenderen", dates: '1372–1396', base: 'tier1_r4' },
     { name: 'Robert [Roeland] van Vlaenderen', dates: '1420–1434', base: 'tier1_r5' },
     { name: 'Karel van Vlaenderen, Lord of Grutersale', dates: '1430–1491', base: 'tier1_r6' },
   ];

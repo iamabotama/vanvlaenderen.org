@@ -1,5 +1,5 @@
 # vanvlaenderen.org — Website To-Do & Changelog
-*Last updated: June 25, 2026*
+*Last updated: July 19, 2026*
 *Repository: github.com/iamabotama/vanvlaenderen.org · Branch: main*
 
 ---
@@ -81,6 +81,23 @@ The research dossier pages currently have Notes & Bibliography sections with ref
 ---
 
 ## 📋 CHANGELOG
+
+### July 19, 2026 — External-review response wave: Packets A–C (A+B DEPLOYED; C staged on mvf)
+Response to the external scholarly review (2026-07), prioritized plan agreed in chat.
+
+**Packet A — Research overview calibration (DEPLOYED)**
+- `src/i18n/locales/en.json` + `nl.json` — `research.hero_subhead`, `hero_lead_p1`, `paradox_body`, `conclusion_p1`: removed "unbroken documentary use from at least 1275" and "distributional signature of continuous patrilineal descent"; hereditary-surname claims scoped to Louis de Male natural-children lines (late 14th c. onward); 1275 recast as house-name usage among legitimate Dampierre cadet branches; continuity across usages labeled a working hypothesis; conclusion adds the no-documentary-bridge statement matching the gap dossier; "bastards" → "acknowledged natural children" with period-term parenthetical at first use. `src/pageMeta.ts` `/research` description recalibrated to match.
+- NL strings are drafts → native Flemish review queue.
+
+**Packet B — Bibliography prerender fix (DEPLOYED)**
+- `public/data/bibliography.json` → `src/data/bibliography.json`; `BibliographyPage` now imports it statically, so all 95 entries render into the prerendered HTML (page: ~8 KB shell → 182 KB content; crawlers/screen readers/no-script now see the full bibliography). `scripts/prerender.mjs` copies the file to `dist/data/` so the machine-readable `/data/bibliography.json` endpoint stays live. `tsconfig.app.json` +resolveJsonModule; README contributor instructions updated. **Standing note: the `vanvlaenderen-site-update` skill still says bibliography additions go in `public/data/` — update to `src/data/`.**
+
+**Packet C — Four Functions table resync + Victor date basis (STAGED on mvf)**
+- `surname_origins.tier1_r4_*` (Loys le Hase): grant corrected to Wessegem/Ursel/Oostburg 9 April 1372 (Moelaert 1973; component dates cell 1370→1372); descendants updated from "one son Renaud (Feb 1397 only)" to the four documented natural children (Hector, Regnault, Kathelijne, Joanna) per the Loys dossier.
+- `surname_origins.tier1_r5_*` (Robrecht): "None. De Wrée … sans generation" replaced with the reconciled reading — no legitimate issue (De Wrée; Anastasie's ex Roberto verò nullos) vs three natural sons with dossier tiers (Jean Directly Attested; Caspar hypothesis; Karel Strongly Corroborated). Resolves the review's "critical contradiction" #1 without silently choosing a side.
+- `surname_origins.tier1_r6_*` (Karel): "parentage unresolved" updated to the dossier's Strongly Corroborated filius M'her Robrecht reading; senior-Karel (Despars position 8) disambiguation noted. Structural option (move Karel to Tier 2) deferred to a later packet.
+- Victor death date: `research.diagram_sr_text` "died before 1442" and `victor.territorial_p1` harmonized — last attested 1430 testament; 1431 = lordship-reversion year, explicitly labeled the basis of the working death date. Diagram label "(† 1431)" retained.
+- Remaining external-review packets tracked in chat plan: D (calibration sweep: "rules out", "probable founding event", 551 figure, "documented founding line" → candidate, Vredius/Espinoy provenance), E (claim register, methodology conventions, R-FT1573 clarification, corrections log, boilerplate consolidation).
 
 ### June 25, 2026 — Records editor: paste-record pipeline (full multi-participant records) *(DB live; editor STAGED on mvf — pending gates + push approval)*
 Built the paste-record pipeline per `docs/records-editor-paste-pipeline-spec-2026-06-25.md` so a full, multi-participant, transcribed record can be submitted from a single fenced-JSON paste field, routed through the `proposals` queue, and applied atomically.
