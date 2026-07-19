@@ -284,9 +284,40 @@ export default function NamePage() {
           </p>
         </section>
 
-        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontStyle: 'italic', marginTop: '-0.5rem', marginBottom: '1.5rem', paddingLeft: '0.25rem' }}>
-          <Link to="/name/bearers" style={{ color: 'var(--gold)' }}>{t('name.notable_forthcoming')}</Link>
-        </p>
+        <div style={{
+          margin: '1.5rem 0 2.5rem',
+          padding: '1.5rem 1.75rem',
+          background: 'rgba(232,184,48,0.04)',
+          border: '1px solid rgba(232,184,48,0.2)',
+          borderRadius: '4px',
+        }}>
+          <div style={{ fontSize: '0.72rem', fontFamily: 'var(--font-ui)', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: '0.6rem' }}>
+            {t('name.bearers_card_eyebrow')}
+          </div>
+          <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', color: 'var(--gold)', marginBottom: '0.6rem' }}>
+            {t('name.bearers_card_title')}
+          </div>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '1rem', fontStyle: 'normal' }}>
+            {t('name.notable_forthcoming')}
+          </p>
+          <Link
+            to="/name/bearers"
+            style={{
+              background: 'none',
+              border: '1px solid rgba(232,184,48,0.35)',
+              color: 'var(--gold)',
+              padding: '0.5rem 1rem',
+              borderRadius: '3px',
+              fontSize: '0.82rem',
+              fontFamily: 'var(--font-ui)',
+              letterSpacing: '0.06em',
+              textDecoration: 'none',
+              display: 'inline-block',
+            }}
+          >
+            {t('name.bearers_card_cta')}
+          </Link>
+        </div>
 
         <section className={styles.section}>
           <h2>{t('name.cronike_title')}</h2>

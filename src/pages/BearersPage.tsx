@@ -35,7 +35,7 @@ const sourceStyle = {
 
 function PlacePhoto({ src, alt, caption }: { src: string; alt: string; caption: string }) {
   return (
-    <figure style={{ margin: '1.75rem 0' }}>
+    <figure style={{ margin: '1.75rem auto', maxWidth: '340px' }}>
       <img
         src={src}
         alt={alt}
