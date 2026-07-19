@@ -86,7 +86,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   '/research': {
     title: 'Research Overview — Van Vlaenderen Archival Dossiers | vanvlaenderen.org',
-    description: 'Overview of Van Vlaenderen archival research: five direct-bastard lines of Louis II de Male (Loys "le Hase", Victor, Louis Friese, Jan sans terre, Robrecht) and their documented descendants. The earliest hereditary use of van Vlaenderen as a surname, traced from at least 1275.',
+    description: 'Overview of Van Vlaenderen archival research: five direct-bastard lines of Louis II de Male (Loys "le Hase", Victor, Louis Friese, Jan sans terre, Robrecht) and their documented descendants. Hereditary surname use documented from the late fourteenth century; earlier comital house-name usage traced from 1275.',
     canonical: 'https://vanvlaenderen.org/research/',
     ogTitle: 'Research Overview — Van Vlaenderen Archival Dossiers',
     ogDescription: 'Five surname-bearing bastard lines of Louis II de Male: Loys "le Hase", Victor, Louis Friese, Jan sans terre, and Robrecht.',
