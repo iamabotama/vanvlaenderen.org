@@ -198,6 +198,7 @@
         <div><label>Per page</label><select id="b_per"><option>25</option><option selected>50</option><option>100</option><option>200</option><option value="all">All</option></select></div>
         <button class="ghost" id="b_run">Search</button>
         <button class="ghost" id="b_reset">Reset</button>
+        <label style="flex-direction:row;align-items:center;gap:5px;font-weight:400;margin-left:4px"><input type="checkbox" id="b_voided" style="width:auto;margin:0"> Show voided</label>
       </div>
       <div class="count" id="b_count"></div>
       <table><thead><tr>
@@ -482,7 +483,8 @@ function initUI(){
   $("#a_type").innerHTML=EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
   $("#a_role").innerHTML=ROLES.map(r=>`<option ${r==='child'?'selected':''}>${r}</option>`).join("");
   $("#b_run").onclick=runBrowse;$("#b_q").addEventListener("keydown",e=>{if(e.key==="Enter")runBrowse();});
-  $("#b_reset").onclick=()=>{["b_q","b_y0","b_y1"].forEach(id=>$("#"+id).value="");["b_type","b_surname","b_muni","b_parish","b_src"].forEach(id=>$("#"+id).value="");$("#b_match").value="contains";fillBrowseParish();runBrowse();};
+  $("#b_voided").onchange=runBrowse;
+  $("#b_reset").onclick=()=>{["b_q","b_y0","b_y1"].forEach(id=>$("#"+id).value="");["b_type","b_surname","b_muni","b_parish","b_src"].forEach(id=>$("#"+id).value="");$("#b_match").value="contains";$("#b_voided").checked=false;fillBrowseParish();runBrowse();};
   $("#b_muni").addEventListener("change",()=>{fillBrowseParish();});
   $("#pp_run").onclick=runPeople;$("#pp_q").addEventListener("keydown",e=>{if(e.key==="Enter")runPeople();});
   $("#pp_reset").onclick=()=>{$("#pp_q").value="";$("#pp_surname").value="";$("#pp_src").value="";runPeople();};
@@ -572,8 +574,8 @@ async function runBrowse(){
   const ty=$("#b_type").value,su=$("#b_surname").value,mid=$("#b_muni").value,
         pid=$("#b_parish").value,y0=parseInt($("#b_y0").value||"",10),y1=parseInt($("#b_y1").value||"",10),
         src=$("#b_src").value,q=$("#b_q").value.trim(),match=$("#b_match").value;
-  const sel=su?'event_id,event_type,year,municipality_id,needs_source,fully_sourced,transcription,translation,event_sources(url_level),event_participants!inner(role,name_as_written,canonical_surname)'
-             :'event_id,event_type,year,municipality_id,needs_source,fully_sourced,transcription,translation,event_sources(url_level),event_participants(role,name_as_written)';
+  const sel=su?'event_id,event_type,year,municipality_id,needs_source,fully_sourced,voided,voided_reason,transcription,translation,event_sources(url_level),event_participants!inner(role,name_as_written,canonical_surname)'
+             :'event_id,event_type,year,municipality_id,needs_source,fully_sourced,voided,voided_reason,transcription,translation,event_sources(url_level),event_participants(role,name_as_written)';
   const makeQuery=()=>{
     let query=sb.from("events").select(sel).order("year",{ascending:false}).order("event_id");
     if(ty) query=query.eq("event_type",ty);
@@ -582,6 +584,7 @@ async function runBrowse(){
     if(pid) query=query.eq("parish_id",pid);
     if(!isNaN(y0)) query=query.gte("year",y0);
     if(!isNaN(y1)) query=query.lte("year",y1);
+    if(!$("#b_voided").checked) query=query.eq("voided",false);
     // src ('ok'|'needs') is filtered client-side from the computed status (content + folio), not needs_source
     return query;
   };
@@ -613,7 +616,8 @@ function drawBrowseRows(rows){
     const _pn=principalNames(e);
     const pr=_pn.length?_pn.map(esc).join(" / "):'<span class="muted">—</span>';
     const s=bSrcStatus(e)==="ok"?'<span class="pill ok">ok</span>':'<span class="pill bad">needs</span>';
-    return `<tr class="click" onclick="openRecord('${esc(e.event_id)}')"><td><span class="link mono">${esc(e.event_id)}</span></td><td>${e.year??""}</td><td>${esc(e.event_type||"")}</td><td>${pr}</td><td>${esc(muniName(e.municipality_id))}</td><td>${s}</td></tr>`;
+    const vd=e.voided?` <span class="pill bad" title="${esc(e.voided_reason||"")}">voided</span>`:"";
+    return `<tr class="click" style="${e.voided?"opacity:.5":""}" onclick="openRecord('${esc(e.event_id)}')"><td><span class="link mono">${esc(e.event_id)}</span></td><td>${e.year??""}</td><td>${esc(e.event_type||"")}</td><td>${pr}${vd}</td><td>${esc(muniName(e.municipality_id))}</td><td>${s}</td></tr>`;
   }).join("")||`<tr><td colspan="6" class="muted">No records.</td></tr>`;
 }
 
@@ -727,6 +731,7 @@ async function openRecord(id){
     <div class="kv"><b>Place:</b> ${esc(muniName(e.municipality_id))}${e.parish_id?" / "+esc(parishName(e.parish_id)):""}</div>
     ${e.summary?`<div class="kv"><b>Summary:</b> ${esc(e.summary)}</div>`:""}
     ${e.notes?`<div class="kv"><b>Notes:</b> ${esc(e.notes)}</div>`:""}
+    ${e.voided?`<div class="kv" style="color:#b00;font-weight:600">VOIDED &mdash; ${esc(e.voided_reason||"")} ${e.voided_at?`<span class="muted" style="font-weight:400">(${esc(String(e.voided_at).slice(0,10))})</span>`:""}</div>`:""}
     ${findExtract}
     <h4>Participants</h4><ul class="plain">${parts}</ul>
     <h4>Sources</h4><ul class="plain">${srcs}</ul>
@@ -735,6 +740,7 @@ async function openRecord(id){
     <div id="m_form"></div>`;
   const foot=$("#m_foot");foot.innerHTML="";
   if(ROLE==="curator"){const b=document.createElement("button");b.className="act";b.textContent="Edit record";b.onclick=()=>editForm(e);foot.appendChild(b);}
+  if(ROLE==="curator"){const vb=document.createElement("button");vb.className="ghost";vb.textContent=e.voided?"Un-void":"Void (mark duplicate)";vb.onclick=()=>voidRecord(e.event_id,!e.voided);foot.appendChild(vb);}
   const pb=document.createElement("button");pb.className="ghost";pb.textContent="Propose a change";pb.onclick=()=>proposeForm(e);foot.appendChild(pb);
   const cl=document.createElement("button");cl.className="ghost";cl.textContent="Close";cl.onclick=closeModal;foot.appendChild(cl);
   $("#overlay").classList.add("open");
@@ -742,6 +748,20 @@ async function openRecord(id){
 window.openRecord=openRecord;
 function closeModal(){$("#overlay").classList.remove("open");}
 window.closeModal=closeModal;
+async function voidRecord(id,makeVoid){
+  let reason=null;
+  if(makeVoid){
+    reason=prompt("Reason for voiding "+id+" (required - e.g. duplicate of EVT_1475):","");
+    if(reason===null) return;
+    reason=(reason||"").trim();
+    if(!reason){flash($("#flash"),"A reason is required to void a record.","err");return;}
+  }
+  const {error}=await sb.rpc("set_record_voided",{payload:{event_id:id,voided:makeVoid,reason:reason}});
+  if(error){flash($("#flash"),(makeVoid?"Void":"Un-void")+" failed: "+esc(error.message),"err");return;}
+  flash($("#flash"),makeVoid?("Voided "+id+"."):("Restored "+id+"."),"good");
+  runBrowse();if(typeof loadWorklist==="function")loadWorklist();if(typeof loadTracker==="function")loadTracker();openRecord(id);
+}
+window.voidRecord=voidRecord;
 
 /* ---------- participant repair: name it, or say WHY there is no name ----------
    Two literals, because they are two different facts:
