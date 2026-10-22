@@ -813,6 +813,8 @@ function editForm(e){
     <div><label>Year</label><input type="number" id="e_year" value="${e.year??""}"></div>
     <div><label>Subtype <span class="muted" style="font-weight:400">(act class)</span></label><select id="e_subtype">${RECORD_SUBTYPES.map(t=>`<option value="${t}" ${t===(e.record_subtype||"")?'selected':''}>${t||"—"}</option>`).join("")}</select></div></div>
     <label>Date as written<input type="text" id="e_date" value="${esc(e.date_text||"")}"></label>
+    <div class="row"><div><label>Date (ISO)<input type="text" id="e_iso" value="${esc(e.date_iso||"")}" placeholder="YYYY-MM-DD"></label></div>
+    <div><label>Date precision</label><select id="e_prec">${["","year","month","day","circa","range","unknown"].map(v=>`<option value="${v}" ${v===(e.date_precision||"")?"selected":""}>${v||"&mdash;"}</option>`).join("")}</select></div></div>
     <div class="row"><div><label>Municipality</label><select id="e_muni">${MUNIS.map(m=>`<option value="${esc(m.municipality_id)}" ${m.municipality_id===e.municipality_id?'selected':''}>${esc(m.canonical_name)}</option>`).join("")}</select></div>
     <div><label>Parish</label><select id="e_parish"></select></div></div>
     <label>Summary<textarea id="e_sum" rows="2">${esc(e.summary||"")}</textarea></label>
@@ -826,9 +828,15 @@ function editForm(e){
   $("#e_muni").onchange=()=>fillEP(null);
   $("#e_save").onclick=async()=>{
     const fol=$("#e_folurl").value.trim();
-    const patch=withDate({event_type:$("#e_type").value,record_subtype:$("#e_subtype").value||null,year:parseInt($("#e_year").value||"0",10)||null,date_text:$("#e_date").value.trim()||null,summary:$("#e_sum").value.trim()||null,municipality_id:$("#e_muni").value||null,parish_id:$("#e_parish").value||null,transcription:$("#e_transc").value.trim()||null,translation:$("#e_transl").value.trim()||null,off_register:$("#e_offreg").checked});
-    // re-derive iso+precision whenever the written date changed, so the two can never drift apart
-    if(patch.date_text && patch.date_text!==(e.date_text||"")){const n=normDate(patch.date_text);patch.date_iso=n.iso;patch.date_precision=n.precision;if(n.year)patch.year=n.year;}
+    const patch=({event_type:$("#e_type").value,record_subtype:$("#e_subtype").value||null,year:parseInt($("#e_year").value||"0",10)||null,date_text:$("#e_date").value.trim()||null,summary:$("#e_sum").value.trim()||null,municipality_id:$("#e_muni").value||null,parish_id:$("#e_parish").value||null,transcription:$("#e_transc").value.trim()||null,translation:$("#e_transl").value.trim()||null,off_register:$("#e_offreg").checked});
+    // Stored date_iso/precision are kept unless the curator edits them. Re-derive from the written
+    // date only when it changed AND the ISO/precision fields were left untouched.
+    // (Fixed 2026-10-22: withDate() ran on every save; the parser reads only digit days, so
+    // 'den Negentienden der maand April 1910' was downgraded from 1910-04-19/day to 1910-04/month.)
+    const isoIn=$("#e_iso").value.trim()||null, precIn=$("#e_prec").value||null;
+    const isoTouched=(isoIn!==(e.date_iso||null))||(precIn!==(e.date_precision||null));
+    patch.date_iso=isoIn; patch.date_precision=precIn;
+    if(!isoTouched && patch.date_text && patch.date_text!==(e.date_text||"")){const n=normDate(patch.date_text);patch.date_iso=n.iso;patch.date_precision=n.precision;if(n.year)patch.year=n.year;}
     if(fol)patch.needs_source=0;
     const {error}=await sb.from("events").update(patch).eq("event_id",e.event_id);
     if(error){flash($("#e_msg"),"Save failed: "+esc(error.message),"err");return;}
