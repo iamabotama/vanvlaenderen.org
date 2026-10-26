@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-10-26 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:d5360de3f68889b6`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-10-26 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:28eb5714d836f4d5`
 
 ---
 name: vanvlaenderen-record-collection
@@ -17,6 +17,13 @@ description: >
   curator review. Do NOT use for the findings or source-note layers; this is the
   structured vital-records layer only.
 ---
+
+<!-- Revised 2026-10-26 (later): rail 17 added. name_as_written is always given
+name(s) first, then the surname exactly as the clerk spelled it ("Jean Vanvlaenderen",
+"Pierre François Vlaenderen (Van)"), never in the index's surname-first column order,
+and always carries the surname even when the cell or act body gives only the given
+name (take it from the ditto, margin or heading). Spelling stays verbatim: Michael
+chose to keep joined forms like "Vanvlaender" as written. -->
 
 <!-- Revised 2026-10-26: paste contract gains optional fields (no contract_version
 bump): participants[].status and person_id, event.source_locator, and a
@@ -542,6 +549,17 @@ weaker party, because that is where ingest bugs live.
    omitted. A role the schema lacks (guardian, surety, counterparty, neighbour)
    is `secondary` (or `mentioned`) with the real role in `notes`. Lines that hold
    names are transcribed, never only summarised "for sense".
+17. `name_as_written` is given name first, then the surname as written (Michael,
+   2026-10-26). Indexes list people surname first; do not copy that column order
+   into the field. Write "Jean Vanvlaenderen", not "Vanvlaenderen Jean", and
+   "Pierre François Vlaenderen (Van)", not "Vlaenderen (Van), Pierre François".
+   Keep the clerk's spelling, spacing and capitalisation exactly ("Vanvlaender",
+   "henri", "VanVlaenderen" stay as written); only the ORDER is normalised. The
+   field always carries the surname: when the cell or the act body gives only the
+   given name (a ditto row, or a birth act that names the child "Pierre"), take the
+   surname from the ditto, the margin entry or the heading, and say where it came
+   from in the participant's `notes`. `given` and `surname` hold the two parts
+   separately; `canonical_surname` is still "Van Vlaenderen".
 
 ## Record types (v1 scope + extension hooks)
 
