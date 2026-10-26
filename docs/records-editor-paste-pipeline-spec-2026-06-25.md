@@ -151,3 +151,17 @@ contributors submit a `kind='progress_update'` proposal carrying
 Editor edits land on `mvf` → `pnpm build` → review → merge `main` → push (CI
 deploys). The RPC + any policy go in via a tracked migration. Sequence the
 migration before the editor deploy so the client never calls a missing RPC.
+
+## v2 additions (2026-10-26; migration `apply_full_record_v2_status_person_locator_source_hints`)
+
+All optional; contract_version stays 1, so v1 payloads apply exactly as before.
+
+- `participants[].status`: `unreconciled` | `reconciled` | `not_tracked`. Omitted: `reconciled` when `person_id` is given, otherwise `unreconciled` (the column default).
+- `participants[].person_id`: an existing `PER_` id; the participant is linked on insert. Rejected if the PER row does not exist, if `status` is `reconciled` without a `person_id`, or if a `person_id` comes with `not_tracked`.
+- `event.source_locator`: written to `events.source_locator` (folio / section / entry).
+- A source row that does not exist yet takes its description from the payload: `sources[].source_category` (with `repository`, both required together), `source_subtype`, `short_citation` (defaults to `register`), `full_citation`, `reliability`. `register` stays the lookup key (`inventory_reference` or `short_citation`). An existing source is reused and these fields are ignored.
+- Defaults for a new source with no description are kept only for vital types (baptism, civil_birth, marriage, civil_marriage, burial, civil_death, death, index_entry: parish / Rijksarchief Belgie (AGATHA)) and fiscal types (estate_record, tax_roll, census: fiscal / Rijksarchief Gent, now flagged "check them"). Any other type (attestation, feudal acts, office records ...) is rejected with a message asking for `source_category` + `repository` or a source row created first, instead of being filed as an AGATHA parish register.
+- The result adds `linked` (participants linked to persons) and flags for created sources with their category and repository.
+- Editor (`public/r/e1e3b0852b/index.html`): the min-bar checks the status vocabulary, the `PER_` pattern and the status/person_id pairing, and `source_category` without `repository`; the preview and proposal cards show Status and Person columns, the event locator, and "(if new: category / repository)" beside a source.
+
+Tested 2026-10-26 in a rolled-back transaction: full v2 payload (status, link, locator, new administrative source); second payload reusing the source; attestation with an unknown source and no description (rejected); bad status (rejected); unknown PER (rejected); a v1 baptism payload (unchanged behaviour).
