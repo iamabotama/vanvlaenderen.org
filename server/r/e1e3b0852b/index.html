@@ -967,6 +967,13 @@ function pjMinBar(o){
   if(!ev.year&&!ev.date_text)errs.push("a date is required (event.year or event.date_text)");
   if(!parts.some(p=>p&&p.role&&(p.name_as_written||p.name)))errs.push("≥1 participant with role + name_as_written");
   if(!srcs.some(s=>s&&s.url)&&ev.needs_source!==1)errs.push("≥1 source with a url, OR event.needs_source = 1 (index-only lead)");
+  // v2 contract fields (2026-10-26): participant status / person_id, new-source hints
+  parts.forEach((p,i)=>{if(!p)return;const who=p.name_as_written||p.name||("participants["+i+"]");
+    if(p.status!=null&&p.status!==""&&!["unreconciled","reconciled","not_tracked"].includes(p.status))errs.push(`${who}: status "${p.status}" (allowed: unreconciled, reconciled, not_tracked)`);
+    if(p.person_id&&!/^PER_\d{4,}$/.test(p.person_id))errs.push(`${who}: person_id "${p.person_id}" is not a PER_ id`);
+    if(p.status==="reconciled"&&!p.person_id)errs.push(`${who}: status reconciled needs a person_id`);
+    if(p.person_id&&p.status==="not_tracked")errs.push(`${who}: has a person_id but status not_tracked`);});
+  srcs.forEach((s,i)=>{if(s&&s.source_category&&!s.repository)errs.push(`sources[${i}]: source_category given without repository`);});
   const yr=pjYear(ev);
   if(BIRTHISH.has(ev.event_type)&&yr&&yr>NOW-100)errs.push(`living-person gate: a ${ev.event_type} in ${yr} is within 100 years (only death/burial allowed)`);
   return errs;
@@ -1137,8 +1144,8 @@ function pjResetPreview(){PJ=null;PJ_MODE=null;PJ_BATCH=null;PJ_DUPS=[];$("#pj_p
 function pjPreview(o,errs){
   const ev=o.event||{},parts=Array.isArray(o.participants)?o.participants:[],srcs=Array.isArray(o.sources)?o.sources:[],trk=o.tracker;
   const place=esc((ev.municipality_name||ev.municipality_id||"")+(ev.parish_name?(" / "+ev.parish_name):ev.parish_id?(" / "+ev.parish_id):""));
-  const ptable=parts.map(p=>`<tr><td>${esc(p.role||"")}</td><td>${esc(p.name_as_written||p.name||"")}</td><td>${esc(p.canonical_surname||"")}</td></tr>`).join("")||`<tr><td colspan="3" class="muted">none</td></tr>`;
-  const slist=srcs.map(s=>`<li><span class="role-tag">${esc(s.role||"")}</span>${s.url_level?`<span class="lvl">${esc(s.url_level)}</span>`:""}${s.register?`<span class="mono">${esc(s.register)}</span> `:""}${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">link</a>`:'<span class="muted">no url</span>'}</li>`).join("")||(ev.needs_source===1?'<li class="muted">none — index-only lead (needs_source = 1)</li>':'<li class="muted">none</li>');
+  const ptable=parts.map(p=>`<tr><td>${esc(p.role||"")}</td><td>${esc(p.name_as_written||p.name||"")}</td><td>${esc(p.canonical_surname||"")}</td><td>${esc(p.status||(p.person_id?"reconciled":"unreconciled"))}</td><td class="mono">${esc(p.person_id||"")}</td></tr>`).join("")||`<tr><td colspan="5" class="muted">none</td></tr>`;
+  const slist=srcs.map(s=>`<li><span class="role-tag">${esc(s.role||"")}</span>${s.url_level?`<span class="lvl">${esc(s.url_level)}</span>`:""}${s.register?`<span class="mono">${esc(s.register)}</span> `:""}${s.source_category?`<span class="muted">(if new: ${esc(s.source_category)} / ${esc(s.repository||"?")}) </span>`:""}${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">link</a>`:'<span class="muted">no url</span>'}</li>`).join("")||(ev.needs_source===1?'<li class="muted">none — index-only lead (needs_source = 1)</li>':'<li class="muted">none</li>');
   let trkHtml="";
   if(trk){
     const sets=trk.set?Object.entries(trk.set).map(([k,v])=>`${esc(k)} → ${esc(v)}`).join(", "):"";
@@ -1150,9 +1157,9 @@ function pjPreview(o,errs){
     <div class="card" style="max-width:none;margin-top:10px">
       <div class="kv"><b>${esc(ev.event_type||"?")}</b>${ev.record_subtype?` <span class="muted">/ ${esc(ev.record_subtype)}</span>`:""} · ${esc(ev.date_text||ev.date_iso||"")} ${ev.year?`<span class="muted">(year ${esc(String(ev.year))})</span>`:""}</div>
       <div class="kv"><b>Place:</b> ${place||'<span class="muted">—</span>'}</div>
-      ${ev.summary?`<div class="kv"><b>Summary:</b> ${esc(ev.summary)}</div>`:""}
+      ${ev.summary?`<div class="kv"><b>Summary:</b> ${esc(ev.summary)}</div>`:""}${ev.source_locator?`<div class="kv"><b>Locator:</b> <span class="mono">${esc(ev.source_locator)}</span></div>`:""}
       <h4>Participants (${parts.length})</h4>
-      <table><thead><tr><th>Role</th><th>Name as written</th><th>Canonical</th></tr></thead><tbody>${ptable}</tbody></table>
+      <table><thead><tr><th>Role</th><th>Name as written</th><th>Canonical</th><th>Status</th><th>Person</th></tr></thead><tbody>${ptable}</tbody></table>
       <h4>Sources (${srcs.length})</h4><ul class="plain">${slist}</ul>
       ${trkHtml}
       ${ev.transcription?`<h4>Transcription</h4><div class="transc">${esc(ev.transcription)}</div>`:""}
@@ -1420,13 +1427,13 @@ function renderProposalCard(p,curator){
     const ev=pl.event||{},parts=Array.isArray(pl.participants)?pl.participants:[],srcs=Array.isArray(pl.sources)?pl.sources:[],trk=pl.tracker;
     const place=esc((ev.municipality_name||ev.municipality_id||"")+(ev.parish_name?(" / "+ev.parish_name):ev.parish_id?(" / "+ev.parish_id):""));
     const plist=parts.map(x=>`<li><span class="role-tag">${esc(x.role||"")}</span>${esc(x.name_as_written||x.name||"")}${x.canonical_surname?` <span class="muted">(${esc(x.canonical_surname)})</span>`:""}</li>`).join("")||'<li class="muted">none</li>';
-    const slist=srcs.map(s=>`<li><span class="role-tag">${esc(s.role||"")}</span>${s.url_level?`<span class="lvl">${esc(s.url_level)}</span>`:""}${s.register?`<span class="mono">${esc(s.register)}</span> `:""}${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">link</a>`:'<span class="muted">no url</span>'}</li>`).join("")||(ev.needs_source===1?'<li class="muted">none — index-only lead</li>':'<li class="muted">none</li>');
+    const slist=srcs.map(s=>`<li><span class="role-tag">${esc(s.role||"")}</span>${s.url_level?`<span class="lvl">${esc(s.url_level)}</span>`:""}${s.register?`<span class="mono">${esc(s.register)}</span> `:""}${s.source_category?`<span class="muted">(if new: ${esc(s.source_category)} / ${esc(s.repository||"?")}) </span>`:""}${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">link</a>`:'<span class="muted">no url</span>'}</li>`).join("")||(ev.needs_source===1?'<li class="muted">none — index-only lead</li>':'<li class="muted">none</li>');
     let trkHtml="";
     if(trk){const sets=trk.set?Object.entries(trk.set).map(([k,v])=>`${esc(k)} → ${esc(v)}`).join(", "):"";
       trkHtml=`<div class="kv"><b>Tracker:</b> ${esc(trk.municipality_name||trk.municipality_id||"")}${sets?` — ${sets}`:""}</div>`;}
     body=`<div class="kv"><b>${esc(ev.event_type||"?")}</b>${ev.record_subtype?` <span class="muted">/ ${esc(ev.record_subtype)}</span>`:""} · ${esc(ev.date_text||ev.date_iso||"")} ${ev.year?`<span class="muted">(year ${esc(String(ev.year))})</span>`:""}</div>
       <div class="kv"><b>Place:</b> ${place||'<span class="muted">—</span>'}</div>
-      ${ev.summary?`<div class="kv"><b>Summary:</b> ${esc(ev.summary)}</div>`:""}
+      ${ev.summary?`<div class="kv"><b>Summary:</b> ${esc(ev.summary)}</div>`:""}${ev.source_locator?`<div class="kv"><b>Locator:</b> <span class="mono">${esc(ev.source_locator)}</span></div>`:""}
       <h4>Participants (${parts.length})</h4><ul class="plain">${plist}</ul>
       <h4>Sources (${srcs.length})</h4><ul class="plain">${slist}</ul>
       ${trkHtml}`;
