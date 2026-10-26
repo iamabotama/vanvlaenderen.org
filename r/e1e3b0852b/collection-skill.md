@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-07-16 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:a5af49fd4c6b0f2b`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-10-26 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:d5360de3f68889b6`
 
 ---
 name: vanvlaenderen-record-collection
@@ -10,13 +10,22 @@ description: >
   change. Triggers on: collect/harvest records, AGATHA, the records editor at
   /r/, an AGATHA index or register, scan a parish, baptism/marriage/death or
   civil records, staten van goed / landboek / medieval
-  folio or testament, transcribe/translate a register page, add an event, the
+  folio or testament, a leenregister / fief or attestation entry, transcribe/translate a register page, add an event, the
   research tracker / research_progress, the events / event_participants /
   event_sources tables, or EVT_/PER_/SRC_/PRG_ ids. Curators write after an
   in-chat review; contributors (e.g. Connie on Claude Pro) draft proposals for
   curator review. Do NOT use for the findings or source-note layers; this is the
   structured vital-records layer only.
 ---
+
+<!-- Revised 2026-10-26: paste contract gains optional fields (no contract_version
+bump): participants[].status and person_id, event.source_locator, and a
+description for a NEW source row (source_category, source_subtype, repository,
+short_citation, full_citation, reliability). A new source is no longer silently
+filed as an AGATHA parish register: outside vital and fiscal record types the
+RPC refuses an undescribed new source. Rail 16 added: every person the act names
+enters the record (parents, spouses, witnesses, guardians, kin, sureties,
+counterparties, neighbours, previous and following holders), never omitted. -->
 
 <!-- Revised 2026-07-11 after the Ertvelde repair, which found 74 people in the
 database who never existed, 17 wrong records, and 2 baptisms missing. Four rails
@@ -53,20 +62,23 @@ Live Supabase project `shqixhfbtrzybicfmxnv`. Relevant tables:
 
 - `events` - one row per archival record. Key columns: `event_id` (`EVT_NNNN`),
   `event_type`, `date_text`, `date_iso`, `date_precision`, `year`,
-  `municipality_id`, `parish_id`, `transcription`, `translation`, `summary`,
-  `needs_source`, `fully_sourced`, `notes`.
+  `municipality_id`, `parish_id`, `record_subtype` (e.g. `fief_holding`, `staet`;
+  must be in `events_record_subtype_check`), `source_locator` (folio / section /
+  entry), `transcription`, `translation`, `summary`, `needs_source`,
+  `fully_sourced`, `notes`.
 - `event_participants` - one row per person in an event. Columns: `event_id`,
   `role` (child/deceased/subject/secondary/officiant/father/mother/bride/groom/
-  godfather/godmother/godparent/witness/mentioned), `person_id` (nullable - leave
-  null unless reconciling to a tracked person), `name_as_written`, `given`,
-  `surname`, `canonical_surname`, `status` (unreconciled/reconciled/not_tracked),
-  `notes`. `participant_id` auto-generated.
+  godfather/godmother/godparent/witness/mentioned), `person_id` (nullable - set it
+  only when the curator has named the PER row; the RPC links it on insert), `name_as_written`, `given`,
+  `surname`, `canonical_surname`, `status` (unreconciled/reconciled/not_tracked:
+  `not_tracked` for people who are not Van Vlaenderen bearers, `reconciled` only
+  with a `person_id`), `notes`. `participant_id` auto-generated.
 - `event_sources` - one row per citation. Columns: `event_id`, `source_id`
   (`SRC_NNNN`, nullable), `role` (index/original_record/derivative), `locator`,
   `url`, `url_level` (register/folio), `notes`. `event_source_id` auto-generated.
 - `sources` - register-level shelfmarks. `source_id` (`SRC_NNNN`),
   `short_citation`, `full_citation`, `source_category`, `source_subtype`,
-  `repository`, `inventory_reference`.
+  `repository`, `reliability`, `inventory_reference`.
 - `research_progress` - the tracker. One row per municipality (`PRG_NNNN`),
   columns `arrondissement`, `municipality`, `parish_birth`, `parish_marriage`,
   `parish_death`, `civil_birth`, `civil_marriage`, `civil_death`, `coverage`
@@ -132,6 +144,7 @@ values). Supply NAMES, not IDs:
     "year": 1739,
     "municipality_name": "Aalter",
     "parish_name": "Sint-Cornelius",
+    "source_locator": "f. 23v",
     "transcription": "…verbatim…",
     "translation": "…english…",
     "summary": "…",
@@ -140,7 +153,9 @@ values). Supply NAMES, not IDs:
     "notes": "…"
   },
   "participants": [
-    {"role":"groom","name_as_written":"Joannes van Vlaenderen","given":"Joannes","surname":"van Vlaenderen","canonical_surname":"Van Vlaenderen","notes":null}
+    {"role":"groom","name_as_written":"Joannes van Vlaenderen","given":"Joannes","surname":"van Vlaenderen","canonical_surname":"Van Vlaenderen","notes":null},
+    {"role":"bride","name_as_written":"Maria de Smet","given":"Maria","surname":"de Smet","status":"not_tracked","notes":null},
+    {"role":"witness","name_as_written":"Petrus de Vos","given":"Petrus","surname":"de Vos","status":"not_tracked","notes":null}
   ],
   "sources": [
     {"role":"index","register":"BE-A0514 / 1075 / 000 / 01355","locator":"p. 141, reg. 6","url":"https://…/0_0040_r","url_level":"folio","notes":"…"},
@@ -167,14 +182,40 @@ object.
 `contract_version` (integer) stamps the record-contract version; the editor
 validates it on paste and warns/rejects on mismatch so a stale skill can't
 submit a shape the editor no longer accepts. Bump it only when this JSON shape
-changes.
+changes. The 2026-10-26 fields (`status`, `person_id`, `source_locator`, new-source
+description) are optional additions, so the version stays 1.
 
 Resolution is server-side in the RPC: prefer `*_name` fields. A
 `municipality_name` is resolved to its id and a missing municipality is rejected,
 never auto-created; a `parish_name` missing under that municipality is created
 and reported. A `sources[].register` shelfmark is matched to `sources` by
-`inventory_reference`; absent, a `SRC_` row is created (category `parish`,
-repository `Rijksarchief Belgie (AGATHA)`).
+`inventory_reference` (or `short_citation`) and reused. Absent, a `SRC_` row is
+created, and what it says depends on what you give it:
+
+- **Describe a new source whenever it is not an AGATHA parish register.** Add
+  `source_category` and `repository` (both, or neither), and where known
+  `source_subtype`, `short_citation`, `full_citation`, `reliability`. These are
+  used only when the row is created; an existing source ignores them.
+- Undescribed, a new source is defaulted only for vital types (baptism,
+  civil_birth, marriage, civil_marriage, burial, civil_death, death,
+  index_entry: `parish` / `Rijksarchief Belgie (AGATHA)`) and fiscal types
+  (estate_record, tax_roll, census: `fiscal` / `Rijksarchief Gent`, flagged
+  "check them"). For any other type (attestation, feudal acts, office records,
+  ...) the RPC refuses the record until the source is described or created.
+
+Participants: `status` and `person_id` are honoured. Omit `status` and it is
+`reconciled` when a `person_id` is given, otherwise `unreconciled`. The RPC
+refuses an unknown PER id, `reconciled` without a `person_id`, and a
+`person_id` with `not_tracked`. Contributors leave `person_id` out; linking is
+the curator's decision.
+
+A non-AGATHA source, described (example):
+
+```json
+{"role":"original_record","register":"Leenhof van de Burg van Brugge TBO 15, nr 65","locator":"f. 213r","url":null,"url_level":"folio",
+ "source_category":"administrative","source_subtype":"leenregister","repository":"Rijksarchief Brugge","reliability":"high",
+ "short_citation":"Rijksarchief Brugge, Leenhof van de Burg van Brugge (Toegang TBO 15), nr 65 (leenregister of the Burg of Bruges)"}
+```
 
 **No tracker block.** Do NOT emit a `tracker` / `progress_update` block — it is
 retired and the editor ignores it. Search status is set per volume in the tracker
@@ -195,6 +236,13 @@ require all of:
 - at least one participant with `role` + `name_as_written` — and every participant
   row named, `[illegible]`, or `[not recorded]`. Never blank (rail 13).
 - every participant role corresponds to a column the source actually has (rail 10).
+- every person the act names is a participant (rail 16): parents, spouses,
+  godparents, witnesses, guardians, kin, sureties, counterparties, neighbours,
+  previous and following holders. Non-bearers get `status: "not_tracked"`.
+- `status` is one of unreconciled / reconciled / not_tracked; `reconciled` only
+  with a `person_id`; no `person_id` with `not_tracked`.
+- a new source that is not an AGATHA parish register carries `source_category`
+  and `repository` (with `short_citation` and `reliability` where known).
 - at least one source with a `url`, OR `event.needs_source` set to `1` (an
   index-only lead with no record yet is allowed, but must say so explicitly).
 - on an index source, a `locator` carrying page AND register book (rail 11).
@@ -483,6 +531,17 @@ weaker party, because that is where ingest bugs live.
    **Rule: when a stored number and your reading disagree, the stored value wins
    until a human looks. When a NAME disagrees, your reading is the better bet.**
    Do not build a finding on a digit you read.
+16. Every named person enters the record (Michael, 2026-10-26). Rail 10 stops you
+   inventing people; this rail stops you dropping them. Parents, spouses and
+   witnesses are what lineages are rebuilt from, so every person the act or its
+   margin names becomes a participant: parents, spouses, children, godparents,
+   witnesses, guardians (voochden), kin and friends (maghen ende vrienden),
+   sureties, counterparties, previous and following holders, neighbours, and the
+   officiant or schepenen where the act names them. A doubtful name goes in
+   bracketed as written; a non-bearer gets `status: "not_tracked"`; never
+   omitted. A role the schema lacks (guardian, surety, counterparty, neighbour)
+   is `secondary` (or `mentioned`) with the real role in `notes`. Lines that hold
+   names are transcribed, never only summarised "for sense".
 
 ## Record types (v1 scope + extension hooks)
 
