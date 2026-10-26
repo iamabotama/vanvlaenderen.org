@@ -346,7 +346,7 @@ const $=s=>document.querySelector(s);
 const esc=s=>(s==null?"":String(s)).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
 const EVENT_TYPES=["baptism","marriage","burial","estate_record","tax_roll","census","civil_birth","civil_marriage","civil_death","document_mention","medieval_mention","index_entry","other"];
 const ROLES=["child","deceased","subject","secondary","officiant","father","mother","bride","groom","godfather","godmother","witness","mentioned"];
-const RECORD_SUBTYPES=["","staet","rekening","verkaveling","augmentatie","liquidatie","wezenrekening","emancipatie","verkoop","requeste","borgstelling","penningkohier_100ste","penningkohier_20ste","penningkohier_10de","redres","status_animarum","beste_hoofden","volkstelling","other"]; // mirrors events_record_subtype_check (2026-10-03)
+const RECORD_SUBTYPES=["","staet","rekening","verkaveling","augmentatie","liquidatie","wezenrekening","emancipatie","verkoop","requeste","borgstelling","penningkohier_100ste","penningkohier_20ste","penningkohier_10de","redres","status_animarum","beste_hoofden","volkstelling","ommestelling","fief_holding","other"]; // mirrors events_record_subtype_check (2026-10-03); ommestelling + fief_holding added 2026-10-25 (no DB check constraint is live)
 const SOURCE_ROLES={index:"pointer only (name, date, page)",derivative:"compiler's abstract or transcription; participants taken from it",original_record:"the act itself was read"}; // meanings fixed 2026-10-03
 const BIRTHISH=new Set(["baptism","civil_birth","marriage","civil_marriage"]);
 const NOW=new Date().getFullYear();
