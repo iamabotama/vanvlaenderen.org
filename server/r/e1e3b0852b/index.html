@@ -564,7 +564,7 @@ async function loadTracker(){
   FV={};(fv||[]).forEach(r=>{const k=norm(r.parish_canonical),d=FV[k]||(FV[k]={b:false,m:false,d:false});if(r.has_baptism==='Y')d.b=true;if(r.has_marriage==='Y')d.m=true;if(r.has_burial==='Y')d.d=true;});
   const evs=await fetchAll(()=>sb.from("events").select("municipality_id").not("municipality_id","is",null).order("event_id")); // 1000-row cap -> fetchAll
   HELD={};(evs||[]).forEach(e=>{const k=norm(muniName(e.municipality_id));if(k)HELD[k]=(HELD[k]||0)+1;});
-  if(typeof COV_BY_MUNI!=="undefined"&&COV_BY_MUNI.length)renderCoverage(); // repaint so Held/FV land once events are tallied
+  if(typeof COV_BY_MUNI!=="undefined"&&COV_BY_MUNI.length){renderCoverage();renderMetrics();} // repaint rows + KPI tiles so Held/FV land once events are tallied
 }
 /* v1 municipality tracker render/edit code removed 2026-06-29 — superseded by the v2 coverage viewer (cvMuniRow et al). */
 function addHere(mid){gotoTab("add");if(mid){$("#a_muni").value=mid;fillAddParish();}$("#a_name").focus();}
