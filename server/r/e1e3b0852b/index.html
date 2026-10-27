@@ -1560,6 +1560,7 @@ window.reviewProp=reviewProp;
 
 /* ---------- coverage (v2 per-volume editor over research_coverage) ---------- */
 let COV_BY_MUNI=[], COV_UNITS={}, COV_OPEN={}, COV_UNIT_COUNT=0, COV_ROWS={}, COV_WIRED=false;
+let VOL_FOUND={}; // "coverage_id|vid" -> records whose sources cite that volume's bookpart (derived, v_volume_found)
 const CV_PARISH_LABEL={birth:"Baptism",marriage:"Marriage",death:"Burial"};
 const CV_CIVIL_LABEL={birth:"Birth",marriage:"Marriage",death:"Death"};
 const CV_ORDER=["birth","marriage","death"];
@@ -1672,6 +1673,9 @@ async function cvLoadUnits(id){
     sb.from("research_coverage").select("coverage_id,municipality_id,parish_id,scope_kind,record_class,segments,found_count").eq("municipality_id",id),
     sb.from("v_coverage_status").select("coverage_id,rollup_status,found_any,has_gap").eq("municipality_id",id)
   ]);
+  const cids=(rc.data||[]).map(r=>r.coverage_id);
+  if(cids.length){const {data:vf}=await sb.from("v_volume_found").select("coverage_id,vid,n_found").in("coverage_id",cids);
+    (vf||[]).forEach(f=>{VOL_FOUND[f.coverage_id+"|"+f.vid]=f.n_found;});}
   const st={};(vs.data||[]).forEach(v=>{st[v.coverage_id]=v;});
   const rows=(rc.data||[]).map(r=>{const v=st[r.coverage_id]||{};return Object.assign({},r,{rollup_status:v.rollup_status,found_any:v.found_any,has_gap:v.has_gap,muni:id});});
   rows.forEach(r=>{COV_ROWS[r.coverage_id]=r;});
@@ -1721,7 +1725,7 @@ function cvVolPill(cid,vol){
   return `<div class="cv-vol" onclick="cvOpenVol('${esc(cid)}','${esc(vol.vid)}')">`
     +`<span class="vspan">${esc(vol.span||"")}</span>`
     +`<span class="vstate ${st.c}">${esc(st.t)}</span>`
-    +`${vol.found?'<span class="vbadge found">&#10003; found</span>':''}`
+    +`${VOL_FOUND[cid+"|"+vol.vid]?`<span class="vbadge found" title="Records whose sources cite this volume">&#10003; found ${VOL_FOUND[cid+"|"+vol.vid]}</span>`:(vol.found?'<span class="vbadge found" title="Marked found by hand before records were linked to volumes; awaiting the legacy backfill">&#10003; found (unlinked)</span>':'')}`
     +`${na?'<span class="vbadge gap">not digitized</span>':''}`
     +`${vol.derived?'<span class="vbadge verify" title="Reconstructed — verify">verify</span>':''}`
     +`${cvAgathaUrl(vol)?'<span class="vbadge" title="Open on AGATHA">&#128279;</span>':''}`
@@ -1781,7 +1785,7 @@ function cvOpenVol(cid,vid){
   let controls="";
   if(canWrite){
     const stateBtns=Object.keys(VSTATE).map(k=>`<button type="button" class="ghost cvst${k===cur?' on':''}" data-s="${k}" onclick="cvPickState(this)">${esc(VSTATE[k].t)}</button>`).join(" ");
-    const foundBox=isIdx?`<label style="flex-direction:row;align-items:center;gap:6px;font-weight:400;margin-top:10px"><input type="checkbox" id="cvpop_found" style="width:auto;margin:0" ${vol.found?"checked":""}> Van Vlaenderen record found in this index</label>`:"";
+    const foundBox=`<div class="muted" style="font-size:11px;margin-top:8px">&ldquo;Found&rdquo; is set automatically by records whose sources cite this volume.</div>`;
     const noteField=curator?"":`<label style="margin-top:8px">Note to curator (optional)<textarea id="cvpop_note" rows="2"></textarea></label>`;
     controls=`<div style="margin-top:10px"><div class="muted" style="font-size:12px;margin-bottom:4px">Search status</div>`
       +`<div class="cvst-row" style="display:flex;gap:6px;flex-wrap:wrap">${stateBtns}</div>${foundBox}${noteField}`
@@ -1805,16 +1809,18 @@ async function cvLoadVolEvents(cid,vid){
   const r=COV_ROWS[cid],vol=cvFindVol(cid,vid),box=$("#cvpop_recs");
   if(!r||!vol||!box)return;
   const sp=cvSpan(vol.span);
-  let qy=sb.from("v_coverage_events").select("event_id,event_type,year,summary,needs_register").eq("record_class",r.record_class);
+  let qy=sb.from("v_coverage_events").select("event_id,event_type,year,summary,needs_register,bookpart_ids").eq("record_class",r.record_class);
   qy=(r.scope_kind==="parish"&&r.parish_id)?qy.eq("parish_id",r.parish_id):qy.eq("municipality_id",r.muni).is("parish_id",null);
   if(sp[0]!=null)qy=qy.gte("year",sp[0]); if(sp[1]!=null)qy=qy.lte("year",sp[1]);
   const {data,error}=await qy.order("year");
   if(!$("#cvpop_recs"))return; // popover closed meanwhile
   if(error){box.className="muted";box.innerHTML="Could not load records.";return;}
-  if(!data||!data.length){box.className="muted";box.innerHTML="No records extracted from this volume yet.";return;}
+  const bp=vol.bookpart_id?String(vol.bookpart_id):null;
+  const linked=(data||[]).filter(ev=>bp&&(ev.bookpart_ids||[]).includes(bp));
+  const loose=(data||[]).filter(ev=>!(bp&&(ev.bookpart_ids||[]).includes(bp))&&!(ev.bookpart_ids||[]).length);
+  if(!linked.length&&!loose.length){box.className="muted";box.innerHTML="No records cite this volume yet.";return;}
   box.className="";
-  box.innerHTML=`<div style="font-weight:600;font-size:12px;margin:4px 0">Records in this volume (${data.length})</div>`
-    +data.map(ev=>{
+  const row=ev=>{
       const need=ev.needs_register;
       const b=need?'<span class="vbadge gap">needs extraction</span>':'<span class="vbadge found">&#10003; extracted</span>';
       let reg="";
@@ -1824,16 +1830,18 @@ async function cvLoadVolEvents(cid,vid){
         if(rurl)reg=` <a href="${esc(rurl)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Open the register that should hold this act (then open the record and add register details)">register &#8599;</a>`;
       }
       return `<div class="cv-vol" onclick="openRecord('${esc(ev.event_id)}')"><span class="vspan">${ev.year||""}</span> <span>${esc(String(ev.summary||ev.event_type||"").slice(0,60))}</span> ${b}${reg}</div>`;
-    }).join("");
+  };
+  box.innerHTML=(linked.length?`<div style="font-weight:600;font-size:12px;margin:4px 0">Records citing this volume (${linked.length})</div>`+linked.map(row).join(""):`<div class="muted" style="font-size:12px;margin:4px 0">No records cite this volume yet.</div>`)
+    +(loose.length?`<div class="muted" style="font-weight:600;font-size:12px;margin:10px 0 4px">Possibly in these years, not linked to a volume (${loose.length})</div>`+loose.map(row).join(""):"");
 }
 function cvAddHere(cid,vid){
   const r=COV_ROWS[cid],vol=cvFindVol(cid,vid);if(!r||!vol)return;
-  const ev2type={birth:"baptism",death:"burial",marriage:"marriage"};
+  const ev2type=r.scope_kind==="civil"?{birth:"civil_birth",death:"civil_death",marriage:"civil_marriage"}:{birth:"baptism",death:"burial",marriage:"marriage"};
   const place=r.scope_kind==="civil"?(muniName(r.muni)+" — civil"):parishName(r.parish_id);
   const clsLabel=(r.scope_kind==="civil"?CV_CIVIL_LABEL:CV_PARISH_LABEL)[r.record_class];
   CV_ADD_CTX={municipality_id:r.muni,parish_id:(r.scope_kind==="parish"?r.parish_id:null),
     event_type:ev2type[r.record_class]||r.record_class,record_class:r.record_class,
-    span:vol.span||"",register_url:cvAgathaUrl(vol),bookpart_id:vol.bookpart_id||null,
+    span:vol.span||"",register_url:cvAgathaUrl(vol),bookpart_id:vol.bookpart_id||null,vol_kind:(vid[0]==="i"?"index":"register"),
     place:place,class_label:clsLabel};
   cvClosePop();gotoTab("add");cvRenderCtx();const t=$("#pj_text");if(t)t.focus();
 }
@@ -1855,6 +1863,10 @@ function cvApplyCtx(o){
   if(!ev.municipality_id&&c.municipality_id){ev.municipality_id=c.municipality_id;filled.push("municipality_id");}
   if(!ev.parish_id&&c.parish_id){ev.parish_id=c.parish_id;filled.push("parish_id");}
   if(!ev.event_type&&c.event_type){ev.event_type=c.event_type;filled.push("event_type");}
+  // the pinned volume's bookpart goes on the sources that cite that kind of volume (index book -> index sources; register -> original_record sources)
+  if(c.bookpart_id&&Array.isArray(o.sources)){const want=c.vol_kind==="index"?"index":"original_record";let n=0;
+    o.sources.forEach(s=>{if(s&&!s.bookpart_id&&s.role===want){s.bookpart_id=String(c.bookpart_id);n++;}});
+    if(n)filled.push("sources[].bookpart_id");}
   return filled;
 }
 window.cvAddHere=cvAddHere;window.cvClearCtx=cvClearCtx;
