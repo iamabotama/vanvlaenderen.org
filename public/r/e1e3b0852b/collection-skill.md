@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-10-26 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:28eb5714d836f4d5`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-10-27 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:be04b87e58397c5c`
 
 ---
 name: vanvlaenderen-record-collection
@@ -17,6 +17,11 @@ description: >
   curator review. Do NOT use for the findings or source-note layers; this is the
   structured vital-records layer only.
 ---
+
+<!-- Revised 2026-10-26 (evening): rail 18 added. Every AGATHA source carries
+sources[].bookpart_id, the tracker volume it cites; a volume's "found" status is
+now DERIVED from records citing its bookpart (view v_volume_found), and the manual
+found tick box is retired. -->
 
 <!-- Revised 2026-10-26 (later): rail 17 added. name_as_written is always given
 name(s) first, then the surname exactly as the clerk spelled it ("Jean Vanvlaenderen",
@@ -165,8 +170,8 @@ values). Supply NAMES, not IDs:
     {"role":"witness","name_as_written":"Petrus de Vos","given":"Petrus","surname":"de Vos","status":"not_tracked","notes":null}
   ],
   "sources": [
-    {"role":"index","register":"BE-A0514 / 1075 / 000 / 01355","locator":"p. 141, reg. 6","url":"https://…/0_0040_r","url_level":"folio","notes":"…"},
-    {"role":"original_record","register":"BE-A0514 / 1075 / 000 / 01357","locator":"f. 23v","url":"https://…/0_0147","url_level":"folio","notes":"…"}
+    {"role":"index","register":"BE-A0514 / 1075 / 000 / 01355","locator":"p. 141, reg. 6","url":"https://…/0_0040_r","url_level":"folio","bookpart_id":"54314","notes":"…"},
+    {"role":"original_record","register":"BE-A0514 / 1075 / 000 / 01357","locator":"f. 23v","url":"https://…/0_0147","url_level":"folio","bookpart_id":"54344","notes":"…"}
   ]
 }
 ```
@@ -253,6 +258,7 @@ require all of:
 - at least one source with a `url`, OR `event.needs_source` set to `1` (an
   index-only lead with no record yet is allowed, but must say so explicitly).
 - on an index source, a `locator` carrying page AND register book (rail 11).
+- every AGATHA source carries `bookpart_id` for the volume it cites (rail 18).
 - `fully_sourced: 1` ONLY with a folio url AND a transcription/translation.
 - living-person gate: if the type is birth-ish (baptism/civil_birth/marriage/
   civil_marriage) and the year is within ~100 years, do not emit (deaths/burials
@@ -560,6 +566,19 @@ weaker party, because that is where ingest bugs live.
    surname from the ditto, the margin entry or the heading, and say where it came
    from in the participant's `notes`. `given` and `surname` hold the two parts
    separately; `canonical_surname` is still "Van Vlaenderen".
+18. Every AGATHA source names its volume (Michael, 2026-10-26). Put the tracker
+   volume's AGATHA bookpart number in `sources[].bookpart_id` (digits only, e.g.
+   `"62860"`): the index book for an `index` source, the register for an
+   `original_record` source. It is the number in the volume's AGATHA link,
+   `https://agatha.arch.be/en/search/genealogie/{bookpart}`; the curator's Claude
+   reads it from `research_coverage.segments[].bookpart_id`, and the editor fills it
+   in automatically when the record is added with **Add record here** pinned to that
+   volume. A tracker volume shows **found** only because records cite its bookpart
+   (view `v_volume_found`), so "found" means *found in this index or register*, never
+   *some record falls in these years*: overlapping spans and parallel copies cannot
+   leak a find into the wrong volume. There is no manual found flag any more. If you
+   cannot tell which volume a source belongs to, leave `bookpart_id` out and say so;
+   do not guess from the year.
 
 ## Record types (v1 scope + extension hooks)
 
