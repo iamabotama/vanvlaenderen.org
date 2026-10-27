@@ -1725,7 +1725,7 @@ function cvVolPill(cid,vol){
   return `<div class="cv-vol" onclick="cvOpenVol('${esc(cid)}','${esc(vol.vid)}')">`
     +`<span class="vspan">${esc(vol.span||"")}</span>`
     +`<span class="vstate ${st.c}">${esc(st.t)}</span>`
-    +`${VOL_FOUND[cid+"|"+vol.vid]?`<span class="vbadge found" title="Records whose sources cite this volume">&#10003; found ${VOL_FOUND[cid+"|"+vol.vid]}</span>`:(vol.found?'<span class="vbadge found" title="Marked found by hand before records were linked to volumes; awaiting the legacy backfill">&#10003; found (unlinked)</span>':'')}`
+    +`${VOL_FOUND[cid+"|"+vol.vid]?`<span class="vbadge found" title="Records whose sources cite this volume">&#10003; found ${VOL_FOUND[cid+"|"+vol.vid]}</span>`:''}`
     +`${na?'<span class="vbadge gap">not digitized</span>':''}`
     +`${vol.derived?'<span class="vbadge verify" title="Reconstructed — verify">verify</span>':''}`
     +`${cvAgathaUrl(vol)?'<span class="vbadge" title="Open on AGATHA">&#128279;</span>':''}`
