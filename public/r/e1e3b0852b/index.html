@@ -131,7 +131,7 @@
   <h1>Van Vlaenderen — Records <span class="muted" style="font-weight:400;font-size:12px">(live)</span></h1>
   <div class="who" id="who"></div>
 </header>
-<div class="banner">Live database. No living individuals (births/marriages within ~100 years are blocked; deaths/burials always allowed). Curator edits directly; contributor changes go to the proposal queue.</div>
+<div class="banner">Live database. Access periods: births enter after more than 100 years, marriages after more than 75 (Belgian civil-status rule); deaths/burials always. People who may still be living are flagged in notes, never given a person record, never published. Curator edits directly; contributor changes go to the proposal queue.</div>
 
 <!-- LOGIN -->
 <main id="loginView">
@@ -350,6 +350,17 @@ const RECORD_SUBTYPES=["","staet","rekening","verkaveling","augmentatie","liquid
 const SOURCE_ROLES={index:"pointer only (name, date, page)",derivative:"compiler's abstract or transcription; participants taken from it",original_record:"the act itself was read"}; // meanings fixed 2026-10-03
 const BIRTHISH=new Set(["baptism","civil_birth","marriage","civil_marriage"]);
 const NOW=new Date().getFullYear();
+/* Access-period gate (policy 2026-10-30, mirrors the DB trigger reject_living_event): Belgian civil-status acts are public
+   after MORE than 100 years for births and MORE than 75 for marriages (in force 1 Jan 2025). Deaths/burials are not gated.
+   A full YYYY-MM-DD date is measured to the day; otherwise the whole calendar year must be past the period. Living people
+   named inside an admitted act are entered and flagged "possibly living" in notes; they never get a PER row or reach the site. */
+const GATE_YEARS={baptism:100,civil_birth:100,birth:100,marriage:75,civil_marriage:75};
+function accessGate(type,year,iso){
+  const lim=GATE_YEARS[type];year=parseInt(year,10);if(!lim||!year)return null;
+  if(/^\d{4}-\d{2}-\d{2}$/.test(iso||"")){const d=new Date(iso+"T00:00:00");d.setFullYear(d.getFullYear()+lim);if(d<new Date(new Date().toDateString()))return null;}
+  else if(year<=NOW-lim-1)return null;
+  return `a ${type} of ${iso&&/^\d{4}-\d{2}-\d{2}$/.test(iso)?iso:year} is not yet public (Belgian access period: more than ${lim} years for ${lim===100?"births":"marriages"}). Deaths and burials are not gated.`;
+}
 const norm=s=>(s||"").split(" (")[0].trim().toLowerCase();
 let USER=null,ROLE=null,MUNIS=[],PARISHES=[],PROGRESS=[],FV={},HELD={},SURNAMES=[],PSURNAMES=[];
 
@@ -534,7 +545,7 @@ function copyCollectionSkill(){
 }
 function deriveYear(){const m=/(1[0-9]{3}|20[0-2][0-9])/.exec($("#a_date").value);if(m&&!$("#a_year").value)$("#a_year").value=m[1];updateGateHint();}
 function updateGateHint(){const t=$("#a_type").value,y=parseInt($("#a_year").value||"0",10);
-  $("#a_gate").textContent=(BIRTHISH.has(t)&&y&&y>NOW-100)?`Blocked: a ${t} in ${y} is within 100 years and implies a living person. Only death/burial records are allowed that recent.`:"";}
+  const g=accessGate(t,y,null);$("#a_gate").textContent=g?("Blocked: "+g):"";}
 
 /* ---------- reference data ---------- */
 async function loadRefs(){
@@ -780,8 +791,8 @@ async function partEdit(pid,eid){ // curator: edit every participant field, not 
   const {data:p,error}=await sb.from("event_participants").select("*").eq("participant_id",pid).single();
   if(error||!p){flash($("#flash"),"Could not load participant: "+esc(error?error.message:"not found"),"err");return;}
   const raw=String(p.name_as_written||""),val=isPlaceholderName(raw)?"":raw;
-  const box=(id,v,ph,w)=>`<input type="text" id="${id}" value="${esc(v||"")}" placeholder="${ph}" title="${ph}" style="width:${w}px;display:inline-block;height:28px;font-size:12.5px;margin:0 6px 4px 0">`;
-  const sel=(id,opts,cur)=>`<select id="${id}" style="width:auto;display:inline-block;height:28px;font-size:12px;margin:0 6px 4px 0">${opts.map(o=>`<option ${o===cur?"selected":""}>${esc(o)}</option>`).join("")}</select>`;
+  const box=(id,v,ph,w)=>`<input type="text" id="${id}" value="${esc(v||"")}" placeholder="${ph}" title="${ph}" style="width:${w}px;display:inline-block;height:32px;font-size:12.5px;margin:0 6px 4px 0;vertical-align:top">`;
+  const sel=(id,opts,cur)=>`<select id="${id}" style="width:auto;min-width:120px;display:inline-block;height:32px;line-height:normal;padding:2px 24px 2px 8px;font-size:12.5px;margin:0 6px 4px 0;vertical-align:top">${opts.map(o=>`<option ${o===cur?"selected":""}>${esc(o)}</option>`).join("")}</select>`;
   const roles=PART_ROLES_ALL.includes(p.role)?PART_ROLES_ALL:[p.role].concat(PART_ROLES_ALL);
   const stats=["unreconciled","not_tracked"].concat(p.person_id?["reconciled"]:[]); // reconciled needs a person link
   li.innerHTML=`<div style="border:1px solid var(--line);border-radius:6px;padding:6px 8px;margin:2px 0">`
@@ -920,7 +931,7 @@ function withDate(o){
 }
 
 /* ---------- add ---------- */
-function gatecheck(type,year){return (BIRTHISH.has(type)&&year&&year>NOW-100)?`a ${type} in ${year} is within 100 years (living-person rule). Only death/burial records are allowed that recent.`:null;}
+function gatecheck(type,year,iso){return accessGate(type,year,iso);}
 async function nextEventId(){
   const {data}=await sb.from("events").select("event_id").like("event_id","EVT_%").order("event_id",{ascending:false}).limit(1);
   let n=0;if(data&&data[0]){const m=/EVT_(\d+)/.exec(data[0].event_id);if(m)n=parseInt(m[1],10);}
@@ -1060,7 +1071,7 @@ function pjMinBar(o){
     if(p.person_id&&p.status==="not_tracked")errs.push(`${who}: has a person_id but status not_tracked`);});
   srcs.forEach((s,i)=>{if(s&&s.source_category&&!s.repository)errs.push(`sources[${i}]: source_category given without repository`);});
   const yr=pjYear(ev);
-  if(BIRTHISH.has(ev.event_type)&&yr&&yr>NOW-100)errs.push(`living-person gate: a ${ev.event_type} in ${yr} is within 100 years (only death/burial allowed)`);
+  const gate=accessGate(ev.event_type,yr,ev.date_iso);if(gate)errs.push("access-period gate: "+gate);
   return errs;
 }
 /* ---------- tracker-only (progress_update) helpers ---------- */
@@ -1622,7 +1633,7 @@ async function applyProposal(p){
   }
   if(p.kind==="new_record"){
     const type=f.type||f.event_type;
-    if(BIRTHISH.has(type)&&f.year&&f.year>NOW-100) throw new Error("living-person guard ("+type+" "+f.year+")");
+    const gate=accessGate(type,f.year,f.date_iso);if(gate) throw new Error("access-period guard: "+gate);
     const eid=await nextEventId();
     let {error}=await sb.from("events").insert(withDate({event_id:eid,event_type:type,date_text:f.date_text||null,date_iso:f.date_iso||null,date_precision:f.date_precision||null,year:f.year||null,municipality_id:f.municipality_id||null,parish_id:f.parish_id||null,summary:f.summary||null,needs_source:(f.reg_url||f.fol_url||f.url)?0:1}));
     if(error) throw error;

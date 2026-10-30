@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-10-27 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:be04b87e58397c5c`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-10-30 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:faaf6dadc3335cd9`
 
 ---
 name: vanvlaenderen-record-collection
@@ -17,6 +17,14 @@ description: >
   curator review. Do NOT use for the findings or source-note layers; this is the
   structured vital-records layer only.
 ---
+
+<!-- Revised 2026-10-30: rail 7 replaced (Michael, plan a). The living-person gate
+now follows the Belgian civil-status access periods (in force 1 Jan 2025): births
+and baptisms enter after MORE than 100 years, marriages after MORE than 75; deaths
+and burials are not gated. People inside an admitted act who may still be living
+are entered (rail 16) and flagged "possibly living" in notes, never given a PER
+row, never published. Same rule in the editor and the DB trigger
+reject_living_event. Also: amend plans can now be pasted in the records editor. -->
 
 <!-- Revised 2026-10-26 (evening): rail 18 added. Every AGATHA source carries
 sources[].bookpart_id, the tracker volume it cites; a volume's "found" status is
@@ -229,6 +237,19 @@ A non-AGATHA source, described (example):
  "short_citation":"Rijksarchief Brugge, Leenhof van de Burg van Brugge (Toegang TBO 15), nr 65 (leenregister of the Burg of Bruges)"}
 ```
 
+**Amend plans (curator).** To change an EXISTING event (add a transcription,
+an original_record source, participant notes, a corrected name), emit an amend
+plan instead of a new record: `{"_kind":"amend","target_event_id":"EVT_…",
+"source_key":"<unique key>","note":"…","event_if":{…},"event_set":{…},
+"participants_update":[{"participant_id":…,"set":{…},"append_notes":"…"}],
+"participants_add":[…],"sources_add":[…]}`. Paste one plan or an array into the
+same records-editor field (or run `Workflow/apply-batch.mjs`); it goes to the
+`amend_record` RPC, is logged in `event_amendments` and is idempotent per
+source_key. `transcription`, `translation`, `source_locator` and existing
+`given`/`surname` are fill-only: the RPC skips them if already filled, so say in
+the plan's note when a hand edit is needed. After applying, the editor offers the
+source-flag recompute.
+
 **No tracker block.** Do NOT emit a `tracker` / `progress_update` block — it is
 retired and the editor ignores it. Search status is set per volume in the tracker
 (the curator toggles an index or register), and marking an index `complete`
@@ -260,9 +281,10 @@ require all of:
 - on an index source, a `locator` carrying page AND register book (rail 11).
 - every AGATHA source carries `bookpart_id` for the volume it cites (rail 18).
 - `fully_sourced: 1` ONLY with a folio url AND a transcription/translation.
-- living-person gate: if the type is birth-ish (baptism/civil_birth/marriage/
-  civil_marriage) and the year is within ~100 years, do not emit (deaths/burials
-  are exempt).
+- access-period gate (rail 7): a baptism/civil_birth must be MORE than 100 years
+  old and a marriage/civil_marriage MORE than 75 years old (measured to the day
+  when the act's full date is known, else the whole year must be past). Otherwise
+  do not emit. Deaths/burials are exempt.
 
 A zero-found sweep emits no record JSON - only the `progress_update` (tracker)
 payload. If something is missing on a found record, do NOT emit the JSON. Name
@@ -492,8 +514,17 @@ weaker party, because that is where ingest bugs live.
 6. Approve before writing. Both roles paste -> Parse & preview -> Submit; the
    curator's Submit applies, a contributor's Submit queues for the curator's
    apply. Never raw-INSERT around the pipeline.
-7. No living individuals. Births/marriages within ~100 years are blocked;
-   deaths/burials are allowed. Honor the editor's gate.
+7. Access periods, and no living people published (Michael, 2026-10-30). The
+   gate follows the Belgian civil-status access periods (law in force 1 Jan
+   2025): births and baptisms enter after MORE than 100 years, marriages after
+   MORE than 75; deaths and burials are not gated. The editor and the DB trigger
+   both enforce it. An admitted act can still name people who may be alive (a
+   1950 marriage names the bride and legitimated children): enter every one of
+   them (rail 16), add "possibly living (b. c. YYYY)" to the participant notes
+   for anyone born within 100 years with no known death, never create or link a
+   PER row for them, and never carry them to the site or any outbound document
+   (ARCHITECTURE §3.10). The database is sign-in only; that is why names may
+   stay in the record.
 8. Submitter notes are not record content. A note to the curator rides on the
    proposal (`submitter_note`), never inside the event; promote anything worth
    keeping into the record's own `notes` consciously.
