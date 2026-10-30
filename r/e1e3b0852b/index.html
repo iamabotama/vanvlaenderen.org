@@ -989,8 +989,12 @@ async function pjAmendCheck(arr){ // advisory: compare each amend plan with the 
       if(!e)bad.push("no such event");
       else{
         if(e.voided)bad.push("event is voided");
+        // already applied? amend_record checks this FIRST and changes nothing. Read event_amendments when the role
+        // can (it may lack a SELECT grant), else the stamp amend_record writes into events.notes.
         const prior=(am.data||[]).find(a=>a.event_id===o.target_event_id&&a.source_key===o.source_key);
-        if(prior)warn.push("already applied as amend:"+prior.amendment_id+" (will report already applied)");
+        const stamp=new RegExp("\\(amendment (\\d+)\\) from "+String(o.source_key).replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).exec(e.notes||"");
+        const pid=prior?prior.amendment_id:(stamp?stamp[1]:null);
+        if(pid){cell.className="";cell.innerHTML=`<span class="pill">applied</span> <span style="font-size:11px">amend:${esc(String(pid))} &mdash; Apply will report already applied and change nothing</span>`;return;}
         Object.entries(o.event_if||{}).forEach(([k,v])=>{const cur=e[k];
           const same=(v===null)?(cur==null):(cur!=null&&String(cur)===String(v));
           if(!same)bad.push(k+" changed since the plan was built");});
