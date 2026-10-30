@@ -270,7 +270,7 @@
 
       <fieldset style="max-width:760px">
         <legend>Paste a record or tracker update (JSON)</legend>
-        <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record (with an <code>event</code>), <b>or a JSON array <code>[ {…}, {…} ]</code> of records for bulk entry</b>. The <code>```json</code> fences are optional. Search status is set per-volume in the tracker, not here.</p>
+        <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record (with an <code>event</code>), <b>or a JSON array <code>[ {…}, {…} ]</code> of records for bulk entry</b>. Curator: an amend plan (<code>"_kind":"amend"</code>, or an array of them, as in the <code>*-amends-*.json</code> files) changes an existing event through <code>amend_record</code>; after Apply the editor offers the source-flag recompute. The <code>```json</code> fences are optional. Search status is set per-volume in the tracker, not here.</p>
         <div id="cv_ctx" class="hide"></div>
         <textarea id="pj_text" rows="9" placeholder='{"event":{…},"participants":[…],"sources":[…],"tracker":{…}}' style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px"></textarea>
         <label style="margin-top:8px">Note to curator (optional)<textarea id="pj_note" rows="2" placeholder="Context for the curator about this submission. Stored with the proposal — never written into the record itself."></textarea></label>
@@ -955,6 +955,71 @@ let PJ_BATCH=null;                        // bulk paste: validated array of full
 let PJ_BATCH_SRC=null;                    // bulk paste: ALL pasted rows (incl. invalid), for the dup advisory's compare
 const pjSubmitLabel=()=>ROLE==="curator"?"Apply record":"Submit to queue";
 function pjPayloadForRpc(o){const c=Object.assign({},o);delete c.contract_version;return c;} // #10: strip before RPC
+/* amend plans ("_kind":"amend"): change an EXISTING event via the amend_record RPC (curator only).
+   Same shape Workflow/apply-batch.mjs sends; amend_record logs each plan in event_amendments (undo_amendment
+   reverses it) and is idempotent per (target_event_id, source_key). */
+const AMEND_EVENT_SET=["date_text","date_iso","date_precision","year","date_end","municipality_id","parish_id","source_locator","summary","record_subtype","transcription","translation"];
+const AMEND_FILL_ONLY=["municipality_id","parish_id","source_locator","record_subtype","transcription","translation","date_end"];
+const pjIsAmend=o=>!!(o&&typeof o==="object"&&!Array.isArray(o)&&o._kind==="amend");
+function pjAmendPlan(o){const c={};Object.keys(o).forEach(k=>{if(k[0]!=="_"&&k!=="contract_version")c[k]=o[k];});return c;} // strip _kind/_applied_as/notes-to-self, as apply-batch does
+function pjAmendError(o){
+  if(!/^EVT_\d+$/.test(o.target_event_id||""))return "amend: target_event_id must be an EVT_ id";
+  if(!String(o.source_key||"").trim())return "amend: source_key is required (it makes the plan idempotent)";
+  const bad=Object.keys(o.event_set||{}).filter(k=>!AMEND_EVENT_SET.includes(k));
+  if(bad.length)return "amend: event_set field(s) not amendable: "+bad.join(", ");
+  if((o.participants_update||[]).some(u=>!u||!/^\d+$/.test(String(u.participant_id||""))))return "amend: every participants_update needs a numeric participant_id";
+  if((o.participants_add||[]).some(a=>!a||!String(a.name_as_written||"").trim()))return "amend: every participants_add needs name_as_written ([illegible] / [not recorded] if so)";
+  if((o.sources_add||[]).some(x=>x&&x.bookpart_id!=null&&!/^\d+$/.test(String(x.bookpart_id))))return "amend: bookpart_id must be numeric";
+  return null;
+}
+async function pjAmendCheck(arr){ // advisory: compare each amend plan with the live event before Apply
+  const rows=arr.map((o,i)=>({o,i})).filter(x=>pjIsAmend(x.o)&&!x.o._applied_as&&/^EVT_\d+$/.test(x.o.target_event_id||""));
+  if(!rows.length)return;
+  try{
+    const ids=[...new Set(rows.map(x=>x.o.target_event_id))];
+    const [ev,pa,am]=await Promise.all([
+      sb.from("events").select("*").in("event_id",ids),
+      sb.from("event_participants").select("participant_id,event_id").in("event_id",ids),
+      sb.from("event_amendments").select("amendment_id,event_id,source_key").in("event_id",ids).is("undone_at",null)]);
+    const E={};(ev.data||[]).forEach(e=>E[e.event_id]=e);
+    const P={};(pa.data||[]).forEach(r=>{(P[r.event_id]=P[r.event_id]||new Set()).add(String(r.participant_id));});
+    rows.forEach(({o,i})=>{
+      const cell=$("#pjb_dup_"+i);if(!cell)return;
+      const e=E[o.target_event_id],bad=[],warn=[];
+      if(!e)bad.push("no such event");
+      else{
+        if(e.voided)bad.push("event is voided");
+        const prior=(am.data||[]).find(a=>a.event_id===o.target_event_id&&a.source_key===o.source_key);
+        if(prior)warn.push("already applied as amend:"+prior.amendment_id+" (will report already applied)");
+        Object.entries(o.event_if||{}).forEach(([k,v])=>{const cur=e[k];
+          const same=(v===null)?(cur==null):(cur!=null&&String(cur)===String(v));
+          if(!same)bad.push(k+" changed since the plan was built");});
+        Object.keys(o.event_set||{}).forEach(k=>{if(AMEND_FILL_ONLY.includes(k)&&e[k]!=null&&e[k]!=="")warn.push(k+" already filled: will be skipped");});
+        (o.participants_update||[]).forEach(u=>{if(!(P[o.target_event_id]||new Set()).has(String(u.participant_id)))bad.push("participant "+u.participant_id+" is not on this event");});
+      }
+      cell.className="";
+      cell.innerHTML=bad.length?`<span class="pill bad">stop</span> <span style="font-size:11px">${bad.map(esc).join("; ")}</span>`
+        :warn.length?`<span class="pill warn">note</span> <span style="font-size:11px">${warn.map(esc).join("; ")}</span>`
+        :'<span class="pill ok">live ok</span>';
+    });
+  }catch(e){/* advisory only — the RPC re-checks everything */}
+}
+async function pjRecomputePanel(){ // after amendments: dry-run recompute_source_flags, then write on click
+  const host=$("#pj_preview");if(!host)return;
+  const box=document.createElement("div");box.className="card";box.style.cssText="max-width:none;margin-top:10px";
+  box.innerHTML='<div class="kv"><b>Source flags</b> <span class="muted">(recompute_source_flags)</span></div><div class="kv" id="pj_rsf">Dry run&hellip;</div>';
+  host.appendChild(box);
+  const show=d=>(d||[]).filter(r=>r.before_count!=null).map(r=>`${esc(r.metric)}: ${esc(String(r.before_count))} &rarr; ${esc(String(r.after_count))}`).join(" &middot; ");
+  const el=$("#pj_rsf");
+  const {data,error}=await sb.rpc("recompute_source_flags",{dry_run:true});
+  if(error){el.innerHTML='<span class="pill bad">failed</span> '+esc(error.message);return;}
+  const changed=(data||[]).some(r=>r.before_count!=null&&String(r.before_count)!==String(r.after_count));
+  el.innerHTML="Dry run: "+show(data)+(changed?' <button class="act" id="pj_rsf_go" style="margin-left:8px">Write flags</button>':' <span class="muted">&mdash; nothing to change.</span>');
+  if(changed)$("#pj_rsf_go").onclick=async()=>{const b=$("#pj_rsf_go");if(b)b.disabled=true;
+    const r=await sb.rpc("recompute_source_flags",{dry_run:false});
+    el.innerHTML=r.error?('<span class="pill bad">failed</span> '+esc(r.error.message)):('<span class="pill ok">written</span> '+show(r.data));
+    runBrowse();};
+}
 function stripFences(t){t=(t||"").trim();const m=/^```[a-zA-Z]*\s*([\s\S]*?)\s*```$/.exec(t);return m?m[1].trim():t;}
 function pjYear(ev){if(ev.year)return parseInt(ev.year,10)||0;const m=/(1[0-9]{3}|20[0-2][0-9])/.exec(ev.date_text||"");return m?parseInt(m[1],10):0;}
 function pjMinBar(o){
@@ -1057,7 +1122,8 @@ function pjParse(){
   let o;try{o=JSON.parse(raw);}catch(e){flash($("#pj_msg"),"JSON parse error: "+esc(e.message),"err");return;}
   if(Array.isArray(o))return pjParseBatch(o); // bulk paste: an array of full records
   if(!o||typeof o!=="object"){flash($("#pj_msg"),"Expected a JSON object, or an array of records for bulk entry.","err");return;}
-  if(!o.event){flash($("#pj_msg"),'Paste a full record (needs an "event"). Search status is now set per-volume in the tracker, not via paste.',"err");return;}
+  if(pjIsAmend(o))return pjParseBatch([o]); // amend plan: validated, checked and applied through the batch path
+  if(!o.event){flash($("#pj_msg"),'Paste a full record (needs an "event") or an amend plan ("_kind":"amend"). Search status is now set per-volume in the tracker, not via paste.',"err");return;}
   if("tracker" in o)delete o.tracker; // tracker block retired: coverage/search status is set per-volume in the tracker editor
   const ctxFilled=cvApplyCtx(o); // P1: pinned-volume defaults fill only blank fields, never override
   const cverr=pjContractError(o,null);
@@ -1081,27 +1147,41 @@ function pjInjectSubmit(){
 function pjParseBatch(arr){
   PJ=null;PJ_MODE=null;PJ_BATCH=null;PJ_BATCH_SRC=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";
   if(!arr.length){flash($("#pj_msg"),"The array is empty.","err");return;}
-  const recs=[],probs=[];
+  const recs=[],probs=[],skips=[];
   arr.forEach((o,i)=>{
-    if(!o||typeof o!=="object"||Array.isArray(o)||!o.event){probs.push((i+1)+": not a record (needs an \"event\")");return;}
+    if(pjIsAmend(o)){                                    // amend plan for an existing event
+      if(o._applied_as){skips.push(i);return;}           // marked applied by apply-batch.mjs: skip, as the CLI does
+      if(ROLE!=="curator"){probs.push((i+1)+": amend plans are applied by the curator only");return;}
+      const ae=pjAmendError(o);if(ae){probs.push((i+1)+": "+ae);return;}
+      recs.push(o);return;
+    }
+    if(!o||typeof o!=="object"||Array.isArray(o)||!o.event){probs.push((i+1)+": not a record (needs an \"event\") and not an amend plan (\"_kind\":\"amend\")");return;}
     if("tracker" in o)delete o.tracker;
     cvApplyCtx(o); // pinned-volume defaults apply to every record in the batch
     const cverr=pjContractError(o,null); if(cverr){probs.push((i+1)+": "+cverr);return;}
     const errs=pjMinBar(o); if(errs.length){probs.push((i+1)+": "+errs.join("; "));return;}
     recs.push(o);
   });
+  const nAmend=recs.filter(pjIsAmend).length;
   const rows=arr.map((o,i)=>{
+    if(pjIsAmend(o)){
+      const st=o._applied_as?`<span class="pill">skip &middot; ${esc(String(o._applied_as))}</span>`:(recs.indexOf(o)>=0?'<span class="pill ok">ok</span>':'<span class="pill bad">fix</span>');
+      return `<tr><td>${i+1}</td><td>amend</td><td></td><td class="mono">${esc(o.target_event_id||"?")}</td><td class="mono" style="font-size:11px">${esc(o.source_key||"")}</td><td>${st}</td><td id="pjb_dup_${i}" class="muted">&mdash;</td></tr>`;
+    }
     const ev=(o&&o.event)||{},okrec=recs.indexOf(o)>=0;
     return `<tr><td>${i+1}</td><td>${esc(ev.event_type||"?")}${ev.record_subtype?`<span class="muted"> / ${esc(ev.record_subtype)}</span>`:""}</td><td>${esc(String(ev.year||ev.date_text||""))}</td><td>${esc(pjBatchWho(o))}</td><td>${esc((ev.municipality_name||ev.municipality_id||"")+(ev.parish_name?" / "+ev.parish_name:""))||'<span class="muted">—</span>'}</td><td>${okrec?'<span class="pill ok">ok</span>':'<span class="pill bad">fix</span>'}</td><td id="pjb_dup_${i}" class="muted">&mdash;</td></tr>`;
   }).join("");
   const errHtml=probs.length?`<div class="msg err show" style="margin-top:8px">${probs.length} record(s) need fixing: ${probs.map(esc).join(" | ")}</div>`:"";
   $("#pj_preview").innerHTML=`${errHtml}<div class="card" style="max-width:none;margin-top:10px">
-    <div class="kv"><b>Batch:</b> ${arr.length} record(s), ${recs.length} ready${probs.length?(", "+probs.length+" to fix"):""}.</div>
-    <table><thead><tr><th>#</th><th>Type</th><th>Year</th><th>Principal</th><th>Place</th><th>Status</th><th>Dup?</th></tr></thead><tbody>${rows}</tbody></table>
-    <div class="kv muted" id="pjb_dupnote" style="font-size:11.5px;margin-top:6px">Duplicate-scan running&hellip;</div></div>`;
+    <div class="kv"><b>Batch:</b> ${arr.length} item(s), ${recs.length} ready${nAmend?(" (incl. "+nAmend+" amend plan"+(nAmend>1?"s":"")+")"):""}${skips.length?(", "+skips.length+" already applied (skipped)"):""}${probs.length?(", "+probs.length+" to fix"):""}.</div>
+    <table><thead><tr><th>#</th><th>Type</th><th>Year</th><th>Principal / event</th><th>Place / source key</th><th>Status</th><th>Dup? / live check</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="kv muted" id="pjb_dupnote" style="font-size:11.5px;margin-top:6px">${arr.some(o=>o&&o.event)?"Duplicate-scan running&hellip;":"No new records in this paste, so no duplicate scan."}</div>
+    ${arr.some(pjIsAmend)?'<div class="kv muted" style="font-size:11.5px;margin-top:4px">Amend rows are checked against the live event. The RPC never overwrites a filled fill-only field (transcription, translation, source_locator, …) or a filled given/surname; those are skipped and listed after Apply. Each plan is logged in event_amendments and can be undone.</div>':""}</div>`;
   PJ_BATCH_SRC=arr;              // keep the pasted rows addressable for compareBatchDup()
   pjDupCheckBatch(arr);          // advisory, async — scans every row, incl. the ones needing a fix
+  if(arr.some(pjIsAmend))pjAmendCheck(arr); // advisory, async — amend plans vs the live event
   if(probs.length){flash($("#pj_msg"),"Every record must be valid to submit the batch. Fix the flagged ones and Parse again.","err");return;}
+  if(!recs.length){flash($("#pj_msg"),"Nothing to apply: every row is already marked applied.","good");return;}
   PJ_BATCH=recs;PJ_MODE="batch";
   pjInjectBatchSubmit();
   flash($("#pj_msg"),ROLE==="curator"?(recs.length+" records ready. Review, then Apply all."):(recs.length+" records ready. Review, then Submit all to the queue."),"good");
@@ -1119,10 +1199,23 @@ async function pjSubmitBatch(){
   if(ROLE!=="curator"&&ROLE!=="contributor"){flash($("#pj_msg"),"No role assigned — cannot submit.","err");if(btn)btn.disabled=false;return;}
   const note=($("#pj_note")&&$("#pj_note").value.trim())||null;
   const curator=ROLE==="curator";
-  let done=0;const fails=[];
+  let done=0;const fails=[],amendDone=[];
   for(let i=0;i<PJ_BATCH.length;i++){
     const rec=PJ_BATCH[i],clean=pjPayloadForRpc(rec);
     try{
+      if(pjIsAmend(rec)){                    // amend plan: amend_record, no proposal row (event_amendments is its audit trail)
+        if(!curator) throw new Error("amend plans are applied by the curator only");
+        const {data:res,error:re}=await sb.rpc("amend_record",{payload:pjAmendPlan(rec)});
+        if(re) throw re;
+        const tag=(res&&res.status==="already_applied")?"already applied":("amend:"+((res&&res.amendment_id)||"?"));
+        const ch=(res&&res.changes)||{},sk=ch.skipped||[],made=ch.sources_created||[];
+        const skTxt=sk.map(x=>x.field?(x.participant_id?("participant "+x.participant_id+" "+x.field):x.field):(x.source_url?"a source already cited":"?"));
+        amendDone.push(`<span class="mono">${esc(rec.target_event_id)}</span> &rarr; ${esc(tag)}`
+          +(made.length?` <span class="muted">(new source ${made.map(esc).join(", ")})</span>`:"")
+          +(skTxt.length?` <span class="pill warn">skipped</span> <span style="font-size:11px">${skTxt.map(esc).join(", ")}</span>`:""));
+        done++;flash($("#pj_msg"),"Working… "+done+"/"+PJ_BATCH.length,"good");
+        continue;
+      }
       if(curator){
         const {data:ins,error:ie}=await sb.from("proposals").insert({kind:"full_record",target_table:"events",payload:rec,submitter_note:note}).select("id").single();
         if(ie) throw ie;
@@ -1137,8 +1230,11 @@ async function pjSubmitBatch(){
     }catch(e){fails.push((i+1)+": "+esc(e.message||String(e)));}
   }
   runBrowse();loadTracker();loadProposals();
-  if(fails.length){flash($("#pj_msg"),done+" "+(curator?"applied":"queued")+", "+fails.length+" failed — "+fails.join(" | "),"err");if(btn)btn.disabled=false;}
-  else{flash($("#pj_msg"),done+" record(s) "+(curator?"applied":"submitted to the queue")+".","good");pjReset();}
+  const amendHtml=amendDone.length?`<div class="card" style="max-width:none;margin-top:10px"><div class="kv"><b>Amendments</b> <span class="muted">(fix any skipped field by hand in the record)</span></div><ul class="plain">${amendDone.map(x=>"<li>"+x+"</li>").join("")}</ul></div>`:"";
+  if(fails.length){flash($("#pj_msg"),done+" "+(curator?"applied":"queued")+", "+fails.length+" failed — "+fails.join(" | "),"err");if(btn)btn.disabled=false;
+    if(amendHtml){$("#pj_preview").insertAdjacentHTML("beforeend",amendHtml);pjRecomputePanel();}}
+  else{flash($("#pj_msg"),done+" item(s) "+(curator?"applied":"submitted to the queue")+".","good");pjReset();
+    if(amendHtml){$("#pj_preview").innerHTML=amendHtml;pjRecomputePanel();}}
 }
 function pjResetPreview(){PJ=null;PJ_MODE=null;PJ_BATCH=null;PJ_DUPS=[];$("#pj_preview").innerHTML="";flash($("#pj_msg"),"");} // #12: collapse on edit (keeps text/note + edit-target)
 function pjPreview(o,errs){
