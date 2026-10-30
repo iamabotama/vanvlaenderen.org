@@ -774,28 +774,44 @@ window.voidRecord=voidRecord;
    so the count only clears when a human has actually decided which it is. */
 const NAME_ILLEGIBLE="[illegible]", NAME_ABSENT="[not recorded]";
 function isPlaceholderName(s){return s===NAME_ILLEGIBLE||s===NAME_ABSENT;}
-function partEdit(pid,eid){
+const PART_ROLES_ALL=["child","deceased","subject","secondary","officiant","father","mother","bride","groom","godfather","godmother","godparent","witness","spouse","mentioned"]; // = event_participants_role_check
+async function partEdit(pid,eid){ // curator: edit every participant field, not just name_as_written
   const li=$("#pt_"+pid); if(!li) return;
-  const roleTag=li.querySelector(".role-tag"); const role=roleTag?roleTag.textContent:"";
-  const cur=(li.dataset.orig!==undefined)?li.dataset.orig:(li.textContent.replace(role,"").replace(/\bedit\b|\bPER_\d+\b/g,"").trim());
-  const val=isPlaceholderName(cur)?"":cur;
-  li.dataset.orig=cur;
-  li.innerHTML=`<span class="role-tag">${esc(role)}</span>`
-    +`<input type="text" id="pe_${pid}" value="${esc(val)}" placeholder="name as written in the act" style="width:230px;display:inline-block;height:28px;font-size:12.5px;margin:0 6px 0 0">`
-    +`<button class="ghost" style="font-size:11.5px;padding:2px 8px" onclick="partSet(${pid},'${esc(eid)}','${NAME_ILLEGIBLE}')">illegible</button> `
+  const {data:p,error}=await sb.from("event_participants").select("*").eq("participant_id",pid).single();
+  if(error||!p){flash($("#flash"),"Could not load participant: "+esc(error?error.message:"not found"),"err");return;}
+  const raw=String(p.name_as_written||""),val=isPlaceholderName(raw)?"":raw;
+  const box=(id,v,ph,w)=>`<input type="text" id="${id}" value="${esc(v||"")}" placeholder="${ph}" title="${ph}" style="width:${w}px;display:inline-block;height:28px;font-size:12.5px;margin:0 6px 4px 0">`;
+  const sel=(id,opts,cur)=>`<select id="${id}" style="width:auto;display:inline-block;height:28px;font-size:12px;margin:0 6px 4px 0">${opts.map(o=>`<option ${o===cur?"selected":""}>${esc(o)}</option>`).join("")}</select>`;
+  const roles=PART_ROLES_ALL.includes(p.role)?PART_ROLES_ALL:[p.role].concat(PART_ROLES_ALL);
+  const stats=["unreconciled","not_tracked"].concat(p.person_id?["reconciled"]:[]); // reconciled needs a person link
+  li.innerHTML=`<div style="border:1px solid var(--line);border-radius:6px;padding:6px 8px;margin:2px 0">`
+    +`<div>${sel("pe_role_"+pid,roles,p.role)}${box("pe_"+pid,val,"name as written in the act",260)}</div>`
+    +`<div>${box("pe_g_"+pid,p.given,"given name(s)",150)}${box("pe_s_"+pid,p.surname,"surname as written",160)}${box("pe_c_"+pid,p.canonical_surname,"canonical surname",150)}`
+    +`<span class="link" style="font-size:11px;margin-right:8px" onclick="(function(){const c=$('#pe_c_${pid}');if(c)c.value='Van Vlaenderen';})()">&larr; VV</span>`
+    +`${sel("pe_st_"+pid,stats.includes(p.status||"unreconciled")?stats:[p.status].concat(stats),p.status||"unreconciled")}`
+    +(p.person_id?`<span class="mono muted" style="font-size:11px">${esc(p.person_id)}</span>`:"")+`</div>`
+    +`<textarea id="pe_n_${pid}" rows="2" placeholder="notes" style="width:100%;font-size:12px;margin:0 0 4px">${esc(p.notes||"")}</textarea>`
+    +`<div><button class="ghost" style="font-size:11.5px;padding:2px 8px" onclick="partSet(${pid},'${esc(eid)}','${NAME_ILLEGIBLE}')">illegible</button> `
     +`<button class="ghost" style="font-size:11.5px;padding:2px 8px" onclick="partSet(${pid},'${esc(eid)}','${NAME_ABSENT}')">not recorded</button> `
     +`<button class="act" style="font-size:11.5px;padding:2px 8px" onclick="partSave(${pid},'${esc(eid)}')">save</button> `
-    +`<span class="link" style="font-size:11.5px" onclick="openRecord('${esc(eid)}')">cancel</span>`
-    +`<div class="muted" style="font-size:11px;margin:3px 0 0 4px">“illegible” = the name is in the act but unreadable. “not recorded” = the act names nobody in this role.</div>`;
+    +`<span class="link" style="font-size:11.5px" onclick="openRecord('${esc(eid)}')">cancel</span></div>`
+    +`<div class="muted" style="font-size:11px;margin:3px 0 0 2px">“illegible” = the name is in the act but unreadable. “not recorded” = the act names nobody in this role. Surname keeps the clerk's spelling; canonical is the family form (Van Vlaenderen for any variant). Person links are set in the person layer, not here.</div></div>`;
   const inp=$("#pe_"+pid); if(inp){inp.focus();inp.onkeydown=(ev)=>{if(ev.key==="Enter")partSave(pid,eid);};}
 }
 window.partEdit=partEdit;
 async function partSet(pid,eid,literal){ await partWrite(pid,eid,literal); }
 window.partSet=partSet;
 async function partSave(pid,eid){
-  const inp=$("#pe_"+pid); const v=inp?inp.value.trim():"";
+  const g=id=>{const el=$("#"+id);return el?el.value.trim():"";},nz=v=>v===""?null:v;
+  const v=g("pe_"+pid);
   if(!v){flash($("#flash"),"Type a name, or press illegible / not recorded — don't leave it blank.","err");return;}
-  await partWrite(pid,eid,v);
+  if(isPlaceholderName(v)){await partWrite(pid,eid,v);return;}
+  const patch={name_as_written:v,given:nz(g("pe_g_"+pid)),surname:nz(g("pe_s_"+pid)),canonical_surname:nz(g("pe_c_"+pid)),notes:nz(g("pe_n_"+pid))};
+  const r=g("pe_role_"+pid),st=g("pe_st_"+pid); if(r)patch.role=r; if(st)patch.status=st;
+  const {error}=await sb.from("event_participants").update(patch).eq("participant_id",pid);
+  if(error){flash($("#flash"),"Save failed: "+esc(error.message),"err");return;}
+  flash($("#flash"),"Participant updated.","good");
+  openRecord(eid);
 }
 window.partSave=partSave;
 async function partWrite(pid,eid,name){
