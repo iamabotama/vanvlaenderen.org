@@ -69,7 +69,7 @@ export const vanVlaenderenLineage: AncestorRecord[] = [
   {
     id: 5,
     generation: 'VI',
-    name: 'Egidius Van Vlaenderen',
+    name: 'Engelbertus Van Vlaenderen',
     born: '~1793',
     parish: 'Bassevelde',
     status: 'partial',
@@ -105,12 +105,11 @@ export const vanVlaenderenLineage: AncestorRecord[] = [
     id: 8,
     generation: 'IX',
     name: 'Petrus Van Vlaenderen',
-    born: 'Sep 11, 1714',
+    born: 'Nov 11, 1714',
     parish: 'Bassevelde',
     status: 'documented',
     birthRecord: { label: '1714 Bassevelde' },
     marriageRecord: { label: '1739 Boekhoute (Assenede)' },
-    deathRecord: { label: 'Sep 2, 1783' },
   },
   {
     id: 9,
@@ -160,8 +159,7 @@ export const vanVlaenderenLineage: AncestorRecord[] = [
     status: 'inferred',
     birthRecord: { label: '~1605–1610' },
     marriageRecord: { label: '~1632' },
-    deathRecord: { label: '1664 Oostwinkel' },
-    comment: 'Earliest documented Oostwinkel ancestor. Birth and marriage dates inferred.',
+    comment: 'Earliest documented Oostwinkel ancestor. Birth and marriage dates inferred. Death date not yet established: an Oostwinkel Noe van Vlaenderen died on 12 March 1637 (probably the husband of Joanna Goethals) and another on 23 February 1664.',
   },
   {
     id: 13,
