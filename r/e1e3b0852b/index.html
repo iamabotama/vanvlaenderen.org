@@ -35,6 +35,9 @@
   .pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11px;background:var(--chip);border:1px solid var(--line)}
   .pill.bad{background:#f6e3e3;color:var(--bad);border-color:#e6c2c2}.pill.ok{background:#e7f3eb;color:var(--ok);border-color:#bfe0cb}
   .pill.warn{background:#fdf3e3;color:#8a5a18;border-color:#ecd6ad}
+  .pill.flag{background:#efe9fb;color:#5b4a9b;border-color:#d6ccf2;cursor:pointer}.pill.flag.hi{background:#f6e3e3;color:var(--bad);border-color:#e6c2c2}
+  .pill.lock{background:#f1efe9;color:#5b5648;border-color:var(--line);cursor:pointer}
+  .rv-ev{font-size:11.5px;color:#444;background:#faf8f3;border:1px solid var(--line);border-radius:6px;padding:6px 8px;margin-top:6px;white-space:pre-wrap;max-height:220px;overflow:auto}
   .msg{padding:10px 12px;border-radius:8px;margin:10px 0;font-size:13px;display:none}
   .msg.show{display:block}.msg.err{background:#f6e3e3;color:#7a1f1f;border:1px solid #e6c2c2}.msg.good{background:#e7f3eb;color:#1f5c39;border:1px solid #bfe0cb}
   .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
@@ -153,6 +156,7 @@
     <button class="tab" data-tab="people">People</button>
     <button class="tab" data-tab="add">Add record</button>
     <button class="tab" data-tab="proposals">Proposals <span class="pill" id="propCount">0</span></button>
+    <button class="tab" data-tab="review">Review <span class="pill" id="revCount">0</span></button>
     <button class="tab hide" id="tabbtn-integrity" data-tab="integrity">Integrity <span class="pill" id="intCount">&mdash;</span></button>
   </nav>
   <main>
@@ -199,12 +203,13 @@
         <button class="ghost" id="b_run">Search</button>
         <button class="ghost" id="b_reset">Reset</button>
         <label style="flex-direction:row;align-items:center;gap:5px;font-weight:400;margin-left:4px"><input type="checkbox" id="b_voided" style="width:auto;margin:0"> Show voided</label>
+        <label style="flex-direction:row;align-items:center;gap:5px;font-weight:400;margin-left:4px" title="Records with a review flag still open (a name or digit a human has not confirmed)"><input type="checkbox" id="b_flags" style="width:auto;margin:0"> Open flags only</label>
       </div>
       <div class="count" id="b_count"></div>
       <table><thead><tr>
         <th class="sortable" data-key="id">ID</th><th class="sortable" data-key="year">Year</th>
         <th class="sortable" data-key="type">Type</th><th class="sortable" data-key="principals">Principal(s)</th>
-        <th class="sortable" data-key="place">Place</th><th class="sortable" data-key="src">Src</th>
+        <th class="sortable" data-key="place">Place</th><th class="sortable" data-key="src">Src</th><th title="Open review flags">Flags</th>
       </tr></thead>
         <tbody id="b_body"></tbody></table>
       <div class="pager" id="b_pager"></div>
@@ -243,6 +248,22 @@
       <table><thead><tr><th>Task</th><th>Items</th><th>Municipality</th><th>Unit</th><th>Class</th></tr></thead><tbody id="wl_body"><tr><td colspan="5" class="muted">Loading&hellip;</td></tr></tbody></table>
     </section>
 
+    <!-- REVIEW (review_flags: review owed or decided on one field; never blocks anything) -->
+    <section id="tab-review" class="hide">
+      <h3>Review</h3>
+      <p class="muted" style="font-size:12.5px;max-width:800px;margin:0 0 8px">Where a human still needs to look: names the readers and the index disagree on, digits read once, uncertain readings. Nothing here holds a record, a link or an export. The curator closes a flag from the image (confirm, take the alternative, set a value, moot); a closed flag locks that field against later automated passes. Anyone can file a proposal from a flag.</p>
+      <div class="controls">
+        <div><label>Reason</label><select id="rv_reason"><option value="">all reasons</option><option value="name_vs_index">name vs index</option><option value="readers_disagree">readers disagree</option><option value="reader_uncertain">reader uncertain</option><option value="digit_single_read">digit, one read</option><option value="structure">structure</option><option value="contributor_query">contributor query</option></select></div>
+        <div><label>Priority</label><select id="rv_prio"><option value="">all</option><option value="high">high</option><option value="normal">normal</option></select></div>
+        <div><label>Municipality</label><select id="rv_muni"><option value="">all municipalities</option></select></div>
+        <div><label>Field</label><select id="rv_field"><option value="">all fields</option><option value="names">names</option><option value="digits">dates, ages, numbers</option></select></div>
+        <button class="ghost" id="rv_reload">Reload</button>
+        <span class="msg" id="rv_msg" style="display:inline-block;margin:0"></span>
+      </div>
+      <div class="count" id="rv_count"></div>
+      <table><thead><tr><th>Record</th><th>Who / field</th><th>Stored</th><th>Alternative</th><th>Reason</th><th>Raised</th><th>Image</th><th></th></tr></thead><tbody id="rv_body"><tr><td colspan="8" class="muted">Loading&hellip;</td></tr></tbody></table>
+    </section>
+
     <section id="tab-integrity" class="hide">
       <h3>Integrity</h3>
       <p class="muted" style="font-size:12.5px;max-width:760px">Every check runs in the database (<code>run_integrity_checks()</code>), so this page and a chat session audit the same definitions &mdash; they cannot drift apart. Curator only.</p>
@@ -270,13 +291,14 @@
 
       <fieldset style="max-width:760px">
         <legend>Paste a record or tracker update (JSON)</legend>
-        <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record (with an <code>event</code>), <b>or a JSON array <code>[ {…}, {…} ]</code> of records for bulk entry</b>. Curator: an amend plan (<code>"_kind":"amend"</code>, or an array of them, as in the <code>*-amends-*.json</code> files) changes an existing event through <code>amend_record</code>; after Apply the editor offers the source-flag recompute. The <code>```json</code> fences are optional. Search status is set per-volume in the tracker, not here.</p>
+        <p class="muted" style="font-size:11.5px;margin:0 0 6px">From the record-collection skill: a full multi-participant record (with an <code>event</code>), <b>or a JSON array <code>[ {…}, {…} ]</code> of records for bulk entry</b>. Curator: an amend plan (<code>"_kind":"amend"</code>, or an array of them, as in the <code>*-amends-*.json</code> files) changes an existing event through <code>amend_record</code>; after Apply the editor offers the source-flag recompute. A record or plan may carry <code>"_review_flags"</code> (reader-uncertain fields, name vs index, single-read digits); they are raised after the apply and never hold it. The <code>```json</code> fences are optional. Search status is set per-volume in the tracker, not here.</p>
         <div id="cv_ctx" class="hide"></div>
         <textarea id="pj_text" rows="9" placeholder='{"event":{…},"participants":[…],"sources":[…],"tracker":{…}}' style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px"></textarea>
         <label style="margin-top:8px">Note to curator (optional)<textarea id="pj_note" rows="2" placeholder="Context for the curator about this submission. Stored with the proposal — never written into the record itself."></textarea></label>
         <div style="margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
           <button class="ghost" id="pj_parse">Parse &amp; preview</button>
           <button class="ghost" id="pj_clear">Clear</button>
+          <label id="pj_ow_wrap" class="hide" style="flex-direction:row;align-items:center;gap:5px;font-weight:400;margin:0 0 0 8px" title="An amend plan carrying overwrite may change a filled name field or a field locked by a ruling. Builders never emit it; tick only for a plan you wrote yourself."><input type="checkbox" id="pj_overwrite" style="width:auto;margin:0"> allow <code>overwrite</code> in amend plans</label>
         </div>
         <div class="msg" id="pj_msg"></div>
         <div id="pj_preview"></div>
@@ -482,6 +504,7 @@ async function boot(){
   if(!ROLE) flash($("#flash"),"Your account has no role yet. The curator must add your row to public.profiles before you can browse or submit.","err");
   initUI();
   await loadRefs();
+  await loadFlags();                       // review flags first: Browse and the record modal draw their pills from this cache
   await Promise.all([loadTracker(),loadCoverage(),runBrowse(),runPeople(),loadProposals()]);
 }
 
@@ -489,15 +512,20 @@ async function boot(){
 function initUI(){
   document.querySelectorAll("nav button.tab").forEach(b=>b.onclick=()=>{
     document.querySelectorAll("nav button.tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");
-    ["coverage","worklist","browse","people","add","proposals","integrity"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
+    ["coverage","worklist","browse","people","add","proposals","review","integrity"].forEach(t=>$("#tab-"+t).classList.toggle("hide",t!==b.dataset.tab));
     if(b.dataset.tab==="integrity")loadIntegrity();
+    if(b.dataset.tab==="review")renderReview();
   });
+  ["rv_reason","rv_prio","rv_muni","rv_field"].forEach(id=>{if($("#"+id))$("#"+id).onchange=renderReview;});
+  if($("#rv_reload"))$("#rv_reload").onclick=async()=>{await loadFlags();renderReview();runBrowse();};
+  if($("#b_flags"))$("#b_flags").onchange=runBrowse;
+  if(ROLE==="curator"&&$("#pj_ow_wrap"))$("#pj_ow_wrap").classList.remove("hide");
   $("#b_type").innerHTML='<option value="">all types</option>'+EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
   $("#a_type").innerHTML=EVENT_TYPES.map(t=>`<option>${t}</option>`).join("");
   $("#a_role").innerHTML=ROLES.map(r=>`<option ${r==='child'?'selected':''}>${r}</option>`).join("");
   $("#b_run").onclick=runBrowse;$("#b_q").addEventListener("keydown",e=>{if(e.key==="Enter")runBrowse();});
   $("#b_voided").onchange=runBrowse;
-  $("#b_reset").onclick=()=>{["b_q","b_y0","b_y1"].forEach(id=>$("#"+id).value="");["b_type","b_surname","b_muni","b_parish","b_src"].forEach(id=>$("#"+id).value="");$("#b_match").value="contains";$("#b_voided").checked=false;fillBrowseParish();runBrowse();};
+  $("#b_reset").onclick=()=>{["b_q","b_y0","b_y1"].forEach(id=>$("#"+id).value="");["b_type","b_surname","b_muni","b_parish","b_src"].forEach(id=>$("#"+id).value="");$("#b_match").value="contains";$("#b_voided").checked=false;if($("#b_flags"))$("#b_flags").checked=false;fillBrowseParish();runBrowse();};
   $("#b_muni").addEventListener("change",()=>{fillBrowseParish();});
   $("#pp_run").onclick=runPeople;$("#pp_q").addEventListener("keydown",e=>{if(e.key==="Enter")runPeople();});
   $("#pp_reset").onclick=()=>{$("#pp_q").value="";$("#pp_surname").value="";$("#pp_src").value="";runPeople();};
@@ -523,7 +551,7 @@ function initUI(){
   const curator=ROLE==="curator";
   $("#addMode").textContent=curator?"You are the curator — this writes directly to the database.":"Your change will be submitted to the proposal queue for the curator to review.";
   $("#a_save").textContent=curator?"Save record":"Submit proposal";
-  $("#propMode").textContent=curator?"Pending proposals from contributors. Approve, reject, or edit.":"Your submitted proposals.";
+  $("#propMode").textContent=curator?"Pending proposals from contributors. Approve, reject (with a reason), or edit. Amend proposals come from image review; Accept runs the amendment and closes the flag.":"Your submitted proposals, with the curator's decision and reason once reviewed.";
 }
 function gotoTab(name){document.querySelector(`nav button.tab[data-tab="${name}"]`).click();}
 let CSKILL_TEXT="";
@@ -606,6 +634,7 @@ async function runBrowse(){
   catch(err){flash($("#flash"),"Browse error: "+esc(err.message||err),"err");return;}
   if(src==="ok") rows=rows.filter(e=>bSrcStatus(e)==="ok");
   else if(src==="needs") rows=rows.filter(e=>bSrcStatus(e)==="needs");
+  if($("#b_flags")&&$("#b_flags").checked) rows=rows.filter(e=>FLAGS_BY_EVENT[e.event_id]&&FLAGS_BY_EVENT[e.event_id].open>0);
   if(q){const ql=q.toLowerCase();
     rows=rows.filter(e=>{const fields=[e.event_id,muniName(e.municipality_id),...(e.event_participants||[]).map(p=>p.name_as_written)].filter(Boolean).map(x=>String(x).toLowerCase());
       return match==="exact"?fields.includes(ql):fields.some(f=>f.includes(ql));});}
@@ -630,8 +659,8 @@ function drawBrowseRows(rows){
     const pr=_pn.length?_pn.map(esc).join(" / "):'<span class="muted">—</span>';
     const s=bSrcStatus(e)==="ok"?'<span class="pill ok">ok</span>':'<span class="pill bad">needs</span>';
     const vd=e.voided?` <span class="pill bad" title="${esc(e.voided_reason||"")}">voided</span>`:"";
-    return `<tr class="click" style="${e.voided?"opacity:.5":""}" onclick="openRecord('${esc(e.event_id)}')"><td><span class="link mono">${esc(e.event_id)}</span></td><td>${e.year??""}</td><td>${esc(e.event_type||"")}</td><td>${pr}${vd}</td><td>${esc(muniName(e.municipality_id))}</td><td>${s}</td></tr>`;
-  }).join("")||`<tr><td colspan="6" class="muted">No records.</td></tr>`;
+    return `<tr class="click" style="${e.voided?"opacity:.5":""}" onclick="openRecord('${esc(e.event_id)}')"><td><span class="link mono">${esc(e.event_id)}</span></td><td>${e.year??""}</td><td>${esc(e.event_type||"")}</td><td>${pr}${vd}</td><td>${esc(muniName(e.municipality_id))}</td><td>${s}</td><td>${eventFlagPill(e.event_id)}</td></tr>`;
+  }).join("")||`<tr><td colspan="7" class="muted">No records.</td></tr>`;
 }
 
 /* ---------- people ---------- */
@@ -721,8 +750,11 @@ async function openRecord(id){
     const nm=isPlaceholderName(raw)?'<i class="muted">'+esc(raw)+'</i>'
       :(raw?esc(raw):(p.canonical_surname?'<i class="muted">'+esc(p.canonical_surname)+'</i>':'<span class="muted">&mdash;</span>'));
     const fix=(ROLE==="curator")?` <span class="link" style="font-size:11.5px" onclick="partEdit(${p.participant_id},'${esc(e.event_id)}')">edit</span>`:"";
-    return `<li id="pt_${p.participant_id}"><span class="role-tag">${esc(p.role)}</span>${nm} ${p.person_id?'<span class="link mono" onclick="openPerson(\''+esc(p.person_id)+'\')">'+esc(p.person_id)+'</span>':''}${fix}</li>`;
+    return `<li id="pt_${p.participant_id}"><span class="role-tag">${esc(p.role)}</span>${nm} ${p.person_id?'<span class="link mono" onclick="openPerson(\''+esc(p.person_id)+'\')">'+esc(p.person_id)+'</span>':''}${participantFlagPills(p.participant_id)}${fix}</li>`;
   }).join("")||'<li class="muted">none</li>';
+  const evFlags=FLAGS_OPEN.filter(f=>f.event_id===e.event_id);
+  const evLevel=evFlags.filter(f=>!f.participant_id);
+  const flagLine=evFlags.length?`<div class="kv"><b>Review:</b> ${evFlags.length} open flag${evFlags.length>1?"s":""}${evLevel.length?" &middot; on the act: "+evLevel.map(f=>`<span class="pill flag${f.priority==="high"?" hi":""}" onclick="openFlagCard(${f.flag_id})">${esc(f.field)}: ${esc(f.reason.replace(/_/g," "))}</span>`).join(" "):""} <span class="link" style="font-size:11.5px" onclick="closeModal();gotoTab('review')">open the Review tab</span></div>`:"";
   const srcs=(e.event_sources||[]).map(s=>{
     const lvl=s.url_level?`<span class="lvl">${esc(s.url_level)}</span>`:"";
     const link=s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">open &#8599;</a>`:'<span class="muted">no url</span>';
@@ -745,6 +777,7 @@ async function openRecord(id){
     ${e.summary?`<div class="kv"><b>Summary:</b> ${esc(e.summary)}</div>`:""}
     ${e.notes?`<div class="kv"><b>Notes:</b> ${esc(e.notes)}</div>`:""}
     ${e.voided?`<div class="kv" style="color:#b00;font-weight:600">VOIDED &mdash; ${esc(e.voided_reason||"")} ${e.voided_at?`<span class="muted" style="font-weight:400">(${esc(String(e.voided_at).slice(0,10))})</span>`:""}</div>`:""}
+    ${flagLine}
     ${findExtract}
     <h4>Participants</h4><ul class="plain">${parts}</ul>
     <h4>Sources</h4><ul class="plain">${srcs}</ul>
@@ -754,7 +787,7 @@ async function openRecord(id){
   const foot=$("#m_foot");foot.innerHTML="";
   if(ROLE==="curator"){const b=document.createElement("button");b.className="act";b.textContent="Edit record";b.onclick=()=>editForm(e);foot.appendChild(b);}
   if(ROLE==="curator"){const vb=document.createElement("button");vb.className="ghost";vb.textContent=e.voided?"Un-void":"Void (mark duplicate)";vb.onclick=()=>voidRecord(e.event_id,!e.voided);foot.appendChild(vb);}
-  const pb=document.createElement("button");pb.className="ghost";pb.textContent="Propose a change";pb.onclick=()=>proposeForm(e);foot.appendChild(pb);
+  if(!e.voided){const pb=document.createElement("button");pb.className="ghost";pb.textContent="Propose a change";pb.title="File a reading from the image: correct a value, confirm the stored value, or ask a question. The curator accepts or rejects.";pb.onclick=()=>amendProposalForm(e,null);foot.appendChild(pb);}
   const cl=document.createElement("button");cl.className="ghost";cl.textContent="Close";cl.onclick=closeModal;foot.appendChild(cl);
   $("#overlay").classList.add("open");
 }
@@ -870,20 +903,207 @@ function editForm(e){
     if(fol){const {error:se}=await sb.from("event_sources").insert({event_id:e.event_id,role:"original_record",url:fol,url_level:"folio"});if(se){flash($("#e_msg"),"Saved, but the folio source failed: "+esc(se.message),"err");return;}}
     flash($("#e_msg"),"Saved.","good");runBrowse();loadWorklist();setTimeout(()=>openRecord(e.event_id),400);};
 }
-function proposeForm(e){
-  $("#m_form").innerHTML=`<h4>Propose a change to ${esc(e.event_id)}</h4>
-    <div class="row"><div><label>Field (optional)</label><input type="text" id="pf_field" placeholder="e.g. year, summary"></div>
-    <div><label>Proposed value (optional)</label><input type="text" id="pf_val"></div></div>
-    <label>What should change and why<textarea id="pf_note" rows="3"></textarea></label>
-    <div style="margin-top:8px"><button class="act" id="pf_send">Submit proposal</button> <span class="msg" id="pf_msg" style="display:inline-block;margin:0"></span></div>`;
-  $("#pf_send").onclick=async()=>{
-    const note=$("#pf_note").value.trim();
-    if(!note&&!$("#pf_val").value.trim()){flash($("#pf_msg"),"Add a note or a value.","err");return;}
-    const payload={field:$("#pf_field").value.trim()||null,new_value:$("#pf_val").value.trim()||null,note:note||null};
-    const {error}=await sb.from("proposals").insert({kind:"correction",target_table:"events",target_id:e.event_id,payload});
-    if(error){flash($("#pf_msg"),"Submit failed: "+esc(error.message),"err");return;}
-    flash($("#pf_msg"),"Proposal submitted.","good");loadProposals();};
+/* ---------- review flags (2026-11-05) ----------
+   review_flags = review owed or decided on one field of one event/participant (spec: Operational/review-flags-and-amend-
+   proposals-spec-2026-11-04.md). Machines raise them AFTER a record or plan applies (raise_review_flags); nothing in the DB
+   reads them to refuse anything. The curator closes them (resolve_review_flag); a closed flag LOCKS the field against later
+   automated plans unless the plan carries overwrite. Contributors file amend proposals (submit_amend_proposal); the curator
+   accepts (accept_amend_proposal: runs the amendment, closes the flag) or rejects with a reason (reject_proposal). */
+let FLAGS_OPEN=[],FLAGS_BY_EVENT={},FLAGS_BY_PART={};
+const NAME_FIELDS=["name_as_written","given","surname","canonical_surname","role"];
+const PART_FIELDS=[["name_as_written","name as written"],["given","given name"],["surname","surname"],["canonical_surname","canonical surname"],["role","role"],["age","age"],["birth_date","birth date"],["death_date","death date"],["other","other"]];
+const EVT_FIELDS=[["date_text","act date (as written)"],["date_iso","act date (ISO)"],["year","year"],["act_number","act number"],["birth_date","birth date stated in the act"],["death_date","death date stated in the act"],["structure","which act / column / register"],["other","other"]];
+const REASON_LABEL={reader_uncertain:"reader uncertain",readers_disagree:"readers disagree",name_vs_index:"name vs index",digit_single_read:"digit, one read",digit_vs_index:"digit vs index",structure:"structure",contributor_query:"contributor query",ruling:"ruling"};
+async function loadFlags(){
+  try{
+    FLAGS_OPEN=await fetchAll(()=>sb.from("v_review_open").select("*").order("flag_id"));
+    const parts=await fetchAll(()=>sb.from("v_participant_review").select("*").order("participant_id"));
+    FLAGS_BY_PART={};parts.forEach(r=>{FLAGS_BY_PART[r.participant_id]=r;});
+    FLAGS_BY_EVENT={};FLAGS_OPEN.forEach(f=>{const d=FLAGS_BY_EVENT[f.event_id]||(FLAGS_BY_EVENT[f.event_id]={open:0,high:0});d.open++;if(f.priority==="high")d.high++;});
+    if($("#revCount"))$("#revCount").textContent=String(FLAGS_OPEN.length);
+    if($("#rv_muni")){const ms=[...new Set(FLAGS_OPEN.map(f=>f.municipality_id).filter(Boolean))];const cur=$("#rv_muni").value;
+      $("#rv_muni").innerHTML='<option value="">all municipalities</option>'+ms.map(m=>`<option value="${esc(m)}">${esc(muniName(m))}</option>`).join("");$("#rv_muni").value=cur;}
+  }catch(e){FLAGS_OPEN=[];FLAGS_BY_EVENT={};FLAGS_BY_PART={};if($("#revCount"))$("#revCount").textContent="?";
+    console.warn("review flags not loaded (migration 2026-11-05 not applied yet?)",e&&e.message);}
 }
+function eventFlagPill(eid){const d=FLAGS_BY_EVENT[eid];if(!d)return "";return `<span class="pill flag${d.high?" hi":""}" title="${d.open} open review flag(s)${d.high?", "+d.high+" high priority":""}">${d.open}</span>`;}
+function participantFlagPills(pid){
+  const r=FLAGS_BY_PART[pid];if(!r)return "";
+  let h="";
+  if(r.open_count>0){const fs=FLAGS_OPEN.filter(f=>f.participant_id===pid);
+    const kinds=[...new Set(fs.map(f=>NAME_FIELDS.includes(f.field)?"name?":"digit?"))];
+    const hi=fs.some(f=>f.priority==="high");
+    h+=kinds.map(k=>` <span class="pill flag${hi?" hi":""}" title="${esc(fs.map(f=>f.field+": "+(f.stored_value||"")+" vs "+(f.alt_value||"?")+" ("+(REASON_LABEL[f.reason]||f.reason)+")").join(" | "))}" onclick="event.stopPropagation();openFlagCard(${fs[0].flag_id})">${k}${fs.length>1?" "+fs.length:""}</span>`).join("");}
+  if((r.locked_fields||[]).length)h+=` <span class="pill lock" title="ruled by the curator: ${esc(r.locked_fields.join(", "))} (locked against automated changes)" onclick="event.stopPropagation();openLockedFlags(${pid})">ruled</span>`;
+  return h;
+}
+function flagImg(f){const ev=f.evidence||{};const u=ev.image_url||ev.crop_path||ev.drive_path;if(!u)return '<span class="muted">none</span>';
+  return /^https?:/.test(u)?`<a href="${esc(u)}" target="_blank" rel="noopener">image &#8599;</a>`:`<span class="mono" title="${esc(u)}">${esc(String(u).split(/[\\/]/).pop())}</span>`;}
+function renderReview(){
+  const body=$("#rv_body");if(!body)return;
+  const rs=$("#rv_reason").value,pr=$("#rv_prio").value,mu=$("#rv_muni").value,fk=$("#rv_field").value;
+  let rows=FLAGS_OPEN.filter(f=>(!rs||f.reason===rs)&&(!pr||f.priority===pr)&&(!mu||f.municipality_id===mu)
+    &&(!fk||(fk==="names"?NAME_FIELDS.includes(f.field):!NAME_FIELDS.includes(f.field))));
+  rows.sort((a,b)=>(a.priority==="high"?0:1)-(b.priority==="high"?0:1)||String(a.municipality_id||"").localeCompare(String(b.municipality_id||""))||(a.year||0)-(b.year||0)||a.flag_id-b.flag_id);
+  const byMuni={};rows.forEach(f=>{byMuni[f.municipality_id||"?"]=(byMuni[f.municipality_id||"?"]||0)+1;});
+  $("#rv_count").innerHTML=`${rows.length} open of ${FLAGS_OPEN.length}${rows.length?" &middot; "+Object.entries(byMuni).map(([m,n])=>esc(muniName(m))+" "+n).join(", "):""}`;
+  const curator=ROLE==="curator";
+  body.innerHTML=rows.map(f=>{
+    const who=f.participant_id?`<span class="role-tag">${esc(f.role||"")}</span>${esc(f.name_as_written||"")}`:'<span class="muted">the act</span>';
+    const chg=f.changed_since_flagged?` <span class="pill warn" title="live value now ${esc(f.live_value||"")}">changed since flagged</span>`:"";
+    const act=curator
+      ?`<button class="ghost" style="padding:3px 8px;font-size:11.5px" onclick="resolveFlag(${f.flag_id},'confirmed_stored')" title="I looked; the stored value is right">Confirm stored</button>
+        ${f.alt_value&&NAME_FIELDS.concat(["date_text","date_iso","year"]).includes(f.field)?`<button class="ghost" style="padding:3px 8px;font-size:11.5px" onclick="resolveFlag(${f.flag_id},'corrected',${JSON.stringify(f.alt_value).replace(/"/g,"&quot;")})" title="Apply the alternative reading">Take alternative</button>`:""}
+        <button class="ghost" style="padding:3px 8px;font-size:11.5px" onclick="resolveFlag(${f.flag_id},'ruled',null)" title="Type the value you read on the image">Set value&hellip;</button>
+        <button class="ghost" style="padding:3px 8px;font-size:11.5px" onclick="resolveFlag(${f.flag_id},'moot')" title="The question no longer applies">Moot</button>`
+      :`<button class="ghost" style="padding:3px 8px;font-size:11.5px" onclick="proposeFromFlag(${f.flag_id})">Propose&hellip;</button>`;
+    return `<tr><td><span class="link mono" onclick="openRecord('${esc(f.event_id)}')">${esc(f.event_id)}</span><div class="muted" style="font-size:11px">${esc(f.event_type||"")} ${f.year||""} &middot; ${esc(muniName(f.municipality_id))}${f.priority==="high"?' <span class="pill bad">high</span>':""}</div></td>
+      <td>${who}<div class="mono" style="font-size:11px">${esc(f.field)}</div></td>
+      <td>${esc(f.stored_value||"")}${chg}</td><td>${esc(f.alt_value||"")}</td>
+      <td><span class="pill" title="${esc(f.reason)}">${esc(REASON_LABEL[f.reason]||f.reason)}</span></td>
+      <td style="font-size:11px" class="muted">${esc(f.raised_by||"")}<br>${esc(String(f.raised_at||"").slice(0,10))}</td>
+      <td>${flagImg(f)} <span class="link" style="font-size:11px" onclick="openFlagCard(${f.flag_id})">detail</span></td>
+      <td style="white-space:nowrap">${act}</td></tr>`;
+  }).join("")||`<tr><td colspan="8" class="muted">${FLAGS_OPEN.length?"No open flags match the filter.":"No open review flags."}</td></tr>`;
+}
+async function resolveFlag(id,verdict,value){
+  if(ROLE!=="curator")return;
+  const f=FLAGS_OPEN.find(x=>x.flag_id===id)||{};
+  if(verdict==="ruled"&&value===null){
+    value=prompt(`Value you read on the image for ${f.field||"this field"}${f.participant_id?" of "+(f.name_as_written||"participant "+f.participant_id):""} (leave empty to confirm the stored value as ruled):`,f.alt_value||"");
+    if(value===null)return; value=value.trim()||null;
+  }
+  const note=prompt(verdict==="moot"?"Why is this moot?":"Note (what you saw; optional):","");
+  if(note===null)return;
+  const {data,error}=await sb.rpc("resolve_review_flag",{p_flag_id:id,p_verdict:verdict,p_new_value:value||null,p_note:note.trim()||null});
+  if(error){flash($("#rv_msg"),"Resolve failed: "+esc(error.message),"err");flash($("#flash"),"Resolve failed: "+esc(error.message),"err");return;}
+  const sk=(data&&data.amend&&data.amend.changes&&data.amend.changes.skipped)||[];
+  flash($("#rv_msg"),`Flag ${id} ${esc(data&&data.verdict||verdict)}${data&&data.amendment_id?" (amendment "+data.amendment_id+")":""}${sk.length?" &middot; skipped: "+esc(sk.map(x=>x.field+" ("+x.reason+")").join(", ")):""}.`,"good");
+  await loadFlags();renderReview();runBrowse();
+  if($("#overlay").classList.contains("open")&&f.event_id)openRecord(f.event_id);
+}
+window.resolveFlag=resolveFlag;
+async function openFlagCard(id){
+  let f=FLAGS_OPEN.find(x=>x.flag_id===id);
+  if(!f){const {data,error}=await sb.from("review_flags").select("*").eq("flag_id",id).single();if(error){flash($("#flash"),esc(error.message),"err");return;}f=data;}
+  const ev=f.evidence||{};
+  const readers=(ev.readers||[]).map(r=>`<li>${esc(r.reader||"reader")}: <b>${esc(r.value==null?"":String(r.value))}</b>${r.confidence?` <span class="muted">(${esc(r.confidence)})</span>`:""}${(r.alternatives||[]).length?` <span class="muted">alts: ${esc((r.alternatives||[]).join("; "))}</span>`:""}${r.words?`<div class="muted" style="font-size:11px">${esc(r.words)}</div>`:""}</li>`).join("");
+  const rest=Object.assign({},ev);delete rest.readers;
+  $("#m_title").textContent=`Flag ${f.flag_id} · ${f.event_id}`;
+  $("#m_body").innerHTML=`
+    <div class="kv"><b>Record:</b> <span class="link mono" onclick="openRecord('${esc(f.event_id)}')">${esc(f.event_id)}</span> ${f.participant_id?`&middot; <span class="role-tag">${esc(f.role||"")}</span>${esc(f.name_as_written||"participant "+f.participant_id)}`:"&middot; the act"}</div>
+    <div class="kv"><b>Field:</b> <span class="mono">${esc(f.field)}</span> &nbsp; <b>Reason:</b> ${esc(REASON_LABEL[f.reason]||f.reason)} &nbsp; <b>Status:</b> ${esc(f.status)}${f.verdict?" / "+esc(f.verdict):""}${f.locks?' <span class="pill lock">locks the field</span>':""}</div>
+    <div class="kv"><b>Stored:</b> ${esc(f.stored_value||"")}${f.live_value!=null&&f.changed_since_flagged?` <span class="pill warn">live now ${esc(f.live_value)}</span>`:""} &nbsp; <b>Alternative:</b> ${esc(f.alt_value||"")}</div>
+    <div class="kv"><b>Raised:</b> ${esc(f.raised_by||"")} ${esc(String(f.raised_at||"").slice(0,16).replace("T"," "))}${f.batch_id?` <span class="mono">${esc(f.batch_id)}</span>`:""}</div>
+    ${f.close_note?`<div class="kv"><b>Decision:</b> ${esc(f.close_note)}</div>`:""}
+    <div class="kv"><b>Image:</b> ${flagImg(f)}${ev.folio?` <span class="muted">${esc(ev.folio)}</span>`:""}${ev.index_value!=null?` &nbsp; <b>Index:</b> ${esc(String(ev.index_value))}`:""}</div>
+    ${readers?`<h4>Readings</h4><ul class="plain">${readers}</ul>`:""}
+    ${Object.keys(rest).length?`<h4>Evidence</h4><div class="rv-ev">${esc(JSON.stringify(rest,null,1))}</div>`:""}
+    <div id="m_form"></div>`;
+  const foot=$("#m_foot");foot.innerHTML="";
+  if(f.status==="open"){
+    if(ROLE==="curator"){[["Confirm stored","confirmed_stored",undefined],["Set value…","ruled",null],["Moot","moot",undefined]].forEach(([t,v,val])=>{const b=document.createElement("button");b.className=t==="Confirm stored"?"act":"ghost";b.textContent=t;b.onclick=()=>resolveFlag(f.flag_id,v,val);foot.appendChild(b);});
+      if(f.alt_value&&NAME_FIELDS.concat(["date_text","date_iso","year"]).includes(f.field)){const b=document.createElement("button");b.className="ghost";b.textContent="Take alternative";b.onclick=()=>resolveFlag(f.flag_id,"corrected",f.alt_value);foot.appendChild(b);}}
+    const pb=document.createElement("button");pb.className="ghost";pb.textContent="Propose…";pb.onclick=()=>proposeFromFlag(f.flag_id);foot.appendChild(pb);
+  }
+  const cl=document.createElement("button");cl.className="ghost";cl.textContent="Close";cl.onclick=closeModal;foot.appendChild(cl);
+  $("#overlay").classList.add("open");
+}
+window.openFlagCard=openFlagCard;
+async function openLockedFlags(pid){
+  const {data,error}=await sb.from("review_flags").select("*").eq("participant_id",pid).eq("locks",true).order("flag_id");
+  if(error){flash($("#flash"),esc(error.message),"err");return;}
+  if(!data||!data.length){flash($("#flash"),"No ruling found.","err");return;}
+  openFlagCard(data[data.length-1].flag_id);
+}
+window.openLockedFlags=openLockedFlags;
+async function proposeFromFlag(id){
+  const f=FLAGS_OPEN.find(x=>x.flag_id===id);if(!f)return;
+  const {data:e,error}=await sb.from("events").select("*,event_participants(*),event_sources(*)").eq("event_id",f.event_id).single();
+  if(error){flash($("#flash"),esc(error.message),"err");return;}
+  await openRecord(f.event_id);
+  amendProposalForm(e,{participant_id:f.participant_id,field:f.field,flag_id:f.flag_id,proposed:f.alt_value||"",image_url:(f.evidence||{}).image_url||""});
+}
+window.proposeFromFlag=proposeFromFlag;
+/* raise flags carried on a pasted record or plan ("_review_flags"), after it applied; never blocks the apply */
+async function raiseFlags(eventId,batchId,flags){
+  if(!Array.isArray(flags)||!flags.length)return "";
+  const {data,error}=await sb.rpc("raise_review_flags",{p_event_id:eventId,p_batch_id:batchId||"editor-paste-"+new Date().toISOString().slice(0,10),p_flags:flags,p_raised_by:null});
+  if(error)return ` <span class="pill warn" title="${esc(error.message)}">flags not raised</span>`;
+  const n=(data&&data.inserted||[]).length;return n?` <span class="pill flag">${n} flag${n>1?"s":""} raised</span>`:"";
+}
+
+/* ---------- amend proposal form (replaces the free-text "Propose a change" of the correction kind, 2026-11-05) ---------- */
+let AP_ITEMS=[];
+function amendProposalForm(e,prefill){
+  AP_ITEMS=[];
+  const parts=(e.event_participants||[]).slice().sort((a,b)=>a.participant_id-b.participant_id);
+  const _fol=(e.event_sources||[]).find(s=>s.url_level==="folio"&&s.url)||(e.event_sources||[]).find(s=>s.role==="original_record"&&s.url)||(e.event_sources||[]).find(s=>s.url);
+  const targetOpts=`<option value="">the act itself</option>`+parts.map(p=>`<option value="${p.participant_id}">${esc(p.role||"")}: ${esc(p.name_as_written||p.canonical_surname||"participant "+p.participant_id)}</option>`).join("");
+  $("#m_form").innerHTML=`<h4>Propose a change to ${esc(e.event_id)}</h4>
+    <div class="muted" style="font-size:11.5px;margin-bottom:6px">Say what you read on the image. The curator accepts (the record changes, logged and undoable) or rejects with a reason. Enter what the act states; nothing about living people from elsewhere.</div>
+    <div class="row">
+      <div><label>Intent</label><select id="ap_intent"><option value="amend">correct a value</option><option value="confirm">confirm the stored value</option><option value="query">ask a question</option></select></div>
+      <div style="flex:2"><label>Who</label><select id="ap_target">${targetOpts}</select></div>
+      <div style="flex:2"><label>Field</label><select id="ap_field"></select></div>
+    </div>
+    <div class="row">
+      <div><label>Stored value</label><input type="text" id="ap_stored" readonly style="background:#f6f3ec"></div>
+      <div><label>Proposed value</label><input type="text" id="ap_proposed"></div>
+      <div style="flex:0 0 120px"><label>Confidence</label><select id="ap_conf"><option value="sure">sure</option><option value="likely" selected>likely</option><option value="unsure">unsure</option></select></div>
+      <div style="flex:0 0 110px;align-self:flex-end"><button class="ghost" id="ap_add" style="width:100%">Add item</button></div>
+    </div>
+    <ul class="plain" id="ap_items" style="margin:6px 0"></ul>
+    <div class="row">
+      <div style="flex:2"><label>Image you read (AGATHA image URL)</label><input type="text" id="ap_img" value="${esc(prefill&&prefill.image_url||(_fol&&_fol.url)||"")}" placeholder="https://agatha.arch.be/en/data/images/513/…"></div>
+      <div><label>Folio / image number</label><input type="text" id="ap_folio" placeholder="0_0258"></div>
+    </div>
+    <div class="row">
+      <div><label>Drive path or crop path (optional)</label><input type="text" id="ap_path" placeholder="Modern Records/…"></div>
+      <div><label>Verbatim words of the hand (optional)</label><input type="text" id="ap_words"></div>
+    </div>
+    <label>Note to the curator<textarea id="ap_note" rows="2" placeholder="What you saw; for a question, the question."></textarea></label>
+    <div style="margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><button class="act" id="ap_send">Submit proposal</button> <span class="msg" id="ap_msg" style="display:inline-block;margin:0"></span></div>`;
+  const fieldOpts=()=>{const pid=$("#ap_target").value;const list=pid?PART_FIELDS:EVT_FIELDS;$("#ap_field").innerHTML=list.map(([v,l])=>`<option value="${v}">${esc(l)}</option>`).join("");storedVal();};
+  const storedVal=()=>{const pid=$("#ap_target").value,fl=$("#ap_field").value;let v="";
+    if(pid){const p=parts.find(x=>String(x.participant_id)===pid)||{};v=NAME_FIELDS.includes(fl)?(p[fl]||""):"";}
+    else v=fl==="date_text"?(e.date_text||""):fl==="date_iso"?(e.date_iso||""):fl==="year"?String(e.year||""):"";
+    $("#ap_stored").value=v;};
+  const drawItems=()=>{$("#ap_items").innerHTML=AP_ITEMS.map((it,i)=>`<li>${it.participant_id?`<span class="role-tag">${esc((parts.find(p=>p.participant_id===it.participant_id)||{}).role||"")}</span>`:'<span class="role-tag">act</span>'}<span class="mono">${esc(it.field)}</span>: ${esc(it.stored||"")} &rarr; <b>${esc(it.proposed||"")}</b> <span class="muted">(${esc(it.confidence||"")})</span>${it.flag_id?` <span class="pill flag">flag ${it.flag_id}</span>`:""} <span class="link" style="font-size:11px" onclick="AP_ITEMS.splice(${i},1);document.getElementById('ap_items').dispatchEvent(new Event('redraw'))">remove</span></li>`).join("");};
+  $("#ap_items").addEventListener("redraw",drawItems);
+  $("#ap_target").onchange=fieldOpts;$("#ap_field").onchange=storedVal;
+  $("#ap_intent").onchange=()=>{const q=$("#ap_intent").value==="query";$("#ap_proposed").disabled=q;$("#ap_conf").disabled=q;};
+  $("#ap_add").onclick=()=>{
+    const pid=$("#ap_target").value,fl=$("#ap_field").value,prop=$("#ap_proposed").value.trim(),intent=$("#ap_intent").value;
+    if(intent==="amend"&&!prop){flash($("#ap_msg"),"Give the value you read.","err");return;}
+    const it={field:fl,stored:$("#ap_stored").value||null,proposed:intent==="confirm"?($("#ap_stored").value||prop):(prop||null),confidence:$("#ap_conf").value};
+    if(pid)it.participant_id=parseInt(pid,10);
+    if(prefill&&prefill.flag_id&&String(prefill.participant_id||"")===pid&&prefill.field===fl)it.flag_id=prefill.flag_id;
+    AP_ITEMS.push(it);drawItems();$("#ap_proposed").value="";flash($("#ap_msg"),"");};
+  fieldOpts();
+  if(prefill){if(prefill.participant_id){$("#ap_target").value=String(prefill.participant_id);}fieldOpts();if(prefill.field)$("#ap_field").value=prefill.field;storedVal();if(prefill.proposed)$("#ap_proposed").value=prefill.proposed;}
+  $("#ap_send").onclick=async()=>{
+    const intent=$("#ap_intent").value;
+    if(intent!=="query"&&!AP_ITEMS.length){
+      // nothing added yet: take what is in the row as the single item
+      const prop=$("#ap_proposed").value.trim();
+      if(intent==="amend"&&!prop){flash($("#ap_msg"),"Give the value you read, or add items first.","err");return;}
+      $("#ap_add").click();if(!AP_ITEMS.length)return;
+    }
+    const items=AP_ITEMS.filter(x=>x.participant_id),eitems=AP_ITEMS.filter(x=>!x.participant_id).map(x=>({field:x.field,stored:x.stored,proposed:x.proposed,confidence:x.confidence,flag_id:x.flag_id}));
+    if(intent==="query"&&!AP_ITEMS.length){const pid=$("#ap_target").value;const it={field:$("#ap_field").value,stored:$("#ap_stored").value||null};if(pid){it.participant_id=parseInt(pid,10);items.push(it);}else eitems.push(it);}
+    const evidence={image_url:$("#ap_img").value.trim()||undefined,folio:$("#ap_folio").value.trim()||undefined,drive_path:$("#ap_path").value.trim()||undefined,words:$("#ap_words").value.trim()||undefined,note:$("#ap_note").value.trim()||undefined};
+    Object.keys(evidence).forEach(k=>{if(evidence[k]===undefined)delete evidence[k];});
+    if(intent!=="query"&&!evidence.image_url&&!evidence.drive_path){flash($("#ap_msg"),"Say which image you read (URL or Drive path).","err");return;}
+    if(intent==="query"&&!evidence.note){flash($("#ap_msg"),"Write the question in the note.","err");return;}
+    const payload={intent,target_event_id:e.event_id,items,event_items:eitems,evidence};
+    $("#ap_send").disabled=true;
+    const {data,error}=await sb.rpc("submit_amend_proposal",{payload,p_note:$("#ap_note").value.trim()||null});
+    $("#ap_send").disabled=false;
+    if(error){flash($("#ap_msg"),"Submit failed: "+esc(error.message),"err");return;}
+    flash($("#ap_msg"),`Proposal #${esc(String(data&&data.proposal_id||"?"))} submitted for the curator.`,"good");AP_ITEMS=[];drawItems();loadProposals();};
+}
+window.amendProposalForm=amendProposalForm;
 
 /* ---------- date normalisation ----------
    date_text is VERBATIM (what the clerk wrote). date_iso is the machine date. year derives from iso.
@@ -981,7 +1201,7 @@ let PJ_DUPS=[];                           // #14: scored duplicate candidates fo
 let PJ_BATCH=null;                        // bulk paste: validated array of full records
 let PJ_BATCH_SRC=null;                    // bulk paste: ALL pasted rows (incl. invalid), for the dup advisory's compare
 const pjSubmitLabel=()=>ROLE==="curator"?"Apply record":"Submit to queue";
-function pjPayloadForRpc(o){const c=Object.assign({},o);delete c.contract_version;return c;} // #10: strip before RPC
+function pjPayloadForRpc(o){const c=Object.assign({},o);delete c.contract_version;delete c._review_flags;return c;} // #10: strip before RPC; _review_flags are raised separately after apply (2026-11-05)
 /* amend plans ("_kind":"amend"): change an EXISTING event via the amend_record RPC (curator only).
    Same shape Workflow/apply-batch.mjs sends; amend_record logs each plan in event_amendments (undo_amendment
    reverses it) and is idempotent per (target_event_id, source_key). */
@@ -997,6 +1217,9 @@ function pjAmendError(o){
   if((o.participants_update||[]).some(u=>!u||!/^\d+$/.test(String(u.participant_id||""))))return "amend: every participants_update needs a numeric participant_id";
   if((o.participants_add||[]).some(a=>!a||!String(a.name_as_written||"").trim()))return "amend: every participants_add needs name_as_written ([illegible] / [not recorded] if so)";
   if((o.sources_add||[]).some(x=>x&&x.bookpart_id!=null&&!/^\d+$/.test(String(x.bookpart_id))))return "amend: bookpart_id must be numeric";
+  if((o.overwrite===true||(o.participants_update||[]).some(u=>u&&u.overwrite===true))&&!($("#pj_overwrite")&&$("#pj_overwrite").checked))
+    return "amend: the plan carries overwrite (it would change a filled name field or a field locked by a ruling); builders never emit it. Tick 'allow overwrite' only for a plan you wrote yourself";
+  if(o._review_flags!=null&&!Array.isArray(o._review_flags))return "amend: _review_flags must be an array";
   return null;
 }
 async function pjAmendCheck(arr){ // advisory: compare each amend plan with the live event before Apply
@@ -1240,10 +1463,11 @@ async function pjSubmitBatch(){
         if(re) throw re;
         const tag=(res&&res.status==="already_applied")?"already applied":("amend:"+((res&&res.amendment_id)||"?"));
         const ch=(res&&res.changes)||{},sk=ch.skipped||[],made=ch.sources_created||[];
-        const skTxt=sk.map(x=>x.field?(x.participant_id?("participant "+x.participant_id+" "+x.field):x.field):(x.source_url?"a source already cited":"?"));
+        const skTxt=sk.map(x=>x.field?(x.participant_id?("participant "+x.participant_id+" "+x.field):x.field)+(x.reason&&/locked/.test(x.reason)?" (locked by ruling)":""):(x.source_url?"a source already cited":"?"));
+        const fl=await raiseFlags(rec.target_event_id,"editor-paste-"+(rec.source_key||"").split("-").slice(0,-1).join("-"),rec._review_flags); // after the plan applied; a failure here never undoes it
         amendDone.push(`<span class="mono">${esc(rec.target_event_id)}</span> &rarr; ${esc(tag)}`
           +(made.length?` <span class="muted">(new source ${made.map(esc).join(", ")})</span>`:"")
-          +(skTxt.length?` <span class="pill warn">skipped</span> <span style="font-size:11px">${skTxt.map(esc).join(", ")}</span>`:""));
+          +(skTxt.length?` <span class="pill warn">skipped</span> <span style="font-size:11px">${skTxt.map(esc).join(", ")}</span>`:"")+fl);
         done++;flash($("#pj_msg"),"Working… "+done+"/"+PJ_BATCH.length,"good");
         continue;
       }
@@ -1253,15 +1477,16 @@ async function pjSubmitBatch(){
         const {data:res,error:re}=await sb.rpc("apply_full_record",{payload:clean});
         if(re) throw re;
         await sb.from("proposals").update({status:"applied",reviewed_by:USER.id,reviewed_at:new Date().toISOString(),target_id:(res&&res.event_id)||null}).eq("id",ins.id);
+        if(res&&res.event_id&&Array.isArray(rec._review_flags)&&rec._review_flags.length){const fl=await raiseFlags(res.event_id,"editor-paste-"+new Date().toISOString().slice(0,10),rec._review_flags);if(fl)amendDone.push(`<span class="mono">${esc(res.event_id)}</span>${fl}`);}
       }else{
-        const {error}=await sb.from("proposals").insert({kind:"full_record",target_table:"events",payload:rec,submitter_note:note});
+        const {error}=await sb.from("proposals").insert({kind:"full_record",target_table:"events",payload:rec,submitter_note:note}); // _review_flags stay in the payload; raised when the curator applies
         if(error) throw error;
       }
       done++;flash($("#pj_msg"),"Working… "+done+"/"+PJ_BATCH.length,"good");
     }catch(e){fails.push((i+1)+": "+esc(e.message||String(e)));}
   }
-  runBrowse();loadTracker();loadProposals();
-  const amendHtml=amendDone.length?`<div class="card" style="max-width:none;margin-top:10px"><div class="kv"><b>Amendments</b> <span class="muted">(fix any skipped field by hand in the record)</span></div><ul class="plain">${amendDone.map(x=>"<li>"+x+"</li>").join("")}</ul></div>`:"";
+  await loadFlags();runBrowse();loadTracker();loadProposals();
+  const amendHtml=amendDone.length?`<div class="card" style="max-width:none;margin-top:10px"><div class="kv"><b>Amendments and flags</b> <span class="muted">(a field skipped as locked was ruled by the curator; fix any other skipped field by hand in the record)</span></div><ul class="plain">${amendDone.map(x=>"<li>"+x+"</li>").join("")}</ul></div>`:"";
   if(fails.length){flash($("#pj_msg"),done+" "+(curator?"applied":"queued")+", "+fails.length+" failed — "+fails.join(" | "),"err");if(btn)btn.disabled=false;
     if(amendHtml){$("#pj_preview").insertAdjacentHTML("beforeend",amendHtml);pjRecomputePanel();}}
   else{flash($("#pj_msg"),done+" item(s) "+(curator?"applied":"submitted to the queue")+".","good");pjReset();
@@ -1319,8 +1544,9 @@ async function pjSubmit(){
         const {data:res,error:re}=await sb.rpc("apply_full_record",{payload:clean});
         if(re) throw re;
         await sb.from("proposals").update({status:"applied",reviewed_by:USER.id,reviewed_at:new Date().toISOString(),target_id:(res&&res.event_id)||null}).eq("id",ins.id); // #15 polish: backfill target_id
+        const rf=(res&&res.event_id)?await raiseFlags(res.event_id,"editor-paste-"+new Date().toISOString().slice(0,10),PJ._review_flags):"";
         const fl=(res&&res.flags&&res.flags.length)?" ("+res.flags.map(esc).join("; ")+")":"";
-        flash($("#pj_msg"),"Applied as "+esc((res&&res.event_id)||"?")+fl+".","good");
+        flash($("#pj_msg"),"Applied as "+esc((res&&res.event_id)||"?")+fl+"."+rf,"good");if(rf)loadFlags();
         pjReset();runBrowse();loadTracker();loadProposals();
       }
     }else if(ROLE==="contributor"){
@@ -1513,9 +1739,17 @@ async function loadIntegrity(){
   INT_ROWS.sort((a,b)=>(rank[a.severity]||9)-(rank[b.severity]||9)||b.n-a.n);
   const errs=INT_ROWS.filter(r=>r.severity==="error").reduce((s,r)=>s+Number(r.n),0);
   if($("#intCount"))$("#intCount").textContent=errs?String(errs):"clean";
-  if(!INT_ROWS.length){body.innerHTML='<div class="msg good show">Every check passed. Nothing to fix.</div>';return;}
+  // review-flag checks (view v_review_integrity, 2026-11-05): names under an open flag inside an identity, and locked fields changed by direct SQL
+  let rvHtml="";
+  try{const {data:rv,error:rve}=await sb.from("v_review_integrity").select("*");
+    if(!rve&&rv&&rv.length){const g={};rv.forEach(r=>{(g[r.check_name]=g[r.check_name]||[]).push(r);});
+      rvHtml=`<h4 style="margin-top:14px">Review flags</h4><table><thead><tr><th>Check</th><th>Count</th><th>What it means</th><th>Rows</th></tr></thead><tbody>`
+        +Object.entries(g).map(([k,rows])=>`<tr><td><b>${esc(k)}</b></td><td style="font-weight:600">${rows.length}</td><td style="max-width:340px"><span class="muted" style="font-size:12px">${esc(rows[0].why)}</span></td><td style="font-size:11.5px">${rows.slice(0,12).map(r=>`<span class="link mono" onclick="openRecord('${esc(r.event_id)}')">${esc(r.event_id)}</span> <span class="link" onclick="openFlagCard(${r.flag_id})">flag ${r.flag_id}</span>`).join(", ")}${rows.length>12?' <span class="muted">…</span>':""}</td></tr>`).join("")
+        +`</tbody></table>`;}
+  }catch(_){}
+  if(!INT_ROWS.length){body.innerHTML='<div class="msg good show">Every check passed. Nothing to fix.</div>'+rvHtml;return;}
   const pill=s=>s==="error"?'<span class="pill bad">error</span>':s==="warn"?'<span class="pill warn">warn</span>':'<span class="pill">info</span>';
-  body.innerHTML=`<table><thead><tr><th></th><th>Check</th><th>Count</th><th>What it means</th><th>Sample</th></tr></thead><tbody>`
+  body.innerHTML=rvHtml+`<table><thead><tr><th></th><th>Check</th><th>Count</th><th>What it means</th><th>Sample</th></tr></thead><tbody>`
     + INT_ROWS.map(r=>{
         const ids=(r.sample||[]).map(s=>/^EVT_/.test(s)
           ? `<span class="link mono" onclick="openRecord('${esc(s)}')">${esc(s)}</span>`
@@ -1571,6 +1805,15 @@ function renderProposalCard(p,curator){
     body=`<div class="kv"><b>Coverage:</b> <span class="mono">${esc(pl.coverage_id||"")}</span> vol <span class="mono">${esc(pl.vid||"")}</span> &rarr; ${esc(pl.searched||"")}${pl.found!=null?` &middot; found ${pl.found?"yes":"no"}`:""}</div>`;
   }else if(p.kind==="correction"){
     body=`<div class="kv">${pl.field?`<b>${esc(pl.field)}</b> → `:""}${esc(pl.new_value||"")}</div>${pl.note?`<div class="kv"><b>Why:</b> ${esc(pl.note)}</div>`:""}`;
+  }else if(p.kind==="amend_proposal"){
+    const ev=pl.evidence||{},items=(pl._items_applied||pl.items||[]),eitems=(pl._event_items_applied||pl.event_items||[]);
+    const li=x=>`<li>${x.participant_id?`<span class="role-tag">participant ${esc(String(x.participant_id))}</span>`:'<span class="role-tag">act</span>'}<span class="mono">${esc(x.field)}</span>: ${esc(x.stored==null?"(none)":String(x.stored))}${pl.intent==="query"?"":` &rarr; <b>${esc(x.proposed==null?"":String(x.proposed))}</b>`}${x.confidence?` <span class="muted">(${esc(x.confidence)})</span>`:""}${x.curator_edit?' <span class="pill warn">curator edit</span>':""}${x.flag_id?` <span class="pill flag" onclick="openFlagCard(${x.flag_id})">flag ${x.flag_id}</span>`:""}</li>`;
+    const img=ev.image_url?`<a href="${esc(ev.image_url)}" target="_blank" rel="noopener">image &#8599;</a>`:"";
+    body=`<div class="kv"><b>${esc(pl.intent==="amend"?"Correct a value":pl.intent==="confirm"?"Confirm the stored value":"Question")}</b> on <span class="link mono" onclick="openRecord('${esc(p.target_id||pl.target_event_id||"")}')">${esc(p.target_id||pl.target_event_id||"")}</span></div>
+      <ul class="plain">${items.concat(eitems).map(li).join("")||'<li class="muted">no items</li>'}</ul>
+      <div class="kv"><b>Evidence:</b> ${img}${ev.folio?` <span class="muted">${esc(ev.folio)}</span>`:""}${ev.drive_path?` <span class="mono">${esc(ev.drive_path)}</span>`:""}${ev.crop_path?` <span class="mono">${esc(ev.crop_path)}</span>`:""}${ev.words?`<div class="muted" style="font-size:11.5px">"${esc(ev.words)}"</div>`:""}${ev.note?`<div style="font-size:12px">${esc(ev.note)}</div>`:""}</div>
+      ${pl._applied_amendment_id?`<div class="kv muted" style="font-size:11.5px">amendment ${esc(String(pl._applied_amendment_id))}${(pl._closed_flags||[]).length?", closed flag(s) "+esc(pl._closed_flags.join(", ")):""}</div>`:""}
+      ${p.review_notes?`<div class="kv"><b>Curator:</b> ${esc(p.review_notes)}</div>`:""}`;
   }else{
     body=`<div class="kv mono" style="font-size:12px">${esc(JSON.stringify(pl).slice(0,400))}</div>`;
   }
@@ -1580,12 +1823,18 @@ function renderProposalCard(p,curator){
        <div style="margin-top:4px"><button class="ghost" onclick="saveProposalNote(${p.id})">Save note</button> <span class="msg" id="pnm_${p.id}" style="display:inline-block;margin:0"></span></div>`
     : (p.submitter_note?`<div class="kv"><b>Your note:</b> ${esc(p.submitter_note)}</div>`:"");
   let actions="";
-  if(curator&&p.status==="pending"){
-    actions=`<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-      <button class="act" onclick="reviewProp(${p.id},'approved')">Approve</button>
-      <button class="ghost" onclick="reviewProp(${p.id},'rejected')">Reject</button>
-      ${p.kind==="full_record"?`<button class="ghost" onclick="editProposal(${p.id})">Edit…</button>`:""}</div>`;
+  if(curator&&(p.status==="pending"||(p.status==="approved"&&p.kind==="amend_proposal"))){
+    actions=p.kind==="amend_proposal"
+      ?`<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="act" onclick="acceptAmendProposal(${p.id},false)">Accept</button>
+          <button class="ghost" onclick="reviewProp(${p.id},'rejected')">Reject…</button>
+          <span class="msg" id="apm_${p.id}" style="display:inline-block;margin:0"></span></div>`
+      :`<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="act" onclick="reviewProp(${p.id},'approved')">Approve</button>
+          <button class="ghost" onclick="reviewProp(${p.id},'rejected')">Reject…</button>
+          ${p.kind==="full_record"?`<button class="ghost" onclick="editProposal(${p.id})">Edit…</button>`:""}</div>`;
   }
+  if(!curator&&p.kind!=="amend_proposal"&&p.review_notes)body+=`<div class="kv"><b>Curator:</b> ${esc(p.review_notes)}</div>`;
   const tgt=p.target_id?`· <span class="mono link" onclick="openRecord('${esc(p.target_id)}')">${esc(p.target_id)}</span>`:(p.target_table?`· <span class="muted">${esc(p.target_table)}</span>`:"");
   return `<div class="card pcard">
     <div class="kv" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
@@ -1623,9 +1872,12 @@ async function applyProposal(p){
     const {data:res,error}=await sb.rpc("apply_full_record",{payload:clean});
     if(error) throw error;
     if(res&&res.event_id&&p.id){await sb.from("proposals").update({target_id:res.event_id}).eq("id",p.id);} // #15 polish: backfill target_id
+    const rf=(res&&res.event_id)?await raiseFlags(res.event_id,"proposal-"+p.id,f._review_flags):""; // a contributor's record carries its reader flags; raised now that it exists
+    if(rf)loadFlags();
     const fl=(res&&res.flags&&res.flags.length)?" ("+res.flags.join("; ")+")":"";
-    return "applied as "+((res&&res.event_id)||"?")+fl;
+    return "applied as "+((res&&res.event_id)||"?")+fl+(rf?" (review flags raised)":"");
   }
+  if(p.kind==="amend_proposal") throw new Error("use Accept on the card (accept_amend_proposal), not Approve");
   if(p.kind==="coverage_update"){
     const {data:res,error}=await sb.rpc("apply_coverage_update",{payload:f});
     if(error) throw error;
@@ -1664,8 +1916,11 @@ async function applyProposal(p){
 }
 async function reviewProp(id,status){
   if(status==="rejected"){
-    const {error}=await sb.from("proposals").update({status,reviewed_by:USER.id,reviewed_at:new Date().toISOString()}).eq("id",id);
-    if(error){flash($("#propMsg"),"Update failed: "+esc(error.message),"err");return;}
+    const reason=prompt("Reason for rejecting proposal "+id+" (required; the submitter sees it):","");
+    if(reason===null)return;
+    if(!reason.trim()){flash($("#propMsg"),"A reason is required to reject.","err");return;}
+    const {error}=await sb.rpc("reject_proposal",{p_id:id,p_reason:reason.trim()});
+    if(error){flash($("#propMsg"),"Reject failed: "+esc(error.message),"err");return;}
     flash($("#propMsg"),`Proposal ${id} rejected.`,"good");loadProposals();return;
   }
   const {data:p,error:le}=await sb.from("proposals").select("*").eq("id",id).single();
@@ -1684,6 +1939,23 @@ async function reviewProp(id,status){
   }
 }
 window.reviewProp=reviewProp;
+/* amend proposals: accept_amend_proposal runs the amendment (overwrite allowed, logged, undoable), closes the flags it
+   answers, marks the proposal applied. It returns needs_ack with warnings (value changed since submitted; participant in an
+   active assertion; field locked by a ruling) until called again with ack. */
+async function acceptAmendProposal(id,ack){
+  const m=$("#apm_"+id)||$("#propMsg");
+  const {data,error}=await sb.rpc("accept_amend_proposal",{p_id:id,p_overrides:null,p_note:null,p_ack:!!ack});
+  if(error){flash(m,"Accept failed: "+esc(error.message),"err");return;}
+  if(data&&data.status==="needs_ack"){
+    const w=(data.warnings||[]);
+    if(confirm("Proposal "+id+" needs your acknowledgement:\n\n- "+w.join("\n- ")+"\n\nAccept anyway?"))return acceptAmendProposal(id,true);
+    flash(m,"Left pending.","");return;
+  }
+  const sk=(data&&data.amend&&data.amend.changes&&data.amend.changes.skipped)||[];
+  flash($("#propMsg"),`Proposal ${id} ${esc(data&&data.status||"applied")}${data&&data.amendment_id?" (amendment "+data.amendment_id+")":""}${(data&&data.flags_closed||[]).length?", flag(s) closed "+esc(data.flags_closed.join(", ")):""}${sk.length?" · skipped: "+esc(sk.map(x=>x.field+" ("+x.reason+")").join(", ")):""}.`,"good");
+  await loadFlags();loadProposals();renderReview();runBrowse();
+}
+window.acceptAmendProposal=acceptAmendProposal;
 
 /* ---------- coverage (v2 per-volume editor over research_coverage) ---------- */
 let COV_BY_MUNI=[], COV_UNITS={}, COV_OPEN={}, COV_UNIT_COUNT=0, COV_ROWS={}, COV_WIRED=false;
