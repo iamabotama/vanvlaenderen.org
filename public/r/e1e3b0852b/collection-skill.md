@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-10-30 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:faaf6dadc3335cd9`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-05 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:7f5536eaee660dee`
 
 ---
 name: vanvlaenderen-record-collection
@@ -18,7 +18,14 @@ description: >
   structured vital-records layer only.
 ---
 
-<!-- Revised 2026-10-30: rail 7 replaced (Michael, plan a). The living-person gate
+<!-- Revised 2026-11-04 (late evening): review flags (Michael, "go" 21:23 PT). Rail 15 rewritten
+(names: no number of machine reads settles a name; digits: two agreeing blind reads beat the index),
+rail 19 added (_review_flags on every record and plan; never emit overwrite; read locking flags
+first), amend-plans paragraph (ruling lock) and Roles section (contributor amend proposals).
+Spec: Operational/review-flags-and-amend-proposals-spec-2026-11-04.md. -->
+
+<!-- Revised 2026-11-04: rail 12a added (civil acts dated by the act, Michael).
+Revised 2026-10-30: rail 7 replaced (Michael, plan a). The living-person gate
 now follows the Belgian civil-status access periods (in force 1 Jan 2025): births
 and baptisms enter after MORE than 100 years, marriages after MORE than 75; deaths
 and burials are not gated. People inside an admitted act who may still be living
@@ -130,6 +137,13 @@ record (JSON)** field: paste the JSON, click **Parse & preview**, then **Submit*
   Her Submit lands a row in the `proposals` queue (RLS pins it to her role).
   Michael then reviews and applies it; that apply step is the validation pass and
   runs the intake-validation discipline.
+
+Contributors also file **amend proposals** from the records editor (Propose a change on a
+record, or Propose on a review flag): the participant and field, the value read,
+confidence, and the image read (AGATHA URL or Drive path). The proposal goes to the queue;
+the curator accepts (the amendment runs through `amend_record`, closes the flag, and is
+undoable) or rejects with a reason the contributor sees. Nothing a contributor writes lands
+in a record's notes; the curator's generated note names the proposal and the change.
 
 Contributors never need live IDs and never touch a database credential. They
 supply canonical NAMES (`municipality_name`, `parish_name`); the RPC resolves
@@ -247,7 +261,10 @@ same records-editor field (or run `Workflow/apply-batch.mjs`); it goes to the
 `amend_record` RPC, is logged in `event_amendments` and is idempotent per
 source_key. `transcription`, `translation`, `source_locator` and existing
 `given`/`surname` are fill-only: the RPC skips them if already filled, so say in
-the plan's note when a hand edit is needed. After applying, the editor offers the
+the plan's note when a hand edit is needed. A field the curator has ruled on (a closed review flag) is skipped
+too and reported as locked; only the curator's own paths (`resolve_review_flag`,
+`accept_amend_proposal`, or a plan he wrote himself with `overwrite`) change it. A plan may
+carry `_review_flags` (rail 19); they are raised after it applies. After applying, the editor offers the
 source-flag recompute.
 
 **No tracker block.** Do NOT emit a `tracker` / `progress_update` block — it is
@@ -545,6 +562,12 @@ weaker party, because that is where ingest bugs live.
    7ber = September, 8ber = October, 9ber = November, Xber/10ber = December.**
    Read naively as July/August/September/October, every one is two months early.
    Set `date_precision` to `day`/`month`/`year` — never pad a date you do not have.
+12a. Civil acts are dated by the ACT (Michael, 4 Nov 2026; ARCHITECTURE §3.12.5). For a
+   civil_birth, civil_marriage or civil_death the event's `date_text`/`date_iso` is
+   the day the act was drawn up, which is what the AGATHA index gives. When the act
+   states a different birth or death day ("geboren op gisteren", "overleden den
+   eenentwintigsten"), put that day in the summary and the principal's notes, never
+   in the event date, and never re-date an index lead to the event day.
 13. A participant is never blank. If a name cannot be supplied, say which kind of
    nothing it is:
    - `"name_as_written": "[illegible]"` — the name IS in the act, but unreadable.
@@ -568,13 +591,18 @@ weaker party, because that is where ingest bugs live.
    - **AGATHA classifies Napoleonic-era registers as PARISH records** (Michael,
      2026-07-11). Do NOT reclassify them as civil, and do not move them out of
      parish coverage.
-15. Distrust your own digits. On this project's hands, Claude's reading of NUMBERS
-   is measurably worse than the stored value: twelve straight disagreements on
-   dates and pages resolved against Claude and for the human/workbook. Names run
-   the other way — Claude is the better reader there.
-   **Rule: when a stored number and your reading disagree, the stored value wins
-   until a human looks. When a NAME disagrees, your reading is the better bet.**
-   Do not build a finding on a digit you read.
+15. Distrust agreement, yours and the other reader's (Michael, 4 Nov 2026). On this
+   project's hands:
+   - A DIGIT read once by Claude never beats the stored value (twelve straight
+     disagreements resolved against Claude in 2026). Two independent BLIND reads that
+     agree do beat the index (17 of 17 right, Oedelem, 4 Nov 2026): the readers' value
+     is stored and the index value goes in a closed `corroborated` flag.
+   - A NAME is different: on 4 Nov 2026 two blind readers agreed with each other and
+     were wrong four times (O008, O037, O043, O173). No number of machine reads settles
+     a name. When your reading differs from the index or the stored form, KEEP the
+     stored form, emit a `name_vs_index` flag with your reading as `alt_value`, and let
+     a human look at the image.
+   Do not build a finding on a flagged value, digit or name.
 16. Every named person enters the record (Michael, 2026-10-26). Rail 10 stops you
    inventing people; this rail stops you dropping them. Parents, spouses and
    witnesses are what lineages are rebuilt from, so every person the act or its
@@ -610,6 +638,21 @@ weaker party, because that is where ingest bugs live.
    leak a find into the wrong volume. There is no manual found flag any more. If you
    cannot tell which volume a source belongs to, leave `bookpart_id` out and say so;
    do not guess from the year.
+19. Record review owed; never hold for it (Michael, 4 Nov 2026). Every record and amend
+   plan you emit may carry `"_review_flags": [ { "participant_index": 0 | "participant_id": 123
+   | (none, for the act), "field": "...", "reason": "...", "stored_value": "...",
+   "alt_value": "...", "evidence": {...} } ]`. Raise one for: a field you marked uncertain or
+   gave alternatives for (`reader_uncertain`); two reads that differ (`readers_disagree`); a
+   name that differs from the index even when the two readers agree (`name_vs_index`); a
+   date, age or act number from one read with no index value (`digit_single_read`); a
+   which-act, which-column or struck-entry call (`structure`). `evidence` carries the
+   readers' values and confidence, the index value, the image URL or Drive path and folio,
+   never image bytes. The pipeline raises the flags after the record applies; a flag never
+   stops anything. Never emit `overwrite` in a plan: it changes a filled name field or a
+   field the curator ruled on, and apply-batch refuses it. Before building plans, read the
+   locking flags for your target events (`select * from review_flags where locks and
+   event_id in (...)`) and drop any line that touches a locked field; list them in the
+   review file under "locked".
 
 ## Record types (v1 scope + extension hooks)
 
