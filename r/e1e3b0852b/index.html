@@ -1026,9 +1026,15 @@ async function proposeFromFlag(id){
 }
 window.proposeFromFlag=proposeFromFlag;
 /* raise flags carried on a pasted record or plan ("_review_flags"), after it applied; never blocks the apply */
-async function raiseFlags(eventId,batchId,flags){
+async function raiseFlags(eventId,batchId,flags,amendmentId){
   if(!Array.isArray(flags)||!flags.length)return "";
-  const {data,error}=await sb.rpc("raise_review_flags",{p_event_id:eventId,p_batch_id:batchId||"editor-paste-"+new Date().toISOString().slice(0,10),p_flags:flags,p_raised_by:null});
+  /* amendmentId (an amend plan only): participant_index then means the Nth entry of the plan's participants_add. Without it such flags are not raised, so they cannot land on the wrong person (2026-11-05). */
+  const isAmend=amendmentId!==undefined;
+  if(isAmend&&amendmentId==null&&flags.some(f=>f&&f.participant_id==null&&f.participant_index!=null&&f.participant_index!==""))
+    return ` <span class="pill warn" title="plan already applied: flags that use participant_index need the amendment id; give participant_id instead or raise them from apply-batch">flags not raised</span>`;
+  const args={p_event_id:eventId,p_batch_id:batchId||"editor-paste-"+new Date().toISOString().slice(0,10),p_flags:flags,p_raised_by:null};
+  if(isAmend&&amendmentId!=null)args.p_amendment_id=amendmentId;
+  const {data,error}=await sb.rpc("raise_review_flags",args);
   if(error)return ` <span class="pill warn" title="${esc(error.message)}">flags not raised</span>`;
   const n=(data&&data.inserted||[]).length;return n?` <span class="pill flag">${n} flag${n>1?"s":""} raised</span>`:"";
 }
@@ -1464,7 +1470,7 @@ async function pjSubmitBatch(){
         const tag=(res&&res.status==="already_applied")?"already applied":("amend:"+((res&&res.amendment_id)||"?"));
         const ch=(res&&res.changes)||{},sk=ch.skipped||[],made=ch.sources_created||[];
         const skTxt=sk.map(x=>x.field?(x.participant_id?("participant "+x.participant_id+" "+x.field):x.field)+(x.reason&&/locked/.test(x.reason)?" (locked by ruling)":""):(x.source_url?"a source already cited":"?"));
-        const fl=await raiseFlags(rec.target_event_id,"editor-paste-"+(rec.source_key||"").split("-").slice(0,-1).join("-"),rec._review_flags); // after the plan applied; a failure here never undoes it
+        const fl=await raiseFlags(rec.target_event_id,"editor-paste-"+(rec.source_key||"").split("-").slice(0,-1).join("-"),rec._review_flags,(res&&res.amendment_id)||null); // after the plan applied (amendment id lets participant_index mean the plan's participants_add); a failure here never undoes it
         amendDone.push(`<span class="mono">${esc(rec.target_event_id)}</span> &rarr; ${esc(tag)}`
           +(made.length?` <span class="muted">(new source ${made.map(esc).join(", ")})</span>`:"")
           +(skTxt.length?` <span class="pill warn">skipped</span> <span style="font-size:11px">${skTxt.map(esc).join(", ")}</span>`:"")+fl);
