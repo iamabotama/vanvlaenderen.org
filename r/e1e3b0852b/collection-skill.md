@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-05 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:7f5536eaee660dee`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-06 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:f1fe01f5d64bfc70`
 
 ---
 name: vanvlaenderen-record-collection
@@ -17,6 +17,18 @@ description: >
   curator review. Do NOT use for the findings or source-note layers; this is the
   structured vital-records layer only.
 ---
+
+<!-- Revised 2026-11-05: name fields (Michael, decisions of 3 and 5 Nov). Rail 4 reworded (name_as_written
+is the only verbatim field; given/surname are the editor's standard forms, Q1 and Q-B), rail 17 narrowed (a
+given-only child keeps its given name; brackets never import another person's word, Q3 and Q-A), rail 19
+extended (derived fields travel with a rename; a new participant needs a surname or [not recorded], Q-D and
+Q-F), Phase A step 4 notes "given/surname from the AGATHA index" (Q7). Added the participant key
+name_provenance (written, carried, inferred, placeholder; Q2): stated on every participant whose surname is
+not in name_as_written; inert until the provenance migration is applied, refused-if-missing after it.
+Specs: Operational/participant-name-fields-cleanup-spec-2026-11-03.md and -2026-11-05.md. -->
+
+<!-- Revised 2026-11-05: rail 20 added (what reaches Michael during data gathering:
+irreversible, blocking, or about to be used; the rest stays a flag). -->
 
 <!-- Revised 2026-11-04 (late evening): review flags (Michael, "go" 21:23 PT). Rail 15 rewritten
 (names: no number of machine reads settles a name; digits: two agreeing blind reads beat the index),
@@ -189,7 +201,8 @@ values). Supply NAMES, not IDs:
   "participants": [
     {"role":"groom","name_as_written":"Joannes van Vlaenderen","given":"Joannes","surname":"van Vlaenderen","canonical_surname":"Van Vlaenderen","notes":null},
     {"role":"bride","name_as_written":"Maria de Smet","given":"Maria","surname":"de Smet","status":"not_tracked","notes":null},
-    {"role":"witness","name_as_written":"Petrus de Vos","given":"Petrus","surname":"de Vos","status":"not_tracked","notes":null}
+    {"role":"witness","name_as_written":"Petrus de Vos","given":"Petrus","surname":"de Vos","status":"not_tracked","notes":null},
+    {"role":"father","name_as_written":"Livini","given":"Livinus","surname":"van Vlaenderen","canonical_surname":"Van Vlaenderen","name_provenance":"inferred","notes":"named only as 'filius Livini'; surname inferred from the groom's"}
   ],
   "sources": [
     {"role":"index","register":"BE-A0514 / 1075 / 000 / 01355","locator":"p. 141, reg. 6","url":"https://…/0_0040_r","url_level":"folio","bookpart_id":"54314","notes":"…"},
@@ -265,7 +278,8 @@ the plan's note when a hand edit is needed. A field the curator has ruled on (a 
 too and reported as locked; only the curator's own paths (`resolve_review_flag`,
 `accept_amend_proposal`, or a plan he wrote himself with `overwrite`) change it. A plan may
 carry `_review_flags` (rail 19); they are raised after it applies. After applying, the editor offers the
-source-flag recompute.
+source-flag recompute. `participants_add` and `participants_update` do not take `name_provenance` yet
+(the B2 build adds it); say in the plan's note when a row's surname is inferred, so the stamp can follow.
 
 **No tracker block.** Do NOT emit a `tracker` / `progress_update` block — it is
 retired and the editor ignores it. Search status is set per volume in the tracker
@@ -285,6 +299,15 @@ require all of:
   for name resolution.
 - at least one participant with `role` + `name_as_written` — and every participant
   row named, `[illegible]`, or `[not recorded]`. Never blank (rail 13).
+- `name_provenance` on every participant whose `surname` does not occur (letters
+  only, case ignored) in `name_as_written`: `inferred` when the surname comes from
+  a named relative or from household position; `carried` only when the source
+  wrote it for this person by ditto, index column, margin or block head AND it has
+  been carried into `name_as_written` (rail 17). Omit the key when the surname is
+  in `name_as_written` (the database stamps `written`); a rail-13 literal is stamped
+  `placeholder` automatically. Any other mismatch is refused by `apply_full_record`
+  once the provenance migration is live; before it the key is stored nowhere and
+  ignored. Never state `written` or `carried` for a surname that is not in the name.
 - every participant role corresponds to a column the source actually has (rail 10).
 - every person the act names is a participant (rail 16): parents, spouses,
   godparents, witnesses, guardians, kin, sureties, counterparties, neighbours,
@@ -362,7 +385,10 @@ hit, update the tracker. A zero-found sweep is a valid, valuable result.
    the index, `municipality_name`, `parish_name`, a `summary` noting it is from
    the index, `needs_source=1`, `fully_sourced=0`; an `event_sources` row with
    `role='index'`, the index image `url`, the register shelfmark; and
-   `event_participants` for the names the index gives, `status='unreconciled'`.
+   `event_participants` for the names the index gives, `status='unreconciled'`,
+   each with the note "given/surname from the AGATHA index" and no `name_provenance`
+   key (the index writes the surname next to the name, so the default `written`
+   applies; the note marks the values as provisional until the act is read).
    Emit ALL the hits from one index as a single JSON **array** in the index's row
    order (bulk entry — one paste, one Submit). If the curator used the volume's
    **"Add record here"** in the tracker, the municipality, parish, class, span and
@@ -523,9 +549,18 @@ weaker party, because that is where ingest bugs live.
    principal + parents/spouse + roles) and legacy source row. A shared
    `original_record` folio url plus a fuzzy name match is a strong duplicate
    INDICATOR (the editor surfaces it at preview), but never an auto-merge.
-4. Canonical surname + V/v. Set `canonical_surname='Van Vlaenderen'` on any
-   spelling variant; keep `name_as_written`/`surname` verbatim. `Van Vlaenderen`
-   free-standing; `van Vlaenderen` as a particle in a Latin/Dutch phrase.
+4. Canonical surname + V/v. `name_as_written` is the only verbatim field: the
+   source's spelling, spacing and capitalisation for this person in this act.
+   `given` and `surname` are the editor's standard forms: one form per name, case
+   regularised, particle separated, abbreviations expanded, Latin genitives in the
+   nominative. Where the index and the act give the same name in variant spellings
+   (Broeckaert / Brockaert, Vlaendere / Vlaenderen), the standard form stands and
+   nothing is rewritten. The act governs only where the index and the act give
+   different names (Laren / Laroij, Wulgaerts / Walgaerts); then `given`/`surname`
+   follow the act. All-capital index forms are case-fixed, not re-spelled. Set
+   `canonical_surname='Van Vlaenderen'` on any spelling variant; it is the only
+   collapse to a single form. `Van Vlaenderen` free-standing; `van Vlaenderen` as a
+   particle in a Latin/Dutch phrase.
 5. Capture gaps. Missing or undigitized year ranges go in
    `research_progress.coverage` as per-segment registers (`available:false`).
 6. Approve before writing. Both roles paste -> Parse & preview -> Submit; the
@@ -620,11 +655,25 @@ weaker party, because that is where ingest bugs live.
    "Pierre François Vlaenderen (Van)", not "Vlaenderen (Van), Pierre François".
    Keep the clerk's spelling, spacing and capitalisation exactly ("Vanvlaender",
    "henri", "VanVlaenderen" stay as written); only the ORDER is normalised. The
-   field always carries the surname: when the cell or the act body gives only the
-   given name (a ditto row, or a birth act that names the child "Pierre"), take the
-   surname from the ditto, the margin entry or the heading, and say where it came
-   from in the participant's `notes`. `given` and `surname` hold the two parts
-   separately; `canonical_surname` is still "Van Vlaenderen".
+   field holds what the source writes for this person, no more. When the cell or
+   the act gives this person only a given name (a birth act that names the child
+   "Henricus"), `name_as_written` is that given name alone and `surname` carries the
+   relative's surname; say in the participant's `notes` where it came from (it is
+   inferred). A surname enters `name_as_written` only through a device that names
+   this person: a ditto in the same row, an index column, a margin entry for this
+   person, or a family-block head line in a compiler's abstract. Brackets complete a
+   word the source wrote for this person ("Vlaend[eren]"); they never import a word
+   written for someone else ("Livini [van Vlaenderen]" is wrong when the act gives
+   only "Livini"). A surname belongs to the name it is written against, by grammar
+   and not by role: in "Carolus van Vlaender f. Livini" it is the child's and the
+   father's is inferred; in "filius Livini van Vlaenderen" it is the father's and the
+   child's is inferred. `given` and `surname` hold the two parts separately, in the
+   standard forms of rail 4; `canonical_surname` is still "Van Vlaenderen". The
+   inference is stated structurally as well as in the notes: such a participant
+   carries `"name_provenance": "inferred"` (values: written, carried, inferred,
+   placeholder; see the min bar), so the notes say where the surname came from and
+   the column says what kind of value it is. Identity linking (ARCHITECTURE
+   S3.12.6) weighs an inferred surname below a written one.
 18. Every AGATHA source names its volume (Michael, 2026-10-26). Put the tracker
    volume's AGATHA bookpart number in `sources[].bookpart_id` (digits only, e.g.
    `"62860"`): the index book for an `index` source, the register for an
@@ -652,7 +701,31 @@ weaker party, because that is where ingest bugs live.
    field the curator ruled on, and apply-batch refuses it. Before building plans, read the
    locking flags for your target events (`select * from review_flags where locks and
    event_id in (...)`) and drop any line that touches a locked field; list them in the
-   review file under "locked".
+   review file under "locked". A plan that changes `name_as_written` on a row with a
+   filled `surname` states the derived fields that follow (`given`, `surname`,
+   `canonical_surname`) or says in its `note` why they stay. In a review-flag
+   resolution or a proposal acceptance, give them in the same call (`p_given`,
+   `p_surname`, `p_canonical_surname` on `resolve_review_flag`; `p_derived` on
+   `accept_amend_proposal`): both refuse a rename that would leave the stored
+   surname pointing at a name the new value no longer contains. A new participant
+   needs a surname; if the act names none, the surname is `[not recorded]`
+   (rail 13).
+
+20. What reaches Michael during data gathering (Michael, 5 Nov 2026). Every
+   uncertainty is already safe in the database as an open review flag, so a batch
+   report puts a decision in front of him only when one of three things is true:
+   - **Irreversible**: a void, delete, merge or retire of a record or person.
+   - **Blocking**: the next batch cannot run until it is decided.
+   - **About to be used**: the value is going into a finding, the site or an
+     outbound document.
+   Everything else stays a flag and waits for a flag-review session, worked in
+   bulk by type (all disputed dates in one sitting, all name variants in another)
+   when he chooses. People seen on a page but not entered go into the run's leads
+   file for the next sweep thread, never into his list. Each item that does reach
+   him is one line of context, the image link with the act's position on the
+   page, a recommendation, and what happens if he does nothing. Batch the
+   irreversibles so one "go" covers them. Never spawn a thread to resolve flags
+   unless he asks for the review session.
 
 ## Record types (v1 scope + extension hooks)
 
