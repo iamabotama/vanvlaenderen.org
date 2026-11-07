@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-06 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:f1fe01f5d64bfc70`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-07 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:bf1b3d233f973947`
 
 ---
 name: vanvlaenderen-record-collection
@@ -17,6 +17,18 @@ description: >
   curator review. Do NOT use for the findings or source-note layers; this is the
   structured vital-records layer only.
 ---
+<!-- skill-revision: 2026-11-06.ecc5acd4 -->
+
+<!-- Revised 2026-11-05 (late night): rail 21 added (every payload carries _skill_revision, the revision id
+near the top of this file; apply.mjs and validate-batch.mjs refuse a payload built against
+another revision or none). Cause: on 5 Nov a thread built eight records against a stale synced copy of this
+skill while the canonical file had been revised twice. Detail: Operational/apply-path-safety-2026-11-05.md. -->
+
+<!-- Revised 2026-11-05 (night): three apply-failures from the lead-reads batch (Michael, approved
+22:41 PT). Rail 13: surname is required, not just name_as_written. Rail 19: the permitted field and
+reason lists, and that a rejected flag set does not fail its record. Roles and write path: applying a
+batch file through the editor leaves it unstamped. Detail:
+Operational/overnight-runs/2026-11-05/lead-reads/lead-reads-report-2026-11-06.md (appendix). -->
 
 <!-- Revised 2026-11-05: name fields (Michael, decisions of 3 and 5 Nov). Rail 4 reworded (name_as_written
 is the only verbatim field; given/surname are the editor's standard forms, Q1 and Q-B), rail 17 narrowed (a
@@ -145,6 +157,12 @@ record (JSON)** field: paste the JSON, click **Parse & preview**, then **Submit*
   curator's Submit applies the record atomically via the `apply_full_record` RPC
   and keeps a proposal row for the audit trail. The in-chat review before pasting
   is the gate.
+  Applying a batch FILE through the editor's paste field leaves that file unstamped:
+  `_applied_as` is written back only by `apply-batch.mjs`, and the editor writes nothing
+  to disk and nothing to `Workflow/apply-batch.log`. A file applied by paste and then
+  re-run through the script re-applies every record in it. Apply a file with the script,
+  or stamp it by hand from the live ids afterwards, matching on a unique field such as
+  `date_iso` (Michael, 5 Nov 2026, after seven records were nearly duplicated that way).
 - Contributor (Connie, Claude Pro browser): paste -> Parse & preview -> Submit.
   Her Submit lands a row in the `proposals` queue (RLS pins it to her role).
   Michael then reviews and applies it; that apply step is the validation pass and
@@ -559,7 +577,11 @@ weaker party, because that is where ingest bugs live.
    different names (Laren / Laroij, Wulgaerts / Walgaerts); then `given`/`surname`
    follow the act. All-capital index forms are case-fixed, not re-spelled. Set
    `canonical_surname='Van Vlaenderen'` on any spelling variant; it is the only
-   collapse to a single form. `Van Vlaenderen` free-standing; `van Vlaenderen` as a
+   collapse to a single form. Standard form means the regularised representation of
+   the letters the clerk wrote (case, particle, abbreviation, grammatical case), never
+   a re-spelling: a variant spelling of a bearer's surname (van Vlanderen, Vlaendere,
+   Deflandre) stays in `surname`, and `canonical_surname` alone collapses it (Michael,
+   6 Nov 2026). `Van Vlaenderen` free-standing; `van Vlaenderen` as a
    particle in a Latin/Dutch phrase.
 5. Capture gaps. Missing or undigitized year ranges go in
    `research_progress.coverage` as per-segment registers (`available:false`).
@@ -610,6 +632,16 @@ weaker party, because that is where ingest bugs live.
    A blank row asserts neither and is indistinguishable from "nobody has looked
    yet". These two literals are the only acceptable placeholders; the editor and
    the integrity check both know them.
+   **`surname` is required too, not just `name_as_written`** (Michael, 5 Nov 2026;
+   this is the rule rail 19 already pointed here for). `apply_full_record` refuses a
+   named participant that carries only `given` and `name_as_written`, and the whole
+   record fails with it. The field still takes the editor's standard form, not the
+   verbatim one (rail 4). Where part of the surname cannot be read, give the standard
+   form of the legible part and mark the gap in place (`"surname": "van [illegible] van
+   Vooren"`), so the legible part stays searchable; a bare `[illegible]` only where none
+   of it can be read, and `[not recorded]` where the act names no surname. A participant
+   whose `name_as_written` is itself one of the two placeholders still needs the
+   `surname` field set to the matching placeholder.
 14. French Republican dates are dates. Records from **an 1 to an 14** (1792-1805)
    are dated in the Republican calendar: `an 5`, `5 Vendémiaire an 8`,
    `1er Brumaire an 10`. Months run **Vendémiaire, Brumaire, Frimaire, Nivôse,
@@ -697,7 +729,16 @@ weaker party, because that is where ingest bugs live.
    which-act, which-column or struck-entry call (`structure`). `evidence` carries the
    readers' values and confidence, the index value, the image URL or Drive path and folio,
    never image bytes. The pipeline raises the flags after the record applies; a flag never
-   stops anything. Never emit `overwrite` in a plan: it changes a filled name field or a
+   stops anything. `field` must be one of `name_as_written`, `given`, `surname`,
+   `canonical_surname`, `role`, `date_text`, `date_iso`, `year`, `age`, `birth_date`,
+   `death_date`, `act_number`, `structure`, `other`, and `reason` one of the eight named
+   above (`review_flags_field_check`, `review_flags_reason_check`); anything else is
+   rejected. **A rejected flag set does not fail its record**: on 5 Nov 2026 a flag with
+   `field: "summary"` was dropped while its record applied, leaving EVT_6464 flagless and
+   the run's tally silent about it, so after a batch check `review_flags` by event id
+   rather than trusting the console count. A fact about the act that fits no field name is
+   `structure` or `other`, never a field invented for it; a birth or death day read off the
+   act is `birth_date` / `death_date`. Never emit `overwrite` in a plan: it changes a filled name field or a
    field the curator ruled on, and apply-batch refuses it. Before building plans, read the
    locking flags for your target events (`select * from review_flags where locks and
    event_id in (...)`) and drop any line that touches a locked field; list them in the
@@ -726,6 +767,21 @@ weaker party, because that is where ingest bugs live.
    page, a recommendation, and what happens if he does nothing. Batch the
    irreversibles so one "go" covers them. Never spawn a thread to resolve flags
    unless he asks for the review session.
+
+21. Stamp every payload with the skill revision (Michael, 5 Nov 2026). Copies of this
+   skill drift: the canonical file in Skills/, the synced plugin copy, the site snapshot and Connie's
+   upload are not updated together, and a thread that reads an old copy builds payloads that break
+   rules it never saw. The canonical file carries a revision id on a line near the top,
+   `<!-- skill-revision: YYYY-MM-DD.xxxxxxxx -->`, derived from the file's own content by
+   `node "Workflow/skill-revision.mjs" stamp`. Before building anything, read the revision line of the
+   copy you were given. If it has none, it is not the canonical file: stop and ask for the canonical
+   one. Put the id you read into every record and every amend plan as `"_skill_revision": "YYYY-MM-DD.xxxxxxxx"`
+   (the editor ignores the key; apply-batch strips it). Optionally add `"_payload_kind": "record"` or
+   `"amend"`. `Workflow/apply.mjs` and `Workflow/validate-batch.mjs` refuse a payload with no stamp or a
+   stamp that differs from the canonical file, so a stale copy is caught at the door, not after the
+   apply. Never copy a stamp from another payload or invent one; if you did not read the revision
+   line yourself, leave the key out and say so. A contributor's payload carries the revision of the
+   copy she was given; a mismatch means "refresh your skill copy", not that the reading is wrong.
 
 ## Record types (v1 scope + extension hooks)
 
