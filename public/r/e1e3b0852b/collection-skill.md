@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-11 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:c4e9ef4baad37eda`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-12 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:41560058fc679d34`
 
 ---
 name: vanvlaenderen-record-collection
@@ -17,7 +17,7 @@ description: >
   curator review. Do NOT use for the findings or source-note layers; this is the
   structured vital-records layer only.
 ---
-<!-- skill-revision: 2026-11-11.f328eda9 -->
+<!-- skill-revision: 2026-11-12.6ef67ce3 -->
 
 <!-- Revised 2026-11-11 (Michael's ruling, 11 Nov PT): rail 15 no longer sends a corroborated index value to a
 review flag. There is no `corroborated` reason in review_flags_reason_check and rail 19 forbids `other`, so the
@@ -302,9 +302,10 @@ plan instead of a new record: `{"_kind":"amend","target_event_id":"EVT_…",
 "participants_add":[…],"sources_add":[…]}`. Paste one plan or an array into the
 same records-editor field (or run `Workflow/apply-batch.mjs`); it goes to the
 `amend_record` RPC, is logged in `event_amendments` and is idempotent per
-source_key. `transcription`, `translation`, `source_locator` and existing
-`given`/`surname` are fill-only: the RPC skips them if already filled, so say in
-the plan's note when a hand edit is needed. A field the curator has ruled on (a closed review flag) is skipped
+source_key. `transcription`, `translation`, `source_locator` (and `municipality_id`, `parish_id`, `record_subtype`,
+`date_end`) and existing `given`/`surname` are fill-only: the RPC skips them if already filled. To change a FILLED
+fill-only field, the plan carries `"event_replace":{"<field>":{"from":"<value stored now>","to":"<reading>"}}`
+instead of putting the field in `event_set` (rail 22); for names, participant `replace`. A field the curator has ruled on (a closed review flag) is skipped
 too and reported as locked; only the curator's own paths (`resolve_review_flag`,
 `accept_amend_proposal`, or a plan he wrote himself with `overwrite`) change it. A plan may
 carry `_review_flags` (rail 19); they are raised after it applies. After applying, the editor offers the
@@ -828,6 +829,15 @@ weaker party, because that is where ingest bugs live.
    apply. Never copy a stamp from another payload or invent one; if you did not read the revision
    line yourself, leave the key out and say so. A contributor's payload carries the revision of the
    copy she was given; a mismatch means "refresh your skill copy", not that the reading is wrong.
+22. Never let a reading be dropped by fill-only (Michael, 12 Nov 2026). `amend_record` keeps a filled fill-only field
+   and only logs the skip; on 12 Nov this had silently kept 41 wrong index locators (AGATHA record ids, wrong act
+   numbers) and two translations that contradicted their own new transcriptions. For every fill-only field a plan
+   offers, compare with the value stored now (the queue's `source_locator_stored`, or a live SELECT): empty -> put it in
+   `event_set`; the same -> leave it out; different -> `event_replace` {from: stored, to: reading}, which writes only if
+   the stored value is still `from` (compare-and-swap). A cosmetic difference ("act akte 101" vs "act 101") is still a
+   difference. `apply-batch.mjs`/`apply.mjs` re-check against the live record and STOP when a different stored value
+   would be kept (override `--accept-kept` only on purpose); the records editor shows such a row as "stop" and refuses
+   it. After applying, `Workflow/sql/check-kept-vs-offered.sql` must return 0 rows.
 
 ## Record types (v1 scope + extension hooks)
 
