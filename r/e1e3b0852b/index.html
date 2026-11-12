@@ -1214,12 +1214,29 @@ function pjPayloadForRpc(o){const c=Object.assign({},o);delete c.contract_versio
 const AMEND_EVENT_SET=["date_text","date_iso","date_precision","year","date_end","municipality_id","parish_id","source_locator","summary","record_subtype","transcription","translation"];
 const AMEND_FILL_ONLY=["municipality_id","parish_id","source_locator","record_subtype","transcription","translation","date_end"];
 const pjIsAmend=o=>!!(o&&typeof o==="object"&&!Array.isArray(o)&&o._kind==="amend");
+/* FILLGUARD 2026-11-12: amend_record keeps a FILLED fill-only field. A plan that means to change one carries
+   event_replace {field:{from:<stored>,to:<new>}} (compare-and-swap in the RPC). pjKeptDiffs lists every place where
+   a different stored value would be kept; the preview shows them as "stop" and Apply refuses that plan. */
+const pjNorm=v=>(v==null?"":String(v)).trim();
+const pjShort=v=>{const t=JSON.stringify(v==null?null:v);return t.length>70?t.slice(0,67)+'..."':t;};
+function pjKeptDiffs(o,e){const out=[];
+  Object.entries(o.event_set||{}).forEach(([k,v])=>{if(AMEND_FILL_ONLY.includes(k)&&pjNorm(e[k])&&pjNorm(e[k])!==pjNorm(v))out.push(k+": stored "+pjShort(e[k])+" would be KEPT over "+pjShort(v)+" (needs event_replace)");});
+  Object.entries(o.event_replace||{}).forEach(([k,v])=>{if(pjNorm(e[k])!==pjNorm(v&&v.from))out.push(k+": event_replace expects "+pjShort(v&&v.from)+", stored is "+pjShort(e[k]));});
+  return out;}
 function pjAmendPlan(o){const c={};Object.keys(o).forEach(k=>{if(k[0]!=="_"&&k!=="contract_version")c[k]=o[k];});return c;} // strip _kind/_applied_as/notes-to-self, as apply-batch does
 function pjAmendError(o){
   if(!/^EVT_\d+$/.test(o.target_event_id||""))return "amend: target_event_id must be an EVT_ id";
   if(!String(o.source_key||"").trim())return "amend: source_key is required (it makes the plan idempotent)";
   const bad=Object.keys(o.event_set||{}).filter(k=>!AMEND_EVENT_SET.includes(k));
   if(bad.length)return "amend: event_set field(s) not amendable: "+bad.join(", ");
+  if(o.event_replace!=null){
+    if(typeof o.event_replace!=="object"||Array.isArray(o.event_replace))return "amend: event_replace must be an object {field:{from,to}}";
+    for(const [k,v] of Object.entries(o.event_replace)){
+      if(!AMEND_FILL_ONLY.includes(k))return "amend: event_replace."+k+" is not a fill-only field; use event_set";
+      if(o.event_set&&k in o.event_set)return "amend: "+k+" is in both event_set and event_replace";
+      if(!v||typeof v.from!=="string"||typeof v.to!=="string"||!v.from.trim()||!v.to.trim())return "amend: event_replace."+k+" needs non-empty from and to";
+    }
+  }
   if((o.participants_update||[]).some(u=>!u||!/^\d+$/.test(String(u.participant_id||""))))return "amend: every participants_update needs a numeric participant_id";
   if((o.participants_add||[]).some(a=>!a||!String(a.name_as_written||"").trim()))return "amend: every participants_add needs name_as_written ([illegible] / [not recorded] if so)";
   if((o.sources_add||[]).some(x=>x&&x.bookpart_id!=null&&!/^\d+$/.test(String(x.bookpart_id))))return "amend: bookpart_id must be numeric";
@@ -1254,7 +1271,9 @@ async function pjAmendCheck(arr){ // advisory: compare each amend plan with the 
         Object.entries(o.event_if||{}).forEach(([k,v])=>{const cur=e[k];
           const same=(v===null)?(cur==null):(cur!=null&&String(cur)===String(v));
           if(!same)bad.push(k+" changed since the plan was built");});
-        Object.keys(o.event_set||{}).forEach(k=>{if(AMEND_FILL_ONLY.includes(k)&&e[k]!=null&&e[k]!=="")warn.push(k+" already filled: will be skipped");});
+        pjKeptDiffs(o,e).forEach(t=>bad.push(t));   // FILLGUARD: a different stored value would be kept -> stop (Apply refuses the plan)
+        Object.keys(o.event_set||{}).forEach(k=>{if(AMEND_FILL_ONLY.includes(k)&&pjNorm(e[k])&&pjNorm(e[k])===pjNorm(o.event_set[k]))warn.push(k+" already holds the same value (harmless)");});
+        Object.entries(o.event_replace||{}).forEach(([k,v])=>{if(pjNorm(e[k])===pjNorm(v&&v.from))warn.push(k+" will be REPLACED: "+pjShort(v.from)+" → "+pjShort(v.to));});
         (o.participants_update||[]).forEach(u=>{if(!(P[o.target_event_id]||new Set()).has(String(u.participant_id)))bad.push("participant "+u.participant_id+" is not on this event");});
       }
       cell.className="";
@@ -1436,7 +1455,7 @@ function pjParseBatch(arr){
     <div class="kv"><b>Batch:</b> ${arr.length} item(s), ${recs.length} ready${nAmend?(" (incl. "+nAmend+" amend plan"+(nAmend>1?"s":"")+")"):""}${skips.length?(", "+skips.length+" already applied (skipped)"):""}${probs.length?(", "+probs.length+" to fix"):""}.</div>
     <table><thead><tr><th>#</th><th>Type</th><th>Year</th><th>Principal / event</th><th>Place / source key</th><th>Status</th><th>Dup? / live check</th></tr></thead><tbody>${rows}</tbody></table>
     <div class="kv muted" id="pjb_dupnote" style="font-size:11.5px;margin-top:6px">${arr.some(o=>o&&o.event)?"Duplicate-scan running&hellip;":"No new records in this paste, so no duplicate scan."}</div>
-    ${arr.some(pjIsAmend)?'<div class="kv muted" style="font-size:11.5px;margin-top:4px">Amend rows are checked against the live event. The RPC never overwrites a filled fill-only field (transcription, translation, source_locator, …) or a filled given/surname; those are skipped and listed after Apply. Each plan is logged in event_amendments and can be undone.</div>':""}</div>`;
+    ${arr.some(pjIsAmend)?'<div class="kv muted" style="font-size:11.5px;margin-top:4px">Amend rows are checked against the live event. The RPC never overwrites a filled fill-only field (transcription, translation, source_locator, …) or a filled given/surname unless the plan says so with <code>event_replace</code> (fields) or <code>replace</code> (names); where a different stored value would be kept the row shows <b>stop</b> and Apply refuses that plan. Each plan is logged in event_amendments and can be undone.</div>':""}</div>`;
   PJ_BATCH_SRC=arr;              // keep the pasted rows addressable for compareBatchDup()
   pjDupCheckBatch(arr);          // advisory, async — scans every row, incl. the ones needing a fix
   if(arr.some(pjIsAmend))pjAmendCheck(arr); // advisory, async — amend plans vs the live event
@@ -1465,11 +1484,17 @@ async function pjSubmitBatch(){
     try{
       if(pjIsAmend(rec)){                    // amend plan: amend_record, no proposal row (event_amendments is its audit trail)
         if(!curator) throw new Error("amend plans are applied by the curator only");
+        { // FILLGUARD 2026-11-12: refuse a plan whose reading would be silently dropped
+          const {data:ev,error:ee}=await sb.from("events").select(AMEND_FILL_ONLY.join(",")).eq("event_id",rec.target_event_id).maybeSingle();
+          if(ee) throw ee;
+          const kd=ev?pjKeptDiffs(rec,ev):[];
+          if(kd.length) throw new Error("not applied: "+kd.join("; ")+". Ask Claude to rebuild the plan with event_replace, or apply with apply.mjs --accept-kept to keep the stored value on purpose.");
+        }
         const {data:res,error:re}=await sb.rpc("amend_record",{payload:pjAmendPlan(rec)});
         if(re) throw re;
         const tag=(res&&res.status==="already_applied")?"already applied":("amend:"+((res&&res.amendment_id)||"?"));
         const ch=(res&&res.changes)||{},sk=ch.skipped||[],made=ch.sources_created||[];
-        const skTxt=sk.map(x=>x.field?(x.participant_id?("participant "+x.participant_id+" "+x.field):x.field)+(x.reason&&/locked/.test(x.reason)?" (locked by ruling)":""):(x.source_url?"a source already cited":"?"));
+        const skTxt=sk.map(x=>x.field?(x.participant_id?("participant "+x.participant_id+" "+x.field):x.field)+(x.reason&&/locked/.test(x.reason)?" (locked by ruling)":(!x.participant_id&&x.reason&&/fill-only|event_replace/.test(x.reason)&&pjNorm(x.kept)!==pjNorm(x.offered)?" (KEPT a different stored value)":"")):(x.source_url?"a source already cited":"?"));
         const fl=await raiseFlags(rec.target_event_id,"editor-paste-"+(rec.source_key||"").split("-").slice(0,-1).join("-"),rec._review_flags,(res&&res.amendment_id)||null); // after the plan applied (amendment id lets participant_index mean the plan's participants_add); a failure here never undoes it
         amendDone.push(`<span class="mono">${esc(rec.target_event_id)}</span> &rarr; ${esc(tag)}`
           +(made.length?` <span class="muted">(new source ${made.map(esc).join(", ")})</span>`:"")

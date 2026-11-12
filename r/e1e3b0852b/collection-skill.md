@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-07 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:bf1b3d233f973947`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-12 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:41560058fc679d34`
 
 ---
 name: vanvlaenderen-record-collection
@@ -17,7 +17,19 @@ description: >
   curator review. Do NOT use for the findings or source-note layers; this is the
   structured vital-records layer only.
 ---
-<!-- skill-revision: 2026-11-06.ecc5acd4 -->
+<!-- skill-revision: 2026-11-12.6ef67ce3 -->
+
+<!-- Revised 2026-11-11 (Michael's ruling, 11 Nov PT): rail 15 no longer sends a corroborated index value to a
+review flag. There is no `corroborated` reason in review_flags_reason_check and rail 19 forbids `other`, so the
+prescription could not be followed: a faithful reader produced a batch that failed FL-REASON, which is what
+happened to unit BB1 on 11 Nov. Corroboration now goes in the participant's append_notes. Michael chose amending
+the rail over widening the constraint, on the grounds that the flag table is a work queue and a confirmed reading
+is not work. Detail: Operational/overnight-runs/2026-11-11/first-reads-2/DECISIONS-2026-11-11b.md item 4. -->
+<!-- Revised 2026-11-07 (Michael's rulings of 7 Nov 06:50 PT and the amend thread): min bar asks for a parish only on
+parish-register types (civil records name none); rail 11 exempts ten-year-table sources from page + book and has them cite the
+table image; rail 16 covers a spouse named in a table remark; rail 19 says the DB drops a second flag with the same key within one
+batch file. Detail: Operational/decisions-for-michael-2026-11-07-regional-pull.md and
+Operational/handoff-session-closeout-2026-11-07-regional-pull-amends.md. -->
 
 <!-- Revised 2026-11-05 (late night): rail 21 added (every payload carries _skill_revision, the revision id
 near the top of this file; apply.mjs and validate-batch.mjs refuse a payload built against
@@ -290,9 +302,10 @@ plan instead of a new record: `{"_kind":"amend","target_event_id":"EVT_…",
 "participants_add":[…],"sources_add":[…]}`. Paste one plan or an array into the
 same records-editor field (or run `Workflow/apply-batch.mjs`); it goes to the
 `amend_record` RPC, is logged in `event_amendments` and is idempotent per
-source_key. `transcription`, `translation`, `source_locator` and existing
-`given`/`surname` are fill-only: the RPC skips them if already filled, so say in
-the plan's note when a hand edit is needed. A field the curator has ruled on (a closed review flag) is skipped
+source_key. `transcription`, `translation`, `source_locator` (and `municipality_id`, `parish_id`, `record_subtype`,
+`date_end`) and existing `given`/`surname` are fill-only: the RPC skips them if already filled. To change a FILLED
+fill-only field, the plan carries `"event_replace":{"<field>":{"from":"<value stored now>","to":"<reading>"}}`
+instead of putting the field in `event_set` (rail 22); for names, participant `replace`. A field the curator has ruled on (a closed review flag) is skipped
 too and reported as locked; only the curator's own paths (`resolve_review_flag`,
 `accept_amend_proposal`, or a plan he wrote himself with `overwrite`) change it. A plan may
 carry `_review_flags` (rail 19); they are raised after it applies. After applying, the editor offers the
@@ -312,9 +325,13 @@ require all of:
 
 - `event.event_type` non-empty.
 - a date: `event.year` OR `event.date_text`.
-- `event.municipality_name` (or `municipality_id`) AND `event.parish_name`
-  (or `parish_id`) on any FOUND record, so the pasted block is self-contained
-  for name resolution.
+- `event.municipality_name` (or `municipality_id`) on any FOUND record, and
+  `event.parish_name` (or `parish_id`) on a parish-register type (baptism, marriage,
+  burial, death, birth, betrothal), so the pasted block is self-contained for name
+  resolution. Civil records (civil_birth, civil_marriage, civil_death) name no parish
+  (Michael, 7 Nov 2026): do not set `parish_name` or `parish_id` on them, and never carry
+  a parish over from the municipality's parish records. A legacy typed baptism, burial or
+  marriage after 1796 keeps its parish, being a parish-register type.
 - at least one participant with `role` + `name_as_written` — and every participant
   row named, `[illegible]`, or `[not recorded]`. Never blank (rail 13).
 - `name_provenance` on every participant whose `surname` does not occur (letters
@@ -336,7 +353,8 @@ require all of:
   and `repository` (with `short_citation` and `reliability` where known).
 - at least one source with a `url`, OR `event.needs_source` set to `1` (an
   index-only lead with no record yet is allowed, but must say so explicitly).
-- on an index source, a `locator` carrying page AND register book (rail 11).
+- on an index source, a `locator` carrying page AND register book (rail 11); on a
+  ten-year-table source, a `locator` naming the table image (rail 11).
 - every AGATHA source carries `bookpart_id` for the volume it cites (rail 18).
 - `fully_sourced: 1` ONLY with a folio url AND a transcription/translation.
 - access-period gate (rail 7): a baptism/civil_birth must be MORE than 100 years
@@ -612,6 +630,14 @@ weaker party, because that is where ingest bugs live.
    put 74 fictional people in the database.
 11. Cite page AND book. `locator` reads `p. 141, reg. 6`. A bare page number is not
    a citation and must never be used to judge whether two records are the same act.
+   **Exception: a ten-year table (tienjaarlijkse tafel) source cites the table image,
+   not page + book** (Michael, 7 Nov 2026). Its `locator` reads `table image 0_NNNN side,
+   act no. X, year Y` (for example the image id from the viewer URL, which side of the
+   opening, the act number the table line gives, the year the line sits under). The source
+   carries `role: "index"`, `source_subtype: "ten-year table"`, the viewer `url` and the
+   volume's `bookpart_id` (rail 18). Never invent an image id, side or act number: give only
+   what the table line and the viewer URL show, and put anything unreadable in the
+   `notes`. Do not add a made-up ", viewer p. N, reg. Vnnn" tail.
 12. `date_text` is verbatim; `date_iso` is derived. Put exactly what the clerk
    wrote in `date_text` (`19 8ber 1787`) and the machine date in `date_iso`
    (`1787-10-19`). **The Roman-numeral months are Latin ordinals from a calendar
@@ -663,7 +689,16 @@ weaker party, because that is where ingest bugs live.
    - A DIGIT read once by Claude never beats the stored value (twelve straight
      disagreements resolved against Claude in 2026). Two independent BLIND reads that
      agree do beat the index (17 of 17 right, Oedelem, 4 Nov 2026): the readers' value
-     is stored and the index value goes in a closed `corroborated` flag.
+     is stored, and the superseded index value goes in the participant's `append_notes`
+     — **NOT in a review flag** (Michael's ruling, 11 Nov 2026). `review_flags_reason_check`
+     permits only `reader_uncertain`, `readers_disagree`, `name_vs_index`,
+     `digit_single_read`, `digit_vs_index`, `structure`, `contributor_query` and `ruling`.
+     There is no `corroborated` reason, and rail 19 forbids dodging the key with `other`,
+     so a corroboration flag fails the whole batch on FL-REASON — as it did to unit BB1 on
+     11 Nov 2026. The flag table is a work queue for a human to clear; a confirmed reading
+     is not work. Word the note so the supersession is legible, e.g.
+     `"Index gives 24; two blind reads of the act both give 4. Readers' value stored; index
+     value recorded here."`
    - A NAME is different: on 4 Nov 2026 two blind readers agreed with each other and
      were wrong four times (O008, O037, O043, O173). No number of machine reads settles
      a name. When your reading differs from the index or the stored form, KEEP the
@@ -680,7 +715,12 @@ weaker party, because that is where ingest bugs live.
    bracketed as written; a non-bearer gets `status: "not_tracked"`; never
    omitted. A role the schema lacks (guardian, surety, counterparty, neighbour)
    is `secondary` (or `mentioned`) with the real role in `notes`. Lines that hold
-   names are transcribed, never only summarised "for sense".
+   names are transcribed, never only summarised "for sense". **A spouse named in a
+   ten-year-table remark enters too** (Michael, 7 Nov 2026; 16 lead records had left
+   them in the flags and notes only): `status: "not_tracked"` unless the spouse is a
+   Van Vlaenderen, `notes: "from the remark in the ten-year table"`, the name as the
+   remark writes it, and a surname per rail 13. Never infer a spouse's name the remark
+   does not give.
 17. `name_as_written` is given name first, then the surname as written (Michael,
    2026-10-26). Indexes list people surname first; do not copy that column order
    into the field. Write "Jean Vanvlaenderen", not "Vanvlaenderen Jean", and
@@ -733,7 +773,14 @@ weaker party, because that is where ingest bugs live.
    `canonical_surname`, `role`, `date_text`, `date_iso`, `year`, `age`, `birth_date`,
    `death_date`, `act_number`, `structure`, `other`, and `reason` one of the eight named
    above (`review_flags_field_check`, `review_flags_reason_check`); anything else is
-   rejected. **A rejected flag set does not fail its record**: on 5 Nov 2026 a flag with
+   rejected. **The DB keeps one flag per event + participant + field + reason within a
+   batch file** (unique index on event, participant, field, reason and `batch_id`;
+   apply-batch sets `batch_id` from the file name without `.json`), so a second flag with the
+   same four values in the same file is silently dropped: on 7 Nov 2026, 13 of the lead
+   records lost one flag that way, five of them the weak-twin pointers. When two flags would
+   collide, merge both pieces of evidence into one flag, or give each the `field` and `reason`
+   that is actually true of it; never use `other` merely to dodge the key, and check
+   `review_flags` by event id after the batch. **A rejected flag set does not fail its record**: on 5 Nov 2026 a flag with
    `field: "summary"` was dropped while its record applied, leaving EVT_6464 flagless and
    the run's tally silent about it, so after a batch check `review_flags` by event id
    rather than trusting the console count. A fact about the act that fits no field name is
@@ -782,6 +829,15 @@ weaker party, because that is where ingest bugs live.
    apply. Never copy a stamp from another payload or invent one; if you did not read the revision
    line yourself, leave the key out and say so. A contributor's payload carries the revision of the
    copy she was given; a mismatch means "refresh your skill copy", not that the reading is wrong.
+22. Never let a reading be dropped by fill-only (Michael, 12 Nov 2026). `amend_record` keeps a filled fill-only field
+   and only logs the skip; on 12 Nov this had silently kept 41 wrong index locators (AGATHA record ids, wrong act
+   numbers) and two translations that contradicted their own new transcriptions. For every fill-only field a plan
+   offers, compare with the value stored now (the queue's `source_locator_stored`, or a live SELECT): empty -> put it in
+   `event_set`; the same -> leave it out; different -> `event_replace` {from: stored, to: reading}, which writes only if
+   the stored value is still `from` (compare-and-swap). A cosmetic difference ("act akte 101" vs "act 101") is still a
+   difference. `apply-batch.mjs`/`apply.mjs` re-check against the live record and STOP when a different stored value
+   would be kept (override `--accept-kept` only on purpose); the records editor shows such a row as "stop" and refuses
+   it. After applying, `Workflow/sql/check-kept-vs-offered.sql` must return 0 rows.
 
 ## Record types (v1 scope + extension hooks)
 
