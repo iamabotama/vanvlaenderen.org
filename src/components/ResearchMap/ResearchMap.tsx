@@ -81,7 +81,7 @@ interface MedievalAnchor {
 }
 
 const MEDIEVAL_ANCHORS: MedievalAnchor[] = [
-  { name: 'Wessegem/Ursel', lat: 51.1050, lng: 3.5280, label: 'Victor\'s Seigneurie', date: 'c.1399\u20131431' },
+  { name: 'Wessegem/Ursel', lat: 51.1050, lng: 3.5280, label: 'Victor\'s Seigneurie', date: '1398\u20131431' },
   { name: 'Biervliet', lat: 51.3333, lng: 3.7333, label: 'Victor: Captain of Biervliet', date: 'c.1400s' },
   { name: 'Oedelem/Praet', lat: 51.1500, lng: 3.3500, label: 'Praet Lordship', date: 'c.1373\u20131555' },
   { name: 'Tielt', lat: 50.9833, lng: 3.3333, label: 'Robbrecht Van Vlaendren', date: '1418\u20131432' },

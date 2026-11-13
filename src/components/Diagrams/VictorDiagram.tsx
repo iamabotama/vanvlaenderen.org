@@ -186,7 +186,7 @@ const diagram: DiagramDef = {
       x: 600,
       y: 188,
       maxWidth: 480,
-      text: 'Wessegem & Ursel acquired 11 April 1398 by ducal regrant from half-brother Loys "le Hase" (d. Nicopolis 1396) — ADN B 1604 fol. 184. Not a direct paternal grant from Louis de Male.',
+      text: 'Wessegem & Ursel acquired 11 April 1398 by ducal regrant from half-brother Loys "le Hase" (d. Nicopolis 1396) — ADN B 1598 fol. 84. Not a direct paternal grant from Louis de Male.',
       color: '#d4a830',
     },
     // NEW Phase 2: Despars descent bridge — wrapped, below Isabelle

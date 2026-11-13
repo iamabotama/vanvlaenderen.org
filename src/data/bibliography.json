@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-12",
+  "lastUpdated": "2026-11-12",
   "sections": {
     "primarySources": {
       "label": "I. Primary Sources and Finding Aids",
@@ -516,7 +516,7 @@
               "year": "1865-1906",
               "title": "Inventaire sommaire des Archives départementales du Nord antérieures à 1790, Série B (Chambre des comptes de Lille)",
               "publisher": "Lille: Archives départementales du Nord. Multiple volumes, 1865-1906.",
-              "note": "The published finding aid to the Archives départementales du Nord (ADN) at Lille — the repository behind the 'ADN B …' shelfmarks cited across the comital-bastard pages (e.g. ADN B 1273 stuk 10535, the 1372 Wessegem grant; ADN B 1604 fol. 184, the 1398 regrant to Victor; ADN B 43124, the Loys 'le Hase' cohort). The project reaches these folios via the published inventories and via secondary authorities (Lichtervelde 1935, Moelaert 1973/1978, Rogghé 1968); the underlying ADN folios have not yet been read directly.",
+              "note": "The published finding aid to the Archives départementales du Nord (ADN) at Lille — the repository behind the 'ADN B …' shelfmarks cited across the comital-bastard pages (e.g. ADN B 1273 stuk 10535, the 1372 Wessegem grant; ADN B 1598 fol. 84, the 1398 regrant to Victor; ADN B 43124, the Loys 'le Hase' cohort). The project reaches these folios via the published inventories and via secondary authorities (Lichtervelde 1935, Moelaert 1973/1978, Rogghé 1968); the underlying ADN folios have not yet been read directly.",
               "status": "cited_via_intermediary"
             }
           ]
@@ -643,6 +643,17 @@
               "title": "Seigneurial Lordship and the State in the County of Flanders (c. 1350-1550)",
               "publisher": "In: Graham-Goering, van der Meulen & Buylaert (eds.), Lordship and the Decentralised State in Late Medieval Europe, PBA 268. Oxford: Oxford University Press, 2025. Pp. 90-106.",
               "note": "Framework source for the seigneurie-as-nobility-transmission mechanism underpinning the Van Vlaenderen-Praet noble-status argument. Full read 8 Jun 2026; theoretical framework, zero surname attestations. Cites Speecke et al. 2023 (higher-seigneuries repertorium). PDF in hand and source-noted.",
+              "status": "consulted"
+            },
+            {
+              "id": "schnerb-2015-batards-nobles",
+              "source_type": "scholarly_article",
+              "type": "Belgian Historiography",
+              "author": "Schnerb, Bertrand",
+              "year": "2015",
+              "title": "Des bâtards nobles au service du prince : l'exemple de la cour de Bourgogne (fin XIVe-début XVe siècle)",
+              "publisher": "In: Bousmar, Marchandisse, Masson & Schnerb (eds.), La bâtardise et l'exercice du pouvoir en Europe du XIIIe au début du XVIe siècle, Revue du Nord, hors série, Collection Histoire 31 (2015). Pp. 91-112.",
+              "note": "A joint biography of Victor and Robrecht van Vlaenderen, natural sons of Louis de Male, built from the Lille and Dijon accounts. Prints in full Philip the Bold's act of 11 April 1398 granting Ursel and Wessegem to Victor for life (ADN B 1598 fol. 84r; p. 104). Read in full and source-noted, November 2026.",
               "status": "consulted"
             },
             {

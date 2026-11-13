@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-12 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:41560058fc679d34`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-13 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:b959e1ef53489424`
 
 ---
 name: vanvlaenderen-record-collection
@@ -17,7 +17,15 @@ description: >
   curator review. Do NOT use for the findings or source-note layers; this is the
   structured vital-records layer only.
 ---
-<!-- skill-revision: 2026-11-12.6ef67ce3 -->
+<!-- skill-revision: 2026-11-13.c3eae5cb -->
+
+<!-- Revised 2026-11-12 (evening, Michael: "update the skill"): name_provenance is now enforced by amend_record as well as
+apply_full_record. The amend-plans paragraph said participants_add took no name_provenance yet; a reader brief followed it and
+18 of 82 plans of lovendegem-parish-phase-b-2026-11-12p were refused at apply ("has surname ... which does not occur in
+name_as_written"). The min bar now says the check is live in both doors and spells out the DB's letter rule (a-z after
+lower-casing, accents dropped), so a surname standardised away from the clerk's letters (u -> v) also counts as a mismatch.
+validate-batch.mjs reports R-PROV-MISSING / R-PROV-CLAIM as errors on amend participants_add (A-PROV-NOTE retired).
+Detail: Operational/overnight-runs/2026-11-12/lovendegem-parish-phase-b/RUN.md, "Apply log". -->
 
 <!-- Revised 2026-11-11 (Michael's ruling, 11 Nov PT): rail 15 no longer sends a corroborated index value to a
 review flag. There is no `corroborated` reason in review_flags_reason_check and rail 19 forbids `other`, so the
@@ -309,8 +317,10 @@ instead of putting the field in `event_set` (rail 22); for names, participant `r
 too and reported as locked; only the curator's own paths (`resolve_review_flag`,
 `accept_amend_proposal`, or a plan he wrote himself with `overwrite`) change it. A plan may
 carry `_review_flags` (rail 19); they are raised after it applies. After applying, the editor offers the
-source-flag recompute. `participants_add` and `participants_update` do not take `name_provenance` yet
-(the B2 build adds it); say in the plan's note when a row's surname is inferred, so the stamp can follow.
+source-flag recompute. `participants_add` takes `name_provenance` and `amend_record` enforces it exactly as
+`apply_full_record` does (min bar): a new participant whose surname is not in its `name_as_written` (a father named
+only "Martini", a grandfather "Joris") needs `"name_provenance": "inferred"`, or the WHOLE plan is refused. Say so in
+the plan's note as well. `participants_update` takes it in `set` (fill-only) or `replace` (curator plans).
 
 **No tracker block.** Do NOT emit a `tracker` / `progress_update` block — it is
 retired and the editor ignores it. Search status is set per volume in the tracker
@@ -334,15 +344,20 @@ require all of:
   marriage after 1796 keeps its parish, being a parish-register type.
 - at least one participant with `role` + `name_as_written` — and every participant
   row named, `[illegible]`, or `[not recorded]`. Never blank (rail 13).
-- `name_provenance` on every participant whose `surname` does not occur (letters
-  only, case ignored) in `name_as_written`: `inferred` when the surname comes from
+- `name_provenance` on every participant whose `surname` does not occur in
+  `name_as_written` (the database compares the letters a-z after lower-casing, so
+  spaces, particles' capitals and punctuation do not matter, but accents are dropped
+  and a surname standardised away from the clerk's letters, "De Grave" for "de Graue",
+  is a mismatch: keep the clerk's letters, rail 4): `inferred` when the surname comes from
   a named relative or from household position; `carried` only when the source
   wrote it for this person by ditto, index column, margin or block head AND it has
   been carried into `name_as_written` (rail 17). Omit the key when the surname is
   in `name_as_written` (the database stamps `written`); a rail-13 literal is stamped
-  `placeholder` automatically. Any other mismatch is refused by `apply_full_record`
-  once the provenance migration is live; before it the key is stored nowhere and
-  ignored. Never state `written` or `carried` for a surname that is not in the name.
+  `placeholder` automatically. Any other mismatch is refused, by `apply_full_record`
+  for a record and by `amend_record` for an amend plan's `participants_add` (live since
+  12 Nov 2026; the refusal fails the whole record or plan). Never state `written` or
+  `carried` for a surname that is not in the name. `validate-batch.mjs` reports both
+  as errors (R-PROV-MISSING, R-PROV-CLAIM).
 - every participant role corresponds to a column the source actually has (rail 10).
 - every person the act names is a participant (rail 16): parents, spouses,
   godparents, witnesses, guardians, kin, sureties, counterparties, neighbours,
