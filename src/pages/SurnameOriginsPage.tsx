@@ -98,7 +98,7 @@ export default function SurnameOriginsPage() {
   ];
 
   const tier1 = [
-    { name: 'Victor van Vlaenderen', dates: '1399–1430', base: 'tier1_r1' },
+    { name: 'Victor van Vlaenderen', dates: '1398–c. 1431', base: 'tier1_r1' },
     { name: "Loys 'le Frison' van Vlaenderen", dates: '1373–1396', base: 'tier1_r2' },
     { name: "Jan 'sans terre' van Vlaenderen", dates: '1383–1396', base: 'tier1_r3' },
     { name: "Loys 'le Hase' van Vlaenderen", dates: '1372–1396', base: 'tier1_r4' },
