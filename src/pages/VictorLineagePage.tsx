@@ -107,7 +107,7 @@ export default function VictorLineagePage() {
           <h1>{t('victor.hero_title')}</h1>
           <div className="gold-rule" />
           <p className={styles.heroLead}>
-            Natural son of Louis II de Male, Count of Flanders. Lord of Ursel and Wessegem. Burgundian admiral; captain of Biervliet. Father of Lodewyc, Janne, and Adam van Vlaendren &mdash; documented across three primary charters (1427, 1441, 1446).
+            Natural son of Louis II de Male, Count of Flanders. Lord of Ursel and Wessegem. Captain of Biervliet; admiral, commission dated 1419 by Degryse. Father of Lodewyc, Janne, and Adam van Vlaendren &mdash; documented across three primary charters (1427, 1441, 1446).
           </p>
         </div>
       </div>

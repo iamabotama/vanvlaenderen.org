@@ -57,7 +57,7 @@ const diagram: DiagramDef = {
         titleHeld: 'Lord of Wessegem & Ursel',
         dates: 'd. 1431, Saint-Omer',
         tag: "SEIGNEUR D'URSELE ET WESSEGHEM",
-        body: "Natural son of Louis de Male. Burgundian admiral; captain of Biervliet. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420. Three natural sons documented across three primary charters (1427, 1441, 1446) by two mistresses: Lodewyc and Janne by Alix van Boyeghem; Adam by Gertrud Lindekens. Nicolaes Despars's Cronijcke (Vol. III pp. 114–115) names a fourth child, Isabelle, the matrilineal ancestress of the chronicler's wife — see her node and the Despars Compendium for the descent chain.",
+        body: "Natural son of Louis de Male. Captain of Biervliet; admiral, commission dated 1419 by Degryse. Testament 1430 names brothers Robert and Karel as executors. Married Jeanne de Gavre 1420. Three natural sons documented across three primary charters (1427, 1441, 1446) by two mistresses: Lodewyc and Janne by Alix van Boyeghem; Adam by Gertrud Lindekens. Nicolaes Despars's Cronijcke (Vol. III pp. 114–115) names a fourth child, Isabelle, the matrilineal ancestress of the chronicler's wife — see her node and the Despars Compendium for the descent chain.",
         src: "Vredius (1643) pp.285–287; de l'Espinoy (1631), Livre 2, Ch. XXXI, pp. 68–69; Despars Cronijcke Vol. III pp. 114–115",
         color: '#4ade80',
         ev: 'direct',

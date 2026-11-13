@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12",
+  "lastUpdated": "2026-11-13",
   "sections": {
     "primarySources": {
       "label": "I. Primary Sources and Finding Aids",
@@ -844,15 +844,26 @@
               "status": "acquisition_pending"
             },
             {
-              "id": "moelaert-1973-1978-wessegem",
+              "id": "moelaert-1973-wessegem",
               "source_type": "scholarly_article",
               "type": "Meetjesland",
               "author": "Moelaert, R.",
-              "year": "1973, 1978",
-              "title": "Wessegem en zijn heren (and a related Loys 'le Hase' domain study)",
-              "publisher": "'Wessegem en zijn heren', Appeltjes van het Meetjesland XXIV (1973), pp. 206–238; further article in Appeltjes van het Meetjesland (1978), pp. 6–56.",
-              "note": "Load-bearing local-scholarly study of the lordship of Wessegem and its holders, including Loys 'le Hase' and Victor van Vlaenderen. Cited on the Loys de Haze and Victor pages for the corrected 9 April 1372 dating of the Wessegem grant (against ADN B 1273 stuk 10535) and for Loys's second-generation children (the 1978 article places their mother at Loo, near Veurne). Reached via the published text; the underlying ADN folios not yet read directly. (1978 article title/volume to be confirmed.)",
-              "status": "cited_via_intermediary"
+              "year": "1973",
+              "title": "Wessegem en zijn heren",
+              "publisher": "Appeltjes van het Meetjesland 24 (1973), pp. 206–238.",
+              "note": "Load-bearing local-scholarly study of the lordship of Wessegem and its holders, Loys 'le Hase' and Victor van Vlaenderen. Cited on the Loys de Haze and Victor pages for the corrected 9 April 1372 dating of the Wessegem grant (ADN B 1273 stuk 10535), for Loys's mother as named by L'Espinoy (p. 227, n. 97), for Victor's 1420 style 'schoutheete van Oostburg' (p. 230, n. 108, citing ADN B 1604 fol. 108 v°), and for the first Wessegem domain account after Victor's death, from 1 October 1431 (p. 231, n. 121, citing ARAB Rekenkamer 7773). Read in full and source-noted, November 2026; the underlying ADN folios not yet read directly.",
+              "status": "consulted"
+            },
+            {
+              "id": "moelaert-1978-domeinrekeningen",
+              "source_type": "scholarly_article",
+              "type": "Meetjesland",
+              "author": "Moelaert, R.",
+              "year": "1978",
+              "title": "Uit de domeinrekeningen van Ursel, Wessegem en het Knesselaarse",
+              "publisher": "Appeltjes van het Meetjesland 29 (1978), pp. 6–56.",
+              "note": "Prints extracts from the Wessegem household accounts of Loys 'le Hase' (1392/93 and 1399/1400). Cited on the Loys de Haze page for his tenure of Wessegem, 1372–1396 (p. 11), and for the visit of Loys's own mother from Loo, near Veurne, to hold his child at the baptism (p. 14). Read in hand and source-noted, November 2026.",
+              "status": "consulted"
             },
             {
               "id": "rogghe-1968-appeltjes",
@@ -860,10 +871,10 @@
               "type": "Meetjesland",
               "author": "Rogghé, Paul",
               "year": "1968",
-              "title": "Article in Appeltjes van het Meetjesland, vol. 19 (1968)",
-              "publisher": "Appeltjes van het Meetjesland, vol. 19 (1968), pp. 252–253.",
-              "note": "Cited on the Loys de Haze and Louis Friese pages for Loys's second-generation children (p. 252 fns 70–71, citing the Desplanque and Dehaisnes-Finot ADN inventories) and for Marie van Ghistelle's prior marriage to Jan van Halewijn (Ghent civic record S.A.G. JJ3K 1424-25 fol. 73). Distinct from Rogghé's 1964 Meetjesland historical geography (see rogghe-1964). Reached via the published text; the underlying primary folios not yet read directly. (Article title within vol. 19 to be confirmed.)",
-              "status": "cited_via_intermediary"
+              "title": "Gent in de XIVe en XVe eeuw",
+              "publisher": "Appeltjes van het Meetjesland 19 (1968), pp. 227–304.",
+              "note": "Cited on the Loys de Haze and Louis Friese pages for Loys's second-generation children (p. 252 fns 70–71, citing the Desplanque and Dehaisnes-Finot ADN inventories) and for Marie van Ghistelle's prior marriage to Jan van Halewijn (Ghent civic record S.A.G. JJ3K 1424-25 fol. 73). Distinct from Rogghé's 1964 Meetjesland historical geography (see rogghe-1964). Also cited on the Victor page for Victor as 'schouteet van Oostburg' (p. 253). Read in hand and source-noted, November 2026; the underlying primary folios not yet read directly.",
+              "status": "consulted"
             },
             {
               "id": "mijnplatteland-ursel",
@@ -1188,6 +1199,17 @@
               "publisher": "De Vlaamse Gids, jg. 38 (1954).",
               "note": "Cited in the Victor dossier for the statement that Victor van Vlaenderen was 'kapitein van de vesting Biervliet' (captain of the stronghold of Biervliet). Quoted from the project's clipping of the article; the printed volume has not yet been re-collated, so the page locator is still open.",
               "status": "cited_via_intermediary"
+            },
+            {
+              "id": "degryse-1965-admiraals",
+              "source_type": "scholarly_article",
+              "type": "Belgian Historiography",
+              "author": "Degryse, Roger",
+              "year": "1965",
+              "title": "De admiraals en de eigen marine van de Bourgondische hertogen 1384-1488",
+              "publisher": "Mededelingen van de Marine Academie van België 17 (1965), pp. 139–225.",
+              "note": "Cited on the Victor pages for his commission as admiral, which Degryse dates to 1419 from an Ostend town account of 1 July 1419 (the account itself not yet seen by the project), and for Victor still holding the captaincy of Biervliet in February 1431 (p. 149). Read and source-noted, November 2026.",
+              "status": "consulted"
             },
             {
               "id": "tailler-2011",
