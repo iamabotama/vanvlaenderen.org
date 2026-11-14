@@ -68,7 +68,7 @@ const diagram: DiagramDef = {
         titleHeld: 'Lord of Elverdinghe & Vlamertinghe',
         dates: 'd. 21 Jan 1434',
         tag: 'ELVERDINGHE &\nVLAMERTINGHE',
-        body: "Natural son of Louis de Male; his mother is named in Béthune's p. 233 transcription of the Elverdinge epitaph as Ive sLuus of the van de Lus patrician family of Ghent (arms: azure a lion gules). Acquired Elverdinghe and Vlamertinghe at his half-brother Loys 'le Hase's 1396 death (see annotation). Burgundian raed ende camerlinck (councillor and chamberlain) to Dukes John the Fearless and Philip the Good. Married Anastasie d'Oultre at Ypres on 12 September 1419, acquiring the title Vicomte d'Ypres jure uxoris. The marriage produced no legitimate children. His wooden tomb in the Elverdinge parish church bore a Middle Dutch inscription naming him \"Roelandt van Vlaenderen\" (likely Robrecht, per Tamboryn; Béthune's transcription preserves the tomb's 'Roelant' beside Gailliard's gloss 'denwelcke Robrecht').",
+        body: "Natural son of Louis de Male; his mother is named in Béthune's p. 233 transcription of the Elverdinge epitaph as Ive sLuus of the van de Lus patrician family of Ghent (arms: azure a lion gules). Given Elverdinghe and Vlamertinghe by Philip the Bold after they fell to the duke at his half-brother Loys 'le Hase's 1396 death; first attested there June 1400 (see annotation). Burgundian raed ende camerlinck (councillor and chamberlain) to Dukes John the Fearless and Philip the Good. Married Anastasie d'Oultre at Ypres on 12 September 1419, acquiring the title Vicomte d'Ypres jure uxoris. The marriage produced no legitimate children. His wooden tomb in the Elverdinge parish church bore a Middle Dutch inscription naming him \"Roelandt van Vlaenderen\" (likely Robrecht, per Tamboryn; Béthune's transcription preserves the tomb's 'Roelant' beside Gailliard's gloss 'denwelcke Robrecht').",
         src: 'Buylaert (2011) pp. 752–753; Vredius (1643) pp. 283–284; Tamboryn, Geschiedenis van Elverdinghe, pp. 23–24; Béthune, Épitaphes et monuments (1897–1900) p. 233',
         color: '#4ade80',
         ev: 'direct',
@@ -164,7 +164,7 @@ const diagram: DiagramDef = {
       x: 600,
       y: 188,
       maxWidth: 480,
-      text: '← Elverdinghe-Vlamertinghe held by half-brother Loys "le Hase" 1372–1396. Passed to Robrecht at Loys\'s Nicopolis death — not a direct paternal grant.',
+      text: '← Held by half-brother Loys "le Hase" until 1396, then escheated to the duke. Given to Robrecht by Philip the Bold (first attested there June 1400), not by Louis de Male.',
       color: '#d4a830',
     },
     // NEW Phase 2: Karel II disambiguation — wrapped, right of Karel II
