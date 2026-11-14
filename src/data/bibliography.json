@@ -516,7 +516,7 @@
               "year": "1865-1906",
               "title": "Inventaire sommaire des Archives départementales du Nord antérieures à 1790, Série B (Chambre des comptes de Lille)",
               "publisher": "Lille: Archives départementales du Nord. Multiple volumes, 1865-1906.",
-              "note": "The published finding aid to the Archives départementales du Nord (ADN) at Lille — the repository behind the 'ADN B …' shelfmarks cited across the comital-bastard pages (e.g. ADN B 1273 stuk 10535, the 1372 Wessegem grant; ADN B 1598 fol. 84, the 1398 regrant to Victor; ADN B 43124, the Loys 'le Hase' cohort). The project reaches these folios via the published inventories and via secondary authorities (Lichtervelde 1935, Moelaert 1973/1978, Rogghé 1968); the underlying ADN folios have not yet been read directly.",
+              "note": "The published finding aid to the Archives départementales du Nord (ADN) at Lille — the repository behind the 'ADN B …' shelfmarks cited across the comital-bastard pages (e.g. ADN B 1273 stuk 10535, the 1372 Wessegem grant; ADN B 1598 fol. 84, the 1398 regrant to Victor). The project reaches these folios via the published inventories and via secondary authorities (Lichtervelde 1935, Moelaert 1973/1978, Rogghé 1968); the underlying ADN folios have not yet been read directly. Tome 2 (Desplanque, Lille: Danel, 1872; registers B 1561–1680) is in hand; its abstracts of B 1599 and B 1605 are cited on the Loys de Haze and Robrecht pages for Philip the Bold's gift of Elverdinghe and Vlamertinghe to Robrecht.",
               "status": "cited_via_intermediary"
             }
           ]
@@ -654,6 +654,17 @@
               "title": "Des bâtards nobles au service du prince : l'exemple de la cour de Bourgogne (fin XIVe-début XVe siècle)",
               "publisher": "In: Bousmar, Marchandisse, Masson & Schnerb (eds.), La bâtardise et l'exercice du pouvoir en Europe du XIIIe au début du XVIe siècle, Revue du Nord, hors série, Collection Histoire 31 (2015). Pp. 91-112.",
               "note": "A joint biography of Victor and Robrecht van Vlaenderen, natural sons of Louis de Male, built from the Lille and Dijon accounts. Prints in full Philip the Bold's act of 11 April 1398 granting Ursel and Wessegem to Victor for life (ADN B 1598 fol. 84r; p. 104). Read in full and source-noted, November 2026.",
+              "status": "consulted"
+            },
+            {
+              "id": "soens-2001-domaine-comtal",
+              "source_type": "scholarly_article",
+              "type": "Belgian Historiography",
+              "author": "Soens, Tim",
+              "year": "2001",
+              "title": "Évolution et gestion du domaine comtal en Flandre sous Louis de Male et Philippe le Hardi (1346-1404)",
+              "publisher": "Revue du Nord 83, no. 339 (January–March 2001), pp. 25–63. DOI 10.3917/rdn.339.0025.",
+              "note": "Cited on the Loys de Haze and Robrecht pages. Tableau 1 (p. 44), which lists alienations of the comital domain from 1372 to 1404, gives Robrecht's first mention at Vlamertinghe and Elverdinghe as June 1400; this is a first mention, not a grant date. Page 46 lists Loys 'le Hase' at the same lordships before 1374. Read in hand and source-noted, November 2026; the underlying archival references not yet read directly.",
               "status": "consulted"
             },
             {
@@ -873,7 +884,7 @@
               "year": "1968",
               "title": "Gent in de XIVe en XVe eeuw",
               "publisher": "Appeltjes van het Meetjesland 19 (1968), pp. 227–304.",
-              "note": "Cited on the Loys de Haze and Louis Friese pages for Loys's second-generation children (p. 252 fns 70–71, citing the Desplanque and Dehaisnes-Finot ADN inventories) and for Marie van Ghistelle's prior marriage to Jan van Halewijn (Ghent civic record S.A.G. JJ3K 1424-25 fol. 73). Distinct from Rogghé's 1964 Meetjesland historical geography (see rogghe-1964). Also cited on the Victor page for Victor as 'schouteet van Oostburg' (p. 253). Read in hand and source-noted, November 2026; the underlying primary folios not yet read directly.",
+              "note": "Cited on the Loys de Haze and Louis Friese pages for Loys's second-generation children (p. 252 fns 70–71, citing the Desplanque and Dehaisnes-Finot ADN inventories) and for Marie van Ghistelle's prior marriage to Jan van Halewijn (Ghent civic record S.A.G. JBK 1424-25 fol. 73). Distinct from Rogghé's 1964 Meetjesland historical geography (see rogghe-1964). Also cited on the Victor page for Victor as 'schouteet van Oostburg' (p. 253). Read in hand and source-noted, November 2026; the underlying primary folios not yet read directly.",
               "status": "consulted"
             },
             {

@@ -99,6 +99,15 @@ const notes = [
       </>
     ),
   },
+  {
+    n: 10,
+    short: 'Degryse, R. De admiraals en de eigen marine van de Bourgondische hertogen 1384-1488. Mededelingen van de Marine Academie van België 17 (1965).',
+    full: (
+      <>
+        Degryse, Roger. <em>De admiraals en de eigen marine van de Bourgondische hertogen 1384-1488.</em> Mededelingen van de Marine Academie van België 17 (1965), pp. 139&ndash;225.{' '}<Link to="/research/bibliography#degryse-1965-admiraals" className={researchStyles.refLink}>Bibliography entry →</Link>
+      </>
+    ),
+  },
 ];
 
 const CITES: Record<number, string> = {};
@@ -356,7 +365,7 @@ export default function VictorDossierPage() {
         <section className={styles.section}>
           <h2>Naval and Military Activity <span className={`${researchStyles.evidenceLevel} ${researchStyles.levelCorroborated}`}>Strongly Corroborated</span></h2>
           <p>
-            A DBNL article<Cite n={6} text={CITES[6]} /> states: 'Victor was, en dit is belangrijk, kapitein van de vesting Biervliet.' A UGent-hosted study on Flemish corsair warfare<Cite n={7} text={CITES[7]} /> notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.' These sources support Victor's coastal and naval command role.
+            A DBNL article<Cite n={6} text={CITES[6]} /> states: 'Victor was, en dit is belangrijk, kapitein van de vesting Biervliet.' A UGent-hosted study on Flemish corsair warfare<Cite n={7} text={CITES[7]} /> notes the appointment of 'een nieuwe admiraal: Victor van Vlaanderen.' These sources support Victor's coastal and naval command role. Degryse (1965) dates Victor's commission as admiral to 1419, citing an Ostend town account of 1 July 1419 in which he shows it; the project has not yet seen that account itself.<Cite n={10} text={CITES[10]} loc="p. 149, fn. 37" />
           </p>
         </section>
 

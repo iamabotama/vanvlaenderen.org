@@ -160,7 +160,7 @@ const diagram: DiagramDef = {
       y: 595,
       align: 'center',
       maxWidth: 880,
-      text: "Loys de Haze's seigniories at his 1396 death: Wessegem & Ursel reverted to the duke, regranted to half-brother Victor 11 Apr 1398 (ADN B 1598 fol. 84); Elverdinghe-Vlamertinghe passed to half-brother Robrecht; Vake to Regnault; Bortsant to Hector; Le Heneede + Oostkerke house to Kathelijne & Joanna.",
+      text: "Loys de Haze's seigniories at his 1396 death: Wessegem & Ursel reverted to the duke, regranted to half-brother Victor 11 Apr 1398 (ADN B 1598 fol. 84); Elverdinghe-Vlamertinghe also reverted, later given to half-brother Robrecht by Philip the Bold (first attested there June 1400); Vake to Regnault; Bortsant to Hector; Le Heneede + Oostkerke house to Kathelijne & Joanna.",
       color: '#d0d4dc',
     },
     {
@@ -168,7 +168,7 @@ const diagram: DiagramDef = {
       y: 685,
       align: 'center',
       maxWidth: 880,
-      text: "Plus a 22 October 1419 wedding of 'Myns heren s'Haze dochter' (Katelijne or Joanna) at Furnes, attended by uncles Victor and Robert — ADN B 43124 fol. 44v° and 58r°, via Lichtervelde 1935 p. 56 fn 2. Husband not yet identified.",
+      text: "Plus a 22 October 1419 wedding of 'Myns heren s'Haze dochter' (Katelijne or Joanna) at Furnes, attended by uncles Victor and Robert — ARA Rekenkamer 43124 fol. 44v° and 58r°, via Lichtervelde 1935 p. 56 fn 2. Husband not yet identified.",
       color: '#8a8f9e',
     },
   ],

@@ -118,7 +118,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   '/research/loys-le-hase': {
     title: 'Loys "le Hase" van Vlaenderen — Lord of Wessegem and Elverdinghe-Vlamertinghe | vanvlaenderen.org',
-    description: 'The senior direct-bastard line of Louis II de Male: Loys "le Hase" van Vlaenderen (Lodewijk de Haze), Lord of Wessegem and Elverdinghe-Vlamertinghe by grant of 1372. Six dated chronicle attestations in Despars (1380–1396). Killed at Nicopolis 25 September 1396 alongside half-brothers Louis Friese and Jan sans terre. Four documented natural children.',
+    description: 'The senior direct-bastard line of Louis II de Male: Loys "le Hase" van Vlaenderen (Lodewijk de Haze), Lord of Wessegem by grant of 1372, and later of Elverdinghe-Vlamertinghe. Six dated chronicle attestations in Despars (1380–1396). Killed at Nicopolis 25 September 1396 alongside half-brothers Louis Friese and Jan sans terre. Four documented natural children.',
     canonical: 'https://vanvlaenderen.org/research/loys-le-hase/',
     ogTitle: 'Loys "le Hase" van Vlaenderen — Lord of Wessegem',
     ogDescription: 'The earliest-endowed direct bastard of Louis II de Male. Killed at Nicopolis 1396. Four documented natural children; line ends in the second generation.',
