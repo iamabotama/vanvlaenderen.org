@@ -133,7 +133,7 @@ export default function OverviewDiagram() {
           dates: 'b. after 1361 – d. 25 Sep 1396 · Nicopolis',
           titleHeld: 'Lord of Wessegem, Ursel & Elverdinghe',
           tag: 'WESSEGEM, URSEL,\nELVERDINGHE &\nVLAMERTINGHE',
-          body: 'Natural son of Louis de Male; the earliest-endowed of the direct bastards (Wessegem grant 1372). Lord of Wessegem, Ursel, Elverdinghe-Vlamertinghe, Schuurveld, and Vake; holder of the forfeited de Moor goods at Oostburg. Captain of Biervliet 1385. Killed at Nicopolis alongside half-brothers Louis Friese and Jan sans terre. Four documented natural children — Hector, Regnault, Kathelijne, Joanna — but no continuing line. His Wessegem and Ursel seigniories passed to Victor at the 1398 ducal regrant; his Elverdinghe-Vlamertinghe lordship passed to Robrecht.',
+          body: 'Natural son of Louis de Male; the earliest-endowed of the direct bastards (Wessegem grant 1372). Lord of Wessegem, Ursel, Elverdinghe-Vlamertinghe, Schuurveld, and Vake; holder of the forfeited de Moor goods at Oostburg. Captain of Biervliet 1385. Killed at Nicopolis alongside half-brothers Louis Friese and Jan sans terre. Four documented natural children — Hector, Regnault, Kathelijne, Joanna — but no continuing line. His Wessegem and Ursel seigniories passed to Victor at the 1398 ducal regrant; his Elverdinghe-Vlamertinghe lordship was later given to Robrecht.',
           src: 'Despars, Cronijcke Vol. III (six narrative attestations 1380–1396); Moelaert (1973) pp. 226–229; Rogghé (1968) p. 252; Lichtervelde (1935)',
           color: EVIDENCE.attested,
           ev: 'direct',
