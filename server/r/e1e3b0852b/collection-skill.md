@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-13 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:b959e1ef53489424`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-22 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:dba9ac38ac663db1`
 
 ---
 name: vanvlaenderen-record-collection
@@ -17,7 +17,12 @@ description: >
   curator review. Do NOT use for the findings or source-note layers; this is the
   structured vital-records layer only.
 ---
-<!-- skill-revision: 2026-11-13.c3eae5cb -->
+<!-- skill-revision: 2026-11-22.33b66b03 -->
+
+<!-- Revised 2026-11-21 (Michael's rule, 21 Nov 20:06 PT; timing option A, 20:38 PT): rail 24 added, every record carries a
+citation a third party can follow to an outside institution; regests are their own source rows; check-external-locator.sql
+after every apply. Rail 23 (19 Nov) copied in from the account copy, where it had been added without reaching this canonical
+file. Detail: Operational/source-locatability-fixes-2026-11.md and Operational/intake-validation-issues-log.md item 240. -->
 
 <!-- Revised 2026-11-12 (evening, Michael: "update the skill"): name_provenance is now enforced by amend_record as well as
 apply_full_record. The amend-plans paragraph said participants_add took no name_provenance yet; a reader brief followed it and
@@ -26,6 +31,15 @@ name_as_written"). The min bar now says the check is live in both doors and spel
 lower-casing, accents dropped), so a surname standardised away from the clerk's letters (u -> v) also counts as a mismatch.
 validate-batch.mjs reports R-PROV-MISSING / R-PROV-CLAIM as errors on amend participants_add (A-PROV-NOTE retired).
 Detail: Operational/overnight-runs/2026-11-12/lovendegem-parish-phase-b/RUN.md, "Apply log". -->
+
+<!-- Revised 2026-11-19 (Michael's ruling D1, 18 Nov 22:45 PT; option A of 19 Nov 00:23 PT): rail 12b gains the deferred-exequies
+sentence (no burial day written: dated by the death day). Detail: Operational/handoff-session-closeout-2026-11-18-lane1-evergem-1703plus-bur.md section 8. -->
+
+<!-- Revised 2026-11-18 (Michael's ruling, 18 Nov 11:03 PT): rail 12a gains the out-of-commune transcript sentence
+(dated by the inscription in the register we hold). Detail: Operational/intake-validation-issues-log.md item 217. -->
+
+<!-- Revised 2026-11-17 (Michael's ruling, 17 Nov 23:22 PT): rail 12b added, parish acts are dated by the rite
+(baptism, burial, marriage day), the birth, death or betrothal day goes in the notes. Detail: Operational/intake-validation-issues-log.md item 202. -->
 
 <!-- Revised 2026-11-11 (Michael's ruling, 11 Nov PT): rail 15 no longer sends a corroborated index value to a
 review flag. There is no `corroborated` reason in review_flags_reason_check and rail 19 forbids `other`, so the
@@ -666,6 +680,22 @@ weaker party, because that is where ingest bugs live.
    states a different birth or death day ("geboren op gisteren", "overleden den
    eenentwintigsten"), put that day in the summary and the principal's notes, never
    in the event date, and never re-date an index lead to the event day.
+   **A transcript of an act drawn up in another commune is dated by its inscription** (Michael,
+   18 Nov 2026; issues log 217). When a register entry copies in an act from elsewhere (a soldier's
+   or hospital death sent home, "overgeschreven ingevolge artikel 80", "Uyt Eenen der Registers
+   ... is het volgende getrokken"), the event is the entry in the register we hold: its date is the
+   day it was inscribed there and its municipality is that register's commune. The original act's
+   place and date, and the death day, go in the summary and the principal's notes; the source
+   `notes` say it is a transcript. The original act, if ever read, is its own record.
+12b. Parish acts are dated by the RITE (Michael, 17 Nov 2026 23:22 PT; issues log 202). A parish
+   baptism carries the baptism day, a burial the burial day, a marriage the marriage day. When the
+   entry also gives a birth, death or betrothal day ("natus 18 et baptizatus 19", "obiit 14 ...
+   sepultus 15", "contraxerunt sponsalia 1 ... matrimonium 14"), that day goes in the summary and
+   the principal's notes (`birth_date` / `death_date` where the field exists), never in the event
+   date. Where the index gives the other day, the index is wrong for this field: treat it as an
+   index disagreement under rail 15. Same principle as 12a: the event date is the day of the act.
+   A burial entry that gives "obiit" and deferred exequies, with no burial day written, is dated by the
+   death day (Michael's ruling D1 of 18 Nov 2026).
 13. A participant is never blank. If a name cannot be supplied, say which kind of
    nothing it is:
    - `"name_as_written": "[illegible]"` — the name IS in the act, but unreadable.
@@ -853,6 +883,35 @@ weaker party, because that is where ingest bugs live.
    difference. `apply-batch.mjs`/`apply.mjs` re-check against the live record and STOP when a different stored value
    would be kept (override `--accept-kept` only on purpose); the records editor shows such a row as "stop" and refuses
    it. After applying, `Workflow/sql/check-kept-vs-offered.sql` must return 0 rows.
+
+23. Every sweep or read thread ends with its register-clears file and one command (Michael, 19 Nov 2026; full rule in
+   `Operational/coverage-tracker-2026-11/process-note-2026-11-19.md`). Why: on 19 Nov the tracker lagged the November
+   sweeps by 80 segments. Before its close-out the thread writes `register-clears-YYYY-MM-DD<letter>.json` in the run folder
+   (the coverage-update.mjs format: coverage_id, vid, bookpart_id, searched complete or in_progress, why; every item has all
+   four ids), plus the tsv evidence (cleared, partial, no_table, not_reached per table); a volume with any partial,
+   no_table or not_reached row is in_progress, not complete. It SELECTs the live segment for each item and checks the
+   bookpart matches the vid, the current `searched` and the `via`. A register with `via: index` is re-derived from its
+   index by the events trigger (`trg_coverage_recompute`) and a manual value is reverted, so a register that must stay open
+   against an index is set `via: page-by-page`. Do not walk a register an index covers (ruling 7): read the index, write
+   the index clear. Michael gets the dry-run line and the `--go` line (`node "Workflow/coverage-update.mjs" "<file>"`, then
+   with `--go`) with expected counts, in chat and in the close-out. The stored `research_coverage.status` column is retired:
+   read the live rollup `v_coverage_status`, never the stored column. The next thread's first step is a SELECT read-back.
+24. Every record carries a citation a third party can follow to an outside institution (Michael, 21 Nov 2026; issues log
+   240, `Operational/source-locatability-fixes-2026-11.md`). Why: EVT_1426 had stood since April on a regest's "Heinric van
+   Vlaenderen" because its only "original_record" row was a source that mixed the register and a modern regest, cited "f.
+   41/8" with no year section, and nobody outside the project could have gone to the act from it. At least one source row
+   of every record names the holding institution (the archive, or the library or publisher of a printed work), the series
+   or fonds and the volume or shelfmark in the institution's own form ("Archief Gent, Oud Archief (OA), reeks 301
+   (Jaarregisters van de Keure), nr 16"), and its `event_sources.locator` goes down to page, folio or act, with the
+   schepenjaar or year section wherever foliation restarts inside a volume. An archive's own image url (AGATHA) also
+   counts. Our Drive photographs, Geneaknowhow and other web transcriptions are copies: cite them as well, never as the
+   only citation. A regest, an index or a printed abstract is its own source row (category `secondary`, subtype
+   `regest` / `finding_aid`, its D-number or ISBN as `inventory_reference`), never folded into the register's row, and a
+   volume number read from a reading-room key or slip is stated as such in the source's citation. A source row is never
+   reused for a different volume: check the series key before attaching a citation to an existing row. Where no
+   institutional citation can be given yet, set `needs_source: 1` and say in the event notes what is missing. After every
+   apply, run `Workflow/sql/check-external-locator.sql`: a record it lists that the batch added is a defect to fix before
+   the close-out (baseline 21 Nov 2026: 40 legacy rows, the backlog in the fix list).
 
 ## Record types (v1 scope + extension hooks)
 
