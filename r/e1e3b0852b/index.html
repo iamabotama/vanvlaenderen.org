@@ -1563,10 +1563,11 @@ async function pjSubmit(){
         // #15: applying a curator-edited proposal — apply, then resolve the ORIGINAL (no dup row)
         const {data:res,error:re}=await sb.rpc("apply_full_record",{payload:clean});
         if(re) throw re;
+        const rf=(res&&res.event_id)?await raiseFlags(res.event_id,"proposal-"+PJ_EDIT_ORIG,PJ._review_flags):""; // item 6 (22 Nov 2026): an edited proposal keeps its reader flags; same batch id as the Approve path; raised before the resolve so a failed resolve cannot drop them
         const {error:ue}=await sb.from("proposals").update({status:"applied",reviewed_by:USER.id,reviewed_at:new Date().toISOString(),review_notes:"approved with curator edits",target_id:(res&&res.event_id)||null,submitter_note:note}).eq("id",PJ_EDIT_ORIG);
         if(ue) throw ue;
         const fl=(res&&res.flags&&res.flags.length)?" ("+res.flags.map(esc).join("; ")+")":"";
-        flash($("#pj_msg"),"Applied as "+esc((res&&res.event_id)||"?")+fl+" — proposal #"+esc(String(PJ_EDIT_ORIG))+" resolved.","good");
+        flash($("#pj_msg"),"Applied as "+esc((res&&res.event_id)||"?")+fl+" — proposal #"+esc(String(PJ_EDIT_ORIG))+" resolved."+rf,"good");if(rf)loadFlags();
         pjReset();runBrowse();loadTracker();loadProposals();gotoTab("proposals");
       }else{
         // insert-then-apply: every applied record keeps a proposal row for the audit trail
