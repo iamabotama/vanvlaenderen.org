@@ -1,4 +1,4 @@
-> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-22 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:dba9ac38ac663db1`
+> **Collection skill — snapshot for pasting into a thread.** Last synced 2026-11-23 from the canonical source `Van Vlaenderen research/Skills/vanvlaenderen-record-collection/SKILL.md`. The Drive home is the edit source; run `pnpm sync:skill` to refresh this snapshot. `sha256:a41953a03addabea`
 
 ---
 name: vanvlaenderen-record-collection
@@ -17,7 +17,7 @@ description: >
   curator review. Do NOT use for the findings or source-note layers; this is the
   structured vital-records layer only.
 ---
-<!-- skill-revision: 2026-11-22.33b66b03 -->
+<!-- skill-revision: 2026-11-23.a4e22317 -->
 
 <!-- Revised 2026-11-21 (Michael's rule, 21 Nov 20:06 PT; timing option A, 20:38 PT): rail 24 added, every record carries a
 citation a third party can follow to an outside institution; regests are their own source rows; check-external-locator.sql
@@ -391,8 +391,8 @@ require all of:
   when the act's full date is known, else the whole year must be past). Otherwise
   do not emit. Deaths/burials are exempt.
 
-A zero-found sweep emits no record JSON - only the `progress_update` (tracker)
-payload. If something is missing on a found record, do NOT emit the JSON. Name
+A zero-found sweep emits no record JSON and no tracker block (the block is retired;
+tell the curator which volume was swept with no hits). If something is missing on a found record, do NOT emit the JSON. Name
 what is missing and ask the human for it.
 
 ## Capturing AGATHA pages (runtime-agnostic)
