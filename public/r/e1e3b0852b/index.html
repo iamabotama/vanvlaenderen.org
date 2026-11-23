@@ -482,7 +482,7 @@ function drawPager(el,tab,page,pages){
     `<button ${page>=pages?"disabled":""} onclick="gotoPage('${tab}',${pages})">Last &raquo;</button>`;
 }
 
-function flash(el,msg,kind){el.className="msg "+(kind||"")+(msg?" show":"");el.innerHTML=msg||"";}
+function flash(el,msg,kind){el.className="msg "+(kind||"")+(msg?" show":"");el.innerHTML=msg||"";if(msg&&kind==="err"&&el.id==="propMsg")el.scrollIntoView({behavior:"smooth",block:"center"});}
 function muniName(id){const m=MUNIS.find(x=>x.municipality_id===id);return m?m.canonical_name:"";}
 function parishName(id){const p=PARISHES.find(x=>x.parish_id===id);return p?p.parish_name:(id||"");}
 
